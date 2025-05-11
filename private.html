@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Private Area - Paul Snider</title>
+    <link rel="icon" href="images/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -99,94 +100,25 @@
         }
         
         /* Stock Ticker Styles */
-        .stock-ticker-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .stock-ticker-container h3 {
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-            text-align: center;
-        }
-        
-        .stock-ticker {
-            display: flex;
-            overflow-x: hidden;
-            padding-bottom: 10px;
-            white-space: nowrap;
-            position: relative;
-        }
-        
-        .stock-ticker-scroll {
-            display: flex;
-            animation: ticker-scroll 30s linear infinite;
-            position: relative;
-        }
-        
-        .stock-ticker:hover .stock-ticker-scroll {
-            animation-play-state: paused;
-        }
-        
-        @keyframes ticker-scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-        
-        .ticker-item {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 20px;
-            margin-right: 20px;
-            background-color: var(--background-alt);
-            border-radius: 5px;
-            min-width: 150px;
-        }
-        
-        .ticker-symbol {
-            font-weight: 700;
-            margin-right: 10px;
-        }
-        
-        .ticker-price {
-            margin-right: 10px;
-        }
-        
-        .ticker-change {
-            font-weight: 500;
-        }
-        
-        .ticker-change.positive {
-            color: #28a745;
-        }
-        
-        .ticker-change.negative {
-            color: #dc3545;
-        }
+        /* CSS related to stock ticker removed as per user request */
+
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Paul Snider</div>
+                <div class="logo">Paul Snider, MBA</div>
                 <ul class="nav-links">
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#experience">Experience</a></li>
-                    <li><a href="index.html#education">Education</a></li>
                     <li><a href="index.html#skills">Skills</a></li>
-                    <li><a href="index.html#projects">Projects</a></li>
-                    <li><a href="index.html#weather">Weather</a></li>
-                    <li><a href="private.html" class="active">Private</a></li>
+                    <li><a href="index.html#public-speaking">Public Speaking</a></li>
+                    <li><a href="index.html#featured-talks">Featured Talks</a></li>
+                    <li><a href="index.html#experience">Experience</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="library.html">Library</a></li>
+                    <li><a href="private.html" class="active">Private</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -201,49 +133,6 @@
         <div class="container">
             <h1>Private Area</h1>
             <p>This area is restricted to authorized users only. Please log in to access private content.</p>
-            
-            <div class="stock-ticker-container">
-                <h3>Market Overview</h3>
-                <div class="stock-ticker" id="stockTickerContainer">
-                    <div class="stock-ticker-scroll" id="stockTicker">
-                        <div class="ticker-item">
-                            <span class="ticker-symbol">AAPL</span>
-                            <span class="ticker-price">$178.72</span>
-                            <span class="ticker-change positive">+1.24%</span>
-                        </div>
-                        <div class="ticker-item">
-                            <span class="ticker-symbol">MSFT</span>
-                            <span class="ticker-price">$403.78</span>
-                            <span class="ticker-change positive">+0.87%</span>
-                        </div>
-                        <div class="ticker-item">
-                            <span class="ticker-symbol">GOOGL</span>
-                            <span class="ticker-price">$142.56</span>
-                            <span class="ticker-change negative">-0.32%</span>
-                        </div>
-                        <div class="ticker-item">
-                            <span class="ticker-symbol">AMZN</span>
-                            <span class="ticker-price">$178.15</span>
-                            <span class="ticker-change positive">+2.15%</span>
-                        </div>
-                        <div class="ticker-item">
-                            <span class="ticker-symbol">TSLA</span>
-                            <span class="ticker-price">$175.34</span>
-                            <span class="ticker-change negative">-1.45%</span>
-                        </div>
-                        <div class="ticker-item">
-                            <span class="ticker-symbol">META</span>
-                            <span class="ticker-price">$474.99</span>
-                            <span class="ticker-change positive">+0.56%</span>
-                        </div>
-                        <div class="ticker-item">
-                            <span class="ticker-symbol">NFLX</span>
-                            <span class="ticker-price">$628.80</span>
-                            <span class="ticker-change positive">+1.78%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
             
             <div class="login-form">
                 <form id="loginForm">
@@ -290,7 +179,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="stock-api.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const loginForm = document.getElementById('loginForm');
