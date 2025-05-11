@@ -1,0 +1,128 @@
+Paul Snider
+Vice President, Engineering at Netsmart
+Kansas City, Missouri, United States
+Summary
+Paul is an accomplished engineering executive dedicated to transforming healthcare through 
+scalable, secure, and data-driven solutions. With 20+ years of experience in healthcare IT, he has 
+led large, globally distributed teams of over 300 engineers, delivering mission-critical SaaS 
+platforms for EHR, interoperability, and advanced analytics. Currently serving as Vice President of 
+Engineering at Netsmart, Paul oversees cloud-native architectures, AI-driven data platforms, and 
+high-scale interoperability frameworks that process billions of transactions monthly and support 
+tens of thousands of healthcare organizations nationwide.
+Starting his career developing pharmacy products, Paul advanced into leadership roles spanning 
+Pharmacy, Clinical Supply Chain, Nursing, Infection Control, Rehabilitation, and Physician 
+workflows. His expertise lies in integrating complex healthcare ecosystems, leveraging AI and ML 
+for meaningful insights, and championing agile practices that accelerate innovation. Prior to 
+Netsmart, Paul managed global platform engineering teams at the world’s largest EHR provider
+driving strategies for interoperability, large-scale cloud deployments, and data-centric solutions.
+Paul holds a Bachelor of Science in Computer Information Systems from Missouri State University 
+and a Master of Business Administration from Webster University. His passion for continuous 
+learning, coaching, and a user-focused approach to product development drives him to create 
+technology that truly makes healthcare more accessible, effective, and efficient for everyone.
+Experience
+Netsmart
+Vice President Of Engineering
+November 2021 – Present (3 years 5 months)
+Overland Park, Kansas, United States
+Netsmart – Vice President of Engineering
+(November 2021 – Present • Overland Park, KS)
+• Data Platform
+Lead Netsmart’s cloud-native data platform leveraging AWS Aurora, Redshift, S3, and Glue 
+for scalable storage, ingestion, and processing across 18 million patient lives. Established 
+automated pipelines (Kinesis, Step Functions, Lambda) that unify clinical and financial 
+data, enabling AI-driven analytics without compromising performance or security.
+• High-Scale Interoperability
+Oversee a Distributed Event Platform that processes 2 billion monthly internal transactions 
+via an event-driven architecture. Connect 45,000 organizations and 860 HIEs for 300 million 
+monthly external transactions, ensuring real-time data exchange and seamless crosssystem workflows.
+• Business & Organizational Leadership
+Mentor and manage a global engineering organization (120+), championing agile delivery in 
+support of revenue growth and strategic M&A. Oversee $50M+ in annual product revenue 
+(10% YoY growth) with FinOps best practices, maintaining an efficiency ratio (E/R) of 9% to 
+20%. Collaborate with executive stakeholders to shape product roadmaps, expand market 
+opportunities, and drive overall business success.
+• Cloud-Native Architecture & DevOps
+Architect cloud strategies leveraging microservices, containerization (Docker, AWS Fargate, 
+EKS), and CI/CD automation (Jenkins, CodePipeline). Elevate agility, scalability, and 
+security via distributed caching (Redis), advanced observability (CloudWatch, Splunk), and 
+real-time monitoring.
+• Identity & Access Management (IAM/CIAM)
+Implement enterprise-wide authentication and authorization standards (OpenID Connect, 
+OAuth 2.0, Keycloak) integrated with Netsmart’s IAM/CIAM framework. Uphold HITRUST, 
+HIPAA, and Gov Cloud regulations for e-prescribing, data-sharing, and other regulated 
+workflows.
+• Medication Management
+Direct the flagship e-prescribing and medication management platform serving 33,000 
+providers. Led a strategic migration to AWS, cutting response times by 50%, reducing 
+operational costs, and bolstering reliability, patient safety, and user satisfaction.
+Cerner Corporation (16 years 4 months)
+Senior Director, Platform Engineering
+April 2019 – November 2021 (2 years 8 months)
+Kansas City, Missouri Area
+• Executive responsibility for an engineering organization of 200+ associates developing EHR 
+services across the United States, Romania, and Bangalore, India.
+• Executive owner of the EHR scalability program across 300+ engineers focused on 
+managing software, systems, and product scalability of the largest global health system on 
+earth.
+• Executive owner of the EHR data governance program.
+• Managed vendor relationships with Oracle and MongoDB.
+Director, Care Insight & Delivery Development
+April 2018 – April 2019 (1 year 1 month)
+Kansas City, Missouri Area
+• Executive responsibility for an organization of 300+ associates developing full-stack clinical 
+products across the United States, London, and Bangalore, India.
+• Executive sponsor and core council member of the corporate engineering leadership 
+program.
+• Facilitated corporate leadership program.
+• Speaker at both internal and external conferences on topics of Engineering Leadership, 
+Product Development, Agile, and DevOps.
+Senior Software Engineering Manager
+August 2013 – April 2019 (5 years 9 months)
+Kansas City, Missouri, United States
+• Managed a software engineering business unit that included 30+ technical and clinical 
+associates across 6 agile teams focusing on full-stack software development.
+• Developed software products focused on Pharmacy, Infection Control, Rehabilitation, and 
+Nursing to meet specifications outlined by regulatory agencies (Centers for Medicare & 
+Medicaid Services, Centers for Disease Control and Prevention, United States Department 
+of Defense, UK National Health Service, and European Health CE Mark).
+• Created Cerner’s development process governance gateway in collaboration with the 
+Project Management Office, which was implemented across all engineering and Agile 
+Business Units.
+Software Engineering Manager
+August 2009 – August 2013 (4 years 1 month)
+Kansas City, Missouri, United States
+• Managed a full-stack software engineering team responsible for product design, 
+development, deployment, and maintenance of Cerner Pharmacy and Supply Chain using 
+AngularJS, C#, C++, Durandal, Java, Node.js, PL/SQL, WPF, JMeter, JUnit, Gatling, NUnit, 
+MSTEST.
+• Coordinated global software development projects across Kansas City, Denver, London, 
+Bangalore (India), and Sydney (Australia).
+• Facilitated agile training for senior software engineers as part of Cerner’s corporate 
+engineering training program.
+• Led design, development, and deployment of Cerner’s clinical worklist capabilities used by 
+more than 30% of Cerner’s product development teams and over 10,000 clinicians 
+worldwide.
+Senior Software Engineer
+August 2007 – August 2009 (2 years 1 month)
+Kansas City, Missouri, United States
+• Lead engineer on a cross-organizational global team responsible for the migration of 1.4 
+million lines of code from VB6 to C#.
+• Developed CI/CD unit and functional test framework for both new and legacy code in C# 
+and PL/SQL.
+• Developed new Cerner Pharmacy products using RCP and Java Services.
+• Mentored both local and global software engineers.
+Software Engineer
+August 2005 – August 2007 (2 years 1 month)
+Kansas City, Missouri, United States
+• Developed full-stack Cerner software applications focused on supporting CPOE within 
+Inpatient Pharmacy products using VB6, C++, and PL/SQL.
+• Led technical initiatives from design through deployment of fax automation software 
+integrating Cerner Provision Document Imaging within Cerner Pharmacy.
+McMurtrey/Whitaker & Associates, Inc.
+Application Web Developer
+September 2003 – August 2005 (2 years)
+• Developed dynamic e-commerce business websites using ASP.NET, ASP, VB6, SQL, PHP, 
+HTML, JavaScript.
+Education
+• Missouri State University – BS, Computer Information Systems (2001 – 2005)
+• Webster University – Master of Business Administration (MBA) (2009 – 2011)
