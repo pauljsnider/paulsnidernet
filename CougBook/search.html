@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Rooms - CougBook</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts - Open Sans and Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" id="logo">CougBook</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html" class="active">Search Rooms</a></li>
+                    <li><a href="list-room.html">List a Room</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container page-container">
+            <h1>Search for Rooms</h1>
+            
+            <div class="search-layout">
+                <!-- Search Filters -->
+                <aside class="search-filters">
+                    <h2>Filters</h2>
+                    <form id="filterForm">
+                        <div class="filter-group">
+                            <label for="priceRange">Price Range ($/month):</label>
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" name="minPrice" placeholder="Min">
+                                <span>-</span>
+                                <input type="number" id="maxPrice" name="maxPrice" placeholder="Max">
+                            </div>
+                        </div>
+                        <div class="filter-group">
+                            <label for="location">Location (e.g., Zip Code, Neighborhood):</label>
+                            <input type="text" id="location" name="location" placeholder="Enter location">
+                        </div>
+                        <div class="filter-group">
+                            <label>Pets Allowed:</label>
+                            <select id="petsAllowed" name="petsAllowed">
+                                <option value="any">Any</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Smoking Policy:</label>
+                            <select id="smokingPolicy" name="smokingPolicy">
+                                <option value="any">Any</option>
+                                <option value="no">Non-Smoking Only</option>
+                                <option value="yes_outside">Smoking Outside Only</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="leaseTerm">Lease Term (months):</label>
+                            <select id="leaseTerm" name="leaseTerm">
+                                <option value="any">Any</option>
+                                <option value="1">1-3 Months (Short-term)</option>
+                                <option value="6">6 Months</option>
+                                <option value="12">12 Months (Annual)</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn" id="applyFiltersBtn">Apply Filters</button>
+                    </form>
+                </aside>
+
+                <!-- Room Listings -->
+                <section class="room-listings">
+                    <h2>Available Rooms</h2>
+                    <div class="listings-grid">
+                        <!-- Placeholder Listing 1 -->
+                        <div class="listing-card">
+                            <a href="listing-details.html?id=1" class="listing-link">
+                                <img src="images/house1.jpg" alt="Room in quiet neighborhood" class="listing-image">
+                                <div class="listing-info">
+                                    <h3 class="listing-title">Quiet Room near Campus</h3>
+                                    <p class="listing-price">$600/month</p>
+                                    <p class="listing-summary">Pullman, WA | Available Aug 1 | Furnished, Wi-Fi</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Placeholder Listing 2 -->
+                        <div class="listing-card">
+                            <a href="listing-details.html?id=2" class="listing-link">
+                                <img src="images/house2.jpg" alt="Spacious room with private bath" class="listing-image">
+                                <div class="listing-info">
+                                    <h3 class="listing-title">Spacious Room, Private Bath</h3>
+                                    <p class="listing-price">$750/month</p>
+                                    <p class="listing-summary">Near downtown | Available Now | Utilities incl.</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Placeholder Listing 3 -->
+                        <div class="listing-card">
+                            <a href="listing-details.html?id=3" class="listing-link">
+                                <img src="images/house3.jpg" alt="Affordable student housing" class="listing-image">
+                                <div class="listing-info">
+                                    <h3 class="listing-title">Affordable Shared Apartment</h3>
+                                    <p class="listing-price">$450/month</p>
+                                    <p class="listing-summary">5 min walk to bus | Available Jul 15 | Female only</p>
+                                </div>
+                            </a>
+                        </div>
+                         <!-- Add more placeholder listings as needed -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CougBook. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

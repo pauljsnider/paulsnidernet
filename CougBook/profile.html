@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - CougBook</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" id="logo">CougBook</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html">Search Rooms</a></li>
+                    <li><a href="list-room.html">List a Room</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html">Login</a></li> <!-- This should ideally change to 'Logout' or 'Profile' when logged in -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container page-container">
+            <h1>User Profile</h1>
+
+            <!-- This is a placeholder. In a real app, only one profile type would be shown based on logged-in user -->
+
+            <!-- Student Profile Example -->
+            <div class="profile-section student-profile">
+                <h2>Student Profile</h2>
+                <div class="profile-header">
+                    <img src="images/man1.jpg" alt="Student Profile Picture" class="profile-picture">
+                    <div class="profile-name-details">
+                        <h3>John Doe (Student)</h3>
+                        <p>University: Washington State University</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="detail-item">
+                        <h4>Age:</h4>
+                        <p>21</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Target Move-in Date:</h4>
+                        <p>August 15, 2025</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Budget:</h4>
+                        <p>$500 - $700 / month</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Housing Preferences:</h4>
+                        <p>Quiet environment, close to campus, non-smoker, pet-friendly (cat).</p>
+                    </div>
+                </div>
+                <a href="#edit-profile" class="btn btn-secondary">Edit Profile</a>
+            </div>
+
+            <hr class="profile-divider">
+
+            <!-- Room Provider Profile Example -->
+            <div class="profile-section provider-profile">
+                <h2>Room Provider Profile</h2>
+                <div class="profile-header">
+                    <img src="images/woman1.jpg" alt="Room Provider Profile Picture" class="profile-picture">
+                    <div class="profile-name-details">
+                        <h3>Jane Smith (Room Provider)</h3>
+                        <p>Contact: jane.smith@example.com</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <h3>Room Listing: Cozy Room Near Downtown</h3>
+                    <div class="detail-item">
+                        <h4>Room Address:</h4>
+                        <p>123 Main St, Pullman, WA</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Rent Amount:</h4>
+                        <p>$650 / month</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Lease Terms:</h4>
+                        <p>6-month minimum, 1-month deposit, utilities included.</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Amenities:</h4>
+                        <p>Furnished, Wi-Fi, Kitchen Access, In-unit Laundry, Shared Bathroom.</p>
+                    </div>
+                    <div class="detail-item room-photos">
+                        <h4>Room Photos:</h4>
+                        <img src="images/house1.jpg" alt="Room photo 1" class="room-photo">
+                        <img src="images/house2.jpg" alt="Room photo 2" class="room-photo">
+                        <img src="images/house3.jpg" alt="Room photo 3" class="room-photo">
+                    </div>
+                </div>
+                <a href="#edit-profile" class="btn btn-secondary">Edit Profile & Listings</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CougBook. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
