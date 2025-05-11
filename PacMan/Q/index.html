@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Pacman Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="score-container">Score: <span id="score">0</span></div>
+        <canvas id="gameCanvas" width="448" height="496"></canvas>
+        <div class="controls">
+            <button id="startButton">Start Game</button>
+            <div class="mobile-controls">
+                <button id="upButton">↑</button>
+                <div class="horizontal-controls">
+                    <button id="leftButton">←</button>
+                    <button id="rightButton">→</button>
+                </div>
+                <button id="downButton">↓</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1247,3 +1247,59 @@ footer {
         flex-basis: 100%; /* 1 tile */
     }
 }
+
+/* Projects Page Styles */
+.project-category {
+  margin-bottom: 40px;
+}
+
+.project-category h3 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  border-left: 4px solid #3498db;
+  padding-left: 10px;
+}
+
+.project-category p {
+  margin-bottom: 15px;
+  color: #333333; /* Ensure text is visible */
+}
+
+.project-category blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 20px;
+  margin-left: 0;
+  color: #666;
+  font-style: italic;
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.project-table th, .project-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.project-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.project-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.project-table a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.project-table a:hover {
+  text-decoration: underline;
+}
