@@ -784,6 +784,80 @@ nav {
     resize: vertical;
 }
 
+/* Featured Talks & Media Section */
+.featured-talks-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.featured-talk-item {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 25px; /* Space between items */
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+.featured-talk-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.talk-icon {
+    font-size: 1.8em; /* Adjust icon size */
+    color: #007bff; /* Primary color, adjust as needed */
+    margin-right: 20px;
+    min-width: 40px; /* Ensure icons have some space */
+    text-align: center;
+}
+
+.talk-details h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.15em;
+    color: #333;
+}
+
+.talk-details p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.talk-details p .far.fa-file-alt {
+    margin-right: 5px;
+    color: #007bff;
+}
+
+.talk-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.talk-link:hover {
+    color: #0056b3; /* Darken on hover */
+    text-decoration: underline;
+}
+
+.talk-link .fas.fa-external-link-alt {
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+/* Adjustments for consistency if needed */
+.public-speaking ul,
+.featured-talks-list ul {
+    padding-left: 20px; /* Indent lists if not already done */
+}
+
+.public-speaking ul li,
+.featured-talks-list ul li {
+    margin-bottom: 8px;
+}
+
 /* Footer */
 footer {
     background-color: var(--secondary-color);
@@ -922,5 +996,254 @@ footer {
 
     .timeline-content h4 {
         font-size: 1.1rem;
+    }
+}
+
+/* Library Page Styles */
+#library-main .page-title {
+    text-align: center;
+    margin-top: 30px; /* Reduced margin */
+    margin-bottom: 40px; /* Reduced margin */
+    font-size: 2.2em; /* Slightly reduced font size */
+    color: var(--primary-text-color);
+}
+
+.book-category {
+    margin-bottom: 40px; /* Reduced margin */
+}
+
+.category-title {
+    font-size: 1.6em; /* Slightly reduced font size */
+    color: var(--primary-color);
+    margin-bottom: 20px; /* Reduced margin */
+    padding-bottom: 8px; /* Reduced padding */
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.category-title .fas {
+    margin-right: 10px;
+}
+
+.book-list {
+    display: flex; /* Enable flexbox */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 20px; /* Space between book items */
+    justify-content: flex-start; /* Align items to the start */
+}
+
+.book-item {
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    flex: 0 1 calc(33.333% - 20px); /* Aim for 3 items per row, adjusting for gap */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Stack cover and info vertically */
+    align-items: center; /* Center items like placeholder */
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.book-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.book-cover-placeholder {
+    font-size: 3em; /* Adjust icon size */
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    width: 80px; /* Give a fixed width */
+    height: 120px; /* Give a fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--border-color-light); /* Placeholder background */
+    border-radius: 4px;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text */
+}
+
+.book-title {
+    font-size: 1em; /* Adjust font size */
+    color: var(--primary-text-color);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.book-author {
+    font-size: 0.85em; /* Adjust font size */
+    color: var(--secondary-text-color);
+}
+
+.book-item a.podcast-link-wrapper {
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit; /* Inherit text color from parent */
+    display: flex; /* Use flex to ensure content within aligns like the non-link version */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 15px; /* Match book-item padding if wrapper takes over padding */
+    box-sizing: border-box;
+}
+
+.book-item a.podcast-link-wrapper .book-cover-placeholder,
+.book-item a.podcast-link-wrapper .book-info {
+    width: auto; /* Allow natural width or control via parent */
+}
+
+.book-item.podcast-item {
+    padding: 0; /* If the link wrapper handles padding */
+}
+
+.book-item a.book-content-link {
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit; /* Inherit text color from parent */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 15px; /* Match original book-item padding */
+    box-sizing: border-box;
+}
+
+.book-item a.book-content-link .book-cover-placeholder,
+.book-item a.book-content-link .book-info {
+    width: auto; /* Allow natural width or control via parent */
+}
+
+.book-item:has(> a.book-content-link) {
+    padding: 0;
+}
+
+/* Responsive adjustments for library page */
+@media (max-width: 992px) {
+    .book-item {
+        width: calc(50% - 20px); /* Two columns on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .book-item {
+        flex: 0 1 100%; /* 1 item per row */
+    }
+    #library-main .page-title {
+        font-size: 2em;
+    }
+    .category-title {
+        font-size: 1.4em;
+    }
+}
+
+/* Library Tile Styles */
+#library-main .book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust gap between tiles */
+    justify-content: flex-start; /* Align items to the start, or use 'center' */
+}
+
+#library-main .book-item {
+    flex: 0 1 180px; /* Default tile size - approx 5-6 per row on large screens */
+    display: flex; /* To help align content within the tile */
+    flex-direction: column;
+    align-items: center; /* Center content horizontally in the tile */
+    text-align: center; /* Center text */
+    padding: 15px; /* Padding within the tile */
+    border: 1px solid var(--border-color); /* Optional: add border to tiles */
+    border-radius: 8px; /* Optional: rounded corners for tiles */
+    box-shadow: var(--shadow); /* Optional: subtle shadow for tiles */
+    background-color: var(--background-color); /* Ensure background for tile */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+}
+
+#library-main .book-item:hover {
+    transform: translateY(-5px); /* Optional: slight lift on hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Optional: enhanced shadow on hover */
+}
+
+#library-main .book-cover-placeholder {
+    width: 70px; /* Smaller width */
+    height: 100px; /* Smaller height */
+    font-size: 2.5em; /* Smaller icon */
+    margin-bottom: 10px;
+}
+
+#library-main .book-info {
+    padding-top: 5px;
+}
+
+#library-main .book-title {
+    font-size: 0.9em; /* Smaller title */
+    margin-bottom: 3px;
+}
+
+#library-main .book-author {
+    font-size: 0.75em; /* Smaller author text */
+}
+
+/* Adjust link wrappers to fill the tile correctly */
+#library-main .book-item a.book-content-link,
+#library-main .book-item a.podcast-link-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the top */
+    width: 100%;
+    height: 100%;
+    padding: 0; /* Padding is now on .book-item */
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Remove padding from book-item if it has a link wrapper that should fill it */
+#library-main .book-item:has(> a.book-content-link),
+#library-main .book-item:has(> a.podcast-link-wrapper) {
+    padding: 0; /* Let the anchor tag's padding (now moved to .book-item) control spacing */
+}
+/* The anchor tag itself needs padding if the parent book-item had its padding removed */
+#library-main .book-item > a.book-content-link,
+#library-main .book-item > a.podcast-link-wrapper {
+    padding: 15px; /* Restore padding here, inside the link */
+}
+
+/* Updated Responsive adjustments for library tiles */
+@media (max-width: 1200px) { /* XL screens, slightly adjust if needed */
+    #library-main .book-item {
+        flex-basis: calc(20% - 20px); /* 5 tiles */
+    }
+}
+
+@media (max-width: 992px) { /* Large screens, e.g., tablets */
+    #library-main .book-item {
+        flex-basis: calc(25% - 20px); /* 4 tiles */
+    }
+}
+
+@media (max-width: 768px) { /* Medium screens */
+    #library-main .book-item {
+        flex-basis: calc(33.333% - 20px); /* 3 tiles */
+    }
+}
+
+@media (max-width: 600px) { /* Small screens */
+    #library-main .book-item {
+        flex-basis: calc(50% - 15px); /* 2 tiles, adjust gap if needed */
+    }
+    #library-main .book-list {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 400px) { /* Extra small screens */
+    #library-main .book-item {
+        flex-basis: 100%; /* 1 tile */
     }
 }
