@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CougBook</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Open Sans and Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" id="logo">CougBook</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html">Search Rooms</a></li>
+                    <li><a href="list-room.html">List a Room</a></li>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container page-container">
+            <h1>User Dashboard</h1>
+
+            <!-- Content will be dynamically shown based on user type (student/provider) -->
+            <!-- For now, this is a placeholder for the original, simpler content -->
+
+            <section id="student-dashboard-view" style="display: block;"> <!-- Display student view by default for now -->
+                <h2>Welcome, Student!</h2>
+                <p>This is your dashboard. Here you'll find your saved listings, messages, and profile settings.</p>
+                
+                <div class="dashboard-section">
+                    <h3>Saved Listings</h3>
+                    <p>You have no saved listings yet. <a href="search.html">Start searching!</a></p>
+                    <!-- Placeholder for saved listings -->
+                </div>
+
+                <div class="dashboard-section">
+                    <h3>Messages</h3>
+                    <p>You have no new messages.</p>
+                    <!-- Placeholder for messages -->
+                </div>
+            </section>
+
+            <section id="provider-dashboard-view" style="display: none;"> <!-- Hidden by default -->
+                <h2>Welcome, Provider!</h2>
+                <p>This is your dashboard. Manage your listings, view messages, and update your profile.</p>
+
+                <div class="dashboard-section">
+                    <h3>Your Active Listings</h3>
+                    <p>You have no active listings. <a href="list-room.html">List a new room!</a></p>
+                    <!-- Placeholder for active listings -->
+                </div>
+
+                <div class="dashboard-section">
+                    <h3>Received Messages</h3>
+                    <p>You have no new messages from interested students.</p>
+                    <!-- Placeholder for messages -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CougBook. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Add specific dashboard JS if needed, for now script.js handles general interactions -->
+</body>
+</html>

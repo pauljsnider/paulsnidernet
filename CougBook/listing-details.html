@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Listing Details - CougBook</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Open Sans and Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" id="logo">CougBook</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html">Search Rooms</a></li>
+                    <li><a href="list-room.html">List a Room</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container page-container">
+            <article class="listing-detail-view">
+                <header class="listing-detail-header">
+                    <h1>Cozy Room Near Campus <span class="listing-status">(Available)</span></h1>
+                    <p class="listing-address">123 College Ave, Pullman, WA</p>
+                </header>
+
+                <section class="listing-gallery">
+                    <div class="main-image-container">
+                        <img src="images/house1.jpg" alt="Main room photo" id="mainGalleryImage" class="gallery-main-image">
+                    </div>
+                    <div class="thumbnail-container">
+                        <img src="images/house1.jpg" alt="Room photo 1 thumbnail" class="gallery-thumbnail active-thumb" onclick="changeMainImage('images/house1.jpg')">
+                        <img src="images/house_interior1.jpg" alt="Room photo 2 thumbnail" class="gallery-thumbnail" onclick="changeMainImage('images/house_interior1.jpg')">
+                        <img src="images/house_interior2.jpg" alt="Room photo 3 thumbnail" class="gallery-thumbnail" onclick="changeMainImage('images/house_interior2.jpg')">
+                        <img src="images/house_bathroom.jpg" alt="Room photo 4 thumbnail" class="gallery-thumbnail" onclick="changeMainImage('images/house_bathroom.jpg')">
+                    </div>
+                </section>
+
+                <div class="listing-detail-columns">
+                    <section class="listing-description-amenities">
+                        <h2>Room Description</h2>
+                        <p>
+                            This bright and cozy room is perfect for a student looking for a quiet and comfortable place to study and live. 
+                            Located just a 10-minute walk from the main WSU campus and on a direct bus route. The room comes fully furnished 
+                            with a bed, desk, chair, and wardrobe. You'll have access to a shared kitchen, a clean bathroom, and a 
+                            comfortable living area.
+                        </p>
+
+                        <h3>Key Features & Amenities</h3>
+                        <ul class="amenities-list">
+                            <li><span class="icon">✔️</span>Fully Furnished (Bed, Desk, Wardrobe)</li>
+                            <li><span class="icon">✔️</span>High-speed Wi-Fi Included</li>
+                            <li><span class="icon">✔️</span>Shared Kitchen with Modern Appliances</li>
+                            <li><span class="icon">✔️</span>In-unit Washer and Dryer</li>
+                            <li><span class="icon">✔️</span>Utilities Included (Water, Electricity, Gas)</li>
+                            <li><span class="icon">✔️</span>Quiet Study Environment</li>
+                            <li><span class="icon">✔️</span>Non-smoking Household</li>
+                            <li><span class="icon">✔️</span>Street Parking Available</li>
+                        </ul>
+
+                        <h3>Lease Terms & Availability</h3>
+                        <p><strong>Price:</strong> $650 per month</p>
+                        <p><strong>Availability:</strong> August 1, 2025</p>
+                        <p><strong>Lease Duration:</strong> 12 months preferred, 6 months negotiable.</p>
+                        <p><strong>Security Deposit:</strong> One month's rent.</p>
+                        <p><strong>Pets Policy:</strong> No pets allowed, sorry.</p>
+                    </section>
+
+                    <aside class="listing-provider-info">
+                        <div class="provider-card">
+                            <h3>Room Provider</h3>
+                            <img src="images/woman1.jpg" alt="Room provider Jane Doe" class="provider-photo">
+                            <h4>Jane Doe</h4>
+                            <p>Verified Host | WSU Alumna</p>
+                            <a href="profile.html?id=provider_jane_doe" class="btn btn-secondary btn-small">View Profile</a>
+                            <button class="btn btn-small" id="sendMessageBtn">Send Message</button>
+                        </div>
+                        <div class="safety-tips">
+                            <h4>Safety Tips</h4>
+                            <ul>
+                                <li>Always meet in a public place first.</li>
+                                <li>Never send money before seeing the room and meeting the provider.</li>
+                                <li>Trust your instincts.</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CougBook. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
