@@ -4,24 +4,44 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Handle image loading errors
-    document.querySelectorAll('img').forEach(img => {
-        img.onerror = function() {
-            this.src = 'Images/placeholder.png';
-            this.alt = 'Image not available';
-        };
-    });
+    try {
+        // Handle image loading errors
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                this.src = 'Images/placeholder.png';
+                this.alt = 'Image not available';
+            };
+        });
 
-    // Initialize any components that need JavaScript functionality
-    initializeComponents();
+        // Initialize any components that need JavaScript functionality
+        initializeComponents();
+        
+        // Ensure page completes loading even if there are errors
+        window.addEventListener('load', function() {
+            document.body.classList.add('page-loaded');
+        });
+        
+        // Set a timeout to ensure the page completes loading
+        setTimeout(function() {
+            document.body.classList.add('page-loaded');
+        }, 5000); // 5 second timeout as a fallback
+    } catch (error) {
+        console.error('Error initializing website:', error);
+        // Ensure page completes loading even if there's an error
+        document.body.classList.add('page-loaded');
+    }
 });
 
 /**
  * Initialize various components across the site
  */
 function initializeComponents() {
-    // Add any global component initialization here
-    console.log('Junior Current website initialized');
+    try {
+        // Add any global component initialization here
+        console.log('Junior Current website initialized');
+    } catch (error) {
+        console.error('Error in component initialization:', error);
+    }
 }
 
 /**
@@ -55,8 +75,13 @@ function createElement(tag, classes, text) {
  * @returns {string} - Formatted date string
  */
 function formatDate(dateString) {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
+    try {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    } catch (error) {
+        console.error('Error formatting date:', error);
+        return dateString; // Return original string if there's an error
+    }
 }
 
 /**
@@ -65,9 +90,14 @@ function formatDate(dateString) {
  * @returns {string} - Formatted time string
  */
 function formatTime(timeString) {
-    const [hours, minutes] = timeString.split(':');
-    const hour = parseInt(hours);
-    const ampm = hour >= 12 ? 'PM' : 'AM';
-    const hour12 = hour % 12 || 12;
-    return `${hour12}:${minutes} ${ampm}`;
+    try {
+        const [hours, minutes] = timeString.split(':');
+        const hour = parseInt(hours);
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const hour12 = hour % 12 || 12;
+        return `${hour12}:${minutes} ${ampm}`;
+    } catch (error) {
+        console.error('Error formatting time:', error);
+        return timeString; // Return original string if there's an error
+    }
 }
