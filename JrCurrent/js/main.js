@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle image loading errors
     document.querySelectorAll('img').forEach(img => {
         img.onerror = function() {
-            this.src = 'images/placeholder.png';
+            this.src = 'Images/placeholder.png';
             this.alt = 'Image not available';
         };
     });
