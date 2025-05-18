@@ -1,0 +1,160 @@
+/* 
+ * Junior Current Website
+ * Player Cards Styles
+ */
+
+/* Player Cards */
+.player-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.player-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--light-teal);
+    position: relative;
+}
+
+.player-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.player-image {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.player-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top, rgba(12, 34, 63, 0.7), transparent);
+    z-index: 1;
+}
+
+.player-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-icon {
+    font-size: 6rem;
+    opacity: 0.8;
+}
+
+.player-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center; /* Focus on the face */
+    transition: transform 0.3s ease;
+}
+
+.player-card:hover .player-photo {
+    transform: scale(1.05);
+}
+
+.player-info {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.player-name {
+    color: var(--navy-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.player-position {
+    color: var(--dark-teal);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background-color: rgba(109, 210, 220, 0.1);
+    border-radius: 4px;
+}
+
+.player-description {
+    line-height: 1.6;
+    color: var(--dark-gray);
+}
+
+/* Position-specific styling */
+.player-card[data-position="forward"] {
+    border-top-color: var(--red);
+}
+
+.player-card[data-position="midfielder"] {
+    border-top-color: var(--light-teal);
+}
+
+.player-card[data-position="defender"] {
+    border-top-color: var(--navy-blue);
+}
+
+.player-card[data-position="goalkeeper"] {
+    border-top-color: var(--dark-teal);
+}
+
+/* Roster filters */
+.roster-intro {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.roster-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.roster-filters .filter-btn {
+    background-color: var(--white);
+    border: 2px solid var(--light-teal);
+    color: var(--navy-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.roster-filters .filter-btn:hover,
+.roster-filters .filter-btn.active {
+    background-color: var(--light-teal);
+    color: var(--navy-blue);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .player-image {
+        height: 200px;
+    }
+    
+    .player-icon {
+        font-size: 4rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .player-icon {
+        font-size: 5rem;
+    }
+}

@@ -1,0 +1,150 @@
+/* 
+ * Junior Current Website
+ * Schedule Styles
+ */
+
+/* Schedule intro */
+.schedule-intro {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Schedule filters */
+.schedule-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.schedule-filters .filter-btn {
+    background-color: var(--white);
+    border: 2px solid var(--navy-blue);
+    color: var(--navy-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.schedule-filters .filter-btn:hover,
+.schedule-filters .filter-btn.active {
+    background-color: var(--navy-blue);
+    color: var(--white);
+}
+
+/* Schedule table */
+.schedule-table {
+    margin: 2rem 0;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.schedule-table th {
+    background-color: var(--navy-blue);
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.schedule-table tr:last-child td {
+    border-bottom: none;
+}
+
+.schedule-table tr:hover {
+    background-color: rgba(109, 210, 220, 0.05);
+}
+
+/* Game results */
+.game-result {
+    font-weight: 700;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.result-win {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.result-loss {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.result-tie {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.result-exhibition {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+/* Schedule legend */
+.schedule-legend {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-legend h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 1.5rem;
+}
+
+.legend-text {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .schedule-table {
+        overflow-x: auto;
+    }
+    
+    .schedule-table table {
+        min-width: 600px;
+    }
+    
+    .legend-items {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

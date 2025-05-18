@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Junior Current Team Schedule - View our game schedule and results">
+    <title>Team Schedule - Junior Current</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/schedule.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Junior Current Logo" class="logo">
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="roster.html">Roster</a></li>
+                <li><a href="schedule.html" class="active">Schedule</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="coaches.html">Coaches</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <h1>Team Schedule</h1>
+            <p class="schedule-intro text-center mb-2">View our complete game schedule, including past results and upcoming matches. Our team competes in the Greater Kansas City Youth Soccer League.</p>
+            
+            <div class="schedule-filters">
+                <button class="filter-btn active" data-filter="all">All Games</button>
+                <button class="filter-btn" data-filter="past">Past Games</button>
+                <button class="filter-btn" data-filter="upcoming">Upcoming Games</button>
+            </div>
+            
+            <div class="schedule-table">
+                <!-- Schedule will be dynamically generated here -->
+            </div>
+            
+            <div class="schedule-legend mt-2">
+                <h3>Legend</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="game-result result-win">Win</span>
+                        <span class="legend-text">Victory</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="game-result result-loss">Loss</span>
+                        <span class="legend-text">Defeat</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="game-result result-tie">Tie</span>
+                        <span class="legend-text">Draw</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="game-result result-exhibition">Exhibition</span>
+                        <span class="legend-text">Friendly Match</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Junior Current | Powered by Passion | Spring 2025</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/kccurrent/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/thekccurrent" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/kccurrent/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Junior Current. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/schedule.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Junior Current Admin Panel">
+    <title>Admin Panel - Junior Current</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Junior Current Logo" class="logo">
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="roster.html">Roster</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="coaches.html">Coaches</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <h1>Admin Panel</h1>
+            
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="photos">Photo Upload</button>
+                <button class="tab-btn" data-tab="schedule">Schedule Editor</button>
+                <button class="tab-btn" data-tab="messaging">Messaging</button>
+            </div>
+            
+            <div class="admin-content">
+                <div class="tab-content active" id="photos-content">
+                    <h2>Photo Upload</h2>
+                    <form class="upload-form">
+                        <div class="form-group">
+                            <label for="photo-upload">Select Image</label>
+                            <input type="file" id="photo-upload" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="photo-description">Description</label>
+                            <input type="text" id="photo-description">
+                        </div>
+                        <div class="preview-container">
+                            <img id="photo-preview" src="#" alt="Preview" style="display: none;">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </form>
+                </div>
+                
+                <div class="tab-content" id="schedule-content">
+                    <h2>Schedule Editor</h2>
+                    <form class="schedule-form">
+                        <div class="form-group">
+                            <label for="game-date">Date</label>
+                            <input type="date" id="game-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="game-opponent">Opponent</label>
+                            <input type="text" id="game-opponent" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="game-time">Time</label>
+                            <input type="time" id="game-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="game-location">Location</label>
+                            <input type="text" id="game-location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="game-result">Result</label>
+                            <select id="game-result">
+                                <option value="">Upcoming Game</option>
+                                <option value="Win">Win</option>
+                                <option value="Loss">Loss</option>
+                                <option value="Tie">Tie</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="game-score">Score</label>
+                            <input type="text" id="game-score" placeholder="e.g. 2-1">
+                        </div>
+                        <div class="form-group">
+                            <label for="game-exhibition">
+                                <input type="checkbox" id="game-exhibition">
+                                Exhibition Game
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Game</button>
+                    </form>
+                    
+                    <div class="schedule-list">
+                        <h3>Current Schedule</h3>
+                        <table class="admin-schedule-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Opponent</th>
+                                    <th>Time</th>
+                                    <th>Location</th>
+                                    <th>Result</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="schedule-list-body">
+                                <!-- Schedule items will be dynamically generated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="messaging-content">
+                    <h2>Team Messaging</h2>
+                    <form class="messaging-form">
+                        <div class="form-group">
+                            <label for="message-subject">Subject</label>
+                            <input type="text" id="message-subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-content">Message</label>
+                            <textarea id="message-content" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                    
+                    <div class="message-history">
+                        <h3>Message History</h3>
+                        <div id="message-list">
+                            <!-- Message history will be dynamically generated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Junior Current | Powered by Passion | Spring 2025</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/kccurrent/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/thekccurrent" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/kccurrent/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Junior Current. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

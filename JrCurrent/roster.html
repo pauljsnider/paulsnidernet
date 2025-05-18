@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Junior Current Team Roster - Meet our players">
+    <title>Team Roster - Junior Current</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/player-cards.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Junior Current Logo" class="logo">
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="roster.html" class="active">Roster</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="coaches.html">Coaches</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <h1>Team Roster</h1>
+            <p class="roster-intro text-center mb-2">Meet the talented players who make up the Junior Current team. Each player brings unique skills and character to our squad.</p>
+            
+            <div class="roster-filters mb-2">
+                <button class="filter-btn active" data-position="all">All Positions</button>
+                <button class="filter-btn" data-position="forward">Forwards</button>
+                <button class="filter-btn" data-position="midfielder">Midfielders</button>
+                <button class="filter-btn" data-position="defender">Defenders</button>
+                <button class="filter-btn" data-position="goalkeeper">Goalkeepers</button>
+            </div>
+            
+            <div class="player-cards">
+                <!-- Player cards will be dynamically generated here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>Junior Current | Powered by Passion | Spring 2025</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/kccurrent/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/thekccurrent" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/kccurrent/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Junior Current. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/roster.js"></script>
+</body>
+</html>

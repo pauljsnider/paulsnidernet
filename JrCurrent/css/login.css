@@ -1,0 +1,251 @@
+/* 
+ * Junior Current Website
+ * Login Page Styles
+ */
+
+/* Login Container */
+.login-container {
+    max-width: 500px;
+    margin: 2rem auto 4rem;
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid var(--light-teal);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(109, 210, 220, 0.05);
+    border-radius: 50%;
+    transform: translate(30%, -30%);
+    z-index: 0;
+}
+
+.login-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(12, 34, 63, 0.05);
+    border-radius: 50%;
+    transform: translate(-30%, 30%);
+    z-index: 0;
+}
+
+/* Login Form */
+.login-form {
+    position: relative;
+    z-index: 1;
+}
+
+.login-form .form-group {
+    margin-bottom: 1.8rem;
+    position: relative;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--navy-blue);
+    transition: color 0.3s ease;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.login-form input:focus {
+    border-color: var(--light-teal);
+    background-color: var(--white);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(109, 210, 220, 0.2);
+}
+
+.login-form input:focus + .input-icon {
+    color: var(--light-teal);
+}
+
+/* Input Icons */
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+/* Form Validation */
+.login-form input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--red);
+}
+
+.login-form input:invalid:not(:focus):not(:placeholder-shown) + .input-icon {
+    color: var(--red);
+}
+
+.validation-message {
+    display: none;
+    font-size: 0.85rem;
+    color: var(--red);
+    margin-top: 0.5rem;
+}
+
+.login-form input:invalid:not(:focus):not(:placeholder-shown) ~ .validation-message {
+    display: block;
+}
+
+/* Error Message */
+.error-message {
+    background-color: rgba(214, 31, 38, 0.1);
+    color: var(--red);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    border-left: 4px solid var(--red);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Submit Button */
+.login-form button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-form button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.login-form button:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Remember Me Checkbox */
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.remember-me input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+.remember-me label {
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+    text-align: right;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+}
+
+.forgot-password a {
+    color: var(--dark-teal);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+    color: var(--light-teal);
+    text-decoration: underline;
+}
+
+/* Login Header */
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h2 {
+    color: var(--navy-blue);
+    margin-bottom: 0.5rem;
+}
+
+.login-header p {
+    color: #777;
+}
+
+/* Accessibility Focus Styles */
+.login-form input:focus,
+.login-form button:focus,
+.remember-me input:focus,
+.forgot-password a:focus {
+    outline: 2px solid var(--light-teal);
+    outline-offset: 2px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .login-container {
+        padding: 1.5rem;
+        margin: 1rem auto 3rem;
+    }
+    
+    .login-form .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .login-form input {
+        padding: 0.8rem;
+    }
+    
+    .login-form button {
+        padding: 0.8rem;
+    }
+}

@@ -1,0 +1,115 @@
+/* 
+ * Junior Current Website
+ * Award Cards Styles
+ */
+
+/* Award Cards */
+.award-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.award-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid var(--light-teal);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.award-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.award-card::before {
+    content: '\f559'; /* Trophy icon */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 8rem;
+    color: rgba(109, 210, 220, 0.05);
+    z-index: 0;
+    transform: rotate(15deg);
+}
+
+.award-title {
+    color: var(--navy-blue);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.award-recipient {
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background-color: rgba(214, 31, 38, 0.1);
+    border-radius: 4px;
+}
+
+.award-description {
+    line-height: 1.6;
+    color: var(--dark-gray);
+    position: relative;
+    z-index: 1;
+}
+
+/* Award categories styling */
+.award-card:nth-child(3n+1) {
+    border-top-color: var(--red);
+}
+
+.award-card:nth-child(3n+1)::before {
+    color: rgba(214, 31, 38, 0.05);
+}
+
+.award-card:nth-child(3n+2) {
+    border-top-color: var(--light-teal);
+}
+
+.award-card:nth-child(3n+2)::before {
+    color: rgba(109, 210, 220, 0.05);
+}
+
+.award-card:nth-child(3n+3) {
+    border-top-color: var(--navy-blue);
+}
+
+.award-card:nth-child(3n+3)::before {
+    color: rgba(12, 34, 63, 0.05);
+}
+
+/* Awards intro */
+.awards-intro {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .award-card::before {
+        font-size: 6rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .award-card::before {
+        font-size: 7rem;
+    }
+}

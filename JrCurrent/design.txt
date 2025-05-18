@@ -1,0 +1,170 @@
+Build a professional, mobile-responsive website for the Junior Current girls soccer team, using the KC Current women’s soccer team color palette:
+
+#0c223f – Navy blue (used in background and outlines)
+
+#6dd2dc – Light teal (used in the side panels and stars)
+
+#d61f26 – Red (used in the central stripe)
+
+#ffffff – White (used in the text and stars)
+
+#0e3c4e – Dark teal (accents within the teal side)
+
+#0a1a2e – Very dark navy (used in shadows/outlines)
+
+
+Use a bold, modern design with strong typography, clean card layouts, responsive navigation, and mobile-first formatting. The tone should be empowering, team-focused, and enduring. All player and game photos are stored in the /images folder.
+
+Pages & Content
+Home Page
+Title: Junior Current – Spring 2025
+
+Subheading: A Girls Club Team Fueled by Passion, Purpose, and KC Current Pride
+
+Team Record Badge: 3 Wins – 1 Tie – 4 Losses
+
+Body Narrative:
+The Junior Current is a girls soccer club inspired by the energy and professionalism of the KC Current. Made up of players from schools across Overland Park and Leawood, Kansas, this team plays with heart, hustle, and pride. Every match is a chance to grow, compete, and support one another. Their Spring 2025 record of 3-1-4 reflects not just results—but the resilience, camaraderie, and relentless drive that define this team. The future is bright, and the journey has just begun.
+
+Call to Action Button: View Roster
+
+Roster Page
+Display player cards with name, photo, primary position(s), and a timeless character-driven description.
+
+Audrey – Striker / Forward
+Fierce, focused, and fearless in front of goal, Audrey brings a striker’s mentality and sharp instincts.
+
+Payton – Midfielder / Winger
+A visionary playmaker, Payton sees passing lanes others miss and sets the tempo for the team.
+
+Teagan – Center Back / Goalkeeper
+Solid and steady, Teagan is the backbone of the defense and leads with quiet strength.
+
+Neda – Goalkeeper / Center Back
+Calm under pressure, Neda brings focus and power to the goal box with confident decision-making.
+
+Saavya – Midfield / Utility Player
+A true team player, Saavya can step into any position with composure and grit.
+
+Livy – Defender / Midfielder
+Steady and thoughtful, Livy supports her teammates with smart play and strong positioning.
+
+Madison – Forward / Midfielder
+Energetic and vocal, Madison pushes the team forward with her relentless pace and presence.
+
+Riley – Midfield / Striker
+Creative and confident, Riley brings flair and rhythm to the field with her footwork and movement.
+
+Adeline – Outside Back / Midfield
+High-energy and fearless, Adeline is known for her tenacity and love for the game.
+
+Emmie – Midfielder / Forward
+Tireless and selfless, Emmie is everywhere—pressing, passing, and leading by example.
+
+Sela – Midfielder / Goalkeeper
+Smart and intuitive, Sela has a game sense that allows her to shine in key moments.
+
+Awards Page
+Use KC Current colors to style individual award cards with the title, player name, and a short evergreen description.
+
+Golden Boot – Audrey
+
+Assist Queen – Payton
+
+Defensive Rock – Teagan
+
+Goalkeeper of the Year – Neda
+
+Most Versatile Player – Saavya
+
+Most Improved Player – Livy
+
+Clutch Player of the Year – Madison
+
+Comeback Player of the Year – Riley
+
+Sparkplug Award – Adeline
+
+Iron Woman – Emmie
+
+Game Changer – Sela
+
+Schedule Page
+Display schedule in a responsive table or styled cards. Include filters for "All", "Past", and "Upcoming". Color-code results (green = win, yellow = tie, red = loss, gray = exhibition).
+
+Date	Opponent	Time	Location	Result
+Mar 9	Dolphins	2:00 PM	Olathe 6N	Win 5-1
+Mar 16	Thunder Cats	10:00 AM	Olathe 6S	Win 2-1
+Mar 23	Lightning Bolts	3:00 PM	Blue Valley Rec	Tie 2-2
+Mar 30	Unknown Opponent	12:00 PM	OP Soccer Park	Win 4-1
+Apr 6	Shooting Stars	12:00 PM	Olathe Complex	Loss 2-3
+Apr 13	Under Current	11:00 AM	Overland Turf	Loss 3-5
+Apr 20	Shooting Stars	3:00 PM	OP Fieldhouse	Loss 0-1
+May 4	Thunder Cats	9:00 AM	Olathe 6N	Loss 0-1
+May 11	Dads (Exhibition)	9:00 AM	Coach Paul’s Field	Win 10-9
+
+Coaches Page
+Display coach names in card layout or clean list.
+
+Brian Karpuk
+
+Tim Sleddens
+
+Paul Snider
+
+
+About Page
+About the Junior Current
+The Junior Current is a competitive girls soccer team based in Overland Park and Leawood, Kansas, inspired by the spirit, energy, and excellence of the KC Current. Formed by a group of passionate young athletes, dedicated families, and coaches who believe in developing both skill and character, the Junior Current is more than just a team—it’s a community.
+
+Our players come from different schools but share one goal: to support each other, compete with integrity, and grow together through the game they love. Whether it's practice or game day, the Junior Current plays fast, plays smart, and plays as one.
+
+We believe in:
+
+Teamwork over individualism
+
+Effort over outcome
+
+Confidence over comparison
+
+From the first whistle to the last, we strive to build future leaders—on and off the pitch.
+
+Login / Admin Page
+Route: /login
+
+Simple email + password login
+
+Redirect to /admin
+
+Admin page should allow photo uploads, game/schedule editing, and messaging
+
+Placeholder logic for Firebase Auth or AWS Cognito integration
+
+Global Features
+Sticky navigation bar: Home | Roster | Schedule | Awards | Coaches | Login
+
+Footer: Junior Current | Powered by Passion | Spring 2025
+
+Color usage:
+
+#0c223f – Navy blue (used in background and outlines)
+
+#6dd2dc – Light teal (used in the side panels and stars)
+
+#d61f26 – Red (used in the central stripe)
+
+#ffffff – White (used in the text and stars)
+
+#0e3c4e – Dark teal (accents within the teal side)
+
+#0a1a2e – Very dark navy (used in shadows/outlines)
+
+Images - images folder
+use the bannerpic.jpg for a banner or cover photo
+use the logo.png on all pages.
+
+Typography: Bold and clean, readable on mobile
+
+Accessibility: All images must have alt text; use sufficient contrast
+
+Mobile-first design: Tailwind CSS recommended
