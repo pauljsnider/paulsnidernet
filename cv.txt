@@ -2,23 +2,9 @@ Paul Snider
 Vice President, Engineering at Netsmart
 Kansas City, Missouri, United States
 Summary
-Paul is an accomplished engineering executive dedicated to transforming healthcare through 
-scalable, secure, and data-driven solutions. With 20+ years of experience in healthcare IT, he has 
-led large, globally distributed teams of over 300 engineers, delivering mission-critical SaaS 
-platforms for EHR, interoperability, and advanced analytics. Currently serving as Vice President of 
-Engineering at Netsmart, Paul oversees cloud-native architectures, AI-driven data platforms, and 
-high-scale interoperability frameworks that process billions of transactions monthly and support 
-tens of thousands of healthcare organizations nationwide.
-Starting his career developing pharmacy products, Paul advanced into leadership roles spanning 
-Pharmacy, Clinical Supply Chain, Nursing, Infection Control, Rehabilitation, and Physician 
-workflows. His expertise lies in integrating complex healthcare ecosystems, leveraging AI and ML 
-for meaningful insights, and championing agile practices that accelerate innovation. Prior to 
-Netsmart, Paul managed global platform engineering teams at the world’s largest EHR provider
-driving strategies for interoperability, large-scale cloud deployments, and data-centric solutions.
-Paul holds a Bachelor of Science in Computer Information Systems from Missouri State University 
-and a Master of Business Administration from Webster University. His passion for continuous 
-learning, coaching, and a user-focused approach to product development drives him to create 
-technology that truly makes healthcare more accessible, effective, and efficient for everyone.
+Paul is a results-driven engineering executive and innovation leader, expert at transforming healthcare by shaping and executing strategic technology roadmaps that deliver scalable, secure, and data-driven solutions. With over 20 years in healthcare IT, he has a proven track record of leading large, globally distributed teams (300+ engineers) in delivering mission-critical SaaS platforms for EHR, interoperability, and advanced analytics. As Vice President of Engineering at Netsmart, Paul spearheads the technology vision for cloud-native architectures and AI-driven data platforms, directly impacting business capabilities, market strategy, and achieving key business outcomes for tens of thousands of healthcare organizations.
+His career began in pharmacy product development, progressing to senior leadership roles across diverse healthcare domains. Paul excels at integrating complex healthcare ecosystems, strategically leveraging AI/ML for actionable insights, and championing agile methodologies to accelerate innovation and achieve significant business transformation. Prior to Netsmart, he led global platform engineering teams at one of the world's largest EHR providers, spearheading key strategies for interoperability, large-scale cloud deployments, and data-centric solutions that shaped the company's technological direction.
+Paul holds a Bachelor of Science in Computer Information Systems from Missouri State University and a Master of Business Administration from Webster University. His leadership philosophy is rooted in continuous learning, coaching, and a user-focused approach, driving his commitment to creating technology that enhances healthcare accessibility, effectiveness, and efficiency.
 Experience
 Netsmart
 Vice President Of Engineering
@@ -26,68 +12,39 @@ November 2021 – Present (3 years 5 months)
 Overland Park, Kansas, United States
 Netsmart – Vice President of Engineering
 (November 2021 – Present • Overland Park, KS)
-• Data Platform
-Lead Netsmart’s cloud-native data platform leveraging AWS Aurora, Redshift, S3, and Glue 
-for scalable storage, ingestion, and processing across 18 million patient lives. Established 
-automated pipelines (Kinesis, Step Functions, Lambda) that unify clinical and financial 
-data, enabling AI-driven analytics without compromising performance or security.
-• High-Scale Interoperability
-Oversee a Distributed Event Platform that processes 2 billion monthly internal transactions 
-via an event-driven architecture. Connect 45,000 organizations and 860 HIEs for 300 million 
-monthly external transactions, ensuring real-time data exchange and seamless crosssystem workflows.
-• Business & Organizational Leadership
-Mentor and manage a global engineering organization (120+), championing agile delivery in 
-support of revenue growth and strategic M&A. Oversee $50M+ in annual product revenue 
-(10% YoY growth) with FinOps best practices, maintaining an efficiency ratio (E/R) of 9% to 
-20%. Collaborate with executive stakeholders to shape product roadmaps, expand market 
-opportunities, and drive overall business success.
-• Cloud-Native Architecture & DevOps
-Architect cloud strategies leveraging microservices, containerization (Docker, AWS Fargate, 
-EKS), and CI/CD automation (Jenkins, CodePipeline). Elevate agility, scalability, and 
-security via distributed caching (Redis), advanced observability (CloudWatch, Splunk), and 
-real-time monitoring.
-• Identity & Access Management (IAM/CIAM)
-Implement enterprise-wide authentication and authorization standards (OpenID Connect, 
-OAuth 2.0, Keycloak) integrated with Netsmart’s IAM/CIAM framework. Uphold HITRUST, 
-HIPAA, and Gov Cloud regulations for e-prescribing, data-sharing, and other regulated 
-workflows.
+• Strategic Data Platform Leadership
+Spearheaded the strategy and execution for Netsmart's cloud-native data platform (AWS Aurora, Redshift, S3, Glue) managing data for 18 million patient lives. Architected automated pipelines (Kinesis, Step Functions, Lambda) to unify clinical and financial data, enabling AI-driven analytics and ensuring robust performance and security.
+• High-Scale Interoperability Vision
+Directed the vision and operation of a Distributed Event Platform processing 2 billion+ monthly internal transactions. This platform connects nearly 50,000 organizations and hundreds of HIEs, facilitating millions of monthly external transactions and ensuring critical real-time data exchange.
+• Executive & Strategic Business Leadership
+Led and strategically aligned a global engineering organization (120+), championing agile delivery to drive revenue growth and support strategic M&A initiatives. Oversaw significant annual product revenue, implementing FinOps best practices to maintain optimal efficiency ratios (E/R). Collaborated with C-suite and executive stakeholders to define technology roadmaps, identify market expansion opportunities, and ensure technology investments fueled overall business success.
+• Cloud-Native Architecture & DevOps Strategy
+Defined and executed cloud-native architectural strategies, leveraging microservices, containerization (Docker, AWS Fargate, EKS), and CI/CD automation (Jenkins, CodePipeline). Drove initiatives that enhanced agility, scalability, and security through advanced technologies like distributed caching (Redis), comprehensive observability (CloudWatch, Splunk), and real-time monitoring.
+• Enterprise IAM/CIAM Strategy
+Led the development and implementation of enterprise-wide authentication and authorization standards (OpenID Connect, OAuth 2.0, Keycloak), seamlessly integrated with Netsmart's comprehensive IAM/CIAM framework. Ensured adherence to HITRUST, HIPAA, and Gov Cloud regulations for all critical workflows.
 • Medication Management
-Direct the flagship e-prescribing and medication management platform serving 33,000 
-providers. Led a strategic migration to AWS, cutting response times by 50%, reducing 
-operational costs, and bolstering reliability, patient safety, and user satisfaction.
+Directed the flagship e-prescribing and medication management platform serving 33,000 providers. Led a strategic migration to AWS, cutting response times by 50%, reducing operational costs, and bolstering reliability, patient safety, and user satisfaction.
 Cerner Corporation (16 years 4 months)
 Senior Director, Platform Engineering
 April 2019 – November 2021 (2 years 8 months)
 Kansas City, Missouri Area
-• Executive responsibility for an engineering organization of 200+ associates developing EHR 
-services across the United States, Romania, and Bangalore, India.
-• Executive owner of the EHR scalability program across 300+ engineers focused on 
-managing software, systems, and product scalability of the largest global health system on 
-earth.
-• Executive owner of the EHR data governance program.
+• Provided executive leadership for a 200+ global engineering organization responsible for developing and delivering mission-critical EHR services, aligning technology development with strategic business objectives across the United States, Romania, and Bangalore, India.
+• Served as Executive Owner for the EHR scalability program, directing 300+ engineers in initiatives to manage and enhance software, systems, and product scalability for one of the world's largest global health systems.
+• Acted as Executive Owner for the enterprise-wide EHR data governance program, establishing policies and practices for data integrity and security.
 • Managed vendor relationships with Oracle and MongoDB.
 Director, Care Insight & Delivery Development
 April 2018 – April 2019 (1 year 1 month)
 Kansas City, Missouri Area
-• Executive responsibility for an organization of 300+ associates developing full-stack clinical 
-products across the United States, London, and Bangalore, India.
-• Executive sponsor and core council member of the corporate engineering leadership 
-program.
-• Facilitated corporate leadership program.
-• Speaker at both internal and external conferences on topics of Engineering Leadership, 
-Product Development, Agile, and DevOps.
+• Held executive responsibility for a global organization of 300+ associates, directing the development and delivery of full-stack clinical products. Aligned product strategy with market needs and corporate goals across operations in the United States, London, and Bangalore, India.
+• Served as Executive Sponsor and core council member for the corporate engineering leadership program, shaping talent development strategies.
+• Facilitated the corporate leadership program, mentoring upcoming leaders.
+• Speaker at both internal and external conferences on topics of Engineering Leadership, Product Development, Agile, and DevOps.
 Senior Software Engineering Manager
 August 2013 – April 2019 (5 years 9 months)
 Kansas City, Missouri, United States
-• Managed a software engineering business unit that included 30+ technical and clinical 
-associates across 6 agile teams focusing on full-stack software development.
-• Developed software products focused on Pharmacy, Infection Control, Rehabilitation, and 
-Nursing to meet specifications outlined by regulatory agencies (Centers for Medicare & 
-Medicaid Services, Centers for Disease Control and Prevention, United States Department 
-of Defense, UK National Health Service, and European Health CE Mark).
-• Created Cerner’s development process governance gateway in collaboration with the 
-Project Management Office, which was implemented across all engineering and Agile 
-Business Units.
+• Led a strategic software engineering business unit of 30+ technical and clinical associates across 6 agile teams, focusing on full-stack development and aligning product delivery with key business and regulatory requirements.
+• Directed the development of software products for critical healthcare domains including Pharmacy, Infection Control, Rehabilitation, and Nursing, ensuring compliance with specifications from major regulatory agencies (CMS, CDC, DoD, NHS, CE Mark).
+• Pioneered and implemented Cerner's development process governance gateway in collaboration with the PMO, standardizing practices across all engineering and Agile Business Units and enhancing enterprise-wide development efficiency.
 Software Engineering Manager
 August 2009 – August 2013 (4 years 1 month)
 Kansas City, Missouri, United States
