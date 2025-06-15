@@ -1,0 +1,107 @@
+/* calendar/calendar.css */
+
+/* Ensure main calendar section has consistent padding with the rest of the site */
+#calendar-section {
+    padding: 60px 0; /* Matches section padding from main styles.css */
+    background-color: var(--background-alt, #f8f9fa); /* Use variable or fallback */
+}
+
+#calendar-section .container {
+    max-width: 1200px; /* Consistent with main site */
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent with main site */
+}
+
+/* Style the calendar container itself */
+#calendar-container {
+    background-color: var(--background-color, #fff);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow, 0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+#calendar-container p {
+    color: var(--text-color, #333);
+}
+
+/* Event List */
+.calendar-event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual Event Items */
+.calendar-event-item {
+    background-color: var(--background-color, #fff);
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.calendar-event-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-event-item h3 {
+    font-family: 'Montserrat', sans-serif; /* From main styles */
+    font-size: 1.5rem; /* Slightly smaller than section titles */
+    color: var(--secondary-color, #003366); /* Use main site's secondary color */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.calendar-event-item p {
+    font-family: 'Roboto', sans-serif; /* From main styles */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    color: var(--text-light, #666);
+}
+
+.calendar-event-item p strong {
+    color: var(--text-color, #333);
+    font-weight: 500;
+}
+
+.event-datetime {
+    font-size: 0.9rem;
+    color: var(--text-light, #666);
+}
+
+.event-location {
+    font-style: italic;
+}
+
+.event-description {
+    margin-top: 10px;
+}
+
+.event-description a {
+    color: var(--primary-color, #0056b3);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.event-description a:hover {
+    color: var(--accent-color, #00a0e9);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    #calendar-section {
+        padding: 40px 0;
+    }
+
+    .calendar-event-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .calendar-event-item p {
+        font-size: 0.9rem;
+    }
+}
