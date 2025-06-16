@@ -5,29 +5,52 @@ const calendarUrls = [
     'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=92ab5698-7edf-4952-8491-cf0a761efc2f&token=637cf510e4f91ac422f17bb63a89d0262c2b3eae6dc5f21e5a2e411975cf0085'
 ];
 
-// Function to fetch ICS data, handling webcal:// protocol by replacing it
+window.calendarEvents = [];
+window.processingErrors = [];
+
+// Function to append error messages to the container
+function reportErrorToUI(message) {
+    window.processingErrors.push(message);
+    // Render immediately to show errors as they happen, will be cleared/updated by renderCalendarEvents
+    if (window.renderCalendarEvents) {
+        window.renderCalendarEvents();
+    }
+}
+
+// Function to fetch ICS data
 async function fetchICS(url) {
     const usableUrl = url.replace('webcal://', 'https://');
+    console.log(`Fetching ICS from ${usableUrl}`);
     try {
         const response = await fetch(usableUrl);
         if (!response.ok) {
-            console.error(`Error fetching ICS from ${usableUrl}: ${response.statusText}`);
+            const errorMsg = `Error loading calendar: ${url}. Status: ${response.status} ${response.statusText}`;
+            console.error(errorMsg);
+            reportErrorToUI(errorMsg);
             return null;
         }
+        console.log(`Successfully fetched ${url}`);
         return await response.text();
     } catch (error) {
-        console.error(`Network error fetching ICS from ${usableUrl}:`, error);
+        const errorMsg = `Network error fetching ICS from ${url}: ${error.message}`;
+        console.error(errorMsg, error);
+        reportErrorToUI(errorMsg);
         return null;
     }
 }
 
 // Function to parse ICS data
-function parseICS(icsData) {
+function parseICS(icsData, url) {
     if (!icsData) return null;
+    console.log(`Parsing ICS data for ${url}`);
     try {
-        return ICAL.parse(icsData);
+        const parsed = ICAL.parse(icsData);
+        console.log(`Successfully parsed ICS for ${url}`);
+        return parsed;
     } catch (error) {
-        console.error("Error parsing ICS data:", error);
+        const errorMsg = `Error parsing calendar data for ${url}: ${error.message}`;
+        console.error(errorMsg, error);
+        reportErrorToUI(errorMsg);
         return null;
     }
 }
@@ -45,80 +68,104 @@ function extractEventDetails(event) {
 
 // Main function to process calendars
 async function processCalendars() {
-    let allEvents = [];
+    console.log("Starting to process calendars...");
+    window.calendarEvents = []; // Reset events
+    window.processingErrors = []; // Reset errors
+
     const now = ICAL.Time.now();
     const nextYear = new ICAL.Time(now);
     nextYear.year += 1;
 
     for (const url of calendarUrls) {
-        console.log(`Fetching calendar: ${url}`);
-        const icsData = await fetchICS(url);
-        if (icsData) {
-            const jcalData = parseICS(icsData);
-            if (jcalData) {
-                const component = new ICAL.Component(jcalData);
-                const vevents = component.getAllSubcomponents('vevent');
+        try {
+            const icsData = await fetchICS(url);
+            if (icsData) {
+                const jcalData = parseICS(icsData, url);
+                if (jcalData) {
+                    const component = new ICAL.Component(jcalData);
+                    const vevents = component.getAllSubcomponents('vevent');
+                    console.log(`Found ${vevents.length} vevents in ${url}`);
 
-                vevents.forEach(vevent => {
-                    const event = new ICAL.Event(vevent);
+                    vevents.forEach(vevent => {
+                        const event = new ICAL.Event(vevent);
 
-                    if (event.isRecurring()) {
-                        const iterator = event.iterator(now); // Start from now
-                        let next;
-                        while ((next = iterator.next()) && next.compare(nextYear) <= 0) {
-                            const occurrence = event.getOccurrenceDetails(next);
-                            allEvents.push({
-                                summary: occurrence.summary,
-                                startDate: occurrence.startDate.toString(),
-                                endDate: occurrence.endDate.toString(),
-                                description: occurrence.description || event.description || '',
-                                location: occurrence.location || event.location || ''
-                            });
+                        if (event.isRecurring()) {
+                            const iterator = event.iterator(now);
+                            let nextOcc;
+                            let count = 0;
+                            while ((nextOcc = iterator.next()) && nextOcc.compare(nextYear) <= 0 && count < 1000) { // Limit occurrences
+                                const occurrence = event.getOccurrenceDetails(nextOcc);
+                                window.calendarEvents.push({
+                                    summary: occurrence.summary || event.summary, // Fallback to main event summary
+                                    startDate: occurrence.startDate.toString(),
+                                    endDate: occurrence.endDate.toString(),
+                                    description: occurrence.description || event.description || '',
+                                    location: occurrence.location || event.location || ''
+                                });
+                                count++;
+                            }
+                        } else {
+                            if (event.endDate.compare(now) >= 0) {
+                                 window.calendarEvents.push(extractEventDetails(event));
+                            }
                         }
-                    } else {
-                        // Handle non-recurring events (or single instances if not caught by isRecurring)
-                        // Ensure the event is within a reasonable timeframe, e.g., not ended
-                        if (event.endDate.compare(now) >= 0) {
-                             allEvents.push(extractEventDetails(event));
-                        }
-                    }
-                });
+                    });
+                }
             }
+        } catch (error) {
+            const errorMsg = `Unexpected error processing calendar ${url}: ${error.message}`;
+            console.error(errorMsg, error);
+            reportErrorToUI(errorMsg);
         }
     }
 
     // Sort events by start date
-    allEvents.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+    window.calendarEvents.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
 
-    // For now, just log to console. Rendering will be in the next step.
-    console.log("Processed and sorted events:", allEvents);
+    console.log("Processed and sorted events:", window.calendarEvents.length, "events found.");
+    console.log("Processing errors:", window.processingErrors);
 
-    // Store for access by rendering function (will be defined in next step)
-    window.calendarEvents = allEvents;
-
-    // Trigger rendering (function will be defined in next step)
+    // Trigger rendering
     if (window.renderCalendarEvents) {
         window.renderCalendarEvents();
+    } else {
+        console.error("renderCalendarEvents function not found when processCalendars completed.");
     }
 }
 
-// Start processing when the script loads
-processCalendars();
-
-// Function to render events to the page
+// Function to render events to the page (will be defined/appended in the next step, but declare for clarity)
 window.renderCalendarEvents = function() {
+    console.log('Rendering events and errors...'); // <-- ADDED
     const container = document.getElementById('calendar-container');
     if (!container) {
-        console.error('Calendar container not found');
+        console.error('Calendar container not found for rendering.');
         return;
     }
 
     container.innerHTML = ''; // Clear loading message or previous content
 
+    // Display any processing errors
+    if (window.processingErrors.length > 0) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'calendar-errors';
+        errorDiv.innerHTML = '<h4>There were issues loading calendar data:</h4>';
+        const errorUl = document.createElement('ul');
+        window.processingErrors.forEach(errMsg => {
+            const errorLi = document.createElement('li');
+            errorLi.textContent = errMsg;
+            errorUl.appendChild(errorLi);
+        });
+        errorDiv.appendChild(errorUl);
+        container.appendChild(errorDiv);
+    }
+
     const events = window.calendarEvents;
 
     if (!events || events.length === 0) {
-        container.innerHTML = '<p>No events found or calendars are empty.</p>';
+        if (window.processingErrors.length === 0) { // Only show "no events" if there were no errors
+            container.innerHTML += '<p>No upcoming events found in the calendars.</p>';
+        }
+        console.log('Finished rendering (no events or only errors).'); // <-- MODIFIED for clarity
         return;
     }
 
@@ -130,7 +177,7 @@ window.renderCalendarEvents = function() {
         li.className = 'calendar-event-item';
 
         const summary = document.createElement('h3');
-        summary.textContent = event.summary;
+        summary.textContent = event.summary || 'No Title'; // Fallback for summary
         li.appendChild(summary);
 
         const formatEventDate = (dateString) => {
@@ -148,9 +195,14 @@ window.renderCalendarEvents = function() {
 
         const dateTime = document.createElement('p');
         dateTime.className = 'event-datetime';
-        const startDate = formatEventDate(event.startDate);
-        const endDate = formatEventDate(event.endDate);
-        dateTime.innerHTML = `<strong>Starts:</strong> ${startDate}<br><strong>Ends:</strong> ${endDate}`;
+        try {
+            const startDate = formatEventDate(event.startDate);
+            const endDate = formatEventDate(event.endDate);
+            dateTime.innerHTML = `<strong>Starts:</strong> ${startDate}<br><strong>Ends:</strong> ${endDate}`;
+        } catch (e) {
+            console.error("Error formatting date for event:", event, e);
+            dateTime.innerHTML = `<strong>Date Error:</strong> Could not format event dates.`;
+        }
         li.appendChild(dateTime);
 
         if (event.location) {
@@ -161,45 +213,49 @@ window.renderCalendarEvents = function() {
         }
 
         if (event.description) {
-            const description = document.createElement('p');
-            description.className = 'event-description';
-            // Truncate long descriptions and add a toggle
+            const descriptionContainer = document.createElement('div'); // Use a div for better control
+            descriptionContainer.className = 'event-description';
+
             const fullDescription = event.description;
             const shortDescription = fullDescription.length > 150 ? fullDescription.substring(0, 150) + '...' : fullDescription;
-            description.innerHTML = `<strong>Description:</strong> ${shortDescription}`;
+
+            const descriptionText = document.createElement('span'); // Span for the text part
+            descriptionText.innerHTML = `<strong>Description:</strong> ${shortDescription}`;
+            descriptionContainer.appendChild(descriptionText);
 
             if (fullDescription.length > 150) {
                 const toggleLink = document.createElement('a');
                 toggleLink.href = '#';
                 toggleLink.textContent = ' Read more';
+                toggleLink.style.marginLeft = '5px'; // Add some space
                 toggleLink.onclick = (e) => {
                     e.preventDefault();
                     if (toggleLink.textContent === ' Read more') {
-                        description.innerHTML = `<strong>Description:</strong> ${fullDescription}`;
+                        descriptionText.innerHTML = `<strong>Description:</strong> ${fullDescription}`;
                         toggleLink.textContent = ' Read less';
                     } else {
-                        description.innerHTML = `<strong>Description:</strong> ${shortDescription}`;
+                        descriptionText.innerHTML = `<strong>Description:</strong> ${shortDescription}`;
                         toggleLink.textContent = ' Read more';
                     }
-                    li.appendChild(toggleLink); // Re-append to keep it at the end of description
                 };
-                description.appendChild(toggleLink);
+                descriptionContainer.appendChild(toggleLink);
             }
-            li.appendChild(description);
+            li.appendChild(descriptionContainer);
         }
 
         ul.appendChild(li);
     });
 
     container.appendChild(ul);
+    console.log('Finished rendering.'); // <-- ADDED
 };
 
-// If events were processed before this script part was loaded (e.g. script defer/async issues)
-// and processCalendars already ran, call render function now.
-if (window.calendarEvents && document.readyState === 'complete') {
-    window.renderCalendarEvents();
-} else if (window.calendarEvents) {
-    // If events are ready but document isn't, wait for DOMContentLoaded
-    document.addEventListener('DOMContentLoaded', window.renderCalendarEvents);
-}
-// If processCalendars hasn't finished, it will call renderCalendarEvents itself.
+
+// Initial call to process calendars
+document.addEventListener('DOMContentLoaded', () => {
+    const initialLoadingMessage = document.querySelector('#calendar-container p');
+    if (initialLoadingMessage && initialLoadingMessage.textContent.includes('Loading calendars...')) {
+        // Potentially update loading message or keep it
+    }
+    processCalendars();
+});
