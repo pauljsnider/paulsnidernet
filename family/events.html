@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snider Sport Calendar</title>
+    <title>Snider Sports Calendar</title>
     <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -120,21 +120,31 @@
         .calendar-item {
             display: flex;
             align-items: center;
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border-color);
+            transition: all 0.2s ease;
         }
         .calendar-item:last-child {
             border-bottom: none;
         }
-        .calendar-item i {
+        .calendar-item:hover {
+            background: rgba(0, 160, 233, 0.02);
+            padding-left: 8px;
+            margin-left: -8px;
+            margin-right: -8px;
+            border-radius: 6px;
+        }
+        .calendar-item i.sport-icon {
             color: var(--primary-color);
-            margin-right: 10px;
+            margin-right: 12px;
             width: 20px;
+            font-size: 1rem;
         }
         .calendar-name {
             flex: 1;
             font-weight: 500;
             color: var(--text-color);
+            margin-right: 12px;
         }
         .calendar-status {
             font-size: 0.85rem;
@@ -273,6 +283,22 @@
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+        .event-description {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background: var(--background-alt);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-color);
+            margin-top: 8px;
+        }
+        .event-description i {
+            margin-top: 2px;
+            opacity: 0.7;
         }
         .event-source {
             font-size: 0.8rem;
@@ -434,6 +460,196 @@
         .calendar-item.disabled .calendar-name {
             color: var(--text-light);
         }
+        .copy-btn {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 6px 10px;
+            margin-right: 8px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        .calendar-item:hover .copy-btn {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .copy-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+        .copy-btn.success {
+            background: var(--success-color);
+            color: white;
+            border-color: var(--success-color);
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        .copy-btn.success i:before {
+            content: "\f00c";
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            max-width: 400px;
+            font-size: 0.9rem;
+        }
+        .notification-success {
+            border-left: 4px solid var(--success-color);
+            background: #f8fff9;
+        }
+        .notification-info {
+            border-left: 4px solid var(--accent-color);
+            background: #f8fbff;
+        }
+        .notification button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .notification button:hover {
+            background: var(--border-color);
+            color: var(--text-color);
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .controls-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+        }
+        .time-filters, .view-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .filter-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-right: 5px;
+        }
+        .filter-buttons, .view-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        .filter-btn, .view-btn {
+            background: white;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .filter-btn:hover, .view-btn:hover {
+            background: var(--background-alt);
+            border-color: var(--accent-color);
+        }
+        .filter-btn.active, .view-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        .view-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .event-grid.compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        .event-grid.compact .event {
+            padding: 12px 16px;
+        }
+        .event-grid.compact .event-header {
+            margin-bottom: 6px;
+        }
+        .event-grid.compact .event-title {
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+        .event-grid.compact .event-type-badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+        }
+        .event-grid.compact .event-details {
+            gap: 4px;
+        }
+        .event-grid.compact .event-date {
+            font-size: 0.85rem;
+        }
+        .event-grid.compact .event-location {
+            font-size: 0.8rem;
+        }
+        .event-grid.compact .event-description {
+            font-size: 0.8rem;
+            padding: 6px 10px;
+            margin-top: 6px;
+        }
+        .event-grid.compact .event-source {
+            margin-top: 6px;
+            padding-top: 6px;
+        }
+        @media (max-width: 768px) {
+            .controls-section {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+            .time-filters, .view-controls {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .filter-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -447,7 +663,7 @@
         <div class="container">
             <div class="config-section">
                 <h3><i class="fas fa-calendar-alt"></i> Sport Calendars</h3>
-                <p>Displaying events from Will's sport calendars, sorted chronologically:</p>
+                <p>Displaying events from Snider's sports calendars, sorted chronologically:</p>
                 
                 <div class="calendar-list">
                     <div class="calendar-item">
@@ -455,8 +671,11 @@
                             <input type="checkbox" id="calendar1-enabled" checked onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
-                        <i class="fas fa-futbol"></i>
+                        <i class="fas fa-futbol sport-icon"></i>
                         <span class="calendar-name">Will Soccer</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar1')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
                         <span class="calendar-status" id="calendar1-status">Loading...</span>
                     </div>
                     <div class="calendar-item">
@@ -464,8 +683,11 @@
                             <input type="checkbox" id="calendar2-enabled" checked onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
-                        <i class="fas fa-baseball-ball"></i>
+                        <i class="fas fa-baseball-ball sport-icon"></i>
                         <span class="calendar-name">Will Baseball</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar2')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
                         <span class="calendar-status" id="calendar2-status">Loading...</span>
                     </div>
                     <div class="calendar-item">
@@ -473,15 +695,40 @@
                             <input type="checkbox" id="calendar3-enabled" checked onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-users sport-icon"></i>
                         <span class="calendar-name">TeamSnap Events (Madison + Max)</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar3')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
                         <span class="calendar-status" id="calendar3-status">Loading...</span>
                     </div>
                 </div>
                 
-                <button class="load-btn" onclick="loadAllCalendars()">
-                    <i class="fas fa-sync-alt"></i> Refresh All Events
-                </button>
+                <div class="controls-section">
+                    <div class="time-filters">
+                        <span class="filter-label">Show:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="week" onclick="setTimeFilter('week')">Next Week</button>
+                            <button class="filter-btn" data-filter="month" onclick="setTimeFilter('month')">Next Month</button>
+                            <button class="filter-btn" data-filter="quarter" onclick="setTimeFilter('quarter')">Next 3 Months</button>
+                            <button class="filter-btn" data-filter="all" onclick="setTimeFilter('all')">All Upcoming</button>
+                        </div>
+                    </div>
+                    <div class="view-controls">
+                        <span class="filter-label">View:</span>
+                        <div class="view-buttons">
+                            <button class="view-btn" data-view="detailed" onclick="setView('detailed')">
+                                <i class="fas fa-list"></i> Detailed
+                            </button>
+                            <button class="view-btn active" data-view="compact" onclick="setView('compact')">
+                                <i class="fas fa-th-list"></i> Compact
+                            </button>
+                        </div>
+                    </div>
+                    <button class="load-btn" onclick="loadAllCalendars()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
             </div>
 
             <div id="events-container" class="events-container">
@@ -512,6 +759,10 @@
 
         // Store all loaded events
         let allLoadedEvents = [];
+        
+        // Current filter and view settings
+        let currentTimeFilter = 'week';
+        let currentView = 'compact';
 
         // Multiple CORS proxy options
         const CORS_PROXIES = [
@@ -590,12 +841,17 @@
 
             console.log('Enabled calendars:', enabledCalendars);
 
-            // Filter events based on enabled calendars
-            const filteredEvents = allLoadedEvents
-                .filter(event => enabledCalendars.includes(event.calendarName))
-                .sort((a, b) => a.dtstart - b.dtstart);
+            // Filter events based on enabled calendars and time filter
+            let filteredEvents = allLoadedEvents
+                .filter(event => enabledCalendars.includes(event.calendarName));
 
-            console.log(`Displaying ${filteredEvents.length} events from enabled calendars`);
+            // Apply time filter
+            filteredEvents = applyTimeFilter(filteredEvents, currentTimeFilter);
+            
+            // Sort by date
+            filteredEvents.sort((a, b) => a.dtstart - b.dtstart);
+
+            console.log(`Displaying ${filteredEvents.length} events from enabled calendars with ${currentTimeFilter} filter`);
             displayEventsWithStats(filteredEvents);
 
             // Update calendar item visual state
@@ -608,6 +864,70 @@
                 } else {
                     calendarItem.classList.add('disabled');
                 }
+            });
+        }
+
+        function setTimeFilter(filter) {
+            currentTimeFilter = filter;
+            
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+            
+            // Update display
+            updateEventDisplay();
+        }
+
+        function setView(view) {
+            currentView = view;
+            
+            // Update button states
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-view="${view}"]`).classList.add('active');
+            
+            // Update event grid class
+            const eventGrid = document.querySelector('.event-grid');
+            if (eventGrid) {
+                if (view === 'compact') {
+                    eventGrid.classList.add('compact');
+                } else {
+                    eventGrid.classList.remove('compact');
+                }
+            }
+        }
+
+        function applyTimeFilter(events, filter) {
+            const now = new Date();
+            now.setHours(0, 0, 0, 0); // Start of today
+            
+            let endDate;
+            
+            switch (filter) {
+                case 'week':
+                    endDate = new Date(now);
+                    endDate.setDate(now.getDate() + 7);
+                    break;
+                case 'month':
+                    endDate = new Date(now);
+                    endDate.setMonth(now.getMonth() + 1);
+                    break;
+                case 'quarter':
+                    endDate = new Date(now);
+                    endDate.setMonth(now.getMonth() + 3);
+                    break;
+                case 'all':
+                default:
+                    return events; // No time filtering
+            }
+            
+            return events.filter(event => {
+                const eventDate = new Date(event.dtstart);
+                eventDate.setHours(0, 0, 0, 0);
+                return eventDate >= now && eventDate < endDate;
             });
         }
 
@@ -725,6 +1045,7 @@
                                 break;
                             case 'DESCRIPTION':
                                 currentEvent.description = value.replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, '\n');
+                                console.log('Found description for event:', currentEvent.summary, ':', currentEvent.description);
                                 break;
                         }
                     }
@@ -882,18 +1203,26 @@
                                     ${escapeHtml(event.location)}
                                 </div>
                             ` : ''}
+                            ${event.description ? `
+                                <div class="event-description">
+                                    <i class="fas fa-info-circle"></i> 
+                                    ${escapeHtml(event.description)}
+                                </div>
+                            ` : ''}
                         </div>
                         <div class="event-source">${escapeHtml(event.calendarName)}</div>
                     </div>
                 `;
             }).join('');
 
+            const gridClass = currentView === 'compact' ? 'event-grid compact' : 'event-grid';
+            
             container.innerHTML = `
                 ${statsHtml}
                 <div class="events-header">
                     <h2><i class="fas fa-calendar-check"></i> Upcoming Events</h2>
                 </div>
-                <div class="event-grid">
+                <div class="${gridClass}">
                     ${eventsHtml}
                 </div>
             `;
@@ -908,6 +1237,68 @@
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
+        }
+
+        async function copyCalendarLink(calendarId) {
+            const calendar = CALENDARS.find(cal => cal.id === calendarId);
+            if (!calendar) {
+                console.error('Calendar not found:', calendarId);
+                return;
+            }
+
+            const button = document.querySelector(`[onclick="copyCalendarLink('${calendarId}')"]`);
+            const originalIcon = button.innerHTML;
+
+            try {
+                // Copy the calendar URL to clipboard
+                await navigator.clipboard.writeText(calendar.url);
+                
+                // Show success feedback
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                button.classList.add('success');
+                button.title = 'Copied!';
+                
+                // Show notification
+                showNotification(`📋 ${calendar.name} calendar link copied!`, 'success');
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                    button.classList.remove('success');
+                    button.title = 'Copy calendar link';
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Failed to copy calendar link:', error);
+                
+                // Fallback: show the URL in a prompt
+                prompt('Copy this calendar URL:', calendar.url);
+                
+                // Show fallback notification
+                showNotification('Please copy the URL from the dialog box', 'info');
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 4000);
         }
 
         // Load all calendars automatically when page loads
