@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snider Sport Calendar</title>
+    <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .config-section {
+            background: var(--background-alt);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        .config-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        .config-section p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group input[type="url"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--background-color);
+        }
+        .input-group input[type="url"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 160, 233, 0.1);
+        }
+        .load-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        .load-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 86, 179, 0.3);
+        }
+        .events-container {
+            min-height: 200px;
+        }
+        .event {
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        .event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .event-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+        .event-date {
+            color: var(--text-color);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        .event-location {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        .loading, .no-events {
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+            padding: 40px;
+        }
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #d32f2f;
+        }
+        .events-header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .events-header h2 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0;
+        }
+        .calendar-list {
+            margin-bottom: 20px;
+        }
+        .calendar-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .calendar-item:last-child {
+            border-bottom: none;
+        }
+        .calendar-item i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            width: 20px;
+        }
+        .calendar-name {
+            flex: 1;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        .calendar-status {
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        .calendar-status.loading {
+            background: var(--background-alt);
+            color: var(--text-light);
+        }
+        .calendar-status.success {
+            background: var(--success-color);
+            color: white;
+        }
+        .calendar-status.error {
+            background: #dc3545;
+            color: white;
+        }
+        .event-source {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .stats-bar {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+        .stats-item {
+            text-align: center;
+            flex: 1;
+        }
+        .stats-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .stats-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        .event-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .event {
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .event::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: var(--primary-color);
+        }
+        .event:hover::before {
+            opacity: 1;
+        }
+        .event-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 15px;
+        }
+        .event-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin: 0;
+            flex: 1;
+            line-height: 1.3;
+        }
+        .event-type-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .event-type-badge.soccer {
+            background: #28a745;
+        }
+        .event-type-badge.baseball {
+            background: #dc3545;
+        }
+        .event-type-badge.teamsnap {
+            background: #6f42c1;
+        }
+        .event-details {
+            display: grid;
+            gap: 8px;
+        }
+        .event-date {
+            color: var(--text-color);
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .event-location {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .event-source {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-color);
+            opacity: 0.8;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        .empty-state h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        .empty-state p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .refresh-hint {
+            background: var(--background-alt);
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 15px;
+            border: 1px solid var(--border-color);
+        }
+        .loading-skeleton {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .skeleton-item {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+            height: 80px;
+        }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .calendar-checkbox:hover {
+            transform: scale(1.02);
+        }
+        .load-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .load-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .load-btn:hover::before {
+            left: 100%;
+        }
+        .load-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 86, 179, 0.3);
+        }
+        @media (max-width: 768px) {
+            .stats-bar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .stats-item {
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+                padding-bottom: 10px;
+            }
+            .stats-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .event-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .event-type-badge {
+                align-self: flex-start;
+            }
+        }
+        .calendar-checkbox {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .calendar-checkbox input[type="checkbox"] {
+            opacity: 0;
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+        .checkmark {
+            position: relative;
+            height: 18px;
+            width: 18px;
+            background-color: var(--background-color);
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .calendar-checkbox:hover .checkmark {
+            border-color: var(--primary-color);
+        }
+        .calendar-checkbox input:checked ~ .checkmark {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 5px;
+            top: 2px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .calendar-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .calendar-item.disabled {
+            opacity: 0.5;
+        }
+        .calendar-item.disabled .calendar-name {
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <section class="hero" style="padding: 60px 0; background: var(--background-alt);">
+        <div class="container">
+            <h1 class="section-title">Snider Sport Calendar</h1>
+        </div>
+    </section>
+
+    <section style="padding: 40px 0;">
+        <div class="container">
+            <div class="config-section">
+                <h3><i class="fas fa-calendar-alt"></i> Sport Calendars</h3>
+                <p>Displaying events from Will's sport calendars, sorted chronologically:</p>
+                
+                <div class="calendar-list">
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar1-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-futbol"></i>
+                        <span class="calendar-name">Will Soccer</span>
+                        <span class="calendar-status" id="calendar1-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar2-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-baseball-ball"></i>
+                        <span class="calendar-name">Will Baseball</span>
+                        <span class="calendar-status" id="calendar2-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar3-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-users"></i>
+                        <span class="calendar-name">TeamSnap Events (Madison + Max)</span>
+                        <span class="calendar-status" id="calendar3-status">Loading...</span>
+                    </div>
+                </div>
+                
+                <button class="load-btn" onclick="loadAllCalendars()">
+                    <i class="fas fa-sync-alt"></i> Refresh All Events
+                </button>
+            </div>
+
+            <div id="events-container" class="events-container">
+                <p class="loading"><i class="fas fa-info-circle"></i> Enter a calendar URL above to load events.</p>
+            </div>
+        </div>
+    </section></body>
+
+    <script>
+        // Calendar configurations
+        const CALENDARS = [
+            {
+                id: 'calendar1',
+                name: 'Will Soccer',
+                url: 'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=974a8276-ee4f-4273-bd12-925e6874f9b5&token=8829469505c4b469f837fad611d516938f445935509c3151f35613a20c9a0dd7'
+            },
+            {
+                id: 'calendar2', 
+                name: 'Will Baseball',
+                url: 'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=628804f9-1e56-439b-b8f6-af42fb098e41&token=3f19b930ec1be351e60daf351471939c971ad0ed8e3afeef0df61df083464de3'
+            },
+            {
+                id: 'calendar3',
+                name: 'TeamSnap Events (Madison + Max)',
+                url: 'http://ical-cdn.teamsnap.com/user_schedule/b5988130-ea96-0139-1e25-4201ac1c001c.ics'
+            }
+        ];
+
+        // Store all loaded events
+        let allLoadedEvents = [];
+
+        // Multiple CORS proxy options
+        const CORS_PROXIES = [
+            { 
+                url: 'https://api.allorigins.win/get?url=', 
+                type: 'json',
+                extract: (data) => data.contents 
+            },
+            { 
+                url: 'https://corsproxy.io/?', 
+                type: 'text',
+                extract: (data) => data 
+            },
+            { 
+                url: 'https://proxy.cors.sh/', 
+                type: 'text',
+                extract: (data) => data 
+            }
+        ];
+
+        async function loadAllCalendars() {
+            const container = document.getElementById('events-container');
+            container.innerHTML = `
+                <div class="loading-skeleton">
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                </div>
+            `;
+
+            allLoadedEvents = [];
+            let successCount = 0;
+            let errorCount = 0;
+
+            // Load each calendar
+            for (const calendar of CALENDARS) {
+                const statusElement = document.getElementById(`${calendar.id}-status`);
+                const calendarItem = statusElement.closest('.calendar-item');
+                
+                statusElement.textContent = 'Loading...';
+                statusElement.className = 'calendar-status loading';
+
+                try {
+                    console.log(`Loading calendar: ${calendar.name}`);
+                    const events = await loadSingleCalendar(calendar.url, calendar.name, calendar.id);
+                    allLoadedEvents.push(...events);
+                    
+                    statusElement.textContent = `${events.length} events`;
+                    statusElement.className = 'calendar-status success';
+                    calendarItem.classList.remove('disabled');
+                    successCount++;
+                    
+                    console.log(`Successfully loaded ${events.length} events from ${calendar.name}`);
+                } catch (error) {
+                    console.error(`Failed to load calendar ${calendar.name}:`, error);
+                    statusElement.textContent = 'Error';
+                    statusElement.className = 'calendar-status error';
+                    calendarItem.classList.add('disabled');
+                    
+                    // Uncheck the checkbox if loading fails
+                    document.getElementById(`${calendar.id}-enabled`).checked = false;
+                    errorCount++;
+                }
+            }
+
+            console.log(`Total events loaded: ${allLoadedEvents.length} from ${successCount} calendars (${errorCount} failed)`);
+            updateEventDisplay();
+        }
+
+        function updateEventDisplay() {
+            // Get enabled calendars
+            const enabledCalendars = CALENDARS
+                .filter(calendar => document.getElementById(`${calendar.id}-enabled`).checked)
+                .map(calendar => calendar.name);
+
+            console.log('Enabled calendars:', enabledCalendars);
+
+            // Filter events based on enabled calendars
+            const filteredEvents = allLoadedEvents
+                .filter(event => enabledCalendars.includes(event.calendarName))
+                .sort((a, b) => a.dtstart - b.dtstart);
+
+            console.log(`Displaying ${filteredEvents.length} events from enabled calendars`);
+            displayEventsWithStats(filteredEvents);
+
+            // Update calendar item visual state
+            CALENDARS.forEach(calendar => {
+                const calendarItem = document.getElementById(`${calendar.id}-status`).closest('.calendar-item');
+                const isEnabled = document.getElementById(`${calendar.id}-enabled`).checked;
+                
+                if (isEnabled) {
+                    calendarItem.classList.remove('disabled');
+                } else {
+                    calendarItem.classList.add('disabled');
+                }
+            });
+        }
+
+        async function loadSingleCalendar(url, calendarName, calendarId) {
+            // Convert webcal:// and http:// to https://
+            if (url.startsWith('webcal://')) {
+                url = url.replace('webcal://', 'https://');
+            } else if (url.startsWith('http://')) {
+                url = url.replace('http://', 'https://');
+            }
+
+            let icalData = null;
+            let lastError = null;
+
+            // Try each CORS proxy
+            for (let i = 0; i < CORS_PROXIES.length; i++) {
+                const proxy = CORS_PROXIES[i];
+                try {
+                    console.log(`Trying proxy ${i + 1} for ${calendarName}:`, proxy.url);
+                    
+                    const response = await fetch(proxy.url + encodeURIComponent(url));
+                    console.log(`Proxy ${i + 1} response status:`, response.status);
+                    
+                    if (response.ok) {
+                        let data;
+                        if (proxy.type === 'json') {
+                            data = await response.json();
+                        } else {
+                            data = await response.text();
+                        }
+                        
+                        icalData = proxy.extract(data);
+                        console.log(`Proxy ${i + 1} success! Data length:`, icalData.length);
+                        break;
+                    } else {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                } catch (error) {
+                    console.log(`Proxy ${i + 1} failed:`, error.message);
+                    lastError = error;
+                    continue;
+                }
+            }
+
+            if (!icalData) {
+                throw new Error(`All CORS proxies failed. Last error: ${lastError?.message || 'Unknown error'}`);
+            }
+
+            // Check if data is base64 encoded (starts with data:text/calendar)
+            let processedData = icalData;
+            if (icalData.startsWith('data:text/calendar')) {
+                console.log('Detected base64 encoded calendar data');
+                const base64Part = icalData.split(',')[1];
+                if (base64Part) {
+                    try {
+                        processedData = atob(base64Part);
+                        console.log('Successfully decoded base64 data');
+                    } catch (e) {
+                        console.error('Failed to decode base64:', e);
+                        throw new Error('Failed to decode calendar data');
+                    }
+                }
+            }
+            
+            const events = parseICalData(processedData, calendarName, calendarId);
+            return events;
+        }
+
+        function parseICalData(icalData, calendarName, calendarId) {
+            const events = [];
+            const lines = icalData.split(/\r?\n/);
+            let currentEvent = null;
+
+            console.log('Parsing iCal data, total lines:', lines.length);
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i].trim();
+                
+                // Handle line folding (lines that start with space or tab)
+                while (i + 1 < lines.length && (lines[i + 1].startsWith(' ') || lines[i + 1].startsWith('\t'))) {
+                    line += lines[i + 1].substring(1);
+                    i++;
+                }
+                
+                if (line === 'BEGIN:VEVENT') {
+                    currentEvent = { calendarName: calendarName, calendarId: calendarId };
+                    console.log('Started new event');
+                } else if (line === 'END:VEVENT' && currentEvent) {
+                    if (currentEvent.dtstart && currentEvent.summary) {
+                        events.push(currentEvent);
+                        console.log('Added event:', currentEvent.summary, currentEvent.dtstart);
+                    } else {
+                        console.log('Skipped incomplete event:', currentEvent);
+                    }
+                    currentEvent = null;
+                } else if (currentEvent) {
+                    const colonIndex = line.indexOf(':');
+                    if (colonIndex > 0) {
+                        const keyPart = line.substring(0, colonIndex);
+                        const key = keyPart.split(';')[0];
+                        const value = line.substring(colonIndex + 1);
+                        
+                        switch (key) {
+                            case 'SUMMARY':
+                                currentEvent.summary = value.replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, '\n');
+                                break;
+                            case 'DTSTART':
+                                currentEvent.dtstart = parseICalDate(value, keyPart);
+                                break;
+                            case 'DTEND':
+                                currentEvent.dtend = parseICalDate(value, keyPart);
+                                break;
+                            case 'LOCATION':
+                                currentEvent.location = value.replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, '\n');
+                                break;
+                            case 'DESCRIPTION':
+                                currentEvent.description = value.replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, '\n');
+                                break;
+                        }
+                    }
+                }
+            }
+
+            console.log('Total events found:', events.length);
+
+            // Filter for upcoming events
+            const now = new Date();
+            const upcomingEvents = events
+                .filter(event => event.dtstart && event.dtstart >= now);
+
+            console.log('Upcoming events from', calendarName, ':', upcomingEvents.length);
+            return upcomingEvents;
+        }
+
+        function parseICalDate(dateString, keyPart) {
+            console.log('Parsing date:', dateString, 'with key:', keyPart);
+            
+            // Check if this is a UTC time (ends with Z)
+            const isUTC = dateString.endsWith('Z');
+            
+            // Handle different iCal date formats
+            if (dateString.includes('T')) {
+                // DateTime format: YYYYMMDDTHHMMSS or YYYYMMDDTHHMMSSZ
+                const cleanDate = dateString.replace(/[TZ]/g, '');
+                const year = parseInt(cleanDate.substring(0, 4));
+                const month = parseInt(cleanDate.substring(4, 6)) - 1; // JS months are 0-based
+                const day = parseInt(cleanDate.substring(6, 8));
+                const hour = parseInt(cleanDate.substring(8, 10)) || 0;
+                const minute = parseInt(cleanDate.substring(10, 12)) || 0;
+                const second = parseInt(cleanDate.substring(12, 14)) || 0;
+                
+                let parsedDate;
+                if (isUTC) {
+                    // Create UTC date and convert to local time
+                    parsedDate = new Date(Date.UTC(year, month, day, hour, minute, second));
+                    console.log('Parsed UTC datetime:', parsedDate, '(Original UTC time:', `${hour}:${minute.toString().padStart(2, '0')})`);
+                } else {
+                    // Assume local time
+                    parsedDate = new Date(year, month, day, hour, minute, second);
+                    console.log('Parsed local datetime:', parsedDate);
+                }
+                
+                return parsedDate;
+            } else if (dateString.length === 8) {
+                // Date only format: YYYYMMDD
+                const year = parseInt(dateString.substring(0, 4));
+                const month = parseInt(dateString.substring(4, 6)) - 1;
+                const day = parseInt(dateString.substring(6, 8));
+                
+                const parsedDate = new Date(year, month, day);
+                console.log('Parsed date only:', parsedDate);
+                return parsedDate;
+            } else {
+                // Try to parse as ISO date string
+                try {
+                    const parsedDate = new Date(dateString);
+                    console.log('Parsed as ISO date:', parsedDate);
+                    return parsedDate;
+                } catch (e) {
+                    console.error('Failed to parse date:', dateString, e);
+                    return null;
+                }
+            }
+        }
+
+        function displayEventsWithStats(events) {
+            const container = document.getElementById('events-container');
+            
+            if (events.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>No upcoming events</h3>
+                        <p>Try selecting different calendars or check back later for new events.</p>
+                        <div class="refresh-hint">
+                            <i class="fas fa-info-circle"></i> Events are automatically refreshed when you load the page
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            // Calculate stats
+            const totalEvents = events.length;
+            const soccerEvents = events.filter(e => e.calendarName === 'Will Soccer').length;
+            const baseballEvents = events.filter(e => e.calendarName === 'Will Baseball').length;
+            const teamSnapEvents = events.filter(e => e.calendarName === 'TeamSnap Events (Madison + Max)').length;
+            
+            // Get next event
+            const nextEvent = events[0];
+            const daysToNext = Math.ceil((nextEvent.dtstart - new Date()) / (1000 * 60 * 60 * 24));
+
+            const statsHtml = `
+                <div class="stats-bar">
+                    <div class="stats-item">
+                        <span class="stats-number">${totalEvents}</span>
+                        <span class="stats-label">Total Events</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-number">${daysToNext}</span>
+                        <span class="stats-label">Days to Next</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-number">${soccerEvents + baseballEvents + teamSnapEvents}</span>
+                        <span class="stats-label">This Month</span>
+                    </div>
+                </div>
+            `;
+
+            const eventsHtml = events.map(event => {
+                const dateStr = event.dtstart.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                const timeStr = event.dtstart.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit'
+                });
+
+                // Determine badge type and color
+                let badgeClass = 'event-type-badge';
+                let badgeText = event.calendarName;
+                
+                if (event.calendarName === 'Will Soccer') {
+                    badgeClass += ' soccer';
+                    badgeText = 'SOCCER';
+                } else if (event.calendarName === 'Will Baseball') {
+                    badgeClass += ' baseball';
+                    badgeText = 'BASEBALL';
+                } else if (event.calendarName === 'TeamSnap Events (Madison + Max)') {
+                    badgeClass += ' teamsnap';
+                    badgeText = 'TEAMSNAP';
+                }
+
+                return `
+                    <div class="event">
+                        <div class="event-header">
+                            <div class="event-title">${escapeHtml(event.summary)}</div>
+                            <div class="${badgeClass}">${badgeText}</div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-date">
+                                <i class="fas fa-clock"></i> 
+                                ${dateStr} at ${timeStr}
+                            </div>
+                            ${event.location ? `
+                                <div class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i> 
+                                    ${escapeHtml(event.location)}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="event-source">${escapeHtml(event.calendarName)}</div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                ${statsHtml}
+                <div class="events-header">
+                    <h2><i class="fas fa-calendar-check"></i> Upcoming Events</h2>
+                </div>
+                <div class="event-grid">
+                    ${eventsHtml}
+                </div>
+            `;
+        }
+
+        function showError(message) {
+            const container = document.getElementById('events-container');
+            container.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> ${escapeHtml(message)}</div>`;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Load all calendars automatically when page loads
+        window.addEventListener('load', () => {
+            loadAllCalendars();
+        });
+    </script>
+</body>
+</html>
