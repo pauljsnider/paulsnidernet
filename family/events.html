@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snider Sports Calendar</title>
+    <title>Snider Family Calendar</title>
     <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -701,15 +701,15 @@
 <body>
     <section class="hero" style="padding: 60px 0; background: var(--background-alt);">
         <div class="container">
-            <h1 class="section-title">Snider Sport Calendar</h1>
+            <h1 class="section-title">Snider Family Calendar</h1>
         </div>
     </section>
 
     <section style="padding: 40px 0;">
         <div class="container">
             <div class="config-section">
-                <h3><i class="fas fa-calendar-alt"></i> Sport Calendars</h3>
-                <p>Displaying events from Snider's sports calendars, sorted chronologically:</p>
+                <h3><i class="fas fa-calendar-alt"></i> Family Calendars</h3>
+                <p>Displaying events from Snider family calendars, sorted chronologically:</p>
                 
                 <div class="calendar-list">
                     <div class="calendar-item">
@@ -750,7 +750,7 @@
                     </div>
                     <div class="calendar-item">
                         <label class="calendar-checkbox">
-                            <input type="checkbox" id="calendar4-enabled" checked onchange="updateEventDisplay()">
+                            <input type="checkbox" id="calendar4-enabled" onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
                         <i class="fas fa-school sport-icon"></i>
@@ -762,7 +762,7 @@
                     </div>
                     <div class="calendar-item">
                         <label class="calendar-checkbox">
-                            <input type="checkbox" id="calendar5-enabled" checked onchange="updateEventDisplay()">
+                            <input type="checkbox" id="calendar5-enabled" onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
                         <i class="fas fa-map-marked-alt sport-icon"></i>
@@ -880,11 +880,11 @@
             `;
 
             allLoadedEvents = [];
-            let successCount = 0;
-            let errorCount = 0;
+            let completedCount = 0;
+            const totalCalendars = CALENDARS.length;
 
-            // Load each calendar
-            for (const calendar of CALENDARS) {
+            // Load calendars in parallel and update display as each completes
+            const loadPromises = CALENDARS.map(async (calendar) => {
                 const statusElement = document.getElementById(`${calendar.id}-status`);
                 const calendarItem = statusElement.closest('.calendar-item');
                 
@@ -894,14 +894,22 @@
                 try {
                     console.log(`Loading calendar: ${calendar.name}`);
                     const events = await loadSingleCalendar(calendar.url, calendar.name, calendar.id);
+                    
+                    // Add events to global array
                     allLoadedEvents.push(...events);
                     
+                    // Update status
                     statusElement.textContent = `${events.length} events`;
                     statusElement.className = 'calendar-status success';
                     calendarItem.classList.remove('disabled');
-                    successCount++;
                     
                     console.log(`Successfully loaded ${events.length} events from ${calendar.name}`);
+                    
+                    // Update display immediately after each calendar loads
+                    completedCount++;
+                    updateEventDisplay();
+                    
+                    return { success: true, calendar: calendar.name, events: events.length };
                 } catch (error) {
                     console.error(`Failed to load calendar ${calendar.name}:`, error);
                     statusElement.textContent = 'Error';
@@ -910,12 +918,24 @@
                     
                     // Uncheck the checkbox if loading fails
                     document.getElementById(`${calendar.id}-enabled`).checked = false;
-                    errorCount++;
+                    completedCount++;
+                    
+                    // Still update display even if this calendar failed
+                    updateEventDisplay();
+                    
+                    return { success: false, calendar: calendar.name, error: error.message };
                 }
-            }
+            });
 
-            console.log(`Total events loaded: ${allLoadedEvents.length} from ${successCount} calendars (${errorCount} failed)`);
-            updateEventDisplay();
+            // Wait for all calendars to complete (but display updates happen immediately)
+            const results = await Promise.allSettled(loadPromises);
+            
+            const successCount = results.filter(result => 
+                result.status === 'fulfilled' && result.value.success
+            ).length;
+            const errorCount = results.length - successCount;
+            
+            console.log(`All calendars completed: ${allLoadedEvents.length} total events from ${successCount} calendars (${errorCount} failed)`);
         }
 
         function updateEventDisplay() {
@@ -1424,7 +1444,7 @@
         }
 
         function generateCalendarName(enabledCalendars, timeFilter) {
-            let baseName = 'Snider Sports';
+            let baseName = 'Snider Family';
             
             // Add calendar names if not all are selected
             if (enabledCalendars.length < CALENDARS.length) {
@@ -1457,16 +1477,16 @@
             let icalContent = [
                 'BEGIN:VCALENDAR',
                 'VERSION:2.0',
-                'PRODID:-//Snider Family//Sport Calendar//EN',
+                'PRODID:-//Snider Family//Family Calendar//EN',
                 `X-WR-CALNAME:${calendarName}`,
-                'X-WR-CALDESC:Exported from Snider Sport Calendar',
+                'X-WR-CALDESC:Exported from Snider Family Calendar',
                 'CALSCALE:GREGORIAN',
                 'METHOD:PUBLISH'
             ];
 
             events.forEach(event => {
                 // Generate unique ID for event
-                const uid = `${event.summary.replace(/\s+/g, '-').toLowerCase()}-${event.dtstart.getTime()}@snider-sports`;
+                const uid = `${event.summary.replace(/\s+/g, '-').toLowerCase()}-${event.dtstart.getTime()}@snider-family`;
                 
                 // Format dates for iCal
                 const dtstart = formatICalDateTime(event.dtstart);
