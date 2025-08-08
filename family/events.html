@@ -784,6 +784,22 @@
                             <button class="filter-btn" data-filter="all" onclick="setTimeFilter('all')">All Upcoming</button>
                         </div>
                     </div>
+                    <div class="event-type-filters">
+                        <span class="filter-label">Type:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-type="all" onclick="setEventTypeFilter('all')">All Events</button>
+                            <button class="filter-btn" data-type="games" onclick="setEventTypeFilter('games')">Games Only</button>
+                        </div>
+                    </div>
+                    <div class="kid-filters">
+                        <span class="filter-label">Kid:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-kid="all" onclick="setKidFilter('all')">All Kids</button>
+                            <button class="filter-btn" data-kid="will" onclick="setKidFilter('will')">Will</button>
+                            <button class="filter-btn" data-kid="madison" onclick="setKidFilter('madison')">Madison</button>
+                            <button class="filter-btn" data-kid="max" onclick="setKidFilter('max')">Max</button>
+                        </div>
+                    </div>
                     <div class="view-controls">
                         <span class="filter-label">View:</span>
                         <div class="view-buttons">
@@ -847,6 +863,8 @@
         
         // Current filter and view settings
         let currentTimeFilter = 'week';
+        let currentEventTypeFilter = 'all';
+        let currentKidFilter = 'all';
         let currentView = 'compact';
 
         // Multiple CORS proxy options
@@ -953,10 +971,16 @@
             // Apply time filter
             filteredEvents = applyTimeFilter(filteredEvents, currentTimeFilter);
             
+            // Apply event type filter
+            filteredEvents = applyEventTypeFilter(filteredEvents, currentEventTypeFilter);
+            
+            // Apply kid filter
+            filteredEvents = applyKidFilter(filteredEvents, currentKidFilter);
+            
             // Sort by date
             filteredEvents.sort((a, b) => a.dtstart - b.dtstart);
 
-            console.log(`Displaying ${filteredEvents.length} events from enabled calendars with ${currentTimeFilter} filter`);
+            console.log(`Displaying ${filteredEvents.length} events from enabled calendars with ${currentTimeFilter} time filter, ${currentEventTypeFilter} type filter, and ${currentKidFilter} kid filter`);
             displayEventsWithStats(filteredEvents);
 
             // Update calendar item visual state
@@ -975,11 +999,37 @@
         function setTimeFilter(filter) {
             currentTimeFilter = filter;
             
-            // Update button states
-            document.querySelectorAll('.filter-btn').forEach(btn => {
+            // Update button states for time filters only
+            document.querySelectorAll('.time-filters .filter-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+            
+            // Update display
+            updateEventDisplay();
+        }
+
+        function setEventTypeFilter(type) {
+            currentEventTypeFilter = type;
+            
+            // Update button states for event type filters only
+            document.querySelectorAll('.event-type-filters .filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-type="${type}"]`).classList.add('active');
+            
+            // Update display
+            updateEventDisplay();
+        }
+
+        function setKidFilter(kid) {
+            currentKidFilter = kid;
+            
+            // Update button states for kid filters only
+            document.querySelectorAll('.kid-filters .filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-kid="${kid}"]`).classList.add('active');
             
             // Update display
             updateEventDisplay();
@@ -1034,6 +1084,41 @@
                 eventDate.setHours(0, 0, 0, 0);
                 return eventDate >= now && eventDate < endDate;
             });
+        }
+
+        function applyEventTypeFilter(events, filter) {
+            switch (filter) {
+                case 'games':
+                    return events.filter(event => 
+                        event.summary && event.summary.includes(' vs ')
+                    );
+                case 'all':
+                default:
+                    return events; // No event type filtering
+            }
+        }
+
+        function applyKidFilter(events, filter) {
+            switch (filter) {
+                case 'will':
+                    return events.filter(event => {
+                        const kidName = getKidNameFromEvent(event);
+                        return kidName && kidName.toLowerCase() === 'will';
+                    });
+                case 'madison':
+                    return events.filter(event => {
+                        const kidName = getKidNameFromEvent(event);
+                        return kidName && kidName.toLowerCase() === 'madison';
+                    });
+                case 'max':
+                    return events.filter(event => {
+                        const kidName = getKidNameFromEvent(event);
+                        return kidName && kidName.toLowerCase() === 'max';
+                    });
+                case 'all':
+                default:
+                    return events; // No kid filtering
+            }
         }
 
         async function loadSingleCalendar(url, calendarName, calendarId) {
@@ -1297,10 +1382,17 @@
                     badgeText = 'OVERLAND TRAIL';
                 }
 
+                // Determine which kid this event is for
+                let kidName = getKidNameFromEvent(event);
+                let displayTitle = event.summary;
+                if (kidName) {
+                    displayTitle = `${kidName}: ${event.summary}`;
+                }
+
                 return `
                     <div class="event">
                         <div class="event-header">
-                            <div class="event-title">${escapeHtml(event.summary)}</div>
+                            <div class="event-title">${escapeHtml(displayTitle)}</div>
                             <div class="${badgeClass}">${badgeText}</div>
                         </div>
                         <div class="event-details">
@@ -1348,6 +1440,39 @@
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
+        }
+
+        function getKidNameFromEvent(event) {
+            const summary = event.summary ? event.summary.toLowerCase() : '';
+            const description = event.description ? event.description.toLowerCase() : '';
+            const location = event.location ? event.location.toLowerCase() : '';
+            const calendarName = event.calendarName ? event.calendarName.toLowerCase() : '';
+            
+            // Combine all text fields to search
+            const allText = `${summary} ${description} ${location} ${calendarName}`;
+            
+            // Check for team identifiers
+            if (allText.includes('mustangs') || allText.includes('ote cougars') || allText.includes('first grade boys')) {
+                return 'Will';
+            } else if (allText.includes('4th grade girls')) {
+                return 'Madison';
+            } else if (allText.includes('prek') || allText.includes('pre-k') || allText.includes('prekindergarten')) {
+                return 'Max';
+            }
+            
+            // Check calendar names for additional hints
+            if (calendarName.includes('will soccer') || calendarName.includes('will baseball')) {
+                return 'Will';
+            }
+            
+            // Check for TeamSnap events - look for age/grade indicators
+            if (calendarName.includes('teamsnap')) {
+                // Could add more specific logic here if needed
+                // For now, TeamSnap events don't get a kid name unless they have specific identifiers
+                return null;
+            }
+            
+            return null; // No kid identified
         }
 
         async function copyCalendarLink(calendarId) {
@@ -1421,8 +1546,10 @@
             let filteredEvents = allLoadedEvents
                 .filter(event => enabledCalendars.includes(event.calendarName));
 
-            // Apply current time filter
+            // Apply current filters
             filteredEvents = applyTimeFilter(filteredEvents, currentTimeFilter);
+            filteredEvents = applyEventTypeFilter(filteredEvents, currentEventTypeFilter);
+            filteredEvents = applyKidFilter(filteredEvents, currentKidFilter);
             filteredEvents.sort((a, b) => a.dtstart - b.dtstart);
 
             if (filteredEvents.length === 0) {
@@ -1457,6 +1584,21 @@
                     return name;
                 });
                 baseName = shortNames.join(' + ');
+            }
+            
+            // Add event type filter
+            if (currentEventTypeFilter === 'games') {
+                baseName += ' Games';
+            }
+            
+            // Add kid filter
+            if (currentKidFilter !== 'all') {
+                const kidNames = {
+                    'will': 'Will',
+                    'madison': 'Madison',
+                    'max': 'Max'
+                };
+                baseName += ` (${kidNames[currentKidFilter]})`;
             }
             
             // Add time filter
