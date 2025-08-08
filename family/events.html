@@ -388,6 +388,46 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0, 86, 179, 0.3);
         }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .export-btn {
+            background: var(--success-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        .export-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .export-btn:hover::before {
+            left: 100%;
+        }
+        .export-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+        }
         @media (max-width: 768px) {
             .stats-bar {
                 flex-direction: column;
@@ -725,9 +765,14 @@
                             </button>
                         </div>
                     </div>
-                    <button class="load-btn" onclick="loadAllCalendars()">
-                        <i class="fas fa-sync-alt"></i> Refresh
-                    </button>
+                    <div class="action-buttons">
+                        <button class="export-btn" onclick="exportFilteredCalendar()" title="Download filtered events as .ics file">
+                            <i class="fas fa-download"></i> Export Calendar
+                        </button>
+                        <button class="load-btn" onclick="loadAllCalendars()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -1299,6 +1344,138 @@
                     notification.remove();
                 }
             }, 4000);
+        }
+
+        function exportFilteredCalendar() {
+            // Get currently filtered events
+            const enabledCalendars = CALENDARS
+                .filter(calendar => document.getElementById(`${calendar.id}-enabled`).checked)
+                .map(calendar => calendar.name);
+
+            let filteredEvents = allLoadedEvents
+                .filter(event => enabledCalendars.includes(event.calendarName));
+
+            // Apply current time filter
+            filteredEvents = applyTimeFilter(filteredEvents, currentTimeFilter);
+            filteredEvents.sort((a, b) => a.dtstart - b.dtstart);
+
+            if (filteredEvents.length === 0) {
+                showNotification('No events to export with current filters', 'info');
+                return;
+            }
+
+            // Generate calendar name based on filters
+            const calendarName = generateCalendarName(enabledCalendars, currentTimeFilter);
+            
+            // Generate iCal content
+            const icalContent = generateICalContent(filteredEvents, calendarName);
+            
+            // Download the file
+            downloadICalFile(icalContent, calendarName);
+            
+            // Show success notification
+            showNotification(`📅 Exported ${filteredEvents.length} events to ${calendarName}.ics`, 'success');
+        }
+
+        function generateCalendarName(enabledCalendars, timeFilter) {
+            let baseName = 'Snider Sports';
+            
+            // Add calendar names if not all are selected
+            if (enabledCalendars.length < CALENDARS.length) {
+                const shortNames = enabledCalendars.map(name => {
+                    if (name === 'Will Soccer') return 'Soccer';
+                    if (name === 'Will Baseball') return 'Baseball';
+                    if (name === 'TeamSnap Events (Madison + Max)') return 'TeamSnap';
+                    return name;
+                });
+                baseName = shortNames.join(' + ');
+            }
+            
+            // Add time filter
+            const timeFilters = {
+                'week': 'Next Week',
+                'month': 'Next Month', 
+                'quarter': 'Next 3 Months',
+                'all': 'All Upcoming'
+            };
+            
+            return `${baseName} - ${timeFilters[timeFilter] || 'Filtered'}`;
+        }
+
+        function generateICalContent(events, calendarName) {
+            const now = new Date();
+            const timestamp = now.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            
+            let icalContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Snider Family//Sport Calendar//EN',
+                `X-WR-CALNAME:${calendarName}`,
+                'X-WR-CALDESC:Exported from Snider Sport Calendar',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH'
+            ];
+
+            events.forEach(event => {
+                // Generate unique ID for event
+                const uid = `${event.summary.replace(/\s+/g, '-').toLowerCase()}-${event.dtstart.getTime()}@snider-sports`;
+                
+                // Format dates for iCal
+                const dtstart = formatICalDateTime(event.dtstart);
+                const dtend = event.dtend ? formatICalDateTime(event.dtend) : formatICalDateTime(new Date(event.dtstart.getTime() + 60 * 60 * 1000)); // Default 1 hour
+                
+                icalContent.push('BEGIN:VEVENT');
+                icalContent.push(`UID:${uid}`);
+                icalContent.push(`DTSTAMP:${timestamp}`);
+                icalContent.push(`DTSTART:${dtstart}`);
+                icalContent.push(`DTEND:${dtend}`);
+                icalContent.push(`SUMMARY:${escapeICalText(event.summary)}`);
+                
+                if (event.location) {
+                    icalContent.push(`LOCATION:${escapeICalText(event.location)}`);
+                }
+                
+                if (event.description) {
+                    icalContent.push(`DESCRIPTION:${escapeICalText(event.description)}`);
+                }
+                
+                // Add source calendar as category
+                icalContent.push(`CATEGORIES:${escapeICalText(event.calendarName)}`);
+                icalContent.push('STATUS:CONFIRMED');
+                icalContent.push('END:VEVENT');
+            });
+
+            icalContent.push('END:VCALENDAR');
+            return icalContent.join('\r\n');
+        }
+
+        function formatICalDateTime(date) {
+            // Format as YYYYMMDDTHHMMSSZ (UTC)
+            return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        }
+
+        function escapeICalText(text) {
+            // Escape special characters for iCal format
+            return text.replace(/\\/g, '\\\\')
+                      .replace(/;/g, '\\;')
+                      .replace(/,/g, '\\,')
+                      .replace(/\n/g, '\\n')
+                      .replace(/\r/g, '');
+        }
+
+        function downloadICalFile(content, calendarName) {
+            const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${calendarName}.ics`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Clean up the URL object
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
         }
 
         // Load all calendars automatically when page loads
