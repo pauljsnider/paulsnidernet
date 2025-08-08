@@ -265,6 +265,12 @@
         .event-type-badge.teamsnap {
             background: #6f42c1;
         }
+        .event-type-badge.school {
+            background: #fd7e14;
+        }
+        .event-type-badge.trail {
+            background: #20c997;
+        }
         .event-details {
             display: grid;
             gap: 8px;
@@ -742,6 +748,30 @@
                         </button>
                         <span class="calendar-status" id="calendar3-status">Loading...</span>
                     </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar4-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-school sport-icon"></i>
+                        <span class="calendar-name">Blue Valley School Calendar</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar4')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar4-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar5-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-map-marked-alt sport-icon"></i>
+                        <span class="calendar-name">Overland Trail Calendar</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar5')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar5-status">Loading...</span>
+                    </div>
                 </div>
                 
                 <div class="controls-section">
@@ -799,6 +829,16 @@
                 id: 'calendar3',
                 name: 'TeamSnap Events (Madison + Max)',
                 url: 'http://ical-cdn.teamsnap.com/user_schedule/b5988130-ea96-0139-1e25-4201ac1c001c.ics'
+            },
+            {
+                id: 'calendar4',
+                name: 'Blue Valley School Calendar',
+                url: 'webcal://www.bluevalleyk12.org/site/handlers/icalfeed.ashx?MIID=38346'
+            },
+            {
+                id: 'calendar5',
+                name: 'Overland Trail Calendar',
+                url: 'https://www.bluevalleyk12.org//site/handlers/icalfeed.ashx?MIID=40062'
             }
         ];
 
@@ -1229,6 +1269,12 @@
                 } else if (event.calendarName === 'TeamSnap Events (Madison + Max)') {
                     badgeClass += ' teamsnap';
                     badgeText = 'TEAMSNAP';
+                } else if (event.calendarName === 'Blue Valley School Calendar') {
+                    badgeClass += ' school';
+                    badgeText = 'SCHOOL';
+                } else if (event.calendarName === 'Overland Trail Calendar') {
+                    badgeClass += ' trail';
+                    badgeText = 'OVERLAND TRAIL';
                 }
 
                 return `
@@ -1386,6 +1432,8 @@
                     if (name === 'Will Soccer') return 'Soccer';
                     if (name === 'Will Baseball') return 'Baseball';
                     if (name === 'TeamSnap Events (Madison + Max)') return 'TeamSnap';
+                    if (name === 'Blue Valley School Calendar') return 'School';
+                    if (name === 'Overland Trail Calendar') return 'Overland Trail';
                     return name;
                 });
                 baseName = shortNames.join(' + ');
