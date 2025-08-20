@@ -1531,7 +1531,7 @@
             switch (filter) {
                 case 'games':
                     return events.filter(event => 
-                        event.summary && event.summary.includes(' vs ')
+                        event.summary && (event.summary.includes(' vs ') || event.summary.includes(' @ '))
                     );
                 case 'all':
                 default:
@@ -1801,8 +1801,8 @@
             const nextEvent = events[0];
             const daysToNext = Math.ceil((nextEvent.dtstart - new Date()) / (1000 * 60 * 60 * 24));
 
-            // Count games (events with ' vs ' in title)
-            const gameEvents = events.filter(e => e.summary && e.summary.includes(' vs ')).length;
+            // Count games (events with ' vs ' or ' @ ' in title)
+            const gameEvents = events.filter(e => e.summary && (e.summary.includes(' vs ') || e.summary.includes(' @ '))).length;
 
             const statsHtml = `
                 <div class="stats-bar">
