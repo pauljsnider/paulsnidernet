@@ -1624,6 +1624,20 @@
             }
             
             const events = parseICalData(processedData, calendarName, calendarId);
+            
+            // Fix SignUpGenius timezone issue - their times appear to be off by 1 hour
+            if (calendarName === 'SignUpGenius Volunteer') {
+                events.forEach(event => {
+                    if (event.dtstart) {
+                        event.dtstart = new Date(event.dtstart.getTime() + 60 * 60 * 1000); // Add 1 hour
+                    }
+                    if (event.dtend) {
+                        event.dtend = new Date(event.dtend.getTime() + 60 * 60 * 1000); // Add 1 hour
+                    }
+                });
+                console.log(`[${calendarName}] Applied timezone fix (+1 hour)`);
+            }
+            
             return events;
         }
 
@@ -1664,6 +1678,11 @@
                         switch (key) {
                             case 'SUMMARY':
                                 currentEvent.summary = value.replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, '\n');
+                                // Extract location from summary for games (e.g., "@ Whitaker 2")
+                                const atMatch = currentEvent.summary.match(/ @ (.+)$/);
+                                if (atMatch && !currentEvent.location) {
+                                    currentEvent.location = atMatch[1];
+                                }
                                 break;
                             case 'DTSTART':
                                 currentEvent.dtstart = parseICalDate(value, keyPart);
@@ -1683,14 +1702,22 @@
                 }
             }
 
-            console.log('Total events found:', events.length);
+            console.log(`[${calendarName}] Total events found:`, events.length);
 
             // Filter for upcoming events
             const now = new Date();
             const upcomingEvents = events
                 .filter(event => event.dtstart && event.dtstart >= now);
 
-            console.log('Upcoming events from', calendarName, ':', upcomingEvents.length);
+            console.log(`[${calendarName}] Upcoming events:`, upcomingEvents.length);
+            
+            // Debug: Log all event dates for Will Soccer
+            if (calendarName === 'Will Soccer') {
+                console.log(`[${calendarName}] All events:`, events.map(e => ({
+                    summary: e.summary,
+                    date: e.dtstart ? e.dtstart.toISOString() : 'NO DATE'
+                })));
+            }
             return upcomingEvents;
         }
 
@@ -2341,7 +2368,10 @@
             if (events.length === 0) {
                 popupEvents.innerHTML = '<p style="text-align: center; color: var(--text-light); font-style: italic;">No events scheduled for this day</p>';
             } else {
-                events.forEach(event => {
+                // Sort events by time (earliest first)
+                const sortedEvents = [...events].sort((a, b) => a.dtstart - b.dtstart);
+                
+                sortedEvents.forEach(event => {
                     const eventDiv = document.createElement('div');
                     eventDiv.className = 'popup-event';
                     
