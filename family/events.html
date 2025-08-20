@@ -1435,6 +1435,11 @@
                     calendarItem.classList.add('disabled');
                 }
             });
+            
+            // Re-render calendar view if it's currently active
+            if (currentView === 'calendar') {
+                renderCalendar();
+            }
         }
 
         function setTimeFilter(filter) {
@@ -1932,12 +1937,24 @@
             // Combine all text fields to search
             const allText = `${summary} ${description} ${location} ${calendarName}`;
             
+            // Debug logging for troubleshooting
+            if (allText.includes('max') || allText.includes('snider')) {
+                console.log('Potential Max event:', {
+                    summary: event.summary,
+                    description: event.description,
+                    calendarName: event.calendarName,
+                    allText: allText.substring(0, 100) + '...'
+                });
+            }
+            
             // Check for team identifiers
             if (allText.includes('mustangs') || allText.includes('ote cougars') || allText.includes('first grade boys')) {
                 return 'Will';
             } else if (allText.includes('4th grade girls')) {
                 return 'Madison';
-            } else if (allText.includes('prek') || allText.includes('pre-k') || allText.includes('prekindergarten')) {
+            } else if (allText.includes('prek') || allText.includes('pre-k') || allText.includes('prekindergarten') ||
+                       allText.includes('max snider') || allText.includes('kindergarten') || 
+                       allText.includes('u6') || allText.includes('under 6')) {
                 return 'Max';
             }
             
@@ -1948,8 +1965,15 @@
             
             // Check for TeamSnap events - look for age/grade indicators
             if (calendarName.includes('teamsnap')) {
-                // Could add more specific logic here if needed
-                // For now, TeamSnap events don't get a kid name unless they have specific identifiers
+                // Try to identify by looking for specific age groups or events
+                if (allText.includes('u6') || allText.includes('under 6') || allText.includes('kindergarten') ||
+                    allText.includes('5-6') || allText.includes('max')) {
+                    return 'Max';
+                } else if (allText.includes('u10') || allText.includes('under 10') || allText.includes('4th grade') ||
+                          allText.includes('9-10') || allText.includes('madison')) {
+                    return 'Madison';
+                }
+                // Default for TeamSnap events - assume they could be for Madison or Max
                 return null;
             }
             
@@ -2211,7 +2235,7 @@
                 .map(calendar => calendar.name);
 
             // Filter events for the specific date
-            return allLoadedEvents.filter(event => {
+            let dayEvents = allLoadedEvents.filter(event => {
                 if (!enabledCalendars.includes(event.calendarName)) return false;
                 
                 const eventDate = new Date(event.dtstart);
@@ -2219,6 +2243,13 @@
                 
                 return eventDate.getTime() === targetDate.getTime();
             });
+            
+            // Apply the same filters as the list view
+            dayEvents = applyTimeFilter(dayEvents, currentTimeFilter);
+            dayEvents = applyEventTypeFilter(dayEvents, currentEventTypeFilter);
+            dayEvents = applyKidFilter(dayEvents, currentKidFilter);
+            
+            return dayEvents;
         }
 
         function renderCalendar() {
@@ -2460,6 +2491,11 @@
             const calendarView = document.getElementById('calendar-view');
             
             if (view === 'calendar') {
+                // When switching to calendar view, automatically set time filter to "all upcoming"
+                if (currentTimeFilter !== 'all') {
+                    setTimeFilter('all');
+                }
+                // Always show calendar view regardless of time filter change
                 eventsContainer.style.display = 'none';
                 calendarView.classList.add('active');
                 renderCalendar(); // Render calendar when switching to calendar view
