@@ -1,121 +1,221 @@
 /**
  * Junior Current Website
- * Schedule Page Functionality
+ * 2025 Season Schedule (Spring + Fall)
  */
 
-// Game data array
+// 2025 Season Game data array - Updated from TeamSnap calendar
 const games = [
     {
-        date: "Mar 9",
-        opponent: "Dolphins",
-        time: "2:00 PM",
-        location: "Olathe 6N",
+        date: "Mar 1",
+        opponent: "Blue Starfish",
+        time: "12:00 PM",
+        location: "Compass Minerals Field #4",
         result: "Win",
         score: "5-1",
         isExhibition: false,
         isPast: true
     },
     {
-        date: "Mar 16",
-        opponent: "Thunder Cats",
-        time: "10:00 AM",
-        location: "Olathe 6S",
-        result: "Win",
-        score: "2-1",
-        isExhibition: false,
-        isPast: true
-    },
-    {
-        date: "Mar 23",
-        opponent: "Lightning Bolts",
-        time: "3:00 PM",
-        location: "Blue Valley Rec",
-        result: "Tie",
-        score: "2-2",
-        isExhibition: false,
-        isPast: true
-    },
-    {
-        date: "Mar 30",
-        opponent: "Unknown Opponent",
-        time: "12:00 PM",
-        location: "OP Soccer Park",
-        result: "Win",
-        score: "4-1",
-        isExhibition: false,
-        isPast: true
-    },
-    {
-        date: "Apr 6",
-        opponent: "Shooting Stars",
-        time: "12:00 PM",
-        location: "Olathe Complex",
-        result: "Loss",
-        score: "2-3",
-        isExhibition: false,
-        isPast: true
-    },
-    {
-        date: "Apr 13",
-        opponent: "Under Current",
-        time: "11:00 AM",
-        location: "Overland Turf",
+        date: "Mar 7",
+        opponent: "Undercurrent",
+        time: "6:00 PM",
+        location: "Scheels Complex #12S",
         result: "Loss",
         score: "3-5",
         isExhibition: false,
         isPast: true
     },
     {
-        date: "Apr 20",
-        opponent: "Shooting Stars",
+        date: "Mar 9",
+        opponent: "Thundercats",
         time: "3:00 PM",
-        location: "OP Fieldhouse",
-        result: "Loss",
-        score: "0-1",
-        isExhibition: false,
-        isPast: true
-    },
-    {
-        date: "May 4",
-        opponent: "Thunder Cats",
-        time: "9:00 AM",
-        location: "Olathe 6N",
-        result: "Loss",
-        score: "0-1",
-        isExhibition: false,
-        isPast: true
-    },
-    {
-        date: "May 11",
-        opponent: "Dads",
-        time: "9:00 AM",
-        location: "Coach Paul's Field",
+        location: "Scheels Complex #12S",
         result: "Win",
-        score: "10-9",
-        isExhibition: true,
+        score: "2-1",
+        isExhibition: false,
         isPast: true
     },
     {
-        date: "May 25",
-        opponent: "Summer Cup Qualifier",
-        time: "10:00 AM",
-        location: "Overland Park Complex",
+        date: "Mar 30",
+        opponent: "Shooting Stars",
+        time: "9:00 AM",
+        location: "Olathe Complex #6N",
+        result: "Win",
+        score: "4-1",
+        isExhibition: false,
+        isPast: true
+    },
+    {
+        date: "Apr 4",
+        opponent: "Blue Starfish",
+        time: "5:00 PM",
+        location: "Olathe Complex #6S",
+        result: "Loss",
+        score: "2-3",
+        isExhibition: false,
+        isPast: true
+    },
+    {
+        date: "Apr 27",
+        opponent: "Undercurrent",
+        time: "11:00 AM",
+        location: "Scheels Complex #12N",
+        result: "Loss",
+        score: "0-1",
+        isExhibition: false,
+        isPast: true
+    },
+    {
+        date: "May 3",
+        opponent: "Shooting Stars",
+        time: "9:00 AM",
+        location: "Compass Minerals Field #4",
+        result: "Loss",
+        score: "0-1",
+        isExhibition: false,
+        isPast: true
+    },
+    {
+        date: "May 17",
+        opponent: "Thundercats",
+        time: "9:00 AM",
+        location: "Olathe Complex #6N",
+        result: "Loss",
+        score: "0-1",
+        isExhibition: false,
+        isPast: true
+    },
+    {
+        date: "Aug 23",
+        opponent: "Wolves",
+        time: "2:00 PM",
+        location: "Scheels Complex #8 S",
         result: null,
         score: null,
         isExhibition: false,
         isPast: false
     },
     {
-        date: "Jun 8",
-        opponent: "Regional All-Stars",
-        time: "1:00 PM",
-        location: "Blue Valley Sportsplex",
+        date: "Aug 24",
+        opponent: "Blue Starfish",
+        time: "2:15 PM",
+        location: "Scheels Complex #8 N",
+        result: null,
+        score: null,
+        isExhibition: false,
+        isPast: false
+    },
+    {
+        date: "Sep 7",
+        opponent: "Hawks",
+        time: "9:15 AM",
+        location: "Scheels Complex #7 S",
+        result: null,
+        score: null,
+        isExhibition: false,
+        isPast: false
+    },
+    {
+        date: "Sep 20",
+        opponent: "Wolves",
+        time: "7:15 PM",
+        location: "Compass Minerals Field #1 S",
+        result: null,
+        score: null,
+        isExhibition: false,
+        isPast: false
+    },
+    {
+        date: "Sep 26",
+        opponent: "Storm Dooley",
+        time: "7:30 PM",
+        location: "Scheels Complex #8 S",
+        result: null,
+        score: null,
+        isExhibition: false,
+        isPast: false
+    },
+    {
+        date: "Oct 12",
+        opponent: "Hawks",
+        time: "10:30 AM",
+        location: "Scheels Complex #8 S",
+        result: null,
+        score: null,
+        isExhibition: false,
+        isPast: false
+    },
+    {
+        date: "Oct 17",
+        opponent: "Blue Starfish",
+        time: "5:00 PM",
+        location: "Scheels Complex #7 S",
+        result: null,
+        score: null,
+        isExhibition: false,
+        isPast: false
+    },
+    {
+        date: "Oct 19",
+        opponent: "Storm Dooley",
+        time: "10:30 AM",
+        location: "Scheels Complex #8 S",
         result: null,
         score: null,
         isExhibition: false,
         isPast: false
     }
 ];
+
+/**
+ * Helper function to format date from YYYY-MM-DD to "Mon DD" format
+ * @param {string} dateString - Date in YYYY-MM-DD format
+ * @returns {string} - Formatted date string
+ */
+function formatGameDate(dateString) {
+    try {
+        const date = new Date(dateString + 'T12:00:00'); // Add time to avoid timezone issues
+        const options = { month: 'short', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    } catch (error) {
+        console.error('Error formatting date:', error);
+        return dateString;
+    }
+}
+
+/**
+ * Helper function to format time from 24-hour to 12-hour format with Central Time
+ * @param {string} timeString - Time in HH:MM format
+ * @returns {string} - Formatted time string
+ */
+function formatGameTime(timeString) {
+    try {
+        const [hours, minutes] = timeString.split(':');
+        const hour = parseInt(hours);
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const hour12 = hour % 12 || 12;
+        return `${hour12}:${minutes} ${ampm}`;
+    } catch (error) {
+        console.error('Error formatting time:', error);
+        return timeString;
+    }
+}
+
+/**
+ * Helper function to determine if a game date is in the past
+ * @param {string} dateString - Date in YYYY-MM-DD format
+ * @returns {boolean} - True if date is in the past
+ */
+function isDateInPast(dateString) {
+    try {
+        const gameDate = new Date(dateString + 'T23:59:59'); // End of game day
+        const today = new Date();
+        return gameDate < today;
+    } catch (error) {
+        console.error('Error checking date:', error);
+        return false;
+    }
+}
 
 /**
  * Get result class for styling
@@ -206,14 +306,24 @@ function generateSchedule(filter = 'all') {
  * Initialize the schedule page
  */
 function initSchedulePage() {
-    // Generate initial schedule
-    generateSchedule();
+    // Generate initial schedule - start with upcoming games
+    generateSchedule('upcoming');
     
     // Set up filter buttons
     const filterButtons = document.querySelectorAll('.schedule-filters .filter-btn');
     
+    // Set the upcoming button as active by default
+    filterButtons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === 'upcoming') {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
+            // Update active button
             // Update active button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');

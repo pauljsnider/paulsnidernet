@@ -70,12 +70,20 @@ const players = [
         photoUrl: "Images/roster/riley.jpg"
     },
     {
-        name: "Adeline",
-        position: "Outside Back",
-        secondaryPosition: "Midfield",
-        description: "High-energy and fearless, Adeline is known for her tenacity and love for the game.",
+        name: "Harper",
+        position: "Forward",
+        secondaryPosition: "Midfielder",
+        description: "Dynamic and creative, Harper brings speed and skill to the attacking third with natural goal-scoring instincts.",
+        positionCategory: "forward",
+        photoUrl: null
+    },
+    {
+        name: "Vivien",
+        position: "Defender",
+        secondaryPosition: "Midfielder",
+        description: "Composed and reliable, Vivien reads the game well and provides solid defensive coverage with smart positioning.",
         positionCategory: "defender",
-        photoUrl: "Images/roster/adaline.jpg"
+        photoUrl: null
     },
     {
         name: "Emmie",
