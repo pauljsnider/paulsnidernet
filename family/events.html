@@ -1157,6 +1157,18 @@
                         </button>
                         <span class="calendar-status" id="calendar5-status">Loading...</span>
                     </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar7-enabled" onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-school sport-icon"></i>
+                        <span class="calendar-name">St. Michael School Calendar</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar7')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar7-status">Loading...</span>
+                    </div>
                 </div>
                 
                 <div class="controls-section">
@@ -1285,6 +1297,11 @@
                 id: 'calendar5',
                 name: 'Overland Trail Calendar',
                 url: 'https://www.bluevalleyk12.org//site/handlers/icalfeed.ashx?MIID=40062'
+            },
+            {
+                id: 'calendar7',
+                name: 'St. Michael School Calendar',
+                url: 'https://stmichaelcp.org/icalendar.ics'
             },
             {
                 id: 'calendar6',
