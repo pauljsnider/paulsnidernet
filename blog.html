@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Paul Snider</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, MBA</div>
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="library.html">Library</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="blog" class="section-divider">
+      <div class="container">
+        <h2 class="section-title" style="margin-bottom: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Blog</h2>
+        
+        <!-- Blog Search and Filter -->
+        <div class="blog-controls">
+          <div class="search-container">
+            <input type="text" id="blog-search" placeholder="Search blog posts..." class="search-input">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+          <div class="filter-container">
+            <select id="category-filter" class="filter-select">
+              <option value="">All Categories</option>
+              <option value="technology">Technology</option>
+              <option value="business">Business</option>
+              <option value="leadership">Leadership</option>
+              <option value="innovation">Innovation</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Blog Posts Grid -->
+        <div class="blog-posts" id="blog-posts">
+          <!-- Blog Post 1 -->
+          <article class="blog-post" data-category="technology" data-title="Bringing AI Into Everyday Life">
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop" alt="AI in Everyday Life">
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="post-category">Technology</span>
+                <span class="post-date">January 15, 2025</span>
+              </div>
+              <h3 class="post-title">Bringing AI Into Everyday Life</h3>
+              <p class="post-excerpt">I've been using AI heavily at work for a while now. As part of engineering, it's woven into our day to day — accelerating development, automating processes, and helping us think differently about how software gets built...</p>
+              <div class="post-footer">
+                <a href="blog-post-ai-everyday.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                <div class="post-stats">
+                  <span><i class="fas fa-clock"></i> 4 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 2 -->
+          <article class="blog-post" data-category="leadership" data-title="Running 100 Miles for Childhood Cancer">
+            <div class="post-image">
+              <img src="img/lexi.pg" alt="Lexi - Inspiration for the Snowdrop Foundation">
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="post-category">Leadership</span>
+                <span class="post-date">February 29, 2020</span>
+              </div>
+              <h3 class="post-title">Running 100 Miles for Childhood Cancer: The Snowdrop Ultra Story</h3>
+              <p class="post-excerpt">Sometimes the most meaningful challenges come from the most personal places. When my friend's daughter Lexie was diagnosed with cancer, I couldn't help but think about what that would mean for my own daughter and family. That's when I decided to run 100 miles...</p>
+              <div class="post-footer">
+                <a href="blog-post-snowdrop-ultra.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                <div class="post-stats">
+                  <span><i class="fas fa-clock"></i> 6 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 3 -->
+          <article class="blog-post" data-category="business" data-title="Snider's 21 Favorite Podcasts of 2021">
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=250&fit=crop" alt="Podcast microphone and headphones">
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="post-category">Business</span>
+                <span class="post-date">December 31, 2021</span>
+              </div>
+              <h3 class="post-title">Snider's 21 Favorite Podcasts of 2021</h3>
+              <p class="post-excerpt">Here are my favorite 21 podcasts from 2021, covering everything from business strategy and technology to leadership and personal development. Each one offers unique insights that influenced my thinking throughout the year...</p>
+              <div class="post-footer">
+                <a href="blog-post-favorite-podcasts-2021.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                <div class="post-stats">
+                  <span><i class="fas fa-clock"></i> 12 min read</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+
+
+
+        </div>
+
+        <!-- Load More Button -->
+        <div class="load-more-container">
+          <button id="load-more" class="btn btn-primary">Load More Posts</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/psnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

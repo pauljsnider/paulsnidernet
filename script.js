@@ -150,4 +150,133 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check on load and scroll
     window.addEventListener('load', checkReveal);
     window.addEventListener('scroll', checkReveal);
+    
+    // Blog functionality
+    initializeBlog();
 });
+
+// Blog functionality
+function initializeBlog() {
+    const searchInput = document.getElementById('blog-search');
+    const categoryFilter = document.getElementById('category-filter');
+    const blogPosts = document.querySelectorAll('.blog-post');
+    const loadMoreBtn = document.getElementById('load-more');
+    
+    if (!searchInput || !categoryFilter || !blogPosts.length) return;
+    
+    let allPosts = Array.from(blogPosts);
+    let visiblePosts = allPosts.slice(0, 6); // Show first 6 posts initially
+    let currentFilter = '';
+    let currentSearch = '';
+    
+    // Initialize display
+    updatePostDisplay();
+    
+    // Search functionality
+    searchInput.addEventListener('input', function() {
+        currentSearch = this.value.toLowerCase().trim();
+        filterPosts();
+    });
+    
+    // Category filter functionality
+    categoryFilter.addEventListener('change', function() {
+        currentFilter = this.value;
+        filterPosts();
+    });
+    
+    // Load more functionality
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            const hiddenPosts = allPosts.filter(post => post.classList.contains('hidden'));
+            const postsToShow = hiddenPosts.slice(0, 3);
+            
+            postsToShow.forEach(post => {
+                post.classList.remove('hidden');
+            });
+            
+            // Hide load more button if no more posts
+            const remainingHidden = allPosts.filter(post => post.classList.contains('hidden'));
+            if (remainingHidden.length === 0) {
+                loadMoreBtn.style.display = 'none';
+            }
+        });
+    }
+    
+    function filterPosts() {
+        allPosts.forEach(post => {
+            const category = post.getAttribute('data-category');
+            const title = post.getAttribute('data-title').toLowerCase();
+            const content = post.querySelector('.post-excerpt').textContent.toLowerCase();
+            
+            const matchesCategory = !currentFilter || category === currentFilter;
+            const matchesSearch = !currentSearch || 
+                title.includes(currentSearch) || 
+                content.includes(currentSearch);
+            
+            if (matchesCategory && matchesSearch) {
+                post.classList.remove('hidden');
+            } else {
+                post.classList.add('hidden');
+            }
+        });
+        
+        // Show/hide no results message
+        const visibleCount = allPosts.filter(post => !post.classList.contains('hidden')).length;
+        showNoResults(visibleCount === 0);
+        
+        // Reset load more button visibility
+        if (loadMoreBtn) {
+            loadMoreBtn.style.display = 'block';
+        }
+    }
+    
+    function updatePostDisplay() {
+        allPosts.forEach((post, index) => {
+            if (index < 6) {
+                post.classList.remove('hidden');
+            } else {
+                post.classList.add('hidden');
+            }
+        });
+    }
+    
+    function showNoResults(show) {
+        let noResultsMsg = document.querySelector('.no-results');
+        
+        if (show && !noResultsMsg) {
+            noResultsMsg = document.createElement('div');
+            noResultsMsg.className = 'no-results';
+            noResultsMsg.innerHTML = `
+                <i class="fas fa-search"></i>
+                <h3>No posts found</h3>
+                <p>Try adjusting your search terms or category filter.</p>
+            `;
+            document.getElementById('blog-posts').appendChild(noResultsMsg);
+        } else if (!show && noResultsMsg) {
+            noResultsMsg.remove();
+        }
+    }
+    
+    // Add smooth reveal animation to blog posts
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Apply animation styles and observe posts
+    allPosts.forEach((post, index) => {
+        post.style.opacity = '0';
+        post.style.transform = 'translateY(20px)';
+        post.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(post);
+    });
+}
