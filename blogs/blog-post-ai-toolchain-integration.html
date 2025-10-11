@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building an AI-Powered Engineering Workflow - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, MBA</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">October 10, 2025</span>
+            </div>
+            <h1 class="post-title">Building an AI-Powered Engineering Workflow: My Workshop on Connecting Tools with MCP</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Engineering workflow integration">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">Modern engineering teams juggle dozens of tools every day. Jira for tickets, Confluence for documentation, AWS for infrastructure, Bitbucket for code repositories. Each tool lives in its own silo, requiring constant context switching and manual coordination. I built a workshop to solve this: teaching engineers how to connect their entire tool chain to AI assistants using the Model Context Protocol (MCP).</p>
+
+            <h2>The Problem</h2>
+            <p>Engineering teams needed a way to make AI assistants like Amazon Q and Kiro IDE genuinely useful—not just for code completion, but as participants in the entire development workflow. The challenge wasn't just technical integration; it was about creating a seamless experience where AI has the same context developers have.</p>
+
+            <h2>The Workshop Journey</h2>
+            <p>I created a hands-on workshop that guides developers through setting up an integrated AI workflow. The streamlined process takes just 1-2 hours and covers everything from AWS authentication to investigating Jira issues with AI assistance.</p>
+
+            <p><strong><a href="https://github.com/pauljsnider/ai-config-guide/tree/main/workshop" target="_blank">View workshop materials on GitHub</a></strong></p>
+
+            <p>The workshop walks through:</p>
+            <ol>
+              <li>Setting up AWS authentication (Builder ID or IAM Identity Center)</li>
+              <li>Installing AI tools (Amazon Q CLI and Kiro IDE)</li>
+              <li>Configuring MCP servers for Atlassian and Bitbucket</li>
+              <li>Documenting AWS infrastructure with AI</li>
+              <li>Creating Confluence pages from infrastructure analysis</li>
+              <li>Investigating Jira issues using AI-powered code analysis</li>
+              <li>Proposing solutions by examining code in Bitbucket</li>
+            </ol>
+
+            <h2>What Participants Actually Do</h2>
+            <p>The workshop isn't theoretical—participants complete a real DevOps loop:</p>
+
+            <p><strong>Start:</strong> A Jira issue reports high latency in the authentication API</p>
+
+            <p><strong>Investigation:</strong> Using Amazon Q with AWS CLI integration, they document the infrastructure, analyze CloudWatch metrics, and identify database connection issues</p>
+
+            <p><strong>Documentation:</strong> They create a professional Confluence page with their findings, complete with cost analysis and architecture diagrams</p>
+
+            <p><strong>Code Analysis:</strong> Through Bitbucket MCP, they locate the problematic commit, identify a missing database index, and discover an N+1 query pattern</p>
+
+            <p><strong>Solution:</strong> They propose a complete fix including database migration, caching layer, error handling, and unit tests</p>
+
+            <p><strong>Result:</strong> Full investigation report posted to Jira, solution ready for implementation</p>
+
+            <h2>The MCP Configuration</h2>
+            <p>Here's what the MCP configuration looks like for Amazon Q CLI (<code>~/.aws/amazonq/mcp.json</code>):</p>
+
+            <pre><code>{
+  "mcpServers": {
+    "atlassian": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.atlassian.com/v1/sse"],
+      "env": {}
+    },
+    "bitbucket": {
+      "command": "npx",
+      "args": ["-y", "@aashari/mcp-server-atlassian-bitbucket"],
+      "env": {
+        "ATLASSIAN_USER_EMAIL": "${ATLASSIAN_USER_EMAIL}",
+        "ATLASSIAN_API_TOKEN": "${ATLASSIAN_API_TOKEN}"
+      }
+    }
+  }
+}</code></pre>
+
+            <p>The Atlassian MCP uses OAuth for authentication, while Bitbucket requires an API token. Setting environment variables keeps credentials secure:</p>
+
+            <pre><code>export ATLASSIAN_USER_EMAIL="your.email@company.com"
+export ATLASSIAN_API_TOKEN="ATATT3xFfGF0..."</code></pre>
+
+            <h2>What We Gained</h2>
+            <p>Once connected, the workflow transformed how teams work:</p>
+
+            <ol>
+              <li><strong>Context-Aware Development</strong> – AI understands the ticket you're working on, the docs you've written, and the infrastructure it runs on</li>
+              <li><strong>Automated Documentation</strong> – Generate professional Confluence pages from AWS infrastructure analysis with proper formatting, macros, and tables</li>
+              <li><strong>Intelligent Issue Investigation</strong> – AI searches for similar historical issues, analyzes patterns, and connects the dots</li>
+              <li><strong>Infrastructure Insights</strong> – Cost analysis and optimization recommendations based on actual AWS usage</li>
+              <li><strong>Seamless Code Analysis</strong> – Examine commits, identify problematic changes, and propose complete solutions with migrations and tests</li>
+            </ol>
+
+            <h2>The Biggest Challenge: Configuration Consistency</h2>
+            <p>The hardest part wasn't the technical integration—it was maintaining consistent MCP configurations across multiple AI tools and team members.</p>
+
+            <p>Each engineer needs identical connections, but configuration drift creates inconsistencies. Amazon Q CLI and Kiro IDE each have their own MCP configuration files. Environment variables must be set correctly. OAuth tokens expire. API credentials need rotation.</p>
+
+            <p>I solved this with:</p>
+            <ul>
+              <li><strong>Standardized configuration templates</strong> for both Amazon Q and Kiro</li>
+              <li><strong>Automated installation script</strong> (<code>install-mcp.sh</code>) that backs up existing configs and installs the full setup</li>
+              <li><strong>Quick start guide</strong> (90 minutes vs. full 3-4 hour workshop) for rapid onboarding</li>
+              <li><strong>Troubleshooting documentation</strong> covering common pitfalls</li>
+              <li><strong>Version-controlled configurations</strong> in the workshop repository</li>
+            </ul>
+
+            <p>The automated installer handles the complexity:</p>
+            <pre><code>cd ai-config-guide/amazon-q-cli/mcp
+./install-mcp.sh</code></pre>
+
+            <p>It installs memory, fetch, playwright, Atlassian, Bitbucket, and Docker Gateway MCPs with proper configuration for both Amazon Q CLI and Kiro IDE.</p>
+
+            <h2>What's Next: Expanding to More AI Tools</h2>
+            <p>This workshop focused on Amazon Q and Kiro IDE, but the Model Context Protocol is tool-agnostic. I'm expanding the workshop to cover the entire AI tool ecosystem:</p>
+
+            <p><strong>Coming Soon:</strong></p>
+            <ul>
+              <li><strong>Cursor</strong> – Popular AI-native code editor with MCP support</li>
+              <li><strong>Windsurf</strong> – Collaborative AI development environment</li>
+              <li><strong>Claude Code</strong> – Anthropic's CLI tool for Claude integration</li>
+              <li><strong>GitHub Copilot</strong> – Microsoft's AI pair programmer with extensibility</li>
+              <li><strong>Codex</strong> – OpenAI's code generation platform</li>
+            </ul>
+
+            <p>Each tool has its own configuration approach, authentication method, and MCP implementation. The goal is to provide standardized workshops and installation scripts for all of them, so teams can choose their preferred AI tool while maintaining the same integrated workflow.</p>
+
+            <p>The principles remain the same across all tools: connect your entire tool chain, maintain configuration consistency, and let AI work with your full development context. Whether you prefer Amazon Q's AWS integration, Cursor's editing experience, or Claude Code's conversational approach, the workshop framework adapts to each platform.</p>
+
+            <h2>Why This Matters</h2>
+            <p>Tool chain integration isn't just about convenience—it's about breaking down the silos that slow teams down. When your AI assistant has the same context you do, it becomes a true development partner rather than just a code completion tool.</p>
+
+            <p>The complete DevOps loop—from issue investigation to solution proposal—demonstrates what's possible when tools talk to each other. Engineers spend less time context switching and more time solving problems.</p>
+
+            <blockquote>
+              "When your AI assistant has the same context you do, it becomes a true development partner rather than just a code completion tool."
+            </blockquote>
+
+            <h2>Getting Started</h2>
+            <p>The workshop is available on GitHub with everything needed to build your own integrated AI workflow:</p>
+            <ul>
+              <li>Streamlined setup guide (1-2 hours)</li>
+              <li>Automated installation scripts</li>
+              <li>Configuration templates</li>
+              <li>Troubleshooting guide</li>
+              <li>Step-by-step tutorial with real examples</li>
+            </ul>
+
+            <p>Whether you're using Amazon Q, Kiro, or other AI tools that support MCP, the principles are the same: connect everything, maintain consistency, and let AI work with your full context.</p>
+
+            <p><strong><a href="https://github.com/pauljsnider/ai-config-guide/tree/main/workshop" target="_blank">GitHub Repository: ai-config-guide/workshop</a></strong></p>
+
+            <div class="post-tags">
+              <span class="tag">AI Integration</span>
+              <span class="tag">MCP</span>
+              <span class="tag">Developer Tools</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Jira</span>
+              <span class="tag">Confluence</span>
+              <span class="tag">Engineering Workflow</span>
+              <span class="tag">Amazon Q</span>
+              <span class="tag">Cursor</span>
+              <span class="tag">Claude Code</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI in Everyday Life">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a></h4>
+                <span class="related-date">January 15, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=300&h=200&fit=crop" alt="Podcast microphone and headphones">
+              <div class="related-content">
+                <h4><a href="blog-post-favorite-podcasts-2021.html">Snider's 21 Favorite Podcasts of 2021</a></h4>
+                <span class="related-date">December 31, 2021</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/psnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
