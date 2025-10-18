@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taming the Chaos: Building a Family Calendar System for Three Kids - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, MBA</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">October 11, 2025</span>
+            </div>
+            <h1 class="post-title">Taming the Chaos: Building a Family Calendar System for Three Kids</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=400&fit=crop" alt="Family calendar and scheduling">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">Managing three kids' schedules across multiple sports platforms, school calendars, and volunteer commitments was driving me crazy. Between GameChanger, TeamSnap, Blue Valley Schools, and SignUpGenius, I was constantly switching between apps just to figure out where everyone needed to be.</p>
+
+            <p>So I built a solution that aggregates everything into one unified family calendar—and made it public so the grandparents can finally keep up with their grandkids' activities.</p>
+
+            <h2>The Problem: Calendar Chaos</h2>
+            <p>With Will in soccer and baseball, Madison in soccer, and Max starting his sports journey, we were drowning in scheduling platforms:</p>
+            <ul>
+              <li><strong>GameChanger</strong> - Will's baseball team communication</li>
+              <li><strong>TeamSnap</strong> - Madison and Max's soccer teams</li>
+              <li><strong>Blue Valley Schools</strong> - District calendar with holidays and events</li>
+              <li><strong>SignUpGenius</strong> - Volunteer opportunities and team events</li>
+            </ul>
+            <p>Each platform had its own app, its own notifications, and its own way of displaying information. Worse yet, the grandparents had no visibility into what was happening with their grandkids.</p>
+
+            <h2>The Solution: One Calendar to Rule Them All</h2>
+            <p>I built a web-based family calendar that pulls data from all these sources and presents it in a clean, unified interface. The system automatically categorizes events by child and type, making it easy to see what's coming up for each kid.</p>
+
+            <h2>Technical Challenges and Solutions</h2>
+
+            <h3>TeamSnap: The OAuth Success Story</h3>
+            <p>TeamSnap has a proper API with OAuth authentication. I created an OAuth application that connects directly to their system, pulling calendar data in real-time. This was the straightforward part—proper API documentation, clean data formats, and reliable access.</p>
+
+            <h3>GameChanger: The Scraping Challenge</h3>
+            <p>GameChanger, unfortunately, doesn't offer public API access. Their calendar data is locked behind authentication and dynamic JavaScript loading. This called for a more creative solution.</p>
+
+            <p>I used Playwright to automate browser interactions, logging into GameChanger, navigating to the team calendar, and extracting event data. The scraper runs on a schedule, parsing the HTML and converting it into iCal format for integration with the rest of the system.</p>
+
+            <h3>School and Volunteer Calendars</h3>
+            <p>Blue Valley Schools provides public iCal feeds, making integration straightforward. SignUpGenius also offers calendar exports, though their format required some custom parsing to extract meaningful event details.</p>
+
+            <h2>Features That Make Life Easier</h2>
+
+            <h3>Smart Filtering</h3>
+            <p>The calendar includes filters for:</p>
+            <ul>
+              <li><strong>By Child</strong> - See only Will's, Madison's, or Max's events</li>
+              <li><strong>By Type</strong> - Games, practices, school events, or volunteer opportunities</li>
+              <li><strong>By Time</strong> - Today, this week, this month, or all upcoming</li>
+            </ul>
+
+            <h3>Multiple Views</h3>
+            <p>Switch between a detailed list view for planning and a traditional calendar grid for quick visual reference. Each event shows the child's name, event type, time, and location.</p>
+
+            <h3>Export and Sharing</h3>
+            <p>Generate filtered iCal files to import into personal calendars, or share the live web view with family members. The grandparents now have a bookmark they check regularly to see what the kids are up to.</p>
+
+            <h2>The Grandparent Connection</h2>
+            <p>Making the calendar publicly accessible was a game-changer for family engagement. Grandpa and Grandma can now see upcoming games and plan their visits accordingly. They've become our biggest fans—literally showing up to more games because they finally know when and where they're happening.</p>
+
+            <h2>Technical Architecture</h2>
+            <p>The system is built with:</p>
+            <ul>
+              <li><strong>Frontend</strong> - Vanilla JavaScript with responsive CSS</li>
+              <li><strong>Data Sources</strong> - OAuth integration, web scraping, and iCal parsing</li>
+              <li><strong>Hosting</strong> - GitHub Pages for the web interface</li>
+              <li><strong>Automation</strong> - Scheduled Playwright scripts for GameChanger data</li>
+            </ul>
+
+            <h2>Lessons Learned</h2>
+            <p>This project reinforced several important principles:</p>
+            <ul>
+              <li><strong>APIs are gold</strong> - TeamSnap's proper API made integration smooth and reliable</li>
+              <li><strong>Scraping is fragile</strong> - GameChanger's scraping solution requires more maintenance</li>
+              <li><strong>User experience matters</strong> - The grandparents' enthusiasm proved the value of accessible design</li>
+              <li><strong>Automation saves sanity</strong> - Manual calendar management was unsustainable</li>
+            </ul>
+
+            <h2>The Impact</h2>
+            <p>What started as a personal productivity project became a family connection tool. We're no longer missing events, double-booking activities, or leaving the grandparents out of the loop. The kids love seeing their schedules laid out clearly, and we've eliminated the daily "what do we have today?" conversations.</p>
+
+            <p>Most importantly, it's brought the extended family closer to the kids' activities. There's something special about getting a text from Grandpa asking about Saturday's game—because he actually knows there is one.</p>
+
+            <p>Check out the live family calendar at <a href="../family/events.html">our family events page</a> to see the system in action, or explore the code on <a href="https://github.com/pauljsnider/paulsnidernet/tree/main/family" target="_blank">GitHub</a>.</p>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/madison_q.jpg" alt="Madison and the Junior Current team">
+              <div class="related-content">
+                <h4><a href="blog-post-soccer-website-daughter.html">Building a Soccer Website with My Daughter: A Quick Coding Adventure</a></h4>
+                <span class="related-date">October 18, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI in Everyday Life">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a></h4>
+                <span class="related-date">January 15, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/psnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
