@@ -1291,12 +1291,12 @@
             {
                 id: 'calendar4',
                 name: 'Blue Valley School Calendar',
-                url: 'webcal://www.bluevalleyk12.org/site/handlers/icalfeed.ashx?MIID=38346'
+                url: 'https://www.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=39&calendar_ids[]=1'
             },
             {
                 id: 'calendar5',
                 name: 'Overland Trail Calendar',
-                url: 'https://www.bluevalleyk12.org//site/handlers/icalfeed.ashx?MIID=40062'
+                url: 'https://ote.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=23'
             },
             {
                 id: 'calendar7',
@@ -1968,6 +1968,8 @@
             if (allText.includes('mustangs') || allText.includes('ote cougars') || allText.includes('first grade boys')) {
                 return 'Will';
             } else if (allText.includes('4th grade girls')) {
+                return 'Madison';
+            } else if (allText.includes('wildcats')) {
                 return 'Madison';
             } else if (allText.includes('prek') || allText.includes('pre-k') || allText.includes('prekindergarten') ||
                        allText.includes('max snider') || allText.includes('kindergarten') || 
