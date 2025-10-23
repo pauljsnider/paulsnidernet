@@ -254,6 +254,8 @@ body {
 
   .game-sidebar {
     flex-direction: column;
+    margin-top: 1rem;
+    gap: 1rem;
   }
 
   .canvas-wrapper {
@@ -261,6 +263,16 @@ body {
   }
 
   .touch-controls {
+    display: block;
+  }
+
+  .game-sidebar section {
+    width: 100%;
+  }
+
+  .next-piece canvas {
+    max-width: 80px;
+    margin: 0 auto;
     display: block;
   }
 }
