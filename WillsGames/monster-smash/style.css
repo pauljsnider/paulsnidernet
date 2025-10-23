@@ -69,11 +69,12 @@ body {
 
 .touch-controls {
   display: none;
-  padding: 1rem 1rem 1.25rem;
+  padding: 1rem 1.25rem 1.5rem;
   background: rgba(0, 0, 0, 0.45);
   border-radius: 0 0 22px 22px;
   border: 3px solid rgba(0, 0, 0, 0.35);
   border-top: none;
+  grid-column: 1 / -1;
 }
 
 .pad-grid {
@@ -216,7 +217,8 @@ body {
   }
 
   .touch-controls {
-    display: block;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -228,13 +230,4 @@ body {
   .sidebar {
     flex-direction: column;
   }
-}
-.touch-controls {
-  display: none;
-  padding: 1rem 1rem 1.25rem;
-  background: rgba(0, 0, 0, 0.45);
-  border-radius: 0 0 22px 22px;
-  border: 3px solid rgba(0, 0, 0, 0.35);
-  border-top: none;
-  margin-top: -1rem;
 }
