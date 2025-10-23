@@ -67,6 +67,56 @@ body {
   box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.35);
 }
 
+.touch-controls {
+  display: none;
+  padding: 1rem 1rem 1.25rem;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 0 0 22px 22px;
+  border: 3px solid rgba(0, 0, 0, 0.35);
+  border-top: none;
+}
+
+.pad-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pad-row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.control-btn {
+  min-width: 64px;
+  min-height: 64px;
+  border-radius: 14px;
+  border: none;
+  font-size: 1.6rem;
+  font-family: 'Bungee', cursive;
+  color: #1b1b1b;
+  background: linear-gradient(135deg, var(--accent), #ffd166);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  letter-spacing: 0.05em;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  touch-action: none;
+}
+
+.control-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.control-btn.action {
+  font-size: 1rem;
+  min-width: 120px;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -164,6 +214,10 @@ body {
   .sidebar section {
     flex: 1 1 240px;
   }
+
+  .touch-controls {
+    display: block;
+  }
 }
 
 @media (max-width: 640px) {
@@ -174,4 +228,13 @@ body {
   .sidebar {
     flex-direction: column;
   }
+}
+.touch-controls {
+  display: none;
+  padding: 1rem 1rem 1.25rem;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 0 0 22px 22px;
+  border: 3px solid rgba(0, 0, 0, 0.35);
+  border-top: none;
+  margin-top: -1rem;
 }

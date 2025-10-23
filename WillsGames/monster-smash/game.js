@@ -6,6 +6,8 @@
   const statusPanel = document.getElementById('statusPanel');
   const statusTitle = document.getElementById('statusTitle');
   const restartButton = document.getElementById('restartButton');
+  const touchControls = document.getElementById('touchControls');
+  const holdTimers = new Map();
 
   const inputs = {
     up: false,
@@ -367,5 +369,130 @@
   window.addEventListener('keydown', handleKeyDown, { passive: false });
   window.addEventListener('keyup', handleKeyUp);
 
+  function setDirection({ up = inputs.up, down = inputs.down, left = inputs.left, right = inputs.right }) {
+    inputs.up = up;
+    inputs.down = down;
+    inputs.left = left;
+    inputs.right = right;
+  }
+
+  function setupTouchControls() {
+    if (!touchControls) return;
+
+    const buttons = touchControls.querySelectorAll('.control-btn');
+    buttons.forEach((button) => {
+      const action = button.dataset.action;
+      if (!action) return;
+
+      const handlePointerDown = (event) => {
+        event.preventDefault();
+        button.setPointerCapture(event.pointerId);
+        startAction(action);
+      };
+
+      const handlePointerUp = (event) => {
+        event.preventDefault();
+        stopAction(action);
+        if (button.hasPointerCapture && button.hasPointerCapture(event.pointerId)) {
+          button.releasePointerCapture(event.pointerId);
+        }
+      };
+
+      const handlePointerCancel = () => {
+        stopAction(action);
+      };
+
+      button.addEventListener('pointerdown', handlePointerDown);
+      button.addEventListener('pointerup', handlePointerUp);
+      button.addEventListener('pointerleave', handlePointerCancel);
+      button.addEventListener('pointercancel', handlePointerCancel);
+    });
+  }
+
+  function startAction(action) {
+    switch (action) {
+      case 'move-up':
+        setDirection({ up: true, down: false, left: false, right: false });
+        break;
+      case 'move-down':
+        setDirection({ down: true, up: false, left: false, right: false });
+        break;
+      case 'move-left':
+        setDirection({ left: true, right: false, up: false, down: false });
+        break;
+      case 'move-right':
+        setDirection({ right: true, left: false, up: false, down: false });
+        break;
+      case 'boost':
+        triggerBoost();
+        break;
+      default:
+        break;
+    }
+    beginHold(action);
+  }
+
+  function stopAction(action) {
+    switch (action) {
+      case 'move-up':
+        inputs.up = false;
+        break;
+      case 'move-down':
+        inputs.down = false;
+        break;
+      case 'move-left':
+        inputs.left = false;
+        break;
+      case 'move-right':
+        inputs.right = false;
+        break;
+      default:
+        break;
+    }
+    clearHold(action);
+  }
+
+  function triggerBoost() {
+    junkers.forEach((_, idx) => smashJunker(idx));
+    gameState.score += 400;
+    updateUI();
+  }
+
+  function beginHold(action) {
+    if (action === 'boost' || holdTimers.has(action)) {
+      return;
+    }
+    const interval = 160;
+    const id = setInterval(() => {
+      switch (action) {
+        case 'move-up':
+          inputs.up = true;
+          break;
+        case 'move-down':
+          inputs.down = true;
+          break;
+        case 'move-left':
+          inputs.left = true;
+          break;
+        case 'move-right':
+          inputs.right = true;
+          break;
+        default:
+          break;
+      }
+    }, interval);
+    holdTimers.set(action, id);
+  }
+
+  function clearHold(action) {
+    const timer = holdTimers.get(action);
+    if (timer) {
+      clearInterval(timer);
+      holdTimers.delete(action);
+    }
+  }
+
+  setupTouchControls();
+  setupTouchControls();
   startShow();
 })();

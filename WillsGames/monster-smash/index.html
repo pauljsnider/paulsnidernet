@@ -18,6 +18,21 @@
 
     <section class="stage">
       <canvas id="gameCanvas" width="800" height="520" aria-label="Monster truck arena"></canvas>
+      <div class="touch-controls" id="touchControls">
+        <div class="pad-grid">
+          <div class="pad-row">
+            <button class="control-btn" data-action="move-up" aria-label="Drive up">▲</button>
+          </div>
+          <div class="pad-row">
+            <button class="control-btn" data-action="move-left" aria-label="Drive left">◀</button>
+            <button class="control-btn" data-action="move-down" aria-label="Drive down">▼</button>
+            <button class="control-btn" data-action="move-right" aria-label="Drive right">▶</button>
+          </div>
+          <div class="pad-row">
+            <button class="control-btn action" data-action="boost" aria-label="Boost smash">SMASH</button>
+          </div>
+        </div>
+      </div>
 
       <aside class="sidebar">
         <section class="stats">

@@ -18,10 +18,26 @@
 
     <section class="game-stage">
       <div class="canvas-wrapper">
-        <canvas id="gameCanvas" width="400" height="640" aria-label="Lego building area"></canvas>
+        <canvas id="gameCanvas" width="320" height="512" aria-label="Lego building area"></canvas>
         <div class="status-overlay hidden" id="statusOverlay">
           <h2 id="statusTitle">Game Over</h2>
           <button id="restartButton" type="button">Play Again</button>
+        </div>
+        <div class="touch-controls" id="touchControls">
+          <div class="d-pad">
+            <button class="control-btn" data-action="rotate" aria-label="Rotate brick">
+              ⟳
+            </button>
+            <div class="arrow-grid">
+              <button class="control-btn" data-action="move-up" aria-label="Move up">▲</button>
+              <div class="row">
+                <button class="control-btn" data-action="move-left" aria-label="Move left">◀</button>
+                <button class="control-btn" data-action="drop" aria-label="Hard drop">⬇</button>
+                <button class="control-btn" data-action="move-right" aria-label="Move right">▶</button>
+              </div>
+              <button class="control-btn" data-action="soft-drop" aria-label="Soft drop">▽</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -35,7 +51,7 @@
 
         <section class="next-piece">
           <h2>Next Brick</h2>
-          <canvas id="nextCanvas" width="120" height="120"></canvas>
+          <canvas id="nextCanvas" width="96" height="96"></canvas>
         </section>
 
         <section class="instructions">

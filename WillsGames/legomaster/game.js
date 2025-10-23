@@ -6,13 +6,15 @@
   const statusOverlay = document.getElementById('statusOverlay');
   const statusTitle = document.getElementById('statusTitle');
   const restartButton = document.getElementById('restartButton');
+  const touchControls = document.getElementById('touchControls');
   const scoreEl = document.getElementById('scoreValue');
   const linesEl = document.getElementById('linesValue');
   const levelEl = document.getElementById('levelValue');
+  const holdTimers = new Map();
 
   const COLS = 10;
   const ROWS = 16;
-  const CELL_SIZE = 40;
+  const CELL_SIZE = 32;
   const BASE_DROP_INTERVAL = 950;
 
   const COLORS = [
@@ -582,6 +584,103 @@
     }
   }
 
+  function triggerControlAction(action) {
+    switch (action) {
+      case 'move-left':
+        tryMove(-1, 0);
+        break;
+      case 'move-right':
+        tryMove(1, 0);
+        break;
+      case 'move-up':
+      case 'rotate':
+        rotateBrick(1);
+        break;
+      case 'soft-drop':
+        isSoftDropping = true;
+        tryMove(0, 1);
+        break;
+      case 'drop':
+        hardDrop();
+        break;
+      default:
+        break;
+    }
+  }
+
+  function shouldHold(action) {
+    return action === 'move-left' || action === 'move-right' || action === 'soft-drop';
+  }
+
+  function clearHold(action) {
+    const timerId = holdTimers.get(action);
+    if (timerId) {
+      clearInterval(timerId);
+      holdTimers.delete(action);
+    }
+    if (action === 'soft-drop') {
+      isSoftDropping = false;
+    }
+  }
+
+  function beginHold(action) {
+    if (!shouldHold(action) || holdTimers.has(action)) {
+      return;
+    }
+
+    if (action === 'soft-drop') {
+      isSoftDropping = true;
+    }
+
+    const interval = action === 'soft-drop' ? 100 : 160;
+    const id = setInterval(() => {
+      if (action === 'soft-drop') {
+        if (!tryMove(0, 1)) {
+          clearHold(action);
+        }
+        return;
+      }
+      triggerControlAction(action);
+    }, interval);
+    holdTimers.set(action, id);
+  }
+
+  function setupTouchControls() {
+    if (!touchControls) {
+      return;
+    }
+
+    const buttons = touchControls.querySelectorAll('.control-btn');
+    buttons.forEach((button) => {
+      const action = button.dataset.action;
+      if (!action) return;
+
+      const handlePointerDown = (event) => {
+        event.preventDefault();
+        button.setPointerCapture(event.pointerId);
+        triggerControlAction(action);
+        beginHold(action);
+      };
+
+      const handlePointerEnd = (event) => {
+        event.preventDefault();
+        clearHold(action);
+        if (button.hasPointerCapture && button.hasPointerCapture(event.pointerId)) {
+          button.releasePointerCapture(event.pointerId);
+        }
+      };
+
+      const handlePointerCancel = () => {
+        clearHold(action);
+      };
+
+      button.addEventListener('pointerdown', handlePointerDown);
+      button.addEventListener('pointerup', handlePointerEnd);
+      button.addEventListener('pointercancel', handlePointerCancel);
+      button.addEventListener('pointerleave', handlePointerCancel);
+    });
+  }
+
   function handleKeyDown(event) {
     if (event.repeat) return;
 
@@ -644,6 +743,8 @@
 
   window.addEventListener('keydown', handleKeyDown);
   window.addEventListener('keyup', handleKeyUp);
+
+  setupTouchControls();
 
   resetGame();
 })();

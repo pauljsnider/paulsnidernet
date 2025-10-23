@@ -22,17 +22,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .game-shell {
-  width: min(1100px, 100%);
+  width: min(960px, 100%);
   background: rgba(0, 0, 0, 0.35);
   border: 4px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(12px);
-  padding: 2rem;
+  padding: 1.75rem;
 }
 
 .game-header {
@@ -55,12 +55,15 @@ body {
 
 .game-stage {
   display: grid;
-  grid-template-columns: minmax(360px, 1fr) 280px;
-  gap: 2rem;
+  grid-template-columns: minmax(260px, 1fr) 250px;
+  gap: 1.5rem;
+  align-items: start;
 }
 
 .canvas-wrapper {
   position: relative;
+  max-width: 340px;
+  margin: 0 auto;
   border-radius: 18px;
   overflow: hidden;
   background: radial-gradient(circle at top, rgba(255, 255, 255, 0.18), rgba(0, 0, 0, 0.4));
@@ -72,13 +75,62 @@ body {
   display: block;
   width: 100%;
   height: auto;
+  max-width: 320px;
   background: repeating-linear-gradient(
       0deg,
       #1f3d7a,
-      #1f3d7a 40px,
-      #1a356c 40px,
-      #1a356c 80px
+      #1f3d7a 32px,
+      #1a356c 32px,
+      #1a356c 64px
     );
+}
+
+.touch-controls {
+  display: none;
+  padding: 1rem 1rem 1.25rem;
+  background: rgba(0, 0, 0, 0.45);
+  border-top: 4px solid rgba(0, 0, 0, 0.5);
+}
+
+.d-pad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.arrow-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.arrow-grid .row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--lego-dark);
+  background: linear-gradient(135deg, var(--lego-yellow), #ffe066);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  touch-action: none;
+}
+
+.control-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .status-overlay {
@@ -118,7 +170,7 @@ body {
 .game-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .game-sidebar section {
@@ -155,7 +207,7 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 .instructions li {
@@ -181,7 +233,7 @@ body {
 
   .game-stage {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .game-sidebar {
@@ -197,10 +249,18 @@ body {
 
 @media (max-width: 640px) {
   .game-shell {
-    padding: 1.25rem;
+    padding: 1.25rem 1rem;
   }
 
   .game-sidebar {
     flex-direction: column;
+  }
+
+  .canvas-wrapper {
+    max-width: 100%;
+  }
+
+  .touch-controls {
+    display: block;
   }
 }

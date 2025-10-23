@@ -25,6 +25,7 @@ body {
   padding: 3rem clamp(1.5rem, 5vw, 4rem);
   position: relative;
   overflow: hidden;
+  overflow-y: auto;
 }
 
 .arcade-shell {
@@ -217,7 +218,8 @@ body {
 
 @media (max-width: 720px) {
   body {
-    padding: 2rem 1rem;
+    align-items: flex-start;
+    padding: 1.75rem 1rem 2.5rem;
   }
 
   .card-art {
@@ -226,5 +228,9 @@ body {
 
   .card-body {
     padding: 1.25rem 1.4rem 1.6rem;
+  }
+
+  .arcade-shell {
+    margin-top: 0.5rem;
   }
 }
