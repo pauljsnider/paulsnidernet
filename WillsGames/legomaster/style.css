@@ -92,6 +92,10 @@ body {
   border-top: 4px solid rgba(0, 0, 0, 0.5);
 }
 
+.touch-controls.visible {
+  display: block;
+}
+
 .d-pad {
   display: flex;
   flex-direction: column;
@@ -126,11 +130,49 @@ body {
   justify-content: center;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .control-btn:active {
   transform: translateY(2px);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-controls {
+  width: 100%;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-top: 4px solid rgba(0, 0, 0, 0.45);
+  background: linear-gradient(135deg, rgba(255, 208, 30, 0.95), rgba(255, 214, 102, 0.95));
+  color: var(--lego-dark);
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.toggle-controls:focus-visible {
+  outline: 3px solid rgba(255, 208, 30, 0.8);
+  outline-offset: 2px;
+}
+
+.toggle-controls:hover {
+  filter: brightness(1.05);
+}
+
+.toggle-controls:active {
+  transform: translateY(1px);
 }
 
 .status-overlay {
@@ -260,10 +302,6 @@ body {
 
   .canvas-wrapper {
     max-width: 100%;
-  }
-
-  .touch-controls {
-    display: block;
   }
 
   .game-sidebar section {

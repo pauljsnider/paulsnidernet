@@ -23,7 +23,10 @@
           <h2 id="statusTitle">Game Over</h2>
           <button id="restartButton" type="button">Play Again</button>
         </div>
-        <div class="touch-controls" id="touchControls">
+        <button id="toggleControlsButton" type="button" class="toggle-controls" aria-pressed="false">
+          Show Touch Controls
+        </button>
+        <div class="touch-controls" id="touchControls" aria-hidden="true">
           <div class="d-pad">
             <button class="control-btn" data-action="rotate" aria-label="Rotate brick">
               ⟳

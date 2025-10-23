@@ -7,6 +7,7 @@
   const statusTitle = document.getElementById('statusTitle');
   const restartButton = document.getElementById('restartButton');
   const touchControls = document.getElementById('touchControls');
+  const toggleControlsButton = document.getElementById('toggleControlsButton');
   const scoreEl = document.getElementById('scoreValue');
   const linesEl = document.getElementById('linesValue');
   const levelEl = document.getElementById('levelValue');
@@ -584,6 +585,27 @@
     }
   }
 
+  function setTouchControlsVisibility(visible) {
+    if (!touchControls) return;
+
+    if (visible) {
+      touchControls.classList.add('visible');
+      touchControls.setAttribute('aria-hidden', 'false');
+      if (toggleControlsButton) {
+        toggleControlsButton.setAttribute('aria-pressed', 'true');
+        toggleControlsButton.textContent = 'Hide Touch Controls';
+      }
+    } else {
+      touchControls.classList.remove('visible');
+      touchControls.setAttribute('aria-hidden', 'true');
+      clearAllHolds();
+      if (toggleControlsButton) {
+        toggleControlsButton.setAttribute('aria-pressed', 'false');
+        toggleControlsButton.textContent = 'Show Touch Controls';
+      }
+    }
+  }
+
   function triggerControlAction(action) {
     switch (action) {
       case 'move-left':
@@ -643,6 +665,14 @@
       triggerControlAction(action);
     }, interval);
     holdTimers.set(action, id);
+  }
+
+  function clearAllHolds() {
+    holdTimers.forEach((timerId) => {
+      clearInterval(timerId);
+    });
+    holdTimers.clear();
+    isSoftDropping = false;
   }
 
   function setupTouchControls() {
@@ -745,6 +775,14 @@
   window.addEventListener('keyup', handleKeyUp);
 
   setupTouchControls();
+  setTouchControlsVisibility(false);
+
+  if (toggleControlsButton && touchControls) {
+    toggleControlsButton.addEventListener('click', () => {
+      const makeVisible = !touchControls.classList.contains('visible');
+      setTouchControlsVisibility(makeVisible);
+    });
+  }
 
   resetGame();
 })();
