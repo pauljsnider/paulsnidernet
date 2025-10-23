@@ -119,8 +119,15 @@ body {
   background: linear-gradient(180deg, transparent, rgba(8, 12, 26, 0.9));
 }
 
+
 .card-art.lego {
-  background-image: url('https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=600&q=80');
+  background-color: #1b3a6f;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 221, 89, 0.35) 0, rgba(255, 221, 89, 0.35) 14%, transparent 15%),
+    radial-gradient(circle at 80% 30%, rgba(236, 108, 117, 0.35) 0, rgba(236, 108, 117, 0.35) 14%, transparent 15%),
+    radial-gradient(circle at 40% 75%, rgba(76, 201, 240, 0.35) 0, rgba(76, 201, 240, 0.35) 14%, transparent 15%),
+    linear-gradient(135deg, #1a73e8, #0b1f46);
+  background-size: 90px 90px, 100px 100px, 110px 110px, cover;
 }
 
 .card-art.monster {
@@ -139,6 +146,14 @@ body {
   font-family: 'Press Start 2P', monospace;
   font-size: 1.1rem;
   line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.card-body h2 .icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 6px rgba(255, 222, 89, 0.4));
 }
 
 .card-body p {
