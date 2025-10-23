@@ -1,0 +1,215 @@
+:root {
+  --bg-gradient: radial-gradient(circle at top, rgba(79, 55, 139, 0.75), rgba(8, 17, 36, 0.95));
+  --panel: rgba(16, 24, 48, 0.88);
+  --accent: #ffde59;
+  --accent-strong: #ff6f91;
+  --text: #f4f7ff;
+  --muted: rgba(244, 247, 255, 0.7);
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: #0b1530;
+  background-image: var(--bg-gradient), url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"%3E%3Cpath fill="%23444a68" fill-opacity="0.25" d="M0 0h40v40H0zM40 40h40v40H40z"/%3E%3C/svg%3E');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem clamp(1.5rem, 5vw, 4rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.arcade-shell {
+  width: min(1100px, 100%);
+  background: var(--panel);
+  border-radius: 28px;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+  padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1.5rem, 4vw, 3rem) clamp(2.5rem, 5vw, 3.4rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.arcade-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 111, 145, 0.18), rgba(103, 148, 255, 0.12));
+  pointer-events: none;
+}
+
+.hero {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero .tag {
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(2rem, 6vw, 3rem);
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(255, 222, 89, 0.6);
+}
+
+.hero .subtitle {
+  margin: 1rem auto 2.2rem;
+  max-width: 520px;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1rem, 4vw, 2rem);
+  position: relative;
+  z-index: 1;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(8, 12, 26, 0.85);
+  border-radius: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.4);
+  transform: translateY(0);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-12px) scale(1.01);
+  box-shadow: 0 26px 50px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 222, 89, 0.45);
+}
+
+.card-art {
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.card-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(8, 12, 26, 0.9));
+}
+
+.card-art.lego {
+  background-image: url('https://images.unsplash.com/photo-1528892952291-009c663ce843?auto=format&fit=crop&w=600&q=80');
+}
+
+.card-art.monster {
+  background-image: url('https://images.unsplash.com/photo-1605732437780-3859c2fe218d?auto=format&fit=crop&w=600&q=80');
+  background-position: center 20%;
+}
+
+.card-body {
+  padding: 1.6rem 1.8rem 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card-body h2 {
+  margin: 0 0 0.75rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.card-body p {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.cta::after {
+  content: '▶';
+  font-size: 0.8rem;
+}
+
+.footer {
+  margin-top: clamp(2rem, 6vw, 3rem);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+.scanline {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  mix-blend-mode: overlay;
+  animation: scan 6s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 2rem 1rem;
+  }
+
+  .card-art {
+    height: 150px;
+  }
+
+  .card-body {
+    padding: 1.25rem 1.4rem 1.6rem;
+  }
+}

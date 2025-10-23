@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will Monster Smash</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <h1>Will Monster Smash</h1>
+      <p>Fire up the engine, crush junkers, and rack up big smashes.</p>
+    </header>
+
+    <section class="stage">
+      <canvas id="gameCanvas" width="800" height="520" aria-label="Monster truck arena"></canvas>
+
+      <aside class="sidebar">
+        <section class="stats">
+          <h2>Garage Stats</h2>
+          <p><span class="label">Score:</span> <span id="scoreValue">0</span></p>
+          <p><span class="label">Smashes:</span> <span id="smashValue">0</span></p>
+        </section>
+
+        <section class="objectives">
+          <h2>Pit Crew Tips</h2>
+          <ul>
+            <li>W / ↑ : Move up</li>
+            <li>S / ↓ : Move down</li>
+            <li>A / ← : Move left</li>
+            <li>D / → : Move right</li>
+            <li>R : Restart show</li>
+          </ul>
+        </section>
+
+        <section class="status" id="statusPanel">
+          <h2 id="statusTitle">Ready!</h2>
+          <button id="restartButton" type="button">Start New Show</button>
+        </section>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <p>Cut loose in the arena and keep smashing junkers for the crowd.</p>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

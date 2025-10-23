@@ -1,0 +1,206 @@
+:root {
+  --lego-yellow: #f9d01e;
+  --lego-red: #d62828;
+  --lego-blue: #0077b6;
+  --lego-green: #2a9d8f;
+  --lego-gray: #2f2f2f;
+  --lego-light: #f6f9fc;
+  --lego-dark: #1a1a1a;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  background: linear-gradient(160deg, var(--lego-blue) 0%, #4cc9f0 100%);
+  color: var(--lego-light);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.game-shell {
+  width: min(1100px, 100%);
+  background: rgba(0, 0, 0, 0.35);
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  padding: 2rem;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.game-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.game-header p {
+  margin: 0.5rem auto 0;
+  max-width: 600px;
+  font-weight: 400;
+}
+
+.game-stage {
+  display: grid;
+  grid-template-columns: minmax(360px, 1fr) 280px;
+  gap: 2rem;
+}
+
+.canvas-wrapper {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.18), rgba(0, 0, 0, 0.4));
+  border: 6px solid rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: repeating-linear-gradient(
+      0deg,
+      #1f3d7a,
+      #1f3d7a 40px,
+      #1a356c 40px,
+      #1a356c 80px
+    );
+}
+
+.status-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  text-align: center;
+}
+
+.status-overlay.hidden {
+  display: none;
+}
+
+.status-overlay button {
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--lego-yellow), #ffd500);
+  color: var(--lego-dark);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.status-overlay button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.35);
+}
+
+.game-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.game-sidebar section {
+  background: rgba(12, 25, 60, 0.6);
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+.game-sidebar h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.scoreboard .label {
+  color: var(--lego-yellow);
+  font-weight: 600;
+}
+
+.next-piece canvas {
+  width: 100%;
+  height: auto;
+  background: #19304f;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+.instructions ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.instructions li {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--lego-yellow);
+}
+
+.game-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+}
+
+@media (max-width: 960px) {
+  body {
+    padding: 1rem;
+  }
+
+  .game-stage {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .game-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .game-sidebar section {
+    flex: 1 1 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .game-shell {
+    padding: 1.25rem;
+  }
+
+  .game-sidebar {
+    flex-direction: column;
+  }
+}
