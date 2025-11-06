@@ -34,7 +34,8 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet family/family-calendar-combined.ics; then
+          git add family/family-calendar-combined.ics
+          if git diff --staged --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -45,6 +46,5 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add family/family-calendar-combined.ics
           git commit -m "Update combined family calendar [automated]"
           git push
