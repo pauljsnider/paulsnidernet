@@ -1,0 +1,50 @@
+name: Combine Family Calendars
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  push:
+    paths:
+      - 'family/*.ics'
+      - 'scripts/combine-calendars.py'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  combine-calendars:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests icalendar pytz
+
+      - name: Run calendar combining script
+        run: |
+          python scripts/combine-calendars.py
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet family/family-calendar-combined.ics; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add family/family-calendar-combined.ics
+          git commit -m "Update combined family calendar [automated]"
+          git push
