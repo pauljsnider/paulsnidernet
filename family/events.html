@@ -1135,6 +1135,18 @@
                     </div>
                     <div class="calendar-item">
                         <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar9-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-futbol sport-icon"></i>
+                        <span class="calendar-name">Madison Futsal</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar9')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar9-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
                             <input type="checkbox" id="calendar6-enabled" checked onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
@@ -1324,6 +1336,11 @@
                 id: 'calendar8',
                 name: 'Will Indoor Soccer',
                 url: 'https://calendar.playmetrics.com/calendars/c237/t434992/p0/tA6AECF4E/f/calendar.ics'
+            },
+            {
+                id: 'calendar9',
+                name: 'Madison Futsal',
+                url: 'madison-futsal-2025-26.ics'
             }
         ];
 
@@ -1999,7 +2016,11 @@
                 calendarName.includes('will indoor soccer')) {
                 return 'Will';
             }
-            
+
+            if (calendarName.includes('madison futsal')) {
+                return 'Madison';
+            }
+
             // Check for TeamSnap events - look for age/grade indicators
             if (calendarName.includes('teamsnap')) {
                 // Try to identify by looking for specific age groups or events

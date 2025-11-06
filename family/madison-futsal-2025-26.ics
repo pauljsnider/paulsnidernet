@@ -1,0 +1,120 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Snider Family//Madison Futsal 2025-26//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Madison Futsal - Prairie Star
+X-WR-TIMEZONE:America/Chicago
+X-WR-CALDESC:Madison's Futsal Skills Club - Winter 2025-26 Sessions
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20251114T200000
+DTEND;TZID=America/Chicago:20251114T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter1-1@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter I Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20251121T200000
+DTEND;TZID=America/Chicago:20251121T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter1-2@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter I Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20251205T200000
+DTEND;TZID=America/Chicago:20251205T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter1-3@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter I Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20251212T200000
+DTEND;TZID=America/Chicago:20251212T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter1-4@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter I Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20251219T200000
+DTEND;TZID=America/Chicago:20251219T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter1-5@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter I Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20260109T200000
+DTEND;TZID=America/Chicago:20260109T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter2-1@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter II Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20260116T200000
+DTEND;TZID=America/Chicago:20260116T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter2-2@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter II Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20260123T200000
+DTEND;TZID=America/Chicago:20260123T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter2-3@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter II Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20260130T200000
+DTEND;TZID=America/Chicago:20260130T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter2-4@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter II Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20260206T200000
+DTEND;TZID=America/Chicago:20260206T210000
+DTSTAMP:20241105T000000Z
+UID:madison-futsal-winter2-5@sniderfamily
+SUMMARY:Madison - Futsal Skills Club
+DESCRIPTION:Winter II Session - 3rd-5th Grade Futsal
+LOCATION:Prairie Star Elementary School, 3800 W. 143rd St., Leawood, KS 66224
+STATUS:CONFIRMED
+END:VEVENT
+
+END:VCALENDAR
