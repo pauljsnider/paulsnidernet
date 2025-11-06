@@ -1111,6 +1111,18 @@
                     </div>
                     <div class="calendar-item">
                         <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar8-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-futbol sport-icon"></i>
+                        <span class="calendar-name">Will Indoor Soccer</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar8')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar8-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
                             <input type="checkbox" id="calendar3-enabled" checked onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
@@ -1307,6 +1319,11 @@
                 id: 'calendar6',
                 name: 'SignUpGenius Volunteer',
                 url: 'webcal://www.signupgenius.com/index.cfm?go=t.calendar&record=c9bf580e60d87994333380af4072e82b'
+            },
+            {
+                id: 'calendar8',
+                name: 'Will Indoor Soccer',
+                url: 'https://calendar.playmetrics.com/calendars/c237/t434992/p0/tA6AECF4E/f/calendar.ics'
             }
         ];
 
@@ -1978,7 +1995,8 @@
             }
             
             // Check calendar names for additional hints
-            if (calendarName.includes('will soccer') || calendarName.includes('will baseball')) {
+            if (calendarName.includes('will soccer') || calendarName.includes('will baseball') ||
+                calendarName.includes('will indoor soccer')) {
                 return 'Will';
             }
             
