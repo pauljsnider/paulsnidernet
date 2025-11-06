@@ -1619,6 +1619,9 @@
         }
 
         async function loadSingleCalendar(url, calendarName, calendarId) {
+            // Check if this is a relative/local URL (doesn't start with http://, https://, or webcal://)
+            const isLocalFile = !url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('webcal://');
+
             // Convert webcal:// and http:// to https://
             if (url.startsWith('webcal://')) {
                 url = url.replace('webcal://', 'https://');
@@ -1629,38 +1632,55 @@
             let icalData = null;
             let lastError = null;
 
-            // Try each CORS proxy
-            for (let i = 0; i < CORS_PROXIES.length; i++) {
-                const proxy = CORS_PROXIES[i];
+            // For local files, fetch directly without CORS proxy
+            if (isLocalFile) {
                 try {
-                    console.log(`Trying proxy ${i + 1} for ${calendarName}:`, proxy.url);
-                    
-                    const response = await fetch(proxy.url + encodeURIComponent(url));
-                    console.log(`Proxy ${i + 1} response status:`, response.status);
-                    
+                    console.log(`Loading local file for ${calendarName}:`, url);
+                    const response = await fetch(url);
                     if (response.ok) {
-                        let data;
-                        if (proxy.type === 'json') {
-                            data = await response.json();
-                        } else {
-                            data = await response.text();
-                        }
-                        
-                        icalData = proxy.extract(data);
-                        console.log(`Proxy ${i + 1} success! Data length:`, icalData.length);
-                        break;
+                        icalData = await response.text();
+                        console.log(`Local file loaded successfully! Data length:`, icalData.length);
                     } else {
                         throw new Error(`HTTP ${response.status}`);
                     }
                 } catch (error) {
-                    console.log(`Proxy ${i + 1} failed:`, error.message);
+                    console.error(`Failed to load local file:`, error.message);
                     lastError = error;
-                    continue;
+                }
+            } else {
+                // Try each CORS proxy for remote URLs
+                for (let i = 0; i < CORS_PROXIES.length; i++) {
+                    const proxy = CORS_PROXIES[i];
+                    try {
+                        console.log(`Trying proxy ${i + 1} for ${calendarName}:`, proxy.url);
+
+                        const response = await fetch(proxy.url + encodeURIComponent(url));
+                        console.log(`Proxy ${i + 1} response status:`, response.status);
+
+                        if (response.ok) {
+                            let data;
+                            if (proxy.type === 'json') {
+                                data = await response.json();
+                            } else {
+                                data = await response.text();
+                            }
+
+                            icalData = proxy.extract(data);
+                            console.log(`Proxy ${i + 1} success! Data length:`, icalData.length);
+                            break;
+                        } else {
+                            throw new Error(`HTTP ${response.status}`);
+                        }
+                    } catch (error) {
+                        console.log(`Proxy ${i + 1} failed:`, error.message);
+                        lastError = error;
+                        continue;
+                    }
                 }
             }
 
             if (!icalData) {
-                throw new Error(`All CORS proxies failed. Last error: ${lastError?.message || 'Unknown error'}`);
+                throw new Error(`Failed to load calendar. Last error: ${lastError?.message || 'Unknown error'}`);
             }
 
             // Check if data is base64 encoded (starts with data:text/calendar)
