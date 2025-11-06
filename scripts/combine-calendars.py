@@ -25,18 +25,19 @@ CALENDARS = [
         'name': 'TeamSnap Events (Madison + Max)',
         'url': 'http://ical-cdn.teamsnap.com/user_schedule/b5988130-ea96-0139-1e25-4201ac1c001c.ics'
     },
-    {
-        'name': 'Blue Valley School Calendar',
-        'url': 'https://www.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=39&calendar_ids[]=1'
-    },
-    {
-        'name': 'Overland Trail Calendar',
-        'url': 'https://ote.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=23'
-    },
-    {
-        'name': 'St. Michael School Calendar',
-        'url': 'https://stmichaelcp.org/icalendar.ics'
-    },
+    # School calendars - disabled for now, can re-enable later if needed
+    # {
+    #     'name': 'Blue Valley School Calendar',
+    #     'url': 'https://www.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=39&calendar_ids[]=1'
+    # },
+    # {
+    #     'name': 'Overland Trail Calendar',
+    #     'url': 'https://ote.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=23'
+    # },
+    # {
+    #     'name': 'St. Michael School Calendar',
+    #     'url': 'https://stmichaelcp.org/icalendar.ics'
+    # },
     {
         'name': 'SignUpGenius Volunteer',
         'url': 'https://www.signupgenius.com/index.cfm?go=t.calendar&record=c9bf580e60d87994333380af4072e82b'

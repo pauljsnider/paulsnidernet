@@ -2,6 +2,11 @@
 
 A unified family calendar system that aggregates events from multiple sources into a single, easy-to-use interface.
 
+## Quick Links
+
+- **Family Calendar Interface**: [https://paulsnider.net/family/events.html](https://paulsnider.net/family/events.html)
+- **Combined Calendar Feed**: [https://paulsnider.net/family/family-calendar-combined.ics](https://paulsnider.net/family/family-calendar-combined.ics)
+
 ## Overview
 
 Managing three kids' schedules across multiple sports platforms, school calendars, and volunteer commitments was becoming unmanageable. This system consolidates everything into one view that the whole family (including grandparents) can access.
@@ -10,9 +15,10 @@ Managing three kids' schedules across multiple sports platforms, school calendar
 
 ### 📅 Multi-Source Integration
 - **TeamSnap** - OAuth integration for Madison and Max's soccer events
-- **GameChanger** - Web scraping for Will's baseball schedule
-- **Blue Valley Schools** - Public iCal feed integration
+- **GameChanger** - Calendar feeds for Will's soccer and baseball
+- **PlayMetrics** - Will's indoor soccer schedule
 - **SignUpGenius** - Volunteer opportunity calendar
+- **Local .ics files** - Madison's Futsal and other manually-created calendars
 
 ### 🎯 Smart Filtering
 - **By Child** - Filter events for Will, Madison, Max, or all
@@ -29,6 +35,36 @@ Managing three kids' schedules across multiple sports platforms, school calendar
 - No login required - perfect for grandparents to stay updated
 - Real-time event updates across all sources
 
+## Combined Calendar Feed
+
+The system automatically combines all calendar sources into a single .ics feed that updates every 6 hours:
+
+```
+https://paulsnider.net/family/family-calendar-combined.ics
+```
+
+### Current Sources (6 calendars):
+- Will Soccer (GameChanger)
+- Will Baseball (GameChanger)
+- Will Indoor Soccer (PlayMetrics)
+- Madison Futsal (local .ics)
+- TeamSnap Events (Madison + Max)
+- SignUpGenius Volunteer
+
+### How It Works
+- GitHub Action runs every 6 hours automatically
+- Fetches all remote calendars
+- Merges events and removes duplicates
+- Commits updated combined calendar to repository
+- GitHub Pages serves the latest version
+
+## Files
+
+- `events.html` - Main interactive calendar interface
+- `madison-futsal-2025-26.ics` - Madison's Futsal schedule (local)
+- `family-calendar-combined.ics` - Auto-generated combined feed (updated every 6 hours)
+- `README.md` - This documentation
+
 ## Technical Architecture
 
 ### Frontend
@@ -38,63 +74,18 @@ Managing three kids' schedules across multiple sports platforms, school calendar
 
 ### Data Integration
 - **TeamSnap API** - OAuth 2.0 authentication for reliable access
-- **GameChanger Scraping** - Playwright automation for locked-down platform
+- **GameChanger/PlayMetrics** - Direct iCal feed consumption
 - **iCal Parsing** - Custom JavaScript parser for calendar feeds
-- **CORS Proxy** - Uses cors-anywhere.herokuapp.com for cross-origin requests
+- **CORS Proxy** - Uses multiple proxies for cross-origin requests
+
+### Automation
+- **GitHub Actions** - Runs Python script every 6 hours to combine calendars
+- **Python Script** - `scripts/combine-calendars.py` fetches and merges all sources
 
 ### Hosting
-- GitHub Pages static hosting
+- GitHub Pages static hosting at paulsnider.net
 - No server-side processing required
-- Automatic updates via GitHub Actions (for scraping components)
-
-## File Structure
-
-```
-family/
-├── events.html          # Main calendar interface
-└── README.md           # This documentation
-```
-
-## Configuration
-
-The calendar sources are configured in the `CALENDARS` array within `events.html`:
-
-```javascript
-const CALENDARS = [
-    {
-        id: 'calendar1',
-        name: 'Will Soccer',
-        url: 'webcal://example.com/calendar.ics',
-        enabled: true
-    },
-    // ... additional calendars
-];
-```
-
-## Usage
-
-1. **View Events** - Open `events.html` in any web browser
-2. **Filter Content** - Use checkboxes to enable/disable specific calendars
-3. **Change Views** - Toggle between list and calendar grid views
-4. **Export Data** - Generate iCal files for import into personal calendars
-5. **Share** - Send the URL to family members for easy access
-
-## API Integration Details
-
-### TeamSnap OAuth
-- Proper API integration with refresh token handling
-- Reliable access to team schedules and events
-- Automatic categorization by team and player
-
-### GameChanger Scraping
-- Playwright browser automation
-- Scheduled runs to capture updated schedules
-- Converts HTML data to iCal format for consistency
-
-### School Calendar
-- Direct iCal feed consumption
-- Filters for relevant events (holidays, early dismissals, etc.)
-- Automatic updates when district publishes changes
+- Automatic deployment on commit
 
 ## Browser Compatibility
 
