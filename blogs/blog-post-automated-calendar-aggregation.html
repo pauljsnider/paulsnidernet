@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automating Family Calendar Chaos with GitHub Actions - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, MBA</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">November 6, 2024</span>
+            </div>
+            <h1 class="post-title">Automating Family Calendar Chaos with GitHub Actions</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=400&fit=crop" alt="Automation and workflow">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">After building a family calendar system that aggregates events from multiple sports platforms, I realized we needed one more thing: a single calendar feed that automatically stays up-to-date without any manual work.</p>
+
+            <p>The solution? GitHub Actions running a Python script every 6 hours to fetch, merge, and publish 1,200+ family events from 6 different sources into one clean .ics feed.</p>
+
+            <h2>The Challenge</h2>
+            <p>Our family calendar pulls from TeamSnap, GameChanger, PlayMetrics, and SignUpGenius. It works great in the browser, but what if you want all those events in your phone's native calendar app? Or share a single feed with relatives who just want to subscribe and forget about it?</p>
+
+            <p>We needed a unified feed that automatically updates as events change across all platforms.</p>
+
+            <h2>The Solution: GitHub Actions Automation</h2>
+            <p>I built a Python script that runs automatically on GitHub's servers, fetching calendars from all sources and combining them into a single file. The workflow runs every 6 hours and commits the updated calendar back to the repository, where GitHub Pages serves it publicly.</p>
+
+            <h2>How It Works</h2>
+
+            <h3>The Python Script</h3>
+            <p>The script uses the <code>icalendar</code> library to parse and merge calendar feeds:</p>
+            <ul>
+              <li>Fetches 6 calendar sources (TeamSnap, GameChanger, PlayMetrics, SignUpGenius, local files)</li>
+              <li>Parses each .ics file and extracts events</li>
+              <li>Removes duplicates based on event UIDs</li>
+              <li>Combines everything into a single calendar with 1,200+ events</li>
+              <li>Writes the result to <code>family-calendar-combined.ics</code></li>
+            </ul>
+
+            <h3>The GitHub Action</h3>
+            <p>The workflow is triggered three ways:</p>
+            <ul>
+              <li><strong>Schedule</strong> - Runs every 6 hours to pick up calendar changes</li>
+              <li><strong>Push events</strong> - Runs when local .ics files are updated</li>
+              <li><strong>Manual trigger</strong> - Can be run on-demand from the GitHub UI</li>
+            </ul>
+
+            <h2>Technical Implementation</h2>
+            <p>The entire automation stack:</p>
+            <ul>
+              <li><strong>Python 3.11</strong> - Script runtime</li>
+              <li><strong>icalendar library</strong> - iCal parsing and generation</li>
+              <li><strong>GitHub Actions</strong> - Free CI/CD for public repos</li>
+              <li><strong>GitHub Pages</strong> - Static hosting of the combined feed</li>
+            </ul>
+
+            <p>Setting up write permissions was the only tricky part—GitHub Actions needs explicit <code>contents: write</code> permission to commit the updated calendar file back to the repository.</p>
+
+            <h2>The Results</h2>
+            <p>Now anyone can subscribe to our family calendar with a single URL:</p>
+            <p><code>https://paulsnider.net/family/family-calendar-combined.ics</code></p>
+
+            <p>The feed automatically updates every 6 hours with the latest events from all sources. Add it to your calendar app once, and you're done—new events appear automatically as sports schedules change.</p>
+
+            <h2>Lessons Learned</h2>
+            <ul>
+              <li><strong>Free is powerful</strong> - GitHub Actions provides unlimited free runs for public repositories</li>
+              <li><strong>Automation compounds</strong> - Small scripts running regularly save enormous time</li>
+              <li><strong>CI/CD isn't just for code</strong> - Data aggregation workflows benefit from the same automation principles</li>
+              <li><strong>Keep it simple</strong> - A Python script and a cron schedule beat complex infrastructure</li>
+            </ul>
+
+            <h2>The Impact</h2>
+            <p>What was previously a manual export-and-share process is now completely automated. Family members can subscribe to the feed once and never think about it again. When sports schedules update, everyone's calendars update automatically within 6 hours.</p>
+
+            <p>The combination of the interactive web calendar and the automated feed gives us the best of both worlds: rich filtering in the browser, and simple "set it and forget it" subscriptions for phones and desktop calendar apps.</p>
+
+            <p>Subscribe to the combined feed at <a href="../family/family-calendar-combined.ics">our family calendar</a>, or check out the code on <a href="https://github.com/pauljsnider/paulsnidernet/tree/main/scripts" target="_blank">GitHub</a>.</p>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=300&h=200&fit=crop" alt="Family calendar">
+              <div class="related-content">
+                <h4><a href="blog-post-family-calendar-system.html">Taming the Chaos: Building a Family Calendar System for Three Kids</a></h4>
+                <span class="related-date">October 11, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI in Everyday Life">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a></h4>
+                <span class="related-date">January 15, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/madison_q.jpg" alt="Madison and the Junior Current team">
+              <div class="related-content">
+                <h4><a href="blog-post-soccer-website-daughter.html">Building a Soccer Website with My Daughter: A Quick Coding Adventure</a></h4>
+                <span class="related-date">October 18, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/psnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
