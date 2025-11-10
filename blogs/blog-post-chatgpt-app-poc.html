@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a ChatGPT App in an Hour: First Look at OpenAI's Apps Platform - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, MBA</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">November 9, 2024</span>
+            </div>
+            <h1 class="post-title">Building a ChatGPT App in an Hour: First Look at OpenAI's Apps Platform</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=400&fit=crop" alt="AI Development and Technology">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">When OpenAI announced their new Apps platform last week, I had one question: could I actually build something useful with it? I had an hour during a workout to find out.</p>
+
+            <h2>The Experiment</h2>
+            <p>It was early morning in my basement gym. Between sets, I pointed OpenCode at the ChatGPT docs and started prompting with Grok. The goal: integrate my family calendar system—the one that pulls events from TeamSnap, GameChanger, and other platforms—directly into ChatGPT.</p>
+
+            <p>"What events are happening next week?"<br>
+            "Search for birthday events."<br>
+            "Show me soccer games this month."</p>
+
+            <p>Could I build this in an hour while working out? Turns out, yes.</p>
+
+            <h2>How ChatGPT Apps Work</h2>
+            <p>The new Apps platform uses something called the Model Context Protocol (MCP). Think of it like this: you build a server that exposes "tools" ChatGPT can use, and ChatGPT decides when to call them based on the conversation.</p>
+
+            <p>My calendar app provides a <code>calendar_search</code> tool that:</p>
+            <ul>
+              <li>Accepts optional keyword queries and date ranges</li>
+              <li>Fetches live data from my public ICS calendar feed</li>
+              <li>Returns structured event data (date, time, location, description)</li>
+              <li>Renders beautiful event cards in ChatGPT's UI</li>
+            </ul>
+
+            <h2>The Tech Stack</h2>
+            <p>I let OpenCode and Grok handle the heavy lifting:</p>
+            <ul>
+              <li><strong>OpenCode + Grok</strong> - AI-powered development assistant that did most of the code generation</li>
+              <li><strong>Node.js + Express</strong> - MCP server implementation</li>
+              <li><strong>React 18 + TypeScript</strong> - Event card UI components</li>
+              <li><strong>esbuild</strong> - Fast React bundling</li>
+              <li><strong>ngrok</strong> - Local development tunnel (more on this in a moment)</li>
+            </ul>
+
+            <p>The React component is theme-aware, switching automatically between ChatGPT's light and dark modes. It supports both list and grid views, and the calendar data is cached for 5 minutes to avoid hammering the feed.</p>
+
+            <h2>The Security Team Story</h2>
+            <p>Here's where it got interesting. I was testing this from my personal laptop in my basement, running ngrok to expose my local dev server to the internet. Later at work, I got a message from our security team—they'd spotted the ngrok tunnel from my personal laptop.</p>
+
+            <p>This is exactly the kind of thing that should raise flags in an enterprise environment—tunneling tools like ngrok can bypass network security controls and create unmonitored pathways. For a quick POC on a personal project? Totally fine. For production development? Absolutely a concern worth investigating. Good catch by the security team.</p>
+
+            <h2>Building the Calendar Integration</h2>
+            <p>The heart of the app is a straightforward ICS parser. My calendar feed already aggregates 1,200+ events from multiple sources into a single <code>.ics</code> file, so the MCP server just needs to:</p>
+
+            <ol>
+              <li>Fetch the feed (with 5-minute caching)</li>
+              <li>Parse the ICS format into structured events</li>
+              <li>Filter by keyword and date range if provided</li>
+              <li>Return the results to ChatGPT</li>
+            </ol>
+
+            <p>ChatGPT handles the natural language understanding—figuring out when the user wants to search, what keywords to use, and what date range makes sense. My server just provides the data.</p>
+
+            <h2>The React Component</h2>
+            <p>One of the cooler parts of the Apps SDK is that you can send custom HTML/CSS/JavaScript to render inside ChatGPT. I built a React component that displays event cards with:</p>
+
+            <ul>
+              <li>Date and time formatting (with timezone handling)</li>
+              <li>Location display</li>
+              <li>Event descriptions</li>
+              <li>Toggle between list and grid views</li>
+              <li>Fullscreen calendar mode</li>
+            </ul>
+
+            <p>The component uses ChatGPT's <code>window.openai</code> API to communicate back and forth, which handles the theming automatically. Dark mode in ChatGPT? The calendar switches to dark mode. It's seamless.</p>
+
+            <h2>Development Workflow</h2>
+            <p>OpenAI provides an MCP Inspector tool that lets you test your server locally before deploying. It runs at <code>http://localhost:2091/mcp</code> and gives you a playground to call your tools and see the responses.</p>
+
+            <p>The workflow looks like this:</p>
+            <ol>
+              <li>Build the React component with esbuild</li>
+              <li>Run the MCP server locally</li>
+              <li>Test with MCP Inspector</li>
+              <li>Expose with ngrok for ChatGPT testing</li>
+              <li>Register the connector URL in ChatGPT Developer mode</li>
+            </ol>
+
+            <p>Once it's working in dev, deploying to production is straightforward—swap ngrok for a real HTTPS endpoint and you're done.</p>
+
+            <h2>What I Learned</h2>
+
+            <h3>The Good</h3>
+            <ul>
+              <li><strong>Speed</strong> - I went from zero to working prototype in about an hour with OpenCode and Grok</li>
+              <li><strong>AI-assisted development works</strong> - Pointing OpenCode at the docs and letting Grok generate code dramatically accelerated development</li>
+              <li><strong>Natural interactions</strong> - The conversational interface is genuinely better than clicking through calendars</li>
+              <li><strong>Reusable components</strong> - The calendar system I'd already built for the web "just worked" with ChatGPT</li>
+              <li><strong>Developer experience</strong> - The MCP Inspector and documentation made iteration fast</li>
+            </ul>
+
+            <h3>The Tricky Parts</h3>
+            <ul>
+              <li><strong>Local development</strong> - ngrok is great for POCs but raises security flags in enterprise environments</li>
+              <li><strong>HTTPS requirements</strong> - Everything needs to be served over HTTPS, which means more setup for production</li>
+              <li><strong>Limited debugging</strong> - Once the app is running in ChatGPT, visibility into errors is minimal</li>
+            </ul>
+
+            <h2>Should You Build a ChatGPT App?</h2>
+            <p>If you have data or functionality that people query conversationally, absolutely. The barrier to entry is low—if you can build an Express server and a React component, you can build a ChatGPT app.</p>
+
+            <p>The platform is brand new (released November 2024), so the ecosystem is still forming. But the foundation is solid, and OpenAI is clearly betting on this as a distribution channel for AI-powered tools.</p>
+
+            <h2>What's Next</h2>
+            <p>This POC proves the concept works. The next steps would be:</p>
+            <ul>
+              <li>Add write capabilities—create events, set reminders</li>
+              <li>Integrate with more data sources—weather, traffic, restaurant availability</li>
+              <li>Deploy to production HTTPS (no more ngrok)</li>
+              <li>Add authentication for private calendar data</li>
+            </ul>
+
+            <p>For now, it's a working proof-of-concept that shows how quickly you can build on OpenAI's Apps platform. If you're curious about the implementation details, check out the code on <a href="https://github.com/pauljsnider/chatgpt-app-poc" target="_blank">GitHub</a>.</p>
+
+            <h2>Try It Yourself</h2>
+            <p>The Apps SDK is available now in ChatGPT Developer mode. With AI coding assistants like OpenCode and Grok, the barrier to entry is incredibly low. Point them at the docs, describe what you want, and let them generate the scaffolding.</p>
+
+            <p>Start with something small, something you'd find useful, and see where it goes. You might be surprised how quickly you can go from idea to working prototype—maybe even during a morning workout.</p>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=300&h=200&fit=crop" alt="Automation">
+              <div class="related-content">
+                <h4><a href="blog-post-automated-calendar-aggregation.html">Automating Family Calendar Chaos with GitHub Actions</a></h4>
+                <span class="related-date">November 6, 2024</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI in Everyday Life">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a></h4>
+                <span class="related-date">January 15, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=300&h=200&fit=crop" alt="Family calendar">
+              <div class="related-content">
+                <h4><a href="blog-post-family-calendar-system.html">Taming the Chaos: Building a Family Calendar System for Three Kids</a></h4>
+                <span class="related-date">October 11, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/psnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
