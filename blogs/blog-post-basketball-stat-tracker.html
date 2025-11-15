@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Soccer to Hoops: Adapting Our Stat Tracker for Basketball Season - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, MBA</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">November 15, 2024</span>
+            </div>
+            <h1 class="post-title">From Soccer to Hoops: Adapting Our Stat Tracker for Basketball Season</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=400&fit=crop" alt="Youth basketball game">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">Basketball season started. Parents asked: "Can you do the stat tracker thing for hoops too?" Twenty minutes later, we had one.</p>
+
+            <h2>The Soccer Version Worked Great</h2>
+            <p>For Madison's soccer team, I built a simple stat tracker—just an HTML file that parents use on tablets courtside. Track the game, click "Email Summary," paste it into ChatGPT, and boom: engaging match reports that parents actually want to read.</p>
+
+            <p>The workflow is dead simple: stats go in, AI-generated narratives come out. Parents love them. Kids love seeing their highlights written up. It works.</p>
+
+            <h2>Basketball: Same Idea, Different Stats</h2>
+            <p>I already had the soccer tracker working. Basketball just needed:</p>
+            <ul>
+              <li>1, 2, and 3-point buttons instead of just goals</li>
+              <li>Different stats (points, rebounds, assists, steals, turnovers)</li>
+              <li>Quarter tracking (Q1-Q4, OT)</li>
+              <li>K-State Wildcats purple theme instead of Jr Current teal</li>
+            </ul>
+
+            <h2>The 20-Minute Build</h2>
+            <p>Opened Claude Code. Gave it a few prompts:</p>
+            <ul>
+              <li>"Adapt this soccer tracker for basketball stats"</li>
+              <li>"Change the theme to K-State purple"</li>
+              <li>"Add 1/2/3 point buttons and a live scoreboard"</li>
+            </ul>
+
+            <p>Referenced the existing soccer tracker project. Let Claude do its thing. Done.</p>
+
+            <p>Try it yourself: <a href="https://jrkccurrent.com/stat-tracker/hoops.html" target="_blank">jrkccurrent.com/stat-tracker/hoops.html</a></p>
+
+            <h2>The ChatGPT Workflow</h2>
+            <p>Same process as soccer:</p>
+            <ol>
+              <li>Track stats during the game on a tablet</li>
+              <li>Click "Email Summary" after the final buzzer</li>
+              <li>Paste the summary into ChatGPT: "Turn this into a match report"</li>
+              <li>Email the polished report to parents</li>
+            </ol>
+
+            <p>Two minutes from final buzzer to shared report. Parents love it.</p>
+
+            <h2>Why This Works</h2>
+            <p>Reusing code is the whole point. I didn't rebuild from scratch—I just pointed Claude at the working soccer version and said "make this work for basketball."</p>
+
+            <p>The AI does the heavy lifting on both ends: Claude Code handles the code adaptation, ChatGPT handles the match report generation. I just glue the pieces together.</p>
+
+            <p>Simple tools. Quick builds. Meaningful results.</p>
+
+            <p>Check out both trackers on <a href="https://github.com/pauljsnider/jrkccurrent/tree/main/stat-tracker" target="_blank">GitHub</a> if you want to adapt them for your own team.</p>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/madison_q.jpg" alt="Madison and the Junior Current team">
+              <div class="related-content">
+                <h4><a href="blog-post-soccer-website-daughter.html">Building a Soccer Website with My Daughter: A Quick Coding Adventure</a></h4>
+                <span class="related-date">October 18, 2024</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300&h=200&fit=crop" alt="AI Development and Technology">
+              <div class="related-content">
+                <h4><a href="blog-post-chatgpt-app-poc.html">Building a ChatGPT App in an Hour: First Look at OpenAI's Apps Platform</a></h4>
+                <span class="related-date">November 9, 2024</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI in Everyday Life">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a></h4>
+                <span class="related-date">January 15, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/psnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
