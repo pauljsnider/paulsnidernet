@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Building a Game in 15 Minutes with Google Antigravity - Paul Snider</title>
   <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="Building a Game in 15 Minutes with Google Antigravity">
+  <meta property="og:description" content="Will had an idea for a leaf-shooting game. We fired up Google's new Antigravity IDE with its spec-driven workflow and browser automation. Fifteen minutes later, we had a working game. Here's what the agentic IDE experience feels like.">
+  <meta property="og:image" content="https://paulsnider.com/images/leaf_game.jpg">
+  <meta property="og:image:alt" content="Leaf Shooter game built with Google Antigravity">
+  <meta property="og:url" content="https://paulsnider.com/blogs/blog-post-google-antigravity.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Paul Snider">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Building a Game in 15 Minutes with Google Antigravity">
+  <meta name="twitter:description" content="Will had an idea for a leaf-shooting game. We fired up Google's new Antigravity IDE with its spec-driven workflow and browser automation. Fifteen minutes later, we had a working game.">
+  <meta name="twitter:image" content="https://paulsnider.com/images/leaf_game.jpg">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../styles.css">
   <!-- Google tag (gtag.js) -->
@@ -71,12 +87,18 @@
           </div>
 
           <div class="post-content">
-            <p class="lead">Will had an idea: a game where you shoot falling leaves. We fired up Google's new Antigravity IDE, described what we wanted, and fifteen minutes later had <a href="../WillsGames/leaf-shooter/index.html" target="_blank">a working game</a>. This is what spec-driven development with autonomous AI agents feels like.</p>
+            <p class="lead">Will, my 6-year-old, had an idea: a game where you shoot falling leaves. We fired up Google's new Antigravity IDE, described what we wanted, and fifteen minutes later had <a href="../WillsGames/leaf-shooter/index.html" target="_blank">a working game</a>. His 4-year-old brother Max enjoyed playing it too. This is what spec-driven development with autonomous AI agents feels like.</p>
+
+            <div class="post-image-container">
+              <img src="../images/leaf_game.jpg" alt="Leaf Shooter game built with Google Antigravity" class="post-hero-image">
+            </div>
 
             <h2>What Is Google Antigravity?</h2>
-            <p>Google Antigravity is Google's new AI-first integrated development environment that fundamentally changes how you build software. Instead of writing every line of code yourself, you describe what you want and autonomous agents (powered by Gemini 3 Pro) execute the entire task—planning, coding, testing, and verification.</p>
+            <p><a href="https://antigravity.google/" target="_blank">Google Antigravity</a> is Google's new AI-first integrated development environment that really helps streamline how you build software. Instead of writing every line of code yourself, you describe what you want, and autonomous agents (powered by Gemini 3 Pro) execute the entire task: planning, coding, testing, and verification.</p>
 
-            <p>The key difference from traditional AI coding assistants: Antigravity agents have synchronized control over your editor, terminal, and browser. You're not just getting code suggestions—you're delegating complete, end-to-end tasks.</p>
+            <p>What sets Antigravity apart is its synchronized control across the editor, terminal, and browser. Instead of lightweight suggestions, it can take on full end-to-end tasks.</p>
+
+            <p>Antigravity sits in the same category as <a href="https://cursor.sh/" target="_blank">Cursor</a>, <a href="https://codeium.com/windsurf" target="_blank">Windsurf</a>, and <a href="https://kiro.dev/" target="_blank">Kiro</a>, blending Kiro's spec-driven workflow with Windsurf's cascade workflow while adding mandatory browser-level validation that feels like using Playwright MCP. With this, Google now offers a full stack of tools to match what AWS provides: a VSCode plug-in, a CLI, and its own IDE.</p>
 
             <h2>The Spec-Driven Workflow</h2>
             <p>Our Leaf Shooter game started with a simple conversation. Will described what he wanted: leaves falling from the top, a character that moves left and right, and the ability to shoot them. That was it.</p>
@@ -157,7 +179,7 @@
           <h3>Related Articles</h3>
           <div class="related-posts-grid">
             <article class="related-post">
-              <img src="../images/will_game1.jpg" alt="Paul and Will testing Lego Master on a laptop">
+              <img src="../images/leaf_game.jpg" alt="Paul and Will testing Lego Master on a laptop">
               <div class="related-content">
                 <h4><a href="blog-post-vibe-coding-first-grader.html">Vibe Coding with My First Grader</a></h4>
                 <span class="related-date">October 20, 2025</span>
