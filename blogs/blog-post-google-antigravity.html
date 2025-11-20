@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building a Game in 15 Minutes with Google Antigravity - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, MBA</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">November 19, 2025</span>
+            </div>
+            <h1 class="post-title">Building a Game in 15 Minutes with Google Antigravity</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive &amp; MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-content">
+            <p class="lead">Will had an idea: a game where you shoot falling leaves. We fired up Google's new Antigravity IDE, described what we wanted, and fifteen minutes later had <a href="../WillsGames/leaf-shooter/index.html" target="_blank">a working game</a>. This is what spec-driven development with autonomous AI agents feels like.</p>
+
+            <h2>What Is Google Antigravity?</h2>
+            <p>Google Antigravity is Google's new AI-first integrated development environment that fundamentally changes how you build software. Instead of writing every line of code yourself, you describe what you want and autonomous agents (powered by Gemini 3 Pro) execute the entire task—planning, coding, testing, and verification.</p>
+
+            <p>The key difference from traditional AI coding assistants: Antigravity agents have synchronized control over your editor, terminal, and browser. You're not just getting code suggestions—you're delegating complete, end-to-end tasks.</p>
+
+            <h2>The Spec-Driven Workflow</h2>
+            <p>Our Leaf Shooter game started with a simple conversation. Will described what he wanted: leaves falling from the top, a character that moves left and right, and the ability to shoot them. That was it.</p>
+
+            <p>Here's how Antigravity approached it:</p>
+
+            <ol>
+              <li><strong>Planning Phase:</strong> The agent analyzed the requirements and created a task list with specific implementation steps</li>
+              <li><strong>Autonomous Coding:</strong> It wrote the HTML5 canvas game, implemented the physics, added controls, and styled everything</li>
+              <li><strong>Browser Verification:</strong> The agent launched a browser, ran the game, and verified it worked as specified</li>
+              <li><strong>Artifacts Generation:</strong> Instead of scrolling through logs, we got a clean report with screenshots, code diffs, and a working demo</li>
+            </ol>
+
+            <blockquote>
+              "The agent doesn't just code—it verifies. That's the game changer." — My reaction after the first successful build
+            </blockquote>
+
+            <h2>Artifacts: Trust Through Transparency</h2>
+            <p>The most impressive part wasn't the speed—it was the <strong>Artifacts</strong> system. Rather than dumping raw activity logs, Antigravity generates digestible documentation as it works:</p>
+
+            <ul>
+              <li><strong>Task Lists:</strong> Clear execution plans showing what the agent is doing and why</li>
+              <li><strong>Code Changes:</strong> Clean diffs highlighting exactly what changed</li>
+              <li><strong>Screenshots:</strong> Visual proof that features work as intended</li>
+              <li><strong>Browser Recordings:</strong> Video evidence of the agent testing the application</li>
+            </ul>
+
+            <p>You can provide feedback directly on Artifacts—like commenting on a Google Doc—which lets you redirect the agent's work without stopping the entire process. We used this to adjust the leaf colors and increase the game difficulty mid-build.</p>
+
+            <h2>Two Work Views: Editor and Manager</h2>
+            <p>Antigravity offers two distinct interfaces depending on how you want to work:</p>
+
+            <h3>Editor View</h3>
+            <p>A familiar IDE interface built on VS Code with an AI agent in the side panel. This felt like pair programming with an extremely capable partner. We used this view for the Leaf Shooter game since we wanted to stay hands-on and see the code as it developed.</p>
+
+            <h3>Manager View</h3>
+            <p>A "mission control" dashboard for orchestrating multiple agents working in parallel across different workspaces. While we didn't need it for our 15-minute game, I can see this being invaluable for complex projects where you need to delegate multiple independent tasks simultaneously.</p>
+
+            <h2>The 15-Minute Build</h2>
+            <p>Here's the actual timeline:</p>
+
+            <ul>
+              <li><strong>Minute 0-2:</strong> Will described the game concept, I refined it into a clear spec</li>
+              <li><strong>Minute 2-8:</strong> Antigravity agent built the core game mechanics, canvas rendering, and controls</li>
+              <li><strong>Minute 8-12:</strong> Agent tested in browser, generated Artifacts, we reviewed and requested tweaks</li>
+              <li><strong>Minute 12-15:</strong> Final adjustments to colors and difficulty, final browser verification</li>
+            </ul>
+
+            <p>What normally would have been an hour or two of back-and-forth coding became a focused 15-minute session. The agent handled the boilerplate, the browser testing, and even caught a few edge cases we hadn't considered.</p>
+
+            <h2>What This Means for Development</h2>
+            <p>This wasn't just faster development—it was a different paradigm. You shift from being the person typing every line to being the architect who delegates, supervises, and verifies.</p>
+
+            <p>The workflow felt natural because Antigravity agents don't try to be invisible. They show their work through Artifacts, accept feedback inline, and execute tasks with real autonomy. It's collaborative in a way that traditional autocomplete tools never achieve.</p>
+
+            <h2>Try It Yourself</h2>
+            <p>Google Antigravity is currently available in free public preview for Windows, macOS, and Linux. If you're building projects with your kids (like we do), this is an incredibly accessible way to go from idea to working software in minutes.</p>
+
+            <ul>
+              <li><a href="../WillsGames/leaf-shooter/index.html" target="_blank">Play the Leaf Shooter game we built</a></li>
+              <li><a href="https://github.com/pauljsnider/paulsnidernet/tree/main/WillsGames/leaf-shooter" target="_blank">View the source code on GitHub</a></li>
+            </ul>
+
+            <p>The entire experience reinforced something I've been seeing across AI development tools: the future isn't about AI replacing developers. It's about developers orchestrating AI agents to execute well-defined tasks at unprecedented speed.</p>
+
+            <div class="post-tags">
+              <span class="tag">Google Antigravity</span>
+              <span class="tag">AI Development</span>
+              <span class="tag">Agentic IDE</span>
+              <span class="tag">Gemini 3 Pro</span>
+              <span class="tag">Family Coding</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/will_game1.jpg" alt="Paul and Will testing Lego Master on a laptop">
+              <div class="related-content">
+                <h4><a href="blog-post-vibe-coding-first-grader.html">Vibe Coding with My First Grader</a></h4>
+                <span class="related-date">October 20, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=300&h=200&fit=crop" alt="AI Development and Technology">
+              <div class="related-content">
+                <h4><a href="blog-post-chatgpt-app-poc.html">Building a ChatGPT App in an Hour: First Look at OpenAI's Apps Platform</a></h4>
+                <span class="related-date">November 9, 2024</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Paul Snider. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
