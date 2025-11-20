@@ -136,6 +136,13 @@ body {
   background-position: center 20%;
 }
 
+.card-art.leaf {
+  background: linear-gradient(135deg, #ef233c, #2b2d42);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 186, 8, 0.2) 0, transparent 20%),
+    radial-gradient(circle at 80% 80%, rgba(217, 4, 41, 0.2) 0, transparent 20%);
+}
+
 .card-body {
   padding: 1.6rem 1.8rem 1.8rem;
   position: relative;
@@ -193,13 +200,11 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(
-      0deg,
+  background: repeating-linear-gradient(0deg,
       rgba(255, 255, 255, 0.025) 0px,
       rgba(255, 255, 255, 0.025) 1px,
       transparent 1px,
-      transparent 3px
-    );
+      transparent 3px);
   mix-blend-mode: overlay;
   animation: scan 6s linear infinite;
 }
@@ -208,9 +213,11 @@ body {
   0% {
     opacity: 0.25;
   }
+
   50% {
     opacity: 0.45;
   }
+
   100% {
     opacity: 0.25;
   }

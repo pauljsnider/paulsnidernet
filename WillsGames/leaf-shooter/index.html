@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaf Shooter</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <h1>Leaf Shooter</h1>
+      <p>Winter is coming. Clear the dead leaves before the snow falls!</p>
+    </header>
+
+    <section class="stage">
+      <div class="game-container">
+        <canvas id="gameCanvas" width="800" height="520" aria-label="Tree with leaves"></canvas>
+        <div class="crosshair" id="crosshair"></div>
+      </div>
+      
+      <div class="touch-controls" id="touchControls">
+        <div class="pad-grid">
+          <div class="pad-row">
+            <button class="control-btn" data-action="move-up" aria-label="Aim up">▲</button>
+          </div>
+          <div class="pad-row">
+            <button class="control-btn" data-action="move-left" aria-label="Aim left">◀</button>
+            <button class="control-btn" data-action="move-down" aria-label="Aim down">▼</button>
+            <button class="control-btn" data-action="move-right" aria-label="Aim right">▶</button>
+          </div>
+          <div class="pad-row">
+            <button class="control-btn action" data-action="shoot" aria-label="Shoot">SHOOT</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <section class="stats">
+          <h2>Season Stats</h2>
+          <p><span class="label">Score:</span> <span id="scoreValue">0</span></p>
+          <p><span class="label">Leaves Left:</span> <span id="leavesValue">0</span></p>
+        </section>
+
+        <section class="objectives">
+          <h2>Ranger Tips</h2>
+          <ul>
+            <li>W / ↑ : Aim up</li>
+            <li>S / ↓ : Aim down</li>
+            <li>A / ← : Aim left</li>
+            <li>D / → : Aim right</li>
+            <li>Space / Click : Shoot</li>
+            <li>R : Restart</li>
+          </ul>
+        </section>
+
+        <section class="status" id="statusPanel">
+          <h2 id="statusTitle">Ready!</h2>
+          <button id="restartButton" type="button">New Season</button>
+        </section>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <p>Aim true and keep the yard clean.</p>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
