@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stitch Racing</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main class="game-shell">
+        <header class="game-header">
+            <h1>Stitch Racing</h1>
+            <p>Intergalactic Speed Circuit</p>
+        </header>
+
+        <div id="gameContainer" class="game-container">
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+            <!-- UI Overlays -->
+            <div id="menuOverlay" class="overlay">
+                <h2>Select Mode</h2>
+                <button class="btn" id="btn1P">1 Player</button>
+                <button class="btn" id="btn2P">2 Players</button>
+            </div>
+
+            <div id="charSelectOverlay" class="overlay hidden">
+                <h2>Select Racer</h2>
+                <div class="char-grid">
+                    <div class="char-card selected" data-char="stitch">
+                        <img src="assets/stitch-car.svg" alt="Stitch">
+                        <p>Stitch</p>
+                    </div>
+                    <div class="char-card" data-char="red">
+                        <img src="assets/red-car.svg" alt="Red Rival">
+                        <p>Red Rival</p>
+                    </div>
+                </div>
+                <button class="btn" id="btnStartRace">Start Race</button>
+            </div>
+
+            <div id="resultsOverlay" class="overlay hidden">
+                <h2 id="winnerText">Winner!</h2>
+                <button class="btn" id="btnRestart">Race Again</button>
+                <button class="btn" id="btnMenu">Main Menu</button>
+            </div>
+
+            <!-- Mobile Controls -->
+            <div id="mobileControls" class="mobile-controls hidden">
+                <div class="d-pad">
+                    <button class="d-btn up" data-key="ArrowUp">▲</button>
+                    <button class="d-btn left" data-key="ArrowLeft">◀</button>
+                    <button class="d-btn right" data-key="ArrowRight">▶</button>
+                    <button class="d-btn down" data-key="ArrowDown">▼</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="game-footer">
+            <div class="controls-info">
+                <div class="p1-controls">
+                    <h3>P1 Controls</h3>
+                    <p>Arrows to Drive</p>
+                </div>
+                <div class="p2-controls">
+                    <h3>P2 Controls</h3>
+                    <p>WASD to Drive</p>
+                </div>
+            </div>
+            <a href="../index.html" class="back-link">← Back to Arcade</a>
+        </footer>
+    </main>
+
+    <script src="game.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body -->
+  <path d="M12 20C12 10 52 10 52 20V44C52 54 12 54 12 44V20Z" fill="#3B82F6"/>
+  <path d="M16 20C16 14 48 14 48 20V40C48 46 16 46 16 40V20Z" fill="#1D4ED8"/>
+  
+  <!-- Cockpit/Windshield -->
+  <path d="M24 24H40V36H24V24Z" fill="#1E293B"/>
+  <path d="M26 26H38V30H26V26Z" fill="#60A5FA"/>
+  
+  <!-- Ears (Stitch style) -->
+  <path d="M8 16L2 4L14 12" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M56 16L62 4L50 12" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Wheels -->
+  <rect x="8" y="12" width="8" height="12" rx="2" fill="#0F172A"/>
+  <rect x="48" y="12" width="8" height="12" rx="2" fill="#0F172A"/>
+  <rect x="8" y="40" width="8" height="12" rx="2" fill="#0F172A"/>
+  <rect x="48" y="40" width="8" height="12" rx="2" fill="#0F172A"/>
+  
+  <!-- Details -->
+  <circle cx="32" cy="50" r="4" fill="#60A5FA"/>
+</svg>
