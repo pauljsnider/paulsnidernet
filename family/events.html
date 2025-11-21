@@ -1127,7 +1127,7 @@
                             <span class="checkmark"></span>
                         </label>
                         <i class="fas fa-users sport-icon"></i>
-                        <span class="calendar-name">TeamSnap Events (Madison + Max)</span>
+                        <span class="calendar-name">TeamSnap Events (Madison + Max + Will)</span>
                         <button class="copy-btn" onclick="copyCalendarLink('calendar3')" title="Copy calendar link">
                             <i class="fas fa-copy"></i>
                         </button>
@@ -1309,7 +1309,7 @@
             },
             {
                 id: 'calendar3',
-                name: 'TeamSnap Events (Madison + Max)',
+                name: 'TeamSnap Events (Madison + Max + Will)',
                 url: 'http://ical-cdn.teamsnap.com/user_schedule/b5988130-ea96-0139-1e25-4201ac1c001c.ics'
             },
             {
@@ -1869,7 +1869,7 @@
             const totalEvents = events.length;
             const soccerEvents = events.filter(e => e.calendarName === 'Will Soccer').length;
             const baseballEvents = events.filter(e => e.calendarName === 'Will Baseball').length;
-            const teamSnapEvents = events.filter(e => e.calendarName === 'TeamSnap Events (Madison + Max)').length;
+            const teamSnapEvents = events.filter(e => e.calendarName === 'TeamSnap Events (Madison + Max + Will)').length;
             const schoolEvents = events.filter(e => e.calendarName === 'Blue Valley School Calendar').length;
             const trailEvents = events.filter(e => e.calendarName === 'Overland Trail Calendar').length;
             
@@ -1924,7 +1924,7 @@
                 } else if (event.calendarName === 'Will Baseball') {
                     badgeClass += ' baseball';
                     badgeText = 'BASEBALL';
-                } else if (event.calendarName === 'TeamSnap Events (Madison + Max)') {
+                } else if (event.calendarName === 'TeamSnap Events (Madison + Max + Will)') {
                     badgeClass += ' teamsnap';
                     badgeText = 'TEAMSNAP';
                 } else if (event.calendarName === 'Blue Valley School Calendar') {
@@ -2020,6 +2020,9 @@
             
             // Check for team identifiers
             if (allText.includes('mustangs') || allText.includes('ote cougars') || allText.includes('first grade boys')) {
+                return 'Will';
+            } else if ((allText.includes('1st grade') || allText.includes('first grade')) &&
+                      (allText.includes('bball') || allText.includes('basketball'))) {
                 return 'Will';
             } else if (allText.includes('4th grade girls')) {
                 return 'Madison';
@@ -2161,7 +2164,7 @@
                 const shortNames = enabledCalendars.map(name => {
                     if (name === 'Will Soccer') return 'Soccer';
                     if (name === 'Will Baseball') return 'Baseball';
-                    if (name === 'TeamSnap Events (Madison + Max)') return 'TeamSnap';
+                    if (name === 'TeamSnap Events (Madison + Max + Will)') return 'TeamSnap';
                     if (name === 'Blue Valley School Calendar') return 'School';
                     if (name === 'Overland Trail Calendar') return 'Overland Trail';
                     return name;

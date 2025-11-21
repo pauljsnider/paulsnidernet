@@ -22,7 +22,7 @@ CALENDARS = [
         'url': 'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=628804f9-1e56-439b-b8f6-af42fb098e41&token=3f19b930ec1be351e60daf351471939c971ad0ed8e3afeef0df61df083464de3'
     },
     {
-        'name': 'TeamSnap Events (Madison + Max)',
+        'name': 'TeamSnap Events (Madison + Max + Will)',
         'url': 'http://ical-cdn.teamsnap.com/user_schedule/b5988130-ea96-0139-1e25-4201ac1c001c.ics'
     },
     # School calendars - disabled for now, can re-enable later if needed
