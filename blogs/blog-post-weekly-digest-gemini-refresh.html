@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keeping the Weekly School Digest Alive with Gemini - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, MBA</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">February 6, 2026</span>
+            </div>
+            <h1 class="post-title">Keeping the Weekly School Digest Alive with Gemini</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=400&fit=crop" alt="Laptop with coffee on a desk">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">ChatGPT lost its Google Drive connector right as the weekly school digest was humming along. Rather than stitch together workarounds, I pulled the AI step into Google Apps Script, dropped in a Gemini API key, and kept the digest flowing. Total time: about 45 minutes.</p>
+
+            <h2>What changed from the last post</h2>
+            <p>In <a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a>, I leaned on ChatGPT to summarize the calendar and newsletter scrape. When Drive access disappeared, the schedule stopped. The new approach keeps everything inside Google: the scrape, the summarization, and the final doc creation in Drive. No external callbacks to manage.</p>
+
+            <h2>The 45-minute fix</h2>
+            <ul>
+              <li>Removed the ChatGPT schedule and external call.</li>
+              <li>Created a script property for the Gemini API key so nothing lives in code.</li>
+              <li>Used native UrlFetchApp to call Gemini for summaries.</li>
+              <li>Left the existing parsers intact—just swapped the model call and kept the Drive write step.</li>
+            </ul>
+
+            <h2>Gemini in Apps Script (tiny example)</h2>
+            <pre><code class="language-javascript">const key = PropertiesService.getScriptProperties().getProperty('GEMINI_API_KEY');
+const prompt = buildDigestPrompt(digestedText); // existing digest text
+
+const response = UrlFetchApp.fetch(
+  'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + key,
+  {
+    method: 'post',
+    contentType: 'application/json',
+    payload: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }]}]
+    })
+  }
+);
+
+const summary = JSON.parse(response.getContentText())
+  ?.candidates?.[0]?.content?.parts?.[0]?.text || '';</code></pre>
+
+            <p>With that in place, the weekly trigger runs, Gemini writes the summary, and the digest lands in Google Drive without leaving the Google ecosystem.</p>
+
+            <h2>Setup in short</h2>
+            <ol>
+              <li>Add the Gemini API key to Script Properties.</li>
+              <li>Swap the old ChatGPT call for the UrlFetchApp snippet above.</li>
+              <li>Keep the existing Drive write and weekly trigger. Done.</li>
+            </ol>
+
+            <p>The updated code lives here: <a href="https://github.com/pauljsnider/weekly-school-digest-automation" target="_blank" rel="noopener">weekly-school-digest-automation</a>.</p>
+
+            <blockquote>
+              The best part: once everything stayed inside Google, the digest stopped breaking when connectors moved around.
+            </blockquote>
+
+            <h2>Why keep it all in Google</h2>
+            <p>Drive permissions, triggers, and API calls are all first-party now. No more waiting on external connectors to catch up, and no lost digests when tokens expire. It's simple, reliable, and still easy to tweak.</p>
+
+            <h2>Setup links and quick steps</h2>
+            <ol>
+              <li>Open <a href="https://script.google.com/" target="_blank" rel="noopener">Google Apps Script</a> and create a new project.</li>
+              <li>Paste in the code, set a weekly trigger, and save.</li>
+              <li>In <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>, enable the Gemini API and create an API key.</li>
+              <li>Back in Apps Script, add the key in Script Properties as <code>GEMINI_API_KEY</code>.</li>
+              <li>Run once to authorize; the weekly digest will then run on schedule.</li>
+            </ol>
+
+            <div class="post-tags">
+              <span class="tag">Google Apps Script</span>
+              <span class="tag">Gemini</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Family Tech</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI in Everyday Life">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a></h4>
+                <span class="related-date">January 15, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=300&h=200&fit=crop" alt="Automation and workflow">
+              <div class="related-content">
+                <h4><a href="blog-post-automated-calendar-aggregation.html">Automating Family Calendar Chaos with GitHub Actions</a></h4>
+                <span class="related-date">November 6, 2024</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/madison_q.jpg" alt="Madison and the Junior Current team">
+              <div class="related-content">
+                <h4><a href="blog-post-soccer-website-daughter.html">Building a Soccer Website with My Daughter</a></h4>
+                <span class="related-date">October 18, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
