@@ -71,7 +71,7 @@
           </div>
 
           <div class="post-featured-image">
-            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop" alt="Tech workspace with code on screen">
+            <img src="../img/allplays_beta.jpeg" alt="AllPlays basketball tracker beta interface">
           </div>
 
           <div class="post-content">
@@ -80,21 +80,27 @@
             <h2>The Task</h2>
             <p>I had a static HTML page for tracking my daughter's 4th-grade basketball games and asked GPT-5.2 to connect it to Firebase. The page was part of <a href="https://allplays.ai" target="_blank" rel="noopener">AllPlays</a>, a static HTML + JavaScript sports team management and stat tracking application I've been building.</p>
 
+            <p>The beta mock was an in-memory prototype with no backend. I needed it wired to the same Firebase patterns used by the existing <code>track.html</code> page: authentication, Firestore reads/writes, and the same data schema for events and aggregated stats.</p>
+
             <h2>The Experience</h2>
             <p>GPT-5.2 asked a few clarifying questions and, with minimal back and forth, it delivered a working integration. The workflow felt natural: it understood the existing codebase structure, asked about authentication patterns, and produced code that matched the conventions already in place.</p>
 
             <h2>Initial Concerns</h2>
             <p>I was initially concerned about performance. The Codex plugin in VS Code can sometimes feel sluggish on larger tasks, and I wasn't sure how GPT-5.2 would handle the context of an existing Firebase-backed application with multiple HTML pages and shared JavaScript modules.</p>
 
-            <h2>The Result</h2>
-            <p>The end result was impressive. The integration covered:</p>
+            <h2>What GPT-5.2 Built</h2>
+            <p>The integration followed the same patterns as the existing tracker:</p>
             <ul>
-              <li>Auth and bootstrap mirroring existing patterns</li>
-              <li>Stat config loaded from Firestore</li>
-              <li>In-memory tracking with batch write on finish</li>
-              <li>Events, aggregated stats, and game document updates</li>
-              <li>Email recap and AI summary generation</li>
+              <li><strong>Auth + bootstrap</strong>: <code>checkAuth()</code> redirect to login, read <code>teamId</code>/<code>gameId</code> from URL hash, load team/game/players in parallel</li>
+              <li><strong>Dynamic stat columns</strong>: Read from <code>statTrackerConfigId</code> in Firestore, fall back to default basketball columns (<code>PTS</code>, <code>REB</code>, <code>AST</code>, <code>STL</code>, <code>TO</code>)</li>
+              <li><strong>In-memory tracking</strong>: All stats stay local until the user hits finish, avoiding noisy realtime writes</li>
+              <li><strong>Batch write on finish</strong>: Events to <code>teams/{teamId}/games/{gameId}/events</code>, aggregated stats per player, game document update with scores and status</li>
+              <li><strong>AI summary + email</strong>: Lazy-load Firebase AI for Gemini-powered match summaries, generate mailto draft for email recaps</li>
             </ul>
+
+            <h2>The Safety Pattern</h2>
+            <p>One detail I appreciated: GPT-5.2 replicated the existing "clear prior data" safety check. On first Start, if Firestore already has events/stats from a previous session, it prompts the user to clear before overwriting. Small thing, but it shows the model was paying attention to the existing code conventions.</p>
+
             <p>The basketball tracker is now live at <a href="https://allplays.ai" target="_blank" rel="noopener">allplays.ai</a>, and you can see the code and documentation in the <a href="https://github.com/pauljsnider/allplays" target="_blank" rel="noopener">GitHub repo</a>.</p>
 
             <blockquote>
@@ -102,7 +108,7 @@
             </blockquote>
 
             <h2>Takeaway</h2>
-            <p>This was a quick test, not a deep evaluation. But for a straightforward task like wiring a static page to Firebase, GPT-5.2 with Codex handled it well. Worth keeping an eye on as the model matures.</p>
+            <p>This was a quick test, not a deep evaluation. But for a task like porting a beta mock to production Firebase with existing conventions to follow, GPT-5.2 with Codex handled it well. Worth keeping an eye on as the model matures.</p>
 
             <div class="post-tags">
               <span class="tag">GPT-5.2</span>
