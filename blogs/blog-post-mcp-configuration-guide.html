@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">December 21, 2025</span>
+            </div>
+            <h1 class="post-title">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="../images/mcp-blog.png" alt="MCP Configuration Guide - Docker Desktop, Atlassian, Memory, AI-Sessions, Playwright">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">A friend asked me about MCP setup the other day. "Where do the config files live? How do I get Docker's MCP thing working?" I've answered these questions enough times that it made sense to write it all down. Here's the guide I wish I had when I started connecting my AI tools to everything else.</p>
+
+            <h2>MCP Configuration Locations</h2>
+            <p>Where your AI tools store MCP server configurations differs by tool. Here's where to find and edit them.</p>
+
+            <h3>Claude Code</h3>
+            <p><strong>Location:</strong> <code>~/.claude/mcp.json</code></p>
+
+            <pre><code>{
+  "mcpServers": {
+    "server-name": {
+      "command": "npx",
+      "args": ["package-name"],
+      "env": {}
+    }
+  }
+}</code></pre>
+
+            <h3>OpenAI Codex CLI</h3>
+            <p><strong>Location:</strong> <code>~/.codex/config.toml</code></p>
+
+            <pre><code>[mcp_servers."server-name"]
+command = "npx"
+args = ["package-name"]
+
+[mcp_servers."server-name".env]
+MY_VAR = "value"</code></pre>
+
+            <p><strong>Key difference:</strong> Codex uses TOML with <code>mcp_servers</code> (underscore, not hyphen). Claude Code uses JSON with <code>mcpServers</code> (camelCase). Getting the syntax wrong means your servers silently won't load.</p>
+
+            <p>For more details, see the <a href="https://developers.openai.com/codex/mcp/" target="_blank">Codex MCP documentation</a> and <a href="https://developers.openai.com/codex/local-config/" target="_blank">Codex local configuration guide</a>.</p>
+
+            <h2>Docker Desktop MCP Toolkit</h2>
+            <p>Docker's MCP Toolkit simplifies running MCP servers in secure containers with one-click setup from Docker Desktop.</p>
+
+            <h3>The Gateway Configuration</h3>
+            <p>Instead of configuring each MCP server individually, Docker provides a unified gateway that proxies all your MCP servers through a single connection.</p>
+
+            <p><strong>Claude Code</strong> (<code>~/.claude/mcp.json</code>):</p>
+            <pre><code>{
+  "mcpServers": {
+    "docker-gateway": {
+      "command": "docker",
+      "args": ["mcp", "gateway", "run"]
+    }
+  }
+}</code></pre>
+
+            <p><strong>Codex CLI</strong> (<code>~/.codex/config.toml</code>):</p>
+            <pre><code>[mcp_servers."docker-gateway"]
+command = "docker"
+args = ["mcp", "gateway", "run"]</code></pre>
+
+            <h3>Using the MCP Catalog</h3>
+            <ol>
+              <li>Open Docker Desktop and click "MCP Toolkit" in the sidebar</li>
+              <li>Browse 100+ verified MCP servers from partners like Stripe, Grafana, GitHub, and Neo4j</li>
+              <li>One-click enable any server you need</li>
+              <li>Docker handles containers, OAuth, and security automatically</li>
+              <li>Verify with <code>claude mcp list</code> or <code>codex mcp list</code></li>
+            </ol>
+
+            <p><strong>Why Docker?</strong> Every MCP server runs sandboxed (1 CPU, 2GB RAM, no host filesystem access by default). Built-in OAuth management means you authenticate once through Docker Hub. All images are digitally signed with SBOMs for transparency.</p>
+
+            <p>For full documentation, see <a href="https://docs.docker.com/ai/mcp-catalog-and-toolkit/" target="_blank">Docker MCP Catalog and Toolkit</a> and their <a href="https://docs.docker.com/ai/mcp-catalog-and-toolkit/get-started/" target="_blank">getting started guide</a>.</p>
+
+            <h2>Atlassian MCP: Jira and Confluence Integration</h2>
+            <p>The Atlassian MCP server connects your AI tools directly to Jira and Confluence. Read issues, search documentation, update tickets, manage sprints&mdash;all from your coding session without context switching.</p>
+
+            <p>This is a hosted/remote MCP server, so there's no local installation required. OAuth handles authentication through your browser.</p>
+
+            <p><strong>Claude Code:</strong></p>
+            <pre><code>{
+  "mcpServers": {
+    "atlassian": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.atlassian.com/v1/sse"]
+    }
+  }
+}</code></pre>
+
+            <p><strong>Codex CLI:</strong></p>
+            <pre><code>[features]
+rmcp_client = true
+
+[mcp_servers."atlassian"]
+url = "https://mcp.atlassian.com/v1/sse"</code></pre>
+
+            <p>First connection triggers an OAuth flow in your browser. All permissions match your existing Atlassian account access.</p>
+
+            <p><strong>GitHub:</strong> <a href="https://github.com/atlassian/atlassian-mcp-server" target="_blank">atlassian/atlassian-mcp-server</a></p>
+
+            <h2>Memory MCP: Persistent Knowledge Graph</h2>
+            <p>The Memory MCP server gives your AI assistant persistent memory across sessions. It stores entities, relationships, and observations in a local knowledge graph. No more re-explaining your project architecture or team conventions every time you start a new session.</p>
+
+            <p><strong>Claude Code:</strong></p>
+            <pre><code>{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_FILE_PATH": "~/.ai-memory/memory.jsonl"
+      }
+    }
+  }
+}</code></pre>
+
+            <p><strong>Codex CLI:</strong></p>
+            <pre><code>[mcp_servers."memory"]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-memory"]
+
+[mcp_servers."memory".env]
+MEMORY_FILE_PATH = "~/.ai-memory/memory.jsonl"</code></pre>
+
+            <p><strong>Pro tip:</strong> Use a shared <code>MEMORY_FILE_PATH</code> across both tools so memory persists whether you're in Claude Code or Codex.</p>
+
+            <p><strong>GitHub:</strong> <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" target="_blank">modelcontextprotocol/servers/src/memory</a></p>
+
+            <h2>AI-Sessions MCP: Cross-Tool Handoffs</h2>
+            <p>This one solves a real problem: what happens when you hit token limits in one tool and need to continue in another? Or when <code>--resume</code> can't find the session you're looking for?</p>
+
+            <p>AI-Sessions MCP indexes your local sessions from Claude Code, OpenAI Codex, Gemini CLI, and opencode. Search across all of them, or hand off a conversation from one tool to another.</p>
+
+            <p><strong>Claude Code:</strong></p>
+            <pre><code>{
+  "mcpServers": {
+    "ai-sessions": {
+      "command": "/path/to/ai-sessions-mcp"
+    }
+  }
+}</code></pre>
+
+            <p><strong>Codex CLI:</strong></p>
+            <pre><code>[mcp_servers."ai-sessions"]
+command = "/path/to/ai-sessions-mcp"
+args = []</code></pre>
+
+            <p><strong>Installation:</strong> Download the binary from GitHub releases and place it somewhere in your PATH.</p>
+
+            <p><strong>GitHub:</strong> <a href="https://github.com/yoavf/ai-sessions-mcp" target="_blank">yoavf/ai-sessions-mcp</a></p>
+
+            <h2>Playwright MCP: Browser Automation</h2>
+            <p>When <code>fetch</code> won't cut it&mdash;JavaScript-heavy sites, authenticated dashboards, multi-step forms&mdash;Playwright MCP gives your AI assistant full browser control.</p>
+
+            <p>I've used it to fill out complex forms, search sites that block automated requests, navigate authenticated dashboards, and extract data from JavaScript-rendered pages. It's the difference between "I can't access that site" and "done."</p>
+
+            <p><strong>Claude Code:</strong></p>
+            <pre><code>{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+  }
+}</code></pre>
+
+            <p><strong>Codex CLI:</strong></p>
+            <pre><code>[mcp_servers."playwright"]
+command = "npx"
+args = ["@playwright/mcp@latest"]</code></pre>
+
+            <p>Microsoft's implementation uses the accessibility tree rather than screenshots, so it's fast and LLM-friendly. Browsers auto-install on first run.</p>
+
+            <p><strong>GitHub:</strong> <a href="https://github.com/microsoft/playwright-mcp" target="_blank">microsoft/playwright-mcp</a></p>
+
+            <h2>Quick Reference</h2>
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+              <thead>
+                <tr style="background: #f5f5f5;">
+                  <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">MCP Server</th>
+                  <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Purpose</th>
+                  <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">GitHub</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Docker Gateway</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Unified access to 100+ MCP servers</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://docs.docker.com/ai/mcp-catalog-and-toolkit/" target="_blank">docs.docker.com</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Atlassian</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Jira/Confluence read/write</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://github.com/atlassian/atlassian-mcp-server" target="_blank">atlassian/atlassian-mcp-server</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Memory</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Cross-session knowledge graph</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" target="_blank">modelcontextprotocol/servers</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">AI-Sessions</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Session handoffs and search</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://github.com/yoavf/ai-sessions-mcp" target="_blank">yoavf/ai-sessions-mcp</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Playwright</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Browser automation</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://github.com/microsoft/playwright-mcp" target="_blank">microsoft/playwright-mcp</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2>Getting Started</h2>
+            <p>Start with Docker Gateway if you want the simplest path&mdash;one configuration gives you access to the entire MCP catalog. Add individual servers as you identify specific needs.</p>
+
+            <p>For cross-tool workflows, set up Memory with a shared file path and AI-Sessions for handoffs. Playwright fills the gap when web fetching hits its limits.</p>
+
+            <h2>What's Next</h2>
+            <p>This covers the MCP servers I use most often, but it's just the start. I'm currently running 15+ AI tools at home&mdash;Claude Code, Codex CLI, Cursor, Windsurf, Amazon Q, Gemini CLI, and more&mdash;each with their own MCP configurations, workflows, and quirks.</p>
+
+            <p>I'll be sharing more about how these tools work together: which ones I reach for in different situations, how I keep configurations in sync, and what happens when you push the boundaries of what these assistants can do. MCP is the connective tissue that makes it all work.</p>
+
+            <blockquote>
+              "MCP turns AI coding assistants from isolated tools into connected participants in your entire development workflow."
+            </blockquote>
+
+            <p>The configuration files are small and the setup takes minutes. The payoff is an AI assistant that can actually work with your tools instead of just generating code in isolation. If you have questions or want to see specific tools covered, reach out.</p>
+
+            <div class="post-tags">
+              <span class="tag">MCP</span>
+              <span class="tag">Claude Code</span>
+              <span class="tag">Codex CLI</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Atlassian</span>
+              <span class="tag">Playwright</span>
+              <span class="tag">AI Tools</span>
+              <span class="tag">Developer Productivity</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Engineering workflow integration">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-toolchain-integration.html">Building an AI-Powered Engineering Workflow: My Workshop on Connecting Tools with MCP</a></h4>
+                <span class="related-date">October 10, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI in Everyday Life">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a></h4>
+                <span class="related-date">January 15, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
