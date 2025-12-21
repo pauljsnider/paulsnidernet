@@ -4,3 +4,6 @@ family/teamsnap-integration/
 */.DS_Store
 *:Zone.Identifier
 *:MSOAVINFO
+.playwright-mcp/
+.vscode/
+js/

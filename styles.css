@@ -1013,16 +1013,21 @@ footer {
     color: var(--primary-text-color);
 }
 
+#library-main .book-category {
+    /* Override global `section { padding: 80px 0; }` so categories don't have huge vertical gaps */
+    padding: 22px 0;
+    margin-bottom: 0;
+}
 
 .book-category {
-    margin-bottom: 40px; /* Reduced margin */
+    margin-bottom: 22px; /* Reduced margin */
 }
 
 .category-title {
     font-size: 1.6em; /* Slightly reduced font size */
     color: var(--primary-color);
-    margin-bottom: 20px; /* Reduced margin */
-    padding-bottom: 8px; /* Reduced padding */
+    margin-bottom: 10px; /* Reduced margin */
+    padding-bottom: 6px; /* Reduced padding */
     border-bottom: 2px solid var(--secondary-color);
 }
 
@@ -1217,7 +1222,7 @@ footer {
 /* The anchor tag itself needs padding if the parent book-item had its padding removed */
 #library-main .book-item > a.book-content-link,
 #library-main .book-item > a.podcast-link-wrapper {
-    padding: 15px; /* Restore padding here, inside the link */
+    padding: 8px; /* Restore padding here, inside the link */
 }
 
 /* Updated Responsive adjustments for library tiles */
@@ -1251,6 +1256,187 @@ footer {
 @media (max-width: 400px) { /* Extra small screens */
     #library-main .book-item {
         flex-basis: 100%; /* 1 tile */
+    }
+}
+
+/* Library UX Enhancements (compact + searchable) */
+#library-main .library-controls {
+    margin: 14px auto 20px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--background-color);
+    box-shadow: var(--shadow);
+}
+
+#library-main .library-controls-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#library-main .library-search {
+    flex: 1 1 280px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: white;
+}
+
+#library-main .library-search-icon {
+    color: var(--secondary-text-color);
+    font-size: 0.95em;
+}
+
+#library-main #library-search {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    background: transparent;
+    color: var(--primary-text-color);
+}
+
+#library-main .library-btn {
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+#library-main .library-btn:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+}
+
+#library-main .library-btn:active {
+    transform: translateY(0);
+}
+
+#library-main .library-btn.library-btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+#library-main .library-meta {
+    margin-top: 8px;
+    color: var(--secondary-text-color);
+    font-size: 0.85rem;
+}
+
+#library-main .category-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#library-main .category-title:focus {
+    outline: 3px solid rgba(0, 86, 179, 0.25);
+    outline-offset: 4px;
+    border-radius: 10px;
+}
+
+#library-main .category-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#library-main .category-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--secondary-text-color);
+    font-size: 0.95rem;
+}
+
+#library-main .category-chevron {
+    transition: transform 0.15s ease;
+}
+
+#library-main .book-category.is-collapsed .category-chevron {
+    transform: rotate(-90deg);
+}
+
+#library-main .book-category.is-collapsed .book-list {
+    display: none;
+}
+
+#library-main .book-category.is-collapsed .category-actions {
+    display: none !important;
+}
+
+/* Denser tile layout */
+#library-main .book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 6px;
+}
+
+#library-main .book-item {
+    padding: 6px;
+    border-radius: 10px;
+}
+
+#library-main .book-cover-placeholder {
+    width: 38px;
+    height: 56px;
+    font-size: 1.35em;
+    margin-bottom: 4px;
+}
+
+#library-main .book-title {
+    font-size: 0.76em;
+    line-height: 1.15;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#library-main .book-author {
+    font-size: 0.66em;
+    line-height: 1.1;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+#library-main .book-item.is-hidden,
+#library-main .book-item.is-filtered-out {
+    display: none !important;
+}
+
+#library-main .category-actions {
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+}
+
+#library-main .category-actions .library-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+    #library-main .library-controls {
+        padding: 12px;
+    }
+    #library-main .book-list {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
     }
 }
 

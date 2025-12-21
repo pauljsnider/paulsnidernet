@@ -153,6 +153,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Blog functionality
     initializeBlog();
+
+    // Library functionality
+    initializeLibrary();
 });
 
 // Blog functionality
@@ -279,4 +282,243 @@ function initializeBlog() {
         post.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(post);
     });
+}
+
+// Library functionality
+function initializeLibrary() {
+    const libraryMain = document.getElementById('library-main');
+    if (!libraryMain) return;
+
+    const container = libraryMain.querySelector('.container');
+    const intro = container?.querySelector('.library-intro');
+    if (!container || !intro) return;
+
+    const categories = Array.from(container.querySelectorAll('.book-category'));
+    if (categories.length === 0) return;
+
+    const controls = document.createElement('div');
+    controls.className = 'library-controls';
+    controls.innerHTML = `
+        <div class="library-controls-row">
+            <label class="library-search">
+                <span class="library-search-icon" aria-hidden="true">⌕</span>
+                <input id="library-search" type="search" placeholder="Search titles and authors…" autocomplete="off" />
+            </label>
+            <button id="library-clear" type="button" class="library-btn library-btn-secondary">Clear</button>
+            <button id="library-collapse-all" type="button" class="library-btn">Collapse all</button>
+            <button id="library-expand-all" type="button" class="library-btn library-btn-secondary">Expand all</button>
+        </div>
+        <div id="library-count" class="library-meta" aria-live="polite"></div>
+    `;
+    intro.insertAdjacentElement('afterend', controls);
+
+    const searchInput = controls.querySelector('#library-search');
+    const clearButton = controls.querySelector('#library-clear');
+    const collapseAllButton = controls.querySelector('#library-collapse-all');
+    const expandAllButton = controls.querySelector('#library-expand-all');
+    const countEl = controls.querySelector('#library-count');
+
+    const SHOW_LIMIT = 18;
+
+    function getCategoryKey(category) {
+        return category.id ? `library.category.${category.id}` : null;
+    }
+
+    function setCollapsed(category, collapsed) {
+        category.classList.toggle('is-collapsed', collapsed);
+
+        const titleEl = category.querySelector('.category-title');
+        if (titleEl) {
+            titleEl.setAttribute('aria-expanded', String(!collapsed));
+        }
+
+        const key = getCategoryKey(category);
+        if (key) {
+            try {
+                localStorage.setItem(key, collapsed ? '1' : '0');
+            } catch {
+                // ignore storage failures
+            }
+        }
+    }
+
+    function ensureCategoryHeader(category) {
+        const titleEl = category.querySelector('.category-title');
+        if (!titleEl) return null;
+
+        if (!titleEl.querySelector('.category-right')) {
+            const left = document.createElement('span');
+            left.className = 'category-left';
+            while (titleEl.firstChild) {
+                left.appendChild(titleEl.firstChild);
+            }
+
+            const right = document.createElement('span');
+            right.className = 'category-right';
+
+            const meta = document.createElement('span');
+            meta.className = 'category-meta';
+
+            const chevron = document.createElement('span');
+            chevron.className = 'category-chevron';
+            chevron.setAttribute('aria-hidden', 'true');
+            chevron.textContent = '▾';
+
+            right.append(meta, chevron);
+            titleEl.append(left, right);
+        }
+
+        titleEl.setAttribute('role', 'button');
+        titleEl.setAttribute('tabindex', '0');
+
+        const isCollapsed = category.classList.contains('is-collapsed');
+        titleEl.setAttribute('aria-expanded', String(!isCollapsed));
+
+        titleEl.addEventListener('click', () => {
+            setCollapsed(category, !category.classList.contains('is-collapsed'));
+        });
+
+        titleEl.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            e.preventDefault();
+            setCollapsed(category, !category.classList.contains('is-collapsed'));
+        });
+
+        return titleEl;
+    }
+
+    function getCategoryItems(category) {
+        return Array.from(category.querySelectorAll('.book-list .book-item'));
+    }
+
+    function ensureShowMore(category) {
+        const list = category.querySelector('.book-list');
+        if (!list) return null;
+
+        let actions = category.querySelector('.category-actions');
+        if (!actions) {
+            actions = document.createElement('div');
+            actions.className = 'category-actions';
+
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'library-btn library-btn-secondary category-show-more';
+            btn.textContent = 'Show more';
+            btn.addEventListener('click', () => {
+                const showingAll = category.dataset.showAll === '1';
+                category.dataset.showAll = showingAll ? '0' : '1';
+                render();
+            });
+
+            actions.appendChild(btn);
+            list.insertAdjacentElement('afterend', actions);
+        }
+
+        return actions;
+    }
+
+    function applyVisibility(category, query) {
+        const items = getCategoryItems(category);
+        const normalized = query.trim().toLowerCase();
+
+        let visibleCount = 0;
+        items.forEach((item, idx) => {
+            const title = item.querySelector('.book-title')?.textContent || '';
+            const author = item.querySelector('.book-author')?.textContent || '';
+            const haystack = `${title} ${author}`.toLowerCase();
+            const matches = !normalized || haystack.includes(normalized);
+
+            item.classList.toggle('is-filtered-out', !matches);
+
+            if (matches) {
+                visibleCount += 1;
+            }
+
+            const shouldLimit = !normalized && category.dataset.showAll !== '1';
+            const isHiddenByLimit = shouldLimit && idx >= SHOW_LIMIT;
+            item.classList.toggle('is-hidden', matches && isHiddenByLimit);
+        });
+
+        const titleEl = category.querySelector('.category-title');
+        const metaEl = titleEl?.querySelector('.category-right .category-meta');
+        if (metaEl) {
+            metaEl.textContent = normalized ? `${visibleCount}/${items.length}` : `${items.length}`;
+        }
+
+        const actions = ensureShowMore(category);
+        if (actions) {
+            const btn = actions.querySelector('.category-show-more');
+            const shouldShowButton = items.length > SHOW_LIMIT && !normalized;
+            actions.style.display = shouldShowButton ? '' : 'none';
+            if (btn) {
+                btn.textContent = category.dataset.showAll === '1' ? 'Show less' : 'Show more';
+            }
+        }
+
+        return { total: items.length, visible: visibleCount, shown: items.filter((i) => !i.classList.contains('is-filtered-out') && !i.classList.contains('is-hidden')).length };
+    }
+
+    function render() {
+        const query = searchInput?.value || '';
+
+        let total = 0;
+        let visible = 0;
+        let shown = 0;
+
+        categories.forEach((category) => {
+            ensureCategoryHeader(category);
+            const result = applyVisibility(category, query);
+            total += result.total;
+            visible += result.visible;
+            shown += result.shown;
+        });
+
+        if (!countEl) return;
+        if (query.trim()) {
+            countEl.textContent = `Showing ${shown} of ${total}`;
+        } else {
+            countEl.textContent = `Total items: ${total} (showing ${shown})`;
+        }
+    }
+
+    // Restore collapsed state
+    categories.forEach((category) => {
+        const key = getCategoryKey(category);
+        if (!key) return;
+        try {
+            const value = localStorage.getItem(key);
+            if (value === '1') {
+                category.classList.add('is-collapsed');
+            }
+        } catch {
+            // ignore storage failures
+        }
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener('input', render);
+    }
+
+    if (clearButton) {
+        clearButton.addEventListener('click', () => {
+            if (!searchInput) return;
+            searchInput.value = '';
+            searchInput.focus();
+            render();
+        });
+    }
+
+    if (collapseAllButton) {
+        collapseAllButton.addEventListener('click', () => {
+            categories.forEach((c) => setCollapsed(c, true));
+        });
+    }
+
+    if (expandAllButton) {
+        expandAllButton.addEventListener('click', () => {
+            categories.forEach((c) => setCollapsed(c, false));
+        });
+    }
+
+    render();
 }
