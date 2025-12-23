@@ -107,6 +107,25 @@ MY_VAR = "value"</code></pre>
 
             <p>For more details, see the <a href="https://developers.openai.com/codex/mcp/" target="_blank">Codex MCP documentation</a> and <a href="https://developers.openai.com/codex/local-config/" target="_blank">Codex local configuration guide</a>.</p>
 
+            <h3>Kiro</h3>
+            <p><strong>Workspace config:</strong> <code>.kiro/settings/mcp.json</code> (project-specific)</p>
+            <p><strong>User config:</strong> <code>~/.kiro/settings/mcp.json</code> (global)</p>
+            <p><strong>Precedence:</strong> Kiro merges both files; workspace settings override user settings.</p>
+
+            <pre><code>{
+  "mcpServers": {
+    "server-name": {
+      "command": "npx",
+      "args": ["package-name"],
+      "env": {
+        "API_TOKEN": "${API_TOKEN}"
+      }
+    }
+  }
+}</code></pre>
+
+            <p><strong>Key difference:</strong> Kiro supports both local (<code>command</code> + <code>args</code>) and remote (<code>url</code>) servers in the same JSON format, and it automatically reloads configs on save. Use the command palette entries "Kiro: Open workspace MCP config (JSON)" or "Kiro: Open user MCP config (JSON)" for quick edits.</p>
+
             <h2>Docker Desktop MCP Toolkit</h2>
             <p>Docker's MCP Toolkit simplifies running MCP servers in secure containers with one-click setup from Docker Desktop.</p>
 
@@ -127,6 +146,8 @@ MY_VAR = "value"</code></pre>
             <pre><code>[mcp_servers."docker-gateway"]
 command = "docker"
 args = ["mcp", "gateway", "run"]</code></pre>
+
+            <p><strong>Kiro</strong> (<code>.kiro/settings/mcp.json</code> or <code>~/.kiro/settings/mcp.json</code>): same as Claude Code.</p>
 
             <h3>Using the MCP Catalog</h3>
             <ol>
@@ -163,6 +184,15 @@ rmcp_client = true
 [mcp_servers."atlassian"]
 url = "https://mcp.atlassian.com/v1/sse"</code></pre>
 
+            <p><strong>Kiro:</strong> uses a remote server entry with <code>url</code> (no <code>mcp-remote</code> wrapper needed).</p>
+            <pre><code>{
+  "mcpServers": {
+    "atlassian": {
+      "url": "https://mcp.atlassian.com/v1/sse"
+    }
+  }
+}</code></pre>
+
             <p>First connection triggers an OAuth flow in your browser. All permissions match your existing Atlassian account access.</p>
 
             <p><strong>Pro tip:</strong> If you need to re-authenticate or force a fresh OAuth flow, run this command directly in your terminal:</p>
@@ -194,6 +224,8 @@ args = ["-y", "@modelcontextprotocol/server-memory"]
 [mcp_servers."memory".env]
 MEMORY_FILE_PATH = "~/.ai-memory/memory.jsonl"</code></pre>
 
+            <p><strong>Kiro:</strong> same as Claude Code.</p>
+
             <p><strong>Pro tip:</strong> Use a shared <code>MEMORY_FILE_PATH</code> across both tools so memory persists whether you're in Claude Code or Codex.</p>
 
             <p><strong>GitHub:</strong> <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" target="_blank">modelcontextprotocol/servers/src/memory</a></p>
@@ -216,6 +248,8 @@ MEMORY_FILE_PATH = "~/.ai-memory/memory.jsonl"</code></pre>
             <pre><code>[mcp_servers."ai-sessions"]
 command = "/path/to/ai-sessions-mcp"
 args = []</code></pre>
+
+            <p><strong>Kiro:</strong> same as Claude Code.</p>
 
             <p><strong>Installation:</strong> Download the binary from GitHub releases and place it somewhere in your PATH.</p>
 
@@ -240,6 +274,8 @@ args = []</code></pre>
             <pre><code>[mcp_servers."playwright"]
 command = "npx"
 args = ["@playwright/mcp@latest"]</code></pre>
+
+            <p><strong>Kiro:</strong> same as Claude Code.</p>
 
             <p>Microsoft's implementation uses the accessibility tree rather than screenshots, so it's fast and LLM-friendly. Browsers auto-install on first run.</p>
 

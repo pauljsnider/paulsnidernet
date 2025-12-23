@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skip the GitHub MCP: Use GitHub CLI Instead - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">December 23, 2025</span>
+            </div>
+            <h1 class="post-title">Skip the GitHub MCP: Use GitHub CLI Instead</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop" alt="Laptop with terminal open">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">The GitHub MCP server is powerful, but for most GitHub work I default to the GitHub CLI. It's faster to set up, doesn't require juggling keys, and keeps my AI tools focused on the work instead of spending tokens just to fetch GitHub data.</p>
+
+            <h2>Why GitHub CLI First</h2>
+            <p>GitHub CLI covers everything I actually do in GitHub day-to-day: repo navigation, issues, PRs, checks, releases, and workflows. It runs locally, plugs into the same terminal flow as git, and doesn't require a separate MCP server.</p>
+            <ul>
+              <li><strong>No API keys</strong>: <code>gh auth login</code> uses a web OAuth flow and stores credentials in your system credential store</li>
+              <li><strong>No extra token spend</strong>: the CLI does the API work without routing through your LLM context</li>
+              <li><strong>Low friction</strong>: install once, authenticate once, and it works everywhere</li>
+            </ul>
+
+            <h2>Quick Links</h2>
+            <ul>
+              <li><a href="https://cli.github.com/" target="_blank" rel="noopener">GitHub CLI home + install links</a></li>
+              <li><a href="https://github.com/cli/cli#installation" target="_blank" rel="noopener">GitHub CLI installation options</a></li>
+              <li><a href="https://cli.github.com/manual/gh_auth_login" target="_blank" rel="noopener">gh auth login manual</a></li>
+              <li><a href="https://docs.github.com/en/github-cli/github-cli/quickstart" target="_blank" rel="noopener">GitHub CLI quickstart</a></li>
+              <li><a href="https://github.com/modelcontextprotocol/servers-archived/tree/main/src/github" target="_blank" rel="noopener">GitHub MCP server link</a></li>
+            </ul>
+
+            <h2>Install + Auth in Two Steps</h2>
+            <p>On macOS, it's as simple as:</p>
+            <pre><code>brew install gh
+
+# Authenticate via browser OAuth flow
+# Follow the prompts to pick GitHub.com or Enterprise
+# and set your preferred git protocol
+gh auth login</code></pre>
+            <p>On Windows and Linux, use the official installers from the GitHub CLI page. The CLI handles OAuth in your browser, stores credentials securely, and you can skip creating personal access tokens entirely.</p>
+
+            <h2>How I Prompt My AI Tools</h2>
+            <p>This is the part most people skip. If you're using an AI assistant, be explicit: tell it to use the GitHub CLI. That way it doesn't reach for APIs, tokens, or MCP setup.</p>
+            <ul>
+              <li>"Use GitHub CLI to list my open PRs and show which checks are failing."</li>
+              <li>"Use GitHub CLI to create a draft PR from my current branch."</li>
+              <li>"Use GitHub CLI to list issues assigned to me in this repo."</li>
+              <li>"Use GitHub CLI to view the latest release notes."</li>
+            </ul>
+
+            <h2>Vendor CLI vs MCP</h2>
+            <p>Here's the rule I try to follow with AI tool integrations: if the vendor already ships a first-class CLI, start there. It's usually the most stable, most complete, and lowest-friction option. MCP shines when you need to connect multiple systems or expose data the CLI can't reach. But for single-vendor workflows like GitHub, the CLI is hard to beat.</p>
+
+            <blockquote>
+              If your workflow is already in the terminal, GitHub CLI is the shortest path from intent to action.
+            </blockquote>
+
+            <div class="post-tags">
+              <span class="tag">GitHub</span>
+              <span class="tag">GitHub CLI</span>
+              <span class="tag">MCP</span>
+              <span class="tag">AI Tools</span>
+              <span class="tag">Developer Productivity</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=300&h=200&fit=crop" alt="Laptop with coffee on a desk">
+              <div class="related-content">
+                <h4><a href="blog-post-weekly-digest-gemini-refresh.html">Keeping the Weekly School Digest Alive with Gemini</a></h4>
+                <span class="related-date">December 3, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Engineering workflow integration">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-toolchain-integration.html">Building an AI-Powered Engineering Workflow: My Workshop on Connecting Tools with MCP</a></h4>
+                <span class="related-date">October 10, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
