@@ -77,6 +77,10 @@
           <div class="post-content">
             <p class="lead">If you want quick access to Microsoft 365 data without a full app registration, Graph Explorer is the fastest on-ramp. It gives you a short-lived access token you can hand to an AI assistant or use directly to explore the Microsoft Graph API.</p>
 
+            <blockquote style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0;">
+              <strong>⚠️ For Testing Only:</strong> Graph Explorer tokens are ideal for exploration, prototyping, and working with AI assistants. For production applications, implement proper app registration with OAuth flows. These tokens use delegated permissions (acting as you), not application permissions.
+            </blockquote>
+
             <h2>What You Can Do</h2>
             <p>With the right permissions, you can query or automate almost anything in Microsoft 365. Here are common, low-friction use cases:</p>
             <ul>
@@ -93,20 +97,36 @@
               <li>Sign in with your Microsoft account (top right)</li>
               <li>Pick your endpoint from the sidebar or type it manually</li>
               <li>Check permissions for the request</li>
-              <li>Copy the access token</li>
-              <li>Give your AI assistant the token + endpoint</li>
+              <li>Copy the access token: click the "Access token" tab in the response area, then click the copy icon</li>
+              <li>Give your AI assistant the token + endpoint, or use tools like Postman or curl</li>
             </ol>
 
             <p>Example endpoints to try:</p>
-            <pre><code>GET https://graph.microsoft.com/v1.0/me
+            <pre><code># Read operations
+GET https://graph.microsoft.com/v1.0/me
 GET https://graph.microsoft.com/v1.0/me/messages?$top=10
 GET https://graph.microsoft.com/v1.0/me/joinedTeams
 GET https://graph.microsoft.com/v1.0/me/drive/root/children
-GET https://graph.microsoft.com/v1.0/sites?search=marketing</code></pre>
+GET https://graph.microsoft.com/v1.0/sites?search=marketing
+
+# Write operations (requires appropriate permissions)
+POST https://graph.microsoft.com/v1.0/teams/{team-id}/channels/{channel-id}/messages
+POST https://graph.microsoft.com/v1.0/me/sendMail</code></pre>
 
             <p>When prompting your AI tool, keep it simple and explicit:</p>
             <pre><code>Token: ACCESS_TOKEN_HERE
 Endpoint: GET https://graph.microsoft.com/v1.0/me/messages?$top=10</code></pre>
+
+            <h3>Advanced Filtering with OData</h3>
+            <p>Graph API supports OData query parameters for precise filtering and selection:</p>
+            <pre><code># Filter messages by sender
+GET .../me/messages?$filter=from/emailAddress/address eq 'boss@company.com'
+
+# Select specific fields only
+GET .../me/messages?$select=subject,receivedDateTime&$top=5
+
+# Combine filter and select
+GET .../me/messages?$filter=isRead eq false&$select=subject,from&$top=20</code></pre>
 
             <h2>Important Notes</h2>
             <ul>
@@ -114,6 +134,7 @@ Endpoint: GET https://graph.microsoft.com/v1.0/me/messages?$top=10</code></pre>
               <li><strong>Scope-limited</strong>: the token only works for permissions you consented to</li>
               <li><strong>Admin consent</strong>: some permissions require admin approval and won't work self-service</li>
               <li><strong>Store securely</strong>: treat tokens like passwords, avoid sharing them, and revoke if exposed</li>
+              <li><strong>Common errors</strong>: 401 (expired/invalid token), 403 (insufficient permissions), 429 (rate limit - check retry-after header)</li>
             </ul>
 
             <h2>Reference Links</h2>
