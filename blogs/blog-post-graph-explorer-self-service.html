@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft 365 Graph Explorer: Self-Service API Access - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">December 23, 2025</span>
+            </div>
+            <h1 class="post-title">Microsoft 365 Graph Explorer: Self-Service API Access</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="../images/graph_blog.png" alt="Microsoft Graph Explorer">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">If you want quick access to Microsoft 365 data without a full app registration, Graph Explorer is the fastest on-ramp. It gives you a short-lived access token you can hand to an AI assistant or use directly to explore the Microsoft Graph API.</p>
+
+            <h2>What You Can Do</h2>
+            <p>With the right permissions, you can query or automate almost anything in Microsoft 365. Here are common, low-friction use cases:</p>
+            <ul>
+              <li><strong>Email search</strong>: find messages by sender, subject, or time window</li>
+              <li><strong>Teams discovery</strong>: list teams and channels, read recent messages</li>
+              <li><strong>Send messages</strong>: post to Teams channels or chats</li>
+              <li><strong>SharePoint</strong>: list sites, browse drives, read files</li>
+              <li><strong>Profile data</strong>: get <code>/me</code> and org info to bootstrap workflows</li>
+            </ul>
+
+            <h2>Microsoft Graph Explorer Self-Service Quick Guide</h2>
+            <ol>
+              <li>Go to Graph Explorer: <a href="https://developer.microsoft.com/en-us/graph/graph-explorer" target="_blank" rel="noopener">https://developer.microsoft.com/en-us/graph/graph-explorer</a></li>
+              <li>Sign in with your Microsoft account (top right)</li>
+              <li>Pick your endpoint from the sidebar or type it manually</li>
+              <li>Check permissions for the request</li>
+              <li>Copy the access token</li>
+              <li>Give your AI assistant the token + endpoint</li>
+            </ol>
+
+            <p>Example endpoints to try:</p>
+            <pre><code>GET https://graph.microsoft.com/v1.0/me
+GET https://graph.microsoft.com/v1.0/me/messages?$top=10
+GET https://graph.microsoft.com/v1.0/me/joinedTeams
+GET https://graph.microsoft.com/v1.0/me/drive/root/children
+GET https://graph.microsoft.com/v1.0/sites?search=marketing</code></pre>
+
+            <p>When prompting your AI tool, keep it simple and explicit:</p>
+            <pre><code>Token: ACCESS_TOKEN_HERE
+Endpoint: GET https://graph.microsoft.com/v1.0/me/messages?$top=10</code></pre>
+
+            <h2>Important Notes</h2>
+            <ul>
+              <li><strong>Token expiry</strong>: expect 60-90 minutes before you need a new token</li>
+              <li><strong>Scope-limited</strong>: the token only works for permissions you consented to</li>
+              <li><strong>Admin consent</strong>: some permissions require admin approval and won't work self-service</li>
+              <li><strong>Store securely</strong>: treat tokens like passwords, avoid sharing them, and revoke if exposed</li>
+            </ul>
+
+            <h2>Reference Links</h2>
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+              <thead>
+                <tr style="background: #f5f5f5;">
+                  <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Resource</th>
+                  <th style="padding: 12px; text-align: left; border: 1px solid #ddd;">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Graph Explorer</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://developer.microsoft.com/en-us/graph/graph-explorer" target="_blank" rel="noopener">developer.microsoft.com/en-us/graph/graph-explorer</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">API Reference</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://learn.microsoft.com/en-us/graph/api/overview" target="_blank" rel="noopener">learn.microsoft.com/en-us/graph/api/overview</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Permissions Reference</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://learn.microsoft.com/en-us/graph/permissions-reference" target="_blank" rel="noopener">learn.microsoft.com/en-us/graph/permissions-reference</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Quick Start Guide</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://learn.microsoft.com/en-us/graph/tutorials" target="_blank" rel="noopener">learn.microsoft.com/en-us/graph/tutorials</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border: 1px solid #ddd;">Authentication Basics</td>
+                  <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://learn.microsoft.com/en-us/graph/auth/auth-concepts" target="_blank" rel="noopener">learn.microsoft.com/en-us/graph/auth/auth-concepts</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <blockquote>
+              Graph Explorer is the fastest way to go from "I wonder if this is possible" to "yes, here's the data."
+            </blockquote>
+
+            <div class="post-tags">
+              <span class="tag">Microsoft 365</span>
+              <span class="tag">Graph API</span>
+              <span class="tag">Graph Explorer</span>
+              <span class="tag">Teams</span>
+              <span class="tag">SharePoint</span>
+              <span class="tag">AI Tools</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/gh_cli_mcp.png" alt="GitHub CLI and MCP">
+              <div class="related-content">
+                <h4><a href="blog-post-github-cli-vs-mcp.html">Skip the GitHub MCP: Use GitHub CLI Instead</a></h4>
+                <span class="related-date">December 23, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI in Everyday Life">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a></h4>
+                <span class="related-date">January 15, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
