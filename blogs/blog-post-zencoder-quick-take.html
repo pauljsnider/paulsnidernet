@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zencoder in a Crowded AI Coding Market: A Quick Take - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">December 27, 2025</span>
+            </div>
+            <h1 class="post-title">Zencoder in a Crowded AI Coding Market: A Quick Take</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop" alt="AI coding tools and development environment" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">I spent about two hours kicking the tires on <strong>Zencoder</strong>, curious whether it meaningfully differentiated itself from the growing pack of agentic IDEs and AI coding tools. Short answer: I did not see anything that truly stands out.</p>
+
+            <h2>The claims Zencoder makes</h2>
+            <p>Zencoder positions itself around a few core ideas:</p>
+            <ul>
+              <li>Agent driven development that operates outside the IDE</li>
+              <li>Spec driven workflows and task orchestration</li>
+              <li>Strong Git hygiene with isolated branches</li>
+              <li>MCP based tool integration</li>
+              <li>Flexibility to switch between models like Codex, Claude, and Gemini</li>
+            </ul>
+
+            <p>You can find those claims across their docs and marketing:</p>
+            <ul>
+              <li><a href="https://docs.zencoder.ai/zenflow/task-types" target="_blank" rel="noopener">docs.zencoder.ai/zenflow/task-types</a></li>
+              <li><a href="https://docs.zencoder.ai/features/integrations-and-mcp" target="_blank" rel="noopener">docs.zencoder.ai/features/integrations-and-mcp</a></li>
+            </ul>
+
+            <h2>What actually feels different</h2>
+            <p>The <strong>only material differentiator</strong> I observed is that Zencoder <strong>forces all edits onto their own Git branch</strong>. That is a real and tangible design choice. It reduces risk and makes it harder for an agent to silently mutate your working tree.</p>
+
+            <p>That said, Git worktrees and branch isolation are not new concepts. Zencoder just makes this opinionated and unavoidable.</p>
+
+            <h2>Outside the IDE, for better or worse</h2>
+            <p>Zencoder attempts to do almost everything <strong>outside of an IDE</strong>. That may appeal to:</p>
+            <ul>
+              <li>Product managers</li>
+              <li>Non-traditional developers</li>
+              <li>Pure vibe coders who prefer chat-driven workflows</li>
+            </ul>
+
+            <p>For experienced engineers who live in Cursor, Windsurf, or VS Code, this feels more like friction than freedom.</p>
+
+            <h2>Model switching is table stakes</h2>
+            <p>The ability to swap between Codex, Claude, and Gemini does not feel meaningfully different from Cursor or Windsurf. Model choice is already commoditized across the ecosystem.</p>
+
+            <h2>Spec driven development is not new</h2>
+            <p>Spec driven development is a solid idea, but it is not unique to Zencoder.</p>
+            <ul>
+              <li>Kiro introduced the concept</li>
+              <li>Antigravity expanded it with browser-level validation</li>
+              <li>GitHub has published an open source toolkit for it</li>
+            </ul>
+
+            <p><a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/" target="_blank" rel="noopener">GitHub's spec-driven development toolkit</a> shows this capability is available today in multiple tools and workflows.</p>
+
+            <h2>MCP reuse is convenient, not differentiating</h2>
+            <p>Zencoder does pull MCP configuration from other tool sources, which saves some setup time. That is nice, but it is incremental convenience, not a strategic moat.</p>
+
+            <h2>Final take</h2>
+            <p>After a couple of hours, I did not see anything that clearly separates Zencoder from the rest of the market. The AI coding tool space is extremely crowded, and most offerings are converging on the same ideas with slightly different UX choices.</p>
+
+            <p>Branch isolation is one thing Zencoder enforces well. Everything else feels like a remix of patterns that already exist elsewhere.</p>
+
+            <p>That does not make it bad. It just makes it hard to justify as meaningfully different today.</p>
+
+            <div class="post-tags">
+              <span class="tag">AI Development</span>
+              <span class="tag">Zencoder</span>
+              <span class="tag">IDE Tools</span>
+              <span class="tag">MCP</span>
+              <span class="tag">Git Workflow</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/blog_go_prompt.png" alt="Mobile development setup">
+              <div class="related-content">
+                <h4><a href="blog-post-prompting-on-the-go.html">Prompting on the Go: Using Claude, Codex, and OpenCode from Your Phone While Running Code Locally</a></h4>
+                <span class="related-date">December 26, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/gh_cli_mcp.png" alt="GitHub CLI and MCP">
+              <div class="related-content">
+                <h4><a href="blog-post-github-cli-vs-mcp.html">Skip the GitHub MCP: Use GitHub CLI Instead</a></h4>
+                <span class="related-date">December 23, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
