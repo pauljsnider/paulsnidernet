@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompting on the Go: Using Claude, Codex, and OpenCode from Your Phone - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">December 26, 2025</span>
+            </div>
+            <h1 class="post-title">Prompting on the Go: Using Claude, Codex, and OpenCode from Your Phone While Running Code Locally</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="../images/blog_go_prompt.png" alt="Mobile development setup with phone and laptop" style="object-position: top; height: 600px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">I wanted the ability to prompt AI tools from my phone while still working against a real local development environment. Not a cloud sandbox. Not a web IDE. My actual machine, files, repos, and CLIs.</p>
+
+            <h2>Why This Setup Exists</h2>
+            <p>The goal was simple: phone becomes the prompt interface, local machine does the execution. This lets me use tools like Claude, Codex, or OpenCode from anywhere while still running code locally.</p>
+
+            <h2>Hardware Setup</h2>
+            <p>I started with a small dedicated machine to act as a remote dev box. I picked up a <a href="https://www.amazon.com/dp/B0DJ2C5F92" target="_blank" rel="noopener">Mini PC from Amazon</a> for a few key reasons:</p>
+            <ul>
+              <li><strong>Always on</strong>: No need to wake my primary laptop</li>
+              <li><strong>Low power</strong>: Runs 24/7 without killing my electric bill</li>
+              <li><strong>No risk to primary laptop</strong>: If something goes wrong, my main work machine stays clean</li>
+              <li><strong>Acts like a personal cloud</strong>: But stays in my house</li>
+            </ul>
+
+            <h2>Operating System</h2>
+            <p>The device shipped with Windows. I wiped it completely:</p>
+            <pre><code># Removed Windows
+# Installed Ubuntu Server
+# Configured automatic security updates</code></pre>
+            <p>Ubuntu was chosen because it's stable, lightweight, and works cleanly with SSH, Docker, and developer tooling.</p>
+
+            <h2>Secure Access with SSH</h2>
+            <p>This is the foundation of everything:</p>
+            <pre><code># Generated an SSH key pair
+ssh-keygen -t ed25519 -C "phone-access"
+
+# Installed the public key on the Ubuntu machine
+ssh-copy-id user@machine-ip
+
+# Disabled password-based SSH login
+# Edit /etc/ssh/sshd_config: PasswordAuthentication no
+
+# Confirmed key-only authentication works</code></pre>
+            <p>At this point, the machine is only accessible via SSH keys.</p>
+
+            <h2>Phone as the Control Plane</h2>
+            <p>To connect from my phone, I installed Termius. The setup was straightforward:</p>
+            <ul>
+              <li>Installed Termius on my phone</li>
+              <li>Added a host entry pointing to my home IP</li>
+              <li>Configured SSH to use a custom port</li>
+              <li>Imported the same SSH private key into Termius</li>
+            </ul>
+            <p>Once connected, my phone effectively becomes a terminal into my local machine.</p>
+
+            <h2>Networking Configuration</h2>
+            <p>Since this machine lives behind my home network, port forwarding was required:</p>
+            <ul>
+              <li>Accessed router administration interface</li>
+              <li>Located port forwarding settings</li>
+              <li>Configured port forwarding rules</li>
+              <li>Mapped an external custom port to internal port 22</li>
+              <li>Restricted forwarding to TCP only</li>
+            </ul>
+            <p>Using a non-standard external port reduces noise from random scans.</p>
+
+            <h2>How AI Fits In</h2>
+            <p>Once connected via SSH, everything else is just tooling. From the terminal session I can:</p>
+            <ul>
+              <li>Run local code</li>
+              <li>Edit files</li>
+              <li>Invoke CLIs</li>
+              <li>Trigger AI-assisted workflows</li>
+            </ul>
+            <p>The prompting itself happens in tools like Claude, Codex, or OpenCode. The phone is used to write prompts and issue commands, the local machine executes them against real files and repos. This avoids the limitations of browser-only AI environments.</p>
+
+            <h2>Commonly Missed or Implied Steps</h2>
+            <p>These are easy to forget but matter:</p>
+            
+            <h3>Security Hardening</h3>
+            <ul>
+              <li>Disable root SSH login</li>
+              <li>Install fail2ban or equivalent</li>
+              <li>Limit SSH users to specific accounts</li>
+            </ul>
+
+            <h3>Convenience</h3>
+            <ul>
+              <li>Set up SSH config aliases</li>
+              <li>Install tmux or screen for session persistence</li>
+              <li>Configure shell history and dotfiles</li>
+            </ul>
+
+            <h3>AI Tooling</h3>
+            <ul>
+              <li>Install required CLIs on the Ubuntu box</li>
+              <li>Ensure API keys are stored securely</li>
+              <li>Avoid embedding secrets directly in prompts</li>
+            </ul>
+
+            <h3>Reliability</h3>
+            <ul>
+              <li>Enable automatic reboots for kernel updates</li>
+              <li>Configure the machine to auto-start on power loss</li>
+            </ul>
+
+            <h2>Why This Works Well</h2>
+            <p>This setup gives you:</p>
+            <ul>
+              <li><strong>True local execution</strong>: No sandbox limitations</li>
+              <li><strong>Mobile-first prompting</strong>: Write prompts from anywhere</li>
+              <li><strong>No vendor lock-in</strong>: Use any AI tools you want</li>
+              <li><strong>No cloud IDE constraints</strong>: Full control over your environment</li>
+            </ul>
+
+            <blockquote>
+              It feels like carrying your dev environment in your pocket, without actually doing the work on your phone.
+            </blockquote>
+
+            <div class="post-tags">
+              <span class="tag">Mobile Development</span>
+              <span class="tag">SSH</span>
+              <span class="tag">AI Tools</span>
+              <span class="tag">Remote Development</span>
+              <span class="tag">Infrastructure</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/gh_cli_mcp.png" alt="GitHub CLI and MCP">
+              <div class="related-content">
+                <h4><a href="blog-post-github-cli-vs-mcp.html">Skip the GitHub MCP: Use GitHub CLI Instead</a></h4>
+                <span class="related-date">December 23, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="AI Development and Technology">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-toolchain-integration.html">Building an AI-Powered Engineering Workflow: My Workshop on Connecting Tools with MCP</a></h4>
+                <span class="related-date">October 10, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
