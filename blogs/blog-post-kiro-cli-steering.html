@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiro CLI Steering: Keeping AI Tools Honest About Capabilities - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">January 5, 2026</span>
+            </div>
+            <h1 class="post-title">Kiro CLI Steering: Keeping AI Tools Honest About Capabilities</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop" alt="Developer workspace with laptop" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">I published a <a href="https://github.com/pauljsnider/ai-config-guide/tree/main/kiro-cli/steering" target="_blank" rel="noopener">Kiro CLI steering guide</a> because most AI tooling still fails at the basics: it does not know what features are actually available, where configuration lives, or what integrations have silently expired.</p>
+
+            <h2>The recurring problem</h2>
+            <p>AI assistants routinely hallucinate their own capabilities. They give confident answers about features they cannot access, and they stumble over simple things like where config files live or how a tool is authenticated. It wastes time and breaks trust.</p>
+
+            <p>The situation is worse with integrations. You set up MCP servers or CLI auth once, then weeks later a token expires or a key rotates and the tool forgets it ever existed. The assistant acts like nothing changed, and you only discover it after it fails.</p>
+
+            <h2>What the steering file should say</h2>
+            <p>Steering works best when it is explicit and concrete. The assistant needs a short, durable checklist of what it can do and where it should look.</p>
+
+            <p><strong>Capabilities you should list:</strong></p>
+            <ul>
+              <li>Which tools are installed and callable (CLI binaries, MCP servers, browser automation)</li>
+              <li>What it can read or write in the repo (and any sandbox limits)</li>
+              <li>What tasks are allowed (e.g. can it run tests, open PRs, edit config)</li>
+              <li>What it cannot do (missing APIs, blocked network access, no cloud credentials)</li>
+            </ul>
+
+            <p><strong>Integrations you should document:</strong></p>
+            <ul>
+              <li>MCP servers and their purpose (GitHub, Jira, Confluence, Docker, Memory)</li>
+              <li>CLI auth state (GitHub CLI, AWS, gcloud, Azure, etc.)</li>
+              <li>Token expiration or refresh steps that commonly break</li>
+              <li>Where secrets are stored or injected (env vars, keychain, config files)</li>
+            </ul>
+
+            <p><strong>Config locations to make explicit:</strong></p>
+            <ul>
+              <li>Global config paths (home directory, tool config folders)</li>
+              <li>Project-local config paths (repo root, workspace folders)</li>
+              <li>Any files that should never be edited</li>
+            </ul>
+
+            <h2>Why steering matters</h2>
+            <p>Steering is a practical way to keep the assistant grounded in reality. You explicitly describe what it can do, where configuration is stored, and how authentication is handled. That context becomes a persistent source of truth.</p>
+
+            <h2>The outcome</h2>
+            <p>With a steering file in place, the assistant stops guessing and starts acting like a tool that understands its environment. It is faster, more reliable, and less frustrating.</p>
+
+            <p>If you are tired of assistants that forget their own setup, this is the fix I have been looking for.</p>
+
+            <div class="post-tags">
+              <span class="tag">Kiro CLI</span>
+              <span class="tag">AI Tooling</span>
+              <span class="tag">MCP</span>
+              <span class="tag">Configuration</span>
+              <span class="tag">Developer Workflow</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/gh_cli_mcp.png" alt="GitHub CLI and MCP">
+              <div class="related-content">
+                <h4><a href="blog-post-github-cli-vs-mcp.html">Skip the GitHub MCP: Use GitHub CLI Instead</a></h4>
+                <span class="related-date">December 23, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/blog_go_prompt.png" alt="Mobile development setup">
+              <div class="related-content">
+                <h4><a href="blog-post-prompting-on-the-go.html">Prompting on the Go: Using Claude, Codex, and OpenCode from Your Phone While Running Code Locally</a></h4>
+                <span class="related-date">December 26, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
