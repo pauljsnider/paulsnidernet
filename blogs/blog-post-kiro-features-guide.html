@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Kiro CLI Features: Steering, Agents, and Hooks - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">December 30, 2025</span>
+            </div>
+            <h1 class="post-title">Understanding Kiro CLI Features: Steering, Agents, and Hooks</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="../images/kiro_features_blog.png" alt="Kiro CLI Features - Steering, Agents, and Hooks" style="object-position: top; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">Kiro CLI has three main customization features: Steering, Agents, and Hooks. Each serves a different purpose, and knowing when to use which one will save you from building the wrong thing.</p>
+
+            <h2>Quick Comparison</h2>
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+              <thead>
+                <tr style="background: #f5f5f5;">
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Feature</th>
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Purpose</th>
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Activation</th>
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Scope</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Steering</strong></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Passive context and rules</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Always loaded</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">All conversations</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Agents</strong></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Dedicated workflow modes</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">--agent</code> flag or <code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">/agent swap</code></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Entire session</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px;"><strong>Hooks</strong></td>
+                  <td style="padding: 12px;">Event-triggered automation</td>
+                  <td style="padding: 12px;">Events or manual invocation</td>
+                  <td style="padding: 12px;">Single execution</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2>How They Work Together</h2>
+            <pre><code>┌─────────────────────────────────────────────────────┐
+│                     AGENT                           │
+│   (Active persona with tools, permissions, context) │
+│                                                     │
+│  ┌───────────┐  ┌─────────────┐  ┌───────────────┐ │
+│  │  Tools    │  │AllowedTools │  │   Resources   │ │
+│  │(available)│  │(auto-approve)│  │   (context)   │ │
+│  └───────────┘  └─────────────┘  └───────────────┘ │
+│                                                     │
+│  ┌───────────────────────────────────────────────┐ │
+│  │            Lifecycle Hooks                     │ │
+│  │ agentSpawn → preToolUse → postToolUse → stop  │ │
+│  └───────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────┘
+                      ↑ Loads
+┌─────────────────────────────────────────────────────┐
+│                    STEERING                         │
+│         (Passive context, always available)         │
+│   product.md | tech.md | structure.md | custom.md  │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│               STANDALONE HOOKS                      │
+│     (Event-triggered, independent of agents)        │
+│   manual | file-save | file-create | file-delete   │
+└─────────────────────────────────────────────────────┘</code></pre>
+
+            <h2>Steering: Persistent Context</h2>
+            <p>Steering files are markdown files that provide passive context to every conversation. They describe your project, coding standards, tool configurations, and anything else the assistant should always know.</p>
+
+            <p><strong>When to use steering:</strong></p>
+            <ul>
+              <li>Team coding standards and conventions</li>
+              <li>Project architecture and structure</li>
+              <li>MCP server configurations and capabilities</li>
+              <li>Authentication patterns and where credentials live</li>
+              <li>Things you are tired of repeating in every chat</li>
+            </ul>
+
+            <p><strong>Example steering file:</strong></p>
+            <pre><code># GitHub CLI Usage
+
+The GitHub CLI (`gh`) is installed and authenticated. Use it for:
+- Creating and managing PRs
+- Viewing issues and comments
+- Repository operations
+
+Authentication: OAuth via `gh auth login`
+Token location: Managed by gh CLI (not exposed)
+
+Always prefer `gh` over raw API calls for GitHub operations.</code></pre>
+
+            <p><strong>Configuration locations:</strong></p>
+            <ul>
+              <li>Global: <code>~/.kiro/steering/</code></li>
+              <li>Project: <code>.kiro/steering/</code> (overrides global)</li>
+            </ul>
+
+            <p>Special files that auto-load when present: <code>product.md</code>, <code>structure.md</code>, <code>tech.md</code></p>
+
+            <h2>Agents: Dedicated Workflow Modes</h2>
+            <p>Agents are specialized personas with their own tools, permissions, and prompts. When you switch to an agent, it takes over the session with a specific focus and set of capabilities.</p>
+
+            <p><strong>When to use agents:</strong></p>
+            <ul>
+              <li>Dedicated workflow modes (code review, debugging, documentation)</li>
+              <li>Restricting which tools are available for safety</li>
+              <li>Auto-approving specific tools to reduce prompts</li>
+              <li>Complex multi-step workflows with specific instructions</li>
+            </ul>
+
+            <p><strong>Example agent configuration:</strong></p>
+            <pre><code>{
+  "name": "code-reviewer",
+  "description": "Reviews code for quality and security issues",
+  "prompt": "You are a code reviewer. Focus on security vulnerabilities, performance issues, and maintainability. Be constructive but thorough.",
+  "tools": ["read", "grep", "glob"],
+  "allowedTools": ["read"]
+}</code></pre>
+
+            <p><strong>Configuration locations:</strong></p>
+            <ul>
+              <li>Global: <code>~/.kiro/agents/</code></li>
+              <li>Project: <code>.kiro/agents/</code></li>
+            </ul>
+
+            <p><strong>CLI commands:</strong></p>
+            <ul>
+              <li><code>kiro-cli --agent code-reviewer</code> - Start with agent</li>
+              <li><code>/agent swap</code> - Switch agents mid-session</li>
+              <li><code>/agent list</code> - List available agents</li>
+            </ul>
+
+            <h2>Hooks: Event-Triggered Automation</h2>
+            <p>Hooks execute agent prompts or shell commands when specific events occur. There are two types: standalone hooks that respond to events, and lifecycle hooks embedded in agents.</p>
+
+            <h3>Standalone Hooks</h3>
+            <p>These live in the hooks folder and trigger independently of agents.</p>
+
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+              <thead>
+                <tr style="background: #f5f5f5;">
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Trigger</th>
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">When It Fires</th>
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Use Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">manual</code></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">User invokes explicitly</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">On-demand workflows</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">file-save</code></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">File saved</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Linting, formatting</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">file-create</code></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">File created</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Scaffolding, templates</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">file-delete</code></td>
+                  <td style="padding: 12px;">File deleted</td>
+                  <td style="padding: 12px;">Cleanup tasks</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p><strong>Example standalone hook:</strong></p>
+            <pre><code>{
+  "name": "lint-python",
+  "trigger": "file-save",
+  "pattern": "**/*.py",
+  "instructions": "Run ruff check on the saved file and report any issues"
+}</code></pre>
+
+            <h3>Agent Lifecycle Hooks</h3>
+            <p>These are embedded in agent configurations and run at specific points in the agent lifecycle.</p>
+
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+              <thead>
+                <tr style="background: #f5f5f5;">
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Hook</th>
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">When</th>
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Use Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">agentSpawn</code></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Agent initializes</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Setup, environment checks</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">preToolUse</code></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Before tool runs</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Validation, can block execution</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">postToolUse</code></td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">After tool completes</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Logging, cleanup</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px;"><code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">stop</code></td>
+                  <td style="padding: 12px;">Response finished</td>
+                  <td style="padding: 12px;">Testing, formatting</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p><strong>Configuration locations:</strong></p>
+            <ul>
+              <li>Global: <code>~/.kiro/hooks/</code></li>
+              <li>Project: <code>.kiro/hooks/</code></li>
+            </ul>
+
+            <h2>Decision Guide: When to Use What</h2>
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+              <thead>
+                <tr style="background: #f5f5f5;">
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Need</th>
+                  <th style="padding: 12px; text-align: left; border-bottom: 2px solid #ddd;">Use</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Persistent rules for all sessions</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Steering</strong></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Team coding standards</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Steering</strong></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Dedicated workflow mode (code review, debugging)</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Agent</strong></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Restrict which tools are available</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Agent</strong></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Auto-approve specific tools (no prompts)</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Agent</strong> (<code style="background: #f5f5f5; padding: 2px 6px; border-radius: 4px; color: #333;">allowedTools</code>)</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">Validate or block tool execution</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Agent</strong> (lifecycle hooks)</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;">One-off automation task</td>
+                  <td style="padding: 12px; border-bottom: 1px solid #ddd;"><strong>Standalone Hook</strong></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px;">React to file changes (lint on save)</td>
+                  <td style="padding: 12px;"><strong>Standalone Hook</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2>Configuration Summary</h2>
+            <pre><code>~/.kiro/                    # Global config (all projects)
+├── agents/                 # Custom agents
+│   └── my-agent.json
+├── hooks/                  # Standalone hooks
+│   └── my-hook.json
+├── steering/               # Steering files
+│   ├── product.md          # Auto-loads
+│   ├── structure.md        # Auto-loads
+│   ├── tech.md             # Auto-loads
+│   └── custom.md
+└── settings/
+    └── mcp.json            # MCP server config
+
+my-project/                 # Project config (overrides global)
+└── .kiro/
+    ├── agents/
+    ├── hooks/
+    ├── steering/
+    └── settings/
+        └── mcp.json</code></pre>
+
+            <h2>The Bottom Line</h2>
+            <p>Start with steering. It is the simplest and covers most needs: persistent context, coding standards, and tool configurations that apply to every conversation.</p>
+
+            <p>Add an agent when you need a dedicated mode with specific tools and permissions, or when you want to auto-approve certain operations.</p>
+
+            <p>Use hooks for automation: reacting to file changes, running one-off tasks, or adding validation before tool execution.</p>
+
+            <p>Most projects need steering. Some benefit from agents. A few need hooks. Know the difference and you will build the right thing the first time.</p>
+
+            <div class="post-tags">
+              <span class="tag">Kiro CLI</span>
+              <span class="tag">AI Tooling</span>
+              <span class="tag">Configuration</span>
+              <span class="tag">Developer Workflow</span>
+              <span class="tag">Agents</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/kiro_features_blog.png" alt="Kiro CLI Steering">
+              <div class="related-content">
+                <h4><a href="blog-post-kiro-cli-steering.html">Kiro CLI Steering: Keeping AI Tools Honest About Capabilities</a></h4>
+                <span class="related-date">December 29, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/kiro_features_blog.png" alt="AI Engineering Workflow">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-toolchain-integration.html">Building an AI-Powered Engineering Workflow</a></h4>
+                <span class="related-date">October 10, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
