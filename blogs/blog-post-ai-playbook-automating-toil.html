@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond Prompts: The Developer's AI Playbook for Automating Toil - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">January 10, 2026</span>
+            </div>
+            <h1 class="post-title">Beyond Prompts: The Developer's AI Playbook for Automating Toil</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="../images/ai_playbook/blog_ai_playbook.png" alt="Beyond Prompts: The Developer's AI Playbook for Automating Toil">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">I took quick bullets to prepare to share my thoughts on AI, and I was impressed with what Google's NotebookLM generated from those notes: infographics, video, slides, and this blog content.</p>
+
+            <p>Before the playbook, here are the artifacts it created from that outline.</p>
+
+            <h2>NotebookLM Artifacts</h2>
+            <p><strong>Integration infographic:</strong> a visual summary of how to connect tools and workflows.</p>
+            <p><img src="../images/ai_playbook/integrations.png" alt="AI integration infographic" style="width: 100%; border-radius: 12px;"></p>
+
+            <p><strong>Playbook slide:</strong> a quick visual of the core framework and principles.</p>
+            <p><img src="../images/ai_playbook/playbook.png" alt="AI playbook slide" style="width: 100%; border-radius: 12px;"></p>
+
+            <p><strong>Video walkthrough:</strong> a quick video recap of the playbook themes.</p>
+            <video controls style="width: 100%; border-radius: 12px;">
+              <source src="../images/ai_playbook/The_AI_Playbook.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <h2>Why This Playbook Exists</h2>
+            <p>In today's technology landscape, it is nearly impossible to escape the hype surrounding Artificial Intelligence. For professional developers, the conversation is often dominated by "prompt engineering", the art of crafting the perfect query to get a desired output. However, this focus on prompts misses the bigger picture. The true, transformative power of AI is unlocked not through clever prompts alone, but through disciplined "context engineering."</p>
+
+            <p>This playbook provides a practical path for developers looking to move beyond simple queries and integrate AI deeply into daily workflows. The goal is to automate the toil, the repetitive, low value tasks that consume valuable time and cognitive energy, so you can focus on the complex challenges that require human ingenuity: problem solving, architecture, and genuine innovation.</p>
+
+            <h2>1. The Core Philosophy: Why Context Is Everything</h2>
+            <p>The foundational principle is simple: an AI is only as effective as the context it is given. Success is not about tricking an algorithm with a clever phrase; it's about systematically providing it with the information it needs to act as a capable assistant.</p>
+
+            <h3>Context Engineering vs. Prompt Engineering</h3>
+            <p>Context engineering focuses on building a system that gives your AI self service access to the information it needs to act effectively on your behalf. It means connecting the AI to your repositories, work systems, and infrastructure so it can understand the full landscape of your work.</p>
+
+            <h3>The Strategic Goal</h3>
+            <p>The objective is to automate the toil. By teaching an AI how to perform routine tasks, like searching logs, updating work items, or reviewing boilerplate code, a developer's attention can remain fixed on creative and complex work.</p>
+
+            <h3>The Recommended Toolset</h3>
+            <p>Operate primarily from the terminal. IDE integrations are valuable, but the terminal offers a faster feedback loop and greater flexibility for creating and combining reusable AI skills, agents, and configurations.</p>
+
+            <h2>2. A Systematic Framework for AI Integration</h2>
+            <p>This three step framework provides a reliable method for building integrations that are secure, scalable, and powerful.</p>
+            <ol>
+              <li><strong>Connection:</strong> Identify the entry point using a CLI, MCP, or API.</li>
+              <li><strong>Authorization:</strong> Secure access with OAuth, PATs, or basic authentication as a last resort.</li>
+              <li><strong>Access:</strong> Define how the AI interacts using bash, curl, MCP tools, SDKs, or wrappers.</li>
+            </ol>
+
+            <h2>3. The Playbook in Action: Real World Integration Patterns</h2>
+            <p>Applying the framework to common tools reveals a blueprint for automation.</p>
+
+            <h3>Code & Infrastructure Management</h3>
+            <ul>
+              <li><strong>Integration Path:</strong> GitHub → GitHub CLI → OAuth → Copilot CLI</li>
+              <li><strong>Integration Path:</strong> Azure → Azure CLI → OAuth → Copilot CLI</li>
+              <li><strong>Integration Path:</strong> AWS → AWS CLI → Access Keys → Copilot CLI</li>
+              <li><strong>Capabilities:</strong> Search code, review PRs, push commits, query services, review costs</li>
+            </ul>
+
+            <h3>Work & Knowledge Management</h3>
+            <ul>
+              <li><strong>Integration Path:</strong> Azure DevOps → PAT → Copilot CLI</li>
+              <li><strong>Integration Path:</strong> Atlassian → MCP → OAuth → Confluence</li>
+              <li><strong>Capabilities:</strong> Draft requirements, update work items, search docs, create pages</li>
+            </ul>
+
+            <h3>Productivity & Business Automation</h3>
+            <ul>
+              <li><strong>Integration Path:</strong> Microsoft 365 → Microsoft Graph → Access Token → Curl or SDK</li>
+              <li><strong>Integration Path:</strong> Web Automation → Microsoft Playwright MCP → Interactive Login</li>
+              <li><strong>Capabilities:</strong> Schedule meetings, search OneDrive/Outlook, automate web tasks</li>
+            </ul>
+
+            <h2>4. Operating Principles for Long Term Success</h2>
+            <ul>
+              <li><strong>Guide your AI partner:</strong> Be explicit, show examples, and encourage clarifying questions.</li>
+              <li><strong>Keep a human in the loop:</strong> Treat outputs as first drafts and review before action.</li>
+              <li><strong>Scale and collaborate:</strong> Save what works and share skills or scripts with your team.</li>
+              <li><strong>Manage resources deliberately:</strong> Balance complexity with token and context limits.</li>
+            </ul>
+
+            <h2>Operational Strategy and Efficiency</h2>
+            <p>The playbook defines the ultimate goal of AI integration as automating toil so human attention remains on high level problem solving, design, and innovation. To achieve this, several operational principles are recommended:</p>
+            <ul>
+              <li><strong>Prefer terminal environments:</strong> Using WLS (Terminal) is preferred over restricted interfaces because it offers faster feedback and greater flexibility for configuring skills and agents.</li>
+              <li><strong>Spec first iteration:</strong> Work spec first and maintain a human in the loop to iterate on AI outputs.</li>
+              <li><strong>Explicit communication:</strong> Be clear about where information lives and prompt the AI to ask clarifying questions rather than making assumptions.</li>
+            </ul>
+
+            <h3>Persistence and Collaborative Growth</h3>
+            <p>The playbook emphasizes that successful AI interactions should not be ephemeral.</p>
+            <ul>
+              <li><strong>Creating reusable skills:</strong> When a process works, save it as a Markdown file or convert it into a reusable skill.</li>
+              <li><strong>Shared knowledge:</strong> Collaboration happens through shared GitHub repositories where prompts, skills, and integration patterns are stored and refined.</li>
+              <li><strong>Deliberate management:</strong> Manage tokens and context deliberately, acknowledging trade offs in how much information is provided.</li>
+            </ul>
+
+            <h3>Knowing the Boundaries</h3>
+            <p>A final core principle is exercising discretion and restraint. Know when not to use AI, especially for direct production changes.</p>
+
+            <h2>Conclusion</h2>
+            <p>The true potential of AI for developers is not found in mastering the art of the prompt, but in the disciplined practice of context engineering. By systematically and securely integrating AI into the tools we use every day, we can transform it from a clever conversationalist into a powerful, practical partner in our work.</p>
+
+            <p>The key takeaways are clear: context is king, the three step framework makes integration real, and operating principles keep the system reliable. The ultimate goal is to automate the toil so we can focus on the creative, innovative, and deeply human work of building the future.</p>
+
+            <div class="post-tags">
+              <span class="tag">AI</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Context Engineering</span>
+              <span class="tag">Developer Tools</span>
+              <span class="tag">Productivity</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/gh_cli_mcp.png" alt="GitHub CLI vs MCP">
+              <div class="related-content">
+                <h4><a href="blog-post-github-cli-vs-mcp.html">Skip the GitHub MCP: Use GitHub CLI Instead</a></h4>
+                <span class="related-date">December 23, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/blog_go_prompt.png" alt="Prompting on the Go">
+              <div class="related-content">
+                <h4><a href="blog-post-prompting-on-the-go.html">Prompting on the Go: Using Claude, Codex, and OpenCode from Your Phone While Running Code Locally</a></h4>
+                <span class="related-date">December 27, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
