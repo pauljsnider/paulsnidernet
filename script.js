@@ -154,6 +154,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Blog functionality
     initializeBlog();
 
+    // Blog image lightbox
+    initializeImageLightbox();
+
     // Library functionality
     initializeLibrary();
 });
@@ -521,4 +524,46 @@ function initializeLibrary() {
     }
 
     render();
+}
+
+function initializeImageLightbox() {
+    const images = document.querySelectorAll('.post-content img, .post-featured-image img');
+    if (!images.length) return;
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'image-lightbox';
+    lightbox.innerHTML = '<img alt="">';
+    document.body.appendChild(lightbox);
+
+    const lightboxImage = lightbox.querySelector('img');
+
+    function openLightbox(src, alt) {
+        lightboxImage.src = src;
+        lightboxImage.alt = alt || '';
+        lightbox.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        document.body.style.overflow = '';
+        lightboxImage.src = '';
+        lightboxImage.alt = '';
+    }
+
+    images.forEach((img) => {
+        img.classList.add('click-to-zoom');
+        img.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            openLightbox(img.src, img.alt);
+        });
+    });
+
+    lightbox.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+            closeLightbox();
+        }
+    });
 }
