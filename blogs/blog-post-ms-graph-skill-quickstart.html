@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MS Graph Skills for Claude Code: Three Ways to Automate Microsoft 365 - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">January 11, 2026</span>
+            </div>
+            <h1 class="post-title">MS Graph Skills for Claude Code: Three Ways to Automate Microsoft 365</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="../images/graph_blog.png" alt="Microsoft Graph Skills">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">After <a href="blog-post-graph-explorer-self-service.html">sharing how to use Graph Explorer</a> for quick Microsoft 365 API access, I've packaged three ready-to-use skills that make Claude Code integration even simpler.</p>
+
+            <h2>Three Skills, Three Complexity Levels</h2>
+            <p>Choose the one that matches your needs:</p>
+
+            <ol>
+              <li><strong>ms-graph-toolkit</strong> - Full-featured Python integration with comprehensive M365 capabilities (calendar, email, Teams, OneDrive, organizational intelligence)</li>
+              <li><strong>ms-graph-search-sdk</strong> - Lightweight Python implementation focused on search and queries across M365 services</li>
+              <li><strong>ms-graph-search</strong> - Minimal bash/curl implementation for quick queries and learning the Graph API without dependencies</li>
+            </ol>
+
+            <h2>Quick Setup</h2>
+            <p>Getting started takes about 60 seconds:</p>
+
+            <pre><code># 1. Grab the skills from GitHub
+git clone https://github.com/pauljsnider/ai-config-guide.git
+cd ai-config-guide/claude/skills
+
+# 2. Copy to your Claude skills directory
+cp -r ms-graph-* ~/.claude/skills/
+
+# 3. Check the README files for authentication setup
+cat ~/.claude/skills/ms-graph-toolkit/README.md</code></pre>
+
+            <p>Then tell Claude to use the MS Graph skill for your M365 tasks.</p>
+
+            <h2>What You Can Build</h2>
+            <p>The skills enable dynamic script generation. Just describe what you want, and Claude builds it on demand. Here are proven use cases:</p>
+
+            <h3>Meeting Intelligence</h3>
+            <ul>
+              <li><strong>Pre-meeting intel</strong> - Auto-brief on attendees with past conversation history, shared files, and collaboration patterns</li>
+              <li><strong>Meeting hygiene audit</strong> - Identify no-agenda meetings, detect burnout patterns, calculate time waste metrics</li>
+              <li><strong>Meeting pattern org chart</strong> - Map real influence networks versus official hierarchy</li>
+            </ul>
+
+            <h3>Knowledge Discovery</h3>
+            <ul>
+              <li><strong>Find the expert</strong> - Who in the company knows most about topic X based on files, emails, and Teams activity?</li>
+              <li><strong>Resurrect dead projects</strong> - Generate timelines of what happened and who was involved from archived conversations</li>
+              <li><strong>Forgotten file finder</strong> - Surface documents that were shared but never acted upon</li>
+            </ul>
+
+            <h3>Workflow Automation</h3>
+            <ul>
+              <li><strong>Weekly digest</strong> - Unread emails, @mentions, shared files, missed meeting recordings in one summary</li>
+              <li><strong>Auto-decline focus time</strong> - Protect deep work blocks, suggest alternative times automatically</li>
+              <li><strong>Smart travel mode</strong> - Set OOO blocks, update status, suggest local colleagues to connect with</li>
+              <li><strong>Auto weekly status</strong> - Generate "what I did" reports from calendar, tasks, and file activity</li>
+            </ul>
+
+            <h3>Network & Insights</h3>
+            <ul>
+              <li><strong>Network recommendations</strong> - Who should you meet based on collaboration pattern analysis?</li>
+              <li><strong>Inbox sentiment analysis</strong> - Track communication tone trends over time</li>
+              <li><strong>Meeting cost calculator</strong> - Calculate actual cost of recurring meetings based on attendee salaries</li>
+            </ul>
+
+            <h2>How It Works</h2>
+            <p>Each skill includes authentication helpers, common query templates, and the ability to generate custom scripts on the fly. Claude reads your request, determines the required Graph API calls, builds the script, and executes it.</p>
+
+            <blockquote>
+              The skill builds new scripts on demand - just describe what you want. No need to learn the Graph API syntax or worry about authentication flows.
+            </blockquote>
+
+            <h2>Next Steps</h2>
+            <p>Visit the <a href="https://github.com/pauljsnider/ai-config-guide/tree/main/claude/skills" target="_blank" rel="noopener">skills repository</a> to grab the code and check the README files for authentication setup. Each skill includes examples and usage patterns to get you started.</p>
+
+            <p>Start with <strong>ms-graph-search</strong> if you want to learn the basics, upgrade to <strong>ms-graph-search-sdk</strong> for production use, or jump straight to <strong>ms-graph-toolkit</strong> if you need comprehensive M365 integration.</p>
+
+            <div class="post-tags">
+              <span class="tag">Claude Code</span>
+              <span class="tag">Microsoft 365</span>
+              <span class="tag">Graph API</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Productivity</span>
+              <span class="tag">AI Tools</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/graph_blog.png" alt="Graph Explorer Self-Service">
+              <div class="related-content">
+                <h4><a href="blog-post-graph-explorer-self-service.html">Microsoft 365 Graph Explorer: Self-Service API Access</a></h4>
+                <span class="related-date">December 23, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=200&fit=crop" alt="AI in Everyday Life">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a></h4>
+                <span class="related-date">January 15, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
