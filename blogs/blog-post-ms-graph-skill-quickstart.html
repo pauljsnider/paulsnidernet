@@ -140,6 +140,24 @@ cat ~/.claude/skills/ms-graph-toolkit/README.md</code></pre>
               The skill builds new scripts on demand - just describe what you want. No need to learn the Graph API syntax or worry about authentication flows.
             </blockquote>
 
+            <h2>Security Considerations</h2>
+            <p>When using these skills, keep these security best practices in mind:</p>
+
+            <blockquote style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0;">
+              <strong>⚠️ Access Token Lifespan:</strong> Graph Explorer tokens typically expire after 60-90 minutes. This is a security feature, not a bug. Plan your automation sessions accordingly and be prepared to refresh tokens for longer workflows.
+            </blockquote>
+
+            <ul>
+              <li><strong>Treat tokens like passwords</strong> - Never commit them to git repos, share them in chat, or store them in plain text files</li>
+              <li><strong>Use environment variables</strong> - Store tokens in environment variables or secure credential stores, not hardcoded in scripts</li>
+              <li><strong>Scope to minimum permissions</strong> - Only consent to the permissions your task actually needs</li>
+              <li><strong>Rotate regularly</strong> - Even though tokens expire automatically, refresh them proactively for sensitive operations</li>
+              <li><strong>Monitor usage</strong> - Check Azure AD sign-in logs periodically to verify no unexpected token usage</li>
+              <li><strong>Production apps need proper OAuth</strong> - These skills are for prototyping and personal automation. Production applications should implement proper app registration with OAuth flows</li>
+            </ul>
+
+            <p>The short token lifespan is intentional - it limits the blast radius if a token is accidentally exposed. For longer-running automation, consider implementing proper OAuth refresh token flows in production environments.</p>
+
             <h2>Next Steps</h2>
             <p>Visit the <a href="https://github.com/pauljsnider/ai-config-guide/tree/main/claude/skills" target="_blank" rel="noopener">skills repository</a> to grab the code and check the README files for authentication setup. Each skill includes examples and usage patterns to get you started.</p>
 
