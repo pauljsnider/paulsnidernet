@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentSmith: A Kiro Agent That Builds Other Kiro Agents - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">January 19, 2026</span>
+            </div>
+            <h1 class="post-title">AgentSmith: A Kiro Agent That Builds Other Kiro Agents</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="../images/AgentSmith-blog.jpg" alt="AgentSmith Kiro agent" style="object-position: top; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">AgentSmith is a Kiro agent that creates other Kiro agents. It defaults to the tools and MCPs you already use, asks minimal questions, and writes clean agent JSON in the right location.</p>
+
+            <p>The newest agent lives in the Kiro section of my AI config guide, along with supporting steering and install notes. If you want the source files, start here: <a href="https://github.com/pauljsnider/ai-config-guide/tree/main/kiro" target="_blank" rel="noopener">Kiro configuration guide</a>.</p>
+            <p>For a broader primer on Kiro’s feature set, see <a href="blog-post-kiro-features-guide.html">Understanding Kiro CLI Features: Steering, Agents, and Hooks</a> — I originally wanted to automate that post with an agent like this.</p>
+            <p>If you want AgentSmith to go deeper on hooks, tools, MCPs, or Kiro powers, the official CLI docs are the best source of truth: <a href="https://kiro.dev/docs/cli/" target="_blank" rel="noopener">Kiro CLI documentation</a>.</p>
+
+            <h2>Why I built it</h2>
+            <p>Creating agents should be fast, repeatable, and correct. Instead, it often becomes a scavenger hunt for schema rules, file paths, and which tools are already configured. AgentSmith is the fix: it takes the context you already have and spits out a new agent that is valid, consistent, and ready to run.</p>
+
+            <h2>What AgentSmith does well</h2>
+            <ul>
+              <li><strong>Defaults to your current setup</strong> so you do not have to re-list tools and MCPs.</li>
+              <li><strong>Writes to the right path</strong> by defaulting to <code>~/.kiro/agents/</code>.</li>
+              <li><strong>Enforces schema correctness</strong> and refuses to invent fields.</li>
+              <li><strong>Handles resources safely</strong> with absolute <code>file://</code> (or <code>skill://</code>) URIs.</li>
+              <li><strong>Keeps steering optional</strong> unless the new agent truly needs it.</li>
+            </ul>
+
+            <h2>What those Kiro pieces mean</h2>
+            <p>AgentSmith leans on a few core Kiro concepts. Here is the short, accurate version based on the official docs:</p>
+            <ul>
+              <li><strong>Hooks</strong> run commands at specific agent or tool lifecycle events (agentSpawn, userPromptSubmit, preToolUse, postToolUse, stop) and can even block tool execution. See <a href="https://kiro.dev/docs/cli/hooks" target="_blank" rel="noopener">Kiro CLI hooks</a>.</li>
+              <li><strong>Tools</strong> are the built-in or MCP-backed capabilities the agent can call. Hook matchers use internal tool names like <code>fs_read</code>, <code>fs_write</code>, and <code>execute_bash</code>, and MCP tools are namespaced like <code>@server/tool</code>. See <a href="https://kiro.dev/docs/cli/hooks" target="_blank" rel="noopener">hook tool matching</a>.</li>
+              <li><strong>MCPs</strong> connect Kiro to external servers so agents can use specialized tools and data. They can be configured via <code>mcp.json</code> or per-agent configs. See <a href="https://kiro.dev/docs/cli/mcp" target="_blank" rel="noopener">MCP in Kiro CLI</a>.</li>
+              <li><strong>Powers</strong> are opt-in bundles (POWER.md + optional MCP + steering) that load only when relevant keywords appear, keeping context light while adding deep tool knowledge. See <a href="https://kiro.dev/docs/powers/" target="_blank" rel="noopener">Kiro powers</a>.</li>
+            </ul>
+
+            <h2>Quick start</h2>
+            <pre><code>kiro-cli --agent AgentSmith</code></pre>
+
+            <p>From there, you describe what the new agent should do and AgentSmith handles the file creation, schema details, and placement.</p>
+
+            <h2>When to use it</h2>
+            <p>I use AgentSmith when I need a dedicated agent for a workflow: code review, release prep, troubleshooting, docs cleanup, or anything that benefits from a tighter prompt and scoped tools. It turns one-off prompts into a reusable agent without slowing me down.</p>
+
+            <blockquote>
+              The best agent builders disappear. AgentSmith does the paperwork and gets out of the way.
+            </blockquote>
+
+            <div class="post-tags">
+              <span class="tag">Kiro</span>
+              <span class="tag">Agents</span>
+              <span class="tag">AI Tooling</span>
+              <span class="tag">MCP</span>
+              <span class="tag">Developer Workflow</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/kiro_features_blog.png" alt="Kiro CLI Features">
+              <div class="related-content">
+                <h4><a href="blog-post-kiro-features-guide.html">Understanding Kiro CLI Features: Steering, Agents, and Hooks</a></h4>
+                <span class="related-date">December 30, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&h=200&fit=crop" alt="Developer workspace with laptop">
+              <div class="related-content">
+                <h4><a href="blog-post-kiro-cli-steering.html">Kiro CLI Steering: Keeping AI Tools Honest About Capabilities</a></h4>
+                <span class="related-date">December 29, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
