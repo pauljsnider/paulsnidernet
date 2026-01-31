@@ -2,6 +2,7 @@
 """
 Combine all Snider family calendars into a single .ics file.
 Fetches remote calendars and merges with local calendars.
+Enhanced with robust error handling, retry logic, and fallback mechanisms.
 """
 
 import requests
@@ -9,10 +10,46 @@ from icalendar import Calendar, Event
 from datetime import datetime
 import pytz
 import sys
+import time
+import logging
 from pathlib import Path
 
-# Calendar sources - must match events.html CALENDARS array
-CALENDARS = [
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler('calendar_combiner.log')
+    ]
+)
+logger = logging.getLogger(__name__)
+
+# Test mode - use public calendars instead of private ones
+TEST_MODE = True
+
+# Test calendars (public, reliable sources)
+TEST_CALENDARS = [
+    {
+        'name': 'US Holidays',
+        'url': 'https://www.calendarlabs.com/icalendar/holidays/United_States/US_Holidays.ics'  # Working URL
+    },
+    {
+        'name': 'Test Calendar 2 - Simulated Timeout',
+        'url': 'https://httpbin.org/delay/35'  # Will timeout (longer than our 30s timeout)
+    },
+    {
+        'name': 'Broken URL Test',
+        'url': 'https://example.com/broken-calendar.ics'  # Should fail gracefully
+    },
+    {
+        'name': 'GitHub Pages Test',
+        'url': 'https://pauljsnider.github.io/paulsnidernet/family/madison-futsal-2025-26.ics'
+    }
+]
+
+# Production calendars (private sources)
+PRODUCTION_CALENDARS = [
     {
         'name': 'Will Soccer',
         'url': 'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=974a8276-ee4f-4273-bd12-925e6874f9b5&token=8829469505c4b469f837fad611d516938f445935509c3151f35613a20c9a0dd7'
@@ -25,19 +62,6 @@ CALENDARS = [
         'name': 'TeamSnap Events (Madison + Max + Will)',
         'url': 'http://ical-cdn.teamsnap.com/user_schedule/b5988130-ea96-0139-1e25-4201ac1c001c.ics'
     },
-    # School calendars - disabled for now, can re-enable later if needed
-    # {
-    #     'name': 'Blue Valley School Calendar',
-    #     'url': 'https://www.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=39&calendar_ids[]=1'
-    # },
-    # {
-    #     'name': 'Overland Trail Calendar',
-    #     'url': 'https://ote.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=23'
-    # },
-    # {
-    #     'name': 'St. Michael School Calendar',
-    #     'url': 'https://stmichaelcp.org/icalendar.ics'
-    # },
     {
         'name': 'SignUpGenius Volunteer',
         'url': 'https://www.signupgenius.com/index.cfm?go=t.calendar&record=c9bf580e60d87994333380af4072e82b'
@@ -52,40 +76,119 @@ CALENDARS = [
     }
 ]
 
+# Choose calendars based on mode
+CALENDARS = TEST_CALENDARS if TEST_MODE else PRODUCTION_CALENDARS
+
 OUTPUT_FILE = Path(__file__).parent.parent / 'family' / 'family-calendar-combined.ics'
 
+# Request configuration
+REQUEST_CONFIG = {
+    'timeout': 30,
+    'retries': 3,
+    'retry_delay': 2,  # seconds
+    'headers': {
+        'User-Agent': 'Mozilla/5.0 (compatible; CalendarCombiner/1.0)',
+        'Accept': 'text/calendar,text/plain,*/*'
+    }
+}
 
 def fetch_calendar(url, name):
-    """Fetch a calendar from a URL with error handling."""
-    print(f"Fetching {name}...")
+    """Fetch a calendar from a URL with robust error handling and retries."""
+    logger.info(f"Fetching {name} from {url}")
+    
+    last_error = None
+    
+    # Convert webcal:// to https://
+    if url.startswith('webcal://'):
+        url = url.replace('webcal://', 'https://')
+        logger.info(f"Converted webcal:// to https://")
 
-    try:
-        # Convert webcal:// to https://
-        if url.startswith('webcal://'):
-            url = url.replace('webcal://', 'https://')
+    for attempt in range(REQUEST_CONFIG['retries']):
+        try:
+            logger.debug(f"Attempt {attempt + 1} for {name}")
+            
+            response = requests.get(
+                url, 
+                timeout=REQUEST_CONFIG['timeout'],
+                headers=REQUEST_CONFIG['headers']
+            )
+            
+            # Check HTTP status
+            response.raise_for_status()
+            logger.info(f"HTTP {response.status_code} for {name}")
+            
+            # Validate content type
+            content_type = response.headers.get('content-type', '').lower()
+            if 'text/calendar' not in content_type and 'text/plain' not in content_type:
+                logger.warning(f"Unexpected content type for {name}: {content_type}")
+            
+            # Try to parse calendar
+            try:
+                cal = Calendar.from_ical(response.text)
+                
+                # Count events
+                event_count = sum(1 for component in cal.walk() if component.name == "VEVENT")
+                logger.info(f"✓ {name}: {event_count} events loaded successfully")
+                return cal
+                
+            except Exception as parse_error:
+                logger.error(f"Failed to parse {name}: {parse_error}")
+                
+                # If parsing fails, try to find the actual ICS content
+                content_text = response.text
+                if 'BEGIN:VCALENDAR' in content_text:
+                    # Extract actual ICS content (handles wrapped responses like r.jina.ai)
+                    start_marker = content_text.find('BEGIN:VCALENDAR')
+                    cleaned_content = content_text[start_marker:]
+                    
+                    try:
+                        cal = Calendar.from_ical(cleaned_content)
+                        event_count = sum(1 for component in cal.walk() if component.name == "VEVENT")
+                        logger.info(f"✓ {name}: {event_count} events (after content normalization)")
+                        return cal
+                    except Exception as retry_parse_error:
+                        logger.error(f"Still failed to parse normalized {name}: {retry_parse_error}")
+                
+                raise parse_error
 
-        response = requests.get(url, timeout=30)
-        response.raise_for_status()
-
-        # Parse the calendar
-        cal = Calendar.from_ical(response.content)
-
-        # Count events
-        event_count = sum(1 for component in cal.walk() if component.name == "VEVENT")
-        print(f"  ✓ Loaded {event_count} events from {name}")
-
-        return cal
-
-    except requests.RequestException as e:
-        print(f"  ✗ Failed to fetch {name}: {e}", file=sys.stderr)
-        return None
-    except Exception as e:
-        print(f"  ✗ Failed to parse {name}: {e}", file=sys.stderr)
-        return None
-
+        except requests.exceptions.Timeout:
+            last_error = f"Timeout for {name} (attempt {attempt + 1})"
+            logger.warning(last_error)
+            
+        except requests.exceptions.ConnectionError as e:
+            last_error = f"Connection error for {name}: {str(e)}"
+            logger.warning(last_error)
+            
+        except requests.exceptions.HTTPError as e:
+            if e.response:
+                status_code = e.response.status_code
+                reason = e.response.reason
+                last_error = f"HTTP error for {name}: {status_code} {reason}"
+                logger.warning(last_error)
+                
+                # Don't retry 4xx errors (except 429 rate limiting)
+                if 400 <= status_code < 500 and status_code != 429:
+                    break
+            else:
+                last_error = f"HTTP error for {name}: No response object"
+                logger.warning(last_error)
+                
+        except Exception as e:
+            last_error = f"Unexpected error for {name}: {str(e)}"
+            logger.error(last_error)
+        
+        # Wait before retry (except on last attempt)
+        if attempt < REQUEST_CONFIG['retries'] - 1:
+            time.sleep(REQUEST_CONFIG['retry_delay'])
+    
+    # All attempts failed
+    logger.error(f"✗ Failed to fetch {name}: {last_error}")
+    return None
 
 def combine_calendars(calendars):
-    """Combine multiple calendars into one."""
+    """Combine multiple calendars into one with detailed statistics."""
+    logger.info("Combining calendars...")
+    
     # Create a new calendar
     combined = Calendar()
     combined.add('prodid', '-//Snider Family//Combined Calendar//EN')
@@ -93,13 +196,23 @@ def combine_calendars(calendars):
     combined.add('x-wr-calname', 'Snider Family Calendar - Combined')
     combined.add('x-wr-timezone', 'America/Chicago')
     combined.add('x-wr-caldesc', 'Combined calendar with all Snider family events')
+    
+    # Add metadata about the combine operation
+    combined.add('x-combine-timestamp', datetime.now(pytz.UTC).isoformat())
+    combined.add('x-combine-mode', 'test' if TEST_MODE else 'production')
 
     total_events = 0
     event_uids = set()  # Track UIDs to avoid duplicates
+    duplicate_count = 0
+    calendars_processed = 0
 
-    for cal_data in calendars:
+    for i, cal_data in enumerate(calendars):
         if cal_data is None:
+            logger.warning(f"Skipping calendar {i+1} (failed to load)")
             continue
+
+        calendars_processed += 1
+        calendar_events = 0
 
         # Extract events from this calendar
         for component in cal_data.walk():
@@ -107,47 +220,80 @@ def combine_calendars(calendars):
                 # Check for duplicate UIDs
                 uid = component.get('uid')
                 if uid and uid in event_uids:
+                    duplicate_count += 1
                     continue
 
                 if uid:
                     event_uids.add(uid)
 
-                # Add the event to combined calendar
+                # Add event to combined calendar
                 combined.add_component(component)
                 total_events += 1
+                calendar_events += 1
 
-    print(f"\n✓ Combined {total_events} total events from {len([c for c in calendars if c])} calendars")
+        logger.info(f"Calendar {i+1}: {calendar_events} events added")
+
+    logger.info(f"✓ Combined {total_events} total events from {calendars_processed} calendars")
+    if duplicate_count > 0:
+        logger.info(f"  - Removed {duplicate_count} duplicate events")
+    
     return combined
-
 
 def main():
     """Main function to fetch and combine all calendars."""
-    print("=" * 60)
-    print("Snider Family Calendar Combiner")
-    print("=" * 60)
+    print("=" * 80)
+    print("Snider Family Calendar Combiner (Enhanced Version)")
+    print("=" * 80)
+    print(f"Mode: {'TEST' if TEST_MODE else 'PRODUCTION'}")
+    print(f"Calendars to process: {len(CALENDARS)}")
     print()
 
+    success_count = 0
+    failure_count = 0
+    
     # Fetch all calendars
     calendars = []
-    for cal_info in CALENDARS:
+    for i, cal_info in enumerate(CALENDARS):
+        print(f"\n[{i+1}/{len(CALENDARS)}] Processing: {cal_info['name']}")
         cal = fetch_calendar(cal_info['url'], cal_info['name'])
         calendars.append(cal)
+        
+        if cal is not None:
+            success_count += 1
+        else:
+            failure_count += 1
 
-    print()
+    print("\n" + "=" * 50)
+    print(f"SUMMARY: {success_count} successful, {failure_count} failed")
+    print("=" * 50 + "\n")
 
-    # Combine calendars
+    # Combine calendars (even if some failed)
     combined = combine_calendars(calendars)
 
     # Write to output file
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(OUTPUT_FILE, 'wb') as f:
-        f.write(combined.to_ical())
+        with open(OUTPUT_FILE, 'wb') as f:
+            f.write(combined.to_ical())
 
-    print(f"✓ Combined calendar written to {OUTPUT_FILE}")
-    print()
-    print("=" * 60)
+        file_size = OUTPUT_FILE.stat().st_size
+        logger.info(f"✓ Combined calendar written to {OUTPUT_FILE} ({file_size:,} bytes)")
+        
+        if TEST_MODE:
+            print(f"\n📁 Test file created: {OUTPUT_FILE}")
+            print("   - Check the file to verify the combining logic works")
+            print("   - Set TEST_MODE=False to use production calendars")
+        
+    except Exception as e:
+        logger.error(f"Failed to write output file: {e}")
+        return 1
 
+    print("\n" + "=" * 80)
+    
+    # Return non-zero exit code if all calendars failed
+    return 1 if success_count == 0 else 0
 
 if __name__ == '__main__':
-    main()
+    exit_code = main()
+    sys.exit(exit_code)
