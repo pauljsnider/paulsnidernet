@@ -1369,7 +1369,19 @@
             { 
                 url: 'https://corsproxy.io/?', 
                 type: 'text',
-                extract: (data) => data 
+                extract: (data) => normalizeIcsText(data)
+            },
+            { 
+                url: 'https://r.jina.ai/https://',
+                type: 'text',
+                extract: (data) => normalizeIcsText(data),
+                stripProtocol: true
+            },
+            { 
+                url: 'https://r.jina.ai/http://',
+                type: 'text',
+                extract: (data) => normalizeIcsText(data),
+                stripProtocol: true
             },
             { 
                 url: 'https://proxy.cors.sh/', 
@@ -1377,6 +1389,15 @@
                 extract: (data) => data 
             }
         ];
+
+        function normalizeIcsText(text) {
+            const marker = 'BEGIN:VCALENDAR';
+            const markerIndex = text.indexOf(marker);
+            if (markerIndex === -1) {
+                return text;
+            }
+            return text.slice(markerIndex);
+        }
 
         async function loadAllCalendars() {
             const container = document.getElementById('events-container');
@@ -1654,7 +1675,16 @@
                     try {
                         console.log(`Trying proxy ${i + 1} for ${calendarName}:`, proxy.url);
 
-                        const response = await fetch(proxy.url + encodeURIComponent(url));
+                        let fetchUrl;
+                        if (proxy.stripProtocol) {
+                            // For r.jina.ai proxies, strip the protocol from the target URL
+                            const cleanUrl = url.replace(/^https?:\/\//i, '');
+                            fetchUrl = proxy.url + cleanUrl;
+                        } else {
+                            fetchUrl = proxy.url + encodeURIComponent(url);
+                        }
+
+                        const response = await fetch(fetchUrl);
                         console.log(`Proxy ${i + 1} response status:`, response.status);
 
                         if (response.ok) {
