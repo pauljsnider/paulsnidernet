@@ -12,6 +12,7 @@ import pytz
 import sys
 import time
 import logging
+import os
 from pathlib import Path
 
 # Set up logging
@@ -26,7 +27,8 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Test mode - use public calendars instead of private ones
-TEST_MODE = True
+# Default to production unless explicitly enabled via env.
+TEST_MODE = os.getenv('CALENDAR_TEST_MODE', '').lower() in ('1', 'true', 'yes')
 
 # Test calendars (public, reliable sources)
 TEST_CALENDARS = [
@@ -283,7 +285,7 @@ def main():
         if TEST_MODE:
             print(f"\n📁 Test file created: {OUTPUT_FILE}")
             print("   - Check the file to verify the combining logic works")
-            print("   - Set TEST_MODE=False to use production calendars")
+            print("   - Set CALENDAR_TEST_MODE=0 to use production calendars")
         
     except Exception as e:
         logger.error(f"Failed to write output file: {e}")
