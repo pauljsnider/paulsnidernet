@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-02-01T18:22:03.829556+00:00
+X-COMBINE-TIMESTAMP:2026-02-02T01:15:49.290511+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:4th Grade Girls Soccer - Practice
@@ -658,13 +658,13 @@ BEGIN:VEVENT
 SUMMARY:Wildcats at Dunham
 DTSTART;TZID=America/Chicago:20260201T121052
 DTEND;TZID=America/Chicago:20260201T121052
-DTSTAMP:20251218T122227
+DTSTAMP:20260201T163130
 UID:9046845-359835802
 SEQUENCE:0
 DESCRIPTION:Location: Leawood Middle School\n  \n Uniform: Black (Arrival 
  Time: 11:55 AM (Central Time (US & Canada)))\nAssignments:\n\nAttendance :
   Blake Lindsay
-LAST-MODIFIED:20251218T122227
+LAST-MODIFIED:20260201T163130
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
 END:VEVENT
 BEGIN:VEVENT
