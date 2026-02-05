@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-02-05T12:38:49.170016+00:00
+X-COMBINE-TIMESTAMP:2026-02-05T18:36:55.670823+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:4th Grade Girls Soccer - Practice
@@ -762,6 +762,18 @@ DESCRIPTION:Location: Cottonwood Point Elementary\n  \n Uniform: Home unif
  orm (Arrival Time:  9:45 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20251218T170808
 LOCATION:10521 W 129th St\, Overland Park\, KS
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Wildcats - Practice
+DTSTART;TZID=America/Chicago:20260226T190520
+DTEND;TZID=America/Chicago:20260226T200520
+DTSTAMP:20260205T105956
+UID:9046845-362298534
+SEQUENCE:0
+DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
+ 5 PM (Central Time (US & Canada)))
+LAST-MODIFIED:20260205T105956
+LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Wildcats vs Sleddens
