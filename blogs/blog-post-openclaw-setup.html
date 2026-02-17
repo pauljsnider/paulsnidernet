@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setting Up OpenClaw on a Dedicated VM - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">February 17, 2026</span>
+            </div>
+            <h1 class="post-title">Setting Up OpenClaw on a Dedicated VM</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop" alt="Server room with network infrastructure" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">I set up OpenClaw on a dedicated VM and then used it to write this very blog post. Here is how the setup works, what I learned, and why a dedicated machine makes the whole experience smoother.</p>
+
+            <h2>Why a Dedicated VM</h2>
+            <p>I already had a Mini PC running Ubuntu that I use for remote AI prompting. Adding OpenClaw to this box was the obvious next step. A dedicated VM means:</p>
+            <ul>
+              <li><strong>Always available</strong>: The agent is ready whenever I SSH in</li>
+              <li><strong>Isolated environment</strong>: No risk to my primary laptop or work machine</li>
+              <li><strong>Persistent sessions</strong>: tmux keeps sessions alive between connections</li>
+              <li><strong>Dedicated resources</strong>: No competition with other workloads</li>
+            </ul>
+
+            <h2>The Setup Process</h2>
+            <p>Getting OpenClaw running was straightforward. The key steps:</p>
+
+            <h3>Prerequisites</h3>
+            <p>The VM was already running Ubuntu with SSH access, Git, and Node.js installed from my earlier "Prompting on the Go" setup. If you are starting fresh, you will need:</p>
+            <ul>
+              <li>Ubuntu Server (22.04 or later)</li>
+              <li>Node.js 18+ and npm</li>
+              <li>Git configured with your GitHub credentials</li>
+              <li>SSH access to the machine</li>
+            </ul>
+
+            <h3>Installing OpenClaw</h3>
+            <p>OpenClaw installs via npm. Once installed, you configure it with your API key and point it at a workspace directory:</p>
+            <pre><code># Install OpenClaw globally
+npm install -g @anthropic-ai/claude-code
+
+# Create a workspace directory
+mkdir -p ~/.openclaw/workspace
+
+# Clone your repos into the workspace
+cd ~/.openclaw/workspace
+git clone git@github.com:pauljsnider/paulsnidernet.git</code></pre>
+
+            <h3>Configuration</h3>
+            <p>The main configuration involves setting your Anthropic API key and any project-specific settings. OpenClaw reads from a CLAUDE.md file in your project root for repo-level context, and you can add a global configuration for settings that apply across all projects.</p>
+
+            <h3>Connecting from My Phone</h3>
+            <p>Since the VM is already set up with SSH and port forwarding from my earlier project, connecting is just opening Termius on my phone and starting a session. From there:</p>
+            <pre><code># Attach to an existing tmux session
+tmux attach -t openclaw
+
+# Or start a new one
+tmux new -s openclaw
+cd ~/.openclaw/workspace/paulsnidernet
+claude</code></pre>
+
+            <h2>Writing This Blog Post with OpenClaw</h2>
+            <p>To prove the setup works, I used OpenClaw to write this blog post. The workflow looked like this:</p>
+            <ol>
+              <li>SSH into the VM from my phone</li>
+              <li>Navigate to my personal site repo</li>
+              <li>Ask OpenClaw to read the blog post spec and existing posts for patterns</li>
+              <li>Give it the topic, slug, date, and category</li>
+              <li>Review the generated HTML</li>
+              <li>Have it update blog.html with the new card</li>
+              <li>Commit, push, and open a PR</li>
+            </ol>
+            <p>The entire process took a single prompt. OpenClaw read the spec, matched the existing patterns, created the HTML file, updated the blog index, and handled the git workflow.</p>
+
+            <h2>What Works Well</h2>
+            <p>A few things stood out:</p>
+            <ul>
+              <li><strong>Spec-driven workflow</strong>: Having a clear spec file (like the NEW-BLOG-POST.md in this repo) makes the agent precise. It follows the template exactly instead of guessing.</li>
+              <li><strong>Pattern matching</strong>: Pointing OpenClaw at existing blog posts means the output is consistent with what is already there. No style drift.</li>
+              <li><strong>Git integration</strong>: Branch creation, commits, and PRs happen without leaving the terminal. The agent uses gh CLI natively.</li>
+              <li><strong>Mobile-friendly</strong>: Because everything runs on the VM, my phone is just a thin prompt interface. No heavy lifting required.</li>
+            </ul>
+
+            <h2>Lessons Learned</h2>
+            <ul>
+              <li><strong>Start with a spec</strong>: The clearer your instructions, the better the output. A markdown spec with templates and examples beats verbal descriptions every time.</li>
+              <li><strong>Use existing patterns</strong>: Telling the agent to look at existing files for patterns is more effective than describing the patterns yourself.</li>
+              <li><strong>Dedicated machines reduce friction</strong>: No setup time, no context switching, no worrying about breaking your primary environment.</li>
+              <li><strong>tmux is essential</strong>: Long-running agent sessions need persistence. Losing a session because your phone locked is frustrating without tmux.</li>
+            </ul>
+
+            <blockquote>
+              The best part about this setup is that it disappears. You stop thinking about the infrastructure and just focus on what you want to build.
+            </blockquote>
+
+            <h2>What is Next</h2>
+            <p>Now that OpenClaw is running on the VM, I plan to use it for more of my personal site updates, project scaffolding, and automation tasks. The combination of a dedicated machine, SSH access, and an AI agent that understands your codebase is a powerful workflow for anyone who builds things on the side.</p>
+
+            <div class="post-tags">
+              <span class="tag">OpenClaw</span>
+              <span class="tag">AI Tools</span>
+              <span class="tag">VM Setup</span>
+              <span class="tag">Remote Development</span>
+              <span class="tag">Claude Code</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/blog_go_prompt.png" alt="Mobile development setup with phone and laptop">
+              <div class="related-content">
+                <h4><a href="blog-post-prompting-on-the-go.html">Prompting on the Go: Using Claude, Codex, and OpenCode from Your Phone While Running Code Locally</a></h4>
+                <span class="related-date">December 26, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Engineering workflow integration">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-toolchain-integration.html">Building an AI-Powered Engineering Workflow: My Workshop on Connecting Tools with MCP</a></h4>
+                <span class="related-date">October 10, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
