@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My New Blog Post - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">February 17, 2026</span>
+            </div>
+            <h1 class="post-title">My New Blog Post</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=500&fit=crop" alt="Technology and software development workspace">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">This is a new technology post and a clean placeholder that can be expanded into a full article as needed.</p>
+
+            <h2>Why This Exists</h2>
+            <p>This post was created from a minimal specification with just a title and category. The structure follows the existing blog template so it renders consistently with the rest of the site.</p>
+
+            <h2>What You Can Add Next</h2>
+            <ul>
+              <li>Replace this placeholder copy with the full article content.</li>
+              <li>Add links, code snippets, and references relevant to the topic.</li>
+              <li>Swap the featured image if you want a custom visual.</li>
+            </ul>
+
+            <blockquote>
+              Start with shippable structure, then iterate on depth.
+            </blockquote>
+
+            <div class="post-tags">
+              <span class="tag">Technology</span>
+              <span class="tag">Blogging</span>
+              <span class="tag">Web</span>
+            </div>
+          </div>
+        </article>
+
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/kiro-agent-builder.jpg" alt="Kiro Agent Builder">
+              <div class="related-content">
+                <h4><a href="blog-post-kiro-agent-builder.html">A Kiro Agent That Builds Other Kiro Agents</a></h4>
+                <span class="related-date">January 19, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/kiro_features_blog.png" alt="Kiro CLI Features">
+              <div class="related-content">
+                <h4><a href="blog-post-kiro-features-guide.html">Understanding Kiro CLI Features: Steering, Agents, and Hooks</a></h4>
+                <span class="related-date">December 30, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/gh_cli_mcp.png" alt="GitHub CLI and MCP">
+              <div class="related-content">
+                <h4><a href="blog-post-github-cli-vs-mcp.html">Skip the GitHub MCP: Use GitHub CLI Instead</a></h4>
+                <span class="related-date">December 23, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
