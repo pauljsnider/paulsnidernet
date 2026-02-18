@@ -75,31 +75,34 @@
           </div>
 
           <div class="post-content">
-            <p class="lead">I set up OpenClaw on a dedicated VM and then used it to write this very blog post. Here is how the setup works, what I learned, and why a dedicated machine makes the whole experience smoother.</p>
+            <p class="lead">I moved OpenClaw onto a dedicated Ubuntu VM so I could run coding sessions from anywhere and send updates into Slack. This setup gives me a stable always-on agent instead of a laptop-bound workflow.</p>
 
+            <!-- Body content goes here using standard HTML tags -->
+            <!-- Use: h2, h3, p, ul/ol/li, pre><code>, blockquote -->
             <h2>Why a Dedicated VM</h2>
-            <p>I already had a Mini PC running Ubuntu that I use for remote AI prompting. Adding OpenClaw to this box was the obvious next step. A dedicated VM means:</p>
+            <p>I wanted a setup that survives reboots, travel, and context switching. Running OpenClaw on a dedicated VM solved the operational issues I kept hitting on my daily machine:</p>
             <ul>
-              <li><strong>Always available</strong>: The agent is ready whenever I SSH in</li>
-              <li><strong>Isolated environment</strong>: No risk to my primary laptop or work machine</li>
-              <li><strong>Persistent sessions</strong>: tmux keeps sessions alive between connections</li>
-              <li><strong>Dedicated resources</strong>: No competition with other workloads</li>
+              <li><strong>Always available</strong>: I can SSH in from phone or laptop and continue immediately.</li>
+              <li><strong>Isolated runtime</strong>: Experiments and tool installs stay off my primary workstation.</li>
+              <li><strong>Persistent sessions</strong>: tmux keeps long-running work alive across disconnects.</li>
+              <li><strong>Cleaner automation</strong>: Cron jobs, webhooks, and Slack notifications live in one place.</li>
             </ul>
 
             <h2>The Setup Process</h2>
-            <p>Getting OpenClaw running was straightforward. The key steps:</p>
+            <p>Provisioning was straightforward and took about 20 minutes end to end.</p>
 
             <h3>Prerequisites</h3>
-            <p>The VM was already running Ubuntu with SSH access, Git, and Node.js installed from my earlier "Prompting on the Go" setup. If you are starting fresh, you will need:</p>
+            <p>If you are starting from scratch, this is the minimum baseline:</p>
             <ul>
               <li>Ubuntu Server (22.04 or later)</li>
               <li>Node.js 18+ and npm</li>
-              <li>Git configured with your GitHub credentials</li>
+              <li>Git and GitHub authentication (SSH key or gh auth)</li>
               <li>SSH access to the machine</li>
+              <li>A Slack Incoming Webhook URL (optional but recommended)</li>
             </ul>
 
             <h3>Installing OpenClaw</h3>
-            <p>OpenClaw installs via npm. Once installed, you configure it with your API key and point it at a workspace directory:</p>
+            <p>I keep all repos under one workspace directory so the agent environment stays predictable:</p>
             <pre><code># Install OpenClaw globally
 npm install -g @anthropic-ai/claude-code
 
@@ -111,10 +114,10 @@ cd ~/.openclaw/workspace
 git clone git@github.com:pauljsnider/paulsnidernet.git</code></pre>
 
             <h3>Configuration</h3>
-            <p>The main configuration involves setting your Anthropic API key and any project-specific settings. OpenClaw reads from a CLAUDE.md file in your project root for repo-level context, and you can add a global configuration for settings that apply across all projects.</p>
+            <p>I use a global env file for shared secrets and a project-level `AGENTS.md` / `CLAUDE.md` for repo-specific instructions. That keeps credentials separate from prompting rules and makes behavior consistent across sessions.</p>
 
             <h3>Connecting from My Phone</h3>
-            <p>Since the VM is already set up with SSH and port forwarding from my earlier project, connecting is just opening Termius on my phone and starting a session. From there:</p>
+            <p>From my phone (Termius), I reconnect to the same session in seconds:</p>
             <pre><code># Attach to an existing tmux session
 tmux attach -t openclaw
 
@@ -123,49 +126,61 @@ tmux new -s openclaw
 cd ~/.openclaw/workspace/paulsnidernet
 claude</code></pre>
 
+            <h3>Slack Notifications</h3>
+            <p>I added Slack notifications so I can see when a long task finishes without staring at the terminal. The VM posts status updates to a private channel using a webhook:</p>
+            <pre><code># ~/.openclaw/env
+export SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..."
+
+# tiny helper script
+curl -X POST -H 'Content-type: application/json' \
+  --data '{"text":"OpenClaw run complete for paulsnidernet"}' \
+  "$SLACK_WEBHOOK_URL"</code></pre>
+            <p>This is intentionally simple: start with completion alerts, then expand to failures, PR links, or deploy summaries as needed.</p>
+
             <h2>Writing This Blog Post with OpenClaw</h2>
-            <p>To prove the setup works, I used OpenClaw to write this blog post. The workflow looked like this:</p>
+            <p>I used this exact VM setup to draft and publish this post. Workflow:</p>
             <ol>
-              <li>SSH into the VM from my phone</li>
-              <li>Navigate to my personal site repo</li>
-              <li>Ask OpenClaw to read the blog post spec and existing posts for patterns</li>
-              <li>Give it the topic, slug, date, and category</li>
-              <li>Review the generated HTML</li>
-              <li>Have it update blog.html with the new card</li>
-              <li>Commit, push, and open a PR</li>
+              <li>SSH into the VM and attach tmux.</li>
+              <li>Open the repo and run OpenClaw in that workspace.</li>
+              <li>Point it at `spec/NEW-BLOG-POST.md` plus existing post examples.</li>
+              <li>Generate post HTML and the `blog.html` card update.</li>
+              <li>Review/edit, run quick validation, and push a PR.</li>
+              <li>Send Slack completion message with the PR link.</li>
             </ol>
-            <p>The entire process took a single prompt. OpenClaw read the spec, matched the existing patterns, created the HTML file, updated the blog index, and handled the git workflow.</p>
+            <p>The spec-first approach matters. When the instructions are concrete, the generated output is dramatically better and requires less cleanup.</p>
 
             <h2>What Works Well</h2>
-            <p>A few things stood out:</p>
+            <p>After a week of using this setup, these are the clear wins:</p>
             <ul>
-              <li><strong>Spec-driven workflow</strong>: Having a clear spec file (like the NEW-BLOG-POST.md in this repo) makes the agent precise. It follows the template exactly instead of guessing.</li>
-              <li><strong>Pattern matching</strong>: Pointing OpenClaw at existing blog posts means the output is consistent with what is already there. No style drift.</li>
-              <li><strong>Git integration</strong>: Branch creation, commits, and PRs happen without leaving the terminal. The agent uses gh CLI natively.</li>
-              <li><strong>Mobile-friendly</strong>: Because everything runs on the VM, my phone is just a thin prompt interface. No heavy lifting required.</li>
+              <li><strong>Reliability</strong>: dedicated runtime means fewer broken sessions and less environment drift.</li>
+              <li><strong>Speed</strong>: no local setup before each task; I just reconnect and continue.</li>
+              <li><strong>Slack visibility</strong>: completion/failure notifications reduce polling and context switching.</li>
+              <li><strong>Review quality</strong>: spec + existing file patterns produce cleaner first drafts.</li>
             </ul>
 
             <h2>Lessons Learned</h2>
             <ul>
-              <li><strong>Start with a spec</strong>: The clearer your instructions, the better the output. A markdown spec with templates and examples beats verbal descriptions every time.</li>
-              <li><strong>Use existing patterns</strong>: Telling the agent to look at existing files for patterns is more effective than describing the patterns yourself.</li>
-              <li><strong>Dedicated machines reduce friction</strong>: No setup time, no context switching, no worrying about breaking your primary environment.</li>
-              <li><strong>tmux is essential</strong>: Long-running agent sessions need persistence. Losing a session because your phone locked is frustrating without tmux.</li>
+              <li><strong>Write the spec first</strong>: vague prompts produce vague code.</li>
+              <li><strong>Keep Slack integration minimal</strong>: one webhook and a tiny script gets most of the value.</li>
+              <li><strong>Treat tmux as required</strong>: mobile networks will drop; your session should not.</li>
+              <li><strong>Separate secrets from prompts</strong>: env files for keys, repo docs for behavior.</li>
             </ul>
 
             <blockquote>
-              The best part about this setup is that it disappears. You stop thinking about the infrastructure and just focus on what you want to build.
+              A dedicated VM plus Slack alerts turns the agent from a demo into infrastructure.
             </blockquote>
 
             <h2>What is Next</h2>
-            <p>Now that OpenClaw is running on the VM, I plan to use it for more of my personal site updates, project scaffolding, and automation tasks. The combination of a dedicated machine, SSH access, and an AI agent that understands your codebase is a powerful workflow for anyone who builds things on the side.</p>
+            <p>Next step is bidirectional Slack interaction: post run summaries automatically, then trigger predefined OpenClaw tasks from Slack commands for low-risk maintenance work. That should make this setup even more useful when I am away from my desk.</p>
 
             <div class="post-tags">
               <span class="tag">OpenClaw</span>
               <span class="tag">AI Tools</span>
               <span class="tag">VM Setup</span>
               <span class="tag">Remote Development</span>
+              <span class="tag">Slack</span>
               <span class="tag">Claude Code</span>
+              <!-- Each tag: <span class="tag">Tag Name</span> -->
             </div>
           </div>
         </article>
@@ -174,6 +189,15 @@ claude</code></pre>
         <section class="related-posts">
           <h3>Related Articles</h3>
           <div class="related-posts-grid">
+            <!-- Each related post block:
+            <article class="related-post">
+              <img src="{{RELATED_IMG}}" alt="{{RELATED_ALT}}">
+              <div class="related-content">
+                <h4><a href="{{RELATED_HREF}}">{{RELATED_TITLE}}</a></h4>
+                <span class="related-date">{{RELATED_DATE}}</span>
+              </div>
+            </article>
+            -->
             <article class="related-post">
               <img src="../images/blog_go_prompt.png" alt="Mobile development setup with phone and laptop">
               <div class="related-content">
