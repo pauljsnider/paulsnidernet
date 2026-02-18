@@ -75,56 +75,42 @@
           </div>
 
           <div class="post-content">
-            <p class="lead">The goal for this setup was simple: send a Slack DM and end with a published blog post, with OpenClaw doing the execution on a dedicated VM.</p>
+            <p class="lead">I wanted one clean workflow: send a Slack message and end with a merged PR, using a self-contained VM so the whole process stayed safe, stable, and repeatable.</p>
 
-            <h2>How this started</h2>
-            <p>I sent a short Slack request: update the post, remove the sensitive implementation details, and make the format more narrative. The real test was whether a simple message could become a finished artifact without me rewriting everything by hand.</p>
+            <h2>The story in one run</h2>
+            <p>We started by moving the workflow to a dedicated VM. That gave us isolation from my daily machine and a predictable place to run long tasks. Then we installed OpenClaw, connected model providers, wired Slack, and used that setup to create and refine this blog post through a few short feedback loops.</p>
 
-            <h2>What we did</h2>
-            <p>OpenClaw picked up the request, opened the repo, compared this draft against other posts, and rewrote both the article and the `blog.html` card. Running on a dedicated VM mattered because the environment stayed stable and always available while I iterated from different devices.</p>
-            <pre><code>cd ~/.openclaw/workspace/paulsnidernet
-openclaw</code></pre>
-            <p>From there, the workflow was mostly review and approve instead of write from scratch.</p>
-
-            <h2>Where it needed a second pass</h2>
-            <p>The first draft still read like an internal runbook. It had useful details, but it did not read like the rest of the blog. So we tightened the structure around one arc: request, execution, edits, and outcome.</p>
-            <ul>
-              <li>Trimmed checklist-heavy sections and replaced them with narrative transitions.</li>
-              <li>Removed sensitive setup details that did not belong in a public blog post.</li>
-              <li>Kept practical guidance, but moved it to a dedicated section at the end.</li>
-            </ul>
-
-            <h2>Why this matters</h2>
-            <p>For me, this is the useful threshold for AI tooling: not just generating text, but reliably turning a real request into a shippable artifact in the right repository format.</p>
+            <p>The important shift was not "AI wrote a draft." The shift was operational: Slack request in, repository changes out, PR updated, done.</p>
 
             <blockquote>
-              A Slack message became a published post with OpenClaw handling the heavy lifting.
+              The win is not the draft. The win is a repeatable Slack-to-PR loop.
             </blockquote>
 
-            <h2>If you want to run this pattern</h2>
-            <p>Once the story is clear, here is the practical setup path that worked for me:</p>
+            <h2>How to set this up (short version)</h2>
             <ol>
-              <li>SSH into your VM and verify tooling: <code>git --version</code>, <code>node --version</code>, <code>npm --version</code>.</li>
-              <li>Install GitHub CLI if needed: <code>sudo apt-get update && sudo apt-get install -y gh</code>, then run <code>gh auth login</code>.</li>
-              <li>Clone your site repo into a stable workspace (mine is <code>/home/paul-bot1/.openclaw/workspace/paulsnidernet</code>).</li>
-              <li>Run OpenClaw from that repo and keep the prompt explicit about outcome, tone, and formatting.</li>
-              <li>Review generated files, push the branch, and open or update the PR.</li>
+              <li>Create a dedicated VM so the agent runtime is isolated and persistent.</li>
+              <li>Install OpenClaw and initialize your workspace.</li>
+              <li>Configure OpenClaw markdown context files: <code>AGENTS.md</code>, <code>SOUL.md</code>, <code>TOOLS.md</code>, <code>USER.md</code>, and <code>IDENTITY.md</code>.</li>
+              <li>Connect AI providers (Google and/or OpenRouter) so you have a primary model plus fallback.</li>
+              <li>Install GitHub CLI and authenticate with <code>gh auth login</code>.</li>
+              <li>Install coding tools you want in the loop (Codex, Claude Code).</li>
+              <li>Connect Slack app/events so requests can trigger work and status can post back.</li>
+              <li>Run the flow: Slack request -> OpenClaw edits -> review -> push branch -> PR update.</li>
             </ol>
-            <p>My OpenClaw CLI path is <code>/home/paul-bot1/openclaw-project/openclaw</code>, which keeps behavior consistent across sessions.</p>
 
             <h2>Starter links</h2>
             <ul>
               <li><a href="https://github.com/cagostino/openclaw" target="_blank" rel="noopener">OpenClaw repository</a></li>
+              <li><a href="https://docs.openclaw.ai/concepts/agent-workspace" target="_blank" rel="noopener">OpenClaw workspace files (AGENTS.md, SOUL.md, TOOLS.md, USER.md, IDENTITY.md)</a></li>
               <li><a href="https://cli.github.com/" target="_blank" rel="noopener">GitHub CLI install and auth</a></li>
               <li><a href="https://api.slack.com/apps" target="_blank" rel="noopener">Slack app setup</a></li>
               <li><a href="https://api.slack.com/apis/events-api" target="_blank" rel="noopener">Slack Events API docs</a></li>
               <li><a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a></li>
-              <li><a href="https://ai.google.dev/gemini-api/docs/rate-limits" target="_blank" rel="noopener">Gemini API rate limits</a></li>
               <li><a href="https://openrouter.ai/docs/quickstart" target="_blank" rel="noopener">OpenRouter quickstart</a></li>
             </ul>
 
             <h2>What is next</h2>
-            <p>Next step is to standardize a Slack-to-blog command pattern so every post request includes intent, format hints, and acceptance checks by default. That should make turnaround faster and reduce cleanup passes.</p>
+            <p>Next step is a reusable Slack template for content tasks so each request includes goal, tone, and acceptance criteria up front. That should cut revision rounds and keep the loop fast.</p>
 
             <div class="post-tags">
               <span class="tag">OpenClaw</span>
