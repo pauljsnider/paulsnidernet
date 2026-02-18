@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setting Up OpenClaw on a Dedicated VM - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">February 17, 2026</span>
+            </div>
+            <h1 class="post-title">Setting Up OpenClaw on a Dedicated VM</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop" alt="Server room with network infrastructure" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">I wanted one clean workflow: send a Slack message and end with a merged PR, using a self-contained VM so the whole process stayed safe, stable, and repeatable.</p>
+
+            <h2>The story in one run</h2>
+            <p>We started by moving the workflow to a dedicated VM. That gave us isolation from my daily machine and a predictable place to run long tasks. Then we installed OpenClaw, connected model providers, wired Slack, and used that setup to create and refine this blog post through a few short feedback loops.</p>
+
+            <p>The important shift was not "AI wrote a draft." The shift was operational: Slack request in, repository changes out, PR updated, done.</p>
+
+            <blockquote>
+              The win is not the draft. The win is a repeatable Slack-to-PR loop.
+            </blockquote>
+
+            <h2>How to set this up (short version)</h2>
+            <ol>
+              <li>Create a dedicated VM so the agent runtime is isolated and persistent.</li>
+              <li>Install OpenClaw and initialize your workspace.</li>
+              <li>Configure OpenClaw markdown context files: <code>AGENTS.md</code>, <code>SOUL.md</code>, <code>TOOLS.md</code>, <code>USER.md</code>, and <code>IDENTITY.md</code>.</li>
+              <li>Connect AI providers (Google and/or OpenRouter) so you have a primary model plus fallback.</li>
+              <li>Install GitHub CLI and authenticate with <code>gh auth login</code>.</li>
+              <li>Install coding tools you want in the loop (Codex, Claude Code).</li>
+              <li>Connect Slack app/events so requests can trigger work and status can post back.</li>
+              <li>Run the flow: Slack request -> OpenClaw edits -> review -> push branch -> PR update.</li>
+            </ol>
+
+            <h2>Starter links</h2>
+            <ul>
+              <li><a href="https://github.com/cagostino/openclaw" target="_blank" rel="noopener">OpenClaw repository</a></li>
+              <li><a href="https://docs.openclaw.ai/concepts/agent-workspace" target="_blank" rel="noopener">OpenClaw workspace files (AGENTS.md, SOUL.md, TOOLS.md, USER.md, IDENTITY.md)</a></li>
+              <li><a href="https://cli.github.com/" target="_blank" rel="noopener">GitHub CLI install and auth</a></li>
+              <li><a href="https://api.slack.com/apps" target="_blank" rel="noopener">Slack app setup</a></li>
+              <li><a href="https://api.slack.com/apis/events-api" target="_blank" rel="noopener">Slack Events API docs</a></li>
+              <li><a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a></li>
+              <li><a href="https://openrouter.ai/docs/quickstart" target="_blank" rel="noopener">OpenRouter quickstart</a></li>
+            </ul>
+
+            <h2>What is next</h2>
+            <p>Next step is a reusable Slack template for content tasks so each request includes goal, tone, and acceptance criteria up front. That should cut revision rounds and keep the loop fast.</p>
+
+            <div class="post-tags">
+              <span class="tag">OpenClaw</span>
+              <span class="tag">AI Tools</span>
+              <span class="tag">VM Setup</span>
+              <span class="tag">Remote Development</span>
+              <span class="tag">Slack</span>
+              <span class="tag">Claude Code</span>
+              <!-- Each tag: <span class="tag">Tag Name</span> -->
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <!-- Each related post block:
+            <article class="related-post">
+              <img src="{{RELATED_IMG}}" alt="{{RELATED_ALT}}">
+              <div class="related-content">
+                <h4><a href="{{RELATED_HREF}}">{{RELATED_TITLE}}</a></h4>
+                <span class="related-date">{{RELATED_DATE}}</span>
+              </div>
+            </article>
+            -->
+            <article class="related-post">
+              <img src="../images/blog_go_prompt.png" alt="Mobile development setup with phone and laptop">
+              <div class="related-content">
+                <h4><a href="blog-post-prompting-on-the-go.html">Prompting on the Go: Using Claude, Codex, and OpenCode from Your Phone While Running Code Locally</a></h4>
+                <span class="related-date">December 26, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/mcp-blog.png" alt="MCP Configuration Guide">
+              <div class="related-content">
+                <h4><a href="blog-post-mcp-configuration-guide.html">MCP Configuration Guide: Docker Desktop, Atlassian, Memory, and More</a></h4>
+                <span class="related-date">December 21, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Engineering workflow integration">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-toolchain-integration.html">Building an AI-Powered Engineering Workflow: My Workshop on Connecting Tools with MCP</a></h4>
+                <span class="related-date">October 10, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
