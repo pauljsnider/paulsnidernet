@@ -86,6 +86,28 @@
 openclaw</code></pre>
             <p>From there, the workflow was mostly review and approve instead of write from scratch.</p>
 
+            <h2>How to replicate this setup</h2>
+            <p>If you want to run the same Slack-to-blog pattern, this is the smallest setup that gets you there:</p>
+            <ol>
+              <li>SSH into your VM and verify tooling: <code>git --version</code>, <code>node --version</code>, <code>npm --version</code>.</li>
+              <li>Install GitHub CLI if needed: <code>sudo apt-get update && sudo apt-get install -y gh</code>, then run <code>gh auth login</code>.</li>
+              <li>Clone your site repo into a stable workspace (mine is <code>/home/paul-bot1/.openclaw/workspace/paulsnidernet</code>).</li>
+              <li>Run OpenClaw from that repo and keep the prompt explicit about outcome, tone, and formatting.</li>
+              <li>Review the generated post and card update, then push branch + PR.</li>
+            </ol>
+            <p>My OpenClaw CLI path for these runs is <code>/home/paul-bot1/openclaw-project/openclaw</code>, which keeps tool behavior consistent across sessions.</p>
+
+            <h2>Starter links</h2>
+            <ul>
+              <li><a href="https://github.com/cagostino/openclaw" target="_blank" rel="noopener">OpenClaw repository</a></li>
+              <li><a href="https://cli.github.com/" target="_blank" rel="noopener">GitHub CLI install and auth</a></li>
+              <li><a href="https://api.slack.com/apps" target="_blank" rel="noopener">Slack app setup</a></li>
+              <li><a href="https://api.slack.com/apis/events-api" target="_blank" rel="noopener">Slack Events API docs</a></li>
+              <li><a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a></li>
+              <li><a href="https://ai.google.dev/gemini-api/docs/rate-limits" target="_blank" rel="noopener">Gemini API rate limits</a></li>
+              <li><a href="https://openrouter.ai/docs/quickstart" target="_blank" rel="noopener">OpenRouter quickstart</a></li>
+            </ul>
+
             <h2>Where the draft needed correction</h2>
             <p>The first version leaned too hard into checklist mode and included implementation details I did not want in the final post. I wanted a story: what triggered the run, how the agent executed, what changed, and why it matters.</p>
 
