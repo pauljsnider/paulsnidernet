@@ -77,25 +77,40 @@
           <div class="post-content">
             <p class="lead">The goal for this setup was simple: send a Slack DM and end with a published blog post, with OpenClaw doing the execution on a dedicated VM.</p>
 
-            <h2>The prompt that kicked this off</h2>
-            <p>I sent a short Slack request asking for a blog update, a cleanup pass, and a more narrative format. That was the test: could a lightweight message become a real content update without me hand-editing every section?</p>
+            <h2>How this started</h2>
+            <p>I sent a short Slack request: update the post, remove the sensitive implementation details, and make the format more narrative. The real test was whether a simple message could become a finished artifact without me rewriting everything by hand.</p>
 
-            <h2>What happened in the run</h2>
-            <p>OpenClaw picked up the request, opened the repo, compared existing post patterns, and edited the post plus the blog card. Running this on the VM mattered because the environment stayed stable and always available, even when I switched devices mid-stream.</p>
+            <h2>What we did</h2>
+            <p>OpenClaw picked up the request, opened the repo, compared this draft against other posts, and rewrote both the article and the `blog.html` card. Running on a dedicated VM mattered because the environment stayed stable and always available while I iterated from different devices.</p>
             <pre><code>cd ~/.openclaw/workspace/paulsnidernet
 openclaw</code></pre>
             <p>From there, the workflow was mostly review and approve instead of write from scratch.</p>
 
-            <h2>How to replicate this setup</h2>
-            <p>If you want to run the same Slack-to-blog pattern, this is the smallest setup that gets you there:</p>
+            <h2>Where it needed a second pass</h2>
+            <p>The first draft still read like an internal runbook. It had useful details, but it did not read like the rest of the blog. So we tightened the structure around one arc: request, execution, edits, and outcome.</p>
+            <ul>
+              <li>Trimmed checklist-heavy sections and replaced them with narrative transitions.</li>
+              <li>Removed sensitive setup details that did not belong in a public blog post.</li>
+              <li>Kept practical guidance, but moved it to a dedicated section at the end.</li>
+            </ul>
+
+            <h2>Why this matters</h2>
+            <p>For me, this is the useful threshold for AI tooling: not just generating text, but reliably turning a real request into a shippable artifact in the right repository format.</p>
+
+            <blockquote>
+              A Slack message became a published post with OpenClaw handling the heavy lifting.
+            </blockquote>
+
+            <h2>If you want to run this pattern</h2>
+            <p>Once the story is clear, here is the practical setup path that worked for me:</p>
             <ol>
               <li>SSH into your VM and verify tooling: <code>git --version</code>, <code>node --version</code>, <code>npm --version</code>.</li>
               <li>Install GitHub CLI if needed: <code>sudo apt-get update && sudo apt-get install -y gh</code>, then run <code>gh auth login</code>.</li>
               <li>Clone your site repo into a stable workspace (mine is <code>/home/paul-bot1/.openclaw/workspace/paulsnidernet</code>).</li>
               <li>Run OpenClaw from that repo and keep the prompt explicit about outcome, tone, and formatting.</li>
-              <li>Review the generated post and card update, then push branch + PR.</li>
+              <li>Review generated files, push the branch, and open or update the PR.</li>
             </ol>
-            <p>My OpenClaw CLI path for these runs is <code>/home/paul-bot1/openclaw-project/openclaw</code>, which keeps tool behavior consistent across sessions.</p>
+            <p>My OpenClaw CLI path is <code>/home/paul-bot1/openclaw-project/openclaw</code>, which keeps behavior consistent across sessions.</p>
 
             <h2>Starter links</h2>
             <ul>
@@ -107,24 +122,6 @@ openclaw</code></pre>
               <li><a href="https://ai.google.dev/gemini-api/docs/rate-limits" target="_blank" rel="noopener">Gemini API rate limits</a></li>
               <li><a href="https://openrouter.ai/docs/quickstart" target="_blank" rel="noopener">OpenRouter quickstart</a></li>
             </ul>
-
-            <h2>Where the draft needed correction</h2>
-            <p>The first version leaned too hard into checklist mode and included implementation details I did not want in the final post. I wanted a story: what triggered the run, how the agent executed, what changed, and why it matters.</p>
-
-            <h2>What changed in this revision</h2>
-            <ul>
-              <li>Removed the setup-guide sections that read like internal runbook notes.</li>
-              <li>Removed credential-handling details and kept the article focused on workflow outcomes.</li>
-              <li>Reframed the post around a single narrative arc from Slack request to published update.</li>
-              <li>Aligned tone and structure with other recent blog posts.</li>
-            </ul>
-
-            <h2>Why this matters</h2>
-            <p>For me, this is the useful threshold for AI tooling: not just generating text, but reliably turning a real request into a shippable artifact in the right repository format.</p>
-
-            <blockquote>
-              A Slack message became a published post with OpenClaw handling the heavy lifting.
-            </blockquote>
 
             <h2>What is next</h2>
             <p>Next step is to standardize a Slack-to-blog command pattern so every post request includes intent, format hints, and acceptance checks by default. That should make turnaround faster and reduce cleanup passes.</p>
