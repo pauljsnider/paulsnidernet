@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-02-20T12:36:14.864423+00:00
+X-COMBINE-TIMESTAMP:2026-02-20T18:33:48.468461+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:4th Grade Girls Soccer - Practice
@@ -718,19 +718,6 @@ LAST-MODIFIED:20251016T145325
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Team Outing to BVN Girls B-Ball Game
-DTSTART;TZID=America/Chicago:20260220T173049
-DTEND;TZID=America/Chicago:20260220T173049
-DTSTAMP:20260210T085058
-UID:9046845-362526267
-SEQUENCE:0
-DESCRIPTION:Location: Blue Valley North\n Optional event! Bring the whole 
- fam if you’d like!  (Arrival Time:  5:15 PM (Central Time (US & Canada))
- )
-LAST-MODIFIED:20260210T085058
-LOCATION:12200 Lamar Ave\nOverland Park KS 66209\nUnited States
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:Wildcats at Bender
 DTSTART;TZID=America/Chicago:20260221T083014
 DTEND;TZID=America/Chicago:20260221T083014
@@ -776,6 +763,19 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260205T105956
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Wildcats - Team Outing to BVN Girls B-Ball Game
+DTSTART;TZID=America/Chicago:20260227T173049
+DTEND;TZID=America/Chicago:20260227T173049
+DTSTAMP:20260220T071244
+UID:9046845-362526267
+SEQUENCE:0
+DESCRIPTION:Location: Blue Valley North\n Optional event! Bring the whole 
+ fam if you’d like!  (Arrival Time:  5:15 PM (Central Time (US & Canada))
+ )
+LAST-MODIFIED:20260220T071244
+LOCATION:12200 Lamar Ave\nOverland Park KS 66209\nUnited States
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Wildcats vs Sleddens
