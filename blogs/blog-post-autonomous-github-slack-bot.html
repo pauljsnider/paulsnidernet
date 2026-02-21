@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building an Autonomous Coding Bot for GitHub and Slack - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">February 21, 2026</span>
+            </div>
+            <h1 class="post-title">Building an Autonomous Coding Bot for GitHub and Slack</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?w=800&h=400&fit=crop" alt="Developer workflow with chat and code tools" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">I wanted a bot that can do real engineering work end-to-end: watch GitHub comments, generate safe responses, and keep the team informed in Slack without creating noisy loops.</p>
+
+            <h2>The goal</h2>
+            <p>The target behavior is simple: when someone pings the assistant in a GitHub discussion, issue, or PR comment, it should evaluate the request, draft a response through OpenClaw, post back to GitHub, and notify Slack with context and a link.</p>
+            <p>This is based on my <a href="https://github.com/pauljsnider/github-comment-watcher-template" target="_blank" rel="noopener">GitHub Comment Watcher template</a>, which is structured as an operations-first starting point rather than a demo script.</p>
+
+            <h2>How the automation loop works</h2>
+            <ol>
+              <li>Poll recent GitHub comment events (Discussions, Issues, PR comments, PR reviews).</li>
+              <li>Filter by trigger policy (mentions or slash commands).</li>
+              <li>Skip bot-authored events to prevent self-reply loops.</li>
+              <li>Enforce a rolling 24-hour quota for reply volume control.</li>
+              <li>Send prompt context to OpenClaw for response generation.</li>
+              <li>Post reply back to GitHub via <code>gh</code>.</li>
+              <li>Send Slack notification with outcome and permalink.</li>
+            </ol>
+
+            <h2>Safety controls that matter in production</h2>
+            <ul>
+              <li><strong>Loop prevention:</strong> explicit bot identity checks plus <code>ALLOW_SELF_TRIGGER=false</code>.</li>
+              <li><strong>Rate limiting:</strong> global rolling quota (default 20 replies/24h) across watchers.</li>
+              <li><strong>Dry run mode:</strong> validate triggers and prompts before posting.</li>
+              <li><strong>Credential hygiene:</strong> no real tokens in repo; least-privilege GitHub and Slack scopes.</li>
+            </ul>
+
+            <h2>What this unlocks for teams</h2>
+            <p>You get a practical assistant that lives where engineers already work. GitHub stays the system of record, Slack gets transparent operational updates, and OpenClaw handles the reasoning and response generation path.</p>
+            <p>The key is not full autonomy on day one. The key is controlled autonomy with clear triggers, quotas, and observability.</p>
+
+            <h2>Quick start checklist</h2>
+            <ul>
+              <li>Clone template and copy env examples.</li>
+              <li>Configure <code>OWNER/REPO</code>, OpenClaw profile, trigger policy, and Slack destination.</li>
+              <li>Verify dependencies: <code>gh</code>, <code>jq</code>, <code>node</code>, <code>curl</code>.</li>
+              <li>Run both watchers with <code>DRY_RUN=true</code>.</li>
+              <li>Deploy with systemd timer for regular polling cycles.</li>
+            </ul>
+
+            <div class="post-tags">
+              <span class="tag">OpenClaw</span>
+              <span class="tag">GitHub Automation</span>
+              <span class="tag">Slack</span>
+              <span class="tag">Agent Ops</span>
+              <span class="tag">Dev Productivity</span>
+              <!-- Each tag: <span class="tag">Tag Name</span> -->
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&h=200&fit=crop" alt="Server room with network infrastructure">
+              <div class="related-content">
+                <h4><a href="blog-post-openclaw-setup.html">Setting Up OpenClaw on a Dedicated VM</a></h4>
+                <span class="related-date">February 17, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Engineering workflow integration">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-toolchain-integration.html">Building an AI-Powered Engineering Workflow: My Workshop on Connecting Tools with MCP</a></h4>
+                <span class="related-date">October 10, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&h=200&fit=crop" alt="Developer workspace with laptop">
+              <div class="related-content">
+                <h4><a href="blog-post-kiro-cli-steering.html">Kiro CLI Steering: Keeping AI Tools Honest About Capabilities</a></h4>
+                <span class="related-date">December 29, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
