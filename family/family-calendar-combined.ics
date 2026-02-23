@@ -4,20 +4,8 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-02-23T12:40:47.600582+00:00
+X-COMBINE-TIMESTAMP:2026-02-23T18:50:45.870387+00:00
 X-WR-TIMEZONE:America/Chicago
-BEGIN:VEVENT
-SUMMARY:Pre-K Fall 2025 Soccer at Prather
-DTSTART;TZID=America/Chicago:20250823T103032
-DTEND;TZID=America/Chicago:20250823T110032
-DTSTAMP:20250815T161043
-UID:10198271-351138980
-SEQUENCE:0
-DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 2NW\n   (Arri
- val Time: 10:10 AM (Central Time (US & Canada)))
-LAST-MODIFIED:20250815T161043
-LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
-END:VEVENT
 BEGIN:VEVENT
 SUMMARY:4th Grade Girls Soccer vs Wolves
 DTSTART;TZID=America/Chicago:20250823T140039
