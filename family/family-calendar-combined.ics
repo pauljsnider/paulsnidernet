@@ -4,20 +4,8 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-02-23T18:50:45.870387+00:00
+X-COMBINE-TIMESTAMP:2026-02-24T01:14:23.539853+00:00
 X-WR-TIMEZONE:America/Chicago
-BEGIN:VEVENT
-SUMMARY:4th Grade Girls Soccer vs Wolves
-DTSTART;TZID=America/Chicago:20250823T140039
-DTEND;TZID=America/Chicago:20250823T140039
-DTSTAMP:20250824T131547
-UID:8910225-349888441
-SEQUENCE:0
-DESCRIPTION:Location: Scheels OP Soccer Complex Field 8 South\n   (Arrival
-  Time:  2:00 PM (Central Time (US & Canada)))
-LAST-MODIFIED:20250824T131547
-LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
-END:VEVENT
 BEGIN:VEVENT
 SUMMARY:4th Grade Girls Soccer vs Blue Starfish
 DTSTART;TZID=America/Chicago:20250824T141539
