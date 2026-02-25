@@ -4,20 +4,8 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-02-24T18:49:11.309038+00:00
+X-COMBINE-TIMESTAMP:2026-02-25T01:19:42.752037+00:00
 X-WR-TIMEZONE:America/Chicago
-BEGIN:VEVENT
-SUMMARY:4th Grade Girls Soccer vs Blue Starfish
-DTSTART;TZID=America/Chicago:20250824T141539
-DTEND;TZID=America/Chicago:20250824T141539
-DTSTAMP:20250824T152647
-UID:8910225-349909042
-SEQUENCE:0
-DESCRIPTION:Location: Scheels OP Soccer Complex Field 8 North\n   (Arrival
-  Time:  2:15 PM (Central Time (US & Canada)))
-LAST-MODIFIED:20250824T152647
-LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
-END:VEVENT
 BEGIN:VEVENT
 SUMMARY:4th Grade Girls Soccer - Practice
 DTSTART;TZID=America/Chicago:20250827T193000
@@ -721,12 +709,13 @@ BEGIN:VEVENT
 SUMMARY:Wildcats - Practice
 DTSTART;TZID=America/Chicago:20260226T190520
 DTEND;TZID=America/Chicago:20260226T200520
-DTSTAMP:20260205T105956
+DTSTAMP:20260224T162639
 UID:9046845-362298534
 SEQUENCE:0
-DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
- 5 PM (Central Time (US & Canada)))
-LAST-MODIFIED:20260205T105956
+DESCRIPTION:Location: Overland Trail Middle School\n We’ll have a parent
+ /kid scrimmage the last 20 minutes of practice.  (Arrival Time:  7:05 PM (
+ Central Time (US & Canada)))
+LAST-MODIFIED:20260224T162639
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
 END:VEVENT
 BEGIN:VEVENT
@@ -776,18 +765,6 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260212T203114
 LOCATION:Scheel's Complex Field 9SW
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:4th Grade Girls Soccer at KCL Arsenal
-DTSTART;TZID=America/Chicago:20260307T103000
-DTEND;TZID=America/Chicago:20260307T103000
-DTSTAMP:20260218T233436
-UID:8910225-363018905
-SEQUENCE:0
-DESCRIPTION:Location: Compass Minerals Sporting Field 1 South\n  \n Unifor
- m: Red (Arrival Time: 10:30 AM (Central Time (US & Canada)))
-LAST-MODIFIED:20260218T233436
-LOCATION:1500 N 90th St\nKansas City KS 66112\nUnited States
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:4th Grade Girls Soccer at MSA Twisters
@@ -982,6 +959,18 @@ DESCRIPTION:Uniform: Red (Arrival Time:  5:00 PM (Central Time (US & Canad
  a)))
 LAST-MODIFIED:20260218T233725
 LOCATION:Scheel's #7 North
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:4th Grade Girls Soccer at KCL Arsenal
+DTSTART;TZID=America/Chicago:20260516T164500
+DTEND;TZID=America/Chicago:20260516T164500
+DTSTAMP:20260224T155417
+UID:8910225-363018905
+SEQUENCE:0
+DESCRIPTION:Uniform: Red (Arrival Time:  4:45 PM (Central Time (US & Canad
+ a)))
+LAST-MODIFIED:20260224T155417
+LOCATION:Olathe Complex #4N
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:4th Grade Girls Soccer - Practice
