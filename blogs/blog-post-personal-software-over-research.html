@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Software Beats Software Research (Sometimes) - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">March 1, 2026</span>
+            </div>
+            <h1 class="post-title">Personal Software Beats Software Research (Sometimes)</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=540&fit=crop" alt="Hands creating software workflow" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">A family member asked for something simple: she had educational photos and videos from a trip and wanted to narrate them into a slideshow for an elementary class. Not a startup. Not a product launch. Just a real person with a real need.</p>
+
+            <p>My first instinct could have been the usual path: research tools, compare pricing tiers, watch tutorials, test workflows, and teach someone a new app. Instead, I asked AI coding agents to build exactly what she described.</p>
+
+            <h2>What happened</h2>
+            <p>I used Codex, Claude, Kiro, and OpenClaw for different tasks and iteration loops. I gave them scoped tasks, reviewed output, and kept tightening the UX around one user profile: someone who just wants this to work without technical friction.</p>
+
+            <p>Overnight, most of the implementation landed. Then it took about an hour of back-and-forth prompting to tune behavior, fix rough edges, and make it usable for her.</p>
+
+            <p>End result: she had a working solution faster than we would have finished researching and learning a brand-new tool.</p>
+
+            <h2>Why this worked</h2>
+            <p>This was a classic personal software problem:</p>
+            <ul>
+              <li>The requirements were clear and narrow.</li>
+              <li>The user mattered more than generic “best practice” defaults.</li>
+              <li>The scope did not require enterprise-grade scale.</li>
+              <li>Fast iteration was more important than marketplace feature breadth.</li>
+            </ul>
+
+            <p>When those conditions are true, building the exact fit can be quicker than evaluating ten almost-fit tools.</p>
+
+            <h2>Technical takeaways</h2>
+            <ul>
+              <li><strong>Prompting is now a build interface.</strong> If you can break work into concrete tasks, you can coordinate agents like a lightweight team.</li>
+              <li><strong>Keep architecture simple.</strong> Static frontend + serverless backend + object storage gets you far for personal software.</li>
+              <li><strong>Optimize for trust, not features.</strong> Autosave cues, obvious buttons, and clear status messaging matter more than “advanced settings.”</li>
+              <li><strong>Treat scale honestly.</strong> You do not need full commercial architecture to solve a family workflow.</li>
+            </ul>
+
+            <h2>When this is the wrong approach</h2>
+            <p>This approach is not universal. If you need strict compliance, heavy multi-tenant security, large operational scale, or deep team support, choose mature products or invest in full engineering rigor from day one.</p>
+
+            <p>But for personal software, small-team workflows, and custom one-off needs? The speed curve has changed.</p>
+
+            <h2>The key point</h2>
+            <p>Personal software is now easy to spin up. In the right context, creating your own exact-fit tool is faster than researching what software to use and teaching someone how to adapt to it.</p>
+
+            <p>If you are curious, I published the cleaned-up reference project here:</p>
+            <p><a href="https://github.com/pauljsnider/silverstory-studio" target="_blank" rel="noopener">github.com/pauljsnider/silverstory-studio</a></p>
+
+            <div class="post-tags">
+              <span class="tag">AI Development</span>
+              <span class="tag">Personal Software</span>
+              <span class="tag">Codex</span>
+              <span class="tag">Claude</span>
+              <span class="tag">Kiro</span>
+              <span class="tag">OpenClaw</span>
+            </div>
+          </div>
+        </article>
+
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/kiro_features_blog.png" alt="Kiro features overview">
+              <div class="related-content">
+                <h4><a href="blog-post-kiro-features-guide.html">Understanding Kiro CLI Features: Steering, Agents, and Hooks</a></h4>
+                <span class="related-date">December 30, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/blog_go_prompt.png" alt="Prompting on the go">
+              <div class="related-content">
+                <h4><a href="blog-post-prompting-on-the-go.html">Prompting on the Go: Using Claude, Codex, and OpenCode from Your Phone</a></h4>
+                <span class="related-date">December 26, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/ai_playbook/blog_ai_playbook.png" alt="AI playbook">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-playbook-automating-toil.html">Beyond Prompts: The Developer's AI Playbook for Automating Toil</a></h4>
+                <span class="related-date">January 10, 2026</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
