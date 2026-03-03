@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-03-02T18:33:47.503073+00:00
+X-COMBINE-TIMESTAMP:2026-03-03T01:16:59.000487+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:Jr Current - Practice
@@ -754,6 +754,18 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260212T203114
 LOCATION:Scheel's Complex Field 9SW
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Wildcats vs TBD
+DTSTART;TZID=America/Chicago:20260307T121529
+DTEND;TZID=America/Chicago:20260307T121529
+DTSTAMP:20260302T170823
+UID:9046845-363843917
+SEQUENCE:0
+DESCRIPTION:Location: Recreation Center at Hilltop - Court 2B\n  \n Unifor
+ m: White (Arrival Time: 12:00 PM (Central Time (US & Canada)))
+LAST-MODIFIED:20260302T170823
+LOCATION:7720 W 143rd St\nOverland Park KS 66223\nUnited States
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Jr Current at MSA Twisters
