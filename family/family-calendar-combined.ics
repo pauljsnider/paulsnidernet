@@ -4,20 +4,8 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-03-06T12:33:55.846202+00:00
+X-COMBINE-TIMESTAMP:2026-03-06T18:32:04.690419+00:00
 X-WR-TIMEZONE:America/Chicago
-BEGIN:VEVENT
-SUMMARY:Pre-K Fall 2025 Soccer at Petty
-DTSTART;TZID=America/Chicago:20250906T114539
-DTEND;TZID=America/Chicago:20250906T121539
-DTSTAMP:20250815T161104
-UID:10198271-351139101
-SEQUENCE:0
-DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 1SW\n   (Arri
- val Time: 11:25 AM (Central Time (US & Canada)))
-LAST-MODIFIED:20250815T161104
-LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
-END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Jr Current vs Hawks
 DTSTART;TZID=America/Chicago:20250907T091539
