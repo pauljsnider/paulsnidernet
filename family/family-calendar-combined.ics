@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-03-07T18:20:51.059404+00:00
+X-COMBINE-TIMESTAMP:2026-03-08T01:15:43.117954+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:Jr Current - Practice
@@ -724,12 +724,24 @@ BEGIN:VEVENT
 SUMMARY:Wildcats vs TBD
 DTSTART;TZID=America/Chicago:20260307T121529
 DTEND;TZID=America/Chicago:20260307T121529
-DTSTAMP:20260302T170823
+DTSTAMP:20260307T142807
 UID:9046845-363843917
 SEQUENCE:0
 DESCRIPTION:Location: Recreation Center at Hilltop - Court 2B\n  \n Unifor
  m: White (Arrival Time: 12:00 PM (Central Time (US & Canada)))
-LAST-MODIFIED:20260302T170823
+LAST-MODIFIED:20260307T142807
+LOCATION:7720 W 143rd St\nOverland Park KS 66223\nUnited States
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Wildcats vs Sleddens
+DTSTART;TZID=America/Chicago:20260307T160015
+DTEND;TZID=America/Chicago:20260307T160015
+DTSTAMP:20260307T134203
+UID:9046845-364205166
+SEQUENCE:0
+DESCRIPTION:Location: Recreation Center at Hilltop - Court 2B\n  \n Unifor
+ m: White (Arrival Time:  3:40 PM (Central Time (US & Canada)))
+LAST-MODIFIED:20260307T134203
 LOCATION:7720 W 143rd St\nOverland Park KS 66223\nUnited States
 END:VEVENT
 BEGIN:VEVENT
@@ -743,6 +755,19 @@ DESCRIPTION:Uniform: Red (Arrival Time: 11:45 AM (Central Time (US & Canad
  a)))
 LAST-MODIFIED:20260218T233459
 LOCATION:Compass Minerals #8 North
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Wildcats vs Dunham
+DTSTART;TZID=America/Chicago:20260308T134537
+DTEND;TZID=America/Chicago:20260308T134537
+DTSTAMP:20260307T174646
+UID:9046845-364219151
+SEQUENCE:0
+DESCRIPTION:Location: Recreation Center at Hilltop - Court 1B\n Championsh
+ ip game!! -  \n Uniform: White (Arrival Time:  1:30 PM (Central Time (US &
+  Canada)))
+LAST-MODIFIED:20260307T174646
+LOCATION:7720 W 143rd St\nOverland Park KS 66223\nUnited States
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Jr Current - Practice
