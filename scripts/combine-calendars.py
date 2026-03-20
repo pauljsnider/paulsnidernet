@@ -54,7 +54,10 @@ TEST_CALENDARS = [
 PRODUCTION_CALENDARS = [
     {
         'name': 'Will Soccer',
-        'url': 'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=974a8276-ee4f-4273-bd12-925e6874f9b5&token=8829469505c4b469f837fad611d516938f445935509c3151f35613a20c9a0dd7'
+        'urls': [
+            'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=974a8276-ee4f-4273-bd12-925e6874f9b5&token=8829469505c4b469f837fad611d516938f445935509c3151f35613a20c9a0dd7',
+            'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876'
+        ]
     },
     {
         'name': 'Will Baseball',
@@ -187,6 +190,25 @@ def fetch_calendar(url, name):
     logger.error(f"✗ Failed to fetch {name}: {last_error}")
     return None
 
+def expand_calendar_sources(calendars):
+    """Expand calendars with multiple source URLs into individual fetch units."""
+    expanded = []
+
+    for calendar in calendars:
+        urls = calendar.get('urls') or [calendar.get('url')]
+        urls = [url for url in urls if url]
+
+        for index, url in enumerate(urls, start=1):
+            source_name = calendar['name']
+            if len(urls) > 1:
+                source_name = f"{calendar['name']} (source {index})"
+            expanded.append({
+                'name': source_name,
+                'url': url
+            })
+
+    return expanded
+
 def combine_calendars(calendars):
     """Combine multiple calendars into one with detailed statistics."""
     logger.info("Combining calendars...")
@@ -247,7 +269,8 @@ def main():
     print("Snider Family Calendar Combiner (Enhanced Version)")
     print("=" * 80)
     print(f"Mode: {'TEST' if TEST_MODE else 'PRODUCTION'}")
-    print(f"Calendars to process: {len(CALENDARS)}")
+    expanded_calendars = expand_calendar_sources(CALENDARS)
+    print(f"Calendars to process: {len(expanded_calendars)}")
     print()
 
     success_count = 0
@@ -255,8 +278,8 @@ def main():
     
     # Fetch all calendars
     calendars = []
-    for i, cal_info in enumerate(CALENDARS):
-        print(f"\n[{i+1}/{len(CALENDARS)}] Processing: {cal_info['name']}")
+    for i, cal_info in enumerate(expanded_calendars):
+        print(f"\n[{i+1}/{len(expanded_calendars)}] Processing: {cal_info['name']}")
         cal = fetch_calendar(cal_info['url'], cal_info['name'])
         calendars.append(cal)
         
