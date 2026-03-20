@@ -2152,12 +2152,21 @@
                 return;
             }
 
+            const calendarUrl = Array.isArray(calendar.urls) && calendar.urls.length > 0
+                ? calendar.urls[0]
+                : calendar.url;
+            if (!calendarUrl) {
+                console.error('Calendar has no copyable URL:', calendarId);
+                showNotification(`No calendar link configured for ${calendar.name}`, 'info');
+                return;
+            }
+
             const button = document.querySelector(`[onclick="copyCalendarLink('${calendarId}')"]`);
             const originalIcon = button.innerHTML;
 
             try {
                 // Copy the calendar URL to clipboard
-                await navigator.clipboard.writeText(calendar.url);
+                await navigator.clipboard.writeText(calendarUrl);
                 
                 // Show success feedback
                 button.innerHTML = '<i class="fas fa-check"></i>';
@@ -2178,7 +2187,7 @@
                 console.error('Failed to copy calendar link:', error);
                 
                 // Fallback: show the URL in a prompt
-                prompt('Copy this calendar URL:', calendar.url);
+                prompt('Copy this calendar URL:', calendarUrl);
                 
                 // Show fallback notification
                 showNotification('Please copy the URL from the dialog box', 'info');
