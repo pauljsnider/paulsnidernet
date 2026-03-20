@@ -226,7 +226,9 @@ def combine_calendars(calendars):
     combined.add('x-combine-mode', 'test' if TEST_MODE else 'production')
 
     total_events = 0
-    event_uids = set()  # Track UIDs to avoid duplicates
+    event_components = []
+    event_by_uid = {}
+    ordered_uids = []
     duplicate_count = 0
     calendars_processed = 0
 
@@ -241,21 +243,31 @@ def combine_calendars(calendars):
         # Extract events from this calendar
         for component in cal_data.walk():
             if component.name == "VEVENT":
-                # Check for duplicate UIDs
                 uid = component.get('uid')
-                if uid and uid in event_uids:
-                    duplicate_count += 1
-                    continue
-
                 if uid:
-                    event_uids.add(uid)
+                    uid_str = str(uid)
+                    if uid_str in event_by_uid:
+                        duplicate_count += 1
+                        # Later sources override earlier ones so fresher GameChanger
+                        # subscriptions can correct stale event details.
+                        event_by_uid[uid_str] = component
+                        continue
 
-                # Add event to combined calendar
-                combined.add_component(component)
+                    event_by_uid[uid_str] = component
+                    ordered_uids.append(uid_str)
+                else:
+                    event_components.append(component)
+
                 total_events += 1
                 calendar_events += 1
 
         logger.info(f"Calendar {i+1}: {calendar_events} events added")
+
+    for uid in ordered_uids:
+        event_components.append(event_by_uid[uid])
+
+    for component in event_components:
+        combined.add_component(component)
 
     logger.info(f"✓ Combined {total_events} total events from {calendars_processed} calendars")
     if duplicate_count > 0:
