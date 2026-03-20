@@ -1300,7 +1300,11 @@
             {
                 id: 'calendar1',
                 name: 'Will Soccer',
-                url: 'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=974a8276-ee4f-4273-bd12-925e6874f9b5&token=8829469505c4b469f837fad611d516938f445935509c3151f35613a20c9a0dd7'
+                url: 'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876',
+                urls: [
+                    'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=974a8276-ee4f-4273-bd12-925e6874f9b5&token=8829469505c4b469f837fad611d516938f445935509c3151f35613a20c9a0dd7',
+                    'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876'
+                ]
             },
             {
                 id: 'calendar2', 
@@ -1399,6 +1403,53 @@
             return text.slice(markerIndex);
         }
 
+        function dedupeEvents(events) {
+            const seen = new Set();
+            const deduped = [];
+
+            events.forEach(event => {
+                const key = event.uid || `${event.calendarName}|${event.summary || ''}|${event.dtstart ? event.dtstart.toISOString() : ''}`;
+                if (seen.has(key)) {
+                    return;
+                }
+                seen.add(key);
+                deduped.push(event);
+            });
+
+            return deduped;
+        }
+
+        async function loadCalendarSources(calendar) {
+            const urls = Array.isArray(calendar.urls) && calendar.urls.length > 0
+                ? calendar.urls
+                : [calendar.url];
+            const sourceEvents = [];
+            const sourceErrors = [];
+
+            for (let i = 0; i < urls.length; i++) {
+                const sourceLabel = urls.length > 1 ? `${calendar.name} source ${i + 1}` : calendar.name;
+                try {
+                    const events = await loadSingleCalendar(urls[i], calendar.name, calendar.id);
+                    sourceEvents.push(...events);
+                } catch (error) {
+                    sourceErrors.push(`${sourceLabel}: ${error.message}`);
+                }
+            }
+
+            const dedupedEvents = dedupeEvents(sourceEvents);
+
+            if (dedupedEvents.length > 0) {
+                return {
+                    events: dedupedEvents,
+                    sourceCount: urls.length,
+                    loadedSourceCount: urls.length - sourceErrors.length,
+                    sourceErrors
+                };
+            }
+
+            throw new Error(sourceErrors.join('; ') || 'No events returned from any configured source');
+        }
+
         async function loadAllCalendars() {
             const container = document.getElementById('events-container');
             container.innerHTML = `
@@ -1424,7 +1475,8 @@
 
                 try {
                     console.log(`Loading calendar: ${calendar.name}`);
-                    const events = await loadSingleCalendar(calendar.url, calendar.name, calendar.id);
+                    const result = await loadCalendarSources(calendar);
+                    const events = result.events;
                     
                     // Add events to global array
                     allLoadedEvents.push(...events);
@@ -1434,7 +1486,7 @@
                     statusElement.className = 'calendar-status success';
                     calendarItem.classList.remove('disabled');
                     
-                    console.log(`Successfully loaded ${events.length} events from ${calendar.name}`);
+                    console.log(`Successfully loaded ${events.length} deduped events from ${calendar.name} (${result.loadedSourceCount}/${result.sourceCount} sources)`);
                     
                     // Update display immediately after each calendar loads
                     completedCount++;
@@ -1782,6 +1834,9 @@
                         const value = line.substring(colonIndex + 1);
                         
                         switch (key) {
+                            case 'UID':
+                                currentEvent.uid = value;
+                                break;
                             case 'SUMMARY':
                                 currentEvent.summary = value.replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, '\n');
                                 // Extract location from summary for games (e.g., "@ Whitaker 2")
@@ -2098,12 +2153,21 @@
                 return;
             }
 
+            const calendarUrl = Array.isArray(calendar.urls) && calendar.urls.length > 0
+                ? calendar.urls[0]
+                : calendar.url;
+            if (!calendarUrl) {
+                console.error('Calendar has no copyable URL:', calendarId);
+                showNotification(`No calendar link configured for ${calendar.name}`, 'info');
+                return;
+            }
+
             const button = document.querySelector(`[onclick="copyCalendarLink('${calendarId}')"]`);
             const originalIcon = button.innerHTML;
 
             try {
                 // Copy the calendar URL to clipboard
-                await navigator.clipboard.writeText(calendar.url);
+                await navigator.clipboard.writeText(calendarUrl);
                 
                 // Show success feedback
                 button.innerHTML = '<i class="fas fa-check"></i>';
@@ -2124,7 +2188,7 @@
                 console.error('Failed to copy calendar link:', error);
                 
                 // Fallback: show the URL in a prompt
-                prompt('Copy this calendar URL:', calendar.url);
+                prompt('Copy this calendar URL:', calendarUrl);
                 
                 // Show fallback notification
                 showNotification('Please copy the URL from the dialog box', 'info');
