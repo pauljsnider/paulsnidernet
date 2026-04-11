@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Run OpenClaw, GitHub Automation, and Slack on an Ubuntu VM - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">April 11, 2026</span>
+            </div>
+            <h1 class="post-title">How I Run OpenClaw, GitHub Automation, and Slack on an Ubuntu VM</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop" alt="Slack, GitHub, and automation workflow" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">This setup is really two layers running on the same Ubuntu VM: OpenClaw handles direct Slack conversations over Socket Mode, and a set of systemd timers drive GitHub automation lanes that triage issues, fix code, respond to review feedback, and ask me for merge approval.</p>
+
+            <h2>What is actually running</h2>
+            <p>The host is an Ubuntu VM with daily snapshot backups. OpenClaw is installed from source, connected to Slack through Socket Mode, and configured with Codex as the current primary model, with OpenRouter and Gemini fallbacks available. GitHub access is handled through <code>gh</code>, and the automation around it is managed with user-level systemd services and timers.</p>
+            <p>That matters because this is not one long-running prompt. It is a collection of small, purpose-built lanes with different cadences and responsibilities.</p>
+
+            <blockquote>
+              The useful design choice is separation of concerns: Slack stays conversational, GitHub stays the system of record, and systemd keeps the automation loops predictable.
+            </blockquote>
+
+            <h2>Correction number one: Slack is event-driven</h2>
+            <p>The main Slack bot is not polling every 90 seconds. OpenClaw is connected through Slack Socket Mode, so DMs and mentions arrive as events. That gives me an always-on chat interface without exposing a public webhook endpoint.</p>
+            <p>The 90-second poller in this setup belongs to a different lane: a secondary bot named <code>snidegod</code> that watches GitHub Discussions, not Slack.</p>
+
+            <h2>The timed automation lanes</h2>
+            <h3>Bughunter every 2 hours</h3>
+            <p>The bughunter lane runs every two hours. It scans repositories for likely functional defects, duplicate-safe regression gaps, and suspicious workflows, then files GitHub issues when the evidence is strong enough.</p>
+
+            <h3>Feature-gap researcher every 12 hours</h3>
+            <p>The feature-gap lane runs every twelve hours. It looks at competitor and ecosystem signals, then opens GitHub issues for meaningful feature gaps or research opportunities rather than dumping loose notes into a doc.</p>
+
+            <h3>Issue triager every 30 minutes</h3>
+            <p>The issue triager runs twice an hour. It classifies issues, checks for duplicates, decides whether they are reproducible, and marks whether they are ready for the fixer lane.</p>
+
+            <h3>Issue fixer every 30 minutes</h3>
+            <p>The issue fixer also runs twice an hour, staggered behind triage. For eligible issues, it prepares a branch, investigates the repo, writes or updates tests, implements the minimal fix, validates, and prepares the change for PR creation.</p>
+
+            <h3>PR comment watcher every 5 minutes</h3>
+            <p>The PR comment watcher checks GitHub pull request comments every five minutes. It is wired to respond to mentions and commands, and it can also accept trigger comments from review bots like Amazon Q and Codex connectors.</p>
+
+            <h3>PR review remediator every 5 minutes</h3>
+            <p>The review remediator runs on a five-minute cadence with a clock anchor. It reads unresolved PR feedback, applies targeted code or test changes, commits them, and pushes the branch forward.</p>
+
+            <h3>PR merge prep every 30 minutes</h3>
+            <p>The merge-prep lane runs every thirty minutes. When a PR is clean enough to ship, it sends me a Slack approval request and waits for a simple response like <code>yes</code> or <code>no</code> before merging.</p>
+
+            <h2>How issue work is actually structured</h2>
+            <p>The earlier simplified description was directionally right but not precise enough. The real setup does not just say, “process issues every few hours.” It has separate triage and fixer lanes, and the implementation-heavy lanes use role-based orchestration inside the run.</p>
+            <p>In the allplays flows, the fixer and PR remediator explicitly call four role subagents before implementation:</p>
+            <ol>
+              <li><strong>Requirements</strong> to sharpen the problem and acceptance criteria</li>
+              <li><strong>Architecture</strong> to bound the solution and blast radius</li>
+              <li><strong>QA</strong> to define regression coverage and test expectations</li>
+              <li><strong>Code</strong> to shape the minimal safe patch plan</li>
+            </ol>
+            <p>Only the main execution lane edits files, commits, and pushes. The subagents are there to improve the plan, not to create uncontrolled side effects.</p>
+
+            <h2>Where Amazon Q and Codex fit</h2>
+            <p>I do use Amazon Q and Codex in the review loop, but the accurate description is that the GitHub watcher and remediation lanes are built to react to their review feedback, not that one giant script simply “runs Amazon Q and Codex.” The system watches for review activity, incorporates that feedback, and hands it to the remediation path.</p>
+
+            <h2>The second bot is real, and a little weird</h2>
+            <p>There is also a secondary bot, <code>snidegod</code>, with its own timers and GitHub scope. One of its lanes watches GitHub Discussions every 90 seconds. Another daily timer starts a bot-to-bot conversation in the Slack channel <code>#feelings</code>, where the bots reflect on workload, blockers, and system stress.</p>
+            <p>That sounds gimmicky until you look at the purpose. The point is operational introspection. I want the system to expose overload and queue pressure instead of quietly degrading.</p>
+
+            <h2>Why I like this pattern</h2>
+            <ul>
+              <li><strong>Slack stays simple</strong>, because the interface is just conversation and approvals</li>
+              <li><strong>GitHub stays authoritative</strong>, because issues, PRs, labels, and comments capture the work</li>
+              <li><strong>Automation stays observable</strong>, because each lane has its own timer, logs, and failure mode</li>
+              <li><strong>AI work stays bounded</strong>, because roles are separated and merges still require human approval</li>
+            </ul>
+
+            <h2>If I were describing it in one line now</h2>
+            <p>I run OpenClaw on an Ubuntu VM as the Slack-facing control layer, then use systemd-scheduled GitHub lanes for bug discovery, feature research, triage, implementation, review remediation, and Slack-based merge approval.</p>
+
+            <div class="post-tags">
+              <span class="tag">OpenClaw</span>
+              <span class="tag">Slack</span>
+              <span class="tag">GitHub Automation</span>
+              <span class="tag">Systemd</span>
+              <span class="tag">Codex</span>
+              <span class="tag">Amazon Q</span>
+            </div>
+          </div>
+        </article>
+
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&h=200&fit=crop" alt="Server room with network infrastructure">
+              <div class="related-content">
+                <h4><a href="blog-post-openclaw-setup.html">Setting Up OpenClaw on a Dedicated VM</a></h4>
+                <span class="related-date">February 17, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?w=300&h=200&fit=crop" alt="Developer workflow with chat and code tools">
+              <div class="related-content">
+                <h4><a href="blog-post-autonomous-github-slack-bot.html">Building an Autonomous Coding Bot for GitHub and Slack</a></h4>
+                <span class="related-date">February 21, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/ai_playbook/blog_ai_playbook.png" alt="AI playbook cover image">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-playbook-automating-toil.html">Beyond Prompts: The Developer's AI Playbook for Automating Toil</a></h4>
+                <span class="related-date">January 10, 2026</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
