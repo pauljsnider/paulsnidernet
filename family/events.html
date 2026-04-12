@@ -1313,7 +1313,8 @@
                 urls: [
                     'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=8062a71b-b128-4aa5-bd73-ff686c22d8f6&token=a1bcfb01283407a3f79afdf9bbf5d7400714d67542caca0738910db13ee9f70d',
                     'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=628804f9-1e56-439b-b8f6-af42fb098e41&token=3f19b930ec1be351e60daf351471939c971ad0ed8e3afeef0df61df083464de3'
-                ]
+                ],
+                sourceStrategy: 'failover'
             },
             {
                 id: 'calendar3',
@@ -1427,13 +1428,24 @@
             const urls = Array.isArray(calendar.urls) && calendar.urls.length > 0
                 ? calendar.urls
                 : [calendar.url];
+            const strategy = calendar.sourceStrategy === 'failover' ? 'failover' : 'merge';
             const sourceEvents = [];
             const sourceErrors = [];
+            let attemptedSourceCount = 0;
 
             for (let i = 0; i < urls.length; i++) {
                 const sourceLabel = urls.length > 1 ? `${calendar.name} source ${i + 1}` : calendar.name;
+                attemptedSourceCount += 1;
                 try {
                     const events = await loadSingleCalendar(urls[i], calendar.name, calendar.id);
+                    if (strategy === 'failover') {
+                        return {
+                            events: dedupeEvents(events),
+                            sourceCount: attemptedSourceCount,
+                            loadedSourceCount: 1,
+                            sourceErrors
+                        };
+                    }
                     sourceEvents.push(...events);
                 } catch (error) {
                     sourceErrors.push(`${sourceLabel}: ${error.message}`);
@@ -1445,8 +1457,8 @@
             if (dedupedEvents.length > 0) {
                 return {
                     events: dedupedEvents,
-                    sourceCount: urls.length,
-                    loadedSourceCount: urls.length - sourceErrors.length,
+                    sourceCount: attemptedSourceCount,
+                    loadedSourceCount: attemptedSourceCount - sourceErrors.length,
                     sourceErrors
                 };
             }

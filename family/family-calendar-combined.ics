@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-04-12T16:01:30.728626+00:00
+X-COMBINE-TIMESTAMP:2026-04-12T16:07:06.057353+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:OTE Cougars (First Grade Boys) Practice
@@ -420,18 +420,6 @@ LAST-MODIFIED:20260406T223138Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Jr Current vs Hawks
-DTSTART;TZID=America/Chicago:20251012T103039
-DTEND;TZID=America/Chicago:20251012T103039
-DTSTAMP:20251012T133350
-UID:8910225-349909742
-SEQUENCE:0
-DESCRIPTION:Location: Scheels OP Soccer Complex Field 8 South\n   (Arrival
-  Time: 10:30 AM (Central Time (US & Canada)))
-LAST-MODIFIED:20251012T133350
-LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Jr Current - Practice
