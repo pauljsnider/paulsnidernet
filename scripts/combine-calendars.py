@@ -197,15 +197,19 @@ def expand_calendar_sources(calendars):
                 source_name = f"{calendar['name']} (source {index})"
             expanded.append({
                 'name': source_name,
+                'base_name': calendar['name'],
                 'url': url
             })
 
     return expanded
 
-def combine_calendars(calendars):
+def combine_calendars(calendars, source_names=None):
     """Combine multiple calendars into one with detailed statistics."""
     logger.info("Combining calendars...")
-    
+
+    if source_names is None:
+        source_names = [None] * len(calendars)
+
     # Create a new calendar
     combined = Calendar()
     combined.add('prodid', '-//Snider Family//Combined Calendar//EN')
@@ -213,7 +217,7 @@ def combine_calendars(calendars):
     combined.add('x-wr-calname', 'Snider Family Calendar - Combined')
     combined.add('x-wr-timezone', 'America/Chicago')
     combined.add('x-wr-caldesc', 'Combined calendar with all Snider family events')
-    
+
     # Add metadata about the combine operation
     combined.add('x-combine-timestamp', datetime.now(pytz.UTC).isoformat())
     combined.add('x-combine-mode', 'test' if TEST_MODE else 'production')
@@ -222,10 +226,11 @@ def combine_calendars(calendars):
     event_components = []
     event_by_uid = {}
     ordered_uids = []
+    event_source_map = {}  # uid -> source_name
     duplicate_count = 0
     calendars_processed = 0
 
-    for i, cal_data in enumerate(calendars):
+    for i, (cal_data, source_name) in enumerate(zip(calendars, source_names)):
         if cal_data is None:
             logger.warning(f"Skipping calendar {i+1} (failed to load)")
             continue
@@ -244,11 +249,17 @@ def combine_calendars(calendars):
                         # Later sources override earlier ones so fresher GameChanger
                         # subscriptions can correct stale event details.
                         event_by_uid[uid_str] = component
+                        if source_name:
+                            event_source_map[uid_str] = source_name
                         continue
 
                     event_by_uid[uid_str] = component
                     ordered_uids.append(uid_str)
+                    if source_name:
+                        event_source_map[uid_str] = source_name
                 else:
+                    if source_name:
+                        component['x-source-calendar'] = source_name
                     event_components.append(component)
 
                 total_events += 1
@@ -257,7 +268,10 @@ def combine_calendars(calendars):
         logger.info(f"Calendar {i+1}: {calendar_events} events added")
 
     for uid in ordered_uids:
-        event_components.append(event_by_uid[uid])
+        component = event_by_uid[uid]
+        if uid in event_source_map:
+            component['x-source-calendar'] = event_source_map[uid]
+        event_components.append(component)
 
     for component in event_components:
         combined.add_component(component)
@@ -280,14 +294,16 @@ def main():
 
     success_count = 0
     failure_count = 0
-    
+
     # Fetch all calendars
     calendars = []
+    source_names = []
     for i, cal_info in enumerate(expanded_calendars):
         print(f"\n[{i+1}/{len(expanded_calendars)}] Processing: {cal_info['name']}")
         cal = fetch_calendar(cal_info['url'], cal_info['name'])
         calendars.append(cal)
-        
+        source_names.append(cal_info['base_name'])
+
         if cal is not None:
             success_count += 1
         else:
@@ -298,7 +314,7 @@ def main():
     print("=" * 50 + "\n")
 
     # Combine calendars (even if some failed)
-    combined = combine_calendars(calendars)
+    combined = combine_calendars(calendars, source_names)
 
     # Write to output file
     try:

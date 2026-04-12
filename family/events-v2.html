@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snider Family Calendar</title>
+    <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .config-section {
+            background: var(--background-alt);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        .config-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        .config-section p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .load-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .load-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .load-btn:hover::before { left: 100%; }
+        .load-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 86, 179, 0.3);
+        }
+        .events-container { min-height: 200px; }
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #d32f2f;
+        }
+        .events-header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .events-header h2 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0;
+        }
+
+        /* Calendar source sections */
+        .calendar-section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-light);
+            margin-top: 16px;
+            margin-bottom: 6px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .feed-badge {
+            font-size: 0.75rem;
+            background: #e8f4fd;
+            color: var(--accent-color);
+            border: 1px solid #bee3f8;
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .feed-timestamp {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-left: 6px;
+        }
+        .calendar-list { margin-bottom: 20px; }
+        .calendar-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+        .calendar-item:last-child { border-bottom: none; }
+        .calendar-item:hover {
+            background: rgba(0, 160, 233, 0.02);
+            padding-left: 8px;
+            margin-left: -8px;
+            margin-right: -8px;
+            border-radius: 6px;
+        }
+        .calendar-item i.sport-icon {
+            color: var(--primary-color);
+            margin-right: 12px;
+            width: 20px;
+            font-size: 1rem;
+        }
+        .calendar-name {
+            flex: 1;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-right: 12px;
+        }
+        .calendar-status {
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        .calendar-status.loading { background: var(--background-alt); color: var(--text-light); }
+        .calendar-status.success { background: var(--success-color); color: white; }
+        .calendar-status.error { background: #dc3545; color: white; }
+
+        /* Stats */
+        .stats-bar {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+        .stats-item { text-align: center; flex: 1; }
+        .stats-number { font-size: 1.8rem; font-weight: bold; display: block; font-family: 'Montserrat', sans-serif; }
+        .stats-label { font-size: 0.85rem; opacity: 0.9; }
+
+        /* Event cards */
+        .event-grid { display: grid; gap: 15px; }
+        .event {
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .event::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .event:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-left-color: var(--primary-color); }
+        .event:hover::before { opacity: 1; }
+        .event-header { display: flex; justify-content: between; align-items: flex-start; margin-bottom: 12px; gap: 15px; }
+        .event-title { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: var(--secondary-color); margin: 0; flex: 1; line-height: 1.3; }
+        .event-type-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .event-type-badge.soccer { background: #28a745; }
+        .event-type-badge.baseball { background: #dc3545; }
+        .event-type-badge.teamsnap { background: #6f42c1; }
+        .event-type-badge.school { background: #fd7e14; }
+        .event-type-badge.trail { background: #20c997; }
+        .event-details { display: grid; gap: 8px; }
+        .event-date { color: var(--text-color); font-size: 1rem; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+        .event-time { background: var(--primary-color); color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; margin-left: 8px; }
+        .event-location { color: var(--text-light); font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .event-description {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background: var(--background-alt);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-color);
+            margin-top: 8px;
+        }
+        .event-description i { margin-top: 2px; opacity: 0.7; }
+        .event-source { font-size: 0.8rem; color: var(--text-light); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-color); opacity: 0.8; }
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-light); }
+        .empty-state i { font-size: 4rem; margin-bottom: 20px; opacity: 0.5; }
+        .empty-state h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-color); }
+        .loading-skeleton { display: flex; flex-direction: column; gap: 15px; }
+        .skeleton-item {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+            height: 80px;
+        }
+        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+        /* Checkbox */
+        .calendar-checkbox { position: relative; display: inline-flex; align-items: center; margin-right: 15px; cursor: pointer; }
+        .calendar-checkbox input[type="checkbox"] { opacity: 0; position: absolute; width: 0; height: 0; }
+        .checkmark { position: relative; height: 18px; width: 18px; background-color: var(--background-color); border: 2px solid var(--border-color); border-radius: 4px; transition: all 0.3s ease; }
+        .calendar-checkbox:hover .checkmark { border-color: var(--primary-color); }
+        .calendar-checkbox input:checked ~ .checkmark { background-color: var(--primary-color); border-color: var(--primary-color); }
+        .checkmark:after { content: ""; position: absolute; display: none; left: 5px; top: 2px; width: 4px; height: 8px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+        .calendar-checkbox input:checked ~ .checkmark:after { display: block; }
+        .calendar-item.disabled { opacity: 0.5; }
+
+        /* Copy btn (live calendars only) */
+        .copy-btn {
+            background: transparent; color: var(--text-light); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 6px 10px; margin-right: 8px; cursor: pointer;
+            font-size: 0.75rem; transition: all 0.2s ease; display: inline-flex;
+            align-items: center; justify-content: center; min-width: 28px; height: 28px;
+            opacity: 0; transform: scale(0.9);
+        }
+        .calendar-item:hover .copy-btn { opacity: 1; transform: scale(1); }
+        .copy-btn:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); transform: scale(1.05); }
+        .copy-btn.success { background: var(--success-color); color: white; border-color: var(--success-color); opacity: 1; }
+
+        /* Notification */
+        .notification {
+            position: fixed; top: 20px; right: 20px; background: white;
+            border: 1px solid var(--border-color); border-radius: 8px; padding: 15px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center;
+            gap: 15px; z-index: 1000; animation: slideIn 0.3s ease; max-width: 400px; font-size: 0.9rem;
+        }
+        .notification-success { border-left: 4px solid var(--success-color); background: #f8fff9; }
+        .notification-info { border-left: 4px solid var(--accent-color); background: #f8fbff; }
+        .notification button { background: none; border: none; cursor: pointer; color: var(--text-light); font-size: 0.8rem; padding: 4px; border-radius: 4px; transition: all 0.2s ease; }
+        .notification button:hover { background: var(--border-color); color: var(--text-color); }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
+
+        /* Controls */
+        .controls-section { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; margin-top: 25px; padding-top: 25px; border-top: 1px solid var(--border-color); }
+        .time-filters, .view-controls { display: flex; align-items: center; gap: 10px; }
+        .filter-label { font-size: 0.9rem; font-weight: 500; color: var(--text-color); margin-right: 5px; }
+        .filter-buttons, .view-buttons { display: flex; gap: 5px; }
+        .filter-btn, .view-btn { background: white; color: var(--text-color); border: 1px solid var(--border-color); padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: all 0.2s ease; white-space: nowrap; }
+        .filter-btn:hover, .view-btn:hover { background: var(--background-alt); border-color: var(--accent-color); }
+        .filter-btn.active, .view-btn.active { background: var(--accent-color); color: white; border-color: var(--accent-color); }
+        .view-btn { display: flex; align-items: center; gap: 6px; }
+        .action-buttons { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .export-btn {
+            background: var(--success-color); color: white; padding: 12px 20px; border: none;
+            border-radius: 30px; font-weight: 500; cursor: pointer; transition: all 0.3s ease;
+            font-size: 0.9rem; box-shadow: var(--shadow); display: inline-flex; align-items: center;
+            gap: 8px; text-decoration: none;
+        }
+        .export-btn:hover { background: #218838; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(40,167,69,0.3); color: white; }
+
+        /* Compact view */
+        .event-grid.compact { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+        .event-grid.compact .event { padding: 12px 16px; }
+        .event-grid.compact .event-header { margin-bottom: 6px; }
+        .event-grid.compact .event-title { font-size: 1rem; line-height: 1.2; }
+        .event-grid.compact .event-type-badge { font-size: 0.7rem; padding: 2px 8px; }
+        .event-grid.compact .event-details { gap: 4px; }
+        .event-grid.compact .event-date { font-size: 0.85rem; }
+        .event-grid.compact .event-time { font-size: 0.75rem; padding: 2px 6px; }
+        .event-grid.compact .event-location { font-size: 0.8rem; }
+        .event-grid.compact .event-description { font-size: 0.8rem; padding: 6px 10px; margin-top: 6px; }
+        .event-grid.compact .event-source { margin-top: 6px; padding-top: 6px; }
+
+        @media (max-width: 768px) {
+            .stats-bar { flex-direction: column; gap: 15px; text-align: center; }
+            .stats-item { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; }
+            .stats-item:last-child { border-bottom: none; padding-bottom: 0; }
+            .event-header { flex-direction: column; gap: 10px; }
+            .event-type-badge { align-self: flex-start; }
+            .controls-section { flex-direction: column; align-items: stretch; gap: 15px; }
+            .time-filters, .view-controls { justify-content: center; flex-wrap: wrap; }
+            .filter-buttons { flex-wrap: wrap; justify-content: center; }
+        }
+
+        /* Calendar View */
+        .calendar-view { display: none; max-width: 1000px; margin: 0 auto; }
+        .calendar-view.active { display: block; }
+        .calendar-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding: 20px; background: var(--background-alt); border-radius: 10px; border: 1px solid var(--border-color); }
+        .calendar-nav-btn { background: var(--primary-color); color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; }
+        .calendar-nav-btn:hover { background: var(--accent-color); transform: scale(1.1); }
+        .calendar-month-year { font-size: 1.8rem; font-weight: 600; color: var(--secondary-color); font-family: 'Montserrat', sans-serif; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--border-color); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; }
+        .calendar-day-header { background: var(--secondary-color); color: white; padding: 15px 5px; text-align: center; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; }
+        .calendar-day { background: white; min-height: 120px; padding: 8px; position: relative; cursor: pointer; transition: all 0.2s ease; border: none; display: flex; flex-direction: column; }
+        .calendar-day:hover { background: var(--background-alt); }
+        .calendar-day.other-month { background: #f8f9fa; color: #adb5bd; }
+        .calendar-day.today { background: var(--accent-color); color: white; }
+        .calendar-day.has-events { background: #e3f2fd; }
+        .calendar-day.has-events:hover { background: #bbdefb; }
+        .calendar-day.today.has-events { background: var(--primary-color); }
+        .calendar-day-number { font-weight: 600; font-size: 1rem; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .calendar-day.today .calendar-day-number { color: white; }
+        .event-count-badge { background: var(--accent-color); color: white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 600; }
+        .calendar-day.today .event-count-badge { background: rgba(255,255,255,0.3); }
+        .event-times { flex: 1; display: flex; flex-direction: column; gap: 1px; margin-top: 2px; }
+        .event-time-item { background: var(--background-alt); padding: 2px 4px; border-radius: 3px; font-size: 0.65rem; color: var(--text-color); border-left: 2px solid var(--accent-color); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .event-time-item.soccer { border-left-color: #28a745; }
+        .event-time-item.baseball { border-left-color: #dc3545; }
+        .event-time-item.teamsnap { border-left-color: #6f42c1; }
+        .event-time-item.school { border-left-color: #fd7e14; }
+        .event-time-item.trail { border-left-color: #20c997; }
+        .calendar-day.today .event-time-item { background: rgba(255,255,255,0.2); color: white; }
+        .event-indicators { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 4px; }
+        .event-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+        .event-dot.soccer { background: #28a745; }
+        .event-dot.baseball { background: #dc3545; }
+        .event-dot.teamsnap { background: #6f42c1; }
+        .event-dot.school { background: #fd7e14; }
+        .event-dot.trail { background: #20c997; }
+        .event-dot.default { background: var(--accent-color); }
+        .event-summary { font-size: 0.7rem; color: var(--text-color); margin-top: 2px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .calendar-day.today .event-summary { color: rgba(255,255,255,0.9); }
+
+        /* Day popup */
+        .day-events-popup { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-width: 500px; max-height: 70vh; overflow-y: auto; z-index: 1000; display: none; }
+        .day-events-popup.active { display: block; }
+        .popup-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
+        .popup-date { font-size: 1.3rem; font-weight: 600; color: var(--secondary-color); }
+        .popup-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); padding: 5px; border-radius: 50%; transition: all 0.2s ease; }
+        .popup-close:hover { background: var(--background-alt); color: var(--text-color); }
+        .popup-events { display: flex; flex-direction: column; gap: 10px; }
+        .popup-event { padding: 10px; background: var(--background-alt); border-radius: 8px; border-left: 4px solid var(--accent-color); }
+        .popup-event.soccer { border-left-color: #28a745; }
+        .popup-event.baseball { border-left-color: #dc3545; }
+        .popup-event.teamsnap { border-left-color: #6f42c1; }
+        .popup-event.school { border-left-color: #fd7e14; }
+        .popup-event.trail { border-left-color: #20c997; }
+        .popup-event-title { font-weight: 600; margin-bottom: 5px; color: var(--secondary-color); }
+        .popup-event-time { font-size: 0.9rem; color: var(--text-light); margin-bottom: 3px; }
+        .popup-event-location { font-size: 0.85rem; color: var(--text-light); margin-bottom: 3px; }
+        .popup-event-description { font-size: 0.8rem; color: var(--text-color); background: var(--background-alt); padding: 6px 8px; border-radius: 4px; margin-top: 5px; border-left: 3px solid var(--accent-color); }
+        .calendar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; display: none; }
+        .calendar-overlay.active { display: block; }
+
+        @media (max-width: 768px) {
+            .calendar-grid { gap: 0; }
+            .calendar-day { min-height: 100px; padding: 4px; }
+            .calendar-day-header { padding: 10px 5px; font-size: 0.8rem; }
+            .calendar-month-year { font-size: 1.4rem; }
+            .calendar-nav-btn { width: 35px; height: 35px; font-size: 1rem; }
+            .day-events-popup { max-width: 90vw; margin: 20px; }
+            .calendar-day-number { font-size: 0.9rem; margin-bottom: 3px; }
+            .event-count-badge { width: 16px; height: 16px; font-size: 0.6rem; }
+            .event-time-item { font-size: 0.6rem; padding: 1px 3px; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero" style="padding: 60px 0; background: var(--background-alt);">
+        <div class="container">
+            <h1 class="section-title">Snider Family Calendar</h1>
+        </div>
+    </section>
+
+    <section style="padding: 40px 0;">
+        <div class="container">
+            <div class="config-section">
+                <h3><i class="fas fa-calendar-alt"></i> Family Calendars</h3>
+                <p>Sports events load instantly from the synced family feed. School calendars load live.</p>
+
+                <div class="calendar-list">
+                    <div class="calendar-section-label">
+                        <i class="fas fa-sync-alt"></i> Synced Feed
+                        <span class="feed-badge" id="feed-badge">Loading…</span>
+                        <span class="feed-timestamp" id="feed-timestamp"></span>
+                    </div>
+
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="cal-will-soccer-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-futbol sport-icon"></i>
+                        <span class="calendar-name">Will Soccer</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="cal-will-baseball-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-baseball-ball sport-icon"></i>
+                        <span class="calendar-name">Will Baseball</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="cal-will-indoor-soccer-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-futbol sport-icon"></i>
+                        <span class="calendar-name">Will Indoor Soccer</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="cal-teamsnap-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-users sport-icon"></i>
+                        <span class="calendar-name">TeamSnap Events (Madison + Max + Will)</span>
+                    </div>
+
+                    <div class="calendar-section-label" style="margin-top:20px;">
+                        <i class="fas fa-wifi"></i> Live Calendars
+                    </div>
+
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar4-enabled" onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-school sport-icon"></i>
+                        <span class="calendar-name">Blue Valley School Calendar</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar4')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar4-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar5-enabled" onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-map-marked-alt sport-icon"></i>
+                        <span class="calendar-name">Overland Trail Calendar</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar5')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar5-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar7-enabled" onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-school sport-icon"></i>
+                        <span class="calendar-name">St. Michael School Calendar</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar7')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar7-status">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="controls-section">
+                    <div class="time-filters">
+                        <span class="filter-label">Show:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="week" onclick="setTimeFilter('week')">Next Week</button>
+                            <button class="filter-btn" data-filter="month" onclick="setTimeFilter('month')">Next Month</button>
+                            <button class="filter-btn" data-filter="quarter" onclick="setTimeFilter('quarter')">Next 3 Months</button>
+                            <button class="filter-btn" data-filter="all" onclick="setTimeFilter('all')">All Upcoming</button>
+                        </div>
+                    </div>
+                    <div class="event-type-filters">
+                        <span class="filter-label">Type:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-type="all" onclick="setEventTypeFilter('all')">All Events</button>
+                            <button class="filter-btn" data-type="games" onclick="setEventTypeFilter('games')">Games Only</button>
+                        </div>
+                    </div>
+                    <div class="kid-filters">
+                        <span class="filter-label">Kid:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-kid="all" onclick="setKidFilter('all')">All Kids</button>
+                            <button class="filter-btn" data-kid="will" onclick="setKidFilter('will')">Will</button>
+                            <button class="filter-btn" data-kid="madison" onclick="setKidFilter('madison')">Madison</button>
+                            <button class="filter-btn" data-kid="max" onclick="setKidFilter('max')">Max</button>
+                        </div>
+                    </div>
+                    <div class="view-controls">
+                        <span class="filter-label">View:</span>
+                        <div class="view-buttons">
+                            <button class="view-btn" data-view="detailed" onclick="setView('detailed')"><i class="fas fa-list"></i> Detailed</button>
+                            <button class="view-btn active" data-view="compact" onclick="setView('compact')"><i class="fas fa-th-list"></i> Compact</button>
+                            <button class="view-btn" data-view="calendar" onclick="setView('calendar')"><i class="fas fa-calendar"></i> Calendar</button>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <a class="export-btn" href="/family/family-calendar-combined.ics" download="snider-family-calendar.ics" title="Download the full combined calendar">
+                            <i class="fas fa-download"></i> Download Calendar
+                        </a>
+                        <button class="load-btn" onclick="loadAllCalendars()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="events-container" class="events-container">
+                <div class="loading-skeleton">
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                </div>
+            </div>
+
+            <!-- Calendar View -->
+            <div id="calendar-view" class="calendar-view">
+                <div class="calendar-header">
+                    <button id="prev-month" class="calendar-nav-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div id="calendar-month-year" class="calendar-month-year">April 2026</div>
+                    <button id="next-month" class="calendar-nav-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div id="calendar-grid" class="calendar-grid">
+                    <div class="calendar-day-header">Sun</div>
+                    <div class="calendar-day-header">Mon</div>
+                    <div class="calendar-day-header">Tue</div>
+                    <div class="calendar-day-header">Wed</div>
+                    <div class="calendar-day-header">Thu</div>
+                    <div class="calendar-day-header">Fri</div>
+                    <div class="calendar-day-header">Sat</div>
+                </div>
+            </div>
+
+            <div id="calendar-overlay" class="calendar-overlay"></div>
+            <div id="day-events-popup" class="day-events-popup">
+                <div class="popup-header">
+                    <div id="popup-date" class="popup-date"></div>
+                    <button id="popup-close" class="popup-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div id="popup-events" class="popup-events"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // GH Action feed URL (same-origin, no CORS proxy needed)
+        const COMBINED_ICS_URL = '/family/family-calendar-combined.ics';
+
+        // Names of calendars sourced from the combined feed (must match X-SOURCE-CALENDAR values)
+        const GH_CALENDAR_NAMES = [
+            'Will Soccer',
+            'Will Baseball',
+            'Will Indoor Soccer',
+            'TeamSnap Events (Madison + Max + Will)'
+        ];
+
+        // Live calendars fetched via CORS proxies
+        const LIVE_CALENDARS = [
+            {
+                id: 'calendar4',
+                name: 'Blue Valley School Calendar',
+                url: 'https://www.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=39&calendar_ids[]=1'
+            },
+            {
+                id: 'calendar5',
+                name: 'Overland Trail Calendar',
+                url: 'https://ote.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=23'
+            },
+            {
+                id: 'calendar7',
+                name: 'St. Michael School Calendar',
+                url: 'https://stmichaelcp.org/icalendar.ics'
+            }
+        ];
+
+        // All checkbox IDs that control filtering
+        const GH_CALENDAR_CHECKBOX_IDS = {
+            'Will Soccer':                          'cal-will-soccer-enabled',
+            'Will Baseball':                        'cal-will-baseball-enabled',
+            'Will Indoor Soccer':                   'cal-will-indoor-soccer-enabled',
+            'TeamSnap Events (Madison + Max + Will)': 'cal-teamsnap-enabled'
+        };
+
+        const CORS_PROXIES = [
+            { url: 'https://r.jina.ai/https://', type: 'text', extract: (d) => normalizeIcsText(d), stripProtocol: true },
+            { url: 'https://r.jina.ai/http://',  type: 'text', extract: (d) => normalizeIcsText(d), stripProtocol: true },
+            { url: 'https://api.allorigins.win/get?url=', type: 'json', extract: (d) => d.contents },
+            { url: 'https://corsproxy.io/?', type: 'text', extract: (d) => normalizeIcsText(d) },
+            { url: 'https://proxy.cors.sh/', type: 'text', extract: (d) => d }
+        ];
+
+        function normalizeIcsText(text) {
+            const marker = 'BEGIN:VCALENDAR';
+            const idx = text.indexOf(marker);
+            return idx === -1 ? text : text.slice(idx);
+        }
+
+        function dedupeEvents(events) {
+            const seen = new Set();
+            return events.filter(e => {
+                const key = e.uid || `${e.calendarName}|${e.summary || ''}|${e.dtstart ? e.dtstart.toISOString() : ''}`;
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            });
+        }
+
+        let allLoadedEvents = [];
+        let currentTimeFilter = 'week';
+        let currentEventTypeFilter = 'all';
+        let currentKidFilter = 'all';
+        let currentView = 'compact';
+        let currentCalendarDate = new Date();
+        const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+        // ── Combined feed loader ──────────────────────────────────────────────
+
+        async function loadCombinedFeed() {
+            try {
+                const response = await fetch(COMBINED_ICS_URL);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const text = await response.text();
+
+                // Parse X-COMBINE-TIMESTAMP from header
+                const tsMatch = text.match(/X-COMBINE-TIMESTAMP:([^\r\n]+)/i);
+                if (tsMatch) {
+                    const ts = new Date(tsMatch[1].trim());
+                    const minsAgo = Math.round((Date.now() - ts) / 60000);
+                    document.getElementById('feed-badge').textContent = 'synced';
+                    document.getElementById('feed-badge').style.background = '#d4edda';
+                    document.getElementById('feed-badge').style.color = '#155724';
+                    document.getElementById('feed-badge').style.borderColor = '#c3e6cb';
+                    document.getElementById('feed-timestamp').textContent =
+                        minsAgo < 60 ? `${minsAgo}m ago` : `${Math.round(minsAgo / 60)}h ago`;
+                }
+
+                // Parse events
+                const events = parseICalData(text, null, 'combined');
+
+                // Group by source calendar name
+                const bySource = {};
+                GH_CALENDAR_NAMES.forEach(n => { bySource[n] = []; });
+
+                events.forEach(e => {
+                    const src = e.calendarName; // set from X-SOURCE-CALENDAR during parse
+                    if (src && bySource[src] !== undefined) {
+                        bySource[src].push(e);
+                    }
+                    // Events with unrecognised source still end up in allLoadedEvents
+                    // via the direct push below, just unfiltered
+                });
+
+                // Push all GH events into the global pool
+                const ghEvents = events.filter(e => GH_CALENDAR_NAMES.includes(e.calendarName));
+                allLoadedEvents.push(...ghEvents);
+
+                updateEventDisplay();
+
+            } catch (err) {
+                console.error('Failed to load combined feed:', err);
+                document.getElementById('feed-badge').textContent = 'error';
+                document.getElementById('feed-badge').style.background = '#f8d7da';
+                document.getElementById('feed-badge').style.color = '#721c24';
+                document.getElementById('feed-badge').style.borderColor = '#f5c6cb';
+            }
+        }
+
+        // ── Live calendar loader (CORS proxy) ────────────────────────────────
+
+        async function loadSingleCalendar(url, calendarName, calendarId) {
+            const isLocal = !url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('webcal://');
+            if (url.startsWith('webcal://')) url = url.replace('webcal://', 'https://');
+            if (url.startsWith('http://'))  url = url.replace('http://', 'https://');
+
+            let icalData = null;
+            let lastError = null;
+
+            if (isLocal) {
+                const r = await fetch(url);
+                if (r.ok) icalData = await r.text();
+                else throw new Error(`HTTP ${r.status}`);
+            } else {
+                for (const proxy of CORS_PROXIES) {
+                    try {
+                        const fetchUrl = proxy.stripProtocol
+                            ? proxy.url + url.replace(/^https?:\/\//i, '')
+                            : proxy.url + encodeURIComponent(url);
+                        const r = await fetch(fetchUrl);
+                        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                        const data = proxy.type === 'json' ? await r.json() : await r.text();
+                        icalData = proxy.extract(data);
+                        if (icalData && icalData.includes('BEGIN:VCALENDAR')) break;
+                    } catch (e) {
+                        lastError = e;
+                    }
+                }
+            }
+
+            if (!icalData) throw new Error(lastError?.message || 'All proxies failed');
+
+            const now = new Date();
+            const allEvents = parseICalData(icalData, calendarName, calendarId);
+            const upcoming = allEvents.filter(e => e.dtstart && e.dtstart >= now);
+            return dedupeEvents(upcoming);
+        }
+
+        async function loadLiveCalendars() {
+            const promises = LIVE_CALENDARS.map(async (cal) => {
+                const statusEl = document.getElementById(`${cal.id}-status`);
+                const item = statusEl.closest('.calendar-item');
+                statusEl.textContent = 'Loading...';
+                statusEl.className = 'calendar-status loading';
+                try {
+                    const events = await loadSingleCalendar(cal.url, cal.name, cal.id);
+                    allLoadedEvents.push(...events);
+                    statusEl.textContent = `${events.length} events`;
+                    statusEl.className = 'calendar-status success';
+                    item.classList.remove('disabled');
+                    updateEventDisplay();
+                } catch (err) {
+                    console.error(`Failed ${cal.name}:`, err);
+                    statusEl.textContent = 'Error';
+                    statusEl.className = 'calendar-status error';
+                    item.classList.add('disabled');
+                    document.getElementById(`${cal.id}-enabled`).checked = false;
+                    updateEventDisplay();
+                }
+            });
+            await Promise.allSettled(promises);
+        }
+
+        async function loadAllCalendars() {
+            allLoadedEvents = [];
+            document.getElementById('events-container').innerHTML = `
+                <div class="loading-skeleton">
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                </div>`;
+            document.getElementById('feed-badge').textContent = 'Loading…';
+            document.getElementById('feed-timestamp').textContent = '';
+
+            await Promise.allSettled([
+                loadCombinedFeed(),
+                loadLiveCalendars()
+            ]);
+        }
+
+        // ── iCal parser ──────────────────────────────────────────────────────
+
+        function parseICalData(icalData, defaultCalendarName, calendarId) {
+            const lines = unfoldICalLines(icalData);
+            const events = [];
+            let currentEvent = null;
+
+            for (const line of lines) {
+                if (line === 'BEGIN:VEVENT') {
+                    currentEvent = { calendarName: defaultCalendarName, calendarId };
+                } else if (line === 'END:VEVENT' && currentEvent) {
+                    if (currentEvent.dtstart && currentEvent.summary) events.push(currentEvent);
+                    currentEvent = null;
+                } else if (currentEvent) {
+                    const colonIdx = line.indexOf(':');
+                    if (colonIdx < 1) continue;
+                    const keyPart = line.substring(0, colonIdx);
+                    const key = keyPart.split(';')[0].toUpperCase();
+                    const value = line.substring(colonIdx + 1);
+
+                    switch (key) {
+                        case 'SUMMARY':     currentEvent.summary     = value.replace(/\\,/g, ',').replace(/\\n/g, '\n').replace(/\\;/g, ';'); break;
+                        case 'DESCRIPTION': currentEvent.description = value.replace(/\\,/g, ',').replace(/\\n/g, '\n').replace(/\\;/g, ';'); break;
+                        case 'LOCATION':    currentEvent.location    = value.replace(/\\,/g, ',').replace(/\\n/g, '\n').replace(/\\;/g, ';'); break;
+                        case 'UID':         currentEvent.uid         = value; break;
+                        case 'DTSTART':     currentEvent.dtstart     = parseICalDate(value, keyPart); break;
+                        case 'DTEND':       currentEvent.dtend       = parseICalDate(value, keyPart); break;
+                        case 'X-SOURCE-CALENDAR':
+                            // Override calendarName with the source calendar from the combined feed
+                            currentEvent.calendarName = value.trim();
+                            break;
+                        default: break;
+                    }
+                }
+            }
+
+            const now = new Date();
+            return events.filter(e => e.dtstart && e.dtstart >= now);
+        }
+
+        function unfoldICalLines(text) {
+            return text
+                .replace(/\r\n/g, '\n')
+                .replace(/\r/g, '\n')
+                .replace(/\n[ \t]/g, '')
+                .split('\n')
+                .map(l => l.trim())
+                .filter(l => l.length > 0);
+        }
+
+        function parseICalDate(dateString, keyPart) {
+            const isUTC = dateString.endsWith('Z');
+            if (dateString.includes('T')) {
+                const clean = dateString.replace(/[TZ]/g, '');
+                const y = parseInt(clean.substring(0, 4));
+                const mo = parseInt(clean.substring(4, 6)) - 1;
+                const d = parseInt(clean.substring(6, 8));
+                const h = parseInt(clean.substring(8, 10)) || 0;
+                const mi = parseInt(clean.substring(10, 12)) || 0;
+                const s = parseInt(clean.substring(12, 14)) || 0;
+                return isUTC ? new Date(Date.UTC(y, mo, d, h, mi, s)) : new Date(y, mo, d, h, mi, s);
+            }
+            // Date-only (VALUE=DATE)
+            const y = parseInt(dateString.substring(0, 4));
+            const mo = parseInt(dateString.substring(4, 6)) - 1;
+            const d = parseInt(dateString.substring(6, 8));
+            return new Date(y, mo, d);
+        }
+
+        // ── Display & filtering ──────────────────────────────────────────────
+
+        function isCalendarEnabled(calendarName) {
+            const ghId = GH_CALENDAR_CHECKBOX_IDS[calendarName];
+            if (ghId) return document.getElementById(ghId)?.checked ?? false;
+            const liveMatch = LIVE_CALENDARS.find(c => c.name === calendarName);
+            if (liveMatch) return document.getElementById(`${liveMatch.id}-enabled`)?.checked ?? false;
+            return true;
+        }
+
+        function updateEventDisplay() {
+            let filtered = allLoadedEvents.filter(e => isCalendarEnabled(e.calendarName));
+            filtered = applyTimeFilter(filtered, currentTimeFilter);
+            filtered = applyEventTypeFilter(filtered, currentEventTypeFilter);
+            filtered = applyKidFilter(filtered, currentKidFilter);
+            filtered = dedupeEvents(filtered);
+            filtered.sort((a, b) => a.dtstart - b.dtstart);
+
+            if (currentView === 'calendar') {
+                renderCalendar();
+            } else {
+                displayEventsWithStats(filtered);
+            }
+        }
+
+        function setTimeFilter(filter) {
+            currentTimeFilter = filter;
+            document.querySelectorAll('.time-filters .filter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+            updateEventDisplay();
+        }
+
+        function setEventTypeFilter(type) {
+            currentEventTypeFilter = type;
+            document.querySelectorAll('.event-type-filters .filter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-type="${type}"]`).classList.add('active');
+            updateEventDisplay();
+        }
+
+        function setKidFilter(kid) {
+            currentKidFilter = kid;
+            document.querySelectorAll('.kid-filters .filter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-kid="${kid}"]`).classList.add('active');
+            updateEventDisplay();
+        }
+
+        function applyTimeFilter(events, filter) {
+            const now = new Date(); now.setHours(0, 0, 0, 0);
+            if (filter === 'all') return events;
+            const end = new Date(now);
+            if (filter === 'week')    end.setDate(now.getDate() + 7);
+            if (filter === 'month')   end.setMonth(now.getMonth() + 1);
+            if (filter === 'quarter') end.setMonth(now.getMonth() + 3);
+            return events.filter(e => {
+                const d = new Date(e.dtstart); d.setHours(0, 0, 0, 0);
+                return d >= now && d < end;
+            });
+        }
+
+        function applyEventTypeFilter(events, filter) {
+            if (filter === 'games') return events.filter(e => e.summary && (e.summary.includes(' vs ') || e.summary.includes(' @ ')));
+            return events;
+        }
+
+        function applyKidFilter(events, filter) {
+            if (filter === 'all') return events;
+            return events.filter(e => {
+                const kid = getKidNameFromEvent(e);
+                return kid && kid.toLowerCase() === filter;
+            });
+        }
+
+        function getKidNameFromEvent(event) {
+            const summary     = (event.summary     || '').toLowerCase();
+            const description = (event.description || '').toLowerCase();
+            const location    = (event.location    || '').toLowerCase();
+            const calendarName = (event.calendarName || '').toLowerCase();
+
+            const eventText = `${summary} ${description} ${location}`;
+
+            if (eventText.includes('mustangs') || eventText.includes('ote cougars') || eventText.includes('first grade boys')) return 'Will';
+            if ((eventText.includes('1st grade') || eventText.includes('first grade')) && (eventText.includes('bball') || eventText.includes('basketball'))) return 'Will';
+            if (eventText.includes('jr current') || eventText.includes('wildcats softball') || eventText.includes('4th grade girls')) return 'Madison';
+            if (eventText.includes('wildcats')) return 'Madison';
+            if (eventText.includes('prek') || eventText.includes('pre-k') || eventText.includes('prekindergarten') ||
+                eventText.includes('max snider') || eventText.includes('kindergarten') ||
+                eventText.includes('u6') || eventText.includes('under 6')) return 'Max';
+
+            if (calendarName.includes('will soccer') || calendarName.includes('will baseball') || calendarName.includes('will indoor soccer')) return 'Will';
+            if (calendarName.includes('madison futsal')) return 'Madison';
+
+            if (calendarName.includes('teamsnap')) {
+                if (eventText.includes('u6') || eventText.includes('under 6') || eventText.includes('kindergarten') || eventText.includes('max snider')) return 'Max';
+                if (eventText.includes('u10') || eventText.includes('under 10') || eventText.includes('4th grade') || eventText.includes('9-10')) return 'Madison';
+                return null;
+            }
+            return null;
+        }
+
+        // ── Rendering ────────────────────────────────────────────────────────
+
+        function getCalendarClass(calendarName) {
+            if (!calendarName) return '';
+            const n = calendarName.toLowerCase();
+            if (n.includes('soccer'))   return 'soccer';
+            if (n.includes('baseball')) return 'baseball';
+            if (n.includes('teamsnap')) return 'teamsnap';
+            if (n.includes('blue valley') || n.includes('school')) return 'school';
+            if (n.includes('overland trail') || n.includes('trail')) return 'trail';
+            return '';
+        }
+
+        function getCalendarBadgeText(calendarName) {
+            if (!calendarName) return '';
+            const n = calendarName.toLowerCase();
+            if (n.includes('will soccer') || (n.includes('soccer') && !n.includes('indoor'))) return 'SOCCER';
+            if (n.includes('will baseball') || n.includes('baseball')) return 'BASEBALL';
+            if (n.includes('indoor soccer')) return 'INDOOR SOCCER';
+            if (n.includes('teamsnap')) return 'TEAMSNAP';
+            if (n.includes('blue valley')) return 'SCHOOL';
+            if (n.includes('overland trail')) return 'OVERLAND TRAIL';
+            if (n.includes('st. michael') || n.includes('michael')) return 'SCHOOL';
+            return calendarName;
+        }
+
+        function displayEventsWithStats(events) {
+            const container = document.getElementById('events-container');
+
+            if (events.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>No upcoming events</h3>
+                        <p>Try selecting different calendars or changing the time range.</p>
+                    </div>`;
+                return;
+            }
+
+            const nextEvent = events[0];
+            const daysToNext = Math.max(0, Math.ceil((nextEvent.dtstart - new Date()) / (1000 * 60 * 60 * 24)));
+            const gameEvents = events.filter(e => e.summary && (e.summary.includes(' vs ') || e.summary.includes(' @ '))).length;
+
+            const statsHtml = `
+                <div class="stats-bar">
+                    <div class="stats-item"><span class="stats-number">${events.length}</span><span class="stats-label">Showing Events</span></div>
+                    <div class="stats-item"><span class="stats-number">${daysToNext}</span><span class="stats-label">Days to Next</span></div>
+                    <div class="stats-item"><span class="stats-number">${gameEvents}</span><span class="stats-label">Games</span></div>
+                    <div class="stats-item"><span class="stats-number">${events.length - gameEvents}</span><span class="stats-label">Practices</span></div>
+                </div>`;
+
+            const eventsHtml = events.map(event => {
+                const dateStr = event.dtstart.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                const timeStr = event.dtstart.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+                const cls = getCalendarClass(event.calendarName);
+                const badge = getCalendarBadgeText(event.calendarName);
+                const kid = getKidNameFromEvent(event);
+                const title = kid ? `${kid}: ${event.summary}` : event.summary;
+
+                return `
+                    <div class="event">
+                        <div class="event-header">
+                            <div class="event-title">${escapeHtml(title)}</div>
+                            <div class="event-type-badge ${cls}">${badge}</div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-date">
+                                <i class="fas fa-calendar"></i> ${dateStr}
+                                <span class="event-time">${timeStr}</span>
+                            </div>
+                            ${event.location ? `<div class="event-location"><i class="fas fa-map-marker-alt"></i> ${escapeHtml(event.location)}</div>` : ''}
+                            ${event.description ? `<div class="event-description"><i class="fas fa-info-circle"></i> ${escapeHtml(event.description)}</div>` : ''}
+                        </div>
+                        <div class="event-source">${escapeHtml(event.calendarName || '')}</div>
+                    </div>`;
+            }).join('');
+
+            const gridClass = currentView === 'compact' ? 'event-grid compact' : 'event-grid';
+            container.innerHTML = `
+                ${statsHtml}
+                <div class="events-header"><h2><i class="fas fa-calendar-check"></i> Upcoming Events</h2></div>
+                <div class="${gridClass}">${eventsHtml}</div>`;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function setView(view) {
+            currentView = view;
+            document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-view="${view}"]`).classList.add('active');
+            const ec = document.getElementById('events-container');
+            const cv = document.getElementById('calendar-view');
+            if (view === 'calendar') {
+                if (currentTimeFilter !== 'all') setTimeFilter('all');
+                ec.style.display = 'none';
+                cv.classList.add('active');
+                renderCalendar();
+            } else {
+                ec.style.display = 'block';
+                cv.classList.remove('active');
+                const grid = document.querySelector('.event-grid');
+                if (grid) grid.classList.toggle('compact', view === 'compact');
+            }
+        }
+
+        // ── Copy link (live calendars) ───────────────────────────────────────
+
+        async function copyCalendarLink(calendarId) {
+            const cal = LIVE_CALENDARS.find(c => c.id === calendarId);
+            if (!cal) return;
+            try {
+                await navigator.clipboard.writeText(cal.url);
+                showNotification('📅 Calendar link copied!', 'success');
+            } catch (e) {
+                showNotification('Could not copy link', 'info');
+            }
+        }
+
+        function showNotification(message, type) {
+            const existing = document.querySelector('.notification');
+            if (existing) existing.remove();
+            const n = document.createElement('div');
+            n.className = `notification notification-${type}`;
+            n.innerHTML = `<span>${message}</span><button onclick="this.parentElement.remove()">✕</button>`;
+            document.body.appendChild(n);
+            setTimeout(() => n.remove(), 4000);
+        }
+
+        // ── Calendar grid view ───────────────────────────────────────────────
+
+        function getEventsForDate(date) {
+            let filtered = allLoadedEvents.filter(e => isCalendarEnabled(e.calendarName));
+            filtered = applyEventTypeFilter(filtered, currentEventTypeFilter);
+            filtered = applyKidFilter(filtered, currentKidFilter);
+            filtered = dedupeEvents(filtered);
+            return filtered.filter(e => {
+                if (!e.dtstart) return false;
+                const d = new Date(e.dtstart);
+                return d.getFullYear() === date.getFullYear() &&
+                       d.getMonth() === date.getMonth() &&
+                       d.getDate() === date.getDate();
+            });
+        }
+
+        function renderCalendar() {
+            const year = currentCalendarDate.getFullYear();
+            const month = currentCalendarDate.getMonth();
+            document.getElementById('calendar-month-year').textContent = `${monthNames[month]} ${year}`;
+
+            const grid = document.getElementById('calendar-grid');
+            const headers = grid.querySelectorAll('.calendar-day-header');
+            grid.innerHTML = '';
+            headers.forEach(h => grid.appendChild(h.cloneNode(true)));
+
+            const firstDay = new Date(year, month, 1);
+            const start = new Date(firstDay);
+            start.setDate(start.getDate() - firstDay.getDay());
+
+            for (let i = 0; i < 42; i++) {
+                const date = new Date(start);
+                date.setDate(start.getDate() + i);
+                const dayEvents = getEventsForDate(date);
+                const isThisMonth = date.getMonth() === month;
+                const isToday = date.toDateString() === new Date().toDateString();
+
+                const day = document.createElement('div');
+                day.className = 'calendar-day' +
+                    (isThisMonth ? '' : ' other-month') +
+                    (isToday ? ' today' : '') +
+                    (dayEvents.length > 0 ? ' has-events' : '');
+                day.onclick = () => { if (dayEvents.length > 0) showDayEvents(date, dayEvents); };
+
+                const numRow = document.createElement('div');
+                numRow.className = 'calendar-day-number';
+                numRow.textContent = date.getDate();
+                if (dayEvents.length > 0) {
+                    const badge = document.createElement('div');
+                    badge.className = 'event-count-badge';
+                    badge.textContent = dayEvents.length;
+                    numRow.appendChild(badge);
+                }
+                day.appendChild(numRow);
+
+                if (dayEvents.length > 0) {
+                    const times = document.createElement('div');
+                    times.className = 'event-times';
+                    dayEvents.slice(0, 3).forEach(e => {
+                        const item = document.createElement('div');
+                        item.className = `event-time-item ${getCalendarClass(e.calendarName)}`;
+                        const t = e.dtstart.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+                        item.textContent = `${t} ${e.summary || ''}`;
+                        times.appendChild(item);
+                    });
+                    if (dayEvents.length > 3) {
+                        const more = document.createElement('div');
+                        more.className = 'event-time-item';
+                        more.textContent = `+${dayEvents.length - 3} more`;
+                        times.appendChild(more);
+                    }
+                    day.appendChild(times);
+                }
+
+                grid.appendChild(day);
+            }
+        }
+
+        function showDayEvents(date, dayEvents) {
+            const popup = document.getElementById('day-events-popup');
+            const overlay = document.getElementById('calendar-overlay');
+            document.getElementById('popup-date').textContent = date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+            const container = document.getElementById('popup-events');
+            container.innerHTML = '';
+
+            dayEvents.forEach(event => {
+                const div = document.createElement('div');
+                div.className = `popup-event ${getCalendarClass(event.calendarName)}`;
+
+                const title = document.createElement('div');
+                title.className = 'popup-event-title';
+                const kid = getKidNameFromEvent(event);
+                title.textContent = kid ? `${kid}: ${event.summary}` : (event.summary || '');
+                div.appendChild(title);
+
+                if (event.dtstart) {
+                    const t = document.createElement('div');
+                    t.className = 'popup-event-time';
+                    t.textContent = event.dtstart.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+                    div.appendChild(t);
+                }
+                if (event.location) {
+                    const l = document.createElement('div');
+                    l.className = 'popup-event-location';
+                    l.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${escapeHtml(event.location)}`;
+                    div.appendChild(l);
+                }
+                if (event.description) {
+                    const d = document.createElement('div');
+                    d.className = 'popup-event-description';
+                    d.textContent = event.description;
+                    div.appendChild(d);
+                }
+
+                container.appendChild(div);
+            });
+
+            overlay.classList.add('active');
+            popup.classList.add('active');
+        }
+
+        function hideDayEvents() {
+            document.getElementById('day-events-popup').classList.remove('active');
+            document.getElementById('calendar-overlay').classList.remove('active');
+        }
+
+        function navigateCalendar(direction) {
+            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + direction);
+            renderCalendar();
+        }
+
+        // ── Init ─────────────────────────────────────────────────────────────
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('prev-month').addEventListener('click', () => navigateCalendar(-1));
+            document.getElementById('next-month').addEventListener('click', () => navigateCalendar(1));
+            document.getElementById('popup-close').addEventListener('click', hideDayEvents);
+            document.getElementById('calendar-overlay').addEventListener('click', hideDayEvents);
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') hideDayEvents(); });
+        });
+
+        window.addEventListener('load', loadAllCalendars);
+    </script>
+</body>
+</html>
