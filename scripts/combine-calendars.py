@@ -65,7 +65,8 @@ PRODUCTION_CALENDARS = [
         'urls': [
             'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=8062a71b-b128-4aa5-bd73-ff686c22d8f6&token=a1bcfb01283407a3f79afdf9bbf5d7400714d67542caca0738910db13ee9f70d',
             'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=628804f9-1e56-439b-b8f6-af42fb098e41&token=3f19b930ec1be351e60daf351471939c971ad0ed8e3afeef0df61df083464de3'
-        ]
+        ],
+        'source_strategy': 'failover'
     },
     {
         'name': 'TeamSnap Events (Madison + Max + Will)',
@@ -194,24 +195,32 @@ def fetch_calendar(url, name):
     logger.error(f"✗ Failed to fetch {name}: {last_error}")
     return None
 
-def expand_calendar_sources(calendars):
-    """Expand calendars with multiple source URLs into individual fetch units."""
-    expanded = []
+def fetch_configured_calendars(calendar):
+    """Fetch a calendar using either merge or failover source strategy."""
+    urls = calendar.get('urls') or [calendar.get('url')]
+    urls = [url for url in urls if url]
+    strategy = calendar.get('source_strategy', 'merge')
 
-    for calendar in calendars:
-        urls = calendar.get('urls') or [calendar.get('url')]
-        urls = [url for url in urls if url]
+    fetched = []
+    failures = 0
 
-        for index, url in enumerate(urls, start=1):
-            source_name = calendar['name']
-            if len(urls) > 1:
-                source_name = f"{calendar['name']} (source {index})"
-            expanded.append({
-                'name': source_name,
-                'url': url
-            })
+    for index, url in enumerate(urls, start=1):
+        source_name = calendar['name']
+        if len(urls) > 1:
+            source_name = f"{calendar['name']} (source {index})"
 
-    return expanded
+        cal = fetch_calendar(url, source_name)
+        if cal is not None:
+            fetched.append(cal)
+            if strategy == 'failover':
+                break
+        else:
+            failures += 1
+
+    if strategy == 'failover' and not fetched:
+        return [None], failures
+
+    return fetched, failures
 
 def combine_calendars(calendars):
     """Combine multiple calendars into one with detailed statistics."""
@@ -285,8 +294,11 @@ def main():
     print("Snider Family Calendar Combiner (Enhanced Version)")
     print("=" * 80)
     print(f"Mode: {'TEST' if TEST_MODE else 'PRODUCTION'}")
-    expanded_calendars = expand_calendar_sources(CALENDARS)
-    print(f"Calendars to process: {len(expanded_calendars)}")
+    configured_source_count = sum(
+        len([url for url in (calendar.get('urls') or [calendar.get('url')]) if url])
+        for calendar in CALENDARS
+    )
+    print(f"Calendars to process: {len(CALENDARS)} ({configured_source_count} configured sources)")
     print()
 
     success_count = 0
@@ -294,15 +306,14 @@ def main():
     
     # Fetch all calendars
     calendars = []
-    for i, cal_info in enumerate(expanded_calendars):
-        print(f"\n[{i+1}/{len(expanded_calendars)}] Processing: {cal_info['name']}")
-        cal = fetch_calendar(cal_info['url'], cal_info['name'])
-        calendars.append(cal)
-        
-        if cal is not None:
-            success_count += 1
-        else:
-            failure_count += 1
+    for i, cal_info in enumerate(CALENDARS):
+        strategy = cal_info.get('source_strategy', 'merge')
+        print(f"\n[{i+1}/{len(CALENDARS)}] Processing: {cal_info['name']} [{strategy}]")
+        fetched_calendars, failures = fetch_configured_calendars(cal_info)
+        calendars.extend(fetched_calendars)
+
+        success_count += sum(1 for cal in fetched_calendars if cal is not None)
+        failure_count += failures
 
     print("\n" + "=" * 50)
     print(f"SUMMARY: {success_count} successful, {failure_count} failed")
