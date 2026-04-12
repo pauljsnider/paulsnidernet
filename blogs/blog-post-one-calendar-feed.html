@@ -82,74 +82,37 @@
             <p>Earlier posts in this series covered each piece individually:</p>
 
             <ul>
-              <li><a href="blog-post-family-calendar-system.html">Taming the Chaos: Building a Family Calendar System for Three Kids</a> — the original aggregation page pulling from GameChanger, TeamSnap, Blue Valley, and St. Michael</li>
-              <li><a href="blog-post-automated-calendar-aggregation.html">Automating Family Calendar Chaos with GitHub Actions</a> — a Python script on a 6-hour cron that merges all the sports feeds into a single <code>.ics</code> file published to GitHub Pages</li>
+              <li><a href="blog-post-family-calendar-system.html">Taming the Chaos: Building a Family Calendar System for Three Kids</a> — the original page pulling events from GameChanger, TeamSnap, Blue Valley, and St. Michael</li>
+              <li><a href="blog-post-automated-calendar-aggregation.html">Automating Family Calendar Chaos with GitHub Actions</a> — a script that runs every 6 hours, merges all the sports feeds, and publishes a single combined calendar file</li>
               <li><a href="blog-post-ai-everyday.html">Bringing AI Into Everyday Life</a> — a Google Apps Script that reads school emails and generates a Sunday digest with Gemini</li>
-              <li><a href="blog-post-weekly-digest-gemini-refresh.html">Keeping the Weekly School Digest Alive with Gemini</a> — updating that digest after ChatGPT lost its Drive connector</li>
+              <li><a href="blog-post-weekly-digest-gemini-refresh.html">Keeping the Weekly School Digest Alive with Gemini</a> — keeping that digest running after ChatGPT lost its Drive connector</li>
             </ul>
 
-            <p>The issue: calendar feed URLs lived in two places. The GitHub Action had them in <code>scripts/combine-calendars.py</code>. The Google Apps Script had the same URLs hardcoded separately. Every time a team changed — new season, new GameChanger token — I had to update both. And they'd drift.</p>
+            <p>The issue: the calendar sources were configured in two separate places. The GitHub automation had them in one file. The Google Apps Script had the same list hardcoded separately. Every time a sports team changed mid-season, I had to update both. Inevitably, they'd drift apart.</p>
 
-            <h2>The Fix: One Feed, Two Consumers</h2>
+            <h2>The Fix: One Feed, Two Places</h2>
 
-            <p>The GitHub Action already produces a combined <code>.ics</code> file and publishes it to GitHub Pages every 6 hours:</p>
+            <p>The GitHub automation already produces a single combined calendar file and publishes it online every 6 hours. That file pulls together all the sports schedules and tags each event with which calendar it originally came from.</p>
 
-            <p><code>https://pauljsnider.github.io/paulsnidernet/family/family-calendar-combined.ics</code></p>
+            <p>We made two things point at that one file.</p>
 
-            <p>That file merges events from all sports calendars — Will's soccer, baseball, and indoor soccer, plus TeamSnap events for Madison, Max, and Will — and stamps a custom <code>X-SOURCE-CALENDAR</code> property on each event so consumers know which feed it originally came from. It also writes an <code>X-COMBINE-TIMESTAMP</code> header so anything reading the file knows how fresh it is.</p>
+            <h2>The Family Events Page</h2>
 
-            <p>We made two things point at that single URL.</p>
+            <p>The calendar page was rebuilt so sports events load directly from the combined file, while school calendars (Blue Valley, Overland Trail, St. Michael) are still pulled live from their source. A small "synced · Xm ago" indicator shows how recently the sports data was refreshed.</p>
 
-            <h2>Consumer 1: The Family Events Page</h2>
+            <p>Each event is automatically matched to the right child based on keywords in the event title — team names, grade levels, and program names — so the per-child filters on the page still work exactly as before. The download button links directly to the combined file, so subscribing to the feed and browsing it in the browser pull from the same source.</p>
 
-            <p>The calendar page was rebuilt as a hybrid. Sports events load from the combined <code>.ics</code> directly — same origin, no CORS proxy needed — while school calendars (Blue Valley, Overland Trail, St. Michael) are still fetched live from their source URLs. A "synced · Xm ago" badge reads <code>X-COMBINE-TIMESTAMP</code> from the file header to show freshness at a glance.</p>
+            <h2>The Weekly Digest</h2>
 
-            <p>Each event's <code>X-SOURCE-CALENDAR</code> value drives two things: which virtual calendar checkbox controls its visibility, and which kid filter it appears under. The kid attribution logic looks like this:</p>
+            <p>The Google Apps Script that powers the Sunday email digest was updated to pull sports events from the same combined file instead of fetching each sports calendar separately. It reads the source tag on each event to label it correctly in the digest output — so each sport still shows up attributed to the right activity, even though everything came from one place.</p>
 
-            <ul>
-              <li><strong>mustangs / ote cougars / first grade boys</strong> → Will</li>
-              <li><strong>jr current / wildcats softball / 4th grade girls</strong> → Madison</li>
-              <li><strong>wildcats</strong> (catch-all) → Madison</li>
-              <li><strong>prek / kindergarten / max snider / u6</strong> → Max</li>
-              <li><strong>calendar name contains "will soccer" or "will baseball"</strong> → Will</li>
-              <li><strong>teamsnap with no specific title match</strong> → unattributed</li>
-            </ul>
-
-            <p>The download button is a direct link to the combined file, so subscribing to the feed and viewing it in the browser both pull from the same place.</p>
-
-            <h2>Consumer 2: The Weekly Google Apps Script Digest</h2>
-
-            <p>The <code>ICS_FEEDS</code> array in the Apps Script went from three separate sport calendar URLs down to one:</p>
-
-            <pre><code>const ICS_FEEDS = [
-  {
-    name: "Family Calendar",
-    url: "https://pauljsnider.github.io/paulsnidernet/family/family-calendar-combined.ics"
-  }
-];</code></pre>
-
-            <p>The script's <code>parseIcs()</code> function reads <code>X-SOURCE-CALENDAR</code> from each event and uses it as the source label — so "Will Baseball" and "Will Soccer" still appear correctly in the digest output even though they all came from one file. The same kid attribution rules that run in the browser run server-side in Apps Script, so the Sunday email labels events the same way the events page does.</p>
-
-            <h2>The School Email Side</h2>
-
-            <p>While we were in the Apps Script, we also expanded the Gmail search to cover 17 domains — not just school newsletters but TeamSnap notifications, Heartland Soccer, Blue Valley Rec, Peachjar flyers, SignUpGenius, and activity platforms like Amilia and Upper Hand. We updated the Gemini prompt to go deeper into Smore newsletter content, explicitly asking it to extract specific topics covered in class, upcoming tests and due dates, and action items for parents — not just a surface-level summary.</p>
-
-            <p>The full domain list the digest searches:</p>
-
-            <ul>
-              <li>bluevalleyk12.org, cremedelacreme.com, cremeschool.com</li>
-              <li>online.procaresoftware.com, procaresoftware.com</li>
-              <li>stmichaelcp.org, stmichaelcp.ccsend.com</li>
-              <li>teamsnap.com, sportingbv.org, heartlandsoccer.net</li>
-              <li>peachjar.com, bluevalleyrec.org, jocogov.org</li>
-              <li>active.com, amilia.com, getupperhand.com, signupgenius.com</li>
-            </ul>
+            <p>While we were in the digest, we also expanded the list of school-related email senders it searches — adding recreation programs, soccer leagues, school flyer services, and activity platforms — and updated the AI prompt to go deeper into the weekly newsletter content. Instead of a surface summary, it now pulls out specific topics covered in class, upcoming tests and due dates, and action items parents need to act on.</p>
 
             <h2>The Result</h2>
 
-            <p>To update a sports calendar URL now, you change one line in <code>scripts/combine-calendars.py</code>. The next time the GitHub Action runs — within 6 hours — both the events page and the Sunday digest automatically reflect the change. No duplicate config, no drift, no stale URLs in a Google Apps Script that nobody remembers to update mid-season.</p>
+            <p>When a new sports season starts and a calendar link changes, there's one place to update it. Within a few hours, both the events page and the Sunday digest automatically reflect the change. No duplicate config, no hunting through a Google Apps Script nobody has touched since last fall.</p>
 
-            <p>It's a small architectural change, but it's the kind that pays off every time a new season starts and GameChanger rolls a new token.</p>
+            <p>It's a small change, but it's the kind that quietly saves time every season.</p>
 
             <p>Check out the <a href="../family/events.html">family events page</a> or browse the <a href="https://github.com/pauljsnider/paulsnidernet/tree/main/scripts" target="_blank">code on GitHub</a>.</p>
           </div>
