@@ -1369,32 +1369,32 @@
 
         // Multiple CORS proxy options
         const CORS_PROXIES = [
-            { 
-                url: 'https://api.allorigins.win/get?url=', 
-                type: 'json',
-                extract: (data) => data.contents 
-            },
-            { 
-                url: 'https://corsproxy.io/?', 
-                type: 'text',
-                extract: (data) => normalizeIcsText(data)
-            },
-            { 
+            {
                 url: 'https://r.jina.ai/https://',
                 type: 'text',
                 extract: (data) => normalizeIcsText(data),
                 stripProtocol: true
             },
-            { 
+            {
                 url: 'https://r.jina.ai/http://',
                 type: 'text',
                 extract: (data) => normalizeIcsText(data),
                 stripProtocol: true
             },
-            { 
-                url: 'https://proxy.cors.sh/', 
+            {
+                url: 'https://api.allorigins.win/get?url=',
+                type: 'json',
+                extract: (data) => data.contents
+            },
+            {
+                url: 'https://corsproxy.io/?',
                 type: 'text',
-                extract: (data) => data 
+                extract: (data) => normalizeIcsText(data)
+            },
+            {
+                url: 'https://proxy.cors.sh/',
+                type: 'text',
+                extract: (data) => data
             }
         ];
 
