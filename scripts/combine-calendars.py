@@ -54,10 +54,7 @@ TEST_CALENDARS = [
 PRODUCTION_CALENDARS = [
     {
         'name': 'Will Soccer',
-        'urls': [
-            'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=974a8276-ee4f-4273-bd12-925e6874f9b5&token=8829469505c4b469f837fad611d516938f445935509c3151f35613a20c9a0dd7',
-            'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876'
-        ]
+        'url': 'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876'
     },
     {
         'name': 'Will Baseball',
@@ -72,17 +69,9 @@ PRODUCTION_CALENDARS = [
         'url': 'http://ical-cdn.teamsnap.com/user_schedule/b5988130-ea96-0139-1e25-4201ac1c001c.ics'
     },
     {
-        'name': 'SignUpGenius Volunteer',
-        'url': 'https://www.signupgenius.com/index.cfm?go=t.calendar&record=c9bf580e60d87994333380af4072e82b'
-    },
-    {
         'name': 'Will Indoor Soccer',
         'url': 'https://calendar.playmetrics.com/calendars/c237/t434992/p0/tA6AECF4E/f/calendar.ics'
     },
-    {
-        'name': 'Madison Futsal',
-        'url': 'https://pauljsnider.github.io/paulsnidernet/family/madison-futsal-2025-26.ics'
-    }
 ]
 
 # Choose calendars based on mode

@@ -1135,30 +1135,6 @@
                     </div>
                     <div class="calendar-item">
                         <label class="calendar-checkbox">
-                            <input type="checkbox" id="calendar9-enabled" checked onchange="updateEventDisplay()">
-                            <span class="checkmark"></span>
-                        </label>
-                        <i class="fas fa-futbol sport-icon"></i>
-                        <span class="calendar-name">Madison Futsal</span>
-                        <button class="copy-btn" onclick="copyCalendarLink('calendar9')" title="Copy calendar link">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                        <span class="calendar-status" id="calendar9-status">Loading...</span>
-                    </div>
-                    <div class="calendar-item">
-                        <label class="calendar-checkbox">
-                            <input type="checkbox" id="calendar6-enabled" checked onchange="updateEventDisplay()">
-                            <span class="checkmark"></span>
-                        </label>
-                        <i class="fas fa-clipboard-list sport-icon"></i>
-                        <span class="calendar-name">SignUpGenius Volunteer</span>
-                        <button class="copy-btn" onclick="copyCalendarLink('calendar6')" title="Copy calendar link">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                        <span class="calendar-status" id="calendar6-status">Loading...</span>
-                    </div>
-                    <div class="calendar-item">
-                        <label class="calendar-checkbox">
                             <input type="checkbox" id="calendar4-enabled" onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
@@ -1300,11 +1276,7 @@
             {
                 id: 'calendar1',
                 name: 'Will Soccer',
-                url: 'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876',
-                urls: [
-                    'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=974a8276-ee4f-4273-bd12-925e6874f9b5&token=8829469505c4b469f837fad611d516938f445935509c3151f35613a20c9a0dd7',
-                    'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876'
-                ]
+                url: 'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876'
             },
             {
                 id: 'calendar2', 
@@ -1336,19 +1308,9 @@
                 url: 'https://stmichaelcp.org/icalendar.ics'
             },
             {
-                id: 'calendar6',
-                name: 'SignUpGenius Volunteer',
-                url: 'webcal://www.signupgenius.com/index.cfm?go=t.calendar&record=c9bf580e60d87994333380af4072e82b'
-            },
-            {
                 id: 'calendar8',
                 name: 'Will Indoor Soccer',
                 url: 'https://calendar.playmetrics.com/calendars/c237/t434992/p0/tA6AECF4E/f/calendar.ics'
-            },
-            {
-                id: 'calendar9',
-                name: 'Madison Futsal',
-                url: 'https://pauljsnider.github.io/paulsnidernet/family/madison-futsal-2025-26.ics'
             }
         ];
 
@@ -1787,19 +1749,6 @@
             
             const events = parseICalData(processedData, calendarName, calendarId);
             
-            // Fix SignUpGenius timezone issue - their times appear to be off by 1 hour
-            if (calendarName === 'SignUpGenius Volunteer') {
-                events.forEach(event => {
-                    if (event.dtstart) {
-                        event.dtstart = new Date(event.dtstart.getTime() + 60 * 60 * 1000); // Add 1 hour
-                    }
-                    if (event.dtend) {
-                        event.dtend = new Date(event.dtend.getTime() + 60 * 60 * 1000); // Add 1 hour
-                    }
-                });
-                console.log(`[${calendarName}] Applied timezone fix (+1 hour)`);
-            }
-            
             return events;
         }
 
@@ -2022,9 +1971,6 @@
                 } else if (event.calendarName === 'Overland Trail Calendar') {
                     badgeClass += ' trail';
                     badgeText = 'OVERLAND TRAIL';
-                } else if (event.calendarName === 'SignUpGenius Volunteer') {
-                    badgeClass += ' volunteer';
-                    badgeText = 'VOLUNTEER';
                 }
 
                 // Determine which kid this event is for
@@ -2500,8 +2446,6 @@
                             timeItem.classList.add('school');
                         } else if (event.calendarName.includes('Trail')) {
                             timeItem.classList.add('trail');
-                        } else if (event.calendarName.includes('SignUpGenius')) {
-                            timeItem.classList.add('volunteer');
                         }
                         
                         // Format time and add short title
