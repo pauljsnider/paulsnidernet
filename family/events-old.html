@@ -1,0 +1,2661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snider Family Calendar</title>
+    <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .config-section {
+            background: var(--background-alt);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        .config-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        .config-section p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group input[type="url"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--background-color);
+        }
+        .input-group input[type="url"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 160, 233, 0.1);
+        }
+        .load-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        .load-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 86, 179, 0.3);
+        }
+        .events-container {
+            min-height: 200px;
+        }
+        .event {
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        .event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .event-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+        .event-date {
+            color: var(--text-color);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        .event-location {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        .loading, .no-events {
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+            padding: 40px;
+        }
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #d32f2f;
+        }
+        .events-header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .events-header h2 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0;
+        }
+        .calendar-list {
+            margin-bottom: 20px;
+        }
+        .calendar-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+        .calendar-item:last-child {
+            border-bottom: none;
+        }
+        .calendar-item:hover {
+            background: rgba(0, 160, 233, 0.02);
+            padding-left: 8px;
+            margin-left: -8px;
+            margin-right: -8px;
+            border-radius: 6px;
+        }
+        .calendar-item i.sport-icon {
+            color: var(--primary-color);
+            margin-right: 12px;
+            width: 20px;
+            font-size: 1rem;
+        }
+        .calendar-name {
+            flex: 1;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-right: 12px;
+        }
+        .calendar-status {
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        .calendar-status.loading {
+            background: var(--background-alt);
+            color: var(--text-light);
+        }
+        .calendar-status.success {
+            background: var(--success-color);
+            color: white;
+        }
+        .calendar-status.error {
+            background: #dc3545;
+            color: white;
+        }
+        .event-source {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .stats-bar {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+        .stats-item {
+            text-align: center;
+            flex: 1;
+        }
+        .stats-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .stats-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        .event-grid {
+            display: grid;
+            gap: 15px;
+        }
+        .event {
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .event::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: var(--primary-color);
+        }
+        .event:hover::before {
+            opacity: 1;
+        }
+        .event-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 15px;
+        }
+        .event-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin: 0;
+            flex: 1;
+            line-height: 1.3;
+        }
+        .event-type-badge {
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .event-type-badge.soccer {
+            background: #28a745;
+        }
+        .event-type-badge.baseball {
+            background: #dc3545;
+        }
+        .event-type-badge.teamsnap {
+            background: #6f42c1;
+        }
+        .event-type-badge.school {
+            background: #fd7e14;
+        }
+        .event-type-badge.trail {
+            background: #20c997;
+        }
+        .event-type-badge.volunteer {
+            background: #e83e8c;
+        }
+        .event-details {
+            display: grid;
+            gap: 8px;
+        }
+        .event-date {
+            color: var(--text-color);
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .event-time {
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .event-location {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .event-description {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background: var(--background-alt);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-color);
+            margin-top: 8px;
+        }
+        .event-description i {
+            margin-top: 2px;
+            opacity: 0.7;
+        }
+        .event-source {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-color);
+            opacity: 0.8;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        .empty-state h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        .empty-state p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .refresh-hint {
+            background: var(--background-alt);
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 15px;
+            border: 1px solid var(--border-color);
+        }
+        .loading-skeleton {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .skeleton-item {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 8px;
+            height: 80px;
+        }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .calendar-checkbox:hover {
+            transform: scale(1.02);
+        }
+        .load-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        .load-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .load-btn:hover::before {
+            left: 100%;
+        }
+        .load-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 86, 179, 0.3);
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .export-btn {
+            background: var(--success-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        .export-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        .export-btn:hover::before {
+            left: 100%;
+        }
+        .export-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+        }
+        @media (max-width: 768px) {
+            .stats-bar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .stats-item {
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+                padding-bottom: 10px;
+            }
+            .stats-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .event-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .event-type-badge {
+                align-self: flex-start;
+            }
+        }
+        .calendar-checkbox {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .calendar-checkbox input[type="checkbox"] {
+            opacity: 0;
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+        .checkmark {
+            position: relative;
+            height: 18px;
+            width: 18px;
+            background-color: var(--background-color);
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .calendar-checkbox:hover .checkmark {
+            border-color: var(--primary-color);
+        }
+        .calendar-checkbox input:checked ~ .checkmark {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 5px;
+            top: 2px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .calendar-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .calendar-item.disabled {
+            opacity: 0.5;
+        }
+        .calendar-item.disabled .calendar-name {
+            color: var(--text-light);
+        }
+        .copy-btn {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 6px 10px;
+            margin-right: 8px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 28px;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        .calendar-item:hover .copy-btn {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .copy-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+        .copy-btn.success {
+            background: var(--success-color);
+            color: white;
+            border-color: var(--success-color);
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        .copy-btn.success i:before {
+            content: "\f00c";
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            max-width: 400px;
+            font-size: 0.9rem;
+        }
+        .notification-success {
+            border-left: 4px solid var(--success-color);
+            background: #f8fff9;
+        }
+        .notification-info {
+            border-left: 4px solid var(--accent-color);
+            background: #f8fbff;
+        }
+        .notification button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .notification button:hover {
+            background: var(--border-color);
+            color: var(--text-color);
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .controls-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+        }
+        .time-filters, .view-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .filter-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-right: 5px;
+        }
+        .filter-buttons, .view-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        .filter-btn, .view-btn {
+            background: white;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .filter-btn:hover, .view-btn:hover {
+            background: var(--background-alt);
+            border-color: var(--accent-color);
+        }
+        .filter-btn.active, .view-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        .view-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .event-grid.compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        .event-grid.compact .event {
+            padding: 12px 16px;
+        }
+        .event-grid.compact .event-header {
+            margin-bottom: 6px;
+        }
+        .event-grid.compact .event-title {
+            font-size: 1rem;
+            line-height: 1.2;
+        }
+        .event-grid.compact .event-type-badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+        }
+        .event-grid.compact .event-details {
+            gap: 4px;
+        }
+        .event-grid.compact .event-date {
+            font-size: 0.85rem;
+        }
+        .event-grid.compact .event-time {
+            font-size: 0.75rem;
+            padding: 2px 6px;
+        }
+        .event-grid.compact .event-location {
+            font-size: 0.8rem;
+        }
+        .event-grid.compact .event-description {
+            font-size: 0.8rem;
+            padding: 6px 10px;
+            margin-top: 6px;
+        }
+        .event-grid.compact .event-source {
+            margin-top: 6px;
+            padding-top: 6px;
+        }
+        @media (max-width: 768px) {
+            .controls-section {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+            .time-filters, .view-controls {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .filter-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Calendar View Styles */
+        .calendar-view {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .calendar-view.active {
+            display: block;
+        }
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--background-alt);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+        .calendar-nav-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+        .calendar-nav-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+        .calendar-month-year {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: var(--border-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .calendar-day-header {
+            background: var(--secondary-color);
+            color: white;
+            padding: 15px 5px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .calendar-day {
+            background: white;
+            min-height: 120px;
+            padding: 8px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: flex;
+            flex-direction: column;
+        }
+        .calendar-day:hover {
+            background: var(--background-alt);
+        }
+        .calendar-day.other-month {
+            background: #f8f9fa;
+            color: #adb5bd;
+        }
+        .calendar-day.today {
+            background: var(--accent-color);
+            color: white;
+        }
+        .calendar-day.has-events {
+            background: #e3f2fd;
+        }
+        .calendar-day.has-events:hover {
+            background: #bbdefb;
+        }
+        .calendar-day.today.has-events {
+            background: var(--primary-color);
+        }
+        .calendar-day-number {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .calendar-day.today .calendar-day-number {
+            color: white;
+        }
+        .event-count-badge {
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .calendar-day.today .event-count-badge {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .event-times {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin-top: 2px;
+        }
+        .event-time-item {
+            background: var(--background-alt);
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            color: var(--text-color);
+            border-left: 2px solid var(--accent-color);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .event-time-item.soccer {
+            border-left-color: #28a745;
+        }
+        .event-time-item.baseball {
+            border-left-color: #dc3545;
+        }
+        .event-time-item.teamsnap {
+            border-left-color: #6f42c1;
+        }
+        .event-time-item.school {
+            border-left-color: #fd7e14;
+        }
+        .event-time-item.trail {
+            border-left-color: #20c997;
+        }
+        .event-time-item.volunteer {
+            border-left-color: #e83e8c;
+        }
+        .calendar-day.today .event-time-item {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .event-indicators {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            margin-top: 4px;
+        }
+        .event-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .event-dot.soccer {
+            background: #28a745;
+        }
+        .event-dot.baseball {
+            background: #dc3545;
+        }
+        .event-dot.teamsnap {
+            background: #6f42c1;
+        }
+        .event-dot.school {
+            background: #fd7e14;
+        }
+        .event-dot.trail {
+            background: #20c997;
+        }
+        .event-dot.volunteer {
+            background: #e83e8c;
+        }
+        .event-dot.default {
+            background: var(--accent-color);
+        }
+        .event-summary {
+            font-size: 0.7rem;
+            color: var(--text-color);
+            margin-top: 2px;
+            line-height: 1.2;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .calendar-day.today .event-summary {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .day-events-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            max-height: 70vh;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+        .day-events-popup.active {
+            display: block;
+        }
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .popup-date {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        .popup-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        .popup-close:hover {
+            background: var(--background-alt);
+            color: var(--text-color);
+        }
+        .popup-events {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .popup-event {
+            padding: 10px;
+            background: var(--background-alt);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        .popup-event.soccer {
+            border-left-color: #28a745;
+        }
+        .popup-event.baseball {
+            border-left-color: #dc3545;
+        }
+        .popup-event.teamsnap {
+            border-left-color: #6f42c1;
+        }
+        .popup-event.school {
+            border-left-color: #fd7e14;
+        }
+        .popup-event.trail {
+            border-left-color: #20c997;
+        }
+        .popup-event.volunteer {
+            border-left-color: #e83e8c;
+        }
+        .popup-event-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+        .popup-event-time {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 3px;
+        }
+        .popup-event-location {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 3px;
+        }
+        .popup-event-description {
+            font-size: 0.8rem;
+            color: var(--text-color);
+            background: var(--background-alt);
+            padding: 6px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+            border-left: 3px solid var(--accent-color);
+        }
+        .calendar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        .calendar-overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-grid {
+                gap: 0;
+            }
+            .calendar-day {
+                min-height: 100px;
+                padding: 4px;
+            }
+            .calendar-day-header {
+                padding: 10px 5px;
+                font-size: 0.8rem;
+            }
+            .calendar-month-year {
+                font-size: 1.4rem;
+            }
+            .calendar-nav-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            .day-events-popup {
+                max-width: 90vw;
+                margin: 20px;
+            }
+            .calendar-day-number {
+                font-size: 0.9rem;
+                margin-bottom: 3px;
+            }
+            .event-count-badge {
+                width: 16px;
+                height: 16px;
+                font-size: 0.6rem;
+            }
+            .event-time-item {
+                font-size: 0.6rem;
+                padding: 1px 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero" style="padding: 60px 0; background: var(--background-alt);">
+        <div class="container">
+            <h1 class="section-title">Snider Family Calendar</h1>
+        </div>
+    </section>
+
+    <section style="padding: 40px 0;">
+        <div class="container">
+            <div class="config-section">
+                <h3><i class="fas fa-calendar-alt"></i> Family Calendars</h3>
+                <p>Displaying events from Snider family calendars, sorted chronologically:</p>
+                
+                <div class="calendar-list">
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar1-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-futbol sport-icon"></i>
+                        <span class="calendar-name">Will Soccer</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar1')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar1-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar2-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-baseball-ball sport-icon"></i>
+                        <span class="calendar-name">Will Baseball</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar2')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar2-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar8-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-futbol sport-icon"></i>
+                        <span class="calendar-name">Will Indoor Soccer</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar8')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar8-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar3-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-users sport-icon"></i>
+                        <span class="calendar-name">TeamSnap Events (Madison + Max + Will)</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar3')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar3-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar4-enabled" onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-school sport-icon"></i>
+                        <span class="calendar-name">Blue Valley School Calendar</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar4')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar4-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar5-enabled" onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-map-marked-alt sport-icon"></i>
+                        <span class="calendar-name">Overland Trail Calendar</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar5')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar5-status">Loading...</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="calendar7-enabled" onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-school sport-icon"></i>
+                        <span class="calendar-name">St. Michael School Calendar</span>
+                        <button class="copy-btn" onclick="copyCalendarLink('calendar7')" title="Copy calendar link">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <span class="calendar-status" id="calendar7-status">Loading...</span>
+                    </div>
+                </div>
+                
+                <div class="controls-section">
+                    <div class="time-filters">
+                        <span class="filter-label">Show:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="week" onclick="setTimeFilter('week')">Next Week</button>
+                            <button class="filter-btn" data-filter="month" onclick="setTimeFilter('month')">Next Month</button>
+                            <button class="filter-btn" data-filter="quarter" onclick="setTimeFilter('quarter')">Next 3 Months</button>
+                            <button class="filter-btn" data-filter="all" onclick="setTimeFilter('all')">All Upcoming</button>
+                        </div>
+                    </div>
+                    <div class="event-type-filters">
+                        <span class="filter-label">Type:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-type="all" onclick="setEventTypeFilter('all')">All Events</button>
+                            <button class="filter-btn" data-type="games" onclick="setEventTypeFilter('games')">Games Only</button>
+                        </div>
+                    </div>
+                    <div class="kid-filters">
+                        <span class="filter-label">Kid:</span>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-kid="all" onclick="setKidFilter('all')">All Kids</button>
+                            <button class="filter-btn" data-kid="will" onclick="setKidFilter('will')">Will</button>
+                            <button class="filter-btn" data-kid="madison" onclick="setKidFilter('madison')">Madison</button>
+                            <button class="filter-btn" data-kid="max" onclick="setKidFilter('max')">Max</button>
+                        </div>
+                    </div>
+                    <div class="view-controls">
+                        <span class="filter-label">View:</span>
+                        <div class="view-buttons">
+                            <button class="view-btn" data-view="detailed" onclick="setView('detailed')">
+                                <i class="fas fa-list"></i> Detailed
+                            </button>
+                            <button class="view-btn active" data-view="compact" onclick="setView('compact')">
+                                <i class="fas fa-th-list"></i> Compact
+                            </button>
+                            <button class="view-btn" data-view="calendar" onclick="setView('calendar')">
+                                <i class="fas fa-calendar"></i> Calendar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="export-btn" onclick="exportFilteredCalendar()" title="Download filtered events as .ics file">
+                            <i class="fas fa-download"></i> Export Calendar
+                        </button>
+                        <button class="load-btn" onclick="loadAllCalendars()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="events-container" class="events-container">
+                <p class="loading"><i class="fas fa-info-circle"></i> Enter a calendar URL above to load events.</p>
+            </div>
+
+            <!-- Calendar View -->
+            <div id="calendar-view" class="calendar-view">
+                <div class="calendar-header">
+                    <button id="prev-month" class="calendar-nav-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div id="calendar-month-year" class="calendar-month-year">
+                        August 2025
+                    </div>
+                    <button id="next-month" class="calendar-nav-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div id="calendar-grid" class="calendar-grid">
+                    <!-- Day headers -->
+                    <div class="calendar-day-header">Sun</div>
+                    <div class="calendar-day-header">Mon</div>
+                    <div class="calendar-day-header">Tue</div>
+                    <div class="calendar-day-header">Wed</div>
+                    <div class="calendar-day-header">Thu</div>
+                    <div class="calendar-day-header">Fri</div>
+                    <div class="calendar-day-header">Sat</div>
+                    
+                    <!-- Calendar days will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Calendar overlay and popup for day events -->
+            <div id="calendar-overlay" class="calendar-overlay"></div>
+            <div id="day-events-popup" class="day-events-popup">
+                <div class="popup-header">
+                    <div id="popup-date" class="popup-date"></div>
+                    <button id="popup-close" class="popup-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="popup-events" class="popup-events">
+                    <!-- Events for the selected day will be populated here -->
+                </div>
+            </div>
+        </div>
+    </section></body>
+
+    <script>
+        // Calendar configurations
+        const CALENDARS = [
+            {
+                id: 'calendar1',
+                name: 'Will Soccer',
+                url: 'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876'
+            },
+            {
+                id: 'calendar2', 
+                name: 'Will Baseball',
+                url: 'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=8062a71b-b128-4aa5-bd73-ff686c22d8f6&token=a1bcfb01283407a3f79afdf9bbf5d7400714d67542caca0738910db13ee9f70d',
+                urls: [
+                    'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=8062a71b-b128-4aa5-bd73-ff686c22d8f6&token=a1bcfb01283407a3f79afdf9bbf5d7400714d67542caca0738910db13ee9f70d',
+                    'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=628804f9-1e56-439b-b8f6-af42fb098e41&token=3f19b930ec1be351e60daf351471939c971ad0ed8e3afeef0df61df083464de3'
+                ]
+            },
+            {
+                id: 'calendar3',
+                name: 'TeamSnap Events (Madison + Max + Will)',
+                url: 'http://ical-cdn.teamsnap.com/user_schedule/b5988130-ea96-0139-1e25-4201ac1c001c.ics'
+            },
+            {
+                id: 'calendar4',
+                name: 'Blue Valley School Calendar',
+                url: 'https://www.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=39&calendar_ids[]=1'
+            },
+            {
+                id: 'calendar5',
+                name: 'Overland Trail Calendar',
+                url: 'https://ote.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=23'
+            },
+            {
+                id: 'calendar7',
+                name: 'St. Michael School Calendar',
+                url: 'https://stmichaelcp.org/icalendar.ics'
+            },
+            {
+                id: 'calendar8',
+                name: 'Will Indoor Soccer',
+                url: 'https://calendar.playmetrics.com/calendars/c237/t434992/p0/tA6AECF4E/f/calendar.ics'
+            }
+        ];
+
+        // Store all loaded events
+        let allLoadedEvents = [];
+        
+        // Current filter and view settings
+        let currentTimeFilter = 'week';
+        let currentEventTypeFilter = 'all';
+        let currentKidFilter = 'all';
+        let currentView = 'compact';
+
+        // Calendar state
+        let currentCalendarDate = new Date();
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        // Multiple CORS proxy options
+        const CORS_PROXIES = [
+            {
+                url: 'https://r.jina.ai/https://',
+                type: 'text',
+                extract: (data) => normalizeIcsText(data),
+                stripProtocol: true
+            },
+            {
+                url: 'https://r.jina.ai/http://',
+                type: 'text',
+                extract: (data) => normalizeIcsText(data),
+                stripProtocol: true
+            },
+            {
+                url: 'https://api.allorigins.win/get?url=',
+                type: 'json',
+                extract: (data) => data.contents
+            },
+            {
+                url: 'https://corsproxy.io/?',
+                type: 'text',
+                extract: (data) => normalizeIcsText(data)
+            },
+            {
+                url: 'https://proxy.cors.sh/',
+                type: 'text',
+                extract: (data) => data
+            }
+        ];
+
+        function normalizeIcsText(text) {
+            const marker = 'BEGIN:VCALENDAR';
+            const markerIndex = text.indexOf(marker);
+            if (markerIndex === -1) {
+                return text;
+            }
+            return text.slice(markerIndex);
+        }
+
+        function dedupeEvents(events) {
+            const seen = new Set();
+            const deduped = [];
+
+            events.forEach(event => {
+                const key = event.uid || `${event.calendarName}|${event.summary || ''}|${event.dtstart ? event.dtstart.toISOString() : ''}`;
+                if (seen.has(key)) {
+                    return;
+                }
+                seen.add(key);
+                deduped.push(event);
+            });
+
+            return deduped;
+        }
+
+        async function loadCalendarSources(calendar) {
+            const urls = Array.isArray(calendar.urls) && calendar.urls.length > 0
+                ? calendar.urls
+                : [calendar.url];
+            const sourceEvents = [];
+            const sourceErrors = [];
+
+            for (let i = 0; i < urls.length; i++) {
+                const sourceLabel = urls.length > 1 ? `${calendar.name} source ${i + 1}` : calendar.name;
+                try {
+                    const events = await loadSingleCalendar(urls[i], calendar.name, calendar.id);
+                    sourceEvents.push(...events);
+                } catch (error) {
+                    sourceErrors.push(`${sourceLabel}: ${error.message}`);
+                }
+            }
+
+            const dedupedEvents = dedupeEvents(sourceEvents);
+
+            if (dedupedEvents.length > 0) {
+                return {
+                    events: dedupedEvents,
+                    sourceCount: urls.length,
+                    loadedSourceCount: urls.length - sourceErrors.length,
+                    sourceErrors
+                };
+            }
+
+            throw new Error(sourceErrors.join('; ') || 'No events returned from any configured source');
+        }
+
+        async function loadAllCalendars() {
+            const container = document.getElementById('events-container');
+            container.innerHTML = `
+                <div class="loading-skeleton">
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                </div>
+            `;
+
+            allLoadedEvents = [];
+            let completedCount = 0;
+            const totalCalendars = CALENDARS.length;
+
+            // Load calendars in parallel and update display as each completes
+            const loadPromises = CALENDARS.map(async (calendar) => {
+                const statusElement = document.getElementById(`${calendar.id}-status`);
+                const calendarItem = statusElement.closest('.calendar-item');
+                
+                statusElement.textContent = 'Loading...';
+                statusElement.className = 'calendar-status loading';
+
+                try {
+                    console.log(`Loading calendar: ${calendar.name}`);
+                    const result = await loadCalendarSources(calendar);
+                    const events = result.events;
+                    
+                    // Add events to global array
+                    allLoadedEvents.push(...events);
+                    
+                    // Update status
+                    statusElement.textContent = `${events.length} events`;
+                    statusElement.className = 'calendar-status success';
+                    calendarItem.classList.remove('disabled');
+                    
+                    console.log(`Successfully loaded ${events.length} deduped events from ${calendar.name} (${result.loadedSourceCount}/${result.sourceCount} sources)`);
+                    
+                    // Update display immediately after each calendar loads
+                    completedCount++;
+                    updateEventDisplay();
+                    
+                    return { success: true, calendar: calendar.name, events: events.length };
+                } catch (error) {
+                    console.error(`Failed to load calendar ${calendar.name}:`, error);
+                    statusElement.textContent = 'Error';
+                    statusElement.className = 'calendar-status error';
+                    calendarItem.classList.add('disabled');
+                    
+                    // Uncheck the checkbox if loading fails
+                    document.getElementById(`${calendar.id}-enabled`).checked = false;
+                    completedCount++;
+                    
+                    // Still update display even if this calendar failed
+                    updateEventDisplay();
+                    
+                    return { success: false, calendar: calendar.name, error: error.message };
+                }
+            });
+
+            // Wait for all calendars to complete (but display updates happen immediately)
+            const results = await Promise.allSettled(loadPromises);
+            
+            const successCount = results.filter(result => 
+                result.status === 'fulfilled' && result.value.success
+            ).length;
+            const errorCount = results.length - successCount;
+            
+            console.log(`All calendars completed: ${allLoadedEvents.length} total events from ${successCount} calendars (${errorCount} failed)`);
+        }
+
+        function updateEventDisplay() {
+            // Get enabled calendars
+            const enabledCalendars = CALENDARS
+                .filter(calendar => document.getElementById(`${calendar.id}-enabled`).checked)
+                .map(calendar => calendar.name);
+
+            console.log('Enabled calendars:', enabledCalendars);
+
+            // Filter events based on enabled calendars and time filter
+            let filteredEvents = allLoadedEvents
+                .filter(event => enabledCalendars.includes(event.calendarName));
+
+            // Apply time filter
+            filteredEvents = applyTimeFilter(filteredEvents, currentTimeFilter);
+            
+            // Apply event type filter
+            filteredEvents = applyEventTypeFilter(filteredEvents, currentEventTypeFilter);
+            
+            // Apply kid filter
+            filteredEvents = applyKidFilter(filteredEvents, currentKidFilter);
+            
+            // Sort by date
+            filteredEvents.sort((a, b) => a.dtstart - b.dtstart);
+
+            console.log(`Displaying ${filteredEvents.length} events from enabled calendars with ${currentTimeFilter} time filter, ${currentEventTypeFilter} type filter, and ${currentKidFilter} kid filter`);
+            displayEventsWithStats(filteredEvents);
+
+            // Update calendar item visual state
+            CALENDARS.forEach(calendar => {
+                const calendarItem = document.getElementById(`${calendar.id}-status`).closest('.calendar-item');
+                const isEnabled = document.getElementById(`${calendar.id}-enabled`).checked;
+                
+                if (isEnabled) {
+                    calendarItem.classList.remove('disabled');
+                } else {
+                    calendarItem.classList.add('disabled');
+                }
+            });
+            
+            // Re-render calendar view if it's currently active
+            if (currentView === 'calendar') {
+                renderCalendar();
+            }
+        }
+
+        function setTimeFilter(filter) {
+            currentTimeFilter = filter;
+            
+            // Update button states for time filters only
+            document.querySelectorAll('.time-filters .filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+            
+            // Update display
+            updateEventDisplay();
+        }
+
+        function setEventTypeFilter(type) {
+            currentEventTypeFilter = type;
+            
+            // Update button states for event type filters only
+            document.querySelectorAll('.event-type-filters .filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-type="${type}"]`).classList.add('active');
+            
+            // Update display
+            updateEventDisplay();
+        }
+
+        function setKidFilter(kid) {
+            currentKidFilter = kid;
+            
+            // Update button states for kid filters only
+            document.querySelectorAll('.kid-filters .filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-kid="${kid}"]`).classList.add('active');
+            
+            // Update display
+            updateEventDisplay();
+        }
+
+        function setView(view) {
+            currentView = view;
+            
+            // Update button states
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-view="${view}"]`).classList.add('active');
+            
+            // Update event grid class
+            const eventGrid = document.querySelector('.event-grid');
+            if (eventGrid) {
+                if (view === 'compact') {
+                    eventGrid.classList.add('compact');
+                } else {
+                    eventGrid.classList.remove('compact');
+                }
+            }
+        }
+
+        function applyTimeFilter(events, filter) {
+            const now = new Date();
+            now.setHours(0, 0, 0, 0); // Start of today
+            
+            let endDate;
+            
+            switch (filter) {
+                case 'week':
+                    endDate = new Date(now);
+                    endDate.setDate(now.getDate() + 7);
+                    break;
+                case 'month':
+                    endDate = new Date(now);
+                    endDate.setMonth(now.getMonth() + 1);
+                    break;
+                case 'quarter':
+                    endDate = new Date(now);
+                    endDate.setMonth(now.getMonth() + 3);
+                    break;
+                case 'all':
+                default:
+                    return events; // No time filtering
+            }
+            
+            return events.filter(event => {
+                const eventDate = new Date(event.dtstart);
+                eventDate.setHours(0, 0, 0, 0);
+                return eventDate >= now && eventDate < endDate;
+            });
+        }
+
+        function applyEventTypeFilter(events, filter) {
+            switch (filter) {
+                case 'games':
+                    return events.filter(event => 
+                        event.summary && (event.summary.includes(' vs ') || event.summary.includes(' @ '))
+                    );
+                case 'all':
+                default:
+                    return events; // No event type filtering
+            }
+        }
+
+        function applyKidFilter(events, filter) {
+            switch (filter) {
+                case 'will':
+                    return events.filter(event => {
+                        const kidName = getKidNameFromEvent(event);
+                        return kidName && kidName.toLowerCase() === 'will';
+                    });
+                case 'madison':
+                    return events.filter(event => {
+                        const kidName = getKidNameFromEvent(event);
+                        return kidName && kidName.toLowerCase() === 'madison';
+                    });
+                case 'max':
+                    return events.filter(event => {
+                        const kidName = getKidNameFromEvent(event);
+                        return kidName && kidName.toLowerCase() === 'max';
+                    });
+                case 'all':
+                default:
+                    return events; // No kid filtering
+            }
+        }
+
+        async function loadSingleCalendar(url, calendarName, calendarId) {
+            // Check if this is a relative/local URL (doesn't start with http://, https://, or webcal://)
+            const isLocalFile = !url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('webcal://');
+
+            // Convert webcal:// and http:// to https://
+            if (url.startsWith('webcal://')) {
+                url = url.replace('webcal://', 'https://');
+            } else if (url.startsWith('http://')) {
+                url = url.replace('http://', 'https://');
+            }
+
+            let icalData = null;
+            let lastError = null;
+
+            // For local files, fetch directly without CORS proxy
+            if (isLocalFile) {
+                try {
+                    console.log(`Loading local file for ${calendarName}:`, url);
+                    const response = await fetch(url);
+                    if (response.ok) {
+                        icalData = await response.text();
+                        console.log(`Local file loaded successfully! Data length:`, icalData.length);
+                    } else {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error(`Failed to load local file:`, error.message);
+                    lastError = error;
+                }
+            } else {
+                // Try each CORS proxy for remote URLs
+                for (let i = 0; i < CORS_PROXIES.length; i++) {
+                    const proxy = CORS_PROXIES[i];
+                    try {
+                        console.log(`Trying proxy ${i + 1} for ${calendarName}:`, proxy.url);
+
+                        let fetchUrl;
+                        if (proxy.stripProtocol) {
+                            // For r.jina.ai proxies, strip the protocol from the target URL
+                            const cleanUrl = url.replace(/^https?:\/\//i, '');
+                            fetchUrl = proxy.url + cleanUrl;
+                        } else {
+                            fetchUrl = proxy.url + encodeURIComponent(url);
+                        }
+
+                        const response = await fetch(fetchUrl);
+                        console.log(`Proxy ${i + 1} response status:`, response.status);
+
+                        if (response.ok) {
+                            let data;
+                            if (proxy.type === 'json') {
+                                data = await response.json();
+                            } else {
+                                data = await response.text();
+                            }
+
+                            icalData = proxy.extract(data);
+                            console.log(`Proxy ${i + 1} success! Data length:`, icalData.length);
+                            break;
+                        } else {
+                            throw new Error(`HTTP ${response.status}`);
+                        }
+                    } catch (error) {
+                        console.log(`Proxy ${i + 1} failed:`, error.message);
+                        lastError = error;
+                        continue;
+                    }
+                }
+            }
+
+            if (!icalData) {
+                throw new Error(`Failed to load calendar. Last error: ${lastError?.message || 'Unknown error'}`);
+            }
+
+            // Check if data is base64 encoded (starts with data:text/calendar)
+            let processedData = icalData;
+            if (icalData.startsWith('data:text/calendar')) {
+                console.log('Detected base64 encoded calendar data');
+                const base64Part = icalData.split(',')[1];
+                if (base64Part) {
+                    try {
+                        processedData = atob(base64Part);
+                        console.log('Successfully decoded base64 data');
+                    } catch (e) {
+                        console.error('Failed to decode base64:', e);
+                        throw new Error('Failed to decode calendar data');
+                    }
+                }
+            }
+            
+            const events = parseICalData(processedData, calendarName, calendarId);
+            
+            return events;
+        }
+
+        function parseICalData(icalData, calendarName, calendarId) {
+            const events = [];
+            const lines = icalData.split(/\r?\n/);
+            let currentEvent = null;
+
+            console.log('Parsing iCal data, total lines:', lines.length);
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i].trim();
+                
+                // Handle line folding (lines that start with space or tab)
+                while (i + 1 < lines.length && (lines[i + 1].startsWith(' ') || lines[i + 1].startsWith('\t'))) {
+                    line += lines[i + 1].substring(1);
+                    i++;
+                }
+                
+                if (line === 'BEGIN:VEVENT') {
+                    currentEvent = { calendarName: calendarName, calendarId: calendarId };
+                    console.log('Started new event');
+                } else if (line === 'END:VEVENT' && currentEvent) {
+                    if (currentEvent.dtstart && currentEvent.summary) {
+                        events.push(currentEvent);
+                        console.log('Added event:', currentEvent.summary, currentEvent.dtstart);
+                    } else {
+                        console.log('Skipped incomplete event:', currentEvent);
+                    }
+                    currentEvent = null;
+                } else if (currentEvent) {
+                    const colonIndex = line.indexOf(':');
+                    if (colonIndex > 0) {
+                        const keyPart = line.substring(0, colonIndex);
+                        const key = keyPart.split(';')[0];
+                        const value = line.substring(colonIndex + 1);
+                        
+                        switch (key) {
+                            case 'UID':
+                                currentEvent.uid = value;
+                                break;
+                            case 'SUMMARY':
+                                currentEvent.summary = value.replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, '\n');
+                                // Extract location from summary for games (e.g., "@ Whitaker 2")
+                                const atMatch = currentEvent.summary.match(/ @ (.+)$/);
+                                if (atMatch && !currentEvent.location) {
+                                    currentEvent.location = atMatch[1];
+                                }
+                                break;
+                            case 'DTSTART':
+                                currentEvent.dtstart = parseICalDate(value, keyPart);
+                                break;
+                            case 'DTEND':
+                                currentEvent.dtend = parseICalDate(value, keyPart);
+                                break;
+                            case 'LOCATION':
+                                currentEvent.location = value.replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, '\n');
+                                break;
+                            case 'DESCRIPTION':
+                                currentEvent.description = value.replace(/\\,/g, ',').replace(/\\;/g, ';').replace(/\\n/g, '\n');
+                                console.log('Found description for event:', currentEvent.summary, ':', currentEvent.description);
+                                break;
+                        }
+                    }
+                }
+            }
+
+            console.log(`[${calendarName}] Total events found:`, events.length);
+
+            // Filter for upcoming events
+            const now = new Date();
+            const upcomingEvents = events
+                .filter(event => event.dtstart && event.dtstart >= now);
+
+            console.log(`[${calendarName}] Upcoming events:`, upcomingEvents.length);
+            
+            // Debug: Log all event dates for Will Soccer
+            if (calendarName === 'Will Soccer') {
+                console.log(`[${calendarName}] All events:`, events.map(e => ({
+                    summary: e.summary,
+                    date: e.dtstart ? e.dtstart.toISOString() : 'NO DATE'
+                })));
+            }
+            return upcomingEvents;
+        }
+
+        function parseICalDate(dateString, keyPart) {
+            console.log('Parsing date:', dateString, 'with key:', keyPart);
+            
+            // Check if this is a UTC time (ends with Z)
+            const isUTC = dateString.endsWith('Z');
+            
+            // Handle different iCal date formats
+            if (dateString.includes('T')) {
+                // DateTime format: YYYYMMDDTHHMMSS or YYYYMMDDTHHMMSSZ
+                const cleanDate = dateString.replace(/[TZ]/g, '');
+                const year = parseInt(cleanDate.substring(0, 4));
+                const month = parseInt(cleanDate.substring(4, 6)) - 1; // JS months are 0-based
+                const day = parseInt(cleanDate.substring(6, 8));
+                const hour = parseInt(cleanDate.substring(8, 10)) || 0;
+                const minute = parseInt(cleanDate.substring(10, 12)) || 0;
+                const second = parseInt(cleanDate.substring(12, 14)) || 0;
+                
+                let parsedDate;
+                if (isUTC) {
+                    // Create UTC date and convert to local time
+                    parsedDate = new Date(Date.UTC(year, month, day, hour, minute, second));
+                    console.log('Parsed UTC datetime:', parsedDate, '(Original UTC time:', `${hour}:${minute.toString().padStart(2, '0')})`);
+                } else {
+                    // Assume local time
+                    parsedDate = new Date(year, month, day, hour, minute, second);
+                    console.log('Parsed local datetime:', parsedDate);
+                }
+                
+                return parsedDate;
+            } else if (dateString.length === 8) {
+                // Date only format: YYYYMMDD
+                const year = parseInt(dateString.substring(0, 4));
+                const month = parseInt(dateString.substring(4, 6)) - 1;
+                const day = parseInt(dateString.substring(6, 8));
+                
+                const parsedDate = new Date(year, month, day);
+                console.log('Parsed date only:', parsedDate);
+                return parsedDate;
+            } else {
+                // Try to parse as ISO date string
+                try {
+                    const parsedDate = new Date(dateString);
+                    console.log('Parsed as ISO date:', parsedDate);
+                    return parsedDate;
+                } catch (e) {
+                    console.error('Failed to parse date:', dateString, e);
+                    return null;
+                }
+            }
+        }
+
+        function displayEventsWithStats(events) {
+            const container = document.getElementById('events-container');
+            
+            if (events.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        <h3>No upcoming events</h3>
+                        <p>Try selecting different calendars or check back later for new events.</p>
+                        <div class="refresh-hint">
+                            <i class="fas fa-info-circle"></i> Events are automatically refreshed when you load the page
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            // Calculate stats
+            const totalEvents = events.length;
+            const soccerEvents = events.filter(e => e.calendarName === 'Will Soccer').length;
+            const baseballEvents = events.filter(e => e.calendarName === 'Will Baseball').length;
+            const teamSnapEvents = events.filter(e => e.calendarName === 'TeamSnap Events (Madison + Max + Will)').length;
+            const schoolEvents = events.filter(e => e.calendarName === 'Blue Valley School Calendar').length;
+            const trailEvents = events.filter(e => e.calendarName === 'Overland Trail Calendar').length;
+            
+            // Get next event
+            const nextEvent = events[0];
+            const daysToNext = Math.ceil((nextEvent.dtstart - new Date()) / (1000 * 60 * 60 * 24));
+
+            // Count games (events with ' vs ' or ' @ ' in title)
+            const gameEvents = events.filter(e => e.summary && (e.summary.includes(' vs ') || e.summary.includes(' @ '))).length;
+
+            const statsHtml = `
+                <div class="stats-bar">
+                    <div class="stats-item">
+                        <span class="stats-number">${totalEvents}</span>
+                        <span class="stats-label">Showing Events</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-number">${daysToNext}</span>
+                        <span class="stats-label">Days to Next</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-number">${gameEvents}</span>
+                        <span class="stats-label">Games</span>
+                    </div>
+                    <div class="stats-item">
+                        <span class="stats-number">${totalEvents - gameEvents}</span>
+                        <span class="stats-label">Practices</span>
+                    </div>
+                </div>
+            `;
+
+            const eventsHtml = events.map(event => {
+                const dateStr = event.dtstart.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                const timeStr = event.dtstart.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit'
+                });
+
+                // Determine badge type and color
+                let badgeClass = 'event-type-badge';
+                let badgeText = event.calendarName;
+                
+                if (event.calendarName === 'Will Soccer') {
+                    badgeClass += ' soccer';
+                    badgeText = 'SOCCER';
+                } else if (event.calendarName === 'Will Baseball') {
+                    badgeClass += ' baseball';
+                    badgeText = 'BASEBALL';
+                } else if (event.calendarName === 'TeamSnap Events (Madison + Max + Will)') {
+                    badgeClass += ' teamsnap';
+                    badgeText = 'TEAMSNAP';
+                } else if (event.calendarName === 'Blue Valley School Calendar') {
+                    badgeClass += ' school';
+                    badgeText = 'SCHOOL';
+                } else if (event.calendarName === 'Overland Trail Calendar') {
+                    badgeClass += ' trail';
+                    badgeText = 'OVERLAND TRAIL';
+                }
+
+                // Determine which kid this event is for
+                let kidName = getKidNameFromEvent(event);
+                let displayTitle = event.summary;
+                if (kidName) {
+                    displayTitle = `${kidName}: ${event.summary}`;
+                }
+
+                return `
+                    <div class="event">
+                        <div class="event-header">
+                            <div class="event-title">${escapeHtml(displayTitle)}</div>
+                            <div class="${badgeClass}">${badgeText}</div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-date">
+                                <i class="fas fa-calendar"></i> 
+                                ${dateStr}
+                                <span class="event-time">${timeStr}</span>
+                            </div>
+                            ${event.location ? `
+                                <div class="event-location">
+                                    <i class="fas fa-map-marker-alt"></i> 
+                                    ${escapeHtml(event.location)}
+                                </div>
+                            ` : ''}
+                            ${event.description ? `
+                                <div class="event-description">
+                                    <i class="fas fa-info-circle"></i> 
+                                    ${escapeHtml(event.description)}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="event-source">${escapeHtml(event.calendarName)}</div>
+                    </div>
+                `;
+            }).join('');
+
+            const gridClass = currentView === 'compact' ? 'event-grid compact' : 'event-grid';
+            
+            container.innerHTML = `
+                ${statsHtml}
+                <div class="events-header">
+                    <h2><i class="fas fa-calendar-check"></i> Upcoming Events</h2>
+                </div>
+                <div class="${gridClass}">
+                    ${eventsHtml}
+                </div>
+            `;
+        }
+
+        function showError(message) {
+            const container = document.getElementById('events-container');
+            container.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> ${escapeHtml(message)}</div>`;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function getKidNameFromEvent(event) {
+            const summary = event.summary ? event.summary.toLowerCase() : '';
+            const description = event.description ? event.description.toLowerCase() : '';
+            const location = event.location ? event.location.toLowerCase() : '';
+            const calendarName = event.calendarName ? event.calendarName.toLowerCase() : '';
+
+            // eventText excludes calendarName to avoid false matches on
+            // "TeamSnap Events (Madison + Max + Will)" containing all three names.
+            const eventText = `${summary} ${description} ${location}`;
+            const allText = `${eventText} ${calendarName}`;
+
+            // Check for team/event identifiers (summary/description/location only)
+            if (eventText.includes('mustangs') || eventText.includes('ote cougars') || eventText.includes('first grade boys')) {
+                return 'Will';
+            } else if ((eventText.includes('1st grade') || eventText.includes('first grade')) &&
+                      (eventText.includes('bball') || eventText.includes('basketball'))) {
+                return 'Will';
+            } else if (eventText.includes('jr current') || eventText.includes('wildcats softball') ||
+                       eventText.includes('4th grade girls')) {
+                return 'Madison';
+            } else if (eventText.includes('wildcats')) {
+                return 'Madison';
+            } else if (eventText.includes('prek') || eventText.includes('pre-k') || eventText.includes('prekindergarten') ||
+                       eventText.includes('max snider') || eventText.includes('kindergarten') ||
+                       eventText.includes('u6') || eventText.includes('under 6')) {
+                return 'Max';
+            }
+
+            // Check calendar names for additional hints
+            if (calendarName.includes('will soccer') || calendarName.includes('will baseball') ||
+                calendarName.includes('will indoor soccer')) {
+                return 'Will';
+            }
+
+            if (calendarName.includes('madison futsal')) {
+                return 'Madison';
+            }
+
+            // Check for TeamSnap events using event-specific text only (not calendarName)
+            if (calendarName.includes('teamsnap')) {
+                if (eventText.includes('u6') || eventText.includes('under 6') || eventText.includes('kindergarten') ||
+                    eventText.includes('5-6') || eventText.includes('max snider')) {
+                    return 'Max';
+                } else if (eventText.includes('u10') || eventText.includes('under 10') || eventText.includes('4th grade') ||
+                          eventText.includes('9-10')) {
+                    return 'Madison';
+                }
+                return null;
+            }
+            
+            return null; // No kid identified
+        }
+
+        async function copyCalendarLink(calendarId) {
+            const calendar = CALENDARS.find(cal => cal.id === calendarId);
+            if (!calendar) {
+                console.error('Calendar not found:', calendarId);
+                return;
+            }
+
+            const calendarUrl = Array.isArray(calendar.urls) && calendar.urls.length > 0
+                ? calendar.urls[0]
+                : calendar.url;
+            if (!calendarUrl) {
+                console.error('Calendar has no copyable URL:', calendarId);
+                showNotification(`No calendar link configured for ${calendar.name}`, 'info');
+                return;
+            }
+
+            const button = document.querySelector(`[onclick="copyCalendarLink('${calendarId}')"]`);
+            const originalIcon = button.innerHTML;
+
+            try {
+                // Copy the calendar URL to clipboard
+                await navigator.clipboard.writeText(calendarUrl);
+                
+                // Show success feedback
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                button.classList.add('success');
+                button.title = 'Copied!';
+                
+                // Show notification
+                showNotification(`📋 ${calendar.name} calendar link copied!`, 'success');
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                    button.classList.remove('success');
+                    button.title = 'Copy calendar link';
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Failed to copy calendar link:', error);
+                
+                // Fallback: show the URL in a prompt
+                prompt('Copy this calendar URL:', calendarUrl);
+                
+                // Show fallback notification
+                showNotification('Please copy the URL from the dialog box', 'info');
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 4000);
+        }
+
+        function exportFilteredCalendar() {
+            // Get currently filtered events
+            const enabledCalendars = CALENDARS
+                .filter(calendar => document.getElementById(`${calendar.id}-enabled`).checked)
+                .map(calendar => calendar.name);
+
+            let filteredEvents = allLoadedEvents
+                .filter(event => enabledCalendars.includes(event.calendarName));
+
+            // Apply current filters
+            filteredEvents = applyTimeFilter(filteredEvents, currentTimeFilter);
+            filteredEvents = applyEventTypeFilter(filteredEvents, currentEventTypeFilter);
+            filteredEvents = applyKidFilter(filteredEvents, currentKidFilter);
+            filteredEvents.sort((a, b) => a.dtstart - b.dtstart);
+
+            if (filteredEvents.length === 0) {
+                showNotification('No events to export with current filters', 'info');
+                return;
+            }
+
+            // Generate calendar name based on filters
+            const calendarName = generateCalendarName(enabledCalendars, currentTimeFilter);
+            
+            // Generate iCal content
+            const icalContent = generateICalContent(filteredEvents, calendarName);
+            
+            // Download the file
+            downloadICalFile(icalContent, calendarName);
+            
+            // Show success notification
+            showNotification(`📅 Exported ${filteredEvents.length} events to ${calendarName}.ics`, 'success');
+        }
+
+        function generateCalendarName(enabledCalendars, timeFilter) {
+            let baseName = 'Snider Family';
+            
+            // Add calendar names if not all are selected
+            if (enabledCalendars.length < CALENDARS.length) {
+                const shortNames = enabledCalendars.map(name => {
+                    if (name === 'Will Soccer') return 'Soccer';
+                    if (name === 'Will Baseball') return 'Baseball';
+                    if (name === 'TeamSnap Events (Madison + Max + Will)') return 'TeamSnap';
+                    if (name === 'Blue Valley School Calendar') return 'School';
+                    if (name === 'Overland Trail Calendar') return 'Overland Trail';
+                    return name;
+                });
+                baseName = shortNames.join(' + ');
+            }
+            
+            // Add event type filter
+            if (currentEventTypeFilter === 'games') {
+                baseName += ' Games';
+            }
+            
+            // Add kid filter
+            if (currentKidFilter !== 'all') {
+                const kidNames = {
+                    'will': 'Will',
+                    'madison': 'Madison',
+                    'max': 'Max'
+                };
+                baseName += ` (${kidNames[currentKidFilter]})`;
+            }
+            
+            // Add time filter
+            const timeFilters = {
+                'week': 'Next Week',
+                'month': 'Next Month', 
+                'quarter': 'Next 3 Months',
+                'all': 'All Upcoming'
+            };
+            
+            return `${baseName} - ${timeFilters[timeFilter] || 'Filtered'}`;
+        }
+
+        function generateICalContent(events, calendarName) {
+            const now = new Date();
+            const timestamp = now.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            
+            let icalContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Snider Family//Family Calendar//EN',
+                `X-WR-CALNAME:${calendarName}`,
+                'X-WR-CALDESC:Exported from Snider Family Calendar',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH'
+            ];
+
+            events.forEach(event => {
+                // Generate unique ID for event
+                const uid = `${event.summary.replace(/\s+/g, '-').toLowerCase()}-${event.dtstart.getTime()}@snider-family`;
+                
+                // Format dates for iCal
+                const dtstart = formatICalDateTime(event.dtstart);
+                const dtend = event.dtend ? formatICalDateTime(event.dtend) : formatICalDateTime(new Date(event.dtstart.getTime() + 60 * 60 * 1000)); // Default 1 hour
+                
+                icalContent.push('BEGIN:VEVENT');
+                icalContent.push(`UID:${uid}`);
+                icalContent.push(`DTSTAMP:${timestamp}`);
+                icalContent.push(`DTSTART:${dtstart}`);
+                icalContent.push(`DTEND:${dtend}`);
+                icalContent.push(`SUMMARY:${escapeICalText(event.summary)}`);
+                
+                if (event.location) {
+                    icalContent.push(`LOCATION:${escapeICalText(event.location)}`);
+                }
+                
+                if (event.description) {
+                    icalContent.push(`DESCRIPTION:${escapeICalText(event.description)}`);
+                }
+                
+                // Add source calendar as category
+                icalContent.push(`CATEGORIES:${escapeICalText(event.calendarName)}`);
+                icalContent.push('STATUS:CONFIRMED');
+                icalContent.push('END:VEVENT');
+            });
+
+            icalContent.push('END:VCALENDAR');
+            return icalContent.join('\r\n');
+        }
+
+        function formatICalDateTime(date) {
+            // Format as YYYYMMDDTHHMMSSZ (UTC)
+            return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        }
+
+        function escapeICalText(text) {
+            // Escape special characters for iCal format
+            return text.replace(/\\/g, '\\\\')
+                      .replace(/;/g, '\\;')
+                      .replace(/,/g, '\\,')
+                      .replace(/\n/g, '\\n')
+                      .replace(/\r/g, '');
+        }
+
+        function downloadICalFile(content, calendarName) {
+            const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${calendarName}.ics`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Clean up the URL object
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+
+        // Calendar Functions
+        function generateCalendarGrid(year, month) {
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const startDate = new Date(firstDay);
+            startDate.setDate(startDate.getDate() - firstDay.getDay()); // Start from Sunday of first week
+            
+            const calendarDays = [];
+            const currentDate = new Date(startDate);
+            
+            // Generate 42 days (6 weeks × 7 days)
+            for (let i = 0; i < 42; i++) {
+                const isCurrentMonth = currentDate.getMonth() === month;
+                const isToday = currentDate.toDateString() === new Date().toDateString();
+                
+                // Get events for this day
+                const dayEvents = getEventsForDate(currentDate);
+                
+                calendarDays.push({
+                    date: new Date(currentDate),
+                    dayNumber: currentDate.getDate(),
+                    isCurrentMonth: isCurrentMonth,
+                    isToday: isToday,
+                    events: dayEvents
+                });
+                
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            
+            return calendarDays;
+        }
+
+        function getEventsForDate(date) {
+            const targetDate = new Date(date);
+            targetDate.setHours(0, 0, 0, 0);
+            
+            // Get enabled calendars
+            const enabledCalendars = CALENDARS
+                .filter(calendar => document.getElementById(`${calendar.id}-enabled`).checked)
+                .map(calendar => calendar.name);
+
+            // Filter events for the specific date
+            let dayEvents = allLoadedEvents.filter(event => {
+                if (!enabledCalendars.includes(event.calendarName)) return false;
+                
+                const eventDate = new Date(event.dtstart);
+                eventDate.setHours(0, 0, 0, 0);
+                
+                return eventDate.getTime() === targetDate.getTime();
+            });
+            
+            // Apply the same filters as the list view
+            dayEvents = applyTimeFilter(dayEvents, currentTimeFilter);
+            dayEvents = applyEventTypeFilter(dayEvents, currentEventTypeFilter);
+            dayEvents = applyKidFilter(dayEvents, currentKidFilter);
+            
+            return dayEvents;
+        }
+
+        function renderCalendar() {
+            const year = currentCalendarDate.getFullYear();
+            const month = currentCalendarDate.getMonth();
+            
+            // Update month/year display
+            document.getElementById('calendar-month-year').textContent = 
+                `${monthNames[month]} ${year}`;
+            
+            // Generate calendar days
+            const calendarDays = generateCalendarGrid(year, month);
+            
+            // Get calendar grid and remove existing day cells (keep headers)
+            const calendarGrid = document.getElementById('calendar-grid');
+            const dayHeaders = calendarGrid.querySelectorAll('.calendar-day-header');
+            calendarGrid.innerHTML = '';
+            
+            // Re-add day headers
+            dayHeaders.forEach(header => calendarGrid.appendChild(header));
+            
+            // Add calendar days
+            calendarDays.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                
+                // Add classes based on day state
+                if (!day.isCurrentMonth) {
+                    dayElement.classList.add('other-month');
+                }
+                if (day.isToday) {
+                    dayElement.classList.add('today');
+                }
+                if (day.events.length > 0) {
+                    dayElement.classList.add('has-events');
+                }
+                
+                // Create day number with event count badge
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'calendar-day-number';
+                
+                const dayNum = document.createElement('span');
+                dayNum.textContent = day.dayNumber;
+                dayNumber.appendChild(dayNum);
+                
+                // Add event count badge if there are events
+                if (day.events.length > 0) {
+                    const eventCountBadge = document.createElement('div');
+                    eventCountBadge.className = 'event-count-badge';
+                    eventCountBadge.textContent = day.events.length;
+                    dayNumber.appendChild(eventCountBadge);
+                }
+                
+                dayElement.appendChild(dayNumber);
+                
+                // Add event times
+                if (day.events.length > 0) {
+                    const eventTimes = document.createElement('div');
+                    eventTimes.className = 'event-times';
+                    
+                    // Sort events by time
+                    const sortedEvents = [...day.events].sort((a, b) => a.dtstart - b.dtstart);
+                    
+                    // Show up to 5 events with times
+                    const visibleEvents = sortedEvents.slice(0, 5);
+                    visibleEvents.forEach(event => {
+                        const timeItem = document.createElement('div');
+                        timeItem.className = 'event-time-item';
+                        
+                        // Set color based on calendar type
+                        if (event.calendarName === 'Will Soccer') {
+                            timeItem.classList.add('soccer');
+                        } else if (event.calendarName === 'Will Baseball') {
+                            timeItem.classList.add('baseball');
+                        } else if (event.calendarName.includes('TeamSnap')) {
+                            timeItem.classList.add('teamsnap');
+                        } else if (event.calendarName.includes('School')) {
+                            timeItem.classList.add('school');
+                        } else if (event.calendarName.includes('Trail')) {
+                            timeItem.classList.add('trail');
+                        }
+                        
+                        // Format time and add short title
+                        const timeStr = event.dtstart.toLocaleTimeString('en-US', {
+                            hour: 'numeric',
+                            minute: '2-digit'
+                        });
+                        
+                        // Truncate title if too long
+                        let title = event.summary;
+                        const kidName = getKidNameFromEvent(event);
+                        if (kidName) {
+                            title = `${kidName}: ${title}`;
+                        }
+                        if (title.length > 15) {
+                            title = title.substring(0, 12) + '...';
+                        }
+                        
+                        timeItem.textContent = `${timeStr} ${title}`;
+                        timeItem.title = event.summary; // Full title on hover
+                        eventTimes.appendChild(timeItem);
+                    });
+                    
+                    // Show "+X more" if there are more than 5 events
+                    if (day.events.length > 5) {
+                        const moreItem = document.createElement('div');
+                        moreItem.className = 'event-time-item';
+                        moreItem.style.fontStyle = 'italic';
+                        moreItem.style.textAlign = 'center';
+                        moreItem.textContent = `+${day.events.length - 5} more`;
+                        eventTimes.appendChild(moreItem);
+                    }
+                    
+                    dayElement.appendChild(eventTimes);
+                }
+                
+                // Add click handler to show day events
+                dayElement.addEventListener('click', () => {
+                    showDayEvents(day.date, day.events);
+                });
+                
+                calendarGrid.appendChild(dayElement);
+            });
+        }
+
+        function showDayEvents(date, events) {
+            const popup = document.getElementById('day-events-popup');
+            const overlay = document.getElementById('calendar-overlay');
+            const popupDate = document.getElementById('popup-date');
+            const popupEvents = document.getElementById('popup-events');
+            
+            // Format date for display
+            const dateString = date.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            popupDate.textContent = dateString;
+            
+            // Clear previous events
+            popupEvents.innerHTML = '';
+            
+            if (events.length === 0) {
+                popupEvents.innerHTML = '<p style="text-align: center; color: var(--text-light); font-style: italic;">No events scheduled for this day</p>';
+            } else {
+                // Sort events by time (earliest first)
+                const sortedEvents = [...events].sort((a, b) => a.dtstart - b.dtstart);
+                
+                sortedEvents.forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = 'popup-event';
+                    
+                    // Add calendar-specific class for color coding
+                    if (event.calendarName === 'Will Soccer') {
+                        eventDiv.classList.add('soccer');
+                    } else if (event.calendarName === 'Will Baseball') {
+                        eventDiv.classList.add('baseball');
+                    } else if (event.calendarName.includes('TeamSnap')) {
+                        eventDiv.classList.add('teamsnap');
+                    } else if (event.calendarName.includes('School')) {
+                        eventDiv.classList.add('school');
+                    } else if (event.calendarName.includes('Trail')) {
+                        eventDiv.classList.add('trail');
+                    } else if (event.calendarName.includes('SignUpGenius')) {
+                        eventDiv.classList.add('volunteer');
+                    }
+                    
+                    // Create event title with kid name
+                    const eventTitle = document.createElement('div');
+                    eventTitle.className = 'popup-event-title';
+                    
+                    const kidName = getKidNameFromEvent(event);
+                    if (kidName) {
+                        eventTitle.textContent = `${kidName}: ${event.summary}`;
+                    } else {
+                        eventTitle.textContent = event.summary;
+                    }
+                    eventDiv.appendChild(eventTitle);
+                    
+                    const eventTime = document.createElement('div');
+                    eventTime.className = 'popup-event-time';
+                    eventTime.textContent = event.dtstart.toLocaleTimeString('en-US', {
+                        hour: 'numeric',
+                        minute: '2-digit'
+                    });
+                    eventDiv.appendChild(eventTime);
+                    
+                    if (event.location) {
+                        const eventLocation = document.createElement('div');
+                        eventLocation.className = 'popup-event-location';
+                        eventLocation.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${escapeHtml(event.location)}`;
+                        eventDiv.appendChild(eventLocation);
+                    }
+                    
+                    if (event.description) {
+                        const eventDescription = document.createElement('div');
+                        eventDescription.className = 'popup-event-description';
+                        eventDescription.innerHTML = `<i class="fas fa-info-circle"></i> ${escapeHtml(event.description)}`;
+                        eventDiv.appendChild(eventDescription);
+                    }
+                    
+                    popupEvents.appendChild(eventDiv);
+                });
+            }
+            
+            // Show popup and overlay
+            overlay.classList.add('active');
+            popup.classList.add('active');
+        }
+
+        function hideDayEvents() {
+            const popup = document.getElementById('day-events-popup');
+            const overlay = document.getElementById('calendar-overlay');
+            
+            overlay.classList.remove('active');
+            popup.classList.remove('active');
+        }
+
+        function navigateCalendar(direction) {
+            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + direction);
+            renderCalendar();
+        }
+
+        function setView(view) {
+            currentView = view;
+            
+            // Update button states
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-view="${view}"]`).classList.add('active');
+            
+            // Show/hide appropriate view
+            const eventsContainer = document.getElementById('events-container');
+            const calendarView = document.getElementById('calendar-view');
+            
+            if (view === 'calendar') {
+                // When switching to calendar view, automatically set time filter to "all upcoming"
+                if (currentTimeFilter !== 'all') {
+                    setTimeFilter('all');
+                }
+                // Always show calendar view regardless of time filter change
+                eventsContainer.style.display = 'none';
+                calendarView.classList.add('active');
+                renderCalendar(); // Render calendar when switching to calendar view
+            } else {
+                eventsContainer.style.display = 'block';
+                calendarView.classList.remove('active');
+                
+                // Update event grid class for list views
+                const eventGrid = document.querySelector('.event-grid');
+                if (eventGrid) {
+                    if (view === 'compact') {
+                        eventGrid.classList.add('compact');
+                    } else {
+                        eventGrid.classList.remove('compact');
+                    }
+                }
+            }
+        }
+
+        // Add calendar event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Month navigation
+            document.getElementById('prev-month').addEventListener('click', () => {
+                navigateCalendar(-1);
+            });
+            
+            document.getElementById('next-month').addEventListener('click', () => {
+                navigateCalendar(1);
+            });
+            
+            // Close popup handlers
+            document.getElementById('popup-close').addEventListener('click', hideDayEvents);
+            document.getElementById('calendar-overlay').addEventListener('click', hideDayEvents);
+            
+            // Escape key to close popup
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    hideDayEvents();
+                }
+            });
+        });
+
+        // Load all calendars automatically when page loads
+        window.addEventListener('load', () => {
+            loadAllCalendars();
+        });
+    </script>
+</body>
+</html>
