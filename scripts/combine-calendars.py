@@ -103,7 +103,7 @@ def infer_teamsnap_label(summary, description):
     text = f"{summary} {description}".lower()
 
     kid = None
-    if any(k in text for k in ['prek', 'pre-k', 'prekindergarten', 'max snider', 'u6', 'under 6', 'freeman']):
+    if any(k in text for k in ['prek', 'pre-k', 'prekindergarten', 'max snider', 'u6', 'under 6', 'freeman', 'spring 2026']):
         kid = 'Max'
     elif 'kindergarten' in text:
         kid = 'Max'
