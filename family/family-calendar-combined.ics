@@ -4,10 +4,10 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-04-26T01:50:08.810237+00:00
+X-COMBINE-TIMESTAMP:2026-04-26T02:08:52.516308+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) Practice
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) Practice
 DTSTART:20260318T220000Z
 DTEND:20260318T230000Z
 DTSTAMP:20260426T015003Z
@@ -18,10 +18,11 @@ GEO:38.880246;-94.7045603
 LAST-MODIFIED:20260314T000329Z
 LOCATION:13700 Switzer \nOverland Park KS
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) Practice
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) @ Carter
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) @ Carter
 DTSTART:20260321T130000Z
 DTEND:20260321T140000Z
 DTSTAMP:20260426T015003Z
@@ -30,10 +31,11 @@ CLASS:PUBLIC
 CREATED:20260313T235255Z
 LAST-MODIFIED:20260313T235255Z
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) @ Carter
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) Practice
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) Practice
 DTSTART:20260325T220000Z
 DTEND:20260325T230000Z
 DTSTAMP:20260426T015003Z
@@ -44,10 +46,11 @@ GEO:38.880246;-94.7045603
 LAST-MODIFIED:20260314T000439Z
 LOCATION:13700 Switzer \nOverland Park KS
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) Practice
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) Practice
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) Practice
 DTSTART:20260401T220000Z
 DTEND:20260401T230000Z
 DTSTAMP:20260426T015003Z
@@ -58,10 +61,11 @@ GEO:38.880246;-94.7045603
 LAST-MODIFIED:20260314T000515Z
 LOCATION:13700 Switzer \nOverland Park KS
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) Practice
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) @ Brandt
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) @ Brandt
 DTSTART:20260404T140000Z
 DTEND:20260404T150000Z
 DTSTAMP:20260426T015003Z
@@ -70,10 +74,11 @@ CLASS:PUBLIC
 CREATED:20260313T235430Z
 LAST-MODIFIED:20260313T235430Z
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) @ Brandt
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) Practice
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) Practice
 DTSTART:20260408T220000Z
 DTEND:20260408T230000Z
 DTSTAMP:20260426T015003Z
@@ -84,10 +89,11 @@ GEO:38.880246;-94.7045603
 LAST-MODIFIED:20260314T000547Z
 LOCATION:13700 Switzer \nOverland Park KS
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) Practice
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) Practice
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) Practice
 DTSTART:20260422T220000Z
 DTEND:20260422T230000Z
 DTSTAMP:20260426T015003Z
@@ -98,10 +104,11 @@ GEO:38.880246;-94.7045603
 LAST-MODIFIED:20260314T000749Z
 LOCATION:13700 Switzer \nOverland Park KS
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) Practice
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) @ Robertson
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) @ Robertson
 DTSTART:20260425T160000Z
 DTEND:20260425T170000Z
 DTSTAMP:20260426T015003Z
@@ -110,10 +117,11 @@ CLASS:PUBLIC
 CREATED:20260313T235556Z
 LAST-MODIFIED:20260313T235556Z
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) @ Robertson
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) @ Dieterle
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) @ Dieterle
 DTSTART:20260426T203000Z
 DTEND:20260426T213000Z
 DTSTAMP:20260426T015003Z
@@ -122,10 +130,11 @@ CLASS:PUBLIC
 CREATED:20260313T235719Z
 LAST-MODIFIED:20260313T235719Z
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) @ Dieterle
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) Practice
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) Practice
 DTSTART:20260429T220000Z
 DTEND:20260429T230000Z
 DTSTAMP:20260426T015003Z
@@ -136,10 +145,11 @@ GEO:38.880246;-94.7045603
 LAST-MODIFIED:20260314T000826Z
 LOCATION:13700 Switzer \nOverland Park KS
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) Practice
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) vs Peal
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) vs Peal
 DTSTART:20260502T140000Z
 DTEND:20260502T150000Z
 DTSTAMP:20260426T015003Z
@@ -148,10 +158,11 @@ CLASS:PUBLIC
 CREATED:20260313T235827Z
 LAST-MODIFIED:20260313T235827Z
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) vs Peal
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) @ Marino
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) @ Marino
 DTSTART:20260503T173000Z
 DTEND:20260503T183000Z
 DTSTAMP:20260426T015003Z
@@ -160,10 +171,11 @@ CLASS:PUBLIC
 CREATED:20260313T235951Z
 LAST-MODIFIED:20260313T235951Z
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) @ Marino
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) Practice
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) Practice
 DTSTART:20260506T220000Z
 DTEND:20260506T230000Z
 DTSTAMP:20260426T015003Z
@@ -174,10 +186,11 @@ GEO:38.880246;-94.7045603
 LAST-MODIFIED:20260314T000905Z
 LOCATION:13700 Switzer \nOverland Park KS
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) Practice
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) Practice
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) Practice
 DTSTART:20260513T220000Z
 DTEND:20260513T230000Z
 DTSTAMP:20260426T015003Z
@@ -188,10 +201,11 @@ GEO:38.880246;-94.7045603
 LAST-MODIFIED:20260314T000957Z
 LOCATION:13700 Switzer \nOverland Park KS
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) Practice
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) vs Geha
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) vs Geha
 DTSTART:20260516T140000Z
 DTEND:20260516T150000Z
 DTSTAMP:20260426T015003Z
@@ -200,10 +214,11 @@ CLASS:PUBLIC
 CREATED:20260314T000059Z
 LAST-MODIFIED:20260314T000059Z
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) vs Geha
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Cougars (First Grade Boys) vs Remmert
+SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) vs Remmert
 DTSTART:20260517T193000Z
 DTEND:20260517T203000Z
 DTSTAMP:20260426T015003Z
@@ -212,10 +227,11 @@ CLASS:PUBLIC
 CREATED:20260314T000222Z
 LAST-MODIFIED:20260314T000222Z
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) vs Remmert
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260414T001500Z
 DTEND:20260414T013000Z
 DTSTAMP:20260426T015003Z
@@ -228,10 +244,11 @@ LAST-MODIFIED:20260406T222838Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260418T203000Z
 DTEND:20260418T214500Z
 DTSTAMP:20260426T015003Z
@@ -244,10 +261,11 @@ LAST-MODIFIED:20260406T223005Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260421T001500Z
 DTEND:20260421T011500Z
 DTSTAMP:20260426T015003Z
@@ -260,10 +278,11 @@ LAST-MODIFIED:20260420T220346Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260425T203000Z
 DTEND:20260425T214500Z
 DTSTAMP:20260426T015003Z
@@ -276,10 +295,11 @@ LAST-MODIFIED:20260406T223005Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260428T001500Z
 DTEND:20260428T013000Z
 DTSTAMP:20260426T015003Z
@@ -292,10 +312,11 @@ LAST-MODIFIED:20260406T222838Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260502T203000Z
 DTEND:20260502T214500Z
 DTSTAMP:20260426T015003Z
@@ -308,10 +329,11 @@ LAST-MODIFIED:20260406T223005Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260505T001500Z
 DTEND:20260505T013000Z
 DTSTAMP:20260426T015003Z
@@ -324,10 +346,11 @@ LAST-MODIFIED:20260406T222838Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) @ Jaguars (Schultz)
+SUMMARY:Will Baseball: Mustangs (Moss) @ Jaguars (Schultz)
 DTSTART:20260509T223000Z
 DTEND:20260509T234500Z
 DTSTAMP:20260426T015003Z
@@ -340,10 +363,11 @@ LAST-MODIFIED:20260422T214510Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) @ Jaguars (Schultz)
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260512T001500Z
 DTEND:20260512T013000Z
 DTSTAMP:20260426T015003Z
@@ -356,10 +380,11 @@ LAST-MODIFIED:20260406T222838Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) vs Brown
+SUMMARY:Will Baseball: Mustangs (Moss) vs Brown
 DTSTART:20260516T193000Z
 DTEND:20260516T204500Z
 DTSTAMP:20260426T015003Z
@@ -372,10 +397,11 @@ LAST-MODIFIED:20260422T214530Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) vs Brown
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260519T001500Z
 DTEND:20260519T013000Z
 DTSTAMP:20260426T015003Z
@@ -388,10 +414,11 @@ LAST-MODIFIED:20260406T222838Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) @ Smash (Whitaker)
+SUMMARY:Will Baseball: Mustangs (Moss) @ Smash (Whitaker)
 DTSTART:20260522T000000Z
 DTEND:20260522T011500Z
 DTSTAMP:20260426T015003Z
@@ -404,10 +431,11 @@ LAST-MODIFIED:20260422T214715Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) @ Smash (Whitaker)
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260526T001500Z
 DTEND:20260526T013000Z
 DTSTAMP:20260426T015003Z
@@ -420,10 +448,11 @@ LAST-MODIFIED:20260406T222838Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) vs Thunderbirds (Klein)
+SUMMARY:Will Baseball: Mustangs (Moss) vs Thunderbirds (Klein)
 DTSTART:20260531T000000Z
 DTEND:20260531T011500Z
 DTSTAMP:20260426T015003Z
@@ -436,10 +465,11 @@ LAST-MODIFIED:20260422T215403Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) vs Thunderbirds (Klein)
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260601T214500Z
 DTEND:20260601T230000Z
 DTSTAMP:20260426T015003Z
@@ -452,10 +482,11 @@ LAST-MODIFIED:20260406T223138Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) @ Besler
+SUMMARY:Will Baseball: Mustangs (Moss) @ Besler
 DTSTART:20260606T163000Z
 DTEND:20260606T174500Z
 DTSTAMP:20260426T015003Z
@@ -468,10 +499,11 @@ LAST-MODIFIED:20260422T215435Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) @ Besler
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260608T214500Z
 DTEND:20260608T230000Z
 DTSTAMP:20260426T015003Z
@@ -484,10 +516,11 @@ LAST-MODIFIED:20260406T223138Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) vs Sharks (Holler)
+SUMMARY:Will Baseball: Mustangs (Moss) vs Sharks (Holler)
 DTSTART:20260613T133000Z
 DTEND:20260613T144500Z
 DTSTAMP:20260426T015003Z
@@ -500,10 +533,11 @@ LAST-MODIFIED:20260422T214844Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) vs Sharks (Holler)
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260615T214500Z
 DTEND:20260615T230000Z
 DTSTAMP:20260426T015003Z
@@ -516,10 +550,11 @@ LAST-MODIFIED:20260406T223138Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) @ Stilwell Sluggers (Phillips)
+SUMMARY:Will Baseball: Mustangs (Moss) @ Stilwell Sluggers (Phillips)
 DTSTART:20260619T000000Z
 DTEND:20260619T011500Z
 DTSTAMP:20260426T015003Z
@@ -532,10 +567,11 @@ LAST-MODIFIED:20260422T214924Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) @ Stilwell Sluggers (Phillips)
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) vs Braddock
+SUMMARY:Will Baseball: Mustangs (Moss) vs Braddock
 DTSTART:20260621T173000Z
 DTEND:20260621T184500Z
 DTSTAMP:20260426T015003Z
@@ -548,10 +584,11 @@ LAST-MODIFIED:20260422T215003Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) vs Braddock
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) Practice
+SUMMARY:Will Baseball: Mustangs (Moss) Practice
 DTSTART:20260622T214500Z
 DTEND:20260622T230000Z
 DTSTAMP:20260426T015003Z
@@ -564,10 +601,11 @@ LAST-MODIFIED:20260406T223138Z
 LOCATION:Overland Trail Elementary School\nOverland Park\, KS\, United Sta
  tes
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) Practice
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) @ Thunder Lizards (Holmquist)
+SUMMARY:Will Baseball: Mustangs (Moss) @ Thunder Lizards (Holmquist)
 DTSTART:20260625T000000Z
 DTEND:20260625T011500Z
 DTSTAMP:20260426T015003Z
@@ -580,10 +618,11 @@ LAST-MODIFIED:20260422T215048Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) @ Thunder Lizards (Holmquist)
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) vs Huskies (Hopkins)
+SUMMARY:Will Baseball: Mustangs (Moss) vs Huskies (Hopkins)
 DTSTART:20260701T223000Z
 DTEND:20260701T234500Z
 DTSTAMP:20260426T015003Z
@@ -596,10 +635,11 @@ LAST-MODIFIED:20260422T215128Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) vs Huskies (Hopkins)
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) vs Smash (Duncan)
+SUMMARY:Will Baseball: Mustangs (Moss) vs Smash (Duncan)
 DTSTART:20260707T000000Z
 DTEND:20260707T011500Z
 DTSTAMP:20260426T015003Z
@@ -612,10 +652,11 @@ LAST-MODIFIED:20260422T215207Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) vs Smash (Duncan)
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Mustangs (Moss) @ Brown
+SUMMARY:Will Baseball: Mustangs (Moss) @ Brown
 DTSTART:20260711T163000Z
 DTEND:20260711T174500Z
 DTSTAMP:20260426T015003Z
@@ -628,10 +669,11 @@ LAST-MODIFIED:20260422T215232Z
 LOCATION:Blue Valley Recreation Sports Complex\nOverland Park\, KS\, Unite
  d States
 STATUS:CONFIRMED
+X-ORIGINAL-SUMMARY:Mustangs (Moss) @ Brown
 X-SOURCE-CALENDAR:Will Baseball
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20251030T190506
 DTEND;TZID=America/Chicago:20251030T200506
 DTSTAMP:20251016T144144
@@ -641,10 +683,11 @@ DESCRIPTION:Location: Aubry Bend Middle School\n   (Arrival Time:  7:05 PM
   (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144144
 LOCATION:12501 W 175th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20251102T144056
 DTEND;TZID=America/Chicago:20251102T154056
 DTSTAMP:20251016T144253
@@ -654,10 +697,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  2:4
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144253
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20251106T190505
 DTEND;TZID=America/Chicago:20251106T200505
 DTSTAMP:20251016T144329
@@ -667,10 +711,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144329
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20251109T144049
 DTEND;TZID=America/Chicago:20251109T154049
 DTSTAMP:20251016T144408
@@ -680,10 +725,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  2:4
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144408
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20251113T190524
 DTEND;TZID=America/Chicago:20251113T200524
 DTSTAMP:20251016T144448
@@ -693,10 +739,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144448
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats at Weber
+SUMMARY:Madison: Wildcats at Weber
 DTSTART;TZID=America/Chicago:20251115T120041
 DTEND;TZID=America/Chicago:20251115T120041
 DTSTAMP:20251116T170635
@@ -706,10 +753,11 @@ DESCRIPTION:Location: Leawood Middle School\n  \n Uniform: Black (Arrival
  Time: 11:45 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20251116T170635
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats at Weber
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20251120T190505
 DTEND;TZID=America/Chicago:20251120T200505
 DTSTAMP:20251016T144545
@@ -719,10 +767,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144545
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall vs Practice
+SUMMARY:Will Basketball: OTE 1st Grade BBall vs Practice
 DTSTART;TZID=America/Chicago:20251122T121500
 DTEND;TZID=America/Chicago:20251122T121500
 DTSTAMP:20251121T213919
@@ -732,10 +781,11 @@ DESCRIPTION:Location: ELEM - Overland Trail\n   (Arrival Time: 12:15 PM (C
  entral Time (US & Canada)))
 LAST-MODIFIED:20251121T213919
 LOCATION:6225 W 133rd St\, Overland Park\, KS 66209
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall vs Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats at Spruill
+SUMMARY:Madison: Wildcats at Spruill
 DTSTART;TZID=America/Chicago:20251122T142022
 DTEND;TZID=America/Chicago:20251122T142022
 DTSTAMP:20251122T163811
@@ -745,10 +795,11 @@ DESCRIPTION:Location: Leawood Middle School\n  \n Uniform: Black (Arrival
  Time:  2:05 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251122T163811
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats at Spruill
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20251204T190511
 DTEND;TZID=America/Chicago:20251204T200511
 DTSTAMP:20251016T144640
@@ -758,10 +809,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144640
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats vs Dunham
+SUMMARY:Madison: Wildcats vs Dunham
 DTSTART;TZID=America/Chicago:20251206T083042
 DTEND;TZID=America/Chicago:20251206T083042
 DTSTAMP:20251206T103906
@@ -771,10 +823,11 @@ DESCRIPTION:Location: Leawood Middle School\n  \n Uniform: White (Arrival
  Time:  8:15 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20251206T103906
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats vs Dunham
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall - Practice
+SUMMARY:Will Basketball: OTE 1st Grade BBall - Practice
 DTSTART;TZID=America/Chicago:20251206T121500
 DTEND;TZID=America/Chicago:20251206T121500
 DTSTAMP:20251121T090048
@@ -784,10 +837,11 @@ DESCRIPTION:Location: ELEM - Overland Trail\n   (Arrival Time: 12:15 PM (C
  entral Time (US & Canada)))
 LAST-MODIFIED:20251121T090048
 LOCATION:6225 W 133rd St\, Overland Park\, KS 66209
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20251212T190557
 DTEND;TZID=America/Chicago:20251212T200557
 DTSTAMP:20251016T144725
@@ -797,10 +851,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144725
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall - Practice
+SUMMARY:Will Basketball: OTE 1st Grade BBall - Practice
 DTSTART;TZID=America/Chicago:20251213T121500
 DTEND;TZID=America/Chicago:20251213T121500
 DTSTAMP:20251121T090125
@@ -810,10 +865,11 @@ DESCRIPTION:Location: ELEM - Overland Trail\n   (Arrival Time: 12:15 PM (C
  entral Time (US & Canada)))
 LAST-MODIFIED:20251121T090125
 LOCATION:6225 W 133rd St\, Overland Park\, KS 66209
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20251218T190536
 DTEND;TZID=America/Chicago:20251218T200536
 DTSTAMP:20251016T144810
@@ -823,10 +879,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144810
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Scrimmage
+SUMMARY:Madison: Wildcats - Scrimmage
 DTSTART;TZID=America/Chicago:20260106T192029
 DTEND;TZID=America/Chicago:20260106T202029
 DTSTAMP:20251230T153211
@@ -837,10 +894,11 @@ DESCRIPTION:Location: Recreation Center at Hilltop - Court 4A/B\n Wear you
   7:20 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251230T153211
 LOCATION:7720 W 143rd St\nOverland Park KS 66223\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Scrimmage
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20260108T190555
 DTEND;TZID=America/Chicago:20260108T200555
 DTSTAMP:20251016T144924
@@ -850,10 +908,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T144924
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats vs Weber
+SUMMARY:Madison: Wildcats vs Weber
 DTSTART;TZID=America/Chicago:20260111T121005
 DTEND;TZID=America/Chicago:20260111T121005
 DTSTAMP:20260111T163053
@@ -863,10 +922,11 @@ DESCRIPTION:Location: Leawood Middle School\n  \n Uniform: White (Arrival
  Time: 11:55 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260111T163053
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats vs Weber
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall vs Smith
+SUMMARY:Will Basketball: OTE 1st Grade BBall vs Smith
 DTSTART;TZID=America/Chicago:20260111T133000
 DTEND;TZID=America/Chicago:20260111T150000
 DTSTAMP:20251218T165053
@@ -876,10 +936,11 @@ DESCRIPTION:Location: Prairie Star Elementary\n   (Arrival Time:  1:30 PM
  (Central Time (US & Canada)))
 LAST-MODIFIED:20251218T165053
 LOCATION:3800 W 143rd St Overland Park\, KS\, United States
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall vs Smith
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20260116T190558
 DTEND;TZID=America/Chicago:20260116T200558
 DTSTAMP:20251016T145047
@@ -889,10 +950,11 @@ DESCRIPTION:Location: Leawood Middle School\n   (Arrival Time:  7:05 PM (C
  entral Time (US & Canada)))
 LAST-MODIFIED:20251016T145047
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats at Wilcox
+SUMMARY:Madison: Wildcats at Wilcox
 DTSTART;TZID=America/Chicago:20260117T083045
 DTEND;TZID=America/Chicago:20260117T083045
 DTSTAMP:20260117T111703
@@ -902,10 +964,11 @@ DESCRIPTION:Location: Oxford Middle School\n  \n Uniform: Black (Arrival T
  ime:  8:15 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260117T111703
 LOCATION:12500 Switzer Rd\nOverland Park KS 66213\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats at Wilcox
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall at Byers
+SUMMARY:Will Basketball: OTE 1st Grade BBall at Byers
 DTSTART;TZID=America/Chicago:20260118T133000
 DTEND;TZID=America/Chicago:20260118T150000
 DTSTAMP:20251218T165831
@@ -915,10 +978,11 @@ DESCRIPTION:Location: Prairie Star Elementary\n   (Arrival Time:  1:30 PM
  (Central Time (US & Canada)))
 LAST-MODIFIED:20251218T165831
 LOCATION:3800 W 143rd St Overland Park\, KS\, United States
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall at Byers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20260122T190500
 DTEND;TZID=America/Chicago:20260122T200500
 DTSTAMP:20251016T145127
@@ -928,10 +992,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T145127
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[CANCELED] Wildcats vs Sleddens
+SUMMARY:Madison: [CANCELED] Wildcats vs Sleddens
 DTSTART;TZID=America/Chicago:20260124T105033
 DTEND;TZID=America/Chicago:20260124T105033
 DTSTAMP:20260123T102256
@@ -940,10 +1005,11 @@ SEQUENCE:0
 DESCRIPTION:[CANCELED] Location: Oxford Middle School\n  \n Uniform: White
 LAST-MODIFIED:20260123T102256
 LOCATION:12500 Switzer Rd\nOverland Park KS 66213\nUnited States
+X-ORIGINAL-SUMMARY:[CANCELED] Wildcats vs Sleddens
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[CANCELED] OTE 1st Grade BBall vs Holtzapfel
+SUMMARY:Will Basketball: [CANCELED] OTE 1st Grade BBall vs Holtzapfel
 DTSTART;TZID=America/Chicago:20260124T130000
 DTEND;TZID=America/Chicago:20260124T143000
 DTSTAMP:20260123T181659
@@ -952,10 +1018,11 @@ SEQUENCE:0
 DESCRIPTION:[CANCELED] Location: Cottonwood Point Elementary
 LAST-MODIFIED:20260123T181659
 LOCATION:10521 W 129th St\, Overland Park\, KS  66213\, United States
+X-ORIGINAL-SUMMARY:[CANCELED] OTE 1st Grade BBall vs Holtzapfel
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20260129T190538
 DTEND;TZID=America/Chicago:20260129T200538
 DTSTAMP:20251016T145204
@@ -965,10 +1032,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T145204
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall 3V3 Winter 2026 at Coppaken
+SUMMARY:Will Basketball: OTE 1st Grade BBall 3V3 Winter 2026 at Coppaken
 DTSTART;TZID=America/Chicago:20260131T130000
 DTEND;TZID=America/Chicago:20260131T143000
 DTSTAMP:20251218T170808
@@ -978,10 +1046,11 @@ DESCRIPTION:Location: Cottonwood Point Elementary\n  \n Uniform: Away unif
  orm (Arrival Time: 12:45 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251218T170808
 LOCATION:10521 W 129th St\, Overland Park\, KS
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall 3V3 Winter 2026 at Coppaken
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats at Dunham
+SUMMARY:Madison: Wildcats at Dunham
 DTSTART;TZID=America/Chicago:20260201T121052
 DTEND;TZID=America/Chicago:20260201T121052
 DTSTAMP:20260201T163130
@@ -992,10 +1061,11 @@ DESCRIPTION:Location: Leawood Middle School\n  \n Uniform: Black (Arrival
   Blake Lindsay
 LAST-MODIFIED:20260201T163130
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats at Dunham
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20260205T190520
 DTEND;TZID=America/Chicago:20260205T200520
 DTSTAMP:20251016T145252
@@ -1005,10 +1075,12 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T145252
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall 3V3 Winter 2026 vs Holsapple 1
+SUMMARY:Will Basketball: OTE 1st Grade BBall 3V3 Winter 2026 vs Holsapple 
+ 1
 DTSTART;TZID=America/Chicago:20260207T113000
 DTEND;TZID=America/Chicago:20260207T130000
 DTSTAMP:20251218T170808
@@ -1018,10 +1090,11 @@ DESCRIPTION:Location: Cottonwood Point Elementary\n  \n Uniform: Home unif
  orm (Arrival Time: 11:15 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20251218T170808
 LOCATION:10521 W 129th St\, Overland Park\, KS
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall 3V3 Winter 2026 vs Holsapple 1
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats vs DeBourge
+SUMMARY:Madison: Wildcats vs DeBourge
 DTSTART;TZID=America/Chicago:20260207T120053
 DTEND;TZID=America/Chicago:20260207T120053
 DTSTAMP:20260207T141029
@@ -1031,10 +1104,11 @@ DESCRIPTION:Location: Leawood Middle School\n  \n Uniform: White (Arrival
  Time: 11:45 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260207T141029
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats vs DeBourge
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall 3V3 Winter 2026 at Coppaken
+SUMMARY:Will Basketball: OTE 1st Grade BBall 3V3 Winter 2026 at Coppaken
 DTSTART;TZID=America/Chicago:20260214T173000
 DTEND;TZID=America/Chicago:20260214T190000
 DTSTAMP:20251218T170808
@@ -1044,10 +1118,11 @@ DESCRIPTION:Location: Cottonwood Point Elementary\n  \n Uniform: Away unif
  orm (Arrival Time:  5:15 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251218T170808
 LOCATION:10521 W 129th St\, Overland Park\, KS
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall 3V3 Winter 2026 at Coppaken
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats vs Totta
+SUMMARY:Madison: Wildcats vs Totta
 DTSTART;TZID=America/Chicago:20260215T110049
 DTEND;TZID=America/Chicago:20260215T110049
 DTSTAMP:20260215T130351
@@ -1057,10 +1132,11 @@ DESCRIPTION:Location: Leawood Middle School\n  \n Uniform: White (Arrival
  Time: 10:45 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260215T130351
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats vs Totta
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20260219T190503
 DTEND;TZID=America/Chicago:20260219T200503
 DTSTAMP:20251016T145325
@@ -1070,10 +1146,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  7:0
  5 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20251016T145325
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats at Bender
+SUMMARY:Madison: Wildcats at Bender
 DTSTART;TZID=America/Chicago:20260221T083014
 DTEND;TZID=America/Chicago:20260221T083014
 DTSTAMP:20260221T101156
@@ -1083,10 +1160,12 @@ DESCRIPTION:Location: Leawood Middle School\n  \n Uniform: Black (Arrival
  Time:  8:15 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260221T101156
 LOCATION:2410 W 123rd St\nLeawood KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats at Bender
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall 3V3 Winter 2026 vs Holsapple 2
+SUMMARY:Will Basketball: OTE 1st Grade BBall 3V3 Winter 2026 vs Holsapple 
+ 2
 DTSTART;TZID=America/Chicago:20260221T100000
 DTEND;TZID=America/Chicago:20260221T113000
 DTSTAMP:20251218T170808
@@ -1096,10 +1175,11 @@ DESCRIPTION:Location: Cottonwood Point Elementary\n  \n Uniform: Home unif
  orm (Arrival Time:  9:45 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20251218T170808
 LOCATION:10521 W 129th St\, Overland Park\, KS
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall 3V3 Winter 2026 vs Holsapple 2
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260225T193000
 DTEND;TZID=America/Chicago:20260225T193000
 DTSTAMP:20260212T203114
@@ -1108,10 +1188,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260212T203114
 LOCATION:Scheel's Complex Field 9SW
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Practice
+SUMMARY:Madison: Wildcats - Practice
 DTSTART;TZID=America/Chicago:20260226T190520
 DTEND;TZID=America/Chicago:20260226T200520
 DTSTAMP:20260224T162639
@@ -1122,10 +1203,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n We’ll have a parent
  Central Time (US & Canada)))
 LAST-MODIFIED:20260224T162639
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats - Team Outing to BVN Girls B-Ball Game
+SUMMARY:Madison: Wildcats - Team Outing to BVN Girls B-Ball Game
 DTSTART;TZID=America/Chicago:20260227T173049
 DTEND;TZID=America/Chicago:20260227T173049
 DTSTAMP:20260220T071244
@@ -1136,10 +1218,11 @@ DESCRIPTION:Location: Blue Valley North\n Optional event! Bring the whole
  )
 LAST-MODIFIED:20260220T071244
 LOCATION:12200 Lamar Ave\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats - Team Outing to BVN Girls B-Ball Game
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats vs Sleddens
+SUMMARY:Madison: Wildcats vs Sleddens
 DTSTART;TZID=America/Chicago:20260228T105020
 DTEND;TZID=America/Chicago:20260228T105020
 DTSTAMP:20260228T125809
@@ -1149,10 +1232,11 @@ DESCRIPTION:Location: Oxford Middle School\n  \n Uniform: White (Arrival T
  ime: 10:35 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260228T125809
 LOCATION:12500 Switzer Rd\nOverland Park KS 66213\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats vs Sleddens
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE 1st Grade BBall at Smith
+SUMMARY:Will Basketball: OTE 1st Grade BBall at Smith
 DTSTART;TZID=America/Chicago:20260228T130000
 DTEND;TZID=America/Chicago:20260228T130000
 DTSTAMP:20260221T111009
@@ -1162,10 +1246,11 @@ DESCRIPTION:Location: Cottonwood Point Elementary\n   (Arrival Time:  1:00
   PM (CST))
 LAST-MODIFIED:20260221T111009
 LOCATION:10521 W 129th St\, Overland Park\, KS  66213\, United States
+X-ORIGINAL-SUMMARY:OTE 1st Grade BBall at Smith
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260304T193000
 DTEND;TZID=America/Chicago:20260304T193000
 DTSTAMP:20260212T203114
@@ -1174,10 +1259,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260212T203114
 LOCATION:Scheel's Complex Field 9SW
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats vs TBD
+SUMMARY:Madison: Wildcats vs TBD
 DTSTART;TZID=America/Chicago:20260307T121529
 DTEND;TZID=America/Chicago:20260307T121529
 DTSTAMP:20260307T142807
@@ -1187,10 +1273,11 @@ DESCRIPTION:Location: Recreation Center at Hilltop - Court 2B\n  \n Unifor
  m: White (Arrival Time: 12:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260307T142807
 LOCATION:7720 W 143rd St\nOverland Park KS 66223\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats vs TBD
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats vs Sleddens
+SUMMARY:Madison: Wildcats vs Sleddens
 DTSTART;TZID=America/Chicago:20260307T160015
 DTEND;TZID=America/Chicago:20260307T160015
 DTSTAMP:20260311T144322
@@ -1200,10 +1287,11 @@ DESCRIPTION:Location: Recreation Center at Hilltop - Court 2B\n  \n Unifor
  m: White (Arrival Time:  3:40 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260311T144322
 LOCATION:7720 W 143rd St\nOverland Park KS 66223\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats vs Sleddens
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current at MSA Twisters
+SUMMARY:Madison: Jr Current at MSA Twisters
 DTSTART;TZID=America/Chicago:20260308T114500
 DTEND;TZID=America/Chicago:20260308T114500
 DTSTAMP:20260218T233459
@@ -1213,10 +1301,11 @@ DESCRIPTION:Uniform: Red (Arrival Time: 11:45 AM (Central Time (US & Canad
  a)))
 LAST-MODIFIED:20260218T233459
 LOCATION:Compass Minerals #8 North
+X-ORIGINAL-SUMMARY:Jr Current at MSA Twisters
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats vs Dunham
+SUMMARY:Madison: Wildcats vs Dunham
 DTSTART;TZID=America/Chicago:20260308T134537
 DTEND;TZID=America/Chicago:20260308T134537
 DTSTAMP:20260311T144345
@@ -1227,10 +1316,11 @@ DESCRIPTION:Location: Recreation Center at Hilltop - Court 1B\n Championsh
   Canada)))
 LAST-MODIFIED:20260311T144345
 LOCATION:7720 W 143rd St\nOverland Park KS 66223\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats vs Dunham
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260311T193000
 DTEND;TZID=America/Chicago:20260311T193000
 DTSTAMP:20260212T203114
@@ -1239,10 +1329,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260212T203114
 LOCATION:Scheel's Complex Field 9SW
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[CANCELED] Jr Current - Practice
+SUMMARY:Madison: [CANCELED] Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260318T193000
 DTEND;TZID=America/Chicago:20260318T193000
 DTSTAMP:20260318T090450
@@ -1251,6 +1342,7 @@ SEQUENCE:0
 DESCRIPTION:[CANCELED] 
 LAST-MODIFIED:20260318T090450
 LOCATION:Scheel's Complex Field 9SW
+X-ORIGINAL-SUMMARY:[CANCELED] Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1267,7 +1359,7 @@ LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260325T170052
 DTEND;TZID=America/Chicago:20260325T183052
 DTSTAMP:20260311T174758
@@ -1277,10 +1369,11 @@ DESCRIPTION:Location: Morse Elementary - Field South (new field)\n   (Arri
  val Time:  5:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260311T174758
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260325T193000
 DTEND;TZID=America/Chicago:20260325T193000
 DTSTAMP:20260325T170024
@@ -1289,10 +1382,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260325T170024
 LOCATION:Scheels Field 1SW
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[CANCELED] Wildcats Softball - Practice
+SUMMARY:Madison Softball: [CANCELED] Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260328T110002
 DTEND;TZID=America/Chicago:20260328T123002
 DTSTAMP:20260328T092512
@@ -1301,10 +1395,11 @@ SEQUENCE:0
 DESCRIPTION:[CANCELED] Location: Morse Elementary - South Field (new)
 LAST-MODIFIED:20260328T092512
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:[CANCELED] Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current vs St Agnes FC
+SUMMARY:Madison: Jr Current vs St Agnes FC
 DTSTART;TZID=America/Chicago:20260329T091500
 DTEND;TZID=America/Chicago:20260329T091500
 DTSTAMP:20260218T233517
@@ -1314,10 +1409,11 @@ DESCRIPTION:Uniform: White (Arrival Time:  9:15 AM (Central Time (US & Can
  ada)))
 LAST-MODIFIED:20260218T233517
 LOCATION:Olathe Sports Complex #9South
+X-ORIGINAL-SUMMARY:Jr Current vs St Agnes FC
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260330T193000
 DTEND;TZID=America/Chicago:20260330T193000
 DTSTAMP:20260330T095800
@@ -1326,10 +1422,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260330T095800
 LOCATION:Scheels Field 1SE
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260401T170052
 DTEND;TZID=America/Chicago:20260401T183052
 DTSTAMP:20260311T174758
@@ -1339,6 +1436,7 @@ DESCRIPTION:Location: Morse Elementary - Field South (new field)\n   (Arri
  val Time:  5:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260311T174758
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1355,7 +1453,7 @@ LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260404T110002
 DTEND;TZID=America/Chicago:20260404T123002
 DTSTAMP:20260311T175014
@@ -1365,10 +1463,11 @@ DESCRIPTION:Location: Morse Elementary - South Field (new)\n   (Arrival Ti
  me: 11:00 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260311T175014
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current at SBV IP Blue Jays
+SUMMARY:Madison Soccer: Jr Current at SBV IP Blue Jays
 DTSTART;TZID=America/Chicago:20260404T130000
 DTEND;TZID=America/Chicago:20260404T130000
 DTSTAMP:20260218T233540
@@ -1378,10 +1477,11 @@ DESCRIPTION:Location: Scheels OP Soccer Complex Field 8 North\n  \n Unifor
  m: Red (Arrival Time:  1:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260218T233540
 LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Jr Current at SBV IP Blue Jays
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260406T193000
 DTEND;TZID=America/Chicago:20260406T193000
 DTSTAMP:20260330T095800
@@ -1390,10 +1490,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260330T095800
 LOCATION:Scheels Field 1SE
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260408T170052
 DTEND;TZID=America/Chicago:20260408T183052
 DTSTAMP:20260311T174758
@@ -1403,10 +1504,11 @@ DESCRIPTION:Location: Morse Elementary - Field South (new field)\n   (Arri
  val Time:  5:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260311T174758
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260411T110002
 DTEND;TZID=America/Chicago:20260411T123002
 DTSTAMP:20260311T175014
@@ -1416,10 +1518,11 @@ DESCRIPTION:Location: Morse Elementary - South Field (new)\n   (Arrival Ti
  me: 11:00 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260311T175014
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current vs SBV IP Sporting ACS
+SUMMARY:Madison: Jr Current vs SBV IP Sporting ACS
 DTSTART;TZID=America/Chicago:20260412T080000
 DTEND;TZID=America/Chicago:20260412T080000
 DTSTAMP:20260218T233614
@@ -1429,10 +1532,11 @@ DESCRIPTION:Uniform: White (Arrival Time:  8:00 AM (Central Time (US & Can
  ada)))
 LAST-MODIFIED:20260218T233614
 LOCATION:Olathe Complex #4N
+X-ORIGINAL-SUMMARY:Jr Current vs SBV IP Sporting ACS
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[CANCELED] Jr Current - Practice
+SUMMARY:Madison: [CANCELED] Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260413T193000
 DTEND;TZID=America/Chicago:20260413T193000
 DTSTAMP:20260413T191107
@@ -1441,10 +1545,11 @@ SEQUENCE:0
 DESCRIPTION:[CANCELED] 
 LAST-MODIFIED:20260413T191107
 LOCATION:Field 7 SE
+X-ORIGINAL-SUMMARY:[CANCELED] Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260415T164542
 DTEND;TZID=America/Chicago:20260415T180042
 DTSTAMP:20260406T173400
@@ -1454,10 +1559,11 @@ DESCRIPTION:Location: Morse Elementary - South Field (same one we have bee
  n on)\n   (Arrival Time:  4:45 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T173400
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball - Practice #1
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball - Practice #1
 DTSTART;TZID=America/Chicago:20260419T153057
 DTEND;TZID=America/Chicago:20260419T163057
 DTSTAMP:20260406T192724
@@ -1467,10 +1573,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  3:3
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T192724
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball - Practice #1
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260420T193000
 DTEND;TZID=America/Chicago:20260420T193000
 DTSTAMP:20260330T095800
@@ -1479,10 +1586,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260330T095800
 LOCATION:Scheels Field 1SE
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs Leawood Leopards
+SUMMARY:Madison Softball: Wildcats Softball vs Leawood Leopards
 DTSTART;TZID=America/Chicago:20260422T193047
 DTEND;TZID=America/Chicago:20260422T204547
 DTSTAMP:20260422T214337
@@ -1492,10 +1600,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 19\n  \n Uniform: New
   Uniform (Arrival Time:  7:15 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T214337
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs Leawood Leopards
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs Chargers
+SUMMARY:Madison Softball: Wildcats Softball vs Chargers
 DTSTART;TZID=America/Chicago:20260425T090047
 DTEND;TZID=America/Chicago:20260425T101547
 DTSTAMP:20260425T121350
@@ -1505,6 +1614,7 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 23\n  \n Uniform: New
   Uniform (Arrival Time:  8:45 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260425T121350
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs Chargers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1534,7 +1644,7 @@ LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball - Practice #2
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball - Practice #2
 DTSTART;TZID=America/Chicago:20260426T153056
 DTEND;TZID=America/Chicago:20260426T163056
 DTSTAMP:20260406T192751
@@ -1544,10 +1654,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  3:3
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T192751
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball - Practice #2
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball at KC Sparkles
+SUMMARY:Madison Softball: Wildcats Softball at KC Sparkles
 DTSTART;TZID=America/Chicago:20260427T193047
 DTEND;TZID=America/Chicago:20260427T204547
 DTSTAMP:20260403T205341
@@ -1557,10 +1668,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 19\n  \n Uniform: ‼
  ️Grey Uniform (Arrival Time:  7:15 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T205341
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball at KC Sparkles
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260429T164542
 DTEND;TZID=America/Chicago:20260429T180042
 DTSTAMP:20260406T173400
@@ -1570,10 +1682,11 @@ DESCRIPTION:Location: Morse Elementary - South Field (same one we have bee
  n on)\n   (Arrival Time:  4:45 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T173400
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260429T193000
 DTEND;TZID=America/Chicago:20260429T193000
 DTSTAMP:20260212T203508
@@ -1582,10 +1695,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260212T203508
 LOCATION:Scheel's Complex Field 9SW
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs The Storm
+SUMMARY:Madison Softball: Wildcats Softball vs The Storm
 DTSTART;TZID=America/Chicago:20260501T180047
 DTEND;TZID=America/Chicago:20260501T191547
 DTSTAMP:20260414T085450
@@ -1596,10 +1710,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 15\n Our rescheduled
  tral Time (US & Canada)))
 LAST-MODIFIED:20260414T085450
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs The Storm
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current vs Sporting City 2015G Orange - East
+SUMMARY:Madison: Jr Current vs Sporting City 2015G Orange - East
 DTSTART;TZID=America/Chicago:20260501T190000
 DTEND;TZID=America/Chicago:20260501T190000
 DTSTAMP:20260218T233643
@@ -1609,6 +1724,7 @@ DESCRIPTION:Uniform: White (Arrival Time:  7:00 PM (Central Time (US & Can
  ada)))
 LAST-MODIFIED:20260218T233643
 LOCATION:Compass Minerals #8 South
+X-ORIGINAL-SUMMARY:Jr Current vs Sporting City 2015G Orange - East
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1625,7 +1741,7 @@ LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs Lady Sluggers
+SUMMARY:Madison Softball: Wildcats Softball vs Lady Sluggers
 DTSTART;TZID=America/Chicago:20260502T103047
 DTEND;TZID=America/Chicago:20260502T114547
 DTSTAMP:20260403T205456
@@ -1635,10 +1751,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 12\n  \n Uniform: New
   Uniform (Arrival Time: 10:15 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T205456
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs Lady Sluggers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current vs De Soto Eudora FC U11
+SUMMARY:Madison: Jr Current vs De Soto Eudora FC U11
 DTSTART;TZID=America/Chicago:20260503T130000
 DTEND;TZID=America/Chicago:20260503T130000
 DTSTAMP:20260218T233708
@@ -1648,6 +1765,7 @@ DESCRIPTION:Location: Compass Minerals Sporting Field 1 South\n  \n Unifor
  m: White (Arrival Time:  1:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260218T233708
 LOCATION:1500 N 90th St\nKansas City KS 66112\nUnited States
+X-ORIGINAL-SUMMARY:Jr Current vs De Soto Eudora FC U11
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1664,7 +1782,7 @@ LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball - Practice #3
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball - Practice #3
 DTSTART;TZID=America/Chicago:20260503T153030
 DTEND;TZID=America/Chicago:20260503T163030
 DTSTAMP:20260406T192802
@@ -1674,10 +1792,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  3:3
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T192802
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball - Practice #3
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260506T164542
 DTEND;TZID=America/Chicago:20260506T180042
 DTSTAMP:20260406T173401
@@ -1687,10 +1806,11 @@ DESCRIPTION:Location: Morse Elementary - South Field (same one we have bee
  n on)\n   (Arrival Time:  4:45 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T173401
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260506T193000
 DTEND;TZID=America/Chicago:20260506T193000
 DTSTAMP:20260212T203508
@@ -1699,10 +1819,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260212T203508
 LOCATION:Scheel's Complex Field 9SW
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball at The Storm
+SUMMARY:Madison Softball: Wildcats Softball at The Storm
 DTSTART;TZID=America/Chicago:20260508T193047
 DTEND;TZID=America/Chicago:20260508T204547
 DTSTAMP:20260403T204337
@@ -1712,10 +1833,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 21\n  \n Uniform: New
   Uniform (Arrival Time:  7:15 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T204337
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball at The Storm
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Prather
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Prather
 DTSTART;TZID=America/Chicago:20260509T160025
 DTEND;TZID=America/Chicago:20260509T160025
 DTSTAMP:20260422T200510
@@ -1724,10 +1846,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  4:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T200510
 LOCATION:Field #3
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Prather
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball - Practice #4
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball - Practice #4
 DTSTART;TZID=America/Chicago:20260510T153046
 DTEND;TZID=America/Chicago:20260510T163046
 DTSTAMP:20260406T192812
@@ -1737,10 +1860,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  3:3
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T192812
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball - Practice #4
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs Leawood Leopards
+SUMMARY:Madison Softball: Wildcats Softball vs Leawood Leopards
 DTSTART;TZID=America/Chicago:20260511T193047
 DTEND;TZID=America/Chicago:20260511T204547
 DTSTAMP:20260403T204414
@@ -1750,10 +1874,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 15\n  \n Uniform: New
   Uniform (Arrival Time:  7:15 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T204414
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs Leawood Leopards
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260513T164542
 DTEND;TZID=America/Chicago:20260513T180042
 DTSTAMP:20260406T173401
@@ -1763,10 +1888,11 @@ DESCRIPTION:Location: Morse Elementary - South Field (same one we have bee
  n on)\n   (Arrival Time:  4:45 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T173401
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260513T193000
 DTEND;TZID=America/Chicago:20260513T193000
 DTSTAMP:20260212T203508
@@ -1775,10 +1901,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260212T203508
 LOCATION:Scheel's Complex Field 9SW
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current at PSC 15/16G Black
+SUMMARY:Madison: Jr Current at PSC 15/16G Black
 DTSTART;TZID=America/Chicago:20260515T170000
 DTEND;TZID=America/Chicago:20260515T170000
 DTSTAMP:20260218T233725
@@ -1788,10 +1915,11 @@ DESCRIPTION:Uniform: Red (Arrival Time:  5:00 PM (Central Time (US & Canad
  a)))
 LAST-MODIFIED:20260218T233725
 LOCATION:Scheel's #7 North
+X-ORIGINAL-SUMMARY:Jr Current at PSC 15/16G Black
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball at Chargers
+SUMMARY:Madison Softball: Wildcats Softball at Chargers
 DTSTART;TZID=America/Chicago:20260516T103047
 DTEND;TZID=America/Chicago:20260516T114547
 DTSTAMP:20260403T205705
@@ -1801,6 +1929,7 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 27\n  \n Uniform: New
   Uniform (Arrival Time: 10:15 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T205705
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball at Chargers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1817,7 +1946,7 @@ LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Ferguson
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Ferguson
 DTSTART;TZID=America/Chicago:20260516T113028
 DTEND;TZID=America/Chicago:20260516T113028
 DTSTAMP:20260422T200643
@@ -1826,10 +1955,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time: 11:30 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T200643
 LOCATION:Field 4
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Ferguson
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current at KCL Arsenal
+SUMMARY:Madison: Jr Current at KCL Arsenal
 DTSTART;TZID=America/Chicago:20260516T164500
 DTEND;TZID=America/Chicago:20260516T164500
 DTSTAMP:20260224T155417
@@ -1839,6 +1969,7 @@ DESCRIPTION:Uniform: Red (Arrival Time:  4:45 PM (Central Time (US & Canad
  a)))
 LAST-MODIFIED:20260224T155417
 LOCATION:Olathe Complex #4N
+X-ORIGINAL-SUMMARY:Jr Current at KCL Arsenal
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1855,7 +1986,7 @@ LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball - Practice #5
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball - Practice #5
 DTSTART;TZID=America/Chicago:20260517T153018
 DTEND;TZID=America/Chicago:20260517T163018
 DTSTAMP:20260406T192821
@@ -1865,10 +1996,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  3:3
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T192821
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball - Practice #5
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Jr Current - Practice
+SUMMARY:Madison: Jr Current - Practice
 DTSTART;TZID=America/Chicago:20260520T193000
 DTEND;TZID=America/Chicago:20260520T193000
 DTSTAMP:20260212T203508
@@ -1877,10 +2009,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260212T203508
 LOCATION:Scheel's Complex Field 9SW
+X-ORIGINAL-SUMMARY:Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs Chargers
+SUMMARY:Madison Softball: Wildcats Softball vs Chargers
 DTSTART;TZID=America/Chicago:20260520T193047
 DTEND;TZID=America/Chicago:20260520T204547
 DTSTAMP:20260403T204456
@@ -1890,10 +2023,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 19\n  \n Uniform: New
   Uniform (Arrival Time:  7:15 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T204456
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs Chargers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball - Practice #6
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball - Practice #6
 DTSTART;TZID=America/Chicago:20260524T153049
 DTEND;TZID=America/Chicago:20260524T163049
 DTSTAMP:20260406T192832
@@ -1903,10 +2037,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  3:3
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260406T192832
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball - Practice #6
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball at Lady Sluggers
+SUMMARY:Madison Softball: Wildcats Softball at Lady Sluggers
 DTSTART;TZID=America/Chicago:20260527T191547
 DTEND;TZID=America/Chicago:20260527T203047
 DTSTAMP:20260403T204549
@@ -1916,10 +2051,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 19\n  \n Uniform: New
   Uniform (Arrival Time:  7:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T204549
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball at Lady Sluggers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball at The Storm
+SUMMARY:Madison Softball: Wildcats Softball at The Storm
 DTSTART;TZID=America/Chicago:20260530T120047
 DTEND;TZID=America/Chicago:20260530T131547
 DTSTAMP:20260403T204822
@@ -1929,10 +2065,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 13\n  \n Uniform: ‼
  ️Grey Uniform (Arrival Time: 11:45 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T204822
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball at The Storm
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Hauschild
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Hauschild
 DTSTART;TZID=America/Chicago:20260531T153008
 DTEND;TZID=America/Chicago:20260531T153008
 DTSTAMP:20260422T200819
@@ -1941,10 +2078,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  3:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T200819
 LOCATION:Field 15
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Hauschild
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball at Leawood Leopards
+SUMMARY:Madison Softball: Wildcats Softball at Leawood Leopards
 DTSTART;TZID=America/Chicago:20260601T191547
 DTEND;TZID=America/Chicago:20260601T203047
 DTSTAMP:20260403T204804
@@ -1954,10 +2092,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 18\n  \n Uniform: New
   Uniform (Arrival Time:  7:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T204804
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball at Leawood Leopards
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260603T180019
 DTEND;TZID=America/Chicago:20260603T191519
 DTSTAMP:20260406T173620
@@ -1967,10 +2106,11 @@ DESCRIPTION:Location: Morse Elementary\n   (Arrival Time:  6:00 PM (Centra
  l Time (US & Canada)))
 LAST-MODIFIED:20260406T173620
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Lauritson
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Lauritson
 DTSTART;TZID=America/Chicago:20260606T190055
 DTEND;TZID=America/Chicago:20260606T190055
 DTSTAMP:20260422T200946
@@ -1979,10 +2119,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T200946
 LOCATION:Field 17
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Lauritson
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball - Practice #8
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball - Practice #8
 DTSTART;TZID=America/Chicago:20260607T170012
 DTEND;TZID=America/Chicago:20260607T180012
 DTSTAMP:20260422T201641
@@ -1992,10 +2133,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  5:0
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T201641
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball - Practice #8
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs Chargers
+SUMMARY:Madison Softball: Wildcats Softball vs Chargers
 DTSTART;TZID=America/Chicago:20260608T191547
 DTEND;TZID=America/Chicago:20260608T203047
 DTSTAMP:20260403T204928
@@ -2005,10 +2147,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 28\n  \n Uniform: New
   Uniform (Arrival Time:  7:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T204928
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs Chargers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260610T180019
 DTEND;TZID=America/Chicago:20260610T191519
 DTSTAMP:20260406T173620
@@ -2018,10 +2161,11 @@ DESCRIPTION:Location: Morse Elementary\n   (Arrival Time:  6:00 PM (Centra
  l Time (US & Canada)))
 LAST-MODIFIED:20260406T173620
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Jacobson
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Jacobson
 DTSTART;TZID=America/Chicago:20260612T190016
 DTEND;TZID=America/Chicago:20260612T190016
 DTSTAMP:20260422T201101
@@ -2030,10 +2174,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T201101
 LOCATION:Field 4
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Jacobson
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Nimz
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Nimz
 DTSTART;TZID=America/Chicago:20260614T123021
 DTEND;TZID=America/Chicago:20260614T123021
 DTSTAMP:20260422T201218
@@ -2042,10 +2187,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time: 12:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T201218
 LOCATION:Field 4
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Nimz
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball at KC Sparkles
+SUMMARY:Madison Softball: Wildcats Softball at KC Sparkles
 DTSTART;TZID=America/Chicago:20260617T191547
 DTEND;TZID=America/Chicago:20260617T203047
 DTSTAMP:20260403T205026
@@ -2055,10 +2201,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 29\n  \n Uniform: New
   Uniform (Arrival Time:  7:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T205026
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball at KC Sparkles
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Kopff
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Kopff
 DTSTART;TZID=America/Chicago:20260620T130057
 DTEND;TZID=America/Chicago:20260620T130057
 DTSTAMP:20260422T201344
@@ -2067,10 +2214,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  1:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T201344
 LOCATION:Field 17
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Kopff
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball - Practice #10
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball - Practice #10
 DTSTART;TZID=America/Chicago:20260621T170006
 DTEND;TZID=America/Chicago:20260621T170006
 DTSTAMP:20260422T201701
@@ -2080,10 +2228,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  5:0
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T201701
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball - Practice #10
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs Lady Sluggers
+SUMMARY:Madison Softball: Wildcats Softball vs Lady Sluggers
 DTSTART;TZID=America/Chicago:20260622T174547
 DTEND;TZID=America/Chicago:20260622T190047
 DTSTAMP:20260403T205116
@@ -2093,10 +2242,11 @@ DESCRIPTION:Location: Blue Valley Recreation - Field 15\n  \n Uniform: New
   Uniform (Arrival Time:  5:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260403T205116
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs Lady Sluggers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Season get together ? ?
+SUMMARY:Madison Softball: Wildcats Softball - Season get together ? ?
 DTSTART;TZID=America/Chicago:20260622T190044
 DTEND;TZID=America/Chicago:20260622T190044
 DTSTAMP:20260405T132132
@@ -2105,10 +2255,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260405T132132
 LOCATION:Dairy Queen Grill & Chill
+X-ORIGINAL-SUMMARY:Wildcats Softball - Season get together ? ?
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball - Practice
+SUMMARY:Madison Softball: Wildcats Softball - Practice
 DTSTART;TZID=America/Chicago:20260624T180019
 DTEND;TZID=America/Chicago:20260624T191519
 DTSTAMP:20260406T173816
@@ -2118,10 +2269,11 @@ DESCRIPTION:Location: Morse Elementary\n   (Arrival Time:  6:00 PM (Centra
  l Time (US & Canada)))
 LAST-MODIFIED:20260406T173816
 LOCATION:15201 Monrovia St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs Endnof season Tournament
+SUMMARY:Madison Softball: Wildcats Softball vs Endnof season Tournament
 DTSTART:20260627T000000
 DTEND:20260628T000000
 DTSTAMP:20260405T132004
@@ -2131,10 +2283,11 @@ DESCRIPTION:Location: 9701 W 137th St\n   (Arrival Time:  1:00 PM (Central
   Time (US & Canada)))
 LAST-MODIFIED:20260405T132004
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs Endnof season Tournament
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Wildcats Softball vs Endnof season Tournament
+SUMMARY:Madison Softball: Wildcats Softball vs Endnof season Tournament
 DTSTART:20260628T000000
 DTEND:20260629T000000
 DTSTAMP:20260405T132017
@@ -2144,10 +2297,11 @@ DESCRIPTION:Location: 9701 W 137th St\n   (Arrival Time:  1:00 PM (Central
   Time (US & Canada)))
 LAST-MODIFIED:20260405T132017
 LOCATION:9701 W 137th St\nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Wildcats Softball vs Endnof season Tournament
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball - Practice #11
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball - Practice #11
 DTSTART;TZID=America/Chicago:20260628T170029
 DTEND;TZID=America/Chicago:20260628T170029
 DTSTAMP:20260422T201718
@@ -2157,10 +2311,11 @@ DESCRIPTION:Location: Overland Trail Middle School\n   (Arrival Time:  5:0
  0 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T201718
 LOCATION:6201 W 133rd St\nOverland Park KS 66209\nUnited States
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball - Practice #11
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Hamilton
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Hamilton
 DTSTART;TZID=America/Chicago:20260630T173007
 DTEND;TZID=America/Chicago:20260630T173007
 DTSTAMP:20260422T201441
@@ -2169,10 +2324,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  5:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T201441
 LOCATION:Field #3
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Hamilton
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Prather
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Prather
 DTSTART;TZID=America/Chicago:20260706T190003
 DTEND;TZID=America/Chicago:20260706T190003
 DTSTAMP:20260422T201533
@@ -2181,10 +2337,11 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  7:00 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T201533
 LOCATION:Field #3
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Prather
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:OTE Pre-K Summer Baseball vs Ferguson
+SUMMARY:Max Baseball: OTE Pre-K Summer Baseball vs Ferguson
 DTSTART;TZID=America/Chicago:20260712T201544
 DTEND;TZID=America/Chicago:20260712T201544
 DTSTAMP:20260422T201606
@@ -2193,6 +2350,7 @@ SEQUENCE:0
 DESCRIPTION:(Arrival Time:  8:15 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260422T201606
 LOCATION:Field 4
+X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Ferguson
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 END:VCALENDAR
