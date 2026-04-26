@@ -983,7 +983,8 @@
                 const timeStr = event.dtstart.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
                 const cls = getCalendarClass(event.calendarName);
                 const badge = getCalendarBadgeText(event.calendarName);
-                const kid = getKidNameFromEvent(event);
+                const isGhEvent = GH_CALENDAR_NAMES.includes(event.calendarName);
+                const kid = isGhEvent ? null : getKidNameFromEvent(event);
                 const title = kid ? `${kid}: ${event.summary}` : event.summary;
 
                 return `
@@ -1150,7 +1151,8 @@
 
                 const title = document.createElement('div');
                 title.className = 'popup-event-title';
-                const kid = getKidNameFromEvent(event);
+                const isGhEvent = GH_CALENDAR_NAMES.includes(event.calendarName);
+                const kid = isGhEvent ? null : getKidNameFromEvent(event);
                 title.textContent = kid ? `${kid}: ${event.summary}` : (event.summary || '');
                 div.appendChild(title);
 

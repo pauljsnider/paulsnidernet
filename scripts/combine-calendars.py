@@ -30,6 +30,14 @@ logger = logging.getLogger(__name__)
 # Default to production unless explicitly enabled via env.
 TEST_MODE = os.getenv('CALENDAR_TEST_MODE', '').lower() in ('1', 'true', 'yes')
 
+# Maps known source calendar names to (kid, sport) for SUMMARY normalization.
+CALENDAR_LABEL_MAP = {
+    'Will Soccer':        ('Will',    'Soccer'),
+    'Will Baseball':      ('Will',    'Baseball'),
+    'Will Indoor Soccer': ('Will',    'Indoor Soccer'),
+    'Madison Futsal':     ('Madison', 'Futsal'),
+}
+
 # Test calendars (public, reliable sources)
 TEST_CALENDARS = [
     {
@@ -89,6 +97,66 @@ REQUEST_CONFIG = {
         'Accept': 'text/calendar,text/plain,*/*'
     }
 }
+
+def infer_teamsnap_label(summary, description):
+    """Return (kid, sport) inferred from TeamSnap event text, or (None, None)."""
+    text = f"{summary} {description}".lower()
+
+    kid = None
+    if any(k in text for k in ['prek', 'pre-k', 'prekindergarten', 'max snider', 'u6', 'under 6']):
+        kid = 'Max'
+    elif 'kindergarten' in text:
+        kid = 'Max'
+    elif any(k in text for k in ['jr current', 'wildcats softball', '4th grade girls']):
+        kid = 'Madison'
+    elif any(k in text for k in ['wildcats', 'u10', 'under 10', '4th grade', '9-10']):
+        kid = 'Madison'
+    elif any(k in text for k in ['mustangs', 'ote cougars', 'first grade boys']):
+        kid = 'Will'
+    elif ('1st grade' in text or 'first grade' in text) and ('bball' in text or 'basketball' in text):
+        kid = 'Will'
+
+    sport = None
+    if 'futsal' in text:
+        sport = 'Futsal'
+    elif 'soccer' in text:
+        sport = 'Soccer'
+    elif 'softball' in text:
+        sport = 'Softball'
+    elif 'baseball' in text:
+        sport = 'Baseball'
+    elif 'basketball' in text or 'bball' in text:
+        sport = 'Basketball'
+    elif 'football' in text:
+        sport = 'Football'
+
+    return kid, sport
+
+
+def label_event_summary(component, source_name):
+    """Prefix SUMMARY with '<Kid> <Sport>: ' and preserve original in X-ORIGINAL-SUMMARY."""
+    if 'X-ORIGINAL-SUMMARY' in component:
+        return  # already labeled — idempotent
+
+    original = str(component.get('SUMMARY', '') or '').strip()
+    if not original:
+        return
+
+    kid, sport = None, None
+    if source_name in CALENDAR_LABEL_MAP:
+        kid, sport = CALENDAR_LABEL_MAP[source_name]
+    elif source_name and 'teamsnap' in source_name.lower():
+        description = str(component.get('DESCRIPTION', '') or '')
+        kid, sport = infer_teamsnap_label(original, description)
+
+    if not kid:
+        return
+
+    prefix = f"{kid} {sport}" if sport else kid
+    component.add('x-original-summary', original)
+    del component['SUMMARY']
+    component.add('summary', f"{prefix}: {original}")
+
 
 def fetch_calendar(url, name):
     """Fetch a calendar from a URL with robust error handling and retries."""
@@ -241,6 +309,8 @@ def combine_calendars(calendars, source_names=None):
         # Extract events from this calendar
         for component in cal_data.walk():
             if component.name == "VEVENT":
+                if source_name:
+                    label_event_summary(component, source_name)
                 uid = component.get('uid')
                 if uid:
                     uid_str = str(uid)
