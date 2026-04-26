@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-04-26T02:29:56.149004+00:00
+X-COMBINE-TIMESTAMP:2026-04-26T02:38:25.617622+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) Practice
@@ -1346,7 +1346,7 @@ X-ORIGINAL-SUMMARY:[CANCELED] Jr Current - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Soccer - Spring 2026 vs Lightner
+SUMMARY:Max Soccer: Soccer - Spring 2026 vs Lightner
 DTSTART;TZID=America/Chicago:20260321T100002
 DTEND;TZID=America/Chicago:20260321T100002
 DTSTAMP:20260314T122620
@@ -1356,6 +1356,7 @@ DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 1SW\n   (Arri
  val Time: 10:00 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260314T122620
 LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Soccer - Spring 2026 vs Lightner
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1440,7 +1441,7 @@ X-ORIGINAL-SUMMARY:Wildcats Softball - Practice
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Soccer - Spring 2026 at Hill
+SUMMARY:Max Soccer: Soccer - Spring 2026 at Hill
 DTSTART;TZID=America/Chicago:20260404T080025
 DTEND;TZID=America/Chicago:20260404T080025
 DTSTAMP:20260314T122717
@@ -1450,6 +1451,7 @@ DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 2NE\n   (Arri
  val Time:  8:00 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260314T122717
 LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Soccer - Spring 2026 at Hill
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1618,7 +1620,7 @@ X-ORIGINAL-SUMMARY:Wildcats Softball vs Chargers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Soccer - Spring 2026 vs Friedman
+SUMMARY:Max Soccer: Soccer - Spring 2026 vs Friedman
 DTSTART;TZID=America/Chicago:20260425T110030
 DTEND;TZID=America/Chicago:20260425T110030
 DTSTAMP:20260314T122809
@@ -1628,10 +1630,11 @@ DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 1SW\n   (Arri
  val Time: 11:00 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260314T122809
 LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Soccer - Spring 2026 vs Friedman
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Soccer - Spring 2026 at Freeman
+SUMMARY:Max Soccer: Soccer - Spring 2026 at Freeman
 DTSTART;TZID=America/Chicago:20260426T123013
 DTEND;TZID=America/Chicago:20260426T123013
 DTSTAMP:20260314T122858
@@ -1641,6 +1644,7 @@ DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 2NE\n   (Arri
  val Time: 12:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260314T122858
 LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Soccer - Spring 2026 at Freeman
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1728,7 +1732,7 @@ X-ORIGINAL-SUMMARY:Jr Current vs Sporting City 2015G Orange - East
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Soccer - Spring 2026 vs Downer
+SUMMARY:Max Soccer: Soccer - Spring 2026 vs Downer
 DTSTART;TZID=America/Chicago:20260502T080007
 DTEND;TZID=America/Chicago:20260502T080007
 DTSTAMP:20260314T122940
@@ -1738,6 +1742,7 @@ DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 2NW\n   (Arri
  val Time:  8:00 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260314T122940
 LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Soccer - Spring 2026 vs Downer
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1769,7 +1774,7 @@ X-ORIGINAL-SUMMARY:Jr Current vs De Soto Eudora FC U11
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Soccer - Spring 2026 at Hoover
+SUMMARY:Max Soccer: Soccer - Spring 2026 at Hoover
 DTSTART;TZID=America/Chicago:20260503T143046
 DTEND;TZID=America/Chicago:20260503T143046
 DTSTAMP:20260314T123020
@@ -1779,6 +1784,7 @@ DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 1SE\n   (Arri
  val Time:  2:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260314T123020
 LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Soccer - Spring 2026 at Hoover
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1933,7 +1939,7 @@ X-ORIGINAL-SUMMARY:Wildcats Softball at Chargers
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Soccer - Spring 2026 vs Petty
+SUMMARY:Max Soccer: Soccer - Spring 2026 vs Petty
 DTSTART;TZID=America/Chicago:20260516T110024
 DTEND;TZID=America/Chicago:20260516T110024
 DTSTAMP:20260314T123101
@@ -1943,6 +1949,7 @@ DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 2NW\n   (Arri
  val Time: 11:00 AM (Central Time (US & Canada)))
 LAST-MODIFIED:20260314T123101
 LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Soccer - Spring 2026 vs Petty
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
@@ -1973,7 +1980,7 @@ X-ORIGINAL-SUMMARY:Jr Current at KCL Arsenal
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Soccer - Spring 2026 vs Lightner
+SUMMARY:Max Soccer: Soccer - Spring 2026 vs Lightner
 DTSTART;TZID=America/Chicago:20260517T153009
 DTEND;TZID=America/Chicago:20260517T153009
 DTSTAMP:20260314T123207
@@ -1983,6 +1990,7 @@ DESCRIPTION:Location: Scheels Overland Park Soccer Complex - 1SW\n   (Arri
  val Time:  3:30 PM (Central Time (US & Canada)))
 LAST-MODIFIED:20260314T123207
 LOCATION:13700 Switzer \nOverland Park KS 66221\nUnited States
+X-ORIGINAL-SUMMARY:Soccer - Spring 2026 vs Lightner
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
 END:VEVENT
 BEGIN:VEVENT
