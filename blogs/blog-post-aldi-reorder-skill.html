@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Aldi Skill: Google Auth, Reorder Drafts, and Slack Control - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <!-- Back to Blog Link -->
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <!-- Blog Post Content -->
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">April 26, 2026</span>
+            </div>
+            <h1 class="post-title">The Aldi Skill: Google Auth, Reorder Drafts, and Slack Control</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=400&fit=crop" alt="Grocery produce aisle with fresh vegetables" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">The Aldi skill started with a very practical goal: turn the weekly grocery reorder into a Slack conversation instead of another browser chore.</p>
+
+            <p>The obvious version sounds simple. Open Aldi, look at the last order, rebuild the cart, ask what should change, pick a pickup slot, and stop before payment. The real work was not the shopping list. The real work was authentication.</p>
+
+            <h2>The auth problem</h2>
+
+            <p>Aldi's site supports Google sign-in, which is convenient for a human and annoying for automation. A normal bot browser or Selenium-style flow is exactly the kind of thing Google does not trust. That is good security. It is also a hard stop if the plan depends on replaying a login flow.</p>
+
+            <p>The fix was to stop pretending the bot should log in like a bot.</p>
+
+            <p>We used a real Chrome install on the VM, a persistent Chrome profile, and a one-time human login through noVNC. The VM runs the browser behind a small desktop stack: Xvfb for the display, fluxbox for the window manager, x11vnc and websockify for browser access, and Chrome with a remote debugging port enabled.</p>
+
+            <p>From a Mac, the flow is straightforward:</p>
+            <ol>
+              <li>Open an SSH tunnel to the VM.</li>
+              <li>Connect to the noVNC browser view.</li>
+              <li>Complete the Google sign-in manually in real Chrome.</li>
+              <li>Keep the same Chrome profile so the trust state and cookies persist.</li>
+              <li>Have OpenClaw attach to that live session over Chrome DevTools Protocol.</li>
+            </ol>
+
+            <p>The important design choice: do not automate the Google login. Automate after the trusted browser session exists.</p>
+
+            <h2>Verification beats hope</h2>
+
+            <p>We also did not count "the tab is open" as proof that the bot was authenticated. The automation verifies the live browser over CDP and checks for page signals that actually matter: sign-in is absent, the Buy It Again section is present, the account context is visible, and the selected store and cart context are available.</p>
+
+            <p>That gave us a reusable pattern: human handles the sensitive login once, the VM preserves the browser profile, and automation only proceeds when the live storefront proves it is signed in.</p>
+
+            <h2>What the Aldi skill does now</h2>
+
+            <p>The current skill is intentionally narrow. It manages a reorder draft and keeps the human in control.</p>
+
+            <ul>
+              <li><strong>Fetches the latest order:</strong> reads the recent Aldi order summary and extracts item names from the live signed-in session.</li>
+              <li><strong>Builds a draft:</strong> creates a reorder draft with the prior items as the starting point.</li>
+              <li><strong>Posts to Slack:</strong> sends the draft into a Slack DM thread with the store context, pickup estimate, and initial slot options.</li>
+              <li><strong>Supports simple edits:</strong> replies like <code>exclude milk</code>, <code>include bananas</code>, and <code>show</code> update or display the draft.</li>
+              <li><strong>Refreshes pickup slots:</strong> <code>show slots</code> pulls current pickup options from the live checkout flow.</li>
+              <li><strong>Selects a slot:</strong> <code>slot 2</code> chooses one of the numbered pickup windows and stores it on the draft.</li>
+              <li><strong>Adds new items:</strong> <code>add eggs</code> searches Aldi, auto-adds a clear match, or returns candidates when the search is ambiguous.</li>
+              <li><strong>Runs continuously:</strong> a user systemd service polls the Slack thread and applies commands without needing a manual shell session.</li>
+            </ul>
+
+            <h2>The command model</h2>
+
+            <p>The interface is deliberately boring. That is a compliment. The useful commands are short, predictable, and easy to type from a phone:</p>
+
+            <ul>
+              <li><code>exclude &lt;item words&gt;</code></li>
+              <li><code>include &lt;item words&gt;</code></li>
+              <li><code>add &lt;item words&gt;</code></li>
+              <li><code>show</code></li>
+              <li><code>show slots</code></li>
+              <li><code>slot &lt;n&gt;</code></li>
+              <li><code>confirm</code></li>
+              <li><code>cancel</code></li>
+            </ul>
+
+            <p>Matching is substring-based and case-insensitive. If I say <code>exclude yogurt</code>, it can remove every draft item matching yogurt. That is not fancy natural language processing. It is the smallest thing that works and is easy to audit.</p>
+
+            <h2>The safety boundary</h2>
+
+            <p>This version does not place the order. It does not submit payment. That is intentional.</p>
+
+            <p>The skill can assemble the draft, update the item list, search for additions, show live pickup slots, and select a pickup window. The final purchase boundary stays human-controlled. Grocery automation is useful. A bot accidentally buying twelve bags of cauliflower rice because I typed a lazy command is less useful.</p>
+
+            <h2>Why this matters beyond groceries</h2>
+
+            <p>The Aldi skill is a small personal workflow, but the architecture is bigger than groceries:</p>
+
+            <ul>
+              <li>Use a real browser profile when modern auth flows require real user trust.</li>
+              <li>Separate authentication bootstrapping from day-to-day automation.</li>
+              <li>Verify state through the live app, not assumptions.</li>
+              <li>Expose the workflow where the human already works, in this case Slack.</li>
+              <li>Keep risky actions behind an explicit human boundary.</li>
+            </ul>
+
+            <p>That pattern applies to a lot of personal and enterprise automation. The win is not "AI buys groceries." The win is turning a recurring, low-value workflow into a controlled assistant loop with clear state, clear commands, and a safe stop before irreversible action.</p>
+
+            <p>Next up: tighten the Sunday reminder flow, improve item matching, and decide whether order submission should ever be automated. My current answer is "probably, but only with a very boring confirmation step." Boring is underrated when money leaves the account.</p>
+
+            <div class="post-tags">
+              <span class="tag">OpenClaw</span>
+              <span class="tag">Browser Automation</span>
+              <span class="tag">Google Auth</span>
+              <span class="tag">Slack</span>
+              <span class="tag">Personal Automation</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&h=200&fit=crop" alt="Server room with network infrastructure">
+              <div class="related-content">
+                <h4><a href="blog-post-openclaw-setup.html">Setting Up OpenClaw on a Dedicated VM</a></h4>
+                <span class="related-date">February 17, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?w=300&h=200&fit=crop" alt="Developer workflow with chat and code tools">
+              <div class="related-content">
+                <h4><a href="blog-post-autonomous-github-slack-bot.html">Building an Autonomous Coding Bot for GitHub and Slack</a></h4>
+                <span class="related-date">February 21, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&h=200&fit=crop" alt="Developer workspace with laptop">
+              <div class="related-content">
+                <h4><a href="blog-post-prompting-on-the-go.html">Prompting on the Go: Using Claude, Codex, and OpenCode from Your Phone While Running Code Locally</a></h4>
+                <span class="related-date">December 26, 2025</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
