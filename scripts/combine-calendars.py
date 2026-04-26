@@ -39,6 +39,43 @@ CALENDAR_LABEL_MAP = {
     'Madison Futsal':     ('Madison', 'Futsal'),
 }
 
+# Manual corrections for upstream feeds that omit venue data. Keep this narrow:
+# for Will Soccer, the "@ Name" suffix is an opponent, not a reliable location.
+EVENT_LOCATION_OVERRIDES = {
+    'Will Soccer': {
+        '8a705895-8e4c-40fb-8328-2b9610a92c0d': {
+            'location': 'Scheels Field 9N',
+            'reason': 'manual-user-correction',
+        },
+    },
+}
+
+SCHEELS_LOCATION_MARKERS = (
+    '13700 switzer',
+    'scheels',
+    "scheel's",
+    'overland park soccer complex',
+)
+
+FIELD_DIRECTIONS = {
+    'N': 'N',
+    'NORTH': 'N',
+    'S': 'S',
+    'SOUTH': 'S',
+    'E': 'E',
+    'EAST': 'E',
+    'W': 'W',
+    'WEST': 'W',
+    'NE': 'NE',
+    'NORTHEAST': 'NE',
+    'NW': 'NW',
+    'NORTHWEST': 'NW',
+    'SE': 'SE',
+    'SOUTHEAST': 'SE',
+    'SW': 'SW',
+    'SOUTHWEST': 'SW',
+}
+
 # Test calendars (public, reliable sources)
 TEST_CALENDARS = [
     {
@@ -159,34 +196,69 @@ def label_event_summary(component, source_name):
     component.add('summary', f"{prefix}: {original}")
 
 
-def infer_missing_location_from_summary(component, source_name):
-    """Populate a minimal LOCATION for GameChanger soccer away games.
+def normalize_scheels_field_code(text):
+    """Return a compact field code like '9N' from short field text."""
+    cleaned = re.sub(r'\s+', ' ', str(text or '')).strip()
+    if not cleaned or len(cleaned) > 80:
+        return None
 
-    GameChanger sometimes emits away games with the opponent/venue only in the
-    SUMMARY, e.g. "OTE Cougars (First Grade Boys) @ Dieterle", and no LOCATION
-    or GEO property. Calendar subscribers hide the useful "@ Dieterle" detail
-    from the location field unless we preserve it explicitly.
-    """
+    match = re.search(
+        r'(?:scheels?\s*)?(?:complex\s*)?(?:field\s*)?#?\s*'
+        r'(?P<number>\d{1,2})\s*'
+        r'(?P<direction>northwest|northeast|southwest|southeast|north|south|east|west|nw|ne|sw|se|n|s|e|w)\b',
+        cleaned,
+        re.IGNORECASE,
+    )
+    if not match:
+        return None
+
+    direction = FIELD_DIRECTIONS.get(match.group('direction').upper())
+    if not direction:
+        return None
+    return f"{int(match.group('number'))}{direction}"
+
+
+def is_scheels_location(location):
+    normalized = str(location or '').lower()
+    return any(marker in normalized for marker in SCHEELS_LOCATION_MARKERS)
+
+
+def improve_scheels_field_location(component, source_name):
+    """Use short GameChanger field descriptions to make Scheels locations useful."""
     if source_name != 'Will Soccer':
         return
-    if str(component.get('LOCATION', '') or '').strip():
+
+    description = str(component.get('DESCRIPTION', '') or '')
+    field_code = normalize_scheels_field_code(description)
+    if not field_code:
         return
 
-    summary = str(
-        component.get('X-ORIGINAL-SUMMARY')
-        or component.get('SUMMARY')
-        or ''
-    ).strip()
-    match = re.search(r'\s@\s*([^@\r\n]+)\s*$', summary)
-    if not match:
+    location = str(component.get('LOCATION', '') or '')
+    if location and not is_scheels_location(location):
         return
 
-    inferred_location = match.group(1).strip()
-    if not inferred_location:
+    if 'LOCATION' in component:
+        del component['LOCATION']
+    component.add('location', f"Scheels Field {field_code}")
+    component.add('x-derived-location', 'description-field-code')
+
+
+def apply_event_location_override(component, source_name):
+    """Apply explicit location corrections for events with incomplete source data."""
+    overrides = EVENT_LOCATION_OVERRIDES.get(source_name, {})
+    uid = str(component.get('UID', '') or '').strip()
+    override = overrides.get(uid)
+    if not override:
         return
 
-    component.add('location', inferred_location)
-    component.add('x-inferred-location', 'summary-away-marker')
+    location = str(override.get('location', '') or '').strip()
+    if not location:
+        return
+
+    if 'LOCATION' in component:
+        del component['LOCATION']
+    component.add('location', location)
+    component.add('x-location-override', override.get('reason', 'manual'))
 
 
 def fetch_calendar(url, name):
@@ -342,7 +414,8 @@ def combine_calendars(calendars, source_names=None):
             if component.name == "VEVENT":
                 if source_name:
                     label_event_summary(component, source_name)
-                    infer_missing_location_from_summary(component, source_name)
+                    improve_scheels_field_location(component, source_name)
+                    apply_event_location_override(component, source_name)
                 uid = component.get('uid')
                 if uid:
                     uid_str = str(uid)
