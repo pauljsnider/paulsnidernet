@@ -13,6 +13,7 @@ import sys
 import time
 import logging
 import os
+import re
 from pathlib import Path
 
 # Set up logging
@@ -156,6 +157,36 @@ def label_event_summary(component, source_name):
     component.add('x-original-summary', original)
     del component['SUMMARY']
     component.add('summary', f"{prefix}: {original}")
+
+
+def infer_missing_location_from_summary(component, source_name):
+    """Populate a minimal LOCATION for GameChanger soccer away games.
+
+    GameChanger sometimes emits away games with the opponent/venue only in the
+    SUMMARY, e.g. "OTE Cougars (First Grade Boys) @ Dieterle", and no LOCATION
+    or GEO property. Calendar subscribers hide the useful "@ Dieterle" detail
+    from the location field unless we preserve it explicitly.
+    """
+    if source_name != 'Will Soccer':
+        return
+    if str(component.get('LOCATION', '') or '').strip():
+        return
+
+    summary = str(
+        component.get('X-ORIGINAL-SUMMARY')
+        or component.get('SUMMARY')
+        or ''
+    ).strip()
+    match = re.search(r'\s@\s*([^@\r\n]+)\s*$', summary)
+    if not match:
+        return
+
+    inferred_location = match.group(1).strip()
+    if not inferred_location:
+        return
+
+    component.add('location', inferred_location)
+    component.add('x-inferred-location', 'summary-away-marker')
 
 
 def fetch_calendar(url, name):
@@ -311,6 +342,7 @@ def combine_calendars(calendars, source_names=None):
             if component.name == "VEVENT":
                 if source_name:
                     label_event_summary(component, source_name)
+                    infer_missing_location_from_summary(component, source_name)
                 uid = component.get('uid')
                 if uid:
                     uid_str = str(uid)
