@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building an Autonomous Software Factory with OpenClaw - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">June 13, 2026</span>
+            </div>
+            <h1 class="post-title">Building an Autonomous Software Factory with OpenClaw</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop" alt="Circuit board and automation hardware" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">I started this as a fun personal project: put OpenClaw on a dedicated VM, connect it to Slack and GitHub, and see how far an AI-assisted engineering loop could go. It has turned into something more interesting: a small autonomous software factory.</p>
+
+            <h2>The AI SDLC loop</h2>
+            <p>The system now runs like an AI SDLC pipeline. It discovers work, triages issues, breaks large requests into implementation slices, writes code, opens pull requests, responds to review feedback, fixes CI, prepares merges, and reports its own health.</p>
+            <p>It does not replace engineering judgment, but it does automate a surprising amount of the surrounding motion.</p>
+
+            <blockquote>
+              The useful pattern is not one giant autonomous prompt. It is a secure, observable engineering loop with narrow lanes and clear gates.
+            </blockquote>
+
+            <h2>What is running</h2>
+            <p>The architecture is intentionally boring. OpenClaw runs on a dedicated Ubuntu VM. Slack is the conversational surface. GitHub is the system of record. User-level systemd services and timers run the 24x7 process.</p>
+            <p>The current host has 32 service units, 28 timers, 26 active timers, 11 scheduled agent lanes, 49 executable automation scripts, and 6 installed Codex skills. That gives the system enough structure to behave less like a single prompt and more like an operating model.</p>
+
+            <h2>Secure by default</h2>
+            <p>Security is part of the design, not an afterthought. The agent runtime is isolated on its own VM. The OpenClaw gateway is local-only and token-protected. Secrets stay out of public content and backup docs. Runtime configuration is separated from redacted configuration backup.</p>
+            <p>Work is scoped through branches, labels, issue state, validation gates, cooldowns, and human approval points. The important enterprise lesson is that AI autonomy needs boundaries, logs, and a rollback path.</p>
+
+            <h2>Queue control matters</h2>
+            <p>The biggest lesson is that autonomy without queue control just creates more work. A software factory that only opens new issues and PRs is not useful. This pipeline watches its own pressure: open PRs, merge velocity, fix-ready backlog, dependency blockers, failed checks, and recent agent failures.</p>
+            <p>A local dashboard makes that visible. It shows the current queue, recent merge velocity, PR health, issue bottlenecks, model usage pace, and which lanes are running or waiting. That turns the automation from a black box into something you can inspect, tune, and explain.</p>
+            <p>When the queue is healthy, it can feed more work. When PRs pile up, it shifts toward closeout and remediation. That is the difference between a toy agent and something that starts to look like an engineering system.</p>
+
+            <h2>The output so far</h2>
+            <p>The output has been real. As of June 13, 2026, the main application repository had 837 bot-labeled pull requests, with 824 merged. A broader branch-pattern count showed more than 900 automation-created PRs.</p>
+            <p>On the issue side, the pipeline had handled 1,262 issues since late February, with 1,133 closed. More than 1,000 were triaged, more than 600 were marked ready for implementation, and hundreds came from automated bug discovery, feature-gap research, and implementation slicing.</p>
+            <p>The live pipeline was also active while I was writing this: 19 merged PRs in the previous 24 hours, 9 in the previous 8 hours, 8 open bot PRs, 16 fix-ready issues, and 9 dependency-blocked issues.</p>
+
+            <h2>Why this matters for enterprise engineering</h2>
+            <p>This is a fun project, but the patterns are directly relevant to enterprise engineering. Most companies do not need a reckless autonomous agent. They need secure, observable AI SDLC automation: bounded agents, clear ownership, audit trails, test gates, queue pressure controls, and approval workflows.</p>
+            <p>I plan to publish a sanitized open-source setup later with the reusable scaffolding, systemd patterns, dashboards, and lane structure. That version will focus on how to build the factory safely without including private credentials, app-specific code, or internal details.</p>
+
+            <h2>Related reading</h2>
+            <ul>
+              <li><a href="blog-post-openclaw-github-slack-automation.html">How I Run OpenClaw, GitHub Automation, and Slack on an Ubuntu VM</a></li>
+              <li><a href="blog-post-openclaw-setup.html">Setting Up OpenClaw on a Dedicated VM</a></li>
+              <li><a href="blog-post-autonomous-github-slack-bot.html">Building an Autonomous Coding Bot for GitHub and Slack</a></li>
+              <li><a href="blog-post-ai-playbook-automating-toil.html">Beyond Prompts: The Developer's AI Playbook for Automating Toil</a></li>
+            </ul>
+
+            <h2>The short version</h2>
+            <p>OpenClaw is the agent core, the automation lanes are the orchestration layer, GitHub is the factory floor, Slack is the control room, and the AI pipeline is the production system that keeps work moving from idea to merged code.</p>
+
+            <div class="post-tags">
+              <span class="tag">OpenClaw</span>
+              <span class="tag">Autonomous Software Factory</span>
+              <span class="tag">AI SDLC</span>
+              <span class="tag">GitHub Automation</span>
+              <span class="tag">Secure Engineering</span>
+            </div>
+          </div>
+        </article>
+
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300&h=200&fit=crop" alt="Slack, GitHub, and automation workflow">
+              <div class="related-content">
+                <h4><a href="blog-post-openclaw-github-slack-automation.html">How I Run OpenClaw, GitHub Automation, and Slack on an Ubuntu VM</a></h4>
+                <span class="related-date">April 11, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&h=200&fit=crop" alt="Server room with network infrastructure">
+              <div class="related-content">
+                <h4><a href="blog-post-openclaw-setup.html">Setting Up OpenClaw on a Dedicated VM</a></h4>
+                <span class="related-date">February 17, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/ai_playbook/blog_ai_playbook.png" alt="AI playbook cover image">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-playbook-automating-toil.html">Beyond Prompts: The Developer's AI Playbook for Automating Toil</a></h4>
+                <span class="related-date">January 10, 2026</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
