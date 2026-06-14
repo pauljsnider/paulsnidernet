@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Delivery Needs a Model-Agnostic Operating Model - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">June 14, 2026</span>
+            </div>
+            <h1 class="post-title">AI Delivery Needs a Model-Agnostic Operating Model</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="../images/ai_model_agnostic_harness.jpg" alt="AI software delivery dashboard showing security, token cost, agent workflow, and release status" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">The useful lesson from this moment in AI software delivery is not that one model is ahead. It is that the model, pricing, access rules, data terms, and security posture can all change faster than an enterprise rollout plan.</p>
+
+            <p>If your AI strategy depends on one vendor, one model, one prompt pattern, or one access path, it is brittle. The durable advantage is a model-agnostic operating model: a flexible harness, strong governance, market awareness, and clear visibility into cost and data security.</p>
+
+            <h2>The Capability Is Real</h2>
+            <p>A recent evening agent run made this concrete for me. In a few hours between family events in the evening, using a personal account and remote control from my phone, the system produced 147 GitHub artifacts: 116 likely AI-created issues, 31 confirmed AI-generated pull requests, 30 merged pull requests, +4,519 lines added, 615 lines removed, and 27 linked issue references closed.</p>
+            <p>That was not autocomplete. It was an agentic product and engineering sweep: gap discovery, backlog creation, implementation, review follow-up, and closeout. The work touched mobile parity, performance, UX, notifications, reliability, security hardening, architecture quality, and release readiness.</p>
+
+            <h2>Model-Agnostic By Design</h2>
+            <p>The tool market will keep moving. Codex, Claude, GitHub Copilot, Cursor, Kiro, Gemini, and the next set of tools will keep trading places on capability, latency, price, context length, safety posture, and enterprise terms.</p>
+            <p>The answer is not to ignore the best model. Use it when it makes sense. But do not hard-code your operating model to it. Keep instructions, skills, standards, and workflows portable. Put integrations behind CLIs, MCP servers, SDKs, APIs, and source-controlled configuration so teams can route work to the right model without rebuilding the process every time the market shifts.</p>
+
+            <h2>The Harness Is The Strategy</h2>
+            <p>The harness is the reusable layer that tells AI how work should happen: role instructions, coding standards, review expectations, security rules, escalation paths, workflow templates, test requirements, documentation patterns, and examples of good output.</p>
+            <p>Most of it can be markdown. That is the point. A flexible harness makes AI adoption less dependent on individual prompting skill and more dependent on organizational design. When the model changes, the harness carries the operating knowledge forward.</p>
+
+            <h2>Governance Has To Be Built In</h2>
+            <p>Governance cannot be a policy PDF that sits outside the workflow. It has to live in the execution path: scoped credentials, branch protection, review gates, audit logs, approval points, data classification, secret handling, budget limits, and stop conditions.</p>
+            <p>The more capable agents become, the more important the boundaries become. You want agents that can do meaningful work, but you also need to know what they can read, what they can change, who approved it, what tests ran, what it cost, and how to roll it back.</p>
+
+            <h2>Cost And Data Need Dashboards</h2>
+            <p>AI cost visibility cannot wait for a monthly invoice. Teams need spend telemetry by model, agent, workflow, repo, task type, and business outcome. Token usage, retry loops, long-running jobs, and model routing should be visible while the work is happening.</p>
+            <p>GitHub Copilot is a good example of the shift. GitHub announced that <a href="https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/" target="_blank" rel="noopener">Copilot plans are moving to usage-based billing</a> on June 1, 2026, with AI Credits replacing the older request-based model and usage calculated from token consumption. That is where the market is going: the more work agents do, the more important cost routing, budgets, limits, and dashboards become.</p>
+            <p>Data security needs the same treatment. Track what context is being sent, where it is retained, which systems are connected, which credentials are active, and which workflows are allowed to use sensitive data. The dashboard should show both sides of the equation: the work moving through the factory and the risk profile around that work.</p>
+
+            <h2>Market Awareness Is An Operating Capability</h2>
+            <p>AI strategy cannot be refreshed once a year. Enterprises need a lightweight market awareness loop that watches model releases, pricing changes, retention policies, deprecations, regional access rules, security disclosures, and vendor roadmap shifts.</p>
+            <p>That does not mean chasing every announcement. It means knowing when a change affects your delivery system. If a model becomes cheaper, route the right work to it. If a retention policy changes, adjust the data path. If access changes, fall back cleanly. If a new tool creates a better execution surface, plug it into the harness.</p>
+
+            <h2>The Point</h2>
+            <p>AI is moving from assistance to execution. Agents can move from product gap to issue, from issue to pull request, from pull request to validation, and from validation to release. That changes the software delivery model.</p>
+            <p>The companies that benefit most will not be the ones that picked the perfect model once. They will be the ones that built a secure, observable, cost-aware, model-agnostic harness that can adapt as the market changes.</p>
+
+            <h2>Related Reading</h2>
+            <p>This connects to <a href="blog-post-ai-enablement-system.html">AI Enablement Means Building the System, Not Rolling Out a Tool</a>, <a href="blog-post-autonomous-software-factory-openclaw.html">Building an Autonomous Software Factory with OpenClaw</a>, <a href="blog-post-ai-playbook-automating-toil.html">Beyond Prompts: The Developer's AI Playbook for Automating Toil</a>, and <a href="blog-post-ai-toolchain-integration.html">Building an AI-Powered Engineering Workflow</a>.</p>
+
+            <div class="post-tags">
+              <span class="tag">AI SDLC</span>
+              <span class="tag">Model-Agnostic AI</span>
+              <span class="tag">AI Governance</span>
+              <span class="tag">Enterprise AI</span>
+              <span class="tag">Software Factory</span>
+            </div>
+          </div>
+        </article>
+
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/ai_enablement_system.png" alt="AI enablement system infographic">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-enablement-system.html">AI Enablement Means Building the System, Not Rolling Out a Tool</a></h4>
+                <span class="related-date">June 14, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=200&fit=crop" alt="Circuit board and automation hardware">
+              <div class="related-content">
+                <h4><a href="blog-post-autonomous-software-factory-openclaw.html">Building an Autonomous Software Factory with OpenClaw</a></h4>
+                <span class="related-date">June 13, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/ai_playbook/blog_ai_playbook.png" alt="AI playbook cover image">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-playbook-automating-toil.html">Beyond Prompts: The Developer's AI Playbook for Automating Toil</a></h4>
+                <span class="related-date">January 10, 2026</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
