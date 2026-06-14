@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Enablement Means Building the System, Not Rolling Out a Tool - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">June 14, 2026</span>
+            </div>
+            <h1 class="post-title">AI Enablement Means Building the System, Not Rolling Out a Tool</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop" alt="Team workshop with sticky notes and planning board" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">Most companies will approach AI enablement like every other enterprise rollout: buy licenses, announce tools, run training, track adoption, and hope productivity shows up. That will not be enough.</p>
+
+            <p>AI enablement is not about giving people access to a chatbot. It is about changing how work moves through the organization. For software teams, that becomes an AI-enabled SDLC. For the enterprise, it becomes an AI operating model. Eventually, for engineering, it becomes a software factory.</p>
+
+            <h2>The Tool Is Not the Strategy</h2>
+            <p>I expect Codex and Claude Code to keep leading for serious agentic work, especially in technical workflows. But the specific tool is not the strategy. The market will keep moving: GitHub Copilot, Cursor, Kiro, Gemini CLI, and others are all heading in the same direction.</p>
+            <p>The durable requirement is execution. Both technical and non-technical teams need local access to where their work actually happens. For engineering, that means repos, terminals, filesystems, package managers, test runners, logs, scripts, cloud CLIs, and pull requests. For business teams, it means documents, spreadsheets, systems of record, customer notes, templates, policies, queues, dashboards, and workflow tools.</p>
+
+            <h2>Integration Is the Enablement Layer</h2>
+            <p>AI becomes useful when it is connected to the systems that define, deliver, operate, and measure work: GitHub, Jira, Confluence, Azure DevOps, Salesforce, ServiceNow, observability platforms, CI/CD tools, support queues, finance systems, HR systems, reporting tools, and internal APIs.</p>
+            <p>Use the vendor CLI where it exists. Use MCP where it creates a clean bridge. Use SDKs when deeper control is needed. Use REST APIs when that is the practical path. Use SSO where possible. Use scoped permissions. Treat every credential like production access. This is not prompt engineering. This is context engineering.</p>
+
+            <h2>Build the Harness</h2>
+            <p>Most organizations will miss the harness. A harness is the reusable operating layer that defines how the organization wants AI to work: integrations, skills, role agents, prompt templates, workflow kits, policy guidance, security rules, coding standards, writing standards, review expectations, escalation paths, and examples of good output.</p>
+            <p>Most of it can be markdown. That is the point. The best enablement assets are small, versioned, reusable instructions that AI tools can load. If you do it twice, make it reusable. That turns individual prompting into organizational capability.</p>
+
+            <h2>Create Role-Based Agents</h2>
+            <p>Do not start with generic agent language. Start with roles and repeatable tasks: product, support, finance, legal, HR, security, architect, QA, DevOps, RCA analyst, code reviewer, documentation writer, and implementation planner.</p>
+            <p>These agents do not need to be complicated. They need a clear role, bounded authority, the right context, output expectations, and rules for when to stop and ask for a human.</p>
+
+            <h2>Organize Agents Into Workflows</h2>
+            <p>Individual agents are helpful, but workflows are where the operating model changes. A customer feedback workflow can ingest signals, classify themes, map them to roadmap areas, draft action, and route work. A software workflow can triage an issue, investigate root cause, design the fix, create tests, write code, review the PR, and prepare release notes.</p>
+            <p>The leverage is in the handoff. Each agent produces structured output for the next step, which makes the process clearer, more consistent, and more measurable.</p>
+
+            <h2>Move Into Controlled Autonomy</h2>
+            <p>Start with investigation: summarize cases, classify work, inspect documents, compare records, check logs, identify duplicates, draft responses, create follow-up items, and recommend next steps. Then move to controlled write paths: create tickets, prepare reports, open pull requests, update tests, generate documentation, respond to review comments, and prepare low-risk changes.</p>
+            <p>Do not start with full autonomy. Start with controlled autonomy: read, summarize, recommend, prepare, draft, validate, route, review, approve. Autonomy should be earned through evidence.</p>
+
+            <h2>Build the Software Factory</h2>
+            <p>For engineering organizations, this model eventually becomes a software factory. Not one giant agent, but a system of small, bounded, observable workflows that move work through the SDLC.</p>
+            <p>GitHub Actions is a natural backbone because it already provides triggers, schedules, repo-level execution, logs, permissions, and workflow automation. GitHub Agentic Workflows, <code>gh-aw</code>, is interesting because it pushes this pattern further: agentic repository workflows defined in markdown and run through GitHub Actions.</p>
+
+            <h2>Control Surface, Execution Backbone</h2>
+            <p>OpenClaw fits the same broader pattern. It can act as the conversational or control layer, while GitHub, Actions, CLIs, agents, scripts, APIs, and MCP servers do the execution underneath.</p>
+            <p>Chat becomes the control surface. GitHub becomes the system of record. Actions becomes the execution backbone. CLI, MCP, SDK, and APIs become the integration layer. Markdown becomes the shared configuration. Agents become the role-based workers. Humans remain the approval and judgment layer.</p>
+
+            <h2>What the Workflows Look Like</h2>
+            <p>A bug pipeline watches for eligible issues, triages the bug, investigates root cause, creates a plan, writes or updates tests, applies the fix, opens the PR, responds to review feedback, and asks for merge approval. A feature pipeline reads a roadmap item or customer signal, drafts requirements, creates acceptance criteria, proposes architecture, breaks work into stories, routes implementation, and tracks completion.</p>
+            <p>A test pipeline finds coverage gaps, generates test plans, creates missing tests, opens PRs, and routes review. An incident pipeline reads alerts, checks recent deployments, inspects logs, identifies likely causes, drafts the RCA, creates follow-up work, and prepares communication. That is an AI-enabled SDLC. It is not one tool, one model, or one magic prompt. It is a software factory.</p>
+
+            <h2>How I Would Measure It</h2>
+            <p>I would not measure AI enablement by license count. I would measure capability, utilization, value, and governance: approved tools, secure access, real workflow usage, cycle-time improvement, quality, cost avoidance, customer impact, audit trails, policy enforcement, and human oversight.</p>
+            <p>Usage is not the business case. Usage is a signal. The business case is cycle time, quality, capacity, cost avoidance, risk reduction, and customer impact.</p>
+
+            <h2>The Maturity Curve</h2>
+            <p>The maturity curve is simple: tools and prompting, integrated workflows, shared configuration, role-based agents, orchestrated workflows, and autonomous execution with governance and human oversight. Most organizations are still early. That is fine. The mistake is thinking the destination is better prompting.</p>
+            <p>It is not. The destination is reusable work systems.</p>
+
+            <h2>The Point</h2>
+            <p>AI enablement is not about buying the best tool. The best tool will keep changing. The durable advantage is the system around the tool: execution access, secure integration, shared configuration, role-specific agents, agent workflows, controlled autonomy, and a software factory.</p>
+            <p>That is where AI starts to change how work gets done. Not because it replaces human judgment, but because it removes waste from the system around human judgment.</p>
+
+            <div class="post-tags">
+              <span class="tag">AI Enablement</span>
+              <span class="tag">AI SDLC</span>
+              <span class="tag">Agentic Workflows</span>
+              <span class="tag">Software Factory</span>
+              <span class="tag">Enterprise AI</span>
+            </div>
+          </div>
+        </article>
+
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/ai_playbook/blog_ai_playbook.png" alt="AI playbook cover image">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-playbook-automating-toil.html">Beyond Prompts: The Developer's AI Playbook for Automating Toil</a></h4>
+                <span class="related-date">January 10, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&h=200&fit=crop" alt="Circuit board and automation hardware">
+              <div class="related-content">
+                <h4><a href="blog-post-autonomous-software-factory-openclaw.html">Building an Autonomous Software Factory with OpenClaw</a></h4>
+                <span class="related-date">June 13, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300&h=200&fit=crop" alt="Slack, GitHub, and automation workflow">
+              <div class="related-content">
+                <h4><a href="blog-post-openclaw-github-slack-automation.html">How I Run OpenClaw, GitHub Automation, and Slack on an Ubuntu VM</a></h4>
+                <span class="related-date">April 11, 2026</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
