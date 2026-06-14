@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Delivery Needs a Model-Agnostic Operating Model - Paul Snider</title>
+  <title>The Most Dynamic Week Yet in AI Software Delivery - Paul Snider</title>
   <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../styles.css">
@@ -58,7 +58,7 @@
               <span class="post-category">Technology</span>
               <span class="post-date">June 14, 2026</span>
             </div>
-            <h1 class="post-title">AI Delivery Needs a Model-Agnostic Operating Model</h1>
+            <h1 class="post-title">The Most Dynamic Week Yet in AI Software Delivery</h1>
             <div class="post-author">
               <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
               <div class="author-info">
@@ -73,37 +73,44 @@
           </div>
 
           <div class="post-content">
-            <p class="lead">The useful lesson from this moment in AI software delivery is not that one model is ahead. It is that the model, pricing, access rules, data terms, and security posture can all change faster than an enterprise rollout plan.</p>
+            <p class="lead">This may have been the most dynamic week yet in AI software delivery. The lesson is not that one model is ahead. It is that capability, pricing, data terms, access rules, and security posture can all change faster than an enterprise rollout plan.</p>
 
             <p>If your AI strategy depends on one vendor, one model, one prompt pattern, or one access path, it is brittle. The durable advantage is a model-agnostic operating model: a flexible harness, strong governance, market awareness, and clear visibility into cost and data security.</p>
 
-            <h2>The Capability Is Real</h2>
+            <h2>The Capability Was Obvious</h2>
             <p>A recent evening agent run made this concrete for me. In a few hours between family events in the evening, using a personal account and remote control from my phone, the system produced 147 GitHub artifacts: 116 likely AI-created issues, 31 confirmed AI-generated pull requests, 30 merged pull requests, +4,519 lines added, 615 lines removed, and 27 linked issue references closed.</p>
             <p>That was not autocomplete. It was an agentic product and engineering sweep: gap discovery, backlog creation, implementation, review follow-up, and closeout. The work touched mobile parity, performance, UX, notifications, reliability, security hardening, architecture quality, and release readiness.</p>
 
-            <h2>Model-Agnostic By Design</h2>
-            <p>The tool market will keep moving. Codex, Claude, GitHub Copilot, Cursor, Kiro, Gemini, and the next set of tools will keep trading places on capability, latency, price, context length, safety posture, and enterprise terms.</p>
-            <p>The answer is not to ignore the best model. Use it when it makes sense. But do not hard-code your operating model to it. Keep instructions, skills, standards, and workflows portable. Put integrations behind CLIs, MCP servers, SDKs, APIs, and source-controlled configuration so teams can route work to the right model without rebuilding the process every time the market shifts.</p>
+            <h2>Then Anthropic Raised The Stakes</h2>
+            <p>On June 9, Anthropic launched <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">Claude Fable 5 and Claude Mythos 5</a>. Anthropic described Fable 5 as a Mythos-class model made safe for general use, with strong performance in software engineering, knowledge work, vision, scientific research, and long-running tasks. Mythos 5 was the same underlying model with fewer limits for a smaller trusted-access group focused on high-risk domains.</p>
+            <p>The point was clear: frontier AI is moving from assistance to execution. These systems are being positioned for longer work, more context, self-verification, and agentic workflows. That is exactly where software delivery is headed.</p>
+
+            <h2>Privacy Became Immediate</h2>
+            <p>The enterprise concern showed up right away. The highest-value AI workflows need the most sensitive context: source code, architecture, product gaps, customer workflows, security findings, delivery data, and internal strategy.</p>
+            <p>AWS documented that using Fable 5 on Bedrock required opting into data sharing, and that Anthropic required <a href="https://aws.amazon.com/blogs/aws/anthropic-claude-fable-5-on-aws-mythos-class-capabilities-with-built-in-safeguards-now-available/" target="_blank" rel="noopener">30-day retention of inputs and outputs plus human review</a>. AWS also noted that once customers opted into that retention mode, data would leave AWS's data and security boundary. That is not a minor implementation detail. It is a governance decision.</p>
+
+            <h2>Cost Became Operational</h2>
+            <p>Anthropic listed Fable 5 and Mythos 5 at $10 per million input tokens and $50 per million output tokens. That pricing matters because agents can consume far more than a person typing into a chat window. They inspect, plan, branch, test, retry, summarize, respond to feedback, and keep going.</p>
+            <p>GitHub Copilot is a good example of the broader market shift. GitHub announced that <a href="https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/" target="_blank" rel="noopener">Copilot plans are moving to usage-based billing</a> on June 1, 2026, with AI Credits replacing the older request-based model and usage calculated from token consumption. Seat-based pricing works when the human is the constraint. Agents change that. AI cost management is becoming an operating model problem, not just a procurement problem.</p>
+
+            <h2>Then Access Changed</h2>
+            <p>Three days after launch, Anthropic <a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">suspended access to Fable 5 and Mythos 5</a>. Anthropic said the U.S. government issued an export-control directive requiring it to suspend access by foreign nationals, including foreign nationals inside the United States and foreign-national Anthropic employees. To comply, Anthropic disabled access for all customers.</p>
+            <p>Anthropic said its understanding was that the concern involved a possible jailbreak used to identify software vulnerabilities, and it pushed back publicly on the technical basis for the directive. The details matter, but the bigger signal matters more: a model launched, enterprise data and cost questions appeared immediately, the capability jump was visible, and then access changed within days because of national security concerns.</p>
 
             <h2>The Harness Is The Strategy</h2>
-            <p>The harness is the reusable layer that tells AI how work should happen: role instructions, coding standards, review expectations, security rules, escalation paths, workflow templates, test requirements, documentation patterns, and examples of good output.</p>
-            <p>Most of it can be markdown. That is the point. A flexible harness makes AI adoption less dependent on individual prompting skill and more dependent on organizational design. When the model changes, the harness carries the operating knowledge forward.</p>
+            <p>This is why the operating model matters more than the model name. The tool market will keep moving. Codex, Claude, GitHub Copilot, Cursor, Kiro, Gemini, and the next set of tools will keep trading places on capability, latency, price, context length, safety posture, and enterprise terms.</p>
+            <p>The answer is not to ignore the best model. Use it when it makes sense. But keep instructions, skills, standards, and workflows portable. Put integrations behind CLIs, MCP servers, SDKs, APIs, and source-controlled configuration so teams can route work to the right model without rebuilding the process every time the market shifts.</p>
 
-            <h2>Governance Has To Be Built In</h2>
-            <p>Governance cannot be a policy PDF that sits outside the workflow. It has to live in the execution path: scoped credentials, branch protection, review gates, audit logs, approval points, data classification, secret handling, budget limits, and stop conditions.</p>
-            <p>The more capable agents become, the more important the boundaries become. You want agents that can do meaningful work, but you also need to know what they can read, what they can change, who approved it, what tests ran, what it cost, and how to roll it back.</p>
+            <h2>Governance Needs To Be In The Workflow</h2>
+            <p>Governance cannot be a policy PDF that sits outside the workflow. It has to live in the execution path: scoped credentials, branch protection, review gates, audit logs, approval points, data classification, secret handling, budget limits, model-routing rules, and stop conditions.</p>
+            <p>Cost and data security need dashboards. Teams should be able to see spend by model, agent, workflow, repo, task type, and business outcome. They should also know what context is being sent, where it is retained, which systems are connected, which credentials are active, and which workflows are allowed to use sensitive data.</p>
 
-            <h2>Cost And Data Need Dashboards</h2>
-            <p>AI cost visibility cannot wait for a monthly invoice. Teams need spend telemetry by model, agent, workflow, repo, task type, and business outcome. Token usage, retry loops, long-running jobs, and model routing should be visible while the work is happening.</p>
-            <p>GitHub Copilot is a good example of the shift. GitHub announced that <a href="https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/" target="_blank" rel="noopener">Copilot plans are moving to usage-based billing</a> on June 1, 2026, with AI Credits replacing the older request-based model and usage calculated from token consumption. That is where the market is going: the more work agents do, the more important cost routing, budgets, limits, and dashboards become.</p>
-            <p>Data security needs the same treatment. Track what context is being sent, where it is retained, which systems are connected, which credentials are active, and which workflows are allowed to use sensitive data. The dashboard should show both sides of the equation: the work moving through the factory and the risk profile around that work.</p>
-
-            <h2>Market Awareness Is An Operating Capability</h2>
+            <h2>Market Awareness Is Now Required</h2>
             <p>AI strategy cannot be refreshed once a year. Enterprises need a lightweight market awareness loop that watches model releases, pricing changes, retention policies, deprecations, regional access rules, security disclosures, and vendor roadmap shifts.</p>
             <p>That does not mean chasing every announcement. It means knowing when a change affects your delivery system. If a model becomes cheaper, route the right work to it. If a retention policy changes, adjust the data path. If access changes, fall back cleanly. If a new tool creates a better execution surface, plug it into the harness.</p>
 
             <h2>The Point</h2>
-            <p>AI is moving from assistance to execution. Agents can move from product gap to issue, from issue to pull request, from pull request to validation, and from validation to release. That changes the software delivery model.</p>
+            <p>This week showed the full enterprise AI conversation in compressed form: capability, privacy, cost, governance, market volatility, and national security. AI is moving from assistance to execution, and execution systems need production-grade controls.</p>
             <p>The companies that benefit most will not be the ones that picked the perfect model once. They will be the ones that built a secure, observable, cost-aware, model-agnostic harness that can adapt as the market changes.</p>
 
             <h2>Related Reading</h2>
@@ -111,9 +118,10 @@
 
             <div class="post-tags">
               <span class="tag">AI SDLC</span>
+              <span class="tag">Anthropic</span>
               <span class="tag">Model-Agnostic AI</span>
               <span class="tag">AI Governance</span>
-              <span class="tag">Enterprise AI</span>
+              <span class="tag">AI Cost Management</span>
               <span class="tag">Software Factory</span>
             </div>
           </div>
