@@ -170,7 +170,23 @@ function initializeBlog() {
     
     if (!searchInput || !categoryFilter || !blogPosts.length) return;
     
-    let allPosts = Array.from(blogPosts);
+    const todayKey = getLocalDateKey();
+    const postElements = Array.from(blogPosts);
+
+    postElements.forEach(post => {
+        const publishDate = post.getAttribute('data-publish-date');
+        const isFuturePost = publishDate && publishDate > todayKey;
+
+        if (isFuturePost) {
+            post.dataset.scheduledHidden = 'true';
+            post.classList.add('hidden');
+            post.style.display = 'none';
+        } else if (publishDate) {
+            post.style.display = '';
+        }
+    });
+
+    let allPosts = postElements.filter(post => post.dataset.scheduledHidden !== 'true');
     let visiblePosts = allPosts.slice(0, 6); // Show first 6 posts initially
     let currentFilter = '';
     let currentSearch = '';
@@ -261,6 +277,13 @@ function initializeBlog() {
         } else if (!show && noResultsMsg) {
             noResultsMsg.remove();
         }
+    }
+
+    function getLocalDateKey(date = new Date()) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
     }
     
     // Add smooth reveal animation to blog posts
