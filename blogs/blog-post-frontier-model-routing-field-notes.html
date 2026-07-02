@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontier AI Field Notes: Fable 5, Sonnet 5, and GPT-5.5 - Paul Snider</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">July 2, 2026</span>
+            </div>
+            <h1 class="post-title">Frontier AI Field Notes: Fable 5, Sonnet 5, and GPT-5.5</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive & MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop" alt="Networked lights representing AI model routing" style="object-position: center; height: 400px; object-fit: cover;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">Models are starting to feel less like static products and more like market conditions. A model can launch, get discounted, get rate-limited, disappear, come back with new safeguards, or quietly behave differently inside the same workflow.</p>
+
+            <p>That makes the old question, "Which model is best?" less useful than a more operational question:</p>
+
+            <blockquote>
+              What work should I route to each model while the economics and availability make sense?
+            </blockquote>
+
+            <p>My short take after comparing several real coding-agent sessions: new Fable 5 does not feel as powerful as old Fable 5 at first glance. It still produced quality output, but it felt slower and less transparent. Sonnet 5 felt similar to Opus 4.8 in practical software work, maybe less powerful in some areas. GPT-5.5 felt surprisingly close to all of them when the surrounding workflow was strong.</p>
+
+            <p>This is not a lab benchmark. It is field evidence from real agentic software work: codebase scans, architecture review, security posture review, CI hardening, performance work, issue triage, pull requests, and operational debugging. Project names and sensitive product details are intentionally removed.</p>
+
+            <h2>Why this matters now</h2>
+            <p>The window for using premium models cheaply or freely can be short.</p>
+
+            <p>Anthropic restored Claude Fable 5 access after export controls were lifted. The restored access window matters: Anthropic said Fable 5 would be included for up to 50% of weekly usage limits through July 7, 2026, then move to usage credits. Anthropic also lists Fable 5 API pricing at $10 per million input tokens and $50 per million output tokens, with prompt-cache discounts available.</p>
+
+            <p>Claude Sonnet 5 launched with introductory API pricing of $2 per million input tokens and $10 per million output tokens through August 31, 2026, then moves to $3 and $15. Anthropic describes Sonnet 5 as close to Opus 4.8 on some agentic tasks at lower cost, especially with higher effort settings.</p>
+
+            <p>OpenAI says GPT-5.5 is available in ChatGPT and Codex, and that API pricing will be $5 per million input tokens and $30 per million output tokens, with a 1M context window for API developers. In Codex, OpenAI says GPT-5.5 has a 400K context window.</p>
+
+            <p>The practical lesson: when a frontier model is temporarily available, discounted, or rate-favorable, do not spend the best model on routine autocomplete. Use it for high-value work.</p>
+
+            <h2>The field data</h2>
+            <p>I compared retained session transcripts and GitHub metadata across several real agent runs. The table below summarizes the anonymized output.</p>
+
+            <table style="width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem;">
+              <thead>
+                <tr style="background: #f5f7fb;">
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Run</th>
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Work type</th>
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Measured output</th>
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">What it showed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Old Fable 5 evidence</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Broad product and engineering sweep</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">147 GitHub artifacts: 116 inferred issues, 31 confirmed AI PRs, 30 merged PRs, +4,519/-615 lines across 255 changed files</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">The most explosive run: wide discovery, backlog creation, many small and medium fixes, and strong follow-through.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>New Fable 5</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Automation and infrastructure tuning</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">18 commits, 11 tracked improvement items, 7 resolved, 5 root-cause analyses, 33 monitored units, doubled pipeline capacity</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Quality work, but more like a careful senior operator than a high-throughput factory.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Sonnet 5</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Architecture audit and app hardening</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">2 merged PRs, 11 bugs fixed, +838/-125 lines across 43 changed files, 4 parallel audit agents</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">The cleanest signal-to-code ratio: sharp review, targeted fixes, good tests, little waste.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>GPT-5.5 feature-parity run</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Migration and validation</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">206 completed turns, 8,672 tool calls, 2,056 test/build commands, one major PR merged +614/-73 across 23 files</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Exhaustive, persistent, test-heavy, and very effective when the goal required grinding through many checks.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>GPT-5.5 operations run</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Operational review and queue repair</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">217.8 active minutes, 998 tool calls, one targeted PR merged +45/-24</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Methodical diagnostics and strong guardrail thinking, with lower artifact volume.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>The old Fable 5 comparison has one caveat: I do not have the raw old transcript retained locally. The PR count and line totals are confirmed from GitHub metadata, and the issue count is inferred from timestamped issue batches and repeated structure. That makes it good field evidence, not a perfect apples-to-apples transcript comparison.</p>
+
+            <h2>What felt different</h2>
+
+            <table style="width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem;">
+              <thead>
+                <tr style="background: #f5f7fb;">
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Model</th>
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Field impression</th>
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Strengths</th>
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Watchouts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Old Fable 5</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Most explosive</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Broad discovery, issue generation, many small and medium PRs, end-to-end follow-through</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Raw transcript was not retained, so the comparison relies on artifact evidence.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>New Fable 5</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">High quality, less obviously dominant</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Root-cause analysis, long-running ops work, careful recovery, persistence through messy failures</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Felt slower and less visible while working. New safeguards may also change some debugging and security-adjacent workflows.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Sonnet 5</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Efficient and practical</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Architecture review, security posture, targeted fixes, tests, code review response</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Feels close to Opus 4.8 in many practical coding tasks, but not clearly stronger.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>GPT-5.5</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Comparable when the harness is strong</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Long context, persistence, heavy tool use, tests, CI debugging, migration work</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Can be verbose and tool-heavy. It benefits from strong stop conditions and clear validation targets.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>The biggest surprise: GPT-5.5 did not feel far behind the Claude models in real software-agent work. Once the harness supplied the same repo access, tools, tests, review loops, and operating rules, the models clustered closer together than the hype cycle suggests.</p>
+
+            <p>The workflow mattered as much as the model.</p>
+
+            <h2>Use limited premium access on high-value work</h2>
+            <p>If Fable-class or discounted Sonnet-class access is temporary, I would spend it on work with compounding value.</p>
+
+            <table style="width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem;">
+              <thead>
+                <tr style="background: #f5f7fb;">
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">High-value use</th>
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Why it is worth premium tokens</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Architecture review</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Finds systemic problems that affect every future feature.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Security posture review</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Expensive to do manually, high downside if missed.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Cross-platform parity audit</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Great models can compare behavior across web, mobile, APIs, docs, and tests.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>CI and release gate review</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Prevents silent failure paths from becoming production habits.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Performance and reliability sweep</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Turns scattered symptoms into prioritized fixes.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Test strategy review</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Finds where your test suite gives false confidence.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Backlog shaping</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Converts vague product gaps into implementable, reviewable work.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;"><strong>Root-cause analysis</strong></td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Premium models are valuable when the answer spans logs, code, infrastructure, and history.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>Use cheaper or more available models for routine follow-up: formatting, narrow bug fixes, test updates, documentation cleanup, and repetitive implementation once the expensive model has mapped the terrain.</p>
+
+            <h2>My routing strategy</h2>
+
+            <table style="width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.95rem;">
+              <thead>
+                <tr style="background: #f5f7fb;">
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Task</th>
+                  <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Best first choice</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Big unknown codebase scan</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Fable 5 or Sonnet 5 at high effort</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Architecture or security review</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Sonnet 5 or Fable 5</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Long implementation with lots of test loops</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">GPT-5.5 or Sonnet 5</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Operational debugging across logs and infrastructure</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">New Fable 5 or GPT-5.5</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Many small backlog PRs</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Old Fable-style workflow if available; otherwise GPT-5.5 or Sonnet with automation</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Routine code cleanup</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Cheaper model or lower effort</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Sensitive enterprise work</td>
+                  <td style="border: 1px solid #ddd; padding: 12px;">Route by data retention, access controls, and auditability before raw intelligence</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p>The key is not loyalty to one model. The key is routing.</p>
+
+            <h2>The bigger lesson</h2>
+            <p>Models are now part of the operating environment. They have pricing, rate limits, safety behavior, retention terms, regional availability, and sometimes government-driven access changes. That means AI software delivery needs the same resilience we expect from any production dependency.</p>
+
+            <p>You need portable instructions, source-controlled workflows, review gates, cost dashboards, model-routing rules, clear data classification, fallback paths, and session history that lets you compare outcomes after the fact.</p>
+
+            <p>The durable advantage is not picking the best model once. It is building an operating model that can notice when the best tool changes and move work accordingly.</p>
+
+            <blockquote>
+              New Fable 5 is still good, but it does not immediately feel like old Fable 5. Sonnet 5 is a strong practical coding model and may be close enough to Opus 4.8 for many tasks. GPT-5.5 is absolutely in the same conversation when the harness is good.
+            </blockquote>
+
+            <p>So while premium Claude access is available or discounted, I would use it aggressively for the highest-leverage work: scan the codebase, find architecture problems, assess security posture, inspect CI and release gates, and create the backlog that cheaper models can execute later.</p>
+
+            <p>Go big while you have it.</p>
+
+            <h2>Sources and notes</h2>
+            <ul>
+              <li><a href="https://www.anthropic.com/news/redeploying-fable-5" target="_blank" rel="noopener">Anthropic: Redeploying Fable 5</a></li>
+              <li><a href="https://www.anthropic.com/claude/fable" target="_blank" rel="noopener">Anthropic: Claude Fable 5 pricing and safeguards</a></li>
+              <li><a href="https://www.anthropic.com/news/claude-sonnet-5" target="_blank" rel="noopener">Anthropic: Introducing Claude Sonnet 5</a></li>
+              <li><a href="https://openai.com/index/introducing-gpt-5-5/" target="_blank" rel="noopener">OpenAI: Introducing GPT-5.5</a></li>
+              <li>Session statistics come from retained local agent transcripts and GitHub PR metadata. Project and product details are intentionally anonymized.</li>
+            </ul>
+
+            <div class="post-tags">
+              <span class="tag">AI Models</span>
+              <span class="tag">Fable 5</span>
+              <span class="tag">Sonnet 5</span>
+              <span class="tag">GPT-5.5</span>
+              <span class="tag">AI Strategy</span>
+              <span class="tag">Software Delivery</span>
+            </div>
+          </div>
+        </article>
+
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/ai_model_agnostic_harness.jpg" alt="Model-agnostic AI delivery harness">
+              <div class="related-content">
+                <h4><a href="blog-post-model-agnostic-ai-harness.html">The Most Dynamic Week Yet in AI Software Delivery</a></h4>
+                <span class="related-date">June 14, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/ai_enablement_system.png" alt="AI enablement system">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-enablement-system.html">AI Enablement Means Building the System, Not Rolling Out a Tool</a></h4>
+                <span class="related-date">June 14, 2026</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/ai_playbook/blog_ai_playbook.png" alt="AI playbook cover image">
+              <div class="related-content">
+                <h4><a href="blog-post-ai-playbook-automating-toil.html">Beyond Prompts: The Developer's AI Playbook for Automating Toil</a></h4>
+                <span class="related-date">January 10, 2026</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
