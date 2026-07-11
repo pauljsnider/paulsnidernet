@@ -43,13 +43,12 @@ The system automatically combines all calendar sources into a single .ics feed t
 https://paulsnider.net/family/family-calendar-combined.ics
 ```
 
-### Current Sources (6 calendars):
-- Will Soccer (GameChanger)
-- Will Baseball (GameChanger)
+### Current Synced Sources (5 calendars):
+- Will Soccer (GameChanger calendar subscription)
+- Will Soccer - Vipers FC U8B (GameChanger calendar subscription)
+- Will Baseball (GameChanger calendar subscriptions)
 - Will Indoor Soccer (PlayMetrics)
-- Madison Futsal (local .ics)
-- TeamSnap Events (Madison + Max)
-- SignUpGenius Volunteer
+- TeamSnap Events (Madison + Max + Will)
 
 ### How It Works
 - GitHub Action runs every 6 hours automatically

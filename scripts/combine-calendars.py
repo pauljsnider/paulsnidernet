@@ -33,10 +33,11 @@ TEST_MODE = os.getenv('CALENDAR_TEST_MODE', '').lower() in ('1', 'true', 'yes')
 
 # Maps known source calendar names to (kid, sport) for SUMMARY normalization.
 CALENDAR_LABEL_MAP = {
-    'Will Soccer':        ('Will',    'Soccer'),
-    'Will Baseball':      ('Will',    'Baseball'),
-    'Will Indoor Soccer': ('Will',    'Indoor Soccer'),
-    'Madison Futsal':     ('Madison', 'Futsal'),
+    'Will Soccer':                     ('Will',    'Soccer'),
+    'Will Soccer - Vipers FC U8B':     ('Will',    'Soccer'),
+    'Will Baseball':                   ('Will',    'Baseball'),
+    'Will Indoor Soccer':              ('Will',    'Indoor Soccer'),
+    'Madison Futsal':                  ('Madison', 'Futsal'),
 }
 
 # Manual corrections for upstream feeds that omit venue data. Keep this narrow:
@@ -101,6 +102,10 @@ PRODUCTION_CALENDARS = [
     {
         'name': 'Will Soccer',
         'url': 'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876'
+    },
+    {
+        'name': 'Will Soccer - Vipers FC U8B',
+        'url': 'webcal://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=5cfc9702-f394-4b13-b2fb-a0a57ac91ab5&token=e1049d5027e89435f3ae8974d4df02b10d75adc72597ad6cd0471d413d5836f0',
     },
     {
         'name': 'Will Baseball',
