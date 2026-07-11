@@ -407,6 +407,14 @@
                     </div>
                     <div class="calendar-item">
                         <label class="calendar-checkbox">
+                            <input type="checkbox" id="cal-will-vipers-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-futbol sport-icon"></i>
+                        <span class="calendar-name">Will Soccer — Vipers FC U8B</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
                             <input type="checkbox" id="cal-will-baseball-enabled" checked onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
@@ -561,6 +569,7 @@
         // Names of calendars sourced from the combined feed (must match X-SOURCE-CALENDAR values)
         const GH_CALENDAR_NAMES = [
             'Will Soccer',
+            'Will Soccer - Vipers FC U8B',
             'Will Baseball',
             'Will Indoor Soccer',
             'TeamSnap Events (Madison + Max + Will)'
@@ -588,6 +597,7 @@
         // All checkbox IDs that control filtering
         const GH_CALENDAR_CHECKBOX_IDS = {
             'Will Soccer':                          'cal-will-soccer-enabled',
+            'Will Soccer - Vipers FC U8B':          'cal-will-vipers-enabled',
             'Will Baseball':                        'cal-will-baseball-enabled',
             'Will Indoor Soccer':                   'cal-will-indoor-soccer-enabled',
             'TeamSnap Events (Madison + Max + Will)': 'cal-teamsnap-enabled'
