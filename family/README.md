@@ -17,6 +17,7 @@ Managing three kids' schedules across multiple sports platforms, school calendar
 - **TeamSnap** - OAuth integration for Madison and Max's soccer events
 - **GameChanger** - Calendar feeds for Will's soccer and baseball
 - **PlayMetrics** - Will's indoor soccer schedule
+- **Sprocket Sports** - Max's soccer schedule
 - **SignUpGenius** - Volunteer opportunity calendar
 - **Local .ics files** - Madison's Futsal and other manually-created calendars
 
@@ -43,12 +44,13 @@ The system automatically combines all calendar sources into a single .ics feed t
 https://paulsnider.net/family/family-calendar-combined.ics
 ```
 
-### Current Synced Sources (5 calendars):
+### Current Synced Sources (6 calendars):
 - Will Soccer (GameChanger calendar subscription)
 - Will Soccer - Vipers FC U8B (GameChanger calendar subscription)
 - Will Baseball (GameChanger calendar subscriptions)
 - Will Indoor Soccer (PlayMetrics)
 - TeamSnap Events (Madison + Max + Will)
+- Max Soccer - Major Derek (Sprocket Sports)
 
 ### How It Works
 - GitHub Action runs every 6 hours automatically

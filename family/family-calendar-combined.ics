@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-07-25T01:48:44.093710+00:00
+X-COMBINE-TIMESTAMP:2026-07-25T02:12:37.947950+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:Will Soccer: OTE Cougars (First Grade Boys) @ Robertson
@@ -2023,5 +2023,203 @@ LAST-MODIFIED:20260516T142018
 LOCATION:Field 4
 X-ORIGINAL-SUMMARY:OTE Pre-K Summer Baseball vs Ferguson
 X-SOURCE-CALENDAR:TeamSnap Events (Madison + Max + Will)
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20261020T180000
+DTEND;TZID=America/Chicago:20261020T190000
+DTSTAMP:20260724T225927Z
+UID:SprocketSports-3209919
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20260811T180000
+DTEND;TZID=America/Chicago:20260811T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3209909
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20260818T180000
+DTEND;TZID=America/Chicago:20260818T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3210011
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20260825T180000
+DTEND;TZID=America/Chicago:20260825T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3210012
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20260901T180000
+DTEND;TZID=America/Chicago:20260901T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3210013
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20260908T180000
+DTEND;TZID=America/Chicago:20260908T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3210014
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20260915T180000
+DTEND;TZID=America/Chicago:20260915T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3210015
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20260922T180000
+DTEND;TZID=America/Chicago:20260922T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3210016
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20260929T180000
+DTEND;TZID=America/Chicago:20260929T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3210017
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20261006T180000
+DTEND;TZID=America/Chicago:20261006T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3210018
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Soccer: F26KB Major Derek - Practice
+DTSTART;TZID=America/Chicago:20261013T180000
+DTEND;TZID=America/Chicago:20261013T190000
+DTSTAMP:20260725T000145Z
+UID:SprocketSports-3210019
+SEQUENCE:1
+DESCRIPTION:Field: South\n
+GEO:38.887596;-94.631608
+LOCATION:Mission Trail Elementary School \n13200 Mission Road\, Leawood\, 
+ KS 66209
+ORGANIZER;CN="Sporting Blue Valley Soccer Club":mailto:info@sportingbv.org
+STATUS:CONFIRMED
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-TITLE="Mission Trail Elementary Sc
+ hool":geo:38.8875961,-94.6316076
+X-ORIGINAL-SUMMARY:F26KB Major Derek - Practice
+X-SOURCE-CALENDAR:Max Soccer - Major Derek
 END:VEVENT
 END:VCALENDAR

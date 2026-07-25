@@ -37,6 +37,7 @@ CALENDAR_LABEL_MAP = {
     'Will Soccer - Vipers FC U8B':     ('Will',    'Soccer'),
     'Will Baseball':                   ('Will',    'Baseball'),
     'Will Indoor Soccer':              ('Will',    'Indoor Soccer'),
+    'Max Soccer - Major Derek':         ('Max',     'Soccer'),
     'Madison Futsal':                  ('Madison', 'Futsal'),
 }
 
@@ -122,6 +123,10 @@ PRODUCTION_CALENDARS = [
     {
         'name': 'Will Indoor Soccer',
         'url': 'https://calendar.playmetrics.com/calendars/c237/t434992/p0/tA6AECF4E/f/calendar.ics'
+    },
+    {
+        'name': 'Max Soccer - Major Derek',
+        'url': 'https://ssprodst.blob.core.windows.net/calendars/445/106163.ics'
     },
 ]
 
@@ -359,6 +364,35 @@ def fetch_calendar(url, name):
     logger.error(f"✗ Failed to fetch {name}: {last_error}")
     return None
 
+
+def load_cached_source_calendar(source_name, output_file=OUTPUT_FILE):
+    """Load one source's last-known events from the existing combined feed."""
+    if not output_file.exists():
+        return None
+
+    try:
+        existing = Calendar.from_ical(output_file.read_bytes())
+    except Exception as error:
+        logger.warning(f"Could not read cached combined calendar: {error}")
+        return None
+
+    cached = Calendar()
+    event_count = 0
+    for component in existing.walk('VEVENT'):
+        if str(component.get('X-SOURCE-CALENDAR', '') or '').strip() != source_name:
+            continue
+        cached.add_component(component)
+        event_count += 1
+
+    if event_count == 0:
+        return None
+
+    logger.warning(
+        f"Using {event_count} cached events for {source_name} after live fetch failure"
+    )
+    return cached
+
+
 def expand_calendar_sources(calendars):
     """Expand calendars with multiple source URLs into individual fetch units."""
     expanded = []
@@ -453,7 +487,21 @@ def combine_calendars(calendars, source_names=None):
             component['x-source-calendar'] = event_source_map[uid]
         event_components.append(component)
 
-    for component in event_components:
+    # Some providers publish the same occurrence under a replacement UID.
+    # Keep the latest copy when source, title, start, and end are identical.
+    deduplicated_components = []
+    seen_occurrences = set()
+    for component in reversed(event_components):
+        occurrence_key = event_occurrence_key(component)
+        if occurrence_key and occurrence_key in seen_occurrences:
+            duplicate_count += 1
+            continue
+        if occurrence_key:
+            seen_occurrences.add(occurrence_key)
+        deduplicated_components.append(component)
+    deduplicated_components.reverse()
+
+    for component in deduplicated_components:
         combined.add_component(component)
 
     logger.info(f"✓ Combined {total_events} total events from {calendars_processed} calendars")
@@ -461,6 +509,27 @@ def combine_calendars(calendars, source_names=None):
         logger.info(f"  - Removed {duplicate_count} duplicate events")
     
     return combined
+
+
+def event_occurrence_key(component):
+    """Return a source-scoped key for semantically identical event occurrences."""
+    source_name = str(component.get('X-SOURCE-CALENDAR', '') or '').strip()
+    summary = re.sub(r'\s+', ' ', str(component.get('SUMMARY', '') or '')).strip()
+    start = component.get('DTSTART')
+    end = component.get('DTEND')
+
+    if not source_name or not summary or not start:
+        return None
+
+    start_value = getattr(start, 'dt', start)
+    end_value = getattr(end, 'dt', end) if end else ''
+
+    return (
+        source_name,
+        summary,
+        start_value.isoformat() if hasattr(start_value, 'isoformat') else str(start_value),
+        end_value.isoformat() if hasattr(end_value, 'isoformat') else str(end_value),
+    )
 
 def main():
     """Main function to fetch and combine all calendars."""
@@ -481,10 +550,15 @@ def main():
     for i, cal_info in enumerate(expanded_calendars):
         print(f"\n[{i+1}/{len(expanded_calendars)}] Processing: {cal_info['name']}")
         cal = fetch_calendar(cal_info['url'], cal_info['name'])
+        live_fetch_succeeded = cal is not None
+
+        if cal is None and not TEST_MODE:
+            cal = load_cached_source_calendar(cal_info['base_name'])
+
         calendars.append(cal)
         source_names.append(cal_info['base_name'])
 
-        if cal is not None:
+        if live_fetch_succeeded:
             success_count += 1
         else:
             failure_count += 1
