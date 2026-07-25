@@ -101,6 +101,10 @@ TEST_CALENDARS = [
 # Production calendars (private sources)
 PRODUCTION_CALENDARS = [
     {
+        'name': 'Family Email Events',
+        'path': 'family/family-email-events.ics'
+    },
+    {
         'name': 'Will Soccer',
         'url': 'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=0cf68eb5-b320-471e-a29b-a0f68f64e73e&token=ecfa94300ded39b32f4a2738a3d321449f3fb22ff19102c3ff0578701a4d5876'
     },
@@ -133,7 +137,8 @@ PRODUCTION_CALENDARS = [
 # Choose calendars based on mode
 CALENDARS = TEST_CALENDARS if TEST_MODE else PRODUCTION_CALENDARS
 
-OUTPUT_FILE = Path(__file__).parent.parent / 'family' / 'family-calendar-combined.ics'
+REPOSITORY_ROOT = Path(__file__).parent.parent
+OUTPUT_FILE = REPOSITORY_ROOT / 'family' / 'family-calendar-combined.ics'
 
 # Request configuration
 REQUEST_CONFIG = {
@@ -365,6 +370,23 @@ def fetch_calendar(url, name):
     return None
 
 
+def load_local_calendar(path, name):
+    """Load a checked-in calendar source without a network request."""
+    source_path = Path(path)
+    if not source_path.is_absolute():
+        source_path = REPOSITORY_ROOT / source_path
+
+    try:
+        calendar = Calendar.from_ical(source_path.read_bytes())
+    except Exception as error:
+        logger.error(f"✗ Failed to load local calendar {name}: {error}")
+        return None
+
+    event_count = sum(1 for component in calendar.walk() if component.name == "VEVENT")
+    logger.info(f"✓ {name}: {event_count} local events loaded successfully")
+    return calendar
+
+
 def load_cached_source_calendar(source_name, output_file=OUTPUT_FILE):
     """Load one source's last-known events from the existing combined feed."""
     if not output_file.exists():
@@ -398,6 +420,14 @@ def expand_calendar_sources(calendars):
     expanded = []
 
     for calendar in calendars:
+        if calendar.get('path'):
+            expanded.append({
+                'name': calendar['name'],
+                'base_name': calendar['name'],
+                'path': calendar['path'],
+            })
+            continue
+
         urls = calendar.get('urls') or [calendar.get('url')]
         urls = [url for url in urls if url]
 
@@ -434,9 +464,9 @@ def combine_calendars(calendars, source_names=None):
 
     total_events = 0
     event_components = []
-    event_by_uid = {}
-    ordered_uids = []
-    event_source_map = {}  # uid -> source_name
+    event_by_identity = {}
+    ordered_identities = []
+    event_source_map = {}  # (uid, recurrence-id) -> source_name
     duplicate_count = 0
     calendars_processed = 0
 
@@ -457,20 +487,20 @@ def combine_calendars(calendars, source_names=None):
                     apply_event_location_override(component, source_name)
                 uid = component.get('uid')
                 if uid:
-                    uid_str = str(uid)
-                    if uid_str in event_by_uid:
+                    identity = event_identity_key(component)
+                    if identity in event_by_identity:
                         duplicate_count += 1
                         # Later sources override earlier ones so fresher GameChanger
                         # subscriptions can correct stale event details.
-                        event_by_uid[uid_str] = component
+                        event_by_identity[identity] = component
                         if source_name:
-                            event_source_map[uid_str] = source_name
+                            event_source_map[identity] = source_name
                         continue
 
-                    event_by_uid[uid_str] = component
-                    ordered_uids.append(uid_str)
+                    event_by_identity[identity] = component
+                    ordered_identities.append(identity)
                     if source_name:
-                        event_source_map[uid_str] = source_name
+                        event_source_map[identity] = source_name
                 else:
                     if source_name:
                         component['x-source-calendar'] = source_name
@@ -481,10 +511,10 @@ def combine_calendars(calendars, source_names=None):
 
         logger.info(f"Calendar {i+1}: {calendar_events} events added")
 
-    for uid in ordered_uids:
-        component = event_by_uid[uid]
-        if uid in event_source_map:
-            component['x-source-calendar'] = event_source_map[uid]
+    for identity in ordered_identities:
+        component = event_by_identity[identity]
+        if identity in event_source_map:
+            component['x-source-calendar'] = event_source_map[identity]
         event_components.append(component)
 
     # Some providers publish the same occurrence under a replacement UID.
@@ -509,6 +539,22 @@ def combine_calendars(calendars, source_names=None):
         logger.info(f"  - Removed {duplicate_count} duplicate events")
     
     return combined
+
+
+def event_identity_key(component):
+    """Return an iCalendar identity that preserves recurrence exceptions."""
+    uid = str(component.get('UID', '') or '').strip()
+    recurrence_id = component.get('RECURRENCE-ID')
+    if not recurrence_id:
+        return (uid, '')
+
+    recurrence_value = getattr(recurrence_id, 'dt', recurrence_id)
+    normalized_recurrence = (
+        recurrence_value.isoformat()
+        if hasattr(recurrence_value, 'isoformat')
+        else str(recurrence_value)
+    )
+    return (uid, normalized_recurrence)
 
 
 def event_occurrence_key(component):
@@ -549,7 +595,10 @@ def main():
     source_names = []
     for i, cal_info in enumerate(expanded_calendars):
         print(f"\n[{i+1}/{len(expanded_calendars)}] Processing: {cal_info['name']}")
-        cal = fetch_calendar(cal_info['url'], cal_info['name'])
+        if cal_info.get('path'):
+            cal = load_local_calendar(cal_info['path'], cal_info['name'])
+        else:
+            cal = fetch_calendar(cal_info['url'], cal_info['name'])
         live_fetch_succeeded = cal is not None
 
         if cal is None and not TEST_MODE:
