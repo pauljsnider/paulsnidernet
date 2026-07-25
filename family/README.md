@@ -18,6 +18,7 @@ Managing three kids' schedules across multiple sports platforms, school calendar
 - **GameChanger** - Calendar feeds for Will's soccer and baseball
 - **PlayMetrics** - Will's indoor soccer schedule
 - **Sprocket Sports** - Max's soccer schedule
+- **Email calendar invitations** - Sanitized family events imported from `.ics` attachments
 - **SignUpGenius** - Volunteer opportunity calendar
 - **Local .ics files** - Madison's Futsal and other manually-created calendars
 
@@ -44,7 +45,8 @@ The system automatically combines all calendar sources into a single .ics feed t
 https://paulsnider.net/family/family-calendar-combined.ics
 ```
 
-### Current Synced Sources (6 calendars):
+### Current Synced Sources (7 calendars):
+- Family Email Events (sanitized calendar invitations)
 - Will Soccer (GameChanger calendar subscription)
 - Will Soccer - Vipers FC U8B (GameChanger calendar subscription)
 - Will Baseball (GameChanger calendar subscriptions)
@@ -55,9 +57,13 @@ https://paulsnider.net/family/family-calendar-combined.ics
 ### How It Works
 - GitHub Action runs every 6 hours automatically
 - Fetches all remote calendars
+- Loads checked-in family email events
 - Merges events and removes duplicates
 - Commits updated combined calendar to repository
 - GitHub Pages serves the latest version
+
+The website uses standards-compliant iCalendar parsing for one-time, recurring,
+all-day, multi-day, excluded, rescheduled, and cancelled event occurrences.
 
 ## Files
 

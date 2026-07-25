@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ical.js@2.2.1/dist/ical.es5.min.cjs"></script>
     <style>
         .config-section {
             background: var(--background-alt);
@@ -196,6 +197,7 @@
         .event-type-badge.teamsnap { background: #6f42c1; }
         .event-type-badge.school { background: #fd7e14; }
         .event-type-badge.trail { background: #20c997; }
+        .event-type-badge.family { background: var(--secondary-color); }
         .event-details { display: grid; gap: 8px; }
         .event-date { color: var(--text-color); font-size: 1rem; font-weight: 500; display: flex; align-items: center; gap: 8px; }
         .event-time { background: var(--primary-color); color: white; padding: 4px 10px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; margin-left: 8px; }
@@ -331,6 +333,7 @@
         .event-time-item.teamsnap { border-left-color: #6f42c1; }
         .event-time-item.school { border-left-color: #fd7e14; }
         .event-time-item.trail { border-left-color: #20c997; }
+        .event-time-item.family { border-left-color: var(--secondary-color); }
         .calendar-day.today .event-time-item { background: rgba(255,255,255,0.2); color: white; }
         .event-indicators { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 4px; }
         .event-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
@@ -339,6 +342,7 @@
         .event-dot.teamsnap { background: #6f42c1; }
         .event-dot.school { background: #fd7e14; }
         .event-dot.trail { background: #20c997; }
+        .event-dot.family { background: var(--secondary-color); }
         .event-dot.default { background: var(--accent-color); }
         .event-summary { font-size: 0.7rem; color: var(--text-color); margin-top: 2px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .calendar-day.today .event-summary { color: rgba(255,255,255,0.9); }
@@ -357,6 +361,7 @@
         .popup-event.teamsnap { border-left-color: #6f42c1; }
         .popup-event.school { border-left-color: #fd7e14; }
         .popup-event.trail { border-left-color: #20c997; }
+        .popup-event.family { border-left-color: var(--secondary-color); }
         .popup-event-title { font-weight: 600; margin-bottom: 5px; color: var(--secondary-color); }
         .popup-event-time { font-size: 0.9rem; color: var(--text-light); margin-bottom: 3px; }
         .popup-event-location { font-size: 0.85rem; color: var(--text-light); margin-bottom: 3px; }
@@ -444,6 +449,14 @@
                         </label>
                         <i class="fas fa-futbol sport-icon"></i>
                         <span class="calendar-name">Max Soccer — Major Derek</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="cal-family-email-events-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-calendar-check sport-icon"></i>
+                        <span class="calendar-name">Family Email Events</span>
                     </div>
 
                     <div class="calendar-section-label" style="margin-top:20px;">
@@ -581,7 +594,8 @@
             'Will Baseball',
             'Will Indoor Soccer',
             'TeamSnap Events (Madison + Max + Will)',
-            'Max Soccer - Major Derek'
+            'Max Soccer - Major Derek',
+            'Family Email Events'
         ];
 
         // Live calendars fetched via CORS proxies
@@ -610,7 +624,8 @@
             'Will Baseball':                        'cal-will-baseball-enabled',
             'Will Indoor Soccer':                   'cal-will-indoor-soccer-enabled',
             'TeamSnap Events (Madison + Max + Will)': 'cal-teamsnap-enabled',
-            'Max Soccer - Major Derek':             'cal-max-soccer-enabled'
+            'Max Soccer - Major Derek':             'cal-max-soccer-enabled',
+            'Family Email Events':                  'cal-family-email-events-enabled'
         };
 
         const CORS_PROXIES = [
@@ -782,6 +797,116 @@
         // ── iCal parser ──────────────────────────────────────────────────────
 
         function parseICalData(icalData, defaultCalendarName, calendarId) {
+            if (typeof ICAL !== 'undefined') {
+                try {
+                    return parseICalDataWithIcalJs(icalData, defaultCalendarName, calendarId);
+                } catch (error) {
+                    console.warn('Full iCal parsing failed; using basic event parsing.', error);
+                }
+            }
+
+            return parseBasicICalData(icalData, defaultCalendarName, calendarId);
+        }
+
+        function parseICalDataWithIcalJs(icalData, defaultCalendarName, calendarId) {
+            const calendar = new ICAL.Component(ICAL.parse(icalData));
+            const parsedEvents = calendar
+                .getAllSubcomponents('vevent')
+                .map(component => new ICAL.Event(component));
+            const masters = new Map();
+            const exceptions = [];
+
+            parsedEvents.forEach(event => {
+                if (event.isRecurrenceException()) {
+                    exceptions.push(event);
+                } else {
+                    masters.set(event.uid, event);
+                }
+            });
+
+            exceptions.forEach(exception => {
+                const master = masters.get(exception.uid);
+                if (master) master.relateException(exception);
+            });
+
+            const now = new Date();
+            const horizon = new Date(now);
+            horizon.setFullYear(horizon.getFullYear() + 2);
+            const events = [];
+
+            masters.forEach(master => {
+                const masterStatus = String(
+                    master.component.getFirstPropertyValue('status') || ''
+                ).toUpperCase();
+                if (masterStatus === 'CANCELLED') return;
+
+                const sourceName = String(
+                    master.component.getFirstPropertyValue('x-source-calendar') ||
+                    defaultCalendarName ||
+                    ''
+                );
+
+                if (!master.isRecurring()) {
+                    const event = buildCalendarEvent(
+                        master,
+                        master.startDate,
+                        master.endDate,
+                        sourceName,
+                        calendarId,
+                        null
+                    );
+                    if (event && (event.dtend || event.dtstart) >= now) events.push(event);
+                    return;
+                }
+
+                const iterator = master.iterator();
+                let occurrenceTime;
+                let occurrenceCount = 0;
+
+                while ((occurrenceTime = iterator.next()) && occurrenceCount < 5000) {
+                    occurrenceCount += 1;
+                    if (occurrenceTime.toJSDate() > horizon) break;
+
+                    const occurrence = master.getOccurrenceDetails(occurrenceTime);
+                    const occurrenceStatus = String(
+                        occurrence.item.component.getFirstPropertyValue('status') || ''
+                    ).toUpperCase();
+                    if (occurrenceStatus === 'CANCELLED') continue;
+
+                    const event = buildCalendarEvent(
+                        occurrence.item,
+                        occurrence.startDate,
+                        occurrence.endDate,
+                        sourceName,
+                        calendarId,
+                        occurrence.recurrenceId || occurrenceTime
+                    );
+                    if (event && (event.dtend || event.dtstart) >= now) events.push(event);
+                }
+            });
+
+            return dedupeEvents(events);
+        }
+
+        function buildCalendarEvent(event, startDate, endDate, sourceName, calendarId, recurrenceId) {
+            if (!event || !startDate || !event.summary) return null;
+
+            const occurrenceSuffix = recurrenceId ? `#${recurrenceId.toString()}` : '';
+            return {
+                calendarName: sourceName,
+                calendarId,
+                summary: event.summary,
+                description: event.description || '',
+                location: event.location || '',
+                uid: `${event.uid || ''}${occurrenceSuffix}`,
+                dtstart: startDate.toJSDate(),
+                dtend: endDate ? endDate.toJSDate() : null,
+                allDay: Boolean(startDate.isDate),
+                recurring: Boolean(recurrenceId)
+            };
+        }
+
+        function parseBasicICalData(icalData, defaultCalendarName, calendarId) {
             const lines = unfoldICalLines(icalData);
             const events = [];
             let currentEvent = null;
@@ -804,7 +929,10 @@
                         case 'DESCRIPTION': currentEvent.description = value.replace(/\\,/g, ',').replace(/\\n/g, '\n').replace(/\\;/g, ';'); break;
                         case 'LOCATION':    currentEvent.location    = value.replace(/\\,/g, ',').replace(/\\n/g, '\n').replace(/\\;/g, ';'); break;
                         case 'UID':         currentEvent.uid         = value; break;
-                        case 'DTSTART':     currentEvent.dtstart     = parseICalDate(value, keyPart); break;
+                        case 'DTSTART':
+                            currentEvent.dtstart = parseICalDate(value, keyPart);
+                            currentEvent.allDay = !value.includes('T') || /VALUE=DATE(?:;|$)/i.test(keyPart);
+                            break;
                         case 'DTEND':       currentEvent.dtend       = parseICalDate(value, keyPart); break;
                         case 'X-SOURCE-CALENDAR':
                             // Override calendarName with the source calendar from the combined feed
@@ -816,7 +944,7 @@
             }
 
             const now = new Date();
-            return events.filter(e => e.dtstart && e.dtstart >= now);
+            return events.filter(e => e.dtstart && (e.dtend || e.dtstart) >= now);
         }
 
         function unfoldICalLines(text) {
@@ -928,6 +1056,9 @@
 
             const eventText = `${summary} ${description} ${location}`;
 
+            if (/^will(?:\s|:)/.test(summary)) return 'Will';
+            if (/^madison(?:\s|:)/.test(summary)) return 'Madison';
+            if (/^max(?:\s|:)/.test(summary)) return 'Max';
             if (eventText.includes('mustangs') || eventText.includes('ote cougars') || eventText.includes('first grade boys')) return 'Will';
             if ((eventText.includes('1st grade') || eventText.includes('first grade')) && (eventText.includes('bball') || eventText.includes('basketball'))) return 'Will';
             if (eventText.includes('jr current') || eventText.includes('wildcats softball') || eventText.includes('4th grade girls')) return 'Madison';
@@ -956,6 +1087,7 @@
             if (n.includes('soccer'))   return 'soccer';
             if (n.includes('baseball')) return 'baseball';
             if (n.includes('teamsnap')) return 'teamsnap';
+            if (n.includes('family email')) return 'family';
             if (n.includes('blue valley') || n.includes('school')) return 'school';
             if (n.includes('overland trail') || n.includes('trail')) return 'trail';
             return '';
@@ -968,10 +1100,16 @@
             if (n.includes('will baseball') || n.includes('baseball')) return 'BASEBALL';
             if (n.includes('indoor soccer')) return 'INDOOR SOCCER';
             if (n.includes('teamsnap')) return 'TEAMSNAP';
+            if (n.includes('family email')) return 'FAMILY';
             if (n.includes('blue valley')) return 'SCHOOL';
             if (n.includes('overland trail')) return 'OVERLAND TRAIL';
             if (n.includes('st. michael') || n.includes('michael')) return 'SCHOOL';
             return calendarName;
+        }
+
+        function formatEventTime(event) {
+            if (event.allDay) return 'All day';
+            return event.dtstart.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
         }
 
         function displayEventsWithStats(events) {
@@ -996,12 +1134,12 @@
                     <div class="stats-item"><span class="stats-number">${events.length}</span><span class="stats-label">Showing Events</span></div>
                     <div class="stats-item"><span class="stats-number">${daysToNext}</span><span class="stats-label">Days to Next</span></div>
                     <div class="stats-item"><span class="stats-number">${gameEvents}</span><span class="stats-label">Games</span></div>
-                    <div class="stats-item"><span class="stats-number">${events.length - gameEvents}</span><span class="stats-label">Practices</span></div>
+                    <div class="stats-item"><span class="stats-number">${events.length - gameEvents}</span><span class="stats-label">Other Events</span></div>
                 </div>`;
 
             const eventsHtml = events.map(event => {
                 const dateStr = event.dtstart.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-                const timeStr = event.dtstart.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+                const timeStr = formatEventTime(event);
                 const cls = getCalendarClass(event.calendarName);
                 const badge = getCalendarBadgeText(event.calendarName);
                 const isGhEvent = GH_CALENDAR_NAMES.includes(event.calendarName);
@@ -1142,7 +1280,7 @@
                     dayEvents.slice(0, 3).forEach(e => {
                         const item = document.createElement('div');
                         item.className = `event-time-item ${getCalendarClass(e.calendarName)}`;
-                        const t = e.dtstart.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+                        const t = formatEventTime(e);
                         item.textContent = `${t} ${e.summary || ''}`;
                         times.appendChild(item);
                     });
@@ -1180,7 +1318,7 @@
                 if (event.dtstart) {
                     const t = document.createElement('div');
                     t.className = 'popup-event-time';
-                    t.textContent = event.dtstart.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+                    t.textContent = formatEventTime(event);
                     div.appendChild(t);
                 }
                 if (event.location) {
