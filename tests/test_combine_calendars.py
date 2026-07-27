@@ -59,8 +59,18 @@ class CombineCalendarsTest(unittest.TestCase):
             self.assertEqual([8], event['RRULE']['COUNT'])
             self.assertEqual(['SA'], [str(day) for day in event['RRULE']['BYDAY']])
 
+        descriptions = [
+            str(event['DESCRIPTION'])
+            for event in events
+            if event.get('DESCRIPTION')
+        ]
+        self.assertEqual(
+            ['No cost; all equipment is provided.'] * 2,
+            descriptions,
+        )
+
         source = EMAIL_EVENTS_PATH.read_text()
-        for private_field in ('ATTENDEE', 'DESCRIPTION', 'ORGANIZER', 'Passcode:', 'https://'):
+        for private_field in ('ATTENDEE', 'ORGANIZER', 'Passcode:', 'https://'):
             self.assertNotIn(private_field, source)
 
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
