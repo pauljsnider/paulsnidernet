@@ -58,6 +58,10 @@ class CombineCalendarsTest(unittest.TestCase):
             self.assertEqual('2026-08-01T08:40:00-05:00', event['DTEND'].dt.isoformat())
             self.assertEqual([8], event['RRULE']['COUNT'])
             self.assertEqual(['SA'], [str(day) for day in event['RRULE']['BYDAY']])
+            self.assertEqual(
+                '19900 Johnson Dr., Shawnee, KS 66218',
+                str(event['LOCATION']),
+            )
 
         descriptions = [
             str(event['DESCRIPTION'])
