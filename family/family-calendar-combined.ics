@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-08-04T01:28:12.916543+00:00
+X-COMBINE-TIMESTAMP:2026-08-04T08:20:43.629343+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:Will: Tutor
@@ -136,6 +136,7 @@ LAST-MODIFIED:20260427T001659Z
 LOCATION:Scheels Field 9S
 STATUS:CONFIRMED
 X-DERIVED-LOCATION:description-field-code
+X-DERIVED-LOCATION:description-field-code
 X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) vs Geha
 X-SOURCE-CALENDAR:Will Soccer
 END:VEVENT
@@ -152,6 +153,7 @@ GEO:38.8802473;-94.70456260000002
 LAST-MODIFIED:20260427T010627Z
 LOCATION:Scheels Field 9N
 STATUS:CONFIRMED
+X-DERIVED-LOCATION:description-field-code
 X-DERIVED-LOCATION:description-field-code
 X-ORIGINAL-SUMMARY:OTE Cougars (First Grade Boys) vs Remmert
 X-SOURCE-CALENDAR:Will Soccer
