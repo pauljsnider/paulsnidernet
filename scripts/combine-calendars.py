@@ -117,7 +117,8 @@ PRODUCTION_CALENDARS = [
         'url': 'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=8062a71b-b128-4aa5-bd73-ff686c22d8f6&token=a1bcfb01283407a3f79afdf9bbf5d7400714d67542caca0738910db13ee9f70d',
         'urls': [
             'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=8062a71b-b128-4aa5-bd73-ff686c22d8f6&token=a1bcfb01283407a3f79afdf9bbf5d7400714d67542caca0738910db13ee9f70d',
-            'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=628804f9-1e56-439b-b8f6-af42fb098e41&token=3f19b930ec1be351e60daf351471939c971ad0ed8e3afeef0df61df083464de3'
+            'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=628804f9-1e56-439b-b8f6-af42fb098e41&token=3f19b930ec1be351e60daf351471939c971ad0ed8e3afeef0df61df083464de3',
+            'https://api.team-manager.gc.com/ics-calendar-documents/user/d12bc6ff-2ff0-4fcd-890f-50c83aa3b6fb.ics?teamId=c45e0ec5-1799-4f7f-b056-f76e7407e1ff&token=5812ab0e4cd7dedf7b8efdb635a3ddf197f486f3a1632898e1f1c31858e2d6bc'
         ]
     },
     {
