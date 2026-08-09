@@ -1232,7 +1232,7 @@
                 return d.getFullYear() === date.getFullYear() &&
                        d.getMonth() === date.getMonth() &&
                        d.getDate() === date.getDate();
-            });
+            }).sort((a, b) => a.dtstart - b.dtstart);
         }
 
         function renderCalendar() {
