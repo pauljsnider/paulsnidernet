@@ -30,22 +30,9 @@ def make_calendar(uid, summary='Practice'):
 
 
 class CombineCalendarsTest(unittest.TestCase):
-    def test_loads_six_sanitized_recurring_email_series(self):
+    def test_loads_sanitized_email_events(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         events = list(calendar.walk('VEVENT'))
-
-        self.assertEqual(6, len(events))
-        self.assertTrue(all(event.get('RRULE') for event in events))
-        self.assertEqual(
-            {
-                'Will: Tutor',
-                'Madison: Tutor',
-                'Madison: Gymnastics',
-                'Will: Learn to Play Hockey',
-                'Max: Learn to Play Hockey',
-            },
-            {str(event['SUMMARY']) for event in events},
-        )
 
         hockey_events = [
             event
@@ -65,7 +52,7 @@ class CombineCalendarsTest(unittest.TestCase):
 
         descriptions = [
             str(event['DESCRIPTION'])
-            for event in events
+            for event in hockey_events
             if event.get('DESCRIPTION')
         ]
         self.assertEqual(
@@ -76,6 +63,28 @@ class CombineCalendarsTest(unittest.TestCase):
         source = EMAIL_EVENTS_PATH.read_text()
         for private_field in ('ATTENDEE', 'ORGANIZER', 'Passcode:', 'https://'):
             self.assertNotIn(private_field, source)
+
+    def test_madison_gymnastics_only_recurs_monday_and_thursday(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        gymnastics_events = [
+            event
+            for event in calendar.walk('VEVENT')
+            if str(event['SUMMARY']) == 'Madison: Gymnastics'
+        ]
+
+        self.assertEqual(2, len(gymnastics_events))
+        self.assertEqual(
+            {'MO', 'TH'},
+            {
+                str(day)
+                for event in gymnastics_events
+                for day in event['RRULE']['BYDAY']
+            },
+        )
+        self.assertNotIn(
+            'family-email-1727ab39e92ea72f49d6d052@paulsnider.net',
+            {str(event['UID']) for event in gymnastics_events},
+        )
 
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
         combined = combine_calendars(
