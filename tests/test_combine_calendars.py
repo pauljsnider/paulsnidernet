@@ -86,6 +86,40 @@ class CombineCalendarsTest(unittest.TestCase):
             {str(event['UID']) for event in gymnastics_events},
         )
 
+    def test_back_to_school_night_combines_all_three_kids(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        matching_events = [
+            event
+            for event in calendar.walk('VEVENT')
+            if str(event['UID']) == 'back-to-school-night-20260820@paulsnider.net'
+        ]
+
+        self.assertEqual(1, len(matching_events))
+        event = matching_events[0]
+        self.assertEqual(
+            'Back-to-School Night - Madison, Will, Max',
+            str(event['SUMMARY']),
+        )
+        self.assertEqual(
+            '2026-08-20T17:00:00-05:00',
+            event['DTSTART'].dt.isoformat(),
+        )
+        self.assertEqual(
+            '2026-08-20T18:30:00-05:00',
+            event['DTEND'].dt.isoformat(),
+        )
+        description = str(event['DESCRIPTION'])
+        for detail in (
+            'Madison (5th grade)',
+            'Pod C (Room C10)',
+            '5:00-5:40 PM or 5:50-6:30 PM',
+            'Will (2nd grade) - 5:00-6:30 PM',
+            'Max (kindergarten) - 5:00-6:30 PM',
+            'PTO table in the library',
+            "valid driver's license or passport",
+        ):
+            self.assertIn(detail, description)
+
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
         combined = combine_calendars(
             [make_calendar('old-uid'), make_calendar('new-uid')],

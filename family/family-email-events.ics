@@ -81,6 +81,22 @@ TRANSP:OPAQUE
 X-IMPORT-TYPE:EMAIL-INVITE
 END:VEVENT
 BEGIN:VEVENT
+UID:back-to-school-night-20260820@paulsnider.net
+DTSTAMP:20260817T005710Z
+SUMMARY:Back-to-School Night - Madison\, Will\, Max
+DTSTART;TZID=America/Chicago:20260820T170000
+DTEND;TZID=America/Chicago:20260820T183000
+DESCRIPTION:Madison (5th grade) - Miss Moore\, Pod C (Room C10): choose 5:
+ 00-5:40 PM or 5:50-6:30 PM\; parents/guardians only.\nWill (2nd grade) -
+  5:00-6:30 PM.\nMax (kindergarten) - 5:00-6:30 PM.\nSchoolwide - PTO
+  table in the library\; bring a valid driver's license or passport.
+LOCATION:Overland Trail Elementary
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:OPAQUE
+X-IMPORT-TYPE:EMAIL-DIGEST
+END:VEVENT
+BEGIN:VEVENT
 UID:family-hockey-will-20260801@paulsnider.net
 DTSTAMP:20260727T022949Z
 SUMMARY:Will: Learn to Play Hockey
