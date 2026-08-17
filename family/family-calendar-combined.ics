@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-08-17T00:39:53.750293+00:00
+X-COMBINE-TIMESTAMP:2026-08-17T00:59:18.564993+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:Madison: Gymnastics
@@ -84,6 +84,23 @@ LOCATION:Microsoft Teams Meeting
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 X-IMPORT-TYPE:EMAIL-INVITE
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Back-to-School Night - Madison\, Will\, Max
+DTSTART;TZID=America/Chicago:20260820T170000
+DTEND;TZID=America/Chicago:20260820T183000
+DTSTAMP:20260817T005710Z
+UID:back-to-school-night-20260820@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Madison (5th grade) - Miss Moore\, Pod C (Room C10): choose 5:
+ 00-5:40 PM or 5:50-6:30 PM\; parents/guardians only.\nWill (2nd grade) - 5
+ :00-6:30 PM.\nMax (kindergarten) - 5:00-6:30 PM.\nSchoolwide - PTO table i
+ n the library\; bring a valid driver's license or passport.
+LOCATION:Overland Trail Elementary
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:EMAIL-DIGEST
 X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
 BEGIN:VEVENT
