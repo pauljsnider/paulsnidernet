@@ -206,6 +206,28 @@ class CombineCalendarsTest(unittest.TestCase):
             [value.isoformat() for value in recurrence_ids if value],
         )
 
+    def test_marks_date_only_events_for_strict_ical_parsers(self):
+        calendar = Calendar.from_ical(
+            b'BEGIN:VCALENDAR\r\n'
+            b'VERSION:2.0\r\n'
+            b'BEGIN:VEVENT\r\n'
+            b'UID:all-day-event\r\n'
+            b'SUMMARY:Tournament\r\n'
+            b'DTSTART:20261016\r\n'
+            b'DTEND:20261019\r\n'
+            b'END:VEVENT\r\n'
+            b'END:VCALENDAR\r\n'
+        )
+
+        combined = combine_calendars([calendar], ['Will Baseball'])
+        event = list(combined.walk('VEVENT'))[0]
+
+        self.assertEqual('DATE', event['DTSTART'].params['VALUE'])
+        self.assertEqual('DATE', event['DTEND'].params['VALUE'])
+        serialized = combined.to_ical()
+        self.assertIn(b'DTSTART;VALUE=DATE:20261016', serialized)
+        self.assertIn(b'DTEND;VALUE=DATE:20261019', serialized)
+
     def test_loads_only_requested_source_from_cached_combined_feed(self):
         cached = combine_calendars(
             [make_calendar('max-uid'), make_calendar('will-uid')],

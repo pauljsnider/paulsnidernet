@@ -7,7 +7,7 @@ Enhanced with robust error handling, retry logic, and fallback mechanisms.
 
 import requests
 from icalendar import Calendar, Event
-from datetime import datetime
+from datetime import date, datetime
 import pytz
 import sys
 import time
@@ -277,6 +277,15 @@ def apply_event_location_override(component, source_name):
     component.add('x-location-override', override.get('reason', 'manual'))
 
 
+def normalize_date_only_event_properties(component):
+    """Mark date-only values explicitly for strict iCalendar parsers."""
+    for property_name in ('DTSTART', 'DTEND', 'RECURRENCE-ID'):
+        property_value = component.get(property_name)
+        decoded_value = getattr(property_value, 'dt', None)
+        if isinstance(decoded_value, date) and not isinstance(decoded_value, datetime):
+            property_value.params['VALUE'] = 'DATE'
+
+
 def fetch_calendar(url, name):
     """Fetch a calendar from a URL with robust error handling and retries."""
     logger.info(f"Fetching {name} from {url}")
@@ -482,6 +491,7 @@ def combine_calendars(calendars, source_names=None):
         # Extract events from this calendar
         for component in cal_data.walk():
             if component.name == "VEVENT":
+                normalize_date_only_event_properties(component)
                 if source_name:
                     label_event_summary(component, source_name)
                     improve_scheels_field_location(component, source_name)
