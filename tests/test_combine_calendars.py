@@ -120,6 +120,47 @@ class CombineCalendarsTest(unittest.TestCase):
         ):
             self.assertIn(detail, description)
 
+    def test_grandparents_pickup_recurs_monday_and_thursday_for_all_kids(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        pickup_events = [
+            event
+            for event in calendar.walk('VEVENT')
+            if str(event['SUMMARY'])
+            == 'Grandma + Grandpa Pickup - Madison, Will, Max'
+        ]
+
+        self.assertEqual(2, len(pickup_events))
+        events_by_day = {
+            str(event['RRULE']['BYDAY'][0]): event
+            for event in pickup_events
+        }
+        self.assertEqual({'MO', 'TH'}, set(events_by_day))
+
+        monday = events_by_day['MO']
+        self.assertEqual(
+            '2026-08-31T17:00:00-05:00',
+            monday['DTSTART'].dt.isoformat(),
+        )
+        self.assertEqual(
+            '2026-08-31T18:00:00-05:00',
+            monday['DTEND'].dt.isoformat(),
+        )
+        self.assertEqual(
+            'Bring the kids home around 5 PM.',
+            str(monday['DESCRIPTION']),
+        )
+
+        thursday = events_by_day['TH']
+        self.assertEqual(
+            '2026-09-03T17:00:00-05:00',
+            thursday['DTSTART'].dt.isoformat(),
+        )
+        self.assertEqual(
+            '2026-09-03T18:00:00-05:00',
+            thursday['DTEND'].dt.isoformat(),
+        )
+        self.assertEqual('Feed the kids dinner.', str(thursday['DESCRIPTION']))
+
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
         combined = combine_calendars(
             [make_calendar('old-uid'), make_calendar('new-uid')],
