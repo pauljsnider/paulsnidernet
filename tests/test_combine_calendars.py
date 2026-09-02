@@ -161,6 +161,37 @@ class CombineCalendarsTest(unittest.TestCase):
         )
         self.assertEqual('Feed the kids dinner.', str(thursday['DESCRIPTION']))
 
+    def test_max_junior_basketball_runs_five_saturdays(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        matching_events = [
+            event
+            for event in calendar.walk('VEVENT')
+            if str(event['UID'])
+            == 'max-junior-basketball-fall-2026@paulsnider.net'
+        ]
+
+        self.assertEqual(1, len(matching_events))
+        event = matching_events[0]
+        self.assertEqual(
+            'Max: Junior Basketball (Ages 4-5)',
+            str(event['SUMMARY']),
+        )
+        self.assertEqual(
+            '2026-11-07T09:30:00-06:00',
+            event['DTSTART'].dt.isoformat(),
+        )
+        self.assertEqual(
+            '2026-11-07T10:25:00-06:00',
+            event['DTEND'].dt.isoformat(),
+        )
+        self.assertEqual([5], event['RRULE']['COUNT'])
+        self.assertEqual(['SA'], [str(day) for day in event['RRULE']['BYDAY']])
+        self.assertEqual('TBA', str(event['LOCATION']))
+        self.assertEqual(
+            'Ages 4-5. Registration cost: $69.33.',
+            str(event['DESCRIPTION']),
+        )
+
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
         combined = combine_calendars(
             [make_calendar('old-uid'), make_calendar('new-uid')],
