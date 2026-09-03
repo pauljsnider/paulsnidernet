@@ -192,6 +192,46 @@ class CombineCalendarsTest(unittest.TestCase):
             str(event['DESCRIPTION']),
         )
 
+    def test_try_hockey_for_free_is_shared_by_all_kids(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        matching_events = [
+            event
+            for event in calendar.walk('VEVENT')
+            if str(event['UID'])
+            == 'try-hockey-free-20261003@paulsnider.net'
+        ]
+
+        self.assertEqual(1, len(matching_events))
+        event = matching_events[0]
+        self.assertEqual(
+            'Try Hockey for Free - Madison, Will, Max',
+            str(event['SUMMARY']),
+        )
+        self.assertEqual(
+            '2026-10-03T15:00:00-05:00',
+            event['DTSTART'].dt.isoformat(),
+        )
+        self.assertEqual(
+            '2026-10-03T16:00:00-05:00',
+            event['DTEND'].dt.isoformat(),
+        )
+        self.assertNotIn('RRULE', event)
+        description = str(event['DESCRIPTION'])
+        for detail in (
+            'Ages 4+',
+            'Cost: FREE',
+            'registration required',
+            'bike helmet works fine',
+            'warm winter pants and jacket',
+            'winter gloves',
+            'Skates and hockey sticks are provided',
+            'free arcade card',
+            'one hour of non-redemption games',
+            'pick it up at check-in',
+            '60-minute timer starts when first swiped',
+        ):
+            self.assertIn(detail, description)
+
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
         combined = combine_calendars(
             [make_calendar('old-uid'), make_calendar('new-uid')],
