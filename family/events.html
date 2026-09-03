@@ -1042,10 +1042,23 @@
 
         function applyKidFilter(events, filter) {
             if (filter === 'all') return events;
-            return events.filter(e => {
-                const kid = getKidNameFromEvent(e);
-                return kid && kid.toLowerCase() === filter;
-            });
+            return events.filter(e =>
+                getKidNamesFromEvent(e).some(kid => kid.toLowerCase() === filter)
+            );
+        }
+
+        function getKidNamesFromEvent(event) {
+            const summary = event.summary || '';
+            const explicitlyNamedKids = ['Will', 'Madison', 'Max'].filter(kid =>
+                new RegExp(`\\b${kid}\\b`).test(summary)
+            );
+
+            // Shared events list multiple children in the title. Preserve every
+            // association so the event remains visible in each child's filter.
+            if (explicitlyNamedKids.length > 1) return explicitlyNamedKids;
+
+            const inferredKid = getKidNameFromEvent(event);
+            return inferredKid ? [inferredKid] : [];
         }
 
         function getKidNameFromEvent(event) {
