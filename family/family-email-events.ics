@@ -168,12 +168,12 @@ DTSTAMP:20260903T033055Z
 SUMMARY:Try Hockey for Free - Madison\, Will\, Max
 DTSTART;TZID=America/Chicago:20261003T150000
 DTEND;TZID=America/Chicago:20261003T160000
-DESCRIPTION:Ages 4+. Cost: FREE\; registration required. Bring a helmet (bike
-  helmet works fine)\, warm winter pants and jacket\, and winter gloves. Skates
-  and hockey sticks are provided. Each registered player receives a free arcade
-  card good for one hour of non-redemption games\; pick it up at check-in. The
-  card may be used on a different date\, but its 60-minute timer starts when
-  first swiped.
+DESCRIPTION:Ages 4+. Cost: FREE\; registration required. Bring a helmet
+  (bike helmet works fine)\, warm winter pants and jacket\, and winter
+  gloves. Skates and hockey sticks are provided. Each registered player
+  receives a free arcade card good for one hour of non-redemption games\;
+  pick it up at check-in. The card may be used on a different date\, but
+  its 60-minute timer starts when first swiped.
 STATUS:CONFIRMED
 SEQUENCE:0
 TRANSP:OPAQUE
