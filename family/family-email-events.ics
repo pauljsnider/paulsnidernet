@@ -165,7 +165,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:try-hockey-free-20261003@paulsnider.net
 DTSTAMP:20260903T033055Z
-SUMMARY:Try Hockey for Free - Madison\, Will\, Max
+SUMMARY:Try Hockey for Free - Will\, Max
 DTSTART;TZID=America/Chicago:20261003T150000
 DTEND;TZID=America/Chicago:20261003T160000
 DESCRIPTION:Ages 4+. Cost: FREE\; registration required. Bring a helmet

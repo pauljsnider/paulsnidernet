@@ -192,7 +192,7 @@ class CombineCalendarsTest(unittest.TestCase):
             str(event['DESCRIPTION']),
         )
 
-    def test_try_hockey_for_free_is_shared_by_all_kids(self):
+    def test_try_hockey_for_free_is_shared_by_will_and_max(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         matching_events = [
             event
@@ -204,7 +204,7 @@ class CombineCalendarsTest(unittest.TestCase):
         self.assertEqual(1, len(matching_events))
         event = matching_events[0]
         self.assertEqual(
-            'Try Hockey for Free - Madison, Will, Max',
+            'Try Hockey for Free - Will, Max',
             str(event['SUMMARY']),
         )
         self.assertEqual(
