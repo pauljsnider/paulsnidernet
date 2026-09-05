@@ -165,6 +165,36 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeBlog() {
     const searchInput = document.getElementById('blog-search');
     const categoryFilter = document.getElementById('category-filter');
+    const blogContainer = document.getElementById('blog-posts');
+
+    if (blogContainer && !blogContainer.querySelector('[data-title="Access Is Becoming the New Capability Multiplier"]')) {
+        const post = document.createElement('article');
+        post.className = 'blog-post';
+        post.setAttribute('data-category', 'technology');
+        post.setAttribute('data-title', 'Access Is Becoming the New Capability Multiplier');
+        post.setAttribute('data-publish-date', '2026-09-05');
+        post.innerHTML = `
+            <a href="blogs/blog-post-access-capability-multiplier.html" class="post-image">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop" alt="Access Is Becoming the New Capability Multiplier" style="object-position: center;">
+            </a>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="post-category">Technology</span>
+                <span class="post-date">September 5, 2026</span>
+              </div>
+              <h3 class="post-title">Access Is Becoming the New Capability Multiplier</h3>
+              <p class="post-excerpt">Why agent capability increasingly comes from the combination of intelligence and access, what Collusion Wiki may be signaling, and why security has to scale with autonomy.</p>
+              <div class="post-footer">
+                <a href="blogs/blog-post-access-capability-multiplier.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                <div class="post-stats">
+                  <span><i class="fas fa-clock"></i> 4 min read</span>
+                </div>
+              </div>
+            </div>
+        `;
+        blogContainer.prepend(post);
+    }
+
     const blogPosts = document.querySelectorAll('.blog-post');
     const loadMoreBtn = document.getElementById('load-more');
     
