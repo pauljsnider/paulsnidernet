@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-09-05T01:52:30.807597+00:00
+X-COMBINE-TIMESTAMP:2026-09-05T01:53:04.234523+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:Madison: Gymnastics
@@ -216,6 +216,20 @@ UID:madison-birthday-lake-20260829@paulsnider.net
 SEQUENCE:0
 DESCRIPTION:Timing is approximate.
 LOCATION:Lake
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Will: Fantasy Football Draft - Recess All-Stars
+DTSTART;TZID=America/Chicago:20260907T180000
+DTEND;TZID=America/Chicago:20260907T190000
+DTSTAMP:20260904T200000Z
+UID:will-fantasy-football-draft-20260907@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:ESPN Fantasy Football league\, Recess All-Stars\, 12-team Head
+  to Head Points draft
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
