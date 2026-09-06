@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-09-06T19:46:01.916364+00:00
+X-COMBINE-TIMESTAMP:2026-09-06T20:13:44.326868+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:Madison: Gymnastics
@@ -232,6 +232,35 @@ DESCRIPTION:ESPN Fantasy Football league\, Recess All-Stars\, 12-team Head
   to Head Points draft
 STATUS:CONFIRMED
 TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Picture Day - Madison\, Will\, Max
+DTSTART;VALUE=DATE:20260918
+DTEND;VALUE=DATE:20260919
+DTSTAMP:20260906T200917Z
+UID:ote-picture-day-20260918@paulsnider.net
+SEQUENCE:0
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Cougars in the Cosmos: Overland Trail Elementary Carnival - Madiso
+ n\, Will\, Max
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261003
+DTSTAMP:20260906T200917Z
+UID:ote-cougars-in-the-cosmos-carnival-20261002@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Exact 2026 hours have not yet been announced. In previous year
+ s\, doors opened at 5:00 PM.
+LOCATION:Overland Trail Elementary School (6225 W 133rd St\, Overland Park
+ \, KS)
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
 X-IMPORT-TYPE:MANUAL
 X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
