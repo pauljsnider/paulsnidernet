@@ -268,7 +268,11 @@ class CombineCalendarsTest(unittest.TestCase):
         )
         self.assertEqual('CONFIRMED', str(carnival['STATUS']))
         description = str(carnival['DESCRIPTION'])
-        self.assertIn('Exact 2026 hours have not yet been announced', description)
+        self.assertIn(
+            'The exact hours have not yet been announced in the 2026 school '
+            'newsletters',
+            description,
+        )
         self.assertIn('previous years, doors opened at 5:00 PM', description)
 
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
