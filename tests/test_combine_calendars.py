@@ -232,6 +232,49 @@ class CombineCalendarsTest(unittest.TestCase):
         ):
             self.assertIn(detail, description)
 
+    def test_ote_fall_events_are_all_day_and_shared_by_all_kids(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        events_by_uid = {
+            str(event['UID']): event
+            for event in calendar.walk('VEVENT')
+        }
+
+        picture_day = events_by_uid['ote-picture-day-20260918@paulsnider.net']
+        self.assertEqual(
+            'Picture Day - Madison, Will, Max',
+            str(picture_day['SUMMARY']),
+        )
+        self.assertEqual('2026-09-18', picture_day['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-09-19', picture_day['DTEND'].dt.isoformat())
+        self.assertEqual('DATE', picture_day['DTSTART'].params['VALUE'])
+        self.assertEqual('DATE', picture_day['DTEND'].params['VALUE'])
+
+        carnival = events_by_uid[
+            'ote-cougars-in-the-cosmos-carnival-20261002@paulsnider.net'
+        ]
+        self.assertEqual(
+            'Cougars in the Cosmos: Overland Trail Elementary Carnival - '
+            'Madison, Will, Max',
+            str(carnival['SUMMARY']),
+        )
+        self.assertEqual('2026-10-02', carnival['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-10-03', carnival['DTEND'].dt.isoformat())
+        self.assertEqual('DATE', carnival['DTSTART'].params['VALUE'])
+        self.assertEqual('DATE', carnival['DTEND'].params['VALUE'])
+        self.assertEqual(
+            'Overland Trail Elementary School (6225 W 133rd St, '
+            'Overland Park, KS)',
+            str(carnival['LOCATION']),
+        )
+        self.assertEqual('CONFIRMED', str(carnival['STATUS']))
+        description = str(carnival['DESCRIPTION'])
+        self.assertIn(
+            'The exact hours have not yet been announced in the 2026 school '
+            'newsletters',
+            description,
+        )
+        self.assertIn('previous years, doors opened at 5:00 PM', description)
+
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
         combined = combine_calendars(
             [make_calendar('old-uid'), make_calendar('new-uid')],
