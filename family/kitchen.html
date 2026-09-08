@@ -236,7 +236,7 @@
             var VIEW_DURATIONS = [30000, 22000, 22000];
             var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            var state = { events: [], generatedAt: null, view: 0, rotationTimer: null, paused: false };
+            var state = { events: [], generatedAt: null, view: 0, rotationTimer: null, paused: false, visibleDay: null };
 
             function getById(id) { return document.getElementById(id); }
             function addClass(element, className) { element.className += (element.className ? ' ' : '') + className; }
@@ -248,6 +248,7 @@
                 return element;
             }
             function pad(number) { return number < 10 ? '0' + number : String(number); }
+            function calendarDayKey(date) { return date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate()); }
 
             function parseDate(value, allDay) {
                 if (allDay) {
@@ -332,6 +333,12 @@
                 var now = new Date();
                 getById('clock').textContent = formatTime(now);
                 getById('date-label').textContent = formatLongDate(now);
+                if (state.visibleDay && state.visibleDay !== calendarDayKey(now)) {
+                    state.visibleDay = calendarDayKey(now);
+                    renderScreen();
+                    return;
+                }
+                state.visibleDay = calendarDayKey(now);
                 renderHero(now);
             }
             function renderHero(now) {
@@ -443,6 +450,7 @@
                 clearElement(content);
                 addClass(content, 'fade-in');
                 window.setTimeout(function () { content.className = ''; }, 500);
+                state.visibleDay = calendarDayKey(now);
                 getById('screen-label').textContent = VIEW_NAMES[state.view];
                 var controls = document.querySelectorAll('.view-control');
                 var index;
