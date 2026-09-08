@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests icalendar pytz
+          pip install requests icalendar pytz python-dateutil
 
       - name: Run calendar combining script
         run: |
@@ -36,7 +36,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git add family/family-calendar-combined.ics
+          git add family/family-calendar-combined.ics family/kitchen-events.json
           if git diff --staged --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else

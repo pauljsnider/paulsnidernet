@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Family Board">
+    <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <title>Snider Family Board</title>
+    <style>
+        /*
+         * The display is intentionally self-contained: no web fonts, icon
+         * libraries, CSS grid, or modern JavaScript are required. It is sized
+         * first for an iPad mini 2 in landscape, then reflows for portrait.
+         */
+        * { box-sizing: border-box; }
+        html, body { width: 100%; min-height: 100%; margin: 0; }
+        body {
+            background: #111a25;
+            color: #f8f1e6;
+            font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+        button { font: inherit; }
+        #family-board {
+            min-height: 100vh;
+            padding: 24px 40px 20px;
+            background:
+                radial-gradient(ellipse at 84% 8%, rgba(247, 166, 87, 0.18), transparent 34%),
+                linear-gradient(135deg, #152536 0%, #101923 58%, #0c131c 100%);
+        }
+        .topline, .bottomline, .hero, .event-row, .week-row, .upcoming-list {
+            display: -webkit-flex;
+            display: flex;
+        }
+        .topline {
+            min-height: 52px;
+            align-items: flex-start;
+            -webkit-align-items: flex-start;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+        }
+        .brand {
+            color: #f3b96d;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2.7px;
+            text-transform: uppercase;
+        }
+        #date-label { color: #aeb9c5; font-size: 18px; margin-top: 4px; }
+        #clock { color: #ffffff; font-family: Georgia, serif; font-size: 44px; letter-spacing: -1px; line-height: 0.95; text-align: right; }
+        .screen-label { color: #7990a5; font-size: 12px; font-weight: 700; letter-spacing: 1.8px; margin-top: 8px; text-align: right; text-transform: uppercase; }
+        .hero {
+            min-height: 205px;
+            padding: 24px 30px 22px;
+            align-items: center;
+            -webkit-align-items: center;
+            border: 1px solid rgba(246, 235, 219, 0.14);
+            border-left: 7px solid #f3b96d;
+            border-radius: 16px;
+            background: rgba(13, 24, 35, 0.70);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+        }
+        .hero-copy { flex: 1; -webkit-flex: 1; min-width: 0; padding-right: 22px; }
+        #hero-kicker { color: #f3b96d; font-size: 13px; font-weight: 700; letter-spacing: 2.2px; margin-bottom: 8px; text-transform: uppercase; }
+        #hero-title { color: #ffffff; font-family: Georgia, serif; font-size: 42px; font-weight: normal; letter-spacing: -0.6px; line-height: 1.05; margin: 0; }
+        #hero-detail { color: #c5d0d8; font-size: 19px; line-height: 1.25; margin-top: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        #hero-time {
+            color: #ffffff;
+            font-family: Georgia, serif;
+            font-size: 58px;
+            letter-spacing: -2px;
+            line-height: 0.9;
+            text-align: right;
+            white-space: nowrap;
+        }
+        #hero-time-label { color: #aeb9c5; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; margin-top: 9px; text-align: right; text-transform: uppercase; }
+        #screen-content { min-height: 314px; padding-top: 19px; }
+        .section-heading { color: #d9e1e7; font-size: 14px; font-weight: 700; letter-spacing: 1.8px; margin: 0 0 12px; text-transform: uppercase; }
+        .empty-state { color: #bdc8d0; font-family: Georgia, serif; font-size: 29px; padding: 52px 0; text-align: center; }
+        .event-list { border-top: 1px solid rgba(246, 235, 219, 0.12); }
+        .event-row {
+            min-height: 57px;
+            align-items: center;
+            -webkit-align-items: center;
+            border-bottom: 1px solid rgba(246, 235, 219, 0.12);
+        }
+        .event-time {
+            color: #f3b96d;
+            font-size: 21px;
+            font-weight: 700;
+            min-width: 120px;
+        }
+        .event-copy { flex: 1; -webkit-flex: 1; min-width: 0; }
+        .event-title { color: #ffffff; font-size: 21px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .event-location { color: #aeb9c5; font-size: 15px; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .person-label {
+            border: 1px solid currentColor;
+            border-radius: 20px;
+            color: #aeb9c5;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-left: 16px;
+            padding: 5px 9px 4px;
+            text-transform: uppercase;
+        }
+        .person-label.will { color: #79c9e8; }
+        .person-label.madison { color: #e89cc8; }
+        .person-label.max { color: #a9d77e; }
+        .person-label.family { color: #f3b96d; }
+        .week-list { border-top: 1px solid rgba(246, 235, 219, 0.12); }
+        .week-row {
+            min-height: 45px;
+            align-items: center;
+            -webkit-align-items: center;
+            border-bottom: 1px solid rgba(246, 235, 219, 0.12);
+        }
+        .week-day { color: #aeb9c5; font-size: 16px; font-weight: 700; min-width: 146px; }
+        .week-day.today { color: #f3b96d; }
+        .week-events { flex: 1; -webkit-flex: 1; min-width: 0; }
+        .week-event { color: #ffffff; display: inline-block; font-size: 17px; margin-right: 20px; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; white-space: nowrap; max-width: 350px; }
+        .week-event-time { color: #f3b96d; font-weight: 700; }
+        .week-empty { color: #5f7181; font-size: 16px; }
+        .upcoming-list { margin: 0 -8px; flex-wrap: wrap; -webkit-flex-wrap: wrap; }
+        .upcoming-card {
+            width: calc(33.333% - 16px);
+            min-height: 214px;
+            margin: 0 8px 16px;
+            padding: 20px;
+            border: 1px solid rgba(246, 235, 219, 0.14);
+            border-top: 4px solid #5b9fc1;
+            border-radius: 12px;
+            background: rgba(21, 37, 54, 0.78);
+        }
+        .upcoming-date { color: #f3b96d; font-size: 14px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+        .upcoming-time { color: #ffffff; font-family: Georgia, serif; font-size: 32px; line-height: 1; margin: 12px 0; }
+        .upcoming-title { color: #ffffff; font-size: 20px; font-weight: 600; line-height: 1.17; }
+        .upcoming-location { color: #aeb9c5; font-size: 15px; line-height: 1.2; margin-top: 10px; }
+        .bottomline {
+            min-height: 32px;
+            align-items: flex-end;
+            -webkit-align-items: flex-end;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+        }
+        #feed-status { color: #6f8190; font-size: 13px; }
+        .view-controls { white-space: nowrap; }
+        .view-control {
+            width: 10px;
+            height: 10px;
+            padding: 0;
+            margin-left: 9px;
+            border: 1px solid #758695;
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+        .view-control.active { background: #f3b96d; border-color: #f3b96d; }
+        .paused-note { color: #f3b96d; font-size: 13px; font-weight: 700; margin-right: 12px; }
+        .fade-in { -webkit-animation: fadeIn 450ms ease-out; animation: fadeIn 450ms ease-out; }
+        @-webkit-keyframes fadeIn { from { opacity: 0.2; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0.2; } to { opacity: 1; } }
+
+        @media screen and (max-width: 760px), screen and (orientation: portrait) {
+            body { overflow: auto; }
+            #family-board { min-height: 100vh; padding: 20px 22px; }
+            #clock { font-size: 34px; }
+            #date-label { font-size: 16px; }
+            .hero { min-height: 177px; padding: 21px; }
+            #hero-title { font-size: 31px; }
+            #hero-time { font-size: 38px; }
+            #hero-detail { font-size: 16px; }
+            #screen-content { min-height: 0; }
+            .event-time { min-width: 91px; font-size: 17px; }
+            .event-title { font-size: 17px; }
+            .event-location { font-size: 13px; }
+            .week-day { min-width: 88px; font-size: 13px; }
+            .week-event { font-size: 14px; max-width: 190px; }
+            .upcoming-card { width: calc(50% - 16px); min-height: 175px; }
+            .person-label { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <main id="family-board" aria-live="polite">
+        <div class="topline">
+            <div>
+                <div class="brand">Snider Family</div>
+                <div id="date-label"></div>
+            </div>
+            <div>
+                <div id="clock"></div>
+                <div id="screen-label" class="screen-label">Today</div>
+            </div>
+        </div>
+
+        <section class="hero" aria-label="Next family event">
+            <div class="hero-copy">
+                <div id="hero-kicker">Loading schedule</div>
+                <h1 id="hero-title">One moment</h1>
+                <div id="hero-detail">Checking the family calendar…</div>
+            </div>
+            <div>
+                <div id="hero-time">—</div>
+                <div id="hero-time-label">Family board</div>
+            </div>
+        </section>
+
+        <section id="screen-content" aria-label="Calendar details"></section>
+
+        <div class="bottomline">
+            <div id="feed-status">Schedules refresh automatically</div>
+            <div class="view-controls" aria-label="Calendar display views">
+                <span id="paused-note" class="paused-note" aria-live="polite"></span>
+                <button class="view-control active" data-view="0" aria-label="Show today"></button>
+                <button class="view-control" data-view="1" aria-label="Show this week"></button>
+                <button class="view-control" data-view="2" aria-label="Show upcoming events"></button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            'use strict';
+
+            var FEED_URL = 'kitchen-events.json';
+            var STORAGE_KEY = 'snider-family-kitchen-feed-v1';
+            var VIEW_NAMES = ['Today', 'This Week', 'Coming Up'];
+            var VIEW_DURATIONS = [30000, 22000, 22000];
+            var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            var state = { events: [], generatedAt: null, view: 0, rotationTimer: null, paused: false };
+
+            function getById(id) { return document.getElementById(id); }
+            function addClass(element, className) { element.className += (element.className ? ' ' : '') + className; }
+            function clearElement(element) { while (element.firstChild) { element.removeChild(element.firstChild); } }
+            function createElement(name, className, text) {
+                var element = document.createElement(name);
+                if (className) { element.className = className; }
+                if (typeof text !== 'undefined') { element.textContent = text; }
+                return element;
+            }
+            function pad(number) { return number < 10 ? '0' + number : String(number); }
+
+            function parseDate(value, allDay) {
+                if (allDay) {
+                    var parts = value.split('-');
+                    return new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+                }
+                return new Date(value);
+            }
+            function normaliseEvents(events) {
+                var normalised = [];
+                var index;
+                for (index = 0; index < events.length; index += 1) {
+                    var event = events[index];
+                    event.startDate = parseDate(event.start, event.all_day);
+                    event.endDate = parseDate(event.end, event.all_day);
+                    if (!isNaN(event.startDate.getTime())) { normalised.push(event); }
+                }
+                normalised.sort(function (first, second) { return first.startDate.getTime() - second.startDate.getTime(); });
+                return normalised;
+            }
+            function startOfDay(date) { return new Date(date.getFullYear(), date.getMonth(), date.getDate()); }
+            function isSameDay(first, second) {
+                return first.getFullYear() === second.getFullYear() && first.getMonth() === second.getMonth() && first.getDate() === second.getDate();
+            }
+            function formatTime(date) {
+                var hour = date.getHours();
+                var minutes = date.getMinutes();
+                var suffix = hour >= 12 ? 'PM' : 'AM';
+                hour = hour % 12 || 12;
+                return hour + ':' + pad(minutes) + ' ' + suffix;
+            }
+            function formatShortDay(date) { return DAY_NAMES[date.getDay()].slice(0, 3) + ', ' + MONTH_NAMES[date.getMonth()].slice(0, 3) + ' ' + date.getDate(); }
+            function formatLongDate(date) { return DAY_NAMES[date.getDay()] + ', ' + MONTH_NAMES[date.getMonth()] + ' ' + date.getDate(); }
+            function eventTime(event) { return event.all_day ? 'All day' : formatTime(event.startDate); }
+            function eventDay(event, now) {
+                if (isSameDay(event.startDate, now)) { return 'Today'; }
+                var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+                if (isSameDay(event.startDate, tomorrow)) { return 'Tomorrow'; }
+                return formatShortDay(event.startDate);
+            }
+            function personFor(event) {
+                var text = ((event.summary || '') + ' ' + (event.source || '')).toLowerCase();
+                if (text.indexOf('madison') !== -1 || text.indexOf('wildcats') !== -1 || text.indexOf('jr current') !== -1) { return 'Madison'; }
+                if (text.indexOf('will') !== -1 || text.indexOf('mustangs') !== -1) { return 'Will'; }
+                if (text.indexOf('max') !== -1 || text.indexOf('prek') !== -1 || text.indexOf('kindergarten') !== -1) { return 'Max'; }
+                return 'Family';
+            }
+            function personClass(person) { return person.toLowerCase(); }
+            function relativeTime(event, now) {
+                if (event.all_day) { return eventDay(event, now); }
+                var minutes = Math.round((event.startDate.getTime() - now.getTime()) / 60000);
+                if (minutes > 0 && minutes < 60) { return 'in ' + minutes + ' min'; }
+                if (minutes >= 60 && minutes < 24 * 60) {
+                    var hours = Math.round(minutes / 60);
+                    return 'in ' + hours + (hours === 1 ? ' hour' : ' hours');
+                }
+                return eventDay(event, now);
+            }
+            function visibleEvents() {
+                var now = new Date();
+                var events = [];
+                var index;
+                for (index = 0; index < state.events.length; index += 1) {
+                    if (state.events[index].endDate.getTime() >= now.getTime()) { events.push(state.events[index]); }
+                }
+                return events;
+            }
+            function currentOrNextEvent(now) {
+                var events = visibleEvents();
+                var index;
+                for (index = 0; index < events.length; index += 1) {
+                    if (!events[index].all_day && events[index].startDate.getTime() <= now.getTime() && events[index].endDate.getTime() > now.getTime()) {
+                        return { event: events[index], current: true };
+                    }
+                    if (events[index].all_day || events[index].startDate.getTime() >= now.getTime()) {
+                        return { event: events[index], current: false };
+                    }
+                }
+                return null;
+            }
+            function updateClock() {
+                var now = new Date();
+                getById('clock').textContent = formatTime(now);
+                getById('date-label').textContent = formatLongDate(now);
+                renderHero(now);
+            }
+            function renderHero(now) {
+                var next = currentOrNextEvent(now);
+                if (!next) {
+                    getById('hero-kicker').textContent = 'All clear';
+                    getById('hero-title').textContent = 'Nothing else is scheduled.';
+                    getById('hero-detail').textContent = 'Enjoy the open space.';
+                    getById('hero-time').textContent = '✓';
+                    getById('hero-time-label').textContent = 'Clear ahead';
+                    return;
+                }
+                getById('hero-kicker').textContent = next.current ? 'Happening now' : 'Up next';
+                getById('hero-title').textContent = next.event.summary || 'Family event';
+                getById('hero-detail').textContent = next.event.location || (next.event.all_day ? 'All-day event' : eventDay(next.event, now));
+                getById('hero-time').textContent = next.current ? 'NOW' : eventTime(next.event);
+                getById('hero-time-label').textContent = next.current ? 'In progress' : relativeTime(next.event, now);
+            }
+            function appendPersonLabel(row, event) {
+                var person = personFor(event);
+                var label = createElement('div', 'person-label ' + personClass(person), person);
+                row.appendChild(label);
+            }
+            function createEventRow(event) {
+                var row = createElement('div', 'event-row');
+                var time = createElement('div', 'event-time', eventTime(event));
+                var copy = createElement('div', 'event-copy');
+                copy.appendChild(createElement('div', 'event-title', event.summary || 'Family event'));
+                if (event.location) { copy.appendChild(createElement('div', 'event-location', event.location)); }
+                row.appendChild(time);
+                row.appendChild(copy);
+                appendPersonLabel(row, event);
+                return row;
+            }
+            function renderToday(content, now) {
+                var heading = createElement('h2', 'section-heading', 'Today at a glance');
+                var list = createElement('div', 'event-list');
+                var todayEvents = [];
+                var events = visibleEvents();
+                var index;
+                for (index = 0; index < events.length; index += 1) {
+                    if (isSameDay(events[index].startDate, now)) { todayEvents.push(events[index]); }
+                }
+                content.appendChild(heading);
+                if (!todayEvents.length) {
+                    content.appendChild(createElement('div', 'empty-state', 'Nothing else on today’s calendar.'));
+                    return;
+                }
+                for (index = 0; index < todayEvents.length && index < 4; index += 1) { list.appendChild(createEventRow(todayEvents[index])); }
+                if (todayEvents.length > 4) { list.appendChild(createElement('div', 'event-row', '+' + (todayEvents.length - 4) + ' more events today')); }
+                content.appendChild(list);
+            }
+            function renderWeek(content, now) {
+                var heading = createElement('h2', 'section-heading', 'The next seven days');
+                var list = createElement('div', 'week-list');
+                var dayOffset;
+                var events = visibleEvents();
+                content.appendChild(heading);
+                for (dayOffset = 0; dayOffset < 7; dayOffset += 1) {
+                    var day = new Date(now.getFullYear(), now.getMonth(), now.getDate() + dayOffset);
+                    var dayEvents = [];
+                    var index;
+                    for (index = 0; index < events.length; index += 1) {
+                        if (isSameDay(events[index].startDate, day)) { dayEvents.push(events[index]); }
+                    }
+                    var row = createElement('div', 'week-row');
+                    var dayName = createElement('div', 'week-day' + (dayOffset === 0 ? ' today' : ''), dayOffset === 0 ? 'TODAY' : formatShortDay(day));
+                    var dayItems = createElement('div', 'week-events');
+                    if (!dayEvents.length) {
+                        dayItems.appendChild(createElement('span', 'week-empty', 'Open'));
+                    } else {
+                        for (index = 0; index < dayEvents.length && index < 2; index += 1) {
+                            var item = createElement('span', 'week-event');
+                            item.appendChild(createElement('span', 'week-event-time', eventTime(dayEvents[index]) + ' '));
+                            item.appendChild(document.createTextNode(dayEvents[index].summary || 'Family event'));
+                            dayItems.appendChild(item);
+                        }
+                        if (dayEvents.length > 2) { dayItems.appendChild(createElement('span', 'week-empty', '+' + (dayEvents.length - 2) + ' more')); }
+                    }
+                    row.appendChild(dayName);
+                    row.appendChild(dayItems);
+                    list.appendChild(row);
+                }
+                content.appendChild(list);
+            }
+            function renderUpcoming(content, now) {
+                var heading = createElement('h2', 'section-heading', 'Coming up');
+                var list = createElement('div', 'upcoming-list');
+                var events = visibleEvents();
+                var index;
+                content.appendChild(heading);
+                if (!events.length) {
+                    content.appendChild(createElement('div', 'empty-state', 'The calendar is clear.'));
+                    return;
+                }
+                for (index = 0; index < events.length && index < 3; index += 1) {
+                    var event = events[index];
+                    var card = createElement('article', 'upcoming-card');
+                    card.appendChild(createElement('div', 'upcoming-date', eventDay(event, now)));
+                    card.appendChild(createElement('div', 'upcoming-time', eventTime(event)));
+                    card.appendChild(createElement('div', 'upcoming-title', event.summary || 'Family event'));
+                    if (event.location) { card.appendChild(createElement('div', 'upcoming-location', event.location)); }
+                    list.appendChild(card);
+                }
+                content.appendChild(list);
+            }
+            function renderScreen() {
+                var content = getById('screen-content');
+                var now = new Date();
+                clearElement(content);
+                addClass(content, 'fade-in');
+                window.setTimeout(function () { content.className = ''; }, 500);
+                getById('screen-label').textContent = VIEW_NAMES[state.view];
+                var controls = document.querySelectorAll('.view-control');
+                var index;
+                for (index = 0; index < controls.length; index += 1) {
+                    controls[index].className = 'view-control' + (parseInt(controls[index].getAttribute('data-view'), 10) === state.view ? ' active' : '');
+                }
+                if (state.view === 0) { renderToday(content, now); }
+                if (state.view === 1) { renderWeek(content, now); }
+                if (state.view === 2) { renderUpcoming(content, now); }
+                renderHero(now);
+            }
+            function scheduleRotation() {
+                if (state.rotationTimer) { window.clearTimeout(state.rotationTimer); }
+                if (state.paused) { return; }
+                state.rotationTimer = window.setTimeout(function () {
+                    state.view = (state.view + 1) % VIEW_NAMES.length;
+                    renderScreen();
+                    scheduleRotation();
+                }, VIEW_DURATIONS[state.view]);
+            }
+            function chooseView(view, pause) {
+                state.view = view;
+                state.paused = pause;
+                getById('paused-note').textContent = pause ? 'Paused' : '';
+                renderScreen();
+                scheduleRotation();
+                if (pause) {
+                    window.setTimeout(function () {
+                        state.paused = false;
+                        getById('paused-note').textContent = '';
+                        scheduleRotation();
+                    }, 60000);
+                }
+            }
+            function relativeFeedTime(value) {
+                var date = new Date(value);
+                if (isNaN(date.getTime())) { return ''; }
+                var minutes = Math.max(0, Math.round((new Date().getTime() - date.getTime()) / 60000));
+                if (minutes < 60) { return 'Updated ' + minutes + ' min ago'; }
+                return 'Updated ' + Math.round(minutes / 60) + ' hr ago';
+            }
+            function applyFeed(feed, fromCache) {
+                if (!feed || !feed.events) { return false; }
+                state.events = normaliseEvents(feed.events);
+                state.generatedAt = feed.generated_at || null;
+                var status = relativeFeedTime(state.generatedAt) || 'Schedules refresh automatically';
+                getById('feed-status').textContent = status + (fromCache ? ' • Offline copy' : ' • Refreshes automatically');
+                renderScreen();
+                return true;
+            }
+            function readCachedFeed() {
+                try {
+                    var cached = window.localStorage.getItem(STORAGE_KEY);
+                    return cached ? JSON.parse(cached) : null;
+                } catch (error) { return null; }
+            }
+            function cacheFeed(feed) {
+                try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(feed)); } catch (error) { /* Storage is optional. */ }
+            }
+            function loadFeed() {
+                var request = window.fetch(FEED_URL + '?v=' + new Date().getTime());
+                request.then(function (response) {
+                    if (!response.ok) { throw new Error('Calendar feed unavailable'); }
+                    return response.json();
+                }).then(function (feed) {
+                    cacheFeed(feed);
+                    applyFeed(feed, false);
+                }).catch(function () {
+                    if (!state.events.length && !applyFeed(readCachedFeed(), true)) {
+                        getById('hero-kicker').textContent = 'Calendar unavailable';
+                        getById('hero-title').textContent = 'The saved schedule will return when Wi-Fi does.';
+                        getById('hero-detail').textContent = 'Check the network, then leave this screen open.';
+                        getById('hero-time').textContent = '—';
+                        getById('hero-time-label').textContent = 'Offline';
+                        getById('feed-status').textContent = 'Waiting for a calendar connection';
+                    }
+                });
+            }
+            function initialiseControls() {
+                var controls = document.querySelectorAll('.view-control');
+                var index;
+                for (index = 0; index < controls.length; index += 1) {
+                    controls[index].addEventListener('click', function (event) {
+                        event.stopPropagation();
+                        chooseView(parseInt(this.getAttribute('data-view'), 10), true);
+                    });
+                }
+                getById('family-board').addEventListener('click', function () {
+                    chooseView((state.view + 1) % VIEW_NAMES.length, true);
+                });
+            }
+
+            initialiseControls();
+            updateClock();
+            window.setInterval(updateClock, 15000);
+            window.setInterval(loadFeed, 15 * 60 * 1000);
+            loadFeed();
+            scheduleRotation();
+        }());
+    </script>
+</body>
+</html>

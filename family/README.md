@@ -5,6 +5,7 @@ A unified family calendar system that aggregates events from multiple sources in
 ## Quick Links
 
 - **Family Calendar Interface**: [https://paulsnider.net/family/events.html](https://paulsnider.net/family/events.html)
+- **Kitchen Display**: [https://paulsnider.net/family/kitchen.html](https://paulsnider.net/family/kitchen.html)
 - **Combined Calendar Feed**: [https://paulsnider.net/family/family-calendar-combined.ics](https://paulsnider.net/family/family-calendar-combined.ics)
 
 ## Overview
@@ -31,6 +32,7 @@ Managing three kids' schedules across multiple sports platforms, school calendar
 - **List View** - Detailed chronological listing with full event information
 - **Calendar Grid** - Traditional monthly calendar view
 - **Export** - Generate filtered iCal files for personal calendar import
+- **Kitchen Display** - An automatically rotating, glanceable dashboard built for an iPad mini 2 in landscape mode
 
 ### 👴 Family Sharing
 - Public web interface accessible to extended family
@@ -61,6 +63,11 @@ https://paulsnider.net/family/family-calendar-combined.ics
 - Merges events and removes duplicates
 - Commits updated combined calendar to repository
 - GitHub Pages serves the latest version
+
+The action also writes `kitchen-events.json`, a small static list of the next
+six weeks' event occurrences. The kitchen display uses that pre-expanded feed
+so it can stay compatible with iOS 12 Safari and work without third-party
+scripts.
 
 The website uses standards-compliant iCalendar parsing for one-time, recurring,
 all-day, multi-day, excluded, rescheduled, and cancelled event occurrences.

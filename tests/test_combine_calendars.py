@@ -12,6 +12,7 @@ SPEC = importlib.util.spec_from_file_location('combine_calendars', MODULE_PATH)
 COMBINE_CALENDARS = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(COMBINE_CALENDARS)
 combine_calendars = COMBINE_CALENDARS.combine_calendars
+build_kitchen_feed = COMBINE_CALENDARS.build_kitchen_feed
 load_cached_source_calendar = COMBINE_CALENDARS.load_cached_source_calendar
 load_local_calendar = COMBINE_CALENDARS.load_local_calendar
 EMAIL_EVENTS_PATH = Path(__file__).resolve().parents[1] / 'family' / 'family-email-events.ics'
@@ -30,6 +31,38 @@ def make_calendar(uid, summary='Practice'):
 
 
 class CombineCalendarsTest(unittest.TestCase):
+    def test_kitchen_feed_expands_recurring_events_and_hides_descriptions(self):
+        calendar = Calendar()
+        event = Event()
+        central = pytz.timezone('America/Chicago')
+        event.add('uid', 'kitchen-weekly')
+        event.add('summary', 'Will Soccer: Practice')
+        event.add('dtstart', central.localize(datetime(2026, 9, 7, 17, 30)))
+        event.add('dtend', central.localize(datetime(2026, 9, 7, 18, 30)))
+        event.add('rrule', {'freq': 'weekly', 'count': 3, 'byday': ['MO']})
+        event.add('location', 'Scheels Field 9N')
+        event.add('description', 'Private preparation details')
+        event.add('x-source-calendar', 'Will Soccer')
+        calendar.add_component(event)
+
+        feed = build_kitchen_feed(
+            calendar,
+            now=central.localize(datetime(2026, 9, 7, 8, 0)),
+            days=21,
+        )
+
+        self.assertEqual(3, len(feed['events']))
+        self.assertEqual(
+            [
+                '2026-09-07T17:30:00-05:00',
+                '2026-09-14T17:30:00-05:00',
+                '2026-09-21T17:30:00-05:00',
+            ],
+            [event['start'] for event in feed['events']],
+        )
+        self.assertEqual('Scheels Field 9N', feed['events'][0]['location'])
+        self.assertNotIn('description', feed['events'][0])
+
     def test_loads_sanitized_email_events(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         events = list(calendar.walk('VEVENT'))

@@ -1,0 +1,758 @@
+{
+  "generated_at": "2026-09-07T19:59:54.416310-05:00",
+  "timezone": "America/Chicago",
+  "events": [
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-09-07T17:00:00-05:00",
+      "end": "2026-09-07T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-09-07T17:00:00-05:00",
+      "end": "2026-09-07T17:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: Fantasy Football Draft - Recess All-Stars",
+      "start": "2026-09-07T18:00:00-05:00",
+      "end": "2026-09-07T19:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek - Practice",
+      "start": "2026-09-08T18:00:00-05:00",
+      "end": "2026-09-08T19:00:00-05:00",
+      "all_day": false,
+      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-09-08T19:15:00-05:00",
+      "end": "2026-09-08T20:15:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B Practice",
+      "start": "2026-09-09T16:30:00-05:00",
+      "end": "2026-09-09T18:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Madison: Jr Current - Practice",
+      "start": "2026-09-09T19:30:00-05:00",
+      "end": "2026-09-09T21:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd, Overland Park, KS 66221",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-09-10T17:00:00-05:00",
+      "end": "2026-09-10T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-09-10T19:00:00-05:00",
+      "end": "2026-09-10T19:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) @ Leawood Monarchs",
+      "start": "2026-09-10T19:00:00-05:00",
+      "end": "2026-09-10T20:15:00-05:00",
+      "all_day": false,
+      "location": "9701 W 137th St\nOverland Park KS",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Madison: Tutor",
+      "start": "2026-09-11T17:15:00-05:00",
+      "end": "2026-09-11T18:15:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max: Learn to Play Hockey",
+      "start": "2026-09-12T08:00:00-05:00",
+      "end": "2026-09-12T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: Learn to Play Hockey",
+      "start": "2026-09-12T08:00:00-05:00",
+      "end": "2026-09-12T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek vs Besler",
+      "start": "2026-09-12T09:00:00-05:00",
+      "end": "2026-09-12T09:30:00-05:00",
+      "all_day": false,
+      "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Madison Soccer: Jr Current vs Northern Stars ES Girls 26/7",
+      "start": "2026-09-12T15:30:00-05:00",
+      "end": "2026-09-12T15:30:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer \nOverland Park KS 66221\nUnited States",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Madison Soccer: Jr Current vs MSA Twisters",
+      "start": "2026-09-13T14:15:00-05:00",
+      "end": "2026-09-13T14:15:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer \nOverland Park KS 66221\nUnited States",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-09-14T17:00:00-05:00",
+      "end": "2026-09-14T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-09-14T17:00:00-05:00",
+      "end": "2026-09-14T17:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Religious Education - Max, Will, Madison",
+      "start": "2026-09-15T16:30:00-05:00",
+      "end": "2026-09-15T17:45:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek - Practice",
+      "start": "2026-09-15T18:00:00-05:00",
+      "end": "2026-09-15T19:00:00-05:00",
+      "all_day": false,
+      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-09-15T19:15:00-05:00",
+      "end": "2026-09-15T20:15:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Ruby: Heartworm pill with breakfast",
+      "start": "2026-09-16",
+      "end": "2026-09-17",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B Practice",
+      "start": "2026-09-16T16:30:00-05:00",
+      "end": "2026-09-16T18:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Madison: Jr Current - Practice",
+      "start": "2026-09-16T19:30:00-05:00",
+      "end": "2026-09-16T21:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd, Overland Park, KS 66221",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-09-17T17:00:00-05:00",
+      "end": "2026-09-17T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) vs KC Yard Goats",
+      "start": "2026-09-17T17:30:00-05:00",
+      "end": "2026-09-17T18:45:00-05:00",
+      "all_day": false,
+      "location": "9701 W 137th St\nOverland Park KS",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-09-17T19:00:00-05:00",
+      "end": "2026-09-17T19:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Picture Day - Madison, Will, Max",
+      "start": "2026-09-18",
+      "end": "2026-09-19",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Tutor",
+      "start": "2026-09-18T17:15:00-05:00",
+      "end": "2026-09-18T18:15:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Jr Current at Captains SC 15/16 White",
+      "start": "2026-09-19T08:00:00-05:00",
+      "end": "2026-09-19T08:00:00-05:00",
+      "all_day": false,
+      "location": "1500 N 90 St, Kansas City, KS 66112",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Max: Learn to Play Hockey",
+      "start": "2026-09-19T08:00:00-05:00",
+      "end": "2026-09-19T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: Learn to Play Hockey",
+      "start": "2026-09-19T08:00:00-05:00",
+      "end": "2026-09-19T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) @ CHE Cheetahs-Greiner",
+      "start": "2026-09-19T13:30:00-05:00",
+      "end": "2026-09-19T15:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-09-21T17:00:00-05:00",
+      "end": "2026-09-21T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-09-21T17:00:00-05:00",
+      "end": "2026-09-21T17:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) vs Pirates-McClain",
+      "start": "2026-09-21T17:30:00-05:00",
+      "end": "2026-09-21T18:45:00-05:00",
+      "all_day": false,
+      "location": "9701 W 137th St\nOverland Park KS",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Religious Education - Max, Will, Madison",
+      "start": "2026-09-22T16:30:00-05:00",
+      "end": "2026-09-22T17:45:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek - Practice",
+      "start": "2026-09-22T18:00:00-05:00",
+      "end": "2026-09-22T19:00:00-05:00",
+      "all_day": false,
+      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-09-22T19:15:00-05:00",
+      "end": "2026-09-22T20:15:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B Practice",
+      "start": "2026-09-23T16:30:00-05:00",
+      "end": "2026-09-23T18:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Madison: Jr Current - Practice",
+      "start": "2026-09-23T19:30:00-05:00",
+      "end": "2026-09-23T21:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd, Overland Park, KS 66221",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-09-24T17:00:00-05:00",
+      "end": "2026-09-24T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) Practice",
+      "start": "2026-09-24T18:15:00-05:00",
+      "end": "2026-09-24T19:30:00-05:00",
+      "all_day": false,
+      "location": "6201 W 133rd St\nOverland Park KS",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-09-24T19:00:00-05:00",
+      "end": "2026-09-24T19:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B @ Palmyra Thunder",
+      "start": "2026-09-25T17:00:00-05:00",
+      "end": "2026-09-25T18:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer \nOverland Park KS",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Madison: Tutor",
+      "start": "2026-09-25T17:15:00-05:00",
+      "end": "2026-09-25T18:15:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek vs Friedman",
+      "start": "2026-09-26T10:00:00-05:00",
+      "end": "2026-09-26T10:30:00-05:00",
+      "all_day": false,
+      "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Madison Soccer: Jr Current at KC Blaze Freedom",
+      "start": "2026-09-26T14:15:00-05:00",
+      "end": "2026-09-26T14:15:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer \nOverland Park KS 66221\nUnited States",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek vs Gaddie",
+      "start": "2026-09-27T14:30:00-05:00",
+      "end": "2026-09-27T15:00:00-05:00",
+      "all_day": false,
+      "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-09-28T17:00:00-05:00",
+      "end": "2026-09-28T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-09-28T17:00:00-05:00",
+      "end": "2026-09-28T17:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Religious Education - Max, Will, Madison",
+      "start": "2026-09-29T16:30:00-05:00",
+      "end": "2026-09-29T17:45:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek - Practice",
+      "start": "2026-09-29T18:00:00-05:00",
+      "end": "2026-09-29T19:00:00-05:00",
+      "all_day": false,
+      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-09-29T19:15:00-05:00",
+      "end": "2026-09-29T20:15:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B Practice",
+      "start": "2026-09-30T16:30:00-05:00",
+      "end": "2026-09-30T18:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Madison: Jr Current - Practice",
+      "start": "2026-09-30T19:30:00-05:00",
+      "end": "2026-09-30T21:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd, Overland Park, KS 66221",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-10-01T17:00:00-05:00",
+      "end": "2026-10-01T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) @ Nativity Knights-Peal",
+      "start": "2026-10-01T17:30:00-05:00",
+      "end": "2026-10-01T18:45:00-05:00",
+      "all_day": false,
+      "location": "9701 W 137th St\nOverland Park KS",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-10-01T19:00:00-05:00",
+      "end": "2026-10-01T19:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Cougars in the Cosmos: Overland Trail Elementary Carnival - Madison, Will, Max",
+      "start": "2026-10-02",
+      "end": "2026-10-03",
+      "all_day": true,
+      "location": "Overland Trail Elementary School (6225 W 133rd St, Overland Park, KS)",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Tutor",
+      "start": "2026-10-02T17:15:00-05:00",
+      "end": "2026-10-02T18:15:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison Soccer: Jr Current vs St Agnes FC",
+      "start": "2026-10-02T20:45:00-05:00",
+      "end": "2026-10-02T20:45:00-05:00",
+      "all_day": false,
+      "location": "10541 S Warwick St, Olathe, KS 66061",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Try Hockey for Free - Will, Max",
+      "start": "2026-10-03T15:00:00-05:00",
+      "end": "2026-10-03T16:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-10-05T17:00:00-05:00",
+      "end": "2026-10-05T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-10-05T17:00:00-05:00",
+      "end": "2026-10-05T17:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Religious Education - Max, Will, Madison",
+      "start": "2026-10-06T16:30:00-05:00",
+      "end": "2026-10-06T17:45:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) @ Fireballs",
+      "start": "2026-10-06T17:30:00-05:00",
+      "end": "2026-10-06T18:45:00-05:00",
+      "all_day": false,
+      "location": "9701 W 137th St\nOverland Park KS",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek - Practice",
+      "start": "2026-10-06T18:00:00-05:00",
+      "end": "2026-10-06T19:00:00-05:00",
+      "all_day": false,
+      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-10-06T19:15:00-05:00",
+      "end": "2026-10-06T20:15:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B Practice",
+      "start": "2026-10-07T16:30:00-05:00",
+      "end": "2026-10-07T18:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Madison: Jr Current - Practice",
+      "start": "2026-10-07T19:30:00-05:00",
+      "end": "2026-10-07T21:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd, Overland Park, KS 66221",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-10-08T17:00:00-05:00",
+      "end": "2026-10-08T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) Practice",
+      "start": "2026-10-08T18:15:00-05:00",
+      "end": "2026-10-08T19:30:00-05:00",
+      "all_day": false,
+      "location": "6201 W 133rd St\nOverland Park KS",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-10-08T19:00:00-05:00",
+      "end": "2026-10-08T19:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Tutor",
+      "start": "2026-10-09T17:15:00-05:00",
+      "end": "2026-10-09T18:15:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek vs Hamilton",
+      "start": "2026-10-10T09:00:00-05:00",
+      "end": "2026-10-10T09:30:00-05:00",
+      "all_day": false,
+      "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Madison: Jr Current vs Sporting City U11G Indigo-North",
+      "start": "2026-10-10T18:00:00-05:00",
+      "end": "2026-10-10T18:00:00-05:00",
+      "all_day": false,
+      "location": "1500 N 90th St\nKansas City KS 66112\nUnited States",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B @ Captains SC 18/19 White",
+      "start": "2026-10-10T18:15:00-05:00",
+      "end": "2026-10-10T19:15:00-05:00",
+      "all_day": false,
+      "location": "1500 N 90th St\nKansas City KS",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B @ OP Premier White U8B",
+      "start": "2026-10-11T10:00:00-05:00",
+      "end": "2026-10-11T11:00:00-05:00",
+      "all_day": false,
+      "location": "1500 N 90th St\nKansas City KS",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-10-12T17:00:00-05:00",
+      "end": "2026-10-12T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-10-12T17:00:00-05:00",
+      "end": "2026-10-12T17:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Religious Education - Max, Will, Madison",
+      "start": "2026-10-13T16:30:00-05:00",
+      "end": "2026-10-13T17:45:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek - Practice",
+      "start": "2026-10-13T18:00:00-05:00",
+      "end": "2026-10-13T19:00:00-05:00",
+      "all_day": false,
+      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-10-13T19:15:00-05:00",
+      "end": "2026-10-13T20:15:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B Practice",
+      "start": "2026-10-14T16:30:00-05:00",
+      "end": "2026-10-14T18:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Madison: Jr Current - Practice",
+      "start": "2026-10-14T19:30:00-05:00",
+      "end": "2026-10-14T21:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd, Overland Park, KS 66221",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-10-15T17:00:00-05:00",
+      "end": "2026-10-15T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-10-15T19:00:00-05:00",
+      "end": "2026-10-15T19:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) @ TBD",
+      "start": "2026-10-16",
+      "end": "2026-10-19",
+      "all_day": true,
+      "location": "18300 W. 87th Street\nLenexa KS",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Madison: Tutor",
+      "start": "2026-10-16T17:15:00-05:00",
+      "end": "2026-10-16T18:15:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) @ TBD",
+      "start": "2026-10-17",
+      "end": "2026-10-18",
+      "all_day": true,
+      "location": "18300 W. 87th Street\nLenexa KS",
+      "source": "Will Baseball"
+    },
+    {
+      "summary": "Max Soccer: F26KB Major Derek vs Assefa",
+      "start": "2026-10-17T09:00:00-05:00",
+      "end": "2026-10-17T09:30:00-05:00",
+      "all_day": false,
+      "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
+      "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B vs Wizards U8/U9",
+      "start": "2026-10-17T09:00:00-05:00",
+      "end": "2026-10-17T10:00:00-05:00",
+      "all_day": false,
+      "location": "10541 S Warwick St\nOlathe KS",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "Madison Soccer: Jr Current at LS United Pumas",
+      "start": "2026-10-18T09:15:00-05:00",
+      "end": "2026-10-18T09:15:00-05:00",
+      "all_day": false,
+      "location": "6310 Lewis Road, Kansas City, MO 64132",
+      "source": "TeamSnap Events (Madison + Max + Will)"
+    }
+  ]
+}
