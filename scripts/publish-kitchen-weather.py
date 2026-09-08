@@ -58,19 +58,34 @@ def rounded(value) -> int | None:
     return int(round(value)) if isinstance(value, (int, float)) else None
 
 
+def daily_value(daily: dict, name: str, index: int):
+    values = daily.get(name) or []
+    return values[index] if index < len(values) else None
+
+
+def daily_forecast(daily: dict, index: int, fallback_date: str) -> dict:
+    """Return one compact forecast day without assuming every field is present."""
+    return {
+        "date": daily_value(daily, "time", index) or fallback_date,
+        "high_f": rounded(daily_value(daily, "temperature_2m_max", index)),
+        "low_f": rounded(daily_value(daily, "temperature_2m_min", index)),
+        "condition": condition_for(daily_value(daily, "weather_code", index)),
+        "precipitation_chance": rounded(daily_value(daily, "precipitation_probability_max", index)),
+    }
+
+
 def build_weather_feed(payload: dict, now: datetime | None = None) -> dict:
     """Convert Open-Meteo's response to a tiny, legacy-browser-friendly schema."""
     current = payload.get("current") or {}
     daily = payload.get("daily") or {}
     now = now.astimezone(KITCHEN_TIMEZONE) if now else datetime.now(KITCHEN_TIMEZONE)
+    fallback_date = now.date().isoformat()
     dates = daily.get("time") or []
-    forecast = {
-        "date": dates[0] if dates else now.date().isoformat(),
-        "high_f": rounded((daily.get("temperature_2m_max") or [None])[0]),
-        "low_f": rounded((daily.get("temperature_2m_min") or [None])[0]),
-        "condition": condition_for((daily.get("weather_code") or [None])[0]),
-        "precipitation_chance": rounded((daily.get("precipitation_probability_max") or [None])[0]),
-    }
+    today = daily_forecast(daily, 0, fallback_date)
+    forecast = [
+        daily_forecast(daily, index, fallback_date)
+        for index in range(1, min(len(dates), 4))
+    ]
     return {
         "generated_at": now.isoformat(),
         "location": LOCATION["name"],
@@ -79,7 +94,8 @@ def build_weather_feed(payload: dict, now: datetime | None = None) -> dict:
             "feels_like_f": rounded(current.get("apparent_temperature")),
             "condition": condition_for(current.get("weather_code")),
         },
-        "today": forecast,
+        "today": today,
+        "forecast": forecast,
     }
 
 
@@ -90,7 +106,7 @@ def publish_weather(output_file: Path = OUTPUT_FILE, now: datetime | None = None
         "longitude": LOCATION["longitude"],
         "current": "temperature_2m,apparent_temperature,weather_code",
         "daily": "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max",
-        "forecast_days": 2,
+        "forecast_days": 4,
         "temperature_unit": "fahrenheit",
         "timezone": "America/Chicago",
     }

@@ -79,9 +79,9 @@ does not replace a valid set that it has already published for the Chicago
 calendar day.
 
 The compact Leawood weather line is generated as another local JSON feed. Its
-GitHub Action refreshes current conditions and today's high/low every hour;
-the old iPad loads only `kitchen-weather.json`, with a saved copy available if
-Wi-Fi briefly drops.
+GitHub Action refreshes current conditions, today's high/low, and the next
+three forecast days every hour; the old iPad loads only `kitchen-weather.json`,
+with a saved copy available if Wi-Fi briefly drops.
 
 The website uses standards-compliant iCalendar parsing for one-time, recurring,
 all-day, multi-day, excluded, rescheduled, and cancelled event occurrences.

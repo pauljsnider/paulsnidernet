@@ -16,11 +16,11 @@ class KitchenWeatherPublisherTests(unittest.TestCase):
             {
                 'current': {'temperature_2m': 82.4, 'apparent_temperature': 86.1, 'weather_code': 2},
                 'daily': {
-                    'time': ['2026-09-07'],
-                    'temperature_2m_max': [92.2],
-                    'temperature_2m_min': [74.6],
-                    'weather_code': [0],
-                    'precipitation_probability_max': [10],
+                    'time': ['2026-09-07', '2026-09-08', '2026-09-09', '2026-09-10'],
+                    'temperature_2m_max': [92.2, 100.0, 91.6, 87.1],
+                    'temperature_2m_min': [74.6, 78.8, 68.7, 65.3],
+                    'weather_code': [0, 1, 95, 2],
+                    'precipitation_probability_max': [10, 4, 35, 15],
                 },
             },
             now=datetime(2026, 9, 7, 21, 0, tzinfo=WEATHER.KITCHEN_TIMEZONE),
@@ -30,3 +30,11 @@ class KitchenWeatherPublisherTests(unittest.TestCase):
         self.assertEqual(feed['today']['high_f'], 92)
         self.assertEqual(feed['today']['low_f'], 75)
         self.assertEqual(feed['today']['condition'], 'Clear')
+        self.assertEqual(
+            feed['forecast'],
+            [
+                {'date': '2026-09-08', 'high_f': 100, 'low_f': 79, 'condition': 'Mostly clear', 'precipitation_chance': 4},
+                {'date': '2026-09-09', 'high_f': 92, 'low_f': 69, 'condition': 'Thunderstorms', 'precipitation_chance': 35},
+                {'date': '2026-09-10', 'high_f': 87, 'low_f': 65, 'condition': 'Partly cloudy', 'precipitation_chance': 15},
+            ],
+        )
