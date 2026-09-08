@@ -31,14 +31,46 @@ def make_calendar(uid, summary='Practice'):
 
 
 class CombineCalendarsTest(unittest.TestCase):
-    def test_ote_is_a_labeled_source_for_the_kitchen_feed(self):
+    def test_ote_is_a_kitchen_only_source(self):
+        self.assertNotIn(
+            'Overland Trail Elementary',
+            [calendar['name'] for calendar in COMBINE_CALENDARS.PRODUCTION_CALENDARS],
+        )
         source = next(
             calendar
-            for calendar in COMBINE_CALENDARS.PRODUCTION_CALENDARS
+            for calendar in COMBINE_CALENDARS.KITCHEN_ONLY_PRODUCTION_CALENDARS
             if calendar['name'] == 'Overland Trail Elementary'
         )
 
         self.assertIn('ote.bluevalleyk12.org', source['url'])
+
+    def test_kitchen_feed_can_include_ote_without_changing_family_calendar(self):
+        family_calendar = make_calendar('family-event', 'Family Practice')
+        school_calendar = make_calendar('ote-event', 'OTE Assembly')
+
+        family_combined = combine_calendars(
+            [family_calendar],
+            ['Family Email Events'],
+        )
+        kitchen_combined = combine_calendars(
+            [family_calendar, school_calendar],
+            ['Family Email Events', 'Overland Trail Elementary'],
+        )
+
+        self.assertEqual(
+            ['Family Email Events'],
+            [
+                str(event.get('X-SOURCE-CALENDAR', '') or '')
+                for event in family_combined.walk('VEVENT')
+            ],
+        )
+        self.assertEqual(
+            ['Family Email Events', 'Overland Trail Elementary'],
+            [
+                str(event.get('X-SOURCE-CALENDAR', '') or '')
+                for event in kitchen_combined.walk('VEVENT')
+            ],
+        )
 
     def test_kitchen_feed_expands_recurring_events_and_hides_descriptions(self):
         calendar = Calendar()

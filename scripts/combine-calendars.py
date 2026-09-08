@@ -100,19 +100,13 @@ TEST_CALENDARS = [
     }
 ]
 
-# Production calendars. Some feeds are private; do not print, expose, or
-# replace their URLs without the owner's explicit direction.
+# Production calendars that belong in the shared family ICS feed. Some feeds
+# are private; do not print, expose, or replace their URLs without the owner's
+# explicit direction.
 PRODUCTION_CALENDARS = [
     {
         'name': 'Family Email Events',
         'path': 'family/family-email-events.ics'
-    },
-    {
-        # Public school feed already linked from family/events.html.  Bringing
-        # it into the static combined feed keeps the kitchen iPad off CORS
-        # proxies and gives the OTE screen a dependable, labeled source.
-        'name': 'Overland Trail Elementary',
-        'url': 'https://ote.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=23'
     },
     {
         'name': 'Will Soccer',
@@ -145,8 +139,20 @@ PRODUCTION_CALENDARS = [
     },
 ]
 
+# These sources are deliberately excluded from family-calendar-combined.ics.
+# They are fetched server-side and merged only into kitchen-events.json, which
+# lets the kitchen display show the school and family schedules together
+# without changing the shared family calendar used elsewhere.
+KITCHEN_ONLY_PRODUCTION_CALENDARS = [
+    {
+        'name': 'Overland Trail Elementary',
+        'url': 'https://ote.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=23'
+    },
+]
+
 # Choose calendars based on mode
 CALENDARS = TEST_CALENDARS if TEST_MODE else PRODUCTION_CALENDARS
+KITCHEN_ONLY_CALENDARS = [] if TEST_MODE else KITCHEN_ONLY_PRODUCTION_CALENDARS
 
 REPOSITORY_ROOT = Path(__file__).parent.parent
 OUTPUT_FILE = REPOSITORY_ROOT / 'family' / 'family-calendar-combined.ics'
@@ -807,7 +813,7 @@ def main():
     success_count = 0
     failure_count = 0
 
-    # Fetch all calendars
+    # Fetch the sources that belong in the shared family ICS calendar.
     calendars = []
     source_names = []
     for i, cal_info in enumerate(expanded_calendars):
@@ -829,12 +835,31 @@ def main():
         else:
             failure_count += 1
 
+    # Fetch sources that are only for the kitchen display. Do not fall back
+    # to family-calendar-combined.ics here: keeping OTE out of that shared
+    # file is the point of this separate source group.
+    kitchen_calendars = list(calendars)
+    kitchen_source_names = list(source_names)
+    kitchen_expanded_calendars = expand_calendar_sources(KITCHEN_ONLY_CALENDARS)
+    if kitchen_expanded_calendars:
+        print(f"\nKitchen-only calendars to process: {len(kitchen_expanded_calendars)}")
+    for i, cal_info in enumerate(kitchen_expanded_calendars):
+        print(f"\n[kitchen {i + 1}/{len(kitchen_expanded_calendars)}] Processing: {cal_info['name']}")
+        if cal_info.get('path'):
+            cal = load_local_calendar(cal_info['path'], cal_info['name'])
+        else:
+            cal = fetch_calendar(cal_info['url'], cal_info['name'])
+
+        kitchen_calendars.append(cal)
+        kitchen_source_names.append(cal_info['base_name'])
+
     print("\n" + "=" * 50)
     print(f"SUMMARY: {success_count} successful, {failure_count} failed")
     print("=" * 50 + "\n")
 
     # Combine calendars (even if some failed)
     combined = combine_calendars(calendars, source_names)
+    kitchen_combined = combine_calendars(kitchen_calendars, kitchen_source_names)
 
     # Write to output file
     try:
@@ -845,7 +870,7 @@ def main():
 
         file_size = OUTPUT_FILE.stat().st_size
         logger.info(f"✓ Combined calendar written to {OUTPUT_FILE} ({file_size:,} bytes)")
-        write_kitchen_feed(combined)
+        write_kitchen_feed(kitchen_combined)
         
         if TEST_MODE:
             print(f"\n📁 Test file created: {OUTPUT_FILE}")
