@@ -57,10 +57,12 @@
   Open-Meteo into `family/kitchen-weather.json`.
 - `scripts/publish-kitchen-brief.py` runs in that same hourly workflow and
   writes `family/kitchen-brief.json`. Its allowlist is deliberate: Kansas City
-  Public Library for a clearly kid/family local pick, MIT News' AI feed, and
-  FRED daily market-close series. Keep the positive family filter and blocked
-  political/crime/adult-topic filter. If a source fails, leave only that card
-  empty—never substitute arbitrary news or AI-generated summaries.
+  Public Library for a clearly kid/family local pick, KCUR Arts & Life for one
+  non-political local culture story, MIT News' AI feed for two science items,
+  FRED daily market-close series, and Yahoo Finance's public chart response for
+  Fortive (`FTV`). Keep the positive family filter and blocked
+  political/crime/adult/negative-topic filters. If a source fails, leave only
+  that card empty—never substitute arbitrary news or AI-generated summaries.
 - The OTE screen is fed by the public Overland Trail Elementary calendar source
   already listed on `family/events.html`; keep it labeled as `Overland Trail
   Elementary` so the kitchen can identify those events reliably.

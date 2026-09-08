@@ -28,7 +28,9 @@ REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_FILE = REPOSITORY_ROOT / "family" / "kitchen-brief.json"
 KITCHEN_TIMEZONE = ZoneInfo("America/Chicago")
 KC_LIBRARY_URL = "https://kclibrary.org/calendar-view"
+KCUR_ARTS_URL = "https://www.kcur.org/arts-life"
 MIT_AI_RSS_URL = "https://news.mit.edu/rss/topic/artificial-intelligence2"
+YAHOO_FTV_URL = "https://query1.finance.yahoo.com/v8/finance/chart/FTV?range=5d&interval=1d"
 FRED_SERIES = (
     ("S&P 500", "https://fred.stlouisfed.org/graph/fredgraph.csv?id=SP500"),
     ("Nasdaq", "https://fred.stlouisfed.org/graph/fredgraph.csv?id=NASDAQCOM"),
@@ -45,6 +47,9 @@ BLOCKED_WORDS = (
     "politic", "election", "campaign", "government", "crime", "shoot",
     "murder", "death", "war", "attack", "arrest", "court", "adult",
     "beer", "wine", "cocktail",
+)
+KC_NEWS_BLOCKED_WORDS = BLOCKED_WORDS + (
+    "warning", "cancel", "storm", "violent", "injur", "disaster",
 )
 
 
@@ -111,12 +116,52 @@ def parse_kc_library_events(html: str, now: datetime | None = None) -> list[dict
     return sorted(events, key=lambda event: (event["date"], event["title"]))
 
 
-def parse_mit_ai_feed(xml_text: str) -> dict | None:
-    """Return the first safe headline from MIT News' official AI RSS feed."""
+def parse_kcur_arts_news(html: str, limit: int = 1) -> list[dict]:
+    """Extract calm, non-political local arts/life headlines from KCUR."""
+    items = []
+    promos = re.findall(
+        r'<ps-promo\s+class="Promo[AB]"[^>]*>(.*?)</ps-promo>',
+        html or "",
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    for promo in promos:
+        title_match = re.search(
+            r'<div\s+class="Promo[AB]-title">.*?<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>',
+            promo,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        if not title_match:
+            continue
+        title = clean_text(title_match.group(2))
+        description_match = re.search(
+            r'<div\s+class="Promo[AB]-description">(.*?)</div>',
+            promo,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        description = clean_text(description_match.group(1)) if description_match else ""
+        source_text = (title + " " + description).lower()
+        if not title or any(word in source_text for word in KC_NEWS_BLOCKED_WORDS):
+            continue
+        items.append(
+            {
+                "title": title,
+                "detail": "KCUR • KC arts & life",
+                "source": "KCUR",
+                "url": unescape(title_match.group(1)),
+            }
+        )
+        if len(items) >= limit:
+            break
+    return items
+
+
+def parse_mit_ai_items(xml_text: str, limit: int = 2) -> list[dict]:
+    """Return safe headlines from MIT News' official AI RSS feed."""
     try:
         root = ElementTree.fromstring(xml_text)
     except ElementTree.ParseError:
-        return None
+        return []
+    items = []
     for item in root.findall(".//item"):
         title = clean_text(item.findtext("title") or "")
         link = clean_text(item.findtext("link") or "")
@@ -127,14 +172,18 @@ def parse_mit_ai_feed(xml_text: str) -> dict | None:
             published_date = parsedate_to_datetime(published).astimezone(KITCHEN_TIMEZONE).date().isoformat()
         except (TypeError, ValueError):
             published_date = ""
-        return {
-            "title": title,
-            "detail": "MIT News • AI & science",
-            "date": published_date,
-            "source": "MIT News",
-            "url": link,
-        }
-    return None
+        items.append(
+            {
+                "title": title,
+                "detail": "MIT News • AI & science",
+                "date": published_date,
+                "source": "MIT News",
+                "url": link,
+            }
+        )
+        if len(items) >= limit:
+            break
+    return items
 
 
 def parse_market_close(csv_text: str, name: str) -> dict | None:
@@ -164,6 +213,37 @@ def parse_market_close(csv_text: str, name: str) -> dict | None:
     }
 
 
+def parse_ftv_ticker(payload: dict) -> dict | None:
+    """Return Fortive's latest available quote with a daily percentage change."""
+    try:
+        result = payload["chart"]["result"][0]
+        meta = result["meta"]
+        close_prices = result["indicators"]["quote"][0]["close"]
+        timestamps = result["timestamp"]
+        latest_close = next(value for value in reversed(close_prices) if isinstance(value, (int, float)))
+        latest_timestamp = next(value for value in reversed(timestamps) if isinstance(value, (int, float)))
+    except (KeyError, IndexError, StopIteration, TypeError):
+        return None
+    price = meta.get("regularMarketPrice")
+    if not isinstance(price, (int, float)):
+        price = latest_close
+    change = meta.get("regularMarketChangePercent")
+    if not isinstance(change, (int, float)):
+        previous_close = next(
+            (value for value in reversed(close_prices[:-1]) if isinstance(value, (int, float))),
+            None,
+        )
+        change = ((price - previous_close) / previous_close) * 100 if previous_close else None
+    quoted_at = datetime.fromtimestamp(latest_timestamp, KITCHEN_TIMEZONE).date().isoformat()
+    return {
+        "ticker": "FTV",
+        "name": "Fortive",
+        "value": round(price, 2),
+        "change_pct": round(change, 2) if isinstance(change, (int, float)) else None,
+        "as_of": quoted_at,
+    }
+
+
 def fetch_text(url: str) -> str:
     """Fetch a public source with a bounded request and a descriptive agent."""
     response = requests.get(
@@ -175,13 +255,22 @@ def fetch_text(url: str) -> str:
     return response.text
 
 
-def build_brief_feed(now: datetime, local: dict | None, ai: dict | None, markets: list[dict]) -> dict:
+def build_brief_feed(
+    now: datetime,
+    local: dict | None,
+    kc_news: dict | None,
+    ai: list[dict],
+    markets: list[dict],
+    ticker: dict | None,
+) -> dict:
     """Return the stable static-JSON contract read by old Safari."""
     return {
         "generated_at": now.astimezone(KITCHEN_TIMEZONE).isoformat(),
         "local": local,
+        "kc_news": kc_news,
         "ai": ai,
         "markets": markets,
+        "ticker": ticker,
     }
 
 
@@ -189,8 +278,10 @@ def publish_brief(output_file: Path = OUTPUT_FILE, now: datetime | None = None) 
     """Fetch each allowlisted source independently and write the brief feed."""
     now = (now or datetime.now(KITCHEN_TIMEZONE)).astimezone(KITCHEN_TIMEZONE)
     local = None
-    ai = None
+    kc_news = None
+    ai = []
     markets = []
+    ticker = None
 
     try:
         events = parse_kc_library_events(fetch_text(KC_LIBRARY_URL), now)
@@ -199,9 +290,15 @@ def publish_brief(output_file: Path = OUTPUT_FILE, now: datetime | None = None) 
         print(f"KC family pick unavailable: {error}", file=sys.stderr)
 
     try:
-        ai = parse_mit_ai_feed(fetch_text(MIT_AI_RSS_URL))
+        items = parse_kcur_arts_news(fetch_text(KCUR_ARTS_URL))
+        kc_news = items[0] if items else None
     except requests.RequestException as error:
-        print(f"MIT AI item unavailable: {error}", file=sys.stderr)
+        print(f"KCUR item unavailable: {error}", file=sys.stderr)
+
+    try:
+        ai = parse_mit_ai_items(fetch_text(MIT_AI_RSS_URL))
+    except requests.RequestException as error:
+        print(f"MIT AI items unavailable: {error}", file=sys.stderr)
 
     for name, url in FRED_SERIES:
         try:
@@ -211,15 +308,21 @@ def publish_brief(output_file: Path = OUTPUT_FILE, now: datetime | None = None) 
         except requests.RequestException as error:
             print(f"{name} close unavailable: {error}", file=sys.stderr)
 
-    feed = build_brief_feed(now, local, ai, markets)
+    try:
+        ticker = parse_ftv_ticker(json.loads(fetch_text(YAHOO_FTV_URL)))
+    except (requests.RequestException, ValueError) as error:
+        print(f"Fortive ticker unavailable: {error}", file=sys.stderr)
+
+    feed = build_brief_feed(now, local, kc_news, ai, markets, ticker)
     output_file.parent.mkdir(parents=True, exist_ok=True)
     output_file.write_text(json.dumps(feed, indent=2) + "\n", encoding="utf-8")
     print(
         "Published Daily Brief: "
         + ("KC pick" if local else "no KC pick")
         + ", "
-        + ("MIT item" if ai else "no MIT item")
-        + f", {len(markets)} market closes."
+        + ("KCUR item" if kc_news else "no KCUR item")
+        + f", {len(ai)} MIT items, {len(markets)} market closes"
+        + (", Fortive ticker." if ticker else ", no Fortive ticker.")
     )
     return feed
 

@@ -32,18 +32,38 @@ class KitchenBriefPublisherTests(unittest.TestCase):
         self.assertEqual('Tue, Sep 8 at 9:30 AM • Central Library', events[0]['detail'])
         self.assertEqual('https://kclibrary.org/calendar/family-storytime', events[0]['url'])
 
-    def test_mit_feed_parser_keeps_the_source_headline_without_a_summary(self):
-        item = BRIEF.parse_mit_ai_feed('''
+    def test_mit_feed_parser_keeps_two_source_headlines_without_summaries(self):
+        items = BRIEF.parse_mit_ai_items('''
         <rss><channel><item>
           <title>System helps humans predict when self-driving cars will make mistakes</title>
           <link>https://news.mit.edu/example</link>
           <pubDate>Wed, 02 Sep 2026 11:00:00 -0400</pubDate>
+        </item><item>
+          <title>New AI system helps scientists solve materials problems</title>
+          <link>https://news.mit.edu/example-two</link>
+          <pubDate>Tue, 01 Sep 2026 11:00:00 -0400</pubDate>
         </item></channel></rss>
         ''')
 
-        self.assertEqual('MIT News', item['source'])
-        self.assertEqual('MIT News • AI & science', item['detail'])
-        self.assertNotIn('summary', item)
+        self.assertEqual(2, len(items))
+        self.assertEqual('MIT News', items[0]['source'])
+        self.assertEqual('MIT News • AI & science', items[0]['detail'])
+        self.assertNotIn('summary', items[0])
+
+    def test_kcur_parser_rejects_negative_local_stories(self):
+        items = BRIEF.parse_kcur_arts_news('''
+        <ps-promo class="PromoB">
+          <div class="PromoB-title"><a href="https://www.kcur.org/dog-pools">Pooches in pools</a></div>
+          <div class="PromoB-description">A weather warning is in effect.</div>
+        </ps-promo>
+        <ps-promo class="PromoB">
+          <div class="PromoB-title"><a href="https://www.kcur.org/restaurant-week">Kansas City restaurant week begins</a></div>
+          <div class="PromoB-description">Local food and culture for the week.</div>
+        </ps-promo>
+        ''')
+
+        self.assertEqual(['Kansas City restaurant week begins'], [item['title'] for item in items])
+        self.assertEqual('KCUR', items[0]['source'])
 
     def test_market_parser_returns_the_latest_close_and_daily_change(self):
         market = BRIEF.parse_market_close(
@@ -54,4 +74,20 @@ class KitchenBriefPublisherTests(unittest.TestCase):
         self.assertEqual(
             {'name': 'S&P 500', 'value': 7718.6, 'change_pct': -0.38, 'as_of': '2026-09-04'},
             market,
+        )
+
+    def test_fortive_ticker_parser_uses_the_latest_quote_and_change(self):
+        ticker = BRIEF.parse_ftv_ticker({
+            'chart': {
+                'result': [{
+                    'meta': {'regularMarketPrice': 56.94, 'regularMarketChangePercent': -0.974},
+                    'timestamp': [1788442200, 1788528600],
+                    'indicators': {'quote': [{'close': [57.57, 56.94]}]},
+                }],
+            },
+        })
+
+        self.assertEqual(
+            {'ticker': 'FTV', 'name': 'Fortive', 'value': 56.94, 'change_pct': -0.97, 'as_of': '2026-09-04'},
+            ticker,
         )

@@ -210,32 +210,18 @@
             box-shadow: 0 18px 36px rgba(0, 0, 0, 0.20);
         }
         .brief-top {
-            display: -webkit-flex;
-            display: flex;
-            min-height: 102px;
-            align-items: center;
-            -webkit-align-items: center;
-            justify-content: space-between;
-            -webkit-justify-content: space-between;
-            padding-bottom: 20px;
+            min-height: 74px;
+            padding-bottom: 14px;
             border-bottom: 1px solid rgba(246, 235, 219, 0.13);
         }
         .brief-kicker, .school-kicker { color: #f3b96d; font-size: 13px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; }
-        .brief-heading, .school-heading { color: #ffffff; font-family: Georgia, serif; font-size: 37px; font-weight: normal; letter-spacing: -0.5px; line-height: 1; margin-top: 8px; }
-        .brief-weather { display: -webkit-flex; display: flex; align-items: center; -webkit-align-items: center; }
-        .brief-now { color: #f3b96d; font-family: Georgia, serif; font-size: 43px; letter-spacing: -1px; line-height: 0.9; padding-right: 13px; }
-        .brief-now-copy { color: #d9e1e7; font-size: 14px; line-height: 1.3; min-width: 102px; }
-        .brief-forecast { display: -webkit-flex; display: flex; margin-left: 18px; padding-left: 16px; border-left: 1px solid rgba(246, 235, 219, 0.18); }
-        .brief-forecast-day { min-width: 58px; margin-left: 9px; text-align: center; }
-        .brief-forecast-day:first-child { margin-left: 0; }
-        .brief-forecast-name { color: #7990a5; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
-        .brief-forecast-temperature { color: #ffffff; font-size: 14px; font-weight: 700; margin-top: 4px; white-space: nowrap; }
-        .brief-columns { display: -webkit-flex; display: flex; margin: 21px -7px 0; }
+        .brief-heading, .school-heading { color: #ffffff; font-family: Georgia, serif; font-size: 34px; font-weight: normal; letter-spacing: -0.5px; line-height: 1; margin-top: 8px; }
+        .brief-columns { display: -webkit-flex; display: flex; flex-wrap: wrap; -webkit-flex-wrap: wrap; margin: 16px -7px 0; }
         .brief-card {
             width: calc(33.333% - 14px);
-            min-height: 251px;
-            margin: 0 7px;
-            padding: 20px;
+            min-height: 202px;
+            margin: 0 7px 14px;
+            padding: 16px 18px;
             overflow: hidden;
             border: 1px solid rgba(246, 235, 219, 0.12);
             border-top: 4px solid #5b9fc1;
@@ -243,19 +229,24 @@
             background: rgba(21, 37, 54, 0.78);
         }
         .brief-card.local { border-top-color: #7dbf8b; }
+        .brief-card.kc { border-top-color: #c28ec5; }
         .brief-card.ai { border-top-color: #7aaed0; }
         .brief-card.markets { border-top-color: #f3b96d; }
+        .brief-card.ticker { border-top-color: #d9b35d; }
         .brief-card-label { color: #aeb9c5; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
-        .brief-card-title { color: #ffffff; font-family: Georgia, serif; font-size: 23px; line-height: 1.12; margin-top: 14px; }
-        .brief-card-detail { color: #aeb9c5; font-size: 14px; line-height: 1.3; margin-top: 12px; }
-        .brief-card-source { color: #6f8190; font-size: 12px; margin-top: 12px; }
-        .brief-empty { color: #aeb9c5; font-family: Georgia, serif; font-size: 20px; line-height: 1.2; margin-top: 18px; }
-        .market-row { display: -webkit-flex; display: flex; align-items: baseline; -webkit-align-items: baseline; justify-content: space-between; -webkit-justify-content: space-between; padding: 16px 0 10px; border-bottom: 1px solid rgba(246, 235, 219, 0.12); }
+        .brief-card-title { color: #ffffff; font-family: Georgia, serif; font-size: 20px; line-height: 1.13; margin-top: 12px; }
+        .brief-card-detail { color: #aeb9c5; font-size: 13px; line-height: 1.3; margin-top: 10px; }
+        .brief-card-source { color: #6f8190; font-size: 12px; margin-top: 10px; }
+        .brief-empty { color: #aeb9c5; font-family: Georgia, serif; font-size: 18px; line-height: 1.2; margin-top: 16px; }
+        .market-row { display: -webkit-flex; display: flex; align-items: baseline; -webkit-align-items: baseline; justify-content: space-between; -webkit-justify-content: space-between; padding: 11px 0 8px; border-bottom: 1px solid rgba(246, 235, 219, 0.12); }
         .market-row:last-child { border-bottom: none; }
         .market-name { color: #d9e1e7; font-size: 15px; font-weight: 700; }
         .market-value { color: #ffffff; font-family: Georgia, serif; font-size: 20px; text-align: right; }
         .market-change { color: #7dbf8b; font-size: 12px; font-weight: 700; margin-top: 3px; text-align: right; }
         .market-change.down { color: #e49d99; }
+        .ticker-value { color: #ffffff; font-family: Georgia, serif; font-size: 35px; letter-spacing: -0.7px; line-height: 1; margin-top: 19px; }
+        .ticker-change { color: #7dbf8b; font-size: 15px; font-weight: 700; margin-top: 8px; }
+        .ticker-change.down { color: #e49d99; }
         .school-intro { color: #aeb9c5; font-size: 16px; margin: 11px 0 17px; }
         .school-list { border-top: 1px solid rgba(246, 235, 219, 0.13); }
         .school-row { display: -webkit-flex; display: flex; min-height: 68px; align-items: center; -webkit-align-items: center; border-bottom: 1px solid rgba(246, 235, 219, 0.13); }
@@ -315,12 +306,8 @@
             .photo-title { font-size: 31px; }
             .brief-panel, .school-panel { min-height: 360px; padding: 20px; }
             .brief-heading, .school-heading { font-size: 29px; }
-            .brief-now { font-size: 33px; }
-            .brief-now-copy { display: none; }
-            .brief-forecast { margin-left: 10px; padding-left: 9px; }
-            .brief-forecast-day { min-width: 45px; margin-left: 4px; }
             .brief-columns { margin-top: 15px; }
-            .brief-card { min-height: 205px; padding: 15px; }
+            .brief-card { min-height: 190px; padding: 15px; }
             .brief-card-title { font-size: 18px; }
             .school-date { min-width: 100px; font-size: 13px; }
         }
@@ -654,36 +641,6 @@
                 if (item.source) { card.appendChild(createElement('div', 'brief-card-source', item.source)); }
                 return card;
             }
-            function renderBriefWeather(panel) {
-                var weather = state.weather || {};
-                var current = weather.current || {};
-                var today = weather.today || {};
-                var weatherBox = createElement('div', 'brief-weather');
-                var nowCopy = createElement('div', 'brief-now-copy');
-                var forecast = createElement('div', 'brief-forecast');
-                var index;
-                if (typeof current.temperature_f === 'number') {
-                    weatherBox.appendChild(createElement('div', 'brief-now', current.temperature_f + '°'));
-                    nowCopy.appendChild(createElement('div', '', current.condition || 'Local weather'));
-                    if (typeof today.high_f === 'number' && typeof today.low_f === 'number') {
-                        nowCopy.appendChild(createElement('div', '', 'Today ' + today.high_f + '° / ' + today.low_f + '°'));
-                    }
-                } else {
-                    weatherBox.appendChild(createElement('div', 'brief-now', '—'));
-                    nowCopy.appendChild(createElement('div', '', 'Forecast refreshes hourly'));
-                }
-                weatherBox.appendChild(nowCopy);
-                for (index = 0; index < (weather.forecast || []).length && index < 3; index += 1) {
-                    var day = weather.forecast[index];
-                    if (typeof day.high_f !== 'number' || typeof day.low_f !== 'number') { continue; }
-                    var dayBox = createElement('div', 'brief-forecast-day');
-                    dayBox.appendChild(createElement('div', 'brief-forecast-name', formatWeatherDay(day.date)));
-                    dayBox.appendChild(createElement('div', 'brief-forecast-temperature', day.high_f + '°/' + day.low_f + '°'));
-                    forecast.appendChild(dayBox);
-                }
-                weatherBox.appendChild(forecast);
-                panel.appendChild(weatherBox);
-            }
             function renderMarketsCard(markets) {
                 var card = createElement('article', 'brief-card markets');
                 var index;
@@ -710,20 +667,38 @@
                 if (markets[0].as_of) { card.appendChild(createElement('div', 'brief-card-source', 'Close • ' + markets[0].as_of)); }
                 return card;
             }
+            function renderTickerCard(ticker) {
+                var card = createElement('article', 'brief-card ticker');
+                var change;
+                card.appendChild(createElement('div', 'brief-card-label', 'FTV • Fortive'));
+                if (!ticker || typeof ticker.value !== 'number') {
+                    card.appendChild(createElement('div', 'brief-empty', 'Fortive is refreshing.'));
+                    return card;
+                }
+                card.appendChild(createElement('div', 'ticker-value', '$' + ticker.value.toFixed(2)));
+                change = typeof ticker.change_pct === 'number' ? ticker.change_pct : null;
+                if (change !== null) {
+                    card.appendChild(createElement('div', 'ticker-change' + (change < 0 ? ' down' : ''), (change > 0 ? '+' : '') + change.toFixed(2) + '%'));
+                }
+                card.appendChild(createElement('div', 'brief-card-source', 'Last price • ' + (ticker.as_of || 'latest close')));
+                return card;
+            }
             function renderBrief(content) {
                 var panel = createElement('section', 'brief-panel');
                 var top = createElement('div', 'brief-top');
                 var heading = createElement('div', '');
                 var columns = createElement('div', 'brief-columns');
                 var brief = state.brief || {};
-                heading.appendChild(createElement('div', 'brief-kicker', 'A few good things'));
+                heading.appendChild(createElement('div', 'brief-kicker', 'Six small things'));
                 heading.appendChild(createElement('div', 'brief-heading', 'Daily Brief'));
                 top.appendChild(heading);
-                renderBriefWeather(top);
                 panel.appendChild(top);
                 columns.appendChild(createBriefStoryCard('local', 'KC family pick', brief.local, 'A family pick is refreshing.'));
-                columns.appendChild(createBriefStoryCard('ai', 'AI & science', brief.ai, 'A new science item is refreshing.'));
+                columns.appendChild(createBriefStoryCard('kc', 'KC good news', brief.kc_news, 'A KC story is refreshing.'));
+                columns.appendChild(createBriefStoryCard('ai', 'AI & science', (brief.ai || [])[0], 'A science item is refreshing.'));
+                columns.appendChild(createBriefStoryCard('ai', 'More AI & science', (brief.ai || [])[1], 'A second science item is refreshing.'));
                 columns.appendChild(renderMarketsCard(brief.markets));
+                columns.appendChild(renderTickerCard(brief.ticker));
                 panel.appendChild(columns);
                 content.appendChild(panel);
             }

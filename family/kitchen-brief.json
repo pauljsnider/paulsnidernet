@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T03:00:15.379113-05:00",
+  "generated_at": "2026-09-08T04:26:03.267695-05:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Tue, Sep 8 at 9:30 AM \u2022 Plaza Branch",
@@ -7,13 +7,28 @@
     "source": "Kansas City Public Library",
     "url": "https://kclibrary.org/calendar/baby-storytime-66"
   },
-  "ai": {
-    "title": "From MIT to IBM, expediting AI and quantum deployment",
-    "detail": "MIT News \u2022 AI & science",
-    "date": "2026-09-02",
-    "source": "MIT News",
-    "url": "https://news.mit.edu/2026/from-mit-to-ibm-expediting-ai-and-quantum-deployment-0902"
+  "kc_news": {
+    "title": "Kansas City, Kansas, kicks off its first Black Restaurant Week. These are the spots to try",
+    "detail": "KCUR \u2022 KC arts & life",
+    "source": "KCUR",
+    "url": "https://www.kcur.org/arts-life/2026-09-07/kansas-city-kansas-kicks-off-its-first-black-restaurant-week-these-are-the-spots-to-try"
   },
+  "ai": [
+    {
+      "title": "From MIT to IBM, expediting AI and quantum deployment",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-02",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/from-mit-to-ibm-expediting-ai-and-quantum-deployment-0902"
+    },
+    {
+      "title": "System helps humans predict when self-driving cars will make mistakes",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-02",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/system-helps-humans-predict-when-self-driving-cars-will-make-mistakes-0902"
+    }
+  ],
   "markets": [
     {
       "name": "S&P 500",
@@ -27,5 +42,12 @@
       "change_pct": -0.29,
       "as_of": "2026-09-04"
     }
-  ]
+  ],
+  "ticker": {
+    "ticker": "FTV",
+    "name": "Fortive",
+    "value": 56.94,
+    "change_pct": -0.97,
+    "as_of": "2026-09-04"
+  }
 }
