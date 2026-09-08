@@ -503,24 +503,47 @@
             function cacheFeed(feed) {
                 try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(feed)); } catch (error) { /* Storage is optional. */ }
             }
+            function showCachedFeedOrOffline() {
+                if (!state.events.length && !applyFeed(readCachedFeed(), true)) {
+                    getById('hero-kicker').textContent = 'Calendar unavailable';
+                    getById('hero-title').textContent = 'The saved schedule will return when Wi-Fi does.';
+                    getById('hero-detail').textContent = 'Check the network, then leave this screen open.';
+                    getById('hero-time').textContent = '—';
+                    getById('hero-time-label').textContent = 'Offline';
+                    getById('feed-status').textContent = 'Waiting for a calendar connection';
+                }
+            }
             function loadFeed() {
-                var request = window.fetch(FEED_URL + '?v=' + new Date().getTime());
-                request.then(function (response) {
-                    if (!response.ok) { throw new Error('Calendar feed unavailable'); }
-                    return response.json();
-                }).then(function (feed) {
-                    cacheFeed(feed);
-                    applyFeed(feed, false);
-                }).catch(function () {
-                    if (!state.events.length && !applyFeed(readCachedFeed(), true)) {
-                        getById('hero-kicker').textContent = 'Calendar unavailable';
-                        getById('hero-title').textContent = 'The saved schedule will return when Wi-Fi does.';
-                        getById('hero-detail').textContent = 'Check the network, then leave this screen open.';
-                        getById('hero-time').textContent = '—';
-                        getById('hero-time-label').textContent = 'Offline';
-                        getById('feed-status').textContent = 'Waiting for a calendar connection';
+                /* XMLHttpRequest is supported by the original iPad mini's Safari.
+                 * Avoid fetch/Promises here so the board can load its first schedule
+                 * even on iOS 9, not merely the mini 2's iOS 12. */
+                var request = new XMLHttpRequest();
+                var completed = false;
+                function fail() {
+                    if (completed) { return; }
+                    completed = true;
+                    showCachedFeedOrOffline();
+                }
+                request.onreadystatechange = function () {
+                    if (request.readyState !== 4 || completed) { return; }
+                    if (request.status < 200 || request.status >= 300) {
+                        fail();
+                        return;
                     }
-                });
+                    try {
+                        var feed = JSON.parse(request.responseText);
+                        completed = true;
+                        cacheFeed(feed);
+                        applyFeed(feed, false);
+                    } catch (error) {
+                        fail();
+                    }
+                };
+                request.onerror = fail;
+                request.ontimeout = fail;
+                request.open('GET', FEED_URL + '?v=' + new Date().getTime(), true);
+                request.timeout = 20000;
+                request.send(null);
             }
             function initialiseControls() {
                 var controls = document.querySelectorAll('.view-control');
