@@ -1,39 +1,7 @@
 {
-  "generated_at": "2026-09-07T22:17:47.487813-05:00",
+  "generated_at": "2026-09-08T05:17:29.963555-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "NO SCHOOL Labor Day",
-      "start": "2026-09-07",
-      "end": "2026-09-08",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-09-07T17:00:00-05:00",
-      "end": "2026-09-07T18:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-09-07T17:00:00-05:00",
-      "end": "2026-09-07T17:55:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Will: Fantasy Football Draft - Recess All-Stars",
-      "start": "2026-09-07T18:00:00-05:00",
-      "end": "2026-09-07T19:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
     {
       "summary": "NO SCHOOL Professional Learning",
       "start": "2026-09-08",
@@ -1185,6 +1153,30 @@
       "all_day": false,
       "location": "6310 Lewis Road, Kansas City, MO 64132",
       "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "DAY 3",
+      "start": "2026-10-19",
+      "end": "2026-10-20",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-10-19T17:00:00-05:00",
+      "end": "2026-10-19T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-10-19T17:00:00-05:00",
+      "end": "2026-10-19T17:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
     }
   ]
 }
