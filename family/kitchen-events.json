@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T10:39:55.427980-05:00",
+  "generated_at": "2026-09-08T15:29:18.822986-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -9,14 +9,6 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Max Soccer: F26KB Major Derek - Practice",
-      "start": "2026-09-08T18:00:00-05:00",
-      "end": "2026-09-08T19:00:00-05:00",
-      "all_day": false,
-      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
-      "source": "Max Soccer - Major Derek"
     },
     {
       "summary": "Madison Tutor w/ Ava",
