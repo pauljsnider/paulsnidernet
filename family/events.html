@@ -375,7 +375,34 @@
             .calendar-day-header { padding: 10px 5px; font-size: 0.8rem; }
             .calendar-month-year { font-size: 1.4rem; }
             .calendar-nav-btn { width: 35px; height: 35px; font-size: 1rem; }
-            .day-events-popup { max-width: 90vw; margin: 20px; }
+            .day-events-popup {
+                top: 12px;
+                right: 12px;
+                bottom: 12px;
+                left: 12px;
+                width: auto;
+                max-width: none;
+                max-height: none;
+                margin: 0;
+                padding: 16px;
+                transform: none;
+                border-radius: 14px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .popup-header { position: sticky; top: 0; z-index: 1; background: white; }
+            .popup-date { font-size: 1.1rem; line-height: 1.25; }
+            .popup-close {
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                flex: 0 0 44px;
+            }
+            .popup-event { padding: 12px; }
+            .popup-event-title { font-size: 1.05rem; line-height: 1.35; }
+            .popup-event-location, .popup-event-description { overflow-wrap: anywhere; word-break: break-word; }
             .calendar-day-number { font-size: 0.9rem; margin-bottom: 3px; }
             .event-count-badge { width: 16px; height: 16px; font-size: 0.6rem; }
             .event-time-item { font-size: 0.6rem; padding: 1px 3px; }
@@ -576,7 +603,7 @@
             <div id="day-events-popup" class="day-events-popup">
                 <div class="popup-header">
                     <div id="popup-date" class="popup-date"></div>
-                    <button id="popup-close" class="popup-close"><i class="fas fa-times"></i></button>
+                    <button id="popup-close" class="popup-close" type="button" aria-label="Close event details"><i class="fas fa-times"></i></button>
                 </div>
                 <div id="popup-events" class="popup-events"></div>
             </div>
