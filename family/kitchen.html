@@ -117,14 +117,14 @@
         .week-list { border-top: 1px solid rgba(246, 235, 219, 0.12); }
         .week-row {
             min-height: 45px;
-            align-items: center;
-            -webkit-align-items: center;
+            align-items: flex-start;
+            -webkit-align-items: flex-start;
             border-bottom: 1px solid rgba(246, 235, 219, 0.12);
         }
-        .week-day { color: #aeb9c5; font-size: 16px; font-weight: 700; min-width: 146px; }
+        .week-day { color: #aeb9c5; font-size: 16px; font-weight: 700; min-width: 146px; padding: 8px 0; }
         .week-day.today { color: #f3b96d; }
-        .week-events { flex: 1; -webkit-flex: 1; min-width: 0; }
-        .week-event { color: #ffffff; display: inline-block; font-size: 17px; margin-right: 20px; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; white-space: nowrap; max-width: 350px; }
+        .week-events { display: -webkit-flex; display: flex; flex: 1; -webkit-flex: 1; flex-wrap: wrap; -webkit-flex-wrap: wrap; min-width: 0; padding: 4px 0; }
+        .week-event { color: #ffffff; display: block; flex: 0 1 350px; -webkit-flex: 0 1 350px; font-size: 17px; margin: 4px 20px 4px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .week-event-time { color: #f3b96d; font-weight: 700; }
         .week-empty { color: #5f7181; font-size: 16px; }
         .upcoming-list { margin: 0 -8px; flex-wrap: wrap; -webkit-flex-wrap: wrap; }
@@ -403,13 +403,12 @@
                     if (!dayEvents.length) {
                         dayItems.appendChild(createElement('span', 'week-empty', 'Open'));
                     } else {
-                        for (index = 0; index < dayEvents.length && index < 2; index += 1) {
+                        for (index = 0; index < dayEvents.length; index += 1) {
                             var item = createElement('span', 'week-event');
                             item.appendChild(createElement('span', 'week-event-time', eventTime(dayEvents[index]) + ' '));
                             item.appendChild(document.createTextNode(dayEvents[index].summary || 'Family event'));
                             dayItems.appendChild(item);
                         }
-                        if (dayEvents.length > 2) { dayItems.appendChild(createElement('span', 'week-empty', '+' + (dayEvents.length - 2) + ' more')); }
                     }
                     row.appendChild(dayName);
                     row.appendChild(dayItems);
