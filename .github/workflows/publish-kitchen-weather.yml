@@ -21,14 +21,15 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Build the local weather feed
+      - name: Build the local weather and Daily Brief feeds
         run: |
           pip install requests
           python scripts/publish-kitchen-weather.py
+          python scripts/publish-kitchen-brief.py
 
-      - name: Commit and push updated weather
+      - name: Commit and push updated kitchen feeds
         run: |
-          git add family/kitchen-weather.json
+          git add family/kitchen-weather.json family/kitchen-brief.json
           if git diff --staged --quiet; then
             exit 0
           fi

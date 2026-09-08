@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-09-07T22:12:48.739764-05:00",
+  "local": {
+    "title": "Baby Storytime",
+    "detail": "Tue, Sep 8 at 9:30 AM \u2022 Plaza Branch",
+    "date": "2026-09-08",
+    "source": "Kansas City Public Library",
+    "url": "https://kclibrary.org/calendar/baby-storytime-66"
+  },
+  "ai": {
+    "title": "From MIT to IBM, expediting AI and quantum deployment",
+    "detail": "MIT News \u2022 AI & science",
+    "date": "2026-09-02",
+    "source": "MIT News",
+    "url": "https://news.mit.edu/2026/from-mit-to-ibm-expediting-ai-and-quantum-deployment-0902"
+  },
+  "markets": [
+    {
+      "name": "S&P 500",
+      "value": 7718.6,
+      "change_pct": -0.38,
+      "as_of": "2026-09-04"
+    },
+    {
+      "name": "Nasdaq",
+      "value": 26506.99,
+      "change_pct": -0.29,
+      "as_of": "2026-09-04"
+    }
+  ]
+}

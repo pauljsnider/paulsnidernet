@@ -31,6 +31,15 @@ def make_calendar(uid, summary='Practice'):
 
 
 class CombineCalendarsTest(unittest.TestCase):
+    def test_ote_is_a_labeled_source_for_the_kitchen_feed(self):
+        source = next(
+            calendar
+            for calendar in COMBINE_CALENDARS.PRODUCTION_CALENDARS
+            if calendar['name'] == 'Overland Trail Elementary'
+        )
+
+        self.assertIn('ote.bluevalleyk12.org', source['url'])
+
     def test_kitchen_feed_expands_recurring_events_and_hides_descriptions(self):
         calendar = Calendar()
         event = Event()

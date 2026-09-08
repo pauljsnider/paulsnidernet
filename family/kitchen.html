@@ -196,6 +196,73 @@
         .photo-dot.active { background: #ffffff; }
         .photo-view .hero { display: none; }
         .photo-view #screen-content { height: calc(100vh - 142px); min-height: 0; padding-top: 0; }
+        .brief-view .hero, .school-view .hero { display: none; }
+        .brief-view #screen-content, .school-view #screen-content { height: calc(100vh - 142px); min-height: 0; padding-top: 0; }
+        .brief-panel, .school-panel {
+            width: 100%;
+            height: 100%;
+            min-height: 455px;
+            padding: 25px 28px;
+            overflow: hidden;
+            border: 1px solid rgba(246, 235, 219, 0.16);
+            border-radius: 16px;
+            background: rgba(13, 24, 35, 0.72);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.20);
+        }
+        .brief-top {
+            display: -webkit-flex;
+            display: flex;
+            min-height: 102px;
+            align-items: center;
+            -webkit-align-items: center;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(246, 235, 219, 0.13);
+        }
+        .brief-kicker, .school-kicker { color: #f3b96d; font-size: 13px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; }
+        .brief-heading, .school-heading { color: #ffffff; font-family: Georgia, serif; font-size: 37px; font-weight: normal; letter-spacing: -0.5px; line-height: 1; margin-top: 8px; }
+        .brief-weather { display: -webkit-flex; display: flex; align-items: center; -webkit-align-items: center; }
+        .brief-now { color: #f3b96d; font-family: Georgia, serif; font-size: 43px; letter-spacing: -1px; line-height: 0.9; padding-right: 13px; }
+        .brief-now-copy { color: #d9e1e7; font-size: 14px; line-height: 1.3; min-width: 102px; }
+        .brief-forecast { display: -webkit-flex; display: flex; margin-left: 18px; padding-left: 16px; border-left: 1px solid rgba(246, 235, 219, 0.18); }
+        .brief-forecast-day { min-width: 58px; margin-left: 9px; text-align: center; }
+        .brief-forecast-day:first-child { margin-left: 0; }
+        .brief-forecast-name { color: #7990a5; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+        .brief-forecast-temperature { color: #ffffff; font-size: 14px; font-weight: 700; margin-top: 4px; white-space: nowrap; }
+        .brief-columns { display: -webkit-flex; display: flex; margin: 21px -7px 0; }
+        .brief-card {
+            width: calc(33.333% - 14px);
+            min-height: 251px;
+            margin: 0 7px;
+            padding: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(246, 235, 219, 0.12);
+            border-top: 4px solid #5b9fc1;
+            border-radius: 12px;
+            background: rgba(21, 37, 54, 0.78);
+        }
+        .brief-card.local { border-top-color: #7dbf8b; }
+        .brief-card.ai { border-top-color: #7aaed0; }
+        .brief-card.markets { border-top-color: #f3b96d; }
+        .brief-card-label { color: #aeb9c5; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+        .brief-card-title { color: #ffffff; font-family: Georgia, serif; font-size: 23px; line-height: 1.12; margin-top: 14px; }
+        .brief-card-detail { color: #aeb9c5; font-size: 14px; line-height: 1.3; margin-top: 12px; }
+        .brief-card-source { color: #6f8190; font-size: 12px; margin-top: 12px; }
+        .brief-empty { color: #aeb9c5; font-family: Georgia, serif; font-size: 20px; line-height: 1.2; margin-top: 18px; }
+        .market-row { display: -webkit-flex; display: flex; align-items: baseline; -webkit-align-items: baseline; justify-content: space-between; -webkit-justify-content: space-between; padding: 16px 0 10px; border-bottom: 1px solid rgba(246, 235, 219, 0.12); }
+        .market-row:last-child { border-bottom: none; }
+        .market-name { color: #d9e1e7; font-size: 15px; font-weight: 700; }
+        .market-value { color: #ffffff; font-family: Georgia, serif; font-size: 20px; text-align: right; }
+        .market-change { color: #7dbf8b; font-size: 12px; font-weight: 700; margin-top: 3px; text-align: right; }
+        .market-change.down { color: #e49d99; }
+        .school-intro { color: #aeb9c5; font-size: 16px; margin: 11px 0 17px; }
+        .school-list { border-top: 1px solid rgba(246, 235, 219, 0.13); }
+        .school-row { display: -webkit-flex; display: flex; min-height: 68px; align-items: center; -webkit-align-items: center; border-bottom: 1px solid rgba(246, 235, 219, 0.13); }
+        .school-date { color: #f3b96d; font-size: 15px; font-weight: 700; line-height: 1.3; min-width: 134px; }
+        .school-copy { flex: 1; -webkit-flex: 1; min-width: 0; }
+        .school-title { color: #ffffff; font-size: 19px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .school-detail { color: #aeb9c5; font-size: 14px; margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .bottomline {
             min-height: 32px;
             align-items: flex-end;
@@ -243,9 +310,19 @@
             .week-event { font-size: 14px; max-width: 190px; }
             .upcoming-card { width: calc(50% - 16px); min-height: 175px; }
             .person-label { display: none; }
-            .photo-view #screen-content { height: calc(100vh - 116px); }
+            .photo-view #screen-content, .brief-view #screen-content, .school-view #screen-content { height: calc(100vh - 116px); }
             .photo-stage { min-height: 360px; }
             .photo-title { font-size: 31px; }
+            .brief-panel, .school-panel { min-height: 360px; padding: 20px; }
+            .brief-heading, .school-heading { font-size: 29px; }
+            .brief-now { font-size: 33px; }
+            .brief-now-copy { display: none; }
+            .brief-forecast { margin-left: 10px; padding-left: 9px; }
+            .brief-forecast-day { min-width: 45px; margin-left: 4px; }
+            .brief-columns { margin-top: 15px; }
+            .brief-card { min-height: 205px; padding: 15px; }
+            .brief-card-title { font-size: 18px; }
+            .school-date { min-width: 100px; font-size: 13px; }
         }
     </style>
 </head>
@@ -292,6 +369,8 @@
                 <button class="view-control" data-view="1" aria-label="Show this week"></button>
                 <button class="view-control" data-view="2" aria-label="Show upcoming events"></button>
                 <button class="view-control" data-view="3" aria-label="Show family photos"></button>
+                <button class="view-control" data-view="4" aria-label="Show the Daily Brief"></button>
+                <button class="view-control" data-view="5" aria-label="Show the Overland Trail Elementary schedule"></button>
             </div>
         </div>
     </main>
@@ -306,11 +385,13 @@
             var PHOTO_STORAGE_KEY = 'snider-family-kitchen-photos-v1';
             var WEATHER_FEED_URL = 'kitchen-weather.json';
             var WEATHER_STORAGE_KEY = 'snider-family-kitchen-weather-v1';
-            var VIEW_NAMES = ['Today', 'This Week', 'Coming Up', 'Family Photos'];
-            var VIEW_DURATIONS = [30000, 22000, 22000, 18000];
+            var BRIEF_FEED_URL = 'kitchen-brief.json';
+            var BRIEF_STORAGE_KEY = 'snider-family-kitchen-brief-v1';
+            var VIEW_NAMES = ['Today', 'This Week', 'Coming Up', 'Family Photos', 'Daily Brief', 'OTE School'];
+            var VIEW_DURATIONS = [30000, 22000, 22000, 18000, 26000, 24000];
             var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            var state = { events: [], generatedAt: null, photos: [], photosGeneratedAt: null, weatherGeneratedAt: null, photoIndex: 0, view: 0, rotationTimer: null, paused: false, visibleDay: null };
+            var state = { events: [], generatedAt: null, photos: [], photosGeneratedAt: null, weather: null, weatherGeneratedAt: null, brief: null, briefGeneratedAt: null, photoIndex: 0, view: 0, rotationTimer: null, paused: false, visibleDay: null };
 
             function getById(id) { return document.getElementById(id); }
             function addClass(element, className) { element.className += (element.className ? ' ' : '') + className; }
@@ -555,6 +636,132 @@
                 stage.appendChild(dots);
                 content.appendChild(stage);
             }
+            function formatMarketValue(value) {
+                var rounded;
+                if (typeof value !== 'number') { return '—'; }
+                rounded = String(Math.round(value));
+                return rounded.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            }
+            function createBriefStoryCard(className, label, item, emptyText) {
+                var card = createElement('article', 'brief-card ' + className);
+                card.appendChild(createElement('div', 'brief-card-label', label));
+                if (!item || !item.title) {
+                    card.appendChild(createElement('div', 'brief-empty', emptyText));
+                    return card;
+                }
+                card.appendChild(createElement('div', 'brief-card-title', item.title));
+                if (item.detail) { card.appendChild(createElement('div', 'brief-card-detail', item.detail)); }
+                if (item.source) { card.appendChild(createElement('div', 'brief-card-source', item.source)); }
+                return card;
+            }
+            function renderBriefWeather(panel) {
+                var weather = state.weather || {};
+                var current = weather.current || {};
+                var today = weather.today || {};
+                var weatherBox = createElement('div', 'brief-weather');
+                var nowCopy = createElement('div', 'brief-now-copy');
+                var forecast = createElement('div', 'brief-forecast');
+                var index;
+                if (typeof current.temperature_f === 'number') {
+                    weatherBox.appendChild(createElement('div', 'brief-now', current.temperature_f + '°'));
+                    nowCopy.appendChild(createElement('div', '', current.condition || 'Local weather'));
+                    if (typeof today.high_f === 'number' && typeof today.low_f === 'number') {
+                        nowCopy.appendChild(createElement('div', '', 'Today ' + today.high_f + '° / ' + today.low_f + '°'));
+                    }
+                } else {
+                    weatherBox.appendChild(createElement('div', 'brief-now', '—'));
+                    nowCopy.appendChild(createElement('div', '', 'Forecast refreshes hourly'));
+                }
+                weatherBox.appendChild(nowCopy);
+                for (index = 0; index < (weather.forecast || []).length && index < 3; index += 1) {
+                    var day = weather.forecast[index];
+                    if (typeof day.high_f !== 'number' || typeof day.low_f !== 'number') { continue; }
+                    var dayBox = createElement('div', 'brief-forecast-day');
+                    dayBox.appendChild(createElement('div', 'brief-forecast-name', formatWeatherDay(day.date)));
+                    dayBox.appendChild(createElement('div', 'brief-forecast-temperature', day.high_f + '°/' + day.low_f + '°'));
+                    forecast.appendChild(dayBox);
+                }
+                weatherBox.appendChild(forecast);
+                panel.appendChild(weatherBox);
+            }
+            function renderMarketsCard(markets) {
+                var card = createElement('article', 'brief-card markets');
+                var index;
+                card.appendChild(createElement('div', 'brief-card-label', 'Market close'));
+                if (!markets || !markets.length) {
+                    card.appendChild(createElement('div', 'brief-empty', 'Market close is refreshing.'));
+                    return card;
+                }
+                for (index = 0; index < markets.length && index < 2; index += 1) {
+                    var market = markets[index];
+                    var row = createElement('div', 'market-row');
+                    var copy = createElement('div', '');
+                    var numbers = createElement('div', '');
+                    var change = typeof market.change_pct === 'number' ? market.change_pct : null;
+                    copy.appendChild(createElement('div', 'market-name', market.name || 'Market'));
+                    numbers.appendChild(createElement('div', 'market-value', formatMarketValue(market.value)));
+                    if (change !== null) {
+                        numbers.appendChild(createElement('div', 'market-change' + (change < 0 ? ' down' : ''), (change > 0 ? '+' : '') + change.toFixed(2) + '%'));
+                    }
+                    row.appendChild(copy);
+                    row.appendChild(numbers);
+                    card.appendChild(row);
+                }
+                if (markets[0].as_of) { card.appendChild(createElement('div', 'brief-card-source', 'Close • ' + markets[0].as_of)); }
+                return card;
+            }
+            function renderBrief(content) {
+                var panel = createElement('section', 'brief-panel');
+                var top = createElement('div', 'brief-top');
+                var heading = createElement('div', '');
+                var columns = createElement('div', 'brief-columns');
+                var brief = state.brief || {};
+                heading.appendChild(createElement('div', 'brief-kicker', 'A few good things'));
+                heading.appendChild(createElement('div', 'brief-heading', 'Daily Brief'));
+                top.appendChild(heading);
+                renderBriefWeather(top);
+                panel.appendChild(top);
+                columns.appendChild(createBriefStoryCard('local', 'KC family pick', brief.local, 'A family pick is refreshing.'));
+                columns.appendChild(createBriefStoryCard('ai', 'AI & science', brief.ai, 'A new science item is refreshing.'));
+                columns.appendChild(renderMarketsCard(brief.markets));
+                panel.appendChild(columns);
+                content.appendChild(panel);
+            }
+            function isOteEvent(event) {
+                var text = ((event.summary || '') + ' ' + (event.location || '') + ' ' + (event.source || '')).toLowerCase();
+                return text.indexOf('overland trail') !== -1 || /(^|[^a-z])ote([^a-z]|$)/.test(text);
+            }
+            function renderOteSchool(content, now) {
+                var panel = createElement('section', 'school-panel');
+                var list = createElement('div', 'school-list');
+                var events = visibleEvents();
+                var schoolEvents = [];
+                var index;
+                panel.appendChild(createElement('div', 'school-kicker', 'Overland Trail Elementary'));
+                panel.appendChild(createElement('div', 'school-heading', 'OTE school calendar'));
+                panel.appendChild(createElement('div', 'school-intro', 'Upcoming school events, refreshed with the family calendar.'));
+                for (index = 0; index < events.length; index += 1) {
+                    if (isOteEvent(events[index])) { schoolEvents.push(events[index]); }
+                }
+                if (!schoolEvents.length) {
+                    list.appendChild(createElement('div', 'brief-empty', 'The OTE calendar is refreshing.'));
+                } else {
+                    for (index = 0; index < schoolEvents.length && index < 6; index += 1) {
+                        var event = schoolEvents[index];
+                        var row = createElement('div', 'school-row');
+                        var copy = createElement('div', 'school-copy');
+                        var detail = eventTime(event);
+                        if (event.location && event.location.toLowerCase().indexOf('overland trail') === -1) { detail += ' • ' + event.location; }
+                        row.appendChild(createElement('div', 'school-date', eventDay(event, now)));
+                        copy.appendChild(createElement('div', 'school-title', event.summary || 'OTE school event'));
+                        copy.appendChild(createElement('div', 'school-detail', detail));
+                        row.appendChild(copy);
+                        list.appendChild(row);
+                    }
+                }
+                panel.appendChild(list);
+                content.appendChild(panel);
+            }
             function renderControls() {
                 var controls = document.querySelectorAll('.view-control');
                 var index;
@@ -573,12 +780,14 @@
                 window.setTimeout(function () { content.className = ''; }, 500);
                 state.visibleDay = calendarDayKey(now);
                 getById('screen-label').textContent = VIEW_NAMES[state.view];
-                getById('family-board').className = state.view === 3 ? 'photo-view' : '';
+                getById('family-board').className = state.view === 3 ? 'photo-view' : (state.view === 4 ? 'brief-view' : (state.view === 5 ? 'school-view' : ''));
                 renderControls();
                 if (state.view === 0) { renderToday(content, now); }
                 if (state.view === 1) { renderWeek(content, now); }
                 if (state.view === 2) { renderUpcoming(content, now); }
                 if (state.view === 3) { renderPhotos(content); }
+                if (state.view === 4) { renderBrief(content); }
+                if (state.view === 5) { renderOteSchool(content, now); }
                 renderHero(now);
             }
             function scheduleRotation() {
@@ -668,7 +877,16 @@
                 }
                 getById('weather-summary').setAttribute('aria-label', (feed.location || 'Local') + ' weather: ' + current.temperature_f + ' degrees, ' + (current.condition || 'conditions unavailable') + '. ' + forecast + '.' + (forecastText.length ? ' Forecast: ' + forecastText.join('; ') + '.' : ''));
                 getById('weather-summary').className = 'weather-summary visible';
+                state.weather = feed;
                 state.weatherGeneratedAt = feed.generated_at || null;
+                if (state.view === 4) { renderScreen(); }
+                return true;
+            }
+            function applyBriefFeed(feed, fromCache) {
+                if (!feed || (!feed.local && !feed.ai && !feed.markets)) { return false; }
+                state.brief = feed;
+                state.briefGeneratedAt = feed.generated_at || null;
+                if (state.view === 4) { renderScreen(); }
                 return true;
             }
             function readCachedFeed() {
@@ -697,6 +915,15 @@
             }
             function cacheWeather(feed) {
                 try { window.localStorage.setItem(WEATHER_STORAGE_KEY, JSON.stringify(feed)); } catch (error) { /* Storage is optional. */ }
+            }
+            function readCachedBrief() {
+                try {
+                    var cached = window.localStorage.getItem(BRIEF_STORAGE_KEY);
+                    return cached ? JSON.parse(cached) : null;
+                } catch (error) { return null; }
+            }
+            function cacheBrief(feed) {
+                try { window.localStorage.setItem(BRIEF_STORAGE_KEY, JSON.stringify(feed)); } catch (error) { /* Storage is optional. */ }
             }
             function showCachedFeedOrOffline() {
                 if (!state.events.length && !applyFeed(readCachedFeed(), true)) {
@@ -798,6 +1025,35 @@
                 request.timeout = 20000;
                 request.send(null);
             }
+            function loadBriefFeed() {
+                var request = new XMLHttpRequest();
+                var completed = false;
+                function fail() {
+                    if (completed) { return; }
+                    completed = true;
+                    applyBriefFeed(readCachedBrief(), true);
+                }
+                request.onreadystatechange = function () {
+                    if (request.readyState !== 4 || completed) { return; }
+                    if (request.status < 200 || request.status >= 300) {
+                        fail();
+                        return;
+                    }
+                    try {
+                        var feed = JSON.parse(request.responseText);
+                        completed = true;
+                        cacheBrief(feed);
+                        applyBriefFeed(feed, false);
+                    } catch (error) {
+                        fail();
+                    }
+                };
+                request.onerror = fail;
+                request.ontimeout = fail;
+                request.open('GET', BRIEF_FEED_URL + '?v=' + new Date().getTime(), true);
+                request.timeout = 20000;
+                request.send(null);
+            }
             function initialiseControls() {
                 var controls = document.querySelectorAll('.view-control');
                 var index;
@@ -820,9 +1076,11 @@
             window.setInterval(loadFeed, 15 * 60 * 1000);
             window.setInterval(loadPhotoFeed, 15 * 60 * 1000);
             window.setInterval(loadWeatherFeed, 15 * 60 * 1000);
+            window.setInterval(loadBriefFeed, 15 * 60 * 1000);
             loadFeed();
             loadPhotoFeed();
             loadWeatherFeed();
+            loadBriefFeed();
             scheduleRotation();
         }());
     </script>

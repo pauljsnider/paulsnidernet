@@ -100,11 +100,19 @@ TEST_CALENDARS = [
     }
 ]
 
-# Production calendars (private sources)
+# Production calendars. Some feeds are private; do not print, expose, or
+# replace their URLs without the owner's explicit direction.
 PRODUCTION_CALENDARS = [
     {
         'name': 'Family Email Events',
         'path': 'family/family-email-events.ics'
+    },
+    {
+        # Public school feed already linked from family/events.html.  Bringing
+        # it into the static combined feed keeps the kitchen iPad off CORS
+        # proxies and gives the OTE screen a dependable, labeled source.
+        'name': 'Overland Trail Elementary',
+        'url': 'https://ote.bluevalleyk12.org/fs/calendar-manager/events.ics?calendar_ids[]=23'
     },
     {
         'name': 'Will Soccer',
