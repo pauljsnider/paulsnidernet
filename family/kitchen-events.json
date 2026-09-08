@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T07:35:33.282484-05:00",
+  "generated_at": "2026-09-08T07:54:59.796310-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -137,6 +137,14 @@
       "all_day": false,
       "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
       "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "Lowe's Kids Club: Haunted House - Madison, Will, Max",
+      "start": "2026-09-12T10:00:00-05:00",
+      "end": "2026-09-12T13:00:00-05:00",
+      "all_day": false,
+      "location": "Lowe's Home Improvement",
+      "source": "Family Email Events"
     },
     {
       "summary": "Madison Soccer: Jr Current vs Northern Stars ES Girls 26/7",

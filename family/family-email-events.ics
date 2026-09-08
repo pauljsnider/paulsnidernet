@@ -257,4 +257,20 @@ SEQUENCE:0
 TRANSP:TRANSPARENT
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+UID:lowes-kids-club-haunted-house-20260912@paulsnider.net
+DTSTAMP:20260908T125000Z
+SUMMARY:Lowe's Kids Club: Haunted House - Madison\, Will\, Max
+DTSTART;TZID=America/Chicago:20260912T100000
+DTEND;TZID=America/Chicago:20260912T130000
+DESCRIPTION:Free Lowe's Kids Club workshop. Madison\, Will\, and Max are
+  registered (3 children). Build a Haunted House in store. The Lowe's
+  confirmation email is the ticket; show its QR code to the Workshop Captain
+  at check-in so the kids receive their digital badges.
+LOCATION:Lowe's Home Improvement
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR

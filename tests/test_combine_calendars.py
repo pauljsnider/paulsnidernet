@@ -349,6 +349,38 @@ class CombineCalendarsTest(unittest.TestCase):
         )
         self.assertIn('previous years, doors opened at 5:00 PM', description)
 
+    def test_lowes_haunted_house_is_registered_for_all_three_kids(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        events_by_uid = {
+            str(event['UID']): event
+            for event in calendar.walk('VEVENT')
+        }
+
+        event = events_by_uid[
+            'lowes-kids-club-haunted-house-20260912@paulsnider.net'
+        ]
+        self.assertEqual(
+            "Lowe's Kids Club: Haunted House - Madison, Will, Max",
+            str(event['SUMMARY']),
+        )
+        self.assertEqual(
+            '2026-09-12T10:00:00-05:00',
+            event['DTSTART'].dt.isoformat(),
+        )
+        self.assertEqual(
+            '2026-09-12T13:00:00-05:00',
+            event['DTEND'].dt.isoformat(),
+        )
+        self.assertEqual("Lowe's Home Improvement", str(event['LOCATION']))
+        description = str(event['DESCRIPTION'])
+        for detail in (
+            'registered (3 children)',
+            'confirmation email is the ticket',
+            'QR code',
+            'Workshop Captain',
+        ):
+            self.assertIn(detail, description)
+
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
         combined = combine_calendars(
             [make_calendar('old-uid'), make_calendar('new-uid')],

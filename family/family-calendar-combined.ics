@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-09-08T12:35:33.235596+00:00
+X-COMBINE-TIMESTAMP:2026-09-08T12:54:59.771114+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VEVENT
 SUMMARY:Madison: Gymnastics
@@ -275,6 +275,23 @@ DESCRIPTION:Put her heartworm pill in her breakfast bowl and mix it into t
  he food\, not sitting on top.
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lowe's Kids Club: Haunted House - Madison\, Will\, Max
+DTSTART;TZID=America/Chicago:20260912T100000
+DTEND;TZID=America/Chicago:20260912T130000
+DTSTAMP:20260908T125000Z
+UID:lowes-kids-club-haunted-house-20260912@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Free Lowe's Kids Club workshop. Madison\, Will\, and Max are r
+ egistered (3 children). Build a Haunted House in store. The Lowe's confirm
+ ation email is the ticket\; show its QR code to the Workshop Captain at ch
+ eck-in so the kids receive their digital badges.
+LOCATION:Lowe's Home Improvement
+STATUS:CONFIRMED
+TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
