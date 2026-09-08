@@ -1,0 +1,59 @@
+name: Publish Kitchen Photos
+
+on:
+  schedule:
+    # 12:15 AM CST / 1:15 AM CDT. The job itself stores the Chicago calendar date.
+    - cron: '15 6 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Replace today's photo set
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  publish-kitchen-photos:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install image publishing dependencies
+        run: pip install requests Pillow
+
+      - name: Build today's local photo set
+        env:
+          GOOGLE_PHOTOS_ALBUM_URL: ${{ secrets.GOOGLE_PHOTOS_ALBUM_URL }}
+        run: |
+          if [ "${{ inputs.force }}" = "true" ]; then
+            python scripts/publish-kitchen-photos.py --force
+          else
+            python scripts/publish-kitchen-photos.py
+          fi
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git add family/kitchen-photos.json family/kitchen-photos/
+          if git diff --staged --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Update kitchen photos [automated]"
+          git push

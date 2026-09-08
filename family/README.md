@@ -33,6 +33,7 @@ Managing three kids' schedules across multiple sports platforms, school calendar
 - **Calendar Grid** - Traditional monthly calendar view
 - **Export** - Generate filtered iCal files for personal calendar import
 - **Kitchen Display** - An automatically rotating, glanceable dashboard built for an iPad mini 2 in landscape mode
+- **Daily Family Photos** - Five random, iPad-sized photos rotate as a fourth kitchen-display scene; the set refreshes nightly
 
 ### 👴 Family Sharing
 - Public web interface accessible to extended family
@@ -69,6 +70,13 @@ six weeks' event occurrences. The kitchen display uses that pre-expanded feed
 so it can stay compatible with iOS 12 Safari and work without third-party
 scripts.
 
+A separate daily GitHub Action retrieves a configured public Google Photos
+shared album, selects five usable images, strips their metadata, and writes
+optimized local JPEGs plus `kitchen-photos.json`. The display reads only those
+local site files. The action runs at 6:15 UTC (12:15 AM CST / 1:15 AM CDT) and
+does not replace a valid set that it has already published for the Chicago
+calendar day.
+
 The website uses standards-compliant iCalendar parsing for one-time, recurring,
 all-day, multi-day, excluded, rescheduled, and cancelled event occurrences.
 
@@ -77,6 +85,8 @@ all-day, multi-day, excluded, rescheduled, and cancelled event occurrences.
 - `events.html` - Main interactive calendar interface
 - `madison-futsal-2025-26.ics` - Madison's Futsal schedule (local)
 - `family-calendar-combined.ics` - Auto-generated combined feed (updated every 6 hours)
+- `kitchen-photos.json` - Auto-generated manifest for the current five-photo set
+- `kitchen-photos/` - Auto-generated, optimized current photo derivatives
 - `README.md` - This documentation
 
 ## Technical Architecture
@@ -109,7 +119,9 @@ all-day, multi-day, excluded, rescheduled, and cancelled event occurrences.
 
 ## Privacy & Security
 
-- No personal data stored on servers
+- The five current kitchen-display photo derivatives and the calendar are public
+  on GitHub Pages. Do not add an image to the source album unless it is suitable
+  for public family-site display.
 - Calendar URLs are publicly accessible (by design for family sharing)
 - OAuth tokens stored locally in browser
 - No tracking or analytics beyond basic web server logs

@@ -142,6 +142,38 @@
         .upcoming-time { color: #ffffff; font-family: Georgia, serif; font-size: 32px; line-height: 1; margin: 12px 0; }
         .upcoming-title { color: #ffffff; font-size: 20px; font-weight: 600; line-height: 1.17; }
         .upcoming-location { color: #aeb9c5; font-size: 15px; line-height: 1.2; margin-top: 10px; }
+        .photo-stage {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 455px;
+            overflow: hidden;
+            border: 1px solid rgba(246, 235, 219, 0.18);
+            border-radius: 16px;
+            background-color: #172836;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+        }
+        .photo-stage:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 43%;
+            background: linear-gradient(transparent, rgba(7, 14, 21, 0.78));
+        }
+        .photo-copy { position: absolute; z-index: 1; right: 25px; bottom: 22px; left: 25px; }
+        .photo-kicker { color: #f3b96d; font-size: 12px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; }
+        .photo-title { color: #ffffff; font-family: Georgia, serif; font-size: 38px; line-height: 1; margin-top: 7px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); }
+        .photo-count { color: #d9e1e7; font-size: 15px; margin-top: 8px; }
+        .photo-dots { position: absolute; z-index: 1; top: 20px; right: 22px; white-space: nowrap; }
+        .photo-dot { display: inline-block; width: 8px; height: 8px; margin-left: 7px; border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 50%; }
+        .photo-dot.active { background: #ffffff; }
+        .photo-view .hero { display: none; }
+        .photo-view #screen-content { height: calc(100vh - 142px); min-height: 0; padding-top: 0; }
         .bottomline {
             min-height: 32px;
             align-items: flex-end;
@@ -185,6 +217,9 @@
             .week-event { font-size: 14px; max-width: 190px; }
             .upcoming-card { width: calc(50% - 16px); min-height: 175px; }
             .person-label { display: none; }
+            .photo-view #screen-content { height: calc(100vh - 116px); }
+            .photo-stage { min-height: 360px; }
+            .photo-title { font-size: 31px; }
         }
     </style>
 </head>
@@ -222,6 +257,7 @@
                 <button class="view-control active" data-view="0" aria-label="Show today"></button>
                 <button class="view-control" data-view="1" aria-label="Show this week"></button>
                 <button class="view-control" data-view="2" aria-label="Show upcoming events"></button>
+                <button class="view-control" data-view="3" aria-label="Show family photos"></button>
             </div>
         </div>
     </main>
@@ -232,11 +268,13 @@
 
             var FEED_URL = 'kitchen-events.json';
             var STORAGE_KEY = 'snider-family-kitchen-feed-v1';
-            var VIEW_NAMES = ['Today', 'This Week', 'Coming Up'];
-            var VIEW_DURATIONS = [30000, 22000, 22000];
+            var PHOTO_FEED_URL = 'kitchen-photos.json';
+            var PHOTO_STORAGE_KEY = 'snider-family-kitchen-photos-v1';
+            var VIEW_NAMES = ['Today', 'This Week', 'Coming Up', 'Family Photos'];
+            var VIEW_DURATIONS = [30000, 22000, 22000, 18000];
             var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-            var state = { events: [], generatedAt: null, view: 0, rotationTimer: null, paused: false, visibleDay: null };
+            var state = { events: [], generatedAt: null, photos: [], photosGeneratedAt: null, photoIndex: 0, view: 0, rotationTimer: null, paused: false, visibleDay: null };
 
             function getById(id) { return document.getElementById(id); }
             function addClass(element, className) { element.className += (element.className ? ' ' : '') + className; }
@@ -283,6 +321,17 @@
             function formatShortDay(date) { return DAY_NAMES[date.getDay()].slice(0, 3) + ', ' + MONTH_NAMES[date.getMonth()].slice(0, 3) + ' ' + date.getDate(); }
             function formatLongDate(date) { return DAY_NAMES[date.getDay()] + ', ' + MONTH_NAMES[date.getMonth()] + ' ' + date.getDate(); }
             function eventTime(event) { return event.all_day ? 'All day' : formatTime(event.startDate); }
+            function photoViewAvailable() { return state.photos.length > 0; }
+            function viewAvailable(view) { return view !== 3 || photoViewAvailable(); }
+            function nextView(view) {
+                var candidate = view;
+                var attempts = 0;
+                do {
+                    candidate = (candidate + 1) % VIEW_NAMES.length;
+                    attempts += 1;
+                } while (!viewAvailable(candidate) && attempts < VIEW_NAMES.length);
+                return candidate;
+            }
             function eventDay(event, now) {
                 if (isSameDay(event.startDate, now)) { return 'Today'; }
                 var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
@@ -444,29 +493,58 @@
                 }
                 content.appendChild(list);
             }
+            function renderPhotos(content) {
+                var photo = state.photos[state.photoIndex % state.photos.length];
+                var stage = createElement('div', 'photo-stage');
+                var copy = createElement('div', 'photo-copy');
+                var dots = createElement('div', 'photo-dots');
+                var imageVersion = encodeURIComponent(state.photosGeneratedAt || 'today');
+                var index;
+                stage.setAttribute('role', 'img');
+                stage.setAttribute('aria-label', 'Family photo ' + (state.photoIndex + 1) + ' of ' + state.photos.length);
+                stage.style.backgroundImage = 'url("' + photo.src + '?v=' + imageVersion + '")';
+                copy.appendChild(createElement('div', 'photo-kicker', 'Snider family'));
+                copy.appendChild(createElement('div', 'photo-title', 'Family photos'));
+                copy.appendChild(createElement('div', 'photo-count', 'Photo ' + (state.photoIndex + 1) + ' of ' + state.photos.length + ' • A new set each day'));
+                for (index = 0; index < state.photos.length; index += 1) {
+                    dots.appendChild(createElement('span', 'photo-dot' + (index === state.photoIndex ? ' active' : '')));
+                }
+                stage.appendChild(copy);
+                stage.appendChild(dots);
+                content.appendChild(stage);
+            }
+            function renderControls() {
+                var controls = document.querySelectorAll('.view-control');
+                var index;
+                for (index = 0; index < controls.length; index += 1) {
+                    var view = parseInt(controls[index].getAttribute('data-view'), 10);
+                    controls[index].style.display = viewAvailable(view) ? 'inline-block' : 'none';
+                    controls[index].className = 'view-control' + (view === state.view ? ' active' : '');
+                }
+            }
             function renderScreen() {
                 var content = getById('screen-content');
                 var now = new Date();
+                if (!viewAvailable(state.view)) { state.view = 0; }
                 clearElement(content);
                 addClass(content, 'fade-in');
                 window.setTimeout(function () { content.className = ''; }, 500);
                 state.visibleDay = calendarDayKey(now);
                 getById('screen-label').textContent = VIEW_NAMES[state.view];
-                var controls = document.querySelectorAll('.view-control');
-                var index;
-                for (index = 0; index < controls.length; index += 1) {
-                    controls[index].className = 'view-control' + (parseInt(controls[index].getAttribute('data-view'), 10) === state.view ? ' active' : '');
-                }
+                getById('family-board').className = state.view === 3 ? 'photo-view' : '';
+                renderControls();
                 if (state.view === 0) { renderToday(content, now); }
                 if (state.view === 1) { renderWeek(content, now); }
                 if (state.view === 2) { renderUpcoming(content, now); }
+                if (state.view === 3) { renderPhotos(content); }
                 renderHero(now);
             }
             function scheduleRotation() {
                 if (state.rotationTimer) { window.clearTimeout(state.rotationTimer); }
                 if (state.paused) { return; }
                 state.rotationTimer = window.setTimeout(function () {
-                    state.view = (state.view + 1) % VIEW_NAMES.length;
+                    if (state.view === 3 && state.photos.length) { state.photoIndex = (state.photoIndex + 1) % state.photos.length; }
+                    state.view = nextView(state.view);
                     renderScreen();
                     scheduleRotation();
                 }, VIEW_DURATIONS[state.view]);
@@ -501,6 +579,22 @@
                 renderScreen();
                 return true;
             }
+            function applyPhotoFeed(feed, fromCache) {
+                var photos = [];
+                var index;
+                if (!feed || !feed.photos) { return false; }
+                for (index = 0; index < feed.photos.length; index += 1) {
+                    if (feed.photos[index] && typeof feed.photos[index].src === 'string') {
+                        photos.push({ src: feed.photos[index].src });
+                    }
+                }
+                if (!photos.length) { return false; }
+                state.photos = photos;
+                state.photosGeneratedAt = feed.generated_at || feed.date || null;
+                state.photoIndex = state.photoIndex % state.photos.length;
+                if (state.view === 3) { renderScreen(); } else { renderControls(); }
+                return true;
+            }
             function readCachedFeed() {
                 try {
                     var cached = window.localStorage.getItem(STORAGE_KEY);
@@ -509,6 +603,15 @@
             }
             function cacheFeed(feed) {
                 try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(feed)); } catch (error) { /* Storage is optional. */ }
+            }
+            function readCachedPhotos() {
+                try {
+                    var cached = window.localStorage.getItem(PHOTO_STORAGE_KEY);
+                    return cached ? JSON.parse(cached) : null;
+                } catch (error) { return null; }
+            }
+            function cachePhotos(feed) {
+                try { window.localStorage.setItem(PHOTO_STORAGE_KEY, JSON.stringify(feed)); } catch (error) { /* Storage is optional. */ }
             }
             function showCachedFeedOrOffline() {
                 if (!state.events.length && !applyFeed(readCachedFeed(), true)) {
@@ -552,17 +655,48 @@
                 request.timeout = 20000;
                 request.send(null);
             }
+            function loadPhotoFeed() {
+                var request = new XMLHttpRequest();
+                var completed = false;
+                function fail() {
+                    if (completed) { return; }
+                    completed = true;
+                    applyPhotoFeed(readCachedPhotos(), true);
+                }
+                request.onreadystatechange = function () {
+                    if (request.readyState !== 4 || completed) { return; }
+                    if (request.status < 200 || request.status >= 300) {
+                        fail();
+                        return;
+                    }
+                    try {
+                        var feed = JSON.parse(request.responseText);
+                        completed = true;
+                        cachePhotos(feed);
+                        applyPhotoFeed(feed, false);
+                    } catch (error) {
+                        fail();
+                    }
+                };
+                request.onerror = fail;
+                request.ontimeout = fail;
+                request.open('GET', PHOTO_FEED_URL + '?v=' + new Date().getTime(), true);
+                request.timeout = 20000;
+                request.send(null);
+            }
             function initialiseControls() {
                 var controls = document.querySelectorAll('.view-control');
                 var index;
                 for (index = 0; index < controls.length; index += 1) {
                     controls[index].addEventListener('click', function (event) {
                         event.stopPropagation();
-                        chooseView(parseInt(this.getAttribute('data-view'), 10), true);
+                        var view = parseInt(this.getAttribute('data-view'), 10);
+                        if (viewAvailable(view)) { chooseView(view, true); }
                     });
                 }
                 getById('family-board').addEventListener('click', function () {
-                    chooseView((state.view + 1) % VIEW_NAMES.length, true);
+                    if (state.view === 3 && state.photos.length) { state.photoIndex = (state.photoIndex + 1) % state.photos.length; }
+                    chooseView(nextView(state.view), true);
                 });
             }
 
@@ -570,7 +704,9 @@
             updateClock();
             window.setInterval(updateClock, 15000);
             window.setInterval(loadFeed, 15 * 60 * 1000);
+            window.setInterval(loadPhotoFeed, 15 * 60 * 1000);
             loadFeed();
+            loadPhotoFeed();
             scheduleRotation();
         }());
     </script>
