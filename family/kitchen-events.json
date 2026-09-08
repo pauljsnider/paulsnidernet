@@ -1,7 +1,15 @@
 {
-  "generated_at": "2026-09-07T21:06:17.932249-05:00",
+  "generated_at": "2026-09-07T22:17:47.487813-05:00",
   "timezone": "America/Chicago",
   "events": [
+    {
+      "summary": "NO SCHOOL Labor Day",
+      "start": "2026-09-07",
+      "end": "2026-09-08",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
       "start": "2026-09-07T17:00:00-05:00",
@@ -27,6 +35,14 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "NO SCHOOL Professional Learning",
+      "start": "2026-09-08",
+      "end": "2026-09-09",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Max Soccer: F26KB Major Derek - Practice",
       "start": "2026-09-08T18:00:00-05:00",
       "end": "2026-09-08T19:00:00-05:00",
@@ -43,6 +59,22 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "DAY 2",
+      "start": "2026-09-09",
+      "end": "2026-09-10",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "PTO Community Service Activity",
+      "start": "2026-09-09T15:45:00-05:00",
+      "end": "2026-09-09T16:30:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Will Soccer: Vipers FC U8B Practice",
       "start": "2026-09-09T16:30:00-05:00",
       "end": "2026-09-09T18:00:00-05:00",
@@ -57,6 +89,14 @@
       "all_day": false,
       "location": "13700 Switzer Rd, Overland Park, KS 66221",
       "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "DAY 3",
+      "start": "2026-09-10",
+      "end": "2026-09-11",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
@@ -81,6 +121,22 @@
       "all_day": false,
       "location": "9701 W 137th St\nOverland Park KS",
       "source": "Will Baseball"
+    },
+    {
+      "summary": "DAY 4",
+      "start": "2026-09-11",
+      "end": "2026-09-12",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "PTO Skate Party",
+      "start": "2026-09-11",
+      "end": "2026-09-12",
+      "all_day": true,
+      "location": "Skate City Overland Park, 10440 Mastin St, Overland Park, KS 66212, USA",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Madison: Tutor",
@@ -131,6 +187,22 @@
       "source": "TeamSnap Events (Madison + Max + Will)"
     },
     {
+      "summary": "DAY 5",
+      "start": "2026-09-14",
+      "end": "2026-09-15",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "OTE Building Leadership Team Meeting",
+      "start": "2026-09-14T16:00:00-05:00",
+      "end": "2026-09-14T17:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
       "start": "2026-09-14T17:00:00-05:00",
       "end": "2026-09-14T18:00:00-05:00",
@@ -145,6 +217,22 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "PTO Board Meeting",
+      "start": "2026-09-14T17:30:00-05:00",
+      "end": "2026-09-14T19:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "DAY 1",
+      "start": "2026-09-15",
+      "end": "2026-09-16",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Religious Education - Max, Will, Madison",
@@ -171,12 +259,36 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "DAY 2",
+      "start": "2026-09-16",
+      "end": "2026-09-17",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Ruby: Heartworm pill with breakfast",
       "start": "2026-09-16",
       "end": "2026-09-17",
       "all_day": true,
       "location": "",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "1st Grade Swearengin Field Trip",
+      "start": "2026-09-16T09:00:00-05:00",
+      "end": "2026-09-16T11:50:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "1st Grade Her Field Trip",
+      "start": "2026-09-16T11:15:00-05:00",
+      "end": "2026-09-16T14:10:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Will Soccer: Vipers FC U8B Practice",
@@ -193,6 +305,30 @@
       "all_day": false,
       "location": "13700 Switzer Rd, Overland Park, KS 66221",
       "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "DAY 3",
+      "start": "2026-09-17",
+      "end": "2026-09-18",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "1st Grade Voge Field Trip",
+      "start": "2026-09-17T09:00:00-05:00",
+      "end": "2026-09-17T11:50:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "1st Grade Schwabauer Field Trip",
+      "start": "2026-09-17T11:15:00-05:00",
+      "end": "2026-09-17T14:10:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
@@ -217,6 +353,22 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "DAY 4",
+      "start": "2026-09-18",
+      "end": "2026-09-19",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Fall Pictures",
+      "start": "2026-09-18",
+      "end": "2026-09-19",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Picture Day - Madison, Will, Max",
@@ -267,6 +419,14 @@
       "source": "Will Baseball"
     },
     {
+      "summary": "DAY 5",
+      "start": "2026-09-21",
+      "end": "2026-09-22",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
       "start": "2026-09-21T17:00:00-05:00",
       "end": "2026-09-21T18:00:00-05:00",
@@ -289,6 +449,14 @@
       "all_day": false,
       "location": "9701 W 137th St\nOverland Park KS",
       "source": "Will Baseball"
+    },
+    {
+      "summary": "DAY 1",
+      "start": "2026-09-22",
+      "end": "2026-09-23",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Religious Education - Max, Will, Madison",
@@ -315,6 +483,14 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "DAY 2",
+      "start": "2026-09-23",
+      "end": "2026-09-24",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Will Soccer: Vipers FC U8B Practice",
       "start": "2026-09-23T16:30:00-05:00",
       "end": "2026-09-23T18:00:00-05:00",
@@ -329,6 +505,14 @@
       "all_day": false,
       "location": "13700 Switzer Rd, Overland Park, KS 66221",
       "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "DAY 3",
+      "start": "2026-09-24",
+      "end": "2026-09-25",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
@@ -353,6 +537,14 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "NO SCHOOL Teacher Professional Collaboration",
+      "start": "2026-09-25",
+      "end": "2026-09-26",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Will Soccer: Vipers FC U8B @ Palmyra Thunder",
@@ -395,6 +587,14 @@
       "source": "Max Soccer - Major Derek"
     },
     {
+      "summary": "DAY 4",
+      "start": "2026-09-28",
+      "end": "2026-09-29",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
       "start": "2026-09-28T17:00:00-05:00",
       "end": "2026-09-28T18:00:00-05:00",
@@ -409,6 +609,14 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "DAY 5",
+      "start": "2026-09-29",
+      "end": "2026-09-30",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Religious Education - Max, Will, Madison",
@@ -435,6 +643,14 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "DAY 1",
+      "start": "2026-09-30",
+      "end": "2026-10-01",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Will Soccer: Vipers FC U8B Practice",
       "start": "2026-09-30T16:30:00-05:00",
       "end": "2026-09-30T18:00:00-05:00",
@@ -449,6 +665,14 @@
       "all_day": false,
       "location": "13700 Switzer Rd, Overland Park, KS 66221",
       "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "DAY 2",
+      "start": "2026-10-01",
+      "end": "2026-10-02",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
@@ -483,6 +707,30 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "DAY 3",
+      "start": "2026-10-02",
+      "end": "2026-10-03",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "OTE PTO Carnival",
+      "start": "2026-10-02",
+      "end": "2026-10-03",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "OTE Staff Flu Shots",
+      "start": "2026-10-02T15:45:00-05:00",
+      "end": "2026-10-02T17:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Madison: Tutor",
       "start": "2026-10-02T17:15:00-05:00",
       "end": "2026-10-02T18:15:00-05:00",
@@ -507,6 +755,22 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "DAY 4",
+      "start": "2026-10-05",
+      "end": "2026-10-06",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "OTE Building Leadership Team Meeting",
+      "start": "2026-10-05T16:00:00-05:00",
+      "end": "2026-10-05T17:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
       "start": "2026-10-05T17:00:00-05:00",
       "end": "2026-10-05T18:00:00-05:00",
@@ -521,6 +785,14 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "DAY 5",
+      "start": "2026-10-06",
+      "end": "2026-10-07",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Religious Education - Max, Will, Madison",
@@ -555,6 +827,22 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "DAY 1",
+      "start": "2026-10-07",
+      "end": "2026-10-08",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "PTO Community Service Activity",
+      "start": "2026-10-07T15:45:00-05:00",
+      "end": "2026-10-07T16:30:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Will Soccer: Vipers FC U8B Practice",
       "start": "2026-10-07T16:30:00-05:00",
       "end": "2026-10-07T18:00:00-05:00",
@@ -569,6 +857,22 @@
       "all_day": false,
       "location": "13700 Switzer Rd, Overland Park, KS 66221",
       "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "DAY 2",
+      "start": "2026-10-08",
+      "end": "2026-10-09",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "KDG Field Trip",
+      "start": "2026-10-08T09:00:00-05:00",
+      "end": "2026-10-08T13:30:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
@@ -593,6 +897,14 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "NO SCHOOL End of Quarter 1/2 Day Professional Learning 1/2 Day Grade Prep",
+      "start": "2026-10-09",
+      "end": "2026-10-10",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Madison: Tutor",
@@ -635,6 +947,14 @@
       "source": "Will Soccer - Vipers FC U8B"
     },
     {
+      "summary": "DAY 3",
+      "start": "2026-10-12",
+      "end": "2026-10-13",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
       "start": "2026-10-12T17:00:00-05:00",
       "end": "2026-10-12T18:00:00-05:00",
@@ -649,6 +969,38 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "PTO Board Meeting",
+      "start": "2026-10-12T17:30:00-05:00",
+      "end": "2026-10-12T19:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "DAY 4",
+      "start": "2026-10-13",
+      "end": "2026-10-14",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Fall Book Fair Family Night",
+      "start": "2026-10-13",
+      "end": "2026-10-14",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Fall Book Fair Classrooms Visits",
+      "start": "2026-10-13T09:00:00-05:00",
+      "end": "2026-10-13T15:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Religious Education - Max, Will, Madison",
@@ -675,6 +1027,46 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "DAY 5",
+      "start": "2026-10-14",
+      "end": "2026-10-15",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Fall Book Fair Family Night",
+      "start": "2026-10-14",
+      "end": "2026-10-15",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "1st Grade ON-SITE Field Trip Session 1",
+      "start": "2026-10-14T09:00:00-05:00",
+      "end": "2026-10-14T11:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Fall Book Fair Classrooms Visits",
+      "start": "2026-10-14T09:00:00-05:00",
+      "end": "2026-10-14T15:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "1st Grade ON-SITE Field Trip Session 2",
+      "start": "2026-10-14T12:00:00-05:00",
+      "end": "2026-10-14T14:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Will Soccer: Vipers FC U8B Practice",
       "start": "2026-10-14T16:30:00-05:00",
       "end": "2026-10-14T18:00:00-05:00",
@@ -689,6 +1081,22 @@
       "all_day": false,
       "location": "13700 Switzer Rd, Overland Park, KS 66221",
       "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "DAY 1",
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Fall Book Fair Classrooms Visits",
+      "start": "2026-10-15T09:00:00-05:00",
+      "end": "2026-10-15T12:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
@@ -707,12 +1115,36 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "DAY 2",
+      "start": "2026-10-16",
+      "end": "2026-10-17",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "PTO Skate Party",
+      "start": "2026-10-16",
+      "end": "2026-10-17",
+      "all_day": true,
+      "location": "Skate City Overland Park, 10440 Mastin St, Overland Park, KS 66212, USA",
+      "source": "Overland Trail Elementary"
+    },
+    {
       "summary": "Will Baseball: Mustangs (Moss) @ TBD",
       "start": "2026-10-16",
       "end": "2026-10-19",
       "all_day": true,
       "location": "18300 W. 87th Street\nLenexa KS",
       "source": "Will Baseball"
+    },
+    {
+      "summary": "3rd Grade Field Trip",
+      "start": "2026-10-16T09:00:00-05:00",
+      "end": "2026-10-16T14:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Madison: Tutor",
