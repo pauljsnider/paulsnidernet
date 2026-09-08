@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-08T07:50:39.906276-05:00",
+  "generated_at": "2026-09-08T12:14:01.224146-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Tue, Sep 8 at 9:30 AM \u2022 Plaza Branch",
+    "title": "Craft Circle",
+    "detail": "Tue, Sep 8 at 6:00 PM \u2022 North-East Branch",
     "date": "2026-09-08",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-66"
+    "url": "https://kclibrary.org/calendar/craft-circle-1"
   },
   "kc_news": {
     "title": "Kansas City, Kansas, kicks off its first Black Restaurant Week. These are the spots to try",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 56.94,
-    "change_pct": -0.97,
-    "as_of": "2026-09-04"
+    "value": 56.58,
+    "change_pct": -0.63,
+    "as_of": "2026-09-08"
   }
 }
