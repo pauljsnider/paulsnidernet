@@ -46,11 +46,32 @@ class KitchenPhotoPublisherTests(unittest.TestCase):
             'https://lh3.googleusercontent.com/photo=w1600-h1200?x=1',
         )
 
+    def test_extract_media_candidates_keeps_album_items_and_deduplicates_renditions(self):
+        page = (
+            '<a href="./share/album/photo/one?key=x"><img src="https://lh3.googleusercontent.com/photo-one=w512-h384"></a>'
+            '<a href="./share/album/photo/one?key=x"><img src="https://lh3.googleusercontent.com/photo-one=w1280-h960"></a>'
+            '<a href="./share/album/photo/two?key=x"><img src="https://lh3.googleusercontent.com/photo-two=w512-h384"></a>'
+        )
+        candidates = PUBLISHER.extract_media_candidates(page)
+        self.assertEqual(len(candidates), 2)
+        self.assertTrue(all(item['item_url'].startswith('https://photos.google.com/share/') for item in candidates))
+
     def test_publish_photo_set_writes_five_local_images_and_manifest(self):
-        urls = [f'https://lh3.googleusercontent.com/photo-{index}=w512-h384' for index in range(6)]
-        album_page = ' '.join(urls)
+        cards = [
+            '<a href="./share/album/photo/item-{0}?key=x"><img src="https://lh3.googleusercontent.com/photo-{0}=w512-h384"></a>'.format(index)
+            for index in range(10)
+        ]
+        album_page = ''.join(cards)
         session = Mock()
-        session.get.side_effect = [FakeResponse(text=album_page)] + [FakeResponse(content=jpeg_payload()) for _ in range(5)]
+
+        def get(url, **kwargs):
+            if url == 'https://photos.example.test/shared':
+                return FakeResponse(text=album_page)
+            if 'photos.google.com' in url:
+                return FakeResponse(text='isVideo' if 'item-0' in url else '')
+            return FakeResponse(content=jpeg_payload())
+
+        session.get.side_effect = get
 
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)
@@ -70,6 +91,7 @@ class KitchenPhotoPublisherTests(unittest.TestCase):
             self.assertEqual(len(manifest['photos']), 5)
             self.assertTrue(all((root / 'family' / item['src']).is_file() for item in manifest['photos']))
             self.assertTrue(all(len(item['id']) == 20 for item in manifest['photos']))
+            self.assertEqual(len({item['id'] for item in manifest['photos']}), 5)
 
     def test_publish_photo_set_keeps_current_valid_set_without_force(self):
         with tempfile.TemporaryDirectory() as temporary_directory:

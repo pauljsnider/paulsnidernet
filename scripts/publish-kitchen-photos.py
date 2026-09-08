@@ -45,6 +45,11 @@ GOOGLE_IMAGE_URL = re.compile(
     re.IGNORECASE,
 )
 RENDITION_SUFFIX = re.compile(r"=(?:w\d+|h\d+|s\d+)(?:-[^?]*)?(?=\?|$)", re.IGNORECASE)
+SHARED_MEDIA_CARD = re.compile(
+    r'<a\b[^>]*\bhref="(?P<href>[^\"]*/photo/[^\"]+)"[^>]*>.*?'
+    r'<img\b[^>]*\bsrc="(?P<image>https?://(?:lh[3-6]\.)?googleusercontent\.com/[^\"]+)"[^>]*>',
+    re.IGNORECASE | re.DOTALL,
+)
 
 REQUEST_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; SniderKitchenPhotoPublisher/1.0)",
@@ -73,6 +78,36 @@ def extract_photo_urls(page: str) -> list[str]:
         if cleaned not in seen:
             seen.add(cleaned)
             candidates.append(cleaned)
+    return candidates
+
+
+def _absolute_media_url(href: str) -> str:
+    """Turn a public album's relative media link into an absolute URL."""
+    if href.startswith("http://") or href.startswith("https://"):
+        return href
+    return "https://photos.google.com/" + href.lstrip("./")
+
+
+def extract_media_candidates(page: str) -> list[dict[str, str]]:
+    """Return unique album media image URLs paired with their item pages.
+
+    The item page is needed to distinguish an actual still from a video poster,
+    which Google otherwise returns as an ordinary JPEG thumbnail.
+    """
+    candidates = []
+    seen_ids = set()
+    normalised_page = _unescape_album_page(page)
+    for match in SHARED_MEDIA_CARD.finditer(normalised_page):
+        image_url = match.group("image").rstrip(".,;)")
+        identifier = source_id(image_url)
+        if identifier in seen_ids:
+            continue
+        seen_ids.add(identifier)
+        candidates.append({
+            "image_url": image_url,
+            "item_url": _absolute_media_url(match.group("href")),
+            "id": identifier,
+        })
     return candidates
 
 
@@ -135,14 +170,46 @@ def download_and_prepare(session: requests.Session, url: str, output_file: Path)
         return False
 
 
-def _candidate_order(urls: Iterable[str], previous_ids: set[str]) -> list[str]:
-    """Randomise candidates while preferring photos not used in yesterday's set."""
-    fresh = [url for url in urls if source_id(url) not in previous_ids]
-    fallback = [url for url in urls if source_id(url) in previous_ids]
+def is_video_candidate(session: requests.Session, item_url: str) -> bool:
+    """Return whether a public Google Photos media page represents a video.
+
+    Google serves a JPEG poster for videos from the same image host it uses for
+    still photos. Its public item page identifies videos with ``isVideo``.
+    Treat a failed item-page check as ineligible so video posters never slip
+    into the kitchen display.
+    """
+    try:
+        response = session.get(item_url, headers=REQUEST_HEADERS, timeout=30)
+        response.raise_for_status()
+        return "isVideo" in response.text
+    except requests.RequestException:
+        return True
+
+
+def _distributed_candidate_order(candidates: Iterable[dict[str, str]], previous_ids: set[str]) -> list[dict[str, str]]:
+    """Randomly interleave the full album list instead of clustering at its start."""
+    fresh = [candidate for candidate in candidates if candidate["id"] not in previous_ids]
+    fallback = [candidate for candidate in candidates if candidate["id"] in previous_ids]
     randomizer = secrets.SystemRandom()
-    randomizer.shuffle(fresh)
-    randomizer.shuffle(fallback)
-    return fresh + fallback
+
+    def spread(items: list[dict[str, str]]) -> list[dict[str, str]]:
+        if not items:
+            return []
+        buckets = []
+        for bucket_index in range(PHOTO_COUNT):
+            start = (bucket_index * len(items)) // PHOTO_COUNT
+            end = ((bucket_index + 1) * len(items)) // PHOTO_COUNT
+            bucket = items[start:end]
+            randomizer.shuffle(bucket)
+            buckets.append(bucket)
+        ordered = []
+        while any(buckets):
+            for bucket in buckets:
+                if bucket:
+                    ordered.append(bucket.pop())
+        return ordered
+
+    return spread(fresh) + spread(fallback)
 
 
 def publish_photo_set(
@@ -173,8 +240,8 @@ def publish_photo_set(
     except requests.RequestException as error:
         raise RuntimeError("Could not load the Google Photos shared album.") from error
 
-    photo_urls = extract_photo_urls(album_response.text)
-    if len(photo_urls) < PHOTO_COUNT:
+    media_candidates = extract_media_candidates(album_response.text)
+    if len(media_candidates) < PHOTO_COUNT:
         raise RuntimeError("The shared album did not provide enough image candidates.")
 
     previous_ids = {
@@ -182,19 +249,21 @@ def publish_photo_set(
         for photo in previous_manifest.get("photos", [])
         if photo.get("id")
     }
-    ordered_urls = _candidate_order(photo_urls, previous_ids)
+    ordered_candidates = _distributed_candidate_order(media_candidates, previous_ids)
     selected = []
 
     with tempfile.TemporaryDirectory(prefix="kitchen-photos-") as temporary_directory:
         temporary_path = Path(temporary_directory)
-        for url in ordered_urls:
+        for candidate in ordered_candidates:
             if len(selected) == PHOTO_COUNT:
                 break
             output_file = temporary_path / f"current-{len(selected) + 1}.jpg"
-            if download_and_prepare(http, url, output_file):
+            if is_video_candidate(http, candidate["item_url"]):
+                continue
+            if download_and_prepare(http, candidate["image_url"], output_file):
                 selected.append({
                     "src": f"kitchen-photos/current-{len(selected) + 1}.jpg",
-                    "id": source_id(url),
+                    "id": candidate["id"],
                 })
 
         if len(selected) != PHOTO_COUNT:
@@ -212,7 +281,7 @@ def publish_photo_set(
         "photos": selected,
     }
     manifest_file.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(f"Published {PHOTO_COUNT} kitchen photos for {today} from {len(photo_urls)} candidates.")
+    print(f"Published {PHOTO_COUNT} still photos for {today} from {len(media_candidates)} album candidates.")
     return True
 
 

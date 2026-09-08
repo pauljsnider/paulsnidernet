@@ -71,11 +71,17 @@ so it can stay compatible with iOS 12 Safari and work without third-party
 scripts.
 
 A separate daily GitHub Action retrieves a configured public Google Photos
-shared album, selects five usable images, strips their metadata, and writes
+shared album, picks five random still photos distributed across the available
+album list, explicitly excludes video media, strips image metadata, and writes
 optimized local JPEGs plus `kitchen-photos.json`. The display reads only those
 local site files. The action runs at 6:15 UTC (12:15 AM CST / 1:15 AM CDT) and
 does not replace a valid set that it has already published for the Chicago
 calendar day.
+
+The compact Leawood weather line is generated as another local JSON feed. Its
+GitHub Action refreshes current conditions and today's high/low every hour;
+the old iPad loads only `kitchen-weather.json`, with a saved copy available if
+Wi-Fi briefly drops.
 
 The website uses standards-compliant iCalendar parsing for one-time, recurring,
 all-day, multi-day, excluded, rescheduled, and cancelled event occurrences.
@@ -87,6 +93,7 @@ all-day, multi-day, excluded, rescheduled, and cancelled event occurrences.
 - `family-calendar-combined.ics` - Auto-generated combined feed (updated every 6 hours)
 - `kitchen-photos.json` - Auto-generated manifest for the current five-photo set
 - `kitchen-photos/` - Auto-generated, optimized current photo derivatives
+- `kitchen-weather.json` - Auto-generated Leawood current conditions and today's forecast
 - `README.md` - This documentation
 
 ## Technical Architecture
