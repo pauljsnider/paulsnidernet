@@ -273,4 +273,17 @@ SEQUENCE:0
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+UID:bahama-bucks-ote-benefit-20260910@paulsnider.net
+DTSTAMP:20260908T141000Z
+SUMMARY:Bahama Buck's Benefit for Overland Trail Elementary - Madison\, Will\, Max
+DTSTART;TZID=America/Chicago:20260910T160000
+DTEND;TZID=America/Chicago:20260910T200000
+DESCRIPTION:OTE spirit night at Bahama Buck's. Support Overland Trail Elementary.
+LOCATION:Bahama Buck's
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR

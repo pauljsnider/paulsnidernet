@@ -381,6 +381,34 @@ class CombineCalendarsTest(unittest.TestCase):
         ):
             self.assertIn(detail, description)
 
+    def test_bahama_bucks_benefit_is_shared_by_all_three_kids(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        events_by_uid = {
+            str(event['UID']): event
+            for event in calendar.walk('VEVENT')
+        }
+
+        event = events_by_uid['bahama-bucks-ote-benefit-20260910@paulsnider.net']
+        self.assertEqual(
+            "Bahama Buck's Benefit for Overland Trail Elementary - "
+            'Madison, Will, Max',
+            str(event['SUMMARY']),
+        )
+        self.assertEqual(
+            '2026-09-10T16:00:00-05:00',
+            event['DTSTART'].dt.isoformat(),
+        )
+        self.assertEqual(
+            '2026-09-10T20:00:00-05:00',
+            event['DTEND'].dt.isoformat(),
+        )
+        self.assertEqual("Bahama Buck's", str(event['LOCATION']))
+        self.assertEqual(
+            "OTE spirit night at Bahama Buck's. Support Overland Trail "
+            'Elementary.',
+            str(event['DESCRIPTION']),
+        )
+
     def test_deduplicates_same_source_occurrence_with_replacement_uid(self):
         combined = combine_calendars(
             [make_calendar('old-uid'), make_calendar('new-uid')],
