@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-08T18:23:03.238917-05:00",
+  "generated_at": "2026-09-08T23:34:12.721151-05:00",
   "local": {
-    "title": "Craft Circle",
-    "detail": "Tue, Sep 8 at 6:00 PM \u2022 North-East Branch",
-    "date": "2026-09-08",
+    "title": "Baby Storytime",
+    "detail": "Wed, Sep 9 at 9:30 AM \u2022 Waldo Branch",
+    "date": "2026-09-09",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/craft-circle-1"
+    "url": "https://kclibrary.org/calendar/baby-storytime-6"
   },
   "kc_news": {
     "title": "Kansas City, Kansas, kicks off its first Black Restaurant Week. These are the spots to try",
@@ -32,15 +32,15 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7718.6,
-      "change_pct": -0.38,
-      "as_of": "2026-09-04"
+      "value": 7673.52,
+      "change_pct": -0.58,
+      "as_of": "2026-09-08"
     },
     {
       "name": "Nasdaq",
-      "value": 26506.99,
-      "change_pct": -0.29,
-      "as_of": "2026-09-04"
+      "value": 26421.41,
+      "change_pct": -0.32,
+      "as_of": "2026-09-08"
     }
   ],
   "ticker": {
