@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T15:29:18.822986-05:00",
+  "generated_at": "2026-09-08T21:09:20.777561-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -57,6 +57,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Bahama Buck's Benefit for Overland Trail Elementary - Madison, Will, Max",
+      "start": "2026-09-10T16:00:00-05:00",
+      "end": "2026-09-10T20:00:00-05:00",
+      "all_day": false,
+      "location": "Bahama Buck's",
+      "source": "Family Email Events"
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
