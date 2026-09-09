@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-09T09:31:07.968918-05:00",
+  "generated_at": "2026-09-09T13:32:08.292784-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Wed, Sep 9 at 9:30 AM \u2022 Waldo Branch",
+    "title": "Movie: 'Sideways'",
+    "detail": "Wed, Sep 9 at 2:00 PM \u2022 Central Library",
     "date": "2026-09-09",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-6"
+    "url": "https://kclibrary.org/calendar/movie-sideways"
   },
   "kc_news": {
     "title": "Kansas City, Kansas, kicks off its first Black Restaurant Week. These are the spots to try",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 56.59,
-    "change_pct": 0.13,
+    "value": 56.28,
+    "change_pct": -0.41,
     "as_of": "2026-09-09"
   }
 }
