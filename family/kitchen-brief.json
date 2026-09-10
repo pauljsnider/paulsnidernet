@@ -1,11 +1,17 @@
 {
-  "generated_at": "2026-09-10T11:20:55.353937-05:00",
-  "local": null,
+  "generated_at": "2026-09-10T14:37:36.976142-05:00",
+  "local": {
+    "title": "Art Club | Grupo de Arte",
+    "detail": "Thu, Sep 10 at 5:30 PM \u2022 North-East Branch",
+    "date": "2026-09-10",
+    "source": "Kansas City Public Library",
+    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-7"
+  },
   "kc_news": {
-    "title": "Kansas City, Kansas, kicks off its first Black Restaurant Week. These are the spots to try",
+    "title": "Kansas City drag icon and Hamburger Mary\u2019s 'Matron' Melinda Ryder dies at 70",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-09-07/kansas-city-kansas-kicks-off-its-first-black-restaurant-week-these-are-the-spots-to-try"
+    "url": "https://www.kcur.org/arts-life/2026-09-10/kansas-city-drag-icon-and-hamburger-marys-matron-melinda-ryder-dies-at-70"
   },
   "ai": [
     {
@@ -40,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 54.62,
-    "change_pct": -2.12,
+    "value": 54.25,
+    "change_pct": -2.79,
     "as_of": "2026-09-10"
   }
 }
