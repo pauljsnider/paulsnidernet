@@ -1,12 +1,6 @@
 {
-  "generated_at": "2026-09-10T06:12:45.685950-05:00",
-  "local": {
-    "title": "Art Club | Grupo de Arte",
-    "detail": "Thu, Sep 10 at 5:30 PM \u2022 North-East Branch",
-    "date": "2026-09-10",
-    "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-7"
-  },
+  "generated_at": "2026-09-10T11:20:55.353937-05:00",
+  "local": null,
   "kc_news": {
     "title": "Kansas City, Kansas, kicks off its first Black Restaurant Week. These are the spots to try",
     "detail": "KCUR \u2022 KC arts & life",
@@ -46,8 +40,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.81,
-    "change_pct": -1.24,
-    "as_of": "2026-09-09"
+    "value": 54.62,
+    "change_pct": -2.12,
+    "as_of": "2026-09-10"
   }
 }
