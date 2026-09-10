@@ -1,39 +1,7 @@
 {
-  "generated_at": "2026-09-09T21:09:04.861451-05:00",
+  "generated_at": "2026-09-10T05:15:45.565527-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 2",
-      "start": "2026-09-09",
-      "end": "2026-09-10",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "PTO Community Service Activity",
-      "start": "2026-09-09T15:45:00-05:00",
-      "end": "2026-09-09T16:30:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Will Soccer: Vipers FC U8B Practice",
-      "start": "2026-09-09T16:30:00-05:00",
-      "end": "2026-09-09T18:00:00-05:00",
-      "all_day": false,
-      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
-      "source": "Will Soccer - Vipers FC U8B"
-    },
-    {
-      "summary": "Madison: [CANCELED] Jr Current - Practice",
-      "start": "2026-09-09T19:30:00-05:00",
-      "end": "2026-09-09T21:00:00-05:00",
-      "all_day": false,
-      "location": "13700 Switzer Rd, Overland Park, KS 66221",
-      "source": "TeamSnap Events (Madison + Max + Will)"
-    },
     {
       "summary": "DAY 3",
       "start": "2026-09-10",
@@ -1201,6 +1169,30 @@
       "all_day": false,
       "location": "",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "DAY 5",
+      "start": "2026-10-21",
+      "end": "2026-10-22",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "(Virtual) Fall Conferences",
+      "start": "2026-10-21T16:00:00-05:00",
+      "end": "2026-10-21T19:40:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B Practice",
+      "start": "2026-10-21T16:30:00-05:00",
+      "end": "2026-10-21T18:00:00-05:00",
+      "all_day": false,
+      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
+      "source": "Will Soccer - Vipers FC U8B"
     }
   ]
 }
