@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T16:39:55.233518-05:00",
+  "generated_at": "2026-09-09T19:09:58.203901-05:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Sep 10 at 5:30 PM \u2022 North-East Branch",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7673.52,
-      "change_pct": -0.58,
-      "as_of": "2026-09-08"
+      "value": 7636.36,
+      "change_pct": -0.48,
+      "as_of": "2026-09-09"
     },
     {
       "name": "Nasdaq",
