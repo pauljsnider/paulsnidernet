@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-11T14:38:50.431899-05:00",
+  "generated_at": "2026-09-11T17:31:20.246489-05:00",
   "local": {
-    "title": "Movie: 'Generation 9/11'",
-    "detail": "Fri, Sep 11 at 2:00 PM \u2022 Central Library",
-    "date": "2026-09-11",
+    "title": "Family Fun Fiesta",
+    "detail": "Sat, Sep 12 at 11:00 AM \u2022 Irene H. Ruiz Branch",
+    "date": "2026-09-12",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-generation-911"
+    "url": "https://kclibrary.org/calendar/family-fun-fiesta"
   },
   "kc_news": {
     "title": "Kansas City drag icon and Hamburger Mary\u2019s 'Matron' Melinda Ryder dies at 70",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 54.81,
-    "change_pct": 0.55,
+    "value": 54.69,
+    "change_pct": 0.33,
     "as_of": "2026-09-11"
   }
 }
