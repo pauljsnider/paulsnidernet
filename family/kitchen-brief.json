@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T11:24:42.319906-05:00",
+  "generated_at": "2026-09-11T14:38:50.431899-05:00",
   "local": {
     "title": "Movie: 'Generation 9/11'",
     "detail": "Fri, Sep 11 at 2:00 PM \u2022 Central Library",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 54.88,
-    "change_pct": 0.69,
+    "value": 54.81,
+    "change_pct": 0.55,
     "as_of": "2026-09-11"
   }
 }
