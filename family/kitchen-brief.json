@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-10T17:31:44.012512-05:00",
+  "generated_at": "2026-09-10T20:00:40.168407-05:00",
   "local": {
-    "title": "Art Club | Grupo de Arte",
-    "detail": "Thu, Sep 10 at 5:30 PM \u2022 North-East Branch",
-    "date": "2026-09-10",
+    "title": "Kindergarten Readiness Storytime",
+    "detail": "Fri, Sep 11 at 10:30 AM \u2022 Plaza Branch",
+    "date": "2026-09-11",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-7"
+    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-18"
   },
   "kc_news": {
     "title": "Kansas City drag icon and Hamburger Mary\u2019s 'Matron' Melinda Ryder dies at 70",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7636.36,
-      "change_pct": -0.48,
-      "as_of": "2026-09-09"
+      "value": 7591.7,
+      "change_pct": -0.58,
+      "as_of": "2026-09-10"
     },
     {
       "name": "Nasdaq",
