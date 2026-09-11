@@ -1,47 +1,7 @@
 {
-  "generated_at": "2026-09-10T21:05:18.128294-05:00",
+  "generated_at": "2026-09-11T05:13:49.365592-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 3",
-      "start": "2026-09-10",
-      "end": "2026-09-11",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Bahama Buck's Benefit for Overland Trail Elementary - Madison, Will, Max",
-      "start": "2026-09-10T16:00:00-05:00",
-      "end": "2026-09-10T20:00:00-05:00",
-      "all_day": false,
-      "location": "Bahama Buck's",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-09-10T17:00:00-05:00",
-      "end": "2026-09-10T18:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-09-10T19:00:00-05:00",
-      "end": "2026-09-10T19:55:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Will Baseball: Mustangs (Moss) @ Leawood Monarchs",
-      "start": "2026-09-10T19:00:00-05:00",
-      "end": "2026-09-10T20:15:00-05:00",
-      "all_day": false,
-      "location": "9701 W 137th St\nOverland Park KS",
-      "source": "Will Baseball"
-    },
     {
       "summary": "DAY 4",
       "start": "2026-09-11",
@@ -1193,6 +1153,38 @@
       "all_day": false,
       "location": "13700 Switzer Rd\nOverland Park, KS, United States",
       "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "NO SCHOOL Parent Teacher Conferences",
+      "start": "2026-10-22",
+      "end": "2026-10-23",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Fall Conferences",
+      "start": "2026-10-22T08:15:00-05:00",
+      "end": "2026-10-22T15:40:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-10-22T17:00:00-05:00",
+      "end": "2026-10-22T18:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-10-22T19:00:00-05:00",
+      "end": "2026-10-22T19:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
     }
   ]
 }
