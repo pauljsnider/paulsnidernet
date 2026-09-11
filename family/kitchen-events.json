@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T10:32:04.122589-05:00",
+  "generated_at": "2026-09-11T15:04:20.373274-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -75,6 +75,22 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Madison: PE",
+      "start": "2026-09-14",
+      "end": "2026-09-15",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-09-14",
+      "end": "2026-09-15",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "OTE Building Leadership Team Meeting",
       "start": "2026-09-14T16:00:00-05:00",
       "end": "2026-09-14T17:00:00-05:00",
@@ -123,6 +139,22 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Madison: Library",
+      "start": "2026-09-15",
+      "end": "2026-09-16",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-09-15",
+      "end": "2026-09-16",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Religious Education - Max, Will, Madison",
       "start": "2026-09-15T16:30:00-05:00",
       "end": "2026-09-15T17:45:00-05:00",
@@ -153,6 +185,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Max: Library",
+      "start": "2026-09-16",
+      "end": "2026-09-17",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Ruby: Heartworm pill with breakfast",
@@ -201,6 +241,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Will: Library",
+      "start": "2026-09-17",
+      "end": "2026-09-18",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "1st Grade Voge Field Trip",
