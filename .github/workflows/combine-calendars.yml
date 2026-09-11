@@ -29,6 +29,29 @@ jobs:
         run: |
           pip install requests icalendar pytz python-dateutil
 
+      - name: Merge important school events
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          target = Path('family/family-email-events.ics')
+          source = Path('family/ote-important-events.ics')
+          if source.exists():
+              target_text = target.read_text()
+              source_text = source.read_text()
+              marker = 'BEGIN:VEVENT'
+              if marker in source_text:
+                  event_body = marker + source_text.split(marker, 1)[1]
+                  event_body = event_body.rsplit('END:VCALENDAR', 1)[0].rstrip()
+                  target.write_text(
+                      target_text.replace(
+                          'END:VCALENDAR',
+                          event_body + '\nEND:VCALENDAR',
+                          1,
+                      )
+                  )
+          PY
+
       - name: Run calendar combining script
         run: |
           python scripts/combine-calendars.py
