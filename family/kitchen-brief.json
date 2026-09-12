@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T17:31:20.246489-05:00",
+  "generated_at": "2026-09-11T20:04:23.841983-05:00",
   "local": {
     "title": "Family Fun Fiesta",
     "detail": "Sat, Sep 12 at 11:00 AM \u2022 Irene H. Ruiz Branch",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7591.7,
-      "change_pct": -0.58,
-      "as_of": "2026-09-10"
+      "value": 7656.98,
+      "change_pct": 0.86,
+      "as_of": "2026-09-11"
     },
     {
       "name": "Nasdaq",
