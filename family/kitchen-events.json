@@ -1,23 +1,7 @@
 {
-  "generated_at": "2026-09-11T21:10:32.534278-05:00",
+  "generated_at": "2026-09-12T04:47:55.412670-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 4",
-      "start": "2026-09-11",
-      "end": "2026-09-12",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Madison: Tutor",
-      "start": "2026-09-11T17:15:00-05:00",
-      "end": "2026-09-11T18:15:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events"
-    },
     {
       "summary": "Max: Learn to Play Hockey",
       "start": "2026-09-12T08:00:00-05:00",
@@ -331,6 +315,14 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "Will Soccer: Vipers FC U8B @ Sporting City U8 Boys",
+      "start": "2026-09-18T20:00:00-05:00",
+      "end": "2026-09-18T21:00:00-05:00",
+      "all_day": false,
+      "location": "10541 S Warwick St\nOlathe KS",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
       "summary": "Madison: Jr Current at Captains SC 15/16 White",
       "start": "2026-09-19T08:00:00-05:00",
       "end": "2026-09-19T08:00:00-05:00",
@@ -355,12 +347,28 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "Will Soccer: Vipers FC U8B @ SS Academy U9 Boys",
+      "start": "2026-09-19T09:00:00-05:00",
+      "end": "2026-09-19T10:00:00-05:00",
+      "all_day": false,
+      "location": "10541 S Warwick St\nOlathe KS",
+      "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
       "summary": "Will Baseball: Mustangs (Moss) @ CHE Cheetahs-Greiner",
       "start": "2026-09-19T13:30:00-05:00",
       "end": "2026-09-19T15:00:00-05:00",
       "all_day": false,
       "location": "",
       "source": "Will Baseball"
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B @ Palmyra Thunder U9 Boys",
+      "start": "2026-09-20T07:00:00-05:00",
+      "end": "2026-09-20T08:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Will Soccer - Vipers FC U8B"
     },
     {
       "summary": "DAY 5",
@@ -1278,6 +1286,30 @@
       "summary": "Madison: Gymnastics",
       "start": "2026-10-22T19:00:00-05:00",
       "end": "2026-10-22T19:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "NO SCHOOL",
+      "start": "2026-10-23",
+      "end": "2026-10-24",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "No School - Madison, Will, Max",
+      "start": "2026-10-23",
+      "end": "2026-10-24",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Tutor",
+      "start": "2026-10-23T17:15:00-05:00",
+      "end": "2026-10-23T18:15:00-05:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
