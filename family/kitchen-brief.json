@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T01:11:58.425587-05:00",
+  "generated_at": "2026-09-14T08:57:57.896458-05:00",
   "local": {
     "title": "Movie: 'Rear Window'",
     "detail": "Mon, Sep 14 at 2:00 PM \u2022 Central Library",
@@ -8,10 +8,10 @@
     "url": "https://kclibrary.org/calendar/movie-rear-window"
   },
   "kc_news": {
-    "title": "Kansas City drag icon and Hamburger Mary\u2019s 'Matron' Melinda Ryder dies at 70",
+    "title": "Kansas City Clay Guild opens new Midtown studio to meet growing demand in ceramic arts",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-09-10/kansas-city-drag-icon-and-hamburger-marys-matron-melinda-ryder-dies-at-70"
+    "url": "https://www.kcur.org/arts-life/2026-09-14/kc-clay-guild-opens-new-midtown-ceramic-arts-studio"
   },
   "ai": [
     {
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 54.69,
-    "change_pct": 0.33,
-    "as_of": "2026-09-11"
+    "value": 54.94,
+    "change_pct": 0.46,
+    "as_of": "2026-09-14"
   }
 }
