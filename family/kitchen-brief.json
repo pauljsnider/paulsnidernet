@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T20:27:11.555793-05:00",
+  "generated_at": "2026-09-15T02:39:49.079751-05:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Tue, Sep 15 at 9:30 AM \u2022 Plaza Branch",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26333.04,
-      "change_pct": 0.96,
-      "as_of": "2026-09-11"
+      "value": 26186.41,
+      "change_pct": -0.56,
+      "as_of": "2026-09-14"
     }
   ],
   "ticker": {
