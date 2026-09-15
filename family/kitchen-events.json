@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T05:41:34.323683-05:00",
+  "generated_at": "2026-09-15T10:54:49.320026-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -979,14 +979,6 @@
       "source": "Overland Trail Elementary"
     },
     {
-      "summary": "PTO Skate Party",
-      "start": "2026-10-16",
-      "end": "2026-10-17",
-      "all_day": true,
-      "location": "Skate City Overland Park, 10440 Mastin St, Overland Park, KS 66212, USA",
-      "source": "Overland Trail Elementary"
-    },
-    {
       "summary": "Will Baseball: Mustangs (Moss) @ TBD",
       "start": "2026-10-16",
       "end": "2026-10-19",
@@ -1193,6 +1185,14 @@
       "all_day": true,
       "location": "Overland Trail Elementary",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "PTO Skate Party",
+      "start": "2026-10-23",
+      "end": "2026-10-24",
+      "all_day": true,
+      "location": "Skate City Overland Park, 10440 Mastin St, Overland Park, KS 66212, USA",
+      "source": "Overland Trail Elementary"
     },
     {
       "summary": "Madison: Tutor",
