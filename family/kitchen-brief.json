@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-14T18:06:13.459154-05:00",
+  "generated_at": "2026-09-14T20:27:11.555793-05:00",
   "local": {
-    "title": "Teen Hangout",
-    "detail": "Mon, Sep 14 at 6:00 PM \u2022 Trails West Branch",
-    "date": "2026-09-14",
+    "title": "Baby Storytime",
+    "detail": "Tue, Sep 15 at 9:30 AM \u2022 Plaza Branch",
+    "date": "2026-09-15",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/teen-hangout-5"
+    "url": "https://kclibrary.org/calendar/baby-storytime-69"
   },
   "kc_news": {
     "title": "Kansas City Clay Guild opens new midtown studio to meet growing demand in ceramic arts",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7656.98,
-      "change_pct": 0.86,
-      "as_of": "2026-09-11"
+      "value": 7619.98,
+      "change_pct": -0.48,
+      "as_of": "2026-09-14"
     },
     {
       "name": "Nasdaq",
