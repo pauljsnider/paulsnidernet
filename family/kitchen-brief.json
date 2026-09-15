@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-15T08:29:25.610827-05:00",
+  "generated_at": "2026-09-15T13:08:57.444653-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Tue, Sep 15 at 9:30 AM \u2022 Plaza Branch",
+    "title": "LEGO Club",
+    "detail": "Tue, Sep 15 at 2:30 PM \u2022 Plaza Branch",
     "date": "2026-09-15",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-69"
+    "url": "https://kclibrary.org/calendar/lego-club-5"
   },
   "kc_news": {
     "title": "Kansas City Clay Guild opens new midtown studio to meet growing demand in ceramic arts",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.19,
-    "change_pct": 0.91,
-    "as_of": "2026-09-14"
+    "value": 56.67,
+    "change_pct": 2.69,
+    "as_of": "2026-09-15"
   }
 }
