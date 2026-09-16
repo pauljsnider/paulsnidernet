@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-15T17:10:45.133968-05:00",
+  "generated_at": "2026-09-15T20:22:32.535847-05:00",
   "local": {
-    "title": "Tween Tech Club",
-    "detail": "Tue, Sep 15 at 4:30 PM \u2022 Southeast Branch",
-    "date": "2026-09-15",
+    "title": "Baby Storytime",
+    "detail": "Wed, Sep 16 at 9:30 AM \u2022 Waldo Branch",
+    "date": "2026-09-16",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/tween-tech-club-2"
+    "url": "https://kclibrary.org/calendar/baby-storytime-11"
   },
   "kc_news": {
     "title": "Kansas City Clay Guild opens new midtown studio to meet growing demand in ceramic arts",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7619.98,
-      "change_pct": -0.48,
-      "as_of": "2026-09-14"
+      "value": 7585.73,
+      "change_pct": -0.45,
+      "as_of": "2026-09-15"
     },
     {
       "name": "Nasdaq",
