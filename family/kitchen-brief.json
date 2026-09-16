@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-16T08:27:58.248850-05:00",
+  "generated_at": "2026-09-16T13:10:05.385072-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Wed, Sep 16 at 9:30 AM \u2022 Waldo Branch",
+    "title": "Movie: 'Motel Destino'",
+    "detail": "Wed, Sep 16 at 2:00 PM \u2022 Central Library",
     "date": "2026-09-16",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-11"
+    "url": "https://kclibrary.org/calendar/movie-motel-destino"
   },
   "kc_news": {
     "title": "Kansas City Clay Guild opens new midtown studio to meet growing demand in ceramic arts",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "New AI technique could make minimally invasive surgeries safer and more precise",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-16",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/new-ai-technique-could-make-minimally-invasive-surgeries-safer-more-precise-0916"
+    },
+    {
       "title": "Measure by measure, studying society accurately",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-09-15",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/studying-society-accurately-naoki-egami-0916"
-    },
-    {
-      "title": "New method enables AI for safety-critical situations",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-13",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/new-method-enables-ai-safety-critical-situations-0914"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 56.45,
-    "change_pct": 2.28,
-    "as_of": "2026-09-15"
+    "value": 55.56,
+    "change_pct": -1.57,
+    "as_of": "2026-09-16"
   }
 }
