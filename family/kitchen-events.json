@@ -1,55 +1,7 @@
 {
-  "generated_at": "2026-09-15T21:24:03.677560-05:00",
+  "generated_at": "2026-09-16T05:29:49.712556-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 1",
-      "start": "2026-09-15",
-      "end": "2026-09-16",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Madison: Library",
-      "start": "2026-09-15",
-      "end": "2026-09-16",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Max: PE",
-      "start": "2026-09-15",
-      "end": "2026-09-16",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Religious Education - Max, Will, Madison",
-      "start": "2026-09-15T16:30:00-05:00",
-      "end": "2026-09-15T17:45:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Max Soccer: F26KB Major Derek - Practice",
-      "start": "2026-09-15T18:00:00-05:00",
-      "end": "2026-09-15T19:00:00-05:00",
-      "all_day": false,
-      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
-      "source": "Max Soccer - Major Derek"
-    },
-    {
-      "summary": "Madison Tutor w/ Ava",
-      "start": "2026-09-15T19:15:00-05:00",
-      "end": "2026-09-15T20:15:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
     {
       "summary": "DAY 2",
       "start": "2026-09-16",
@@ -1240,6 +1192,30 @@
       "end": "2026-10-26T17:55:00-05:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "DAY 2",
+      "start": "2026-10-27",
+      "end": "2026-10-28",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Religious Education - Max, Will, Madison",
+      "start": "2026-10-27T16:30:00-05:00",
+      "end": "2026-10-27T17:45:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-10-27T19:15:00-05:00",
+      "end": "2026-10-27T20:15:00-05:00",
+      "all_day": false,
+      "location": "",
       "source": "Family Email Events"
     }
   ]
