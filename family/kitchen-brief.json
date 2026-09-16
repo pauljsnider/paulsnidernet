@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T20:22:32.535847-05:00",
+  "generated_at": "2026-09-16T02:38:17.760017-05:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Wed, Sep 16 at 9:30 AM \u2022 Waldo Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Measure by measure, studying society accurately",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-15",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/studying-society-accurately-naoki-egami-0916"
+    },
+    {
       "title": "New method enables AI for safety-critical situations",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-09-13",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/new-method-enables-ai-safety-critical-situations-0914"
-    },
-    {
-      "title": "MIT spinout turns plastic waste into resilient building materials",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-13",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/mit-spinout-turns-plastic-waste-into-resilient-building-materials-0914"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26186.41,
-      "change_pct": -0.56,
-      "as_of": "2026-09-14"
+      "value": 25981.57,
+      "change_pct": -0.78,
+      "as_of": "2026-09-15"
     }
   ],
   "ticker": {
