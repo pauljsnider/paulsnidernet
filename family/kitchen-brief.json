@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-16T13:10:05.385072-05:00",
+  "generated_at": "2026-09-16T17:06:11.723373-05:00",
   "local": {
-    "title": "Movie: 'Motel Destino'",
-    "detail": "Wed, Sep 16 at 2:00 PM \u2022 Central Library",
+    "title": "Tween Craft Night",
+    "detail": "Wed, Sep 16 at 5:30 PM \u2022 Waldo Branch",
     "date": "2026-09-16",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-motel-destino"
+    "url": "https://kclibrary.org/calendar/tween-craft-night-4"
   },
   "kc_news": {
     "title": "Kansas City Clay Guild opens new midtown studio to meet growing demand in ceramic arts",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.56,
-    "change_pct": -1.57,
+    "value": 55.3,
+    "change_pct": -2.04,
     "as_of": "2026-09-16"
   }
 }
