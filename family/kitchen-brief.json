@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-18T13:23:11.105688-05:00",
+  "generated_at": "2026-09-18T16:37:46.233721-05:00",
   "local": {
-    "title": "Movie: 'Ex-Husbands'",
-    "detail": "Fri, Sep 18 at 2:00 PM \u2022 Central Library",
+    "title": "Movie: Twilight",
+    "detail": "Fri, Sep 18 at 8:45 PM \u2022 Central Library",
     "date": "2026-09-18",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-ex-husbands"
+    "url": "https://kclibrary.org/events/movie-twilight"
   },
   "kc_news": {
     "title": "Kansas City Clay Guild opens new midtown studio to meet growing demand in ceramic arts",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 54.68,
-    "change_pct": -0.71,
+    "value": 55.0,
+    "change_pct": -0.13,
     "as_of": "2026-09-18"
   }
 }
