@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-18T09:27:48.042997-05:00",
+  "generated_at": "2026-09-18T13:23:11.105688-05:00",
   "local": {
-    "title": "Kindergarten Readiness Storytime",
-    "detail": "Fri, Sep 18 at 10:30 AM \u2022 Plaza Branch",
+    "title": "Movie: 'Ex-Husbands'",
+    "detail": "Fri, Sep 18 at 2:00 PM \u2022 Central Library",
     "date": "2026-09-18",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-19"
+    "url": "https://kclibrary.org/calendar/movie-ex-husbands"
   },
   "kc_news": {
     "title": "Kansas City Clay Guild opens new midtown studio to meet growing demand in ceramic arts",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "A new chapter for MIT Reads",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-18",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/new-chapter-mit-reads-0918"
+    },
+    {
       "title": "New AI technique could make minimally invasive surgeries safer and more precise",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-09-16",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/new-ai-technique-could-make-minimally-invasive-surgeries-safer-more-precise-0916"
-    },
-    {
-      "title": "Measure by measure, studying society accurately",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-15",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/studying-society-accurately-naoki-egami-0916"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 54.6,
-    "change_pct": -0.85,
+    "value": 54.68,
+    "change_pct": -0.71,
     "as_of": "2026-09-18"
   }
 }
