@@ -1,55 +1,7 @@
 {
-  "generated_at": "2026-09-18T21:16:27.646402-05:00",
+  "generated_at": "2026-09-19T04:57:45.773381-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 4",
-      "start": "2026-09-18",
-      "end": "2026-09-19",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Fall Pictures",
-      "start": "2026-09-18",
-      "end": "2026-09-19",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "PTO Skate Party",
-      "start": "2026-09-18",
-      "end": "2026-09-19",
-      "all_day": true,
-      "location": "Skate City Overland Park, 10440 Mastin St, Overland Park, KS 66212, USA",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Picture Day - Madison, Will, Max",
-      "start": "2026-09-18",
-      "end": "2026-09-19",
-      "all_day": true,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Madison: Tutor",
-      "start": "2026-09-18T17:15:00-05:00",
-      "end": "2026-09-18T18:15:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Will Soccer: Vipers FC U8B @ Sporting City U8 Boys",
-      "start": "2026-09-18T20:00:00-05:00",
-      "end": "2026-09-18T21:00:00-05:00",
-      "all_day": false,
-      "location": "10541 S Warwick St\nOlathe KS",
-      "source": "Will Soccer - Vipers FC U8B"
-    },
     {
       "summary": "Madison: Jr Current at Captains SC 15/16 White",
       "start": "2026-09-19T08:00:00-05:00",
@@ -1142,6 +1094,38 @@
       "summary": "Madison: Gymnastics",
       "start": "2026-10-29T19:00:00-05:00",
       "end": "2026-10-29T19:55:00-05:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "DAY 5",
+      "start": "2026-10-30",
+      "end": "2026-10-31",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Fall Class Parties",
+      "start": "2026-10-30",
+      "end": "2026-10-31",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Cougar Assembly Quarter 1 I Be Safe",
+      "start": "2026-10-30T09:00:00-05:00",
+      "end": "2026-10-30T09:30:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Madison: Tutor",
+      "start": "2026-10-30T17:15:00-05:00",
+      "end": "2026-10-30T18:15:00-05:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
