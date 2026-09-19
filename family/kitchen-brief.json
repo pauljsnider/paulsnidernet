@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-18T19:15:35.234507-05:00",
+  "generated_at": "2026-09-19T00:48:14.753794-05:00",
   "local": {
-    "title": "Movie: Twilight",
-    "detail": "Fri, Sep 18 at 8:45 PM \u2022 Central Library",
-    "date": "2026-09-18",
+    "title": "Crafts & Stories",
+    "detail": "Sat, Sep 19 at 2:00 PM \u2022 Central Library",
+    "date": "2026-09-19",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/events/movie-twilight"
+    "url": "https://kclibrary.org/calendar/crafts-stories-3"
   },
   "kc_news": {
     "title": "Kansas City Clay Guild opens new midtown studio to meet growing demand in ceramic arts",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26418.3,
-      "change_pct": 1.69,
-      "as_of": "2026-09-17"
+      "value": 26522.55,
+      "change_pct": 0.39,
+      "as_of": "2026-09-18"
     }
   ],
   "ticker": {
