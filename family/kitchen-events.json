@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T05:17:42.255276-05:00",
+  "generated_at": "2026-09-20T10:06:28.271452-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -753,14 +753,6 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
-    },
-    {
-      "summary": "Will Baseball: Mustangs (Moss) @ TBD",
-      "start": "2026-10-17",
-      "end": "2026-10-18",
-      "all_day": true,
-      "location": "18300 W. 87th Street\nLenexa KS",
-      "source": "Will Baseball"
     },
     {
       "summary": "Max Soccer: F26KB Major Derek vs Assefa",
