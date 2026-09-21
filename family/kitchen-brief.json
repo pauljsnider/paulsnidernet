@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-21T14:21:57.465666-05:00",
+  "generated_at": "2026-09-21T18:14:18.980764-05:00",
   "local": {
-    "title": "Movie: 'Disturbia'",
-    "detail": "Mon, Sep 21 at 2:00 PM \u2022 Central Library",
+    "title": "Teen Hangout",
+    "detail": "Mon, Sep 21 at 6:00 PM \u2022 Trails West Branch",
     "date": "2026-09-21",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-disturbia"
+    "url": "https://kclibrary.org/calendar/teen-hangout-8"
   },
   "kc_news": {
     "title": "Missouri college student opens textured hair vending machine on campus out of necessity",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.19,
-    "change_pct": 0.34,
+    "value": 55.09,
+    "change_pct": 0.16,
     "as_of": "2026-09-21"
   }
 }
