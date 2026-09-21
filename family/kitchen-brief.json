@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T09:01:11.059769-05:00",
+  "generated_at": "2026-09-21T14:21:57.465666-05:00",
   "local": {
     "title": "Movie: 'Disturbia'",
     "detail": "Mon, Sep 21 at 2:00 PM \u2022 Central Library",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7637.76,
-      "change_pct": 1.14,
-      "as_of": "2026-09-17"
+      "value": 7650.5,
+      "change_pct": 0.17,
+      "as_of": "2026-09-18"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 54.97,
-    "change_pct": -0.06,
+    "value": 55.19,
+    "change_pct": 0.34,
     "as_of": "2026-09-21"
   }
 }
