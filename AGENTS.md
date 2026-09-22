@@ -69,6 +69,55 @@
 - The automated feeds may update their committed JSON independently. Do not
   overwrite an automated feed with a stale local copy while making UI changes.
 
+## Shared calendar compatibility
+
+- `https://paulsnider.net/family/family-calendar-combined.ics` is a subscribed
+  calendar used by Outlook and Google Calendar as well as `family/events.html`.
+  Compatibility with one reader does not establish compatibility with another.
+- Every referenced `TZID` must have exactly one matching `VTIMEZONE` in the
+  combined ICS. `X-WR-TIMEZONE` alone does not define a time zone. Preserve
+  provider definitions, including custom identifiers, through combining and
+  cached-source recovery; generate missing definitions for recognized IANA
+  zones. Unknown zones without definitions must fail before publishing.
+- Keep recurring events in their intended local zone. Do not replace a weekly
+  Chicago wall time with a fixed UTC time that shifts after daylight saving.
+  Preserve event UIDs, recurrence rules, exceptions, cancellations, and all-day
+  dates when repairing time-zone metadata.
+- The site's ical.js 2.2.1 reader consumes only the first value of a VTIMEZONE
+  `RDATE` property. Generated transition dates must be separate `RDATE`
+  properties, not a comma-separated list. Revalidate this behavior before
+  changing the output format or parser version.
+- Calendar changes must test both fall and spring DST transitions using the
+  embedded definition with an independent parser, not just the host's time-zone
+  database. Also test the actual browser calendar reader. Include custom source
+  zones, cached feeds, recurrence-date references, and UTC/all-day events in
+  regression coverage (`tests/test_combine_calendars.py`).
+- Compare generated events with a fresh main/live snapshot: account for added,
+  removed, or changed records and verify kitchen event times. Resolve automated
+  feed conflicts from the newest main data, then apply the intended repair;
+  never replace it with an older branch snapshot.
+
+## Investigating missing calendar events
+
+- Establish the exact date, calendar application/account, displayed time zone,
+  and view. Treat the user's screenshot as evidence of their actual view; do
+  not dismiss it because a different browser or calendar shows the event.
+- Trace the event through the source ICS, live combined ICS, kitchen JSON when
+  relevant, and the affected calendar's UI. Inspect recurring masters and
+  exceptions rather than looking only for a standalone occurrence on that date.
+- Inspect subscription settings in the browser when the connector omits the
+  source URL. Confirm the exact URL and subscription versus one-time import;
+  neither a matching calendar name nor a Google result proves Outlook's state.
+- Check filters, browser/feed caching, local time-zone conversion (including a
+  possible date shift), and the displayed event end time. The website currently
+  filters ended timed events before rendering even its calendar day popup, while
+  all-day entries can remain. Its month cells also show only three entries;
+  inspect the expanded day before attributing a missing event to that limit.
+- Label unverified explanations as hypotheses. A missing time-zone definition
+  is a feed defect, but repairing it does not by itself prove why an individual
+  Outlook event was missing. Report feed, site, and Outlook verification
+  separately; claim an Outlook fix only after checking the affected client.
+
 ## Validation checklist
 
 ```sh
@@ -76,6 +125,11 @@
 git diff --check
 ```
 
+- If `../calendar-venv/bin/python` is absent, use an isolated virtualenv with
+  the dependencies required by the scripts/tests; do not silently skip tests.
+- ICS uses CRLF line endings. If a full diff flags only their carriage returns,
+  validate with `git -c core.whitespace=cr-at-eol diff origin/main --check`;
+  preserve standards-compliant ICS line endings.
 - For a visual check, serve the repo locally and use a 1024 × 768 browser
   viewport. Check each rotating kitchen screen, its controls, no console errors,
   and that the Daily Brief / OTE screen show honest fallback states without a
@@ -84,3 +138,9 @@ git diff --check
   and GitHub Pages, then verify `https://paulsnider.net/family/kitchen.html`
   with a cache-busting query string. Confirm the expected generated JSON is
   live before calling the task complete.
+- For shared-calendar deployments, wait for the calendar workflow and the Pages
+  deployment of its generated commit. Check both the exact subscription URL and
+  a cache-busted download for matching time-zone definitions and expected events.
+  Hard-refresh the live calendar browser and check its feed timestamp to avoid
+  validating a cached copy. A pushed PR or successful build alone is not a
+  deployed fix; record the merged commit and completed deployment separately.
