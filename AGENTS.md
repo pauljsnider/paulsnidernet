@@ -71,6 +71,9 @@
 
 ## Shared calendar compatibility
 
+- For the end-to-end missing-event audit, safe-output review, and deploy
+  evidence workflow, load the repository skill at
+  `.agents/skills/calendar-feed-compatibility/SKILL.md`.
 - `https://paulsnider.net/family/family-calendar-combined.ics` is a subscribed
   calendar used by Outlook and Google Calendar as well as `family/events.html`.
   Compatibility with one reader does not establish compatibility with another.
