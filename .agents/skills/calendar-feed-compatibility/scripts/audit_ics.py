@@ -52,7 +52,9 @@ def audit(calendar, require_timezones):
     suspicious_values = 0
     recurrence_fields = Counter()
 
-    for component in calendar.walk():
+    # icalendar's VCALENDAR.property_items() includes flattened child
+    # properties, so inspect VEVENTs directly or review counts are doubled.
+    for component in events:
         used_tzids.extend(parameter_tzids(component))
         for name, property_value in component.property_items():
             if name in REVIEW_FIELDS:
