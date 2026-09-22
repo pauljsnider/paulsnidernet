@@ -6,7 +6,8 @@ Enhanced with robust error handling, retry logic, and fallback mechanisms.
 """
 
 import requests
-from icalendar import Calendar, Event
+from icalendar import Calendar, Event, Timezone
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from datetime import date, datetime, time as datetime_time, timedelta
 from dateutil.rrule import rrulestr
 import pytz
@@ -438,6 +439,8 @@ def load_cached_source_calendar(source_name, output_file=OUTPUT_FILE):
     if event_count == 0:
         return None
 
+    add_calendar_timezones(cached, [existing])
+
     logger.warning(
         f"Using {event_count} cached events for {source_name} after live fetch failure"
     )
@@ -471,6 +474,52 @@ def expand_calendar_sources(calendars):
             })
 
     return expanded
+
+def add_calendar_timezones(calendar, source_calendars):
+    """Include one definition for every TZID, including recurrence exceptions.
+
+    Preserve provider-specific definitions. For sources with only an IANA
+    identifier, include transitions from 1970 through 2100; the scheduled
+    publisher regenerates these from the installed time-zone database.
+    Unknown identifiers must not silently publish an ambiguous calendar.
+    """
+    definitions = {}
+    for source in source_calendars:
+        if source is not None:
+            for timezone in source.walk('VTIMEZONE'):
+                definitions[str(timezone['TZID'])] = timezone
+
+    referenced = set()
+    for name, value in calendar.property_items():
+        tzid = getattr(value, 'params', {}).get('TZID')
+        if tzid:
+            referenced.add(str(tzid))
+
+    timezones = []
+    for tzid in sorted(referenced):
+        if tzid in definitions:
+            timezones.append(definitions[tzid])
+            continue
+        try:
+            zone = ZoneInfo(tzid)
+        except ZoneInfoNotFoundError as error:
+            raise ValueError('No time-zone definition for TZID: ' + tzid) from error
+        definition = Timezone.from_tzinfo(
+            zone, tzid=tzid, first_date=date(1970, 1, 1), last_date=date(2100, 1, 1),
+        )
+        # ical.js 2.2.1 (used by events.html) reads only the first value of a
+        # VTIMEZONE RDATE property. Separate properties retain every transition
+        # for that client as well as standards-compliant calendar subscribers.
+        for observance in definition.subcomponents:
+            dates = observance.pop('RDATE', None)
+            if dates is not None:
+                for value in dates.dts:
+                    observance.add('rdate', value.dt)
+        timezones.append(definition)
+
+    # Put definitions before the events that reference them for calendar clients.
+    calendar.subcomponents[0:0] = timezones
+
 
 def combine_calendars(calendars, source_names=None):
     """Combine multiple calendars into one with detailed statistics."""
@@ -563,6 +612,8 @@ def combine_calendars(calendars, source_names=None):
 
     for component in deduplicated_components:
         combined.add_component(component)
+
+    add_calendar_timezones(combined, calendars)
 
     logger.info(f"✓ Combined {total_events} total events from {calendars_processed} calendars")
     if duplicate_count > 0:

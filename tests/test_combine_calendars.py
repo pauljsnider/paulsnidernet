@@ -1,10 +1,13 @@
 import unittest
-from datetime import datetime
+from datetime import datetime, timedelta
+from io import StringIO
 import importlib.util
 from pathlib import Path
 import tempfile
 
 import pytz
+from dateutil.tz import tzical
+from dateutil.rrule import rrulestr
 from icalendar import Calendar, Event
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / 'scripts' / 'combine-calendars.py'
@@ -31,6 +34,109 @@ def make_calendar(uid, summary='Practice'):
 
 
 class CombineCalendarsTest(unittest.TestCase):
+    def test_embedded_chicago_zone_keeps_weekly_class_at_local_time_across_dst(self):
+        source = make_calendar('weekly-class', 'Religious Education')
+        event = source.walk('VEVENT')[0]
+        event.add('rrule', {'freq': 'weekly', 'byday': ['TU']})
+        original = event.to_ical()
+
+        combined = combine_calendars([source])
+        serialized = combined.to_ical().decode()
+        zones = combined.walk('VTIMEZONE')
+        self.assertEqual(['America/Chicago'], [str(z['TZID']) for z in zones])
+        for observance in zones[0].subcomponents:
+            dates = observance.get('RDATE', [])
+            for property_value in dates if isinstance(dates, list) else [dates]:
+                self.assertEqual(1, len(property_value.dts))
+        self.assertEqual(original, combined.walk('VEVENT')[0].to_ical())
+        self.assertLess(serialized.index('BEGIN:VTIMEZONE'), serialized.index('BEGIN:VEVENT'))
+        # Parse only the embedded definition with an independent parser; do not
+        # let the host's IANA database hide an incomplete VTIMEZONE.
+        zone = tzical(StringIO(serialized)).get('America/Chicago')
+        recurrence = rrulestr('FREQ=WEEKLY;BYDAY=TU',
+                             dtstart=datetime(2026, 9, 15, 16, 30, tzinfo=zone))
+        for year, month, day, offset in [(2026, 9, 22, -5), (2026, 11, 3, -6),
+                                        (2027, 3, 16, -5)]:
+            occurrence = recurrence.after(datetime(year, month, day, tzinfo=zone))
+            self.assertEqual((year, month, day, 16, 30),
+                             (occurrence.year, occurrence.month, occurrence.day,
+                              occurrence.hour, occurrence.minute))
+            self.assertEqual(timedelta(hours=offset), occurrence.utcoffset())
+
+    def test_preserves_custom_source_timezone_once(self):
+        source = Calendar.from_ical('''BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VTIMEZONE
+TZID:Provider/Custom
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0600
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:custom-event
+SUMMARY:Practice
+DTSTART;TZID=Provider/Custom:20260922T163000
+DTEND;TZID=Provider/Custom:20260922T174500
+END:VEVENT
+END:VCALENDAR
+''')
+        combined = combine_calendars([source, source])
+        self.assertEqual(1, len(combined.walk('VTIMEZONE')))
+        self.assertEqual(source.walk('VTIMEZONE')[0].to_ical(),
+                         combined.walk('VTIMEZONE')[0].to_ical())
+        combined.walk('VEVENT')[0]['X-SOURCE-CALENDAR'] = 'Custom provider'
+        with tempfile.TemporaryDirectory() as directory:
+            cached_path = Path(directory) / 'combined.ics'
+            cached_path.write_bytes(combined.to_ical())
+            cached = load_cached_source_calendar('Custom provider', cached_path)
+        restored = combine_calendars([cached])
+        self.assertEqual(source.walk('VTIMEZONE')[0].to_ical(),
+                         restored.walk('VTIMEZONE')[0].to_ical())
+
+    def test_timezone_references_in_recurrence_dates_are_included(self):
+        source = Calendar.from_ical('''BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:exception-dates
+SUMMARY:Practice
+DTSTART:20260922T213000Z
+RDATE;TZID=America/Chicago:20260929T163000,20261006T163000
+EXDATE;TZID=America/New_York:20261006T173000
+END:VEVENT
+END:VCALENDAR
+''')
+        combined = combine_calendars([source])
+        self.assertEqual({'America/Chicago', 'America/New_York'},
+                         {str(z['TZID']) for z in combined.walk('VTIMEZONE')})
+
+    def test_unknown_timezone_does_not_publish_ambiguous_feed(self):
+        source = make_calendar('unknown-zone')
+        source.walk('VEVENT')[0]['DTSTART'].params['TZID'] = 'Unknown/Zone'
+        with self.assertRaisesRegex(ValueError, 'No time-zone definition'):
+            combine_calendars([source])
+
+    def test_utc_and_all_day_events_need_no_timezone_definition(self):
+        source = Calendar.from_ical('''BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:utc-event
+SUMMARY:Practice
+DTSTART:20260922T213000Z
+END:VEVENT
+BEGIN:VEVENT
+UID:all-day-event
+SUMMARY:School
+DTSTART;VALUE=DATE:20260922
+END:VEVENT
+END:VCALENDAR
+''')
+        combined = combine_calendars([source])
+        self.assertEqual([], combined.walk('VTIMEZONE'))
+        self.assertEqual([e.to_ical() for e in source.walk('VEVENT')],
+                         [e.to_ical() for e in combined.walk('VEVENT')])
+
     def test_ote_is_a_kitchen_only_source(self):
         self.assertNotIn(
             'Overland Trail Elementary',
