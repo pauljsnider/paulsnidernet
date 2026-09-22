@@ -1,39 +1,7 @@
 {
-  "generated_at": "2026-09-21T21:27:10.923389-05:00",
+  "generated_at": "2026-09-22T05:35:16.373243-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 5",
-      "start": "2026-09-21",
-      "end": "2026-09-22",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-09-21T17:00:00-05:00",
-      "end": "2026-09-21T18:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-09-21T17:00:00-05:00",
-      "end": "2026-09-21T17:55:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Will Baseball: Mustangs (Moss) vs Pirates-McClain",
-      "start": "2026-09-21T17:30:00-05:00",
-      "end": "2026-09-21T18:45:00-05:00",
-      "all_day": false,
-      "location": "9701 W 137th St\nOverland Park KS",
-      "source": "Will Baseball"
-    },
     {
       "summary": "DAY 1",
       "start": "2026-09-22",
@@ -1073,6 +1041,54 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "DAY 1",
+      "start": "2026-11-02",
+      "end": "2026-11-03",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "4th Grade Miller Field Trip",
+      "start": "2026-11-02T09:00:00-06:00",
+      "end": "2026-11-02T11:50:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "4th Grade Franey Field Trip",
+      "start": "2026-11-02T11:15:00-06:00",
+      "end": "2026-11-02T14:10:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-11-02T16:00:00-06:00",
+      "end": "2026-11-02T17:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-11-02T16:00:00-06:00",
+      "end": "2026-11-02T16:55:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "OTE Building Leadership Team Meeting",
+      "start": "2026-11-02T16:00:00-06:00",
+      "end": "2026-11-02T17:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
     }
   ]
 }
