@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T13:49:37.801672-05:00",
+  "generated_at": "2026-09-22T17:02:27.518061-05:00",
   "local": {
     "title": "Family Game Night",
     "detail": "Tue, Sep 22 at 5:30 PM \u2022 Plaza Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Poitras Center to fuel early careers of 50 young scientists dedicated to psychiatric disorders research",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-22",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/poitras-center-to-fuel-early-careers-50-young-scientists-psychiatric-disorders-research-0922"
+    },
+    {
       "title": "A new chapter for MIT Reads",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-09-18",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/new-chapter-mit-reads-0918"
-    },
-    {
-      "title": "New AI technique could make minimally invasive surgeries safer and more precise",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-16",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/new-ai-technique-could-make-minimally-invasive-surgeries-safer-more-precise-0916"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.73,
-    "change_pct": 1.16,
+    "value": 55.95,
+    "change_pct": 1.56,
     "as_of": "2026-09-22"
   }
 }
