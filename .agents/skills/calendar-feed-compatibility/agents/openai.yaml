@@ -1,0 +1,4 @@
+interface:
+  display_name: "Calendar Feed Compatibility"
+  short_description: "Audit ICS feeds across site and calendar clients"
+  default_prompt: "Use $calendar-feed-compatibility to trace this calendar issue from source feed through the site, kitchen feed, deployment, and Google or Outlook client, then validate the smallest safe fix."
