@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-09-23T08:27:12.264315+00:00
+X-COMBINE-TIMESTAMP:2026-09-23T08:35:01.215385+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VTIMEZONE
 TZID:America/Chicago
@@ -527,15 +527,13 @@ X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Blue Valley North Homecoming Parade - Madison\, Will\, Max
-DTSTART;VALUE=DATE:20260930
-DTEND;VALUE=DATE:20261001
-DTSTAMP:20260923T075500Z
+DTSTART;TZID=America/Chicago:20260930T181500
+DTSTAMP:20260923T083000Z
 UID:bvn-homecoming-parade-20260930@paulsnider.net
-SEQUENCE:0
-DESCRIPTION:School newsletter listed the parade date\; exact time was not 
- specified.
+SEQUENCE:1
+DESCRIPTION:Festivities begin at 6:15 PM\; parade starts at 6:30 PM.
 STATUS:CONFIRMED
-TRANSP:TRANSPARENT
+TRANSP:OPAQUE
 X-IMPORT-TYPE:EMAIL-DIGEST
 X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
