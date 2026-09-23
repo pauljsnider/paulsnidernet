@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-23T06:27:52.537283-05:00",
+  "generated_at": "2026-09-23T11:51:26.206152-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Wed, Sep 23 at 9:30 AM \u2022 Waldo Branch",
+    "title": "Movie: 'The Motorcycle Diaries'",
+    "detail": "Wed, Sep 23 at 2:00 PM \u2022 Central Library",
     "date": "2026-09-23",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/index%2Ephp/calendar/baby-storytime-71"
+    "url": "https://kclibrary.org/calendar/movie-motorcycle-diaries"
   },
   "kc_news": {
     "title": "New Latter-day Saints temple, the first in Kansas, opens its doors to the public for a short time",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "MIT welcomes David Siegel SM \u201986, PhD \u201991 as its next Innovation Fellow",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-23",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/mit-welcomes-david-siegel-innovation-fellow-0923"
+    },
+    {
       "title": "Poitras Center to fuel early careers of 50 young scientists dedicated to psychiatric disorders research",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-09-22",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/poitras-center-to-fuel-early-careers-50-young-scientists-psychiatric-disorders-research-0922"
-    },
-    {
-      "title": "A new chapter for MIT Reads",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-18",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/new-chapter-mit-reads-0918"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.95,
-    "change_pct": 1.56,
-    "as_of": "2026-09-22"
+    "value": 56.36,
+    "change_pct": 0.73,
+    "as_of": "2026-09-23"
   }
 }
