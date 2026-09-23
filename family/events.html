@@ -1268,10 +1268,23 @@
             filtered = dedupeEvents(filtered);
             return filtered.filter(e => {
                 if (!e.dtstart) return false;
-                const d = new Date(e.dtstart);
-                return d.getFullYear() === date.getFullYear() &&
-                       d.getMonth() === date.getMonth() &&
-                       d.getDate() === date.getDate();
+
+                const target = new Date(date);
+                target.setHours(0, 0, 0, 0);
+
+                const start = new Date(e.dtstart);
+                start.setHours(0, 0, 0, 0);
+
+                // RFC 5545 DATE DTEND is exclusive. A multi-day all-day event
+                // belongs to every calendar day from DTSTART through the day
+                // before DTEND.
+                if (e.allDay && e.dtend) {
+                    const end = new Date(e.dtend);
+                    end.setHours(0, 0, 0, 0);
+                    return target >= start && target < end;
+                }
+
+                return start.getTime() === target.getTime();
             }).sort((a, b) => a.dtstart - b.dtstart);
         }
 
