@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T14:05:32.646719-05:00",
+  "generated_at": "2026-09-24T17:22:18.457114-05:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Sep 24 at 5:30 PM \u2022 North-East Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Estimating suicide risk from text",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-24",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/estimating-suicide-risk-from-text-0924"
+    },
+    {
       "title": "The promise and peril of using visual AI to study cities",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-09-23",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/studying-cities-using-visual-ai-fabio-duarte-martina-mazzarello-carlo-ratti-fan-zhang-book-0924"
-    },
-    {
-      "title": "MIT welcomes David Siegel SM \u201986, PhD \u201991 as its next Innovation Fellow",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-23",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/mit-welcomes-david-siegel-innovation-fellow-0923"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.95,
-    "change_pct": -0.55,
+    "value": 55.44,
+    "change_pct": -1.46,
     "as_of": "2026-09-24"
   }
 }
