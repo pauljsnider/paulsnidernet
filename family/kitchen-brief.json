@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T18:38:42.152068-05:00",
+  "generated_at": "2026-09-23T23:39:58.115575-05:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Sep 24 at 5:30 PM \u2022 North-East Branch",
@@ -15,32 +15,32 @@
   },
   "ai": [
     {
+      "title": "The promise and peril of using visual AI to study cities",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-23",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/studying-cities-using-visual-ai-fabio-duarte-martina-mazzarello-carlo-ratti-fan-zhang-book-0924"
+    },
+    {
       "title": "MIT welcomes David Siegel SM \u201986, PhD \u201991 as its next Innovation Fellow",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-09-23",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/mit-welcomes-david-siegel-innovation-fellow-0923"
-    },
-    {
-      "title": "Poitras Center to fuel early careers of 50 young scientists dedicated to psychiatric disorders research",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-22",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/poitras-center-to-fuel-early-careers-50-young-scientists-psychiatric-disorders-research-0922"
     }
   ],
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7764.64,
-      "change_pct": -0.0,
-      "as_of": "2026-09-22"
+      "value": 7706.03,
+      "change_pct": -0.75,
+      "as_of": "2026-09-23"
     },
     {
       "name": "Nasdaq",
-      "value": 27244.28,
-      "change_pct": 0.45,
-      "as_of": "2026-09-22"
+      "value": 26936.04,
+      "change_pct": -1.13,
+      "as_of": "2026-09-23"
     }
   ],
   "ticker": {
