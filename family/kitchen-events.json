@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T15:56:20.718926-05:00",
+  "generated_at": "2026-09-24T20:41:03.425926-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -483,6 +483,22 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "Max: Learn to Play Hockey",
+      "start": "2026-10-10T08:00:00-05:00",
+      "end": "2026-10-10T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: Learn to Play Hockey",
+      "start": "2026-10-10T08:00:00-05:00",
+      "end": "2026-10-10T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Max Soccer: F26KB Major Derek vs Hamilton",
       "start": "2026-10-10T09:00:00-05:00",
       "end": "2026-10-10T09:30:00-05:00",
@@ -731,6 +747,22 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "Max: Learn to Play Hockey",
+      "start": "2026-10-17T08:00:00-05:00",
+      "end": "2026-10-17T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: Learn to Play Hockey",
+      "start": "2026-10-17T08:00:00-05:00",
+      "end": "2026-10-17T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Max Soccer: F26KB Major Derek vs Assefa",
       "start": "2026-10-17T09:00:00-05:00",
       "end": "2026-10-17T09:30:00-05:00",
@@ -923,6 +955,22 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "Max: Learn to Play Hockey",
+      "start": "2026-10-24T08:00:00-05:00",
+      "end": "2026-10-24T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: Learn to Play Hockey",
+      "start": "2026-10-24T08:00:00-05:00",
+      "end": "2026-10-24T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Max Soccer: F26KB Major Derek vs Stimpert",
       "start": "2026-10-24T10:00:00-05:00",
       "end": "2026-10-24T10:30:00-05:00",
@@ -1072,6 +1120,22 @@
       "end": "2026-10-30T18:15:00-05:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max: Learn to Play Hockey",
+      "start": "2026-10-31T08:00:00-05:00",
+      "end": "2026-10-31T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: Learn to Play Hockey",
+      "start": "2026-10-31T08:00:00-05:00",
+      "end": "2026-10-31T08:40:00-05:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
       "source": "Family Email Events"
     },
     {
