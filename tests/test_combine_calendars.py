@@ -219,26 +219,51 @@ END:VCALENDAR
             for event in events
             if str(event['SUMMARY']).endswith('Learn to Play Hockey')
         ]
-        self.assertEqual(2, len(hockey_events))
-        for event in hockey_events:
+        self.assertEqual(4, len(hockey_events))
+
+        early_events = [
+            event
+            for event in hockey_events
+            if str(event['UID']).endswith('20260801@paulsnider.net')
+        ]
+        self.assertEqual(2, len(early_events))
+        for event in early_events:
             self.assertEqual('2026-08-01T08:00:00-05:00', event['DTSTART'].dt.isoformat())
             self.assertEqual('2026-08-01T08:40:00-05:00', event['DTEND'].dt.isoformat())
             self.assertEqual([8], event['RRULE']['COUNT'])
             self.assertEqual(['SA'], [str(day) for day in event['RRULE']['BYDAY']])
             self.assertEqual(
+                ['2026-09-26T08:00:00-05:00'],
+                [value.dt.isoformat() for value in event['RDATE'].dts],
+            )
+            self.assertEqual(
+                ['2026-09-05T08:00:00-05:00'],
+                [value.dt.isoformat() for value in event['EXDATE'].dts],
+            )
+            self.assertEqual(
                 '19900 Johnson Dr., Shawnee, KS 66218',
                 str(event['LOCATION']),
             )
 
-        descriptions = [
-            str(event['DESCRIPTION'])
+        late_events = [
+            event
             for event in hockey_events
-            if event.get('DESCRIPTION')
+            if str(event['UID']).endswith('20261010@paulsnider.net')
         ]
-        self.assertEqual(
-            ['No cost; all equipment is provided.'] * 2,
-            descriptions,
-        )
+        self.assertEqual(2, len(late_events))
+        for event in late_events:
+            self.assertEqual('2026-10-10T08:00:00-05:00', event['DTSTART'].dt.isoformat())
+            self.assertEqual('2026-10-10T08:40:00-05:00', event['DTEND'].dt.isoformat())
+            self.assertEqual([9], event['RRULE']['COUNT'])
+            self.assertEqual(['SA'], [str(day) for day in event['RRULE']['BYDAY']])
+            self.assertEqual(
+                ['2026-11-28T08:00:00-06:00'],
+                [value.dt.isoformat() for value in event['EXDATE'].dts],
+            )
+            self.assertEqual(
+                '19900 Johnson Dr., Shawnee, KS 66218',
+                str(event['LOCATION']),
+            )
 
         source = EMAIL_EVENTS_PATH.read_text()
         for private_field in ('ATTENDEE', 'ORGANIZER', 'Passcode:', 'https://'):
