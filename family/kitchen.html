@@ -65,6 +65,15 @@
             color: #d9e1e7;
         }
         .weather-summary.visible { display: -webkit-flex; display: flex; }
+        .weather-icon {
+            width: 36px;
+            margin-right: 8px;
+            color: #f3b96d;
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Arial Unicode MS", sans-serif;
+            font-size: 29px;
+            line-height: 1;
+            text-align: center;
+        }
         #weather-temperature { color: #f3b96d; font-family: Georgia, serif; font-size: 31px; letter-spacing: -1px; line-height: 1; margin-right: 9px; }
         .weather-copy { min-width: 0; }
         #weather-condition, #weather-forecast { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -74,7 +83,14 @@
         .weather-day { min-width: 50px; margin-left: 7px; text-align: center; }
         .weather-day:first-child { margin-left: 0; }
         .weather-day-name { color: #7990a5; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
-        .weather-day-temperature { color: #d9e1e7; font-size: 12px; margin-top: 2px; white-space: nowrap; }
+        .weather-day-icon {
+            height: 20px;
+            margin-top: 2px;
+            font-family: "Apple Color Emoji", "Segoe UI Emoji", "Arial Unicode MS", sans-serif;
+            font-size: 17px;
+            line-height: 20px;
+        }
+        .weather-day-temperature { color: #d9e1e7; font-size: 12px; margin-top: 1px; white-space: nowrap; }
         #clock { color: #ffffff; font-family: Georgia, serif; font-size: 44px; letter-spacing: -1px; line-height: 0.95; text-align: right; }
         .screen-label { color: #7990a5; font-size: 12px; font-weight: 700; letter-spacing: 1.8px; margin-top: 8px; text-align: right; text-transform: uppercase; }
         .hero {
@@ -321,6 +337,7 @@
                 <div id="date-label"></div>
             </div>
             <div id="weather-summary" class="weather-summary" aria-live="polite">
+                <div id="weather-icon" class="weather-icon" aria-hidden="true">☁️</div>
                 <div id="weather-temperature">—</div>
                 <div class="weather-copy">
                     <div id="weather-condition"></div>
@@ -430,6 +447,17 @@
                 if (parts.length !== 3) { return ''; }
                 var date = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
                 return isNaN(date.getTime()) ? '' : DAY_NAMES[date.getDay()].slice(0, 3);
+            }
+            function weatherIcon(condition) {
+                var text = String(condition || '').toLowerCase();
+                if (text.indexOf('thunder') !== -1) { return '⚡️'; }
+                if (text.indexOf('snow') !== -1) { return '❄️'; }
+                if (text.indexOf('rain') !== -1 || text.indexOf('drizzle') !== -1 || text.indexOf('shower') !== -1) { return '☔️'; }
+                if (text.indexOf('fog') !== -1) { return '☁️'; }
+                if (text.indexOf('mostly clear') !== -1 || text.indexOf('partly cloudy') !== -1) { return '⛅️'; }
+                if (text.indexOf('clear') !== -1) { return '☀️'; }
+                if (text.indexOf('cloud') !== -1 || text.indexOf('overcast') !== -1) { return '☁️'; }
+                return '☁️';
             }
             function photoViewAvailable() { return state.photos.length > 0; }
             function viewAvailable(view) { return view !== 3 || photoViewAvailable(); }
@@ -835,6 +863,7 @@
                 if (typeof today.high_f === 'number' && typeof today.low_f === 'number') {
                     forecast += ' ' + today.high_f + '° / ' + today.low_f + '°';
                 }
+                getById('weather-icon').textContent = weatherIcon(current.condition);
                 getById('weather-temperature').textContent = current.temperature_f + '°';
                 getById('weather-condition').textContent = current.condition || 'Local weather';
                 getById('weather-forecast').textContent = forecast;
@@ -846,9 +875,10 @@
                     var item = createElement('div', 'weather-day');
                     var dayName = formatWeatherDay(day.date);
                     item.appendChild(createElement('div', 'weather-day-name', dayName));
+                    item.appendChild(createElement('div', 'weather-day-icon', weatherIcon(day.condition)));
                     item.appendChild(createElement('div', 'weather-day-temperature', day.high_f + '°/' + day.low_f + '°'));
                     forecastDays.appendChild(item);
-                    forecastText.push(dayName + ' ' + day.high_f + ' high, ' + day.low_f + ' low');
+                    forecastText.push(dayName + ' ' + (day.condition || 'conditions unavailable') + ', ' + day.high_f + ' high, ' + day.low_f + ' low');
                 }
                 getById('weather-summary').setAttribute('aria-label', (feed.location || 'Local') + ' weather: ' + current.temperature_f + ' degrees, ' + (current.condition || 'conditions unavailable') + '. ' + forecast + '.' + (forecastText.length ? ' Forecast: ' + forecastText.join('; ') + '.' : ''));
                 getById('weather-summary').className = 'weather-summary visible';
