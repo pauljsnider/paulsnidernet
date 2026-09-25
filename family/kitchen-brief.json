@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-25T08:41:26.116392-05:00",
+  "generated_at": "2026-09-25T13:32:11.344232-05:00",
   "local": {
-    "title": "Kindergarten Readiness Storytime",
-    "detail": "Fri, Sep 25 at 10:30 AM \u2022 Plaza Branch",
+    "title": "Movie: 'M3GAN'",
+    "detail": "Fri, Sep 25 at 2:00 PM \u2022 Central Library",
     "date": "2026-09-25",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-20"
+    "url": "https://kclibrary.org/calendar/movie-m3gan"
   },
   "kc_news": {
     "title": "Months after fire, Kansas City\u2019s Green Lady Lounge looks to December reopening",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.7,
-    "change_pct": 0.48,
+    "value": 56.14,
+    "change_pct": 1.26,
     "as_of": "2026-09-25"
   }
 }
