@@ -1,55 +1,7 @@
 {
-  "generated_at": "2026-09-24T21:32:41.646786-05:00",
+  "generated_at": "2026-09-25T05:49:48.523838-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 3",
-      "start": "2026-09-24",
-      "end": "2026-09-25",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Madison: Greek Roots 5 Test",
-      "start": "2026-09-24",
-      "end": "2026-09-25",
-      "all_day": true,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Max: Bring Teacher Birthday Card",
-      "start": "2026-09-24",
-      "end": "2026-09-25",
-      "all_day": true,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-09-24T17:00:00-05:00",
-      "end": "2026-09-24T18:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Will Baseball: Mustangs (Moss) Practice",
-      "start": "2026-09-24T18:15:00-05:00",
-      "end": "2026-09-24T19:30:00-05:00",
-      "all_day": false,
-      "location": "6201 W 133rd St\nOverland Park KS",
-      "source": "Will Baseball"
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-09-24T19:00:00-05:00",
-      "end": "2026-09-24T19:55:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events"
-    },
     {
       "summary": "Max: Teacher Birthday",
       "start": "2026-09-25",
@@ -1249,6 +1201,38 @@
       "all_day": true,
       "location": "A Pod",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "DAY 4",
+      "start": "2026-11-05",
+      "end": "2026-11-06",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Will: Kauffman Stadium Field Trip",
+      "start": "2026-11-05T09:15:00-06:00",
+      "end": "2026-11-05T13:45:00-06:00",
+      "all_day": false,
+      "location": "Kauffman Stadium, Kansas City, MO",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-11-05T16:00:00-06:00",
+      "end": "2026-11-05T17:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-11-05T18:00:00-06:00",
+      "end": "2026-11-05T18:55:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
     }
   ]
 }
