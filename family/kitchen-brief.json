@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T02:35:48.683151-05:00",
+  "generated_at": "2026-09-26T08:00:58.271613-05:00",
   "local": {
     "title": "Community Baby Shower",
     "detail": "Sat, Sep 26 at 1:00 PM \u2022 Plaza Branch",
@@ -8,10 +8,10 @@
     "url": "https://kclibrary.org/calendar/community-baby-shower"
   },
   "kc_news": {
-    "title": "Months after fire, Kansas City\u2019s Green Lady Lounge looks to December reopening",
+    "title": "Missouri and Kansas after dark: Here's where to see the night sky and observe nature",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-09-25/months-after-fire-kansas-citys-green-lady-lounge-looks-to-december-reopening"
+    "url": "https://www.kcur.org/arts-life/2026-09-26/kansas-missouri-night-sky-outdoor-nature"
   },
   "ai": [
     {
@@ -43,5 +43,11 @@
       "as_of": "2026-09-25"
     }
   ],
-  "ticker": null
+  "ticker": {
+    "ticker": "FTV",
+    "name": "Fortive",
+    "value": 56.09,
+    "change_pct": 1.17,
+    "as_of": "2026-09-25"
+  }
 }
