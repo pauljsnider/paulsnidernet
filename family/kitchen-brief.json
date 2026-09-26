@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T17:15:32.511413-05:00",
+  "generated_at": "2026-09-25T20:29:43.463753-05:00",
   "local": {
     "title": "Community Baby Shower",
     "detail": "Sat, Sep 26 at 1:00 PM \u2022 Plaza Branch",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7704.13,
-      "change_pct": -0.02,
-      "as_of": "2026-09-24"
+      "value": 7743.41,
+      "change_pct": 0.51,
+      "as_of": "2026-09-25"
     },
     {
       "name": "Nasdaq",
