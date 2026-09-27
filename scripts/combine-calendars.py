@@ -826,6 +826,7 @@ def build_kitchen_feed(calendar, now=None, days=KITCHEN_FEED_DAYS):
         key = (event['summary'], event['start'], event['end'], event['location'], event['source'])
         deduplicated[key] = event
 
+    # Prefer explicit family corrections over same-day OTE live placeholders.
     family_school_sources = {'Family Email Events', 'Overland Trail Elementary'}
     stale_ote_occurrences = {
         ('fall book fair family night', '2026-10-14'),
