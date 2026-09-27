@@ -827,6 +827,9 @@ def build_kitchen_feed(calendar, now=None, days=KITCHEN_FEED_DAYS):
         deduplicated[key] = event
 
     family_school_sources = {'Family Email Events', 'Overland Trail Elementary'}
+    stale_ote_occurrences = {
+        ('fall book fair family night', '2026-10-14'),
+    }
     family_school_events = []
     family_school_positions = {}
     family_suffixes = (' - Madison, Will, Max', ' - Will, Max')
@@ -837,6 +840,11 @@ def build_kitchen_feed(calendar, now=None, days=KITCHEN_FEED_DAYS):
             continue
 
         normalized_summary = event['summary'].strip()
+        if (
+            source == 'Overland Trail Elementary'
+            and (normalized_summary.lower(), event['start'][:10]) in stale_ote_occurrences
+        ):
+            continue
         for suffix in family_suffixes:
             if normalized_summary.lower().endswith(suffix.lower()):
                 normalized_summary = normalized_summary[:-len(suffix)].rstrip()
