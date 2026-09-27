@@ -657,10 +657,10 @@ END:VEVENT
 BEGIN:VEVENT
 UID:chiefs-2026-w06-chargers@paulsnider.net
 DTSTAMP:20260927T013300Z
-SUMMARY:Chiefs vs Chargers
+SUMMARY:Chiefs vs Chargers - Paul + Robin Going
 DTSTART;TZID=America/Chicago:20261018T152500
 DTEND;TZID=America/Chicago:20261018T185500
-DESCRIPTION:Kansas City Chiefs Week 6. CBS.
+DESCRIPTION:Kansas City Chiefs Week 6. CBS. Paul and Robin are going.
 STATUS:CONFIRMED
 SEQUENCE:0
 TRANSP:OPAQUE
