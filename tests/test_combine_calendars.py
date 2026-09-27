@@ -573,6 +573,32 @@ END:VCALENDAR
             skate_events[0]['end'],
         )
 
+    def test_kitchen_suppresses_stale_second_book_fair_family_night(self):
+        calendar = Calendar()
+
+        event = Event()
+        event.add('uid', 'ote-stale-book-fair-family-night')
+        event.add('summary', 'Fall Book Fair Family Night')
+        event.add('dtstart', datetime(2026, 10, 14).date())
+        event.add('dtend', datetime(2026, 10, 15).date())
+        event.add('x-source-calendar', 'Overland Trail Elementary')
+        calendar.add_component(event)
+
+        feed = build_kitchen_feed(
+            calendar,
+            now=pytz.timezone('America/Chicago').localize(
+                datetime(2026, 10, 13, 8, 0)
+            ),
+            days=3,
+        )
+        self.assertFalse(
+            any(
+                event['summary'] == 'Fall Book Fair Family Night'
+                and event['start'].startswith('2026-10-14')
+                for event in feed['events']
+            )
+        )
+
     def test_lowes_haunted_house_is_registered_for_all_three_kids(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         events_by_uid = {
