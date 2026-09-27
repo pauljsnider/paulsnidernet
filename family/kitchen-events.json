@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T10:04:12.126343-05:00",
+  "generated_at": "2026-09-27T10:07:59.420435-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -470,6 +470,14 @@
       "summary": "Paul: Away - Boston",
       "start": "2026-10-12",
       "end": "2026-10-16",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "U.S. Federal Holiday: Columbus Day",
+      "start": "2026-10-12",
+      "end": "2026-10-13",
       "all_day": true,
       "location": "",
       "source": "Family Email Events"
