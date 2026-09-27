@@ -829,130 +829,19 @@ def build_kitchen_feed(calendar, now=None, days=KITCHEN_FEED_DAYS):
     family_school_sources = {'Family Email Events', 'Overland Trail Elementary'}
     family_school_events = []
     family_school_positions = {}
+    family_suffixes = (' - Madison, Will, Max', ' - Will, Max')
     for event in deduplicated.values():
         source = event['source']
         if source not in family_school_sources:
             family_school_events.append(event)
             continue
 
-        normalized_summary = re.sub(
-            r'\s*-\s*(?:Madison,\s*Will,\s*Max|Will,\s*Max)\s*
-    for event in ordered_events:
-        del event['_sort_value']
-
-    return {
-        'generated_at': now.isoformat(),
-        'timezone': 'America/Chicago',
-        'events': ordered_events,
-    }
-
-
-def write_kitchen_feed(calendar, output_file=KITCHEN_OUTPUT_FILE):
-    """Write the display feed as static JSON for the kitchen page."""
-    feed = build_kitchen_feed(calendar)
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    output_file.write_text(json.dumps(feed, indent=2) + '\n', encoding='utf-8')
-    logger.info(
-        '✓ Kitchen display feed written to %s (%s events)',
-        output_file,
-        len(feed['events']),
-    )
-
-def main():
-    """Main function to fetch and combine all calendars."""
-    print("=" * 80)
-    print("Snider Family Calendar Combiner (Enhanced Version)")
-    print("=" * 80)
-    print(f"Mode: {'TEST' if TEST_MODE else 'PRODUCTION'}")
-    expanded_calendars = expand_calendar_sources(CALENDARS)
-    print(f"Calendars to process: {len(expanded_calendars)}")
-    print()
-
-    success_count = 0
-    failure_count = 0
-
-    # Fetch the sources that belong in the shared family ICS calendar.
-    calendars = []
-    source_names = []
-    for i, cal_info in enumerate(expanded_calendars):
-        print(f"\n[{i+1}/{len(expanded_calendars)}] Processing: {cal_info['name']}")
-        if cal_info.get('path'):
-            cal = load_local_calendar(cal_info['path'], cal_info['name'])
-        else:
-            cal = fetch_calendar(cal_info['url'], cal_info['name'])
-        live_fetch_succeeded = cal is not None
-
-        if cal is None and not TEST_MODE:
-            cal = load_cached_source_calendar(cal_info['base_name'])
-
-        calendars.append(cal)
-        source_names.append(cal_info['base_name'])
-
-        if live_fetch_succeeded:
-            success_count += 1
-        else:
-            failure_count += 1
-
-    # Fetch sources that are only for the kitchen display. Do not fall back
-    # to family-calendar-combined.ics here: keeping OTE out of that shared
-    # file is the point of this separate source group.
-    kitchen_calendars = list(calendars)
-    kitchen_source_names = list(source_names)
-    kitchen_expanded_calendars = expand_calendar_sources(KITCHEN_ONLY_CALENDARS)
-    if kitchen_expanded_calendars:
-        print(f"\nKitchen-only calendars to process: {len(kitchen_expanded_calendars)}")
-    for i, cal_info in enumerate(kitchen_expanded_calendars):
-        print(f"\n[kitchen {i + 1}/{len(kitchen_expanded_calendars)}] Processing: {cal_info['name']}")
-        if cal_info.get('path'):
-            cal = load_local_calendar(cal_info['path'], cal_info['name'])
-        else:
-            cal = fetch_calendar(cal_info['url'], cal_info['name'])
-
-        kitchen_calendars.append(cal)
-        kitchen_source_names.append(cal_info['base_name'])
-
-    print("\n" + "=" * 50)
-    print(f"SUMMARY: {success_count} successful, {failure_count} failed")
-    print("=" * 50 + "\n")
-
-    # Combine calendars (even if some failed)
-    combined = combine_calendars(calendars, source_names)
-    kitchen_combined = combine_calendars(kitchen_calendars, kitchen_source_names)
-
-    # Write to output file
-    try:
-        OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-
-        with open(OUTPUT_FILE, 'wb') as f:
-            f.write(combined.to_ical())
-
-        file_size = OUTPUT_FILE.stat().st_size
-        logger.info(f"✓ Combined calendar written to {OUTPUT_FILE} ({file_size:,} bytes)")
-        write_kitchen_feed(kitchen_combined)
-        
-        if TEST_MODE:
-            print(f"\n📁 Test file created: {OUTPUT_FILE}")
-            print("   - Check the file to verify the combining logic works")
-            print("   - Set CALENDAR_TEST_MODE=0 to use production calendars")
-        
-    except Exception as e:
-        logger.error(f"Failed to write output file: {e}")
-        return 1
-
-    print("\n" + "=" * 80)
-    
-    # Return non-zero exit code if all calendars failed
-    return 1 if success_count == 0 else 0
-
-if __name__ == '__main__':
-    exit_code = main()
-    sys.exit(exit_code)
-,
-            '',
-            event['summary'],
-            flags=re.IGNORECASE,
-        ).strip().lower()
-        semantic_key = (normalized_summary, event['start'][:10])
+        normalized_summary = event['summary'].strip()
+        for suffix in family_suffixes:
+            if normalized_summary.lower().endswith(suffix.lower()):
+                normalized_summary = normalized_summary[:-len(suffix)].rstrip()
+                break
+        semantic_key = (normalized_summary.lower(), event['start'][:10])
         existing_index = family_school_positions.get(semantic_key)
         if existing_index is None:
             family_school_positions[semantic_key] = len(family_school_events)
