@@ -437,7 +437,7 @@ END:VCALENDAR
         ):
             self.assertIn(detail, description)
 
-    def test_ote_fall_events_are_all_day_and_shared_by_all_kids(self):
+    def test_ote_fall_events_have_expected_times_and_shared_by_all_kids(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         events_by_uid = {
             str(event['UID']): event
@@ -462,10 +462,16 @@ END:VCALENDAR
             'Madison, Will, Max',
             str(carnival['SUMMARY']),
         )
-        self.assertEqual('2026-10-02', carnival['DTSTART'].dt.isoformat())
-        self.assertEqual('2026-10-03', carnival['DTEND'].dt.isoformat())
-        self.assertEqual('DATE', carnival['DTSTART'].params['VALUE'])
-        self.assertEqual('DATE', carnival['DTEND'].params['VALUE'])
+        self.assertEqual(
+            '2026-10-02T17:00:00-05:00',
+            carnival['DTSTART'].dt.isoformat(),
+        )
+        self.assertEqual(
+            '2026-10-02T20:00:00-05:00',
+            carnival['DTEND'].dt.isoformat(),
+        )
+        self.assertEqual('America/Chicago', carnival['DTSTART'].params['TZID'])
+        self.assertEqual('America/Chicago', carnival['DTEND'].params['TZID'])
         self.assertEqual(
             'Overland Trail Elementary School (6225 W 133rd St, '
             'Overland Park, KS)',
@@ -474,11 +480,9 @@ END:VCALENDAR
         self.assertEqual('CONFIRMED', str(carnival['STATUS']))
         description = str(carnival['DESCRIPTION'])
         self.assertIn(
-            'The exact hours have not yet been announced in the 2026 school '
-            'newsletters',
+            'Official OTE PTO carnival hours: 5:00 PM - 8:00 PM',
             description,
         )
-        self.assertIn('previous years, doors opened at 5:00 PM', description)
 
     def test_lowes_haunted_house_is_registered_for_all_three_kids(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
