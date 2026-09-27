@@ -671,12 +671,51 @@
 
         function dedupeEvents(events) {
             const seen = new Set();
-            return events.filter(e => {
+            const exact = events.filter(e => {
                 const key = e.uid || `${e.calendarName}|${e.summary || ''}|${e.dtstart ? e.dtstart.toISOString() : ''}`;
                 if (seen.has(key)) return false;
                 seen.add(key);
                 return true;
             });
+
+            const familySchoolPositions = new Map();
+            const deduped = [];
+            exact.forEach(e => {
+                const source = e.calendarName || '';
+                const isFamilySchool =
+                    source === 'Family Email Events' ||
+                    source === 'Overland Trail Calendar';
+                if (!isFamilySchool || !e.dtstart) {
+                    deduped.push(e);
+                    return;
+                }
+
+                const summary = (e.summary || '')
+                    .replace(/\\s*-\\s*(?:Madison,\\s*Will,\\s*Max|Will,\\s*Max)\\s*$/i, '')
+                    .trim()
+                    .toLowerCase();
+                const y = e.dtstart.getFullYear();
+                const m = String(e.dtstart.getMonth() + 1).padStart(2, '0');
+                const d = String(e.dtstart.getDate()).padStart(2, '0');
+                const semanticKey = `${summary}|${y}-${m}-${d}`;
+                const existingIndex = familySchoolPositions.get(semanticKey);
+
+                if (existingIndex === undefined) {
+                    familySchoolPositions.set(semanticKey, deduped.length);
+                    deduped.push(e);
+                    return;
+                }
+
+                const existing = deduped[existingIndex];
+                if (
+                    source === 'Family Email Events' &&
+                    existing.calendarName !== 'Family Email Events'
+                ) {
+                    deduped[existingIndex] = e;
+                }
+            });
+
+            return deduped;
         }
 
         let allLoadedEvents = [];
