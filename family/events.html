@@ -691,7 +691,7 @@
                 }
 
                 const summary = (e.summary || '')
-                    .replace(/\\s*-\\s*(?:Madison,\\s*Will,\\s*Max|Will,\\s*Max)\\s*$/i, '')
+                    .replace(/\s*-\s*(?:Madison,\s*Will,\s*Max|Will,\s*Max)\s*$/i, '')
                     .trim()
                     .toLowerCase();
                 const y = e.dtstart.getFullYear();
