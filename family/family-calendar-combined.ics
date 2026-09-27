@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-09-27T21:21:21.478702+00:00
+X-COMBINE-TIMESTAMP:2026-09-27T21:28:02.449680+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VTIMEZONE
 TZID:America/Chicago
@@ -729,13 +729,13 @@ X-IMPORT-TYPE:MANUAL
 X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Chiefs vs Chargers
+SUMMARY:Chiefs vs Chargers - Paul + Robin Going
 DTSTART;TZID=America/Chicago:20261018T152500
 DTEND;TZID=America/Chicago:20261018T185500
 DTSTAMP:20260927T013300Z
 UID:chiefs-2026-w06-chargers@paulsnider.net
 SEQUENCE:0
-DESCRIPTION:Kansas City Chiefs Week 6. CBS.
+DESCRIPTION:Kansas City Chiefs Week 6. CBS. Paul and Robin are going.
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
