@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T11:02:10.853611-05:00",
+  "generated_at": "2026-09-27T13:42:00.948049-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -139,14 +139,6 @@
       "source": "Family Email Events"
     },
     {
-      "summary": "Cougars in the Cosmos: Overland Trail Elementary Carnival - Madison, Will, Max",
-      "start": "2026-10-02",
-      "end": "2026-10-03",
-      "all_day": true,
-      "location": "Overland Trail Elementary School (6225 W 133rd St, Overland Park, KS)",
-      "source": "Family Email Events"
-    },
-    {
       "summary": "DAY 3",
       "start": "2026-10-02",
       "end": "2026-10-03",
@@ -169,6 +161,14 @@
       "all_day": false,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Cougars in the Cosmos: Overland Trail Elementary Carnival - Madison, Will, Max",
+      "start": "2026-10-02T17:00:00-05:00",
+      "end": "2026-10-02T20:00:00-05:00",
+      "all_day": false,
+      "location": "Overland Trail Elementary School (6225 W 133rd St, Overland Park, KS)",
+      "source": "Family Email Events"
     },
     {
       "summary": "Madison: Tutor",
