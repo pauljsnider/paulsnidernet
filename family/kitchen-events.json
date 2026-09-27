@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T14:00:30.010844-05:00",
+  "generated_at": "2026-09-27T14:04:08.301525-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -564,14 +564,6 @@
     },
     {
       "summary": "DAY 5",
-      "start": "2026-10-14",
-      "end": "2026-10-15",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Fall Book Fair Family Night",
       "start": "2026-10-14",
       "end": "2026-10-15",
       "all_day": true,
