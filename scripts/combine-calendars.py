@@ -836,7 +836,26 @@ def build_kitchen_feed(calendar, now=None, days=KITCHEN_FEED_DAYS):
             continue
 
         normalized_summary = re.sub(
-            r'\\s*-\\s*(?:Madison,\\s*Will,\\s*Max|Will,\\s*Max)\\s*
+            r'\s*-\s*(?:Madison,\s*Will,\s*Max|Will,\s*Max)\s*$',
+            '',
+            event['summary'],
+            flags=re.IGNORECASE,
+        ).strip().lower()
+        semantic_key = (normalized_summary, event['start'][:10])
+        existing_index = family_school_positions.get(semantic_key)
+        if existing_index is None:
+            family_school_positions[semantic_key] = len(family_school_events)
+            family_school_events.append(event)
+            continue
+
+        existing = family_school_events[existing_index]
+        if source == 'Family Email Events' and existing['source'] != 'Family Email Events':
+            family_school_events[existing_index] = event
+
+    ordered_events = sorted(
+        family_school_events,
+        key=lambda event: (event['_sort_value'], event['summary']),
+    )
     for event in ordered_events:
         del event['_sort_value']
 
