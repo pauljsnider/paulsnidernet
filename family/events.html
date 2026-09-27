@@ -697,7 +697,15 @@
                 const y = e.dtstart.getFullYear();
                 const m = String(e.dtstart.getMonth() + 1).padStart(2, '0');
                 const d = String(e.dtstart.getDate()).padStart(2, '0');
-                const semanticKey = `${summary}|${y}-${m}-${d}`;
+                const eventDate = `${y}-${m}-${d}`;
+                if (
+                    source === 'Overland Trail Calendar' &&
+                    summary === 'fall book fair family night' &&
+                    eventDate === '2026-10-14'
+                ) {
+                    return;
+                }
+                const semanticKey = `${summary}|${eventDate}`;
                 const existingIndex = familySchoolPositions.get(semanticKey);
 
                 if (existingIndex === undefined) {
