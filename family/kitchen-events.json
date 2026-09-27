@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T13:42:00.948049-05:00",
+  "generated_at": "2026-09-27T14:04:08.301525-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -299,12 +299,12 @@
       "source": "Overland Trail Elementary"
     },
     {
-      "summary": "PTO Community Service Activity",
+      "summary": "PTO Community Service Activity - Madison, Will, Max",
       "start": "2026-10-07T15:45:00-05:00",
       "end": "2026-10-07T16:30:00-05:00",
       "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary"
+      "location": "OTE Library, 6225 W 133rd St, Overland Park, KS 66209",
+      "source": "Family Email Events"
     },
     {
       "summary": "Will Soccer: Vipers FC U8B Practice",
@@ -523,14 +523,6 @@
       "source": "Overland Trail Elementary"
     },
     {
-      "summary": "Fall Book Fair Family Night",
-      "start": "2026-10-13",
-      "end": "2026-10-14",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
       "summary": "Fall Book Fair Classrooms Visits",
       "start": "2026-10-13T09:00:00-05:00",
       "end": "2026-10-13T15:00:00-05:00",
@@ -544,6 +536,14 @@
       "end": "2026-10-13T17:45:00-05:00",
       "all_day": false,
       "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Fall Book Fair Family Night - Madison, Will, Max",
+      "start": "2026-10-13T17:30:00-05:00",
+      "end": "2026-10-13T19:00:00-05:00",
+      "all_day": false,
+      "location": "Overland Trail Elementary",
       "source": "Family Email Events"
     },
     {
@@ -571,12 +571,12 @@
       "source": "Overland Trail Elementary"
     },
     {
-      "summary": "Fall Book Fair Family Night",
+      "summary": "Madison: Fall Book Fair Class Visit",
       "start": "2026-10-14",
       "end": "2026-10-15",
       "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "1st Grade ON-SITE Field Trip Session 1",
@@ -867,14 +867,6 @@
       "source": "Family Email Events"
     },
     {
-      "summary": "NO SCHOOL",
-      "start": "2026-10-23",
-      "end": "2026-10-24",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
       "summary": "No School - Madison, Will, Max",
       "start": "2026-10-23",
       "end": "2026-10-24",
@@ -883,12 +875,12 @@
       "source": "Family Email Events"
     },
     {
-      "summary": "PTO Skate Party",
-      "start": "2026-10-23",
-      "end": "2026-10-24",
-      "all_day": true,
-      "location": "Skate City Overland Park, 10440 Mastin St, Overland Park, KS 66212, USA",
-      "source": "Overland Trail Elementary"
+      "summary": "PTO Skate Party - Madison, Will, Max",
+      "start": "2026-10-23T17:00:00-05:00",
+      "end": "2026-10-23T19:00:00-05:00",
+      "all_day": false,
+      "location": "Skate City Overland Park, 10440 Mastin St, Overland Park, KS 66212",
+      "source": "Family Email Events"
     },
     {
       "summary": "Madison: Tutor",
@@ -1051,20 +1043,20 @@
       "source": "Overland Trail Elementary"
     },
     {
-      "summary": "Fall Class Parties",
-      "start": "2026-10-30",
-      "end": "2026-10-31",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
       "summary": "Cougar Assembly Quarter 1 I Be Safe",
       "start": "2026-10-30T09:00:00-05:00",
       "end": "2026-10-30T09:30:00-05:00",
       "all_day": false,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Fall Class Parties - Madison, Will, Max",
+      "start": "2026-10-30T14:50:00-05:00",
+      "end": "2026-10-30T15:30:00-05:00",
+      "all_day": false,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Madison: Tutor",

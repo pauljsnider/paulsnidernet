@@ -826,8 +826,43 @@ def build_kitchen_feed(calendar, now=None, days=KITCHEN_FEED_DAYS):
         key = (event['summary'], event['start'], event['end'], event['location'], event['source'])
         deduplicated[key] = event
 
+    # Prefer explicit family corrections over same-day OTE live placeholders.
+    family_school_sources = {'Family Email Events', 'Overland Trail Elementary'}
+    stale_ote_occurrences = {
+        ('fall book fair family night', '2026-10-14'),
+    }
+    family_school_events = []
+    family_school_positions = {}
+    family_suffixes = (' - Madison, Will, Max', ' - Will, Max')
+    for event in deduplicated.values():
+        source = event['source']
+        if source not in family_school_sources:
+            family_school_events.append(event)
+            continue
+
+        normalized_summary = event['summary'].strip()
+        if (
+            source == 'Overland Trail Elementary'
+            and (normalized_summary.lower(), event['start'][:10]) in stale_ote_occurrences
+        ):
+            continue
+        for suffix in family_suffixes:
+            if normalized_summary.lower().endswith(suffix.lower()):
+                normalized_summary = normalized_summary[:-len(suffix)].rstrip()
+                break
+        semantic_key = (normalized_summary.lower(), event['start'][:10])
+        existing_index = family_school_positions.get(semantic_key)
+        if existing_index is None:
+            family_school_positions[semantic_key] = len(family_school_events)
+            family_school_events.append(event)
+            continue
+
+        existing = family_school_events[existing_index]
+        if source == 'Family Email Events' and existing['source'] != 'Family Email Events':
+            family_school_events[existing_index] = event
+
     ordered_events = sorted(
-        deduplicated.values(),
+        family_school_events,
         key=lambda event: (event['_sort_value'], event['summary']),
     )
     for event in ordered_events:

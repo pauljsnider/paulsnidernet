@@ -1206,4 +1206,69 @@ SEQUENCE:0
 TRANSP:TRANSPARENT
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+UID:ote-community-service-20261007@paulsnider.net
+DTSTAMP:20260927T184500Z
+SUMMARY:PTO Community Service Activity - Madison\, Will\, Max
+DTSTART;TZID=America/Chicago:20261007T154500
+DTEND;TZID=America/Chicago:20261007T163000
+DESCRIPTION:OTE PTO Community Service meeting. Parents should accompany children.
+LOCATION:OTE Library\, 6225 W 133rd St\, Overland Park\, KS 66209
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:EMAIL-DIGEST
+END:VEVENT
+BEGIN:VEVENT
+UID:ote-book-fair-family-night-20261013@paulsnider.net
+DTSTAMP:20260927T184500Z
+SUMMARY:Fall Book Fair Family Night - Madison\, Will\, Max
+DTSTART;TZID=America/Chicago:20261013T173000
+DTEND;TZID=America/Chicago:20261013T190000
+DESCRIPTION:Current OTE PTO schedule lists one Fall Book Fair Family Night on Tuesday\, October 13.
+LOCATION:Overland Trail Elementary
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:EMAIL-DIGEST
+END:VEVENT
+BEGIN:VEVENT
+UID:madison-fall-book-fair-class-visit-20261014@paulsnider.net
+DTSTAMP:20260927T184500Z
+SUMMARY:Madison: Fall Book Fair Class Visit
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261015
+DESCRIPTION:Madison's teacher weekly update lists a Fall Book Fair class visit. Exact class shopping time has not been published.
+LOCATION:Overland Trail Elementary
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:EMAIL-DIGEST
+END:VEVENT
+BEGIN:VEVENT
+UID:ote-skate-party-20261023@paulsnider.net
+DTSTAMP:20260927T184500Z
+SUMMARY:PTO Skate Party - Madison\, Will\, Max
+DTSTART;TZID=America/Chicago:20261023T170000
+DTEND;TZID=America/Chicago:20261023T190000
+DESCRIPTION:Current OTE PTO schedule lists the October Skate Party on Friday\, October 23 from 5:00 PM to 7:00 PM.
+LOCATION:Skate City Overland Park\, 10440 Mastin St\, Overland Park\, KS 66212
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:EMAIL-DIGEST
+END:VEVENT
+BEGIN:VEVENT
+UID:ote-fall-class-parties-20261030@paulsnider.net
+DTSTAMP:20260927T184500Z
+SUMMARY:Fall Class Parties - Madison\, Will\, Max
+DTSTART;TZID=America/Chicago:20261030T145000
+DTEND;TZID=America/Chicago:20261030T153000
+DESCRIPTION:OTE fall class parties. Time confirmed in the latest second-grade weekly newsletter.
+LOCATION:Overland Trail Elementary
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:EMAIL-DIGEST
+END:VEVENT
 END:VCALENDAR

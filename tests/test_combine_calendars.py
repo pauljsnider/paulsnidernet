@@ -484,6 +484,121 @@ END:VCALENDAR
             description,
         )
 
+    def test_ote_october_family_events_have_current_dates_and_times(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        events_by_uid = {
+            str(event['UID']): event
+            for event in calendar.walk('VEVENT')
+        }
+
+        expected = {
+            'ote-community-service-20261007@paulsnider.net': (
+                'PTO Community Service Activity - Madison, Will, Max',
+                '2026-10-07T15:45:00-05:00',
+                '2026-10-07T16:30:00-05:00',
+            ),
+            'ote-book-fair-family-night-20261013@paulsnider.net': (
+                'Fall Book Fair Family Night - Madison, Will, Max',
+                '2026-10-13T17:30:00-05:00',
+                '2026-10-13T19:00:00-05:00',
+            ),
+            'ote-skate-party-20261023@paulsnider.net': (
+                'PTO Skate Party - Madison, Will, Max',
+                '2026-10-23T17:00:00-05:00',
+                '2026-10-23T19:00:00-05:00',
+            ),
+            'ote-fall-class-parties-20261030@paulsnider.net': (
+                'Fall Class Parties - Madison, Will, Max',
+                '2026-10-30T14:50:00-05:00',
+                '2026-10-30T15:30:00-05:00',
+            ),
+        }
+        for uid, (summary, start, end) in expected.items():
+            event = events_by_uid[uid]
+            self.assertEqual(summary, str(event['SUMMARY']))
+            self.assertEqual(start, event['DTSTART'].dt.isoformat())
+            self.assertEqual(end, event['DTEND'].dt.isoformat())
+
+        class_visit = events_by_uid[
+            'madison-fall-book-fair-class-visit-20261014@paulsnider.net'
+        ]
+        self.assertEqual(
+            'Madison: Fall Book Fair Class Visit',
+            str(class_visit['SUMMARY']),
+        )
+        self.assertEqual('2026-10-14', class_visit['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-10-15', class_visit['DTEND'].dt.isoformat())
+        self.assertEqual('DATE', class_visit['DTSTART'].params['VALUE'])
+        self.assertEqual('DATE', class_visit['DTEND'].params['VALUE'])
+
+    def test_kitchen_prefers_family_override_over_ote_placeholder(self):
+        calendar = Calendar()
+        central = pytz.timezone('America/Chicago')
+
+        school_event = Event()
+        school_event.add('uid', 'ote-skate-placeholder')
+        school_event.add('summary', 'PTO Skate Party')
+        school_event.add('dtstart', datetime(2026, 10, 23).date())
+        school_event.add('dtend', datetime(2026, 10, 24).date())
+        school_event.add('location', 'Skate City Overland Park')
+        school_event.add('x-source-calendar', 'Overland Trail Elementary')
+        calendar.add_component(school_event)
+
+        family_event = Event()
+        family_event.add('uid', 'family-skate-override')
+        family_event.add('summary', 'PTO Skate Party - Madison, Will, Max')
+        family_event.add('dtstart', central.localize(datetime(2026, 10, 23, 17, 0)))
+        family_event.add('dtend', central.localize(datetime(2026, 10, 23, 19, 0)))
+        family_event.add('location', 'Skate City Overland Park')
+        family_event.add('x-source-calendar', 'Family Email Events')
+        calendar.add_component(family_event)
+
+        feed = build_kitchen_feed(
+            calendar,
+            now=central.localize(datetime(2026, 10, 22, 8, 0)),
+            days=3,
+        )
+        skate_events = [
+            event for event in feed['events']
+            if event['summary'].startswith('PTO Skate Party')
+        ]
+        self.assertEqual(1, len(skate_events))
+        self.assertEqual('Family Email Events', skate_events[0]['source'])
+        self.assertEqual(
+            '2026-10-23T17:00:00-05:00',
+            skate_events[0]['start'],
+        )
+        self.assertEqual(
+            '2026-10-23T19:00:00-05:00',
+            skate_events[0]['end'],
+        )
+
+    def test_kitchen_suppresses_stale_second_book_fair_family_night(self):
+        calendar = Calendar()
+
+        event = Event()
+        event.add('uid', 'ote-stale-book-fair-family-night')
+        event.add('summary', 'Fall Book Fair Family Night')
+        event.add('dtstart', datetime(2026, 10, 14).date())
+        event.add('dtend', datetime(2026, 10, 15).date())
+        event.add('x-source-calendar', 'Overland Trail Elementary')
+        calendar.add_component(event)
+
+        feed = build_kitchen_feed(
+            calendar,
+            now=pytz.timezone('America/Chicago').localize(
+                datetime(2026, 10, 13, 8, 0)
+            ),
+            days=3,
+        )
+        self.assertFalse(
+            any(
+                event['summary'] == 'Fall Book Fair Family Night'
+                and event['start'].startswith('2026-10-14')
+                for event in feed['events']
+            )
+        )
+
     def test_lowes_haunted_house_is_registered_for_all_three_kids(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         events_by_uid = {
