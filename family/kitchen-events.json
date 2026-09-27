@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T15:22:56.520209-05:00",
+  "generated_at": "2026-09-26T20:37:42.949958-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -17,6 +17,14 @@
       "all_day": false,
       "location": "13700 Switzer \nOverland Park KS 66221\nUnited States",
       "source": "TeamSnap Events (Madison + Max + Will)"
+    },
+    {
+      "summary": "Chiefs @ Dolphins",
+      "start": "2026-09-27T12:00:00-05:00",
+      "end": "2026-09-27T15:30:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
     },
     {
       "summary": "Max Soccer: F26KB Major Derek vs Gaddie",
@@ -198,6 +206,14 @@
       "summary": "Try Hockey for Free - Will, Max",
       "start": "2026-10-03T15:00:00-05:00",
       "end": "2026-10-03T16:00:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Chiefs @ Raiders",
+      "start": "2026-10-04T15:25:00-05:00",
+      "end": "2026-10-04T18:55:00-05:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events"
@@ -699,6 +715,14 @@
       "source": "TeamSnap Events (Madison + Max + Will)"
     },
     {
+      "summary": "Chiefs vs Chargers",
+      "start": "2026-10-18T15:25:00-05:00",
+      "end": "2026-10-18T18:55:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "DAY 3",
       "start": "2026-10-19",
       "end": "2026-10-20",
@@ -891,6 +915,14 @@
       "source": "Max Soccer - Major Derek"
     },
     {
+      "summary": "Chiefs @ Seahawks",
+      "start": "2026-10-25T19:20:00-05:00",
+      "end": "2026-10-25T22:50:00-05:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "DAY 1",
       "start": "2026-10-26",
       "end": "2026-10-27",
@@ -1048,6 +1080,14 @@
       "end": "2026-10-31T08:40:00-05:00",
       "all_day": false,
       "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Chiefs @ Broncos",
+      "start": "2026-11-01T15:25:00-06:00",
+      "end": "2026-11-01T18:55:00-06:00",
+      "all_day": false,
+      "location": "",
       "source": "Family Email Events"
     },
     {
