@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-28T10:21:49.123726-05:00",
+  "generated_at": "2026-09-28T16:55:08.013672-05:00",
   "local": {
-    "title": "Movie: 'What Ever Happened to Baby Jane?'",
-    "detail": "Mon, Sep 28 at 2:00 PM \u2022 Central Library",
+    "title": "Teen Hangout",
+    "detail": "Mon, Sep 28 at 6:00 PM \u2022 Trails West Branch",
     "date": "2026-09-28",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-what-ever-happened-baby-jane"
+    "url": "https://kclibrary.org/calendar/teen-hangout-37"
   },
   "kc_news": {
     "title": "The first film production in Kansas City to use Missouri movie tax credits is ready for its premiere",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.18,
-    "change_pct": -1.62,
+    "value": 55.76,
+    "change_pct": -0.59,
     "as_of": "2026-09-28"
   }
 }
