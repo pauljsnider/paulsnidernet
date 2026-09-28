@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T01:47:00.105149-05:00",
+  "generated_at": "2026-09-28T10:21:49.123726-05:00",
   "local": {
     "title": "Movie: 'What Ever Happened to Baby Jane?'",
     "detail": "Mon, Sep 28 at 2:00 PM \u2022 Central Library",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "New formulation helps RNA vaccines withstand high temperatures",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-09-28",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/new-formulation-helps-rna-vaccines-withstand-high-temperatures-0928"
+    },
+    {
       "title": "MIT students gain a humanist lens on technical innovation in Tulsa, Oklahoma",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-09-25",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/mit-students-gain-humanist-lens-technical-innovation-tulsa-oklahoma-0925"
-    },
-    {
-      "title": "Estimating suicide risk from text",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-24",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/estimating-suicide-risk-from-text-0924"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 56.09,
-    "change_pct": 1.17,
-    "as_of": "2026-09-25"
+    "value": 55.18,
+    "change_pct": -1.62,
+    "as_of": "2026-09-28"
   }
 }
