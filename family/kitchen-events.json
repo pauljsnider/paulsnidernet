@@ -1,23 +1,7 @@
 {
-  "generated_at": "2026-09-27T21:36:51.812666-05:00",
+  "generated_at": "2026-09-28T07:22:34.788939-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "Chiefs @ Dolphins",
-      "start": "2026-09-27T12:00:00-05:00",
-      "end": "2026-09-27T15:30:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Max Soccer: F26KB Major Derek vs Gaddie",
-      "start": "2026-09-27T14:30:00-05:00",
-      "end": "2026-09-27T15:00:00-05:00",
-      "all_day": false,
-      "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
-      "source": "Max Soccer - Major Derek"
-    },
     {
       "summary": "DAY 4",
       "start": "2026-09-28",
@@ -1288,6 +1272,14 @@
       "end": "2026-11-07T10:25:00-06:00",
       "all_day": false,
       "location": "TBA",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Chiefs vs Jets",
+      "start": "2026-11-08T12:00:00-06:00",
+      "end": "2026-11-08T15:30:00-06:00",
+      "all_day": false,
+      "location": "",
       "source": "Family Email Events"
     }
   ]
