@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">A spoken idea becomes useful work</title>
+  <desc id="desc">A voice waveform connects to a work document and a completed result on a dark blue background.</desc>
+  <defs>
+    <linearGradient id="background" x2="1" y2="1">
+      <stop stop-color="#101f36"/>
+      <stop offset="1" stop-color="#173c50"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="1070" cy="35" r="280" fill="#68dbcd" opacity=".035"/>
+  <circle cx="115" cy="670" r="290" fill="#68dbcd" opacity=".035"/>
+  <path d="M300 325H480M720 325H900" fill="none" stroke="#6c92a4" stroke-width="3" stroke-dasharray="6 12"/>
+  <g fill="#152e43" stroke="#426679" stroke-width="2">
+    <rect x="80" y="205" width="240" height="240" rx="40"/>
+    <rect x="480" y="205" width="240" height="240" rx="40"/>
+    <rect x="880" y="205" width="240" height="240" rx="40"/>
+  </g>
+  <g fill="none" stroke="#85ead9" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M140 310V340M170 285V365M200 265V385M230 290V360M260 312V338"/>
+    <path d="M563 258H616L643 285V392H557V258H563M615 259V287H642" stroke-width="6"/>
+    <path d="M576 315H623M576 337H623M576 359H605" stroke-width="6"/>
+    <circle cx="1000" cy="325" r="65" stroke-width="6"/>
+    <path d="M967 327L990 350L1036 302" stroke-width="8"/>
+  </g>
+  <g fill="#dcebf1" font-family="Arial, Helvetica, sans-serif" font-size="23" letter-spacing="4" text-anchor="middle">
+    <text x="200" y="501">SPEAK</text>
+    <text x="600" y="501">WORK</text>
+    <text x="1000" y="501">CHECK BACK</text>
+  </g>
+  <text x="600" y="135" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" text-anchor="middle">Alexa + Codex</text>
+</svg>

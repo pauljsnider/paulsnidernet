@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connecting Alexa and Codex: From a Spoken Idea to Useful Work - Paul Snider</title>
+  <meta name="description" content="How I connected Alexa and Codex to turn spoken requests into useful work, and what the experience taught me about intent, patience, and trustworthy results.">
+  <link rel="canonical" href="https://paulsnider.net/blogs/blog-post-alexa-codex.html">
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../styles.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-50WRQKFBNJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-50WRQKFBNJ');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Paul Snider, CTO</div>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#public-speaking">Public Speaking</a></li>
+          <li><a href="../index.html#featured-talks">Featured Talks</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../library.html">Library</a></li>
+          <li><a href="../blog.html" class="active">Blog</a></li>
+          <li><a href="../private.html">Private</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-post-page">
+      <div class="container">
+        <div class="blog-navigation">
+          <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+          </a>
+        </div>
+
+        <article class="blog-post-full">
+          <div class="post-header">
+            <div class="post-meta">
+              <span class="post-category">Technology</span>
+              <span class="post-date">September 28, 2026</span>
+            </div>
+            <h1 class="post-title">Connecting Alexa and Codex: From a Spoken Idea to Useful Work</h1>
+            <div class="post-author">
+              <img src="../images/profile.jpg" alt="Paul Snider" class="author-image">
+              <div class="author-info">
+                <span class="author-name">Paul Snider</span>
+                <span class="author-title">Technology Executive &amp; MBA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-featured-image">
+            <img src="../images/alexa-codex-voice-work.svg" alt="Alexa and Codex: a spoken request, work on a project, and a result to check back for" style="object-fit: contain; background: #101f36;">
+          </div>
+
+          <div class="post-content">
+            <p class="lead">This post started as a request spoken through Alexa: look at my website project and write about how we connected Alexa and Codex, keeping the implementation details out of the public story. That is a pretty good example of why I wanted to connect them in the first place.</p>
+
+            <p>I wanted to be able to hand off an idea when it occurred to me. A question about a project. A documentation change. Something worth investigating. Say what I want done, let Codex work on it, and come back for the result.</p>
+
+            <h2>Making It Easier to Start</h2>
+
+            <p>I have written before about <a href="blog-post-prompting-on-the-go.html">prompting AI tools from my phone</a>. Voice takes that convenience another step. There are moments when opening a laptop or typing out a request is enough friction to turn a useful thought into something I will try to remember later.</p>
+
+            <p><a href="https://developers.openai.com/api/docs/guides/code-generation">Codex is OpenAI's coding agent</a>, with the ability to help write, review, and debug code. In my setup, it can work with the projects and tools I already use. Connecting that working environment to a spoken request makes it easier to start a task without first sitting down at a screen.</p>
+
+            <p>We built a custom connection for my own use. The idea is straightforward: Alexa handles the spoken interaction, the request reaches Codex with the relevant project context, and the outcome is saved so I can hear what happened later.</p>
+
+            <h2>The Experience We Built</h2>
+
+            <p>The interaction has three parts:</p>
+
+            <ol>
+              <li><strong>Give the request.</strong> Open the conversation and describe the work in ordinary language.</li>
+              <li><strong>Let it run.</strong> Hear that the request was handed off, then carry on while Codex works.</li>
+              <li><strong>Check back.</strong> Ask for the result and hear a short account of what happened, or whether the work is still underway.</li>
+            </ol>
+
+            <p>The project has already handled questions about recent changes to my website and retrieved answers for spoken playback. This article adds another useful example: a request to inspect an existing project and turn that context into a piece of writing.</p>
+
+            <p>That makes the result more useful than an answer based only on what I managed to say aloud. The spoken request supplies the intent; the project supplies the detail needed to do the work.</p>
+
+            <h2>The Return Trip Matters</h2>
+
+            <p>A quick acknowledgment is easy to mistake for success. Hearing that a request was sent tells me very little about whether the work finished, what changed, or whether something got in the way.</p>
+
+            <p>One of the most useful lessons from this project was to make those distinctions explicit. Accepted, still working, completed, and failed need different responses. If the work stops at a blocker, the spoken result should say so. A pleasant voice is only useful if it accurately describes the outcome.</p>
+
+            <p>We settled on an ask-now, check-later rhythm. The conversation can end while the work continues, and I ask for the saved result when I am ready. That fits tasks that take longer than a quick voice exchange. It also means I can choose when to hear the answer.</p>
+
+            <h2>What Everyday Use Taught Us</h2>
+
+            <p><strong>Preserving intent takes care.</strong> People speak differently than they type. Project names can be transcribed phonetically, and a missing action word can change the meaning of a request. The connection needs to preserve what I asked for and use context carefully.</p>
+
+            <p><strong>A spoken result needs editing.</strong> The useful answer is usually a couple of clear sentences about the outcome. I can inspect the detailed work on a screen when I need to. Reading a long technical transcript aloud would make checking back a chore.</p>
+
+            <p><strong>Real device use reveals different problems.</strong> A successful automated check does not prove that the phrase I actually say will reach the right place or that I will hear the answer. Using the physical speaker helped expose gaps between a working task and a working experience.</p>
+
+            <p><strong>Follow-ups need the right context.</strong> Asking to hear an answer again, asking for more detail about it, and starting a new task are different requests. We have added and tested support for those distinctions, with more physical voice testing still to do on the newer conversation features.</p>
+
+            <h2>Where I Want This to Go</h2>
+
+            <p>I see voice as a convenient way to start work and hear a concise result. A screen remains valuable for reviewing a change, reading a longer explanation, or making a decision that needs more context. Choosing the right moment for each interface is part of making the whole experience useful.</p>
+
+            <p>This is still a personal project, and I am continuing to refine it. But the practical value is already clear to me: I can turn a passing thought into a concrete request while it is fresh. This time, that request became the post you are reading.</p>
+
+            <div class="post-tags">
+              <span class="tag">Alexa</span>
+              <span class="tag">Codex</span>
+              <span class="tag">Voice Interfaces</span>
+              <span class="tag">AI Agents</span>
+              <span class="tag">Personal Software</span>
+            </div>
+          </div>
+        </article>
+
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-posts-grid">
+            <article class="related-post">
+              <img src="../images/blog_go_prompt.png" alt="AI tools on a phone and laptop">
+              <div class="related-content">
+                <h4><a href="blog-post-prompting-on-the-go.html">Prompting on the Go</a></h4>
+                <span class="related-date">December 26, 2025</span>
+              </div>
+            </article>
+            <article class="related-post">
+              <img src="../images/blog_personal_software_hero.png" alt="Personal software used at home">
+              <div class="related-content">
+                <h4><a href="blog-post-personal-software-over-research.html">Personal Software Beats Software Research (Sometimes)</a></h4>
+                <span class="related-date">March 1, 2026</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Paul Snider. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/paulsnider" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/psnider" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/pauljsnider" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
