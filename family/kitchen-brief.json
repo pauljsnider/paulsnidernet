@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-09-29T03:23:16.064035-05:00",
+  "generated_at": "2026-09-29T10:44:14.242289-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Tue, Sep 29 at 9:30 AM \u2022 Plaza Branch",
+    "title": "Family Storytime",
+    "detail": "Tue, Sep 29 at 10:30 AM \u2022 Central Library",
     "date": "2026-09-29",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-87"
+    "url": "https://kclibrary.org/calendar/family-storytime-10"
   },
   "kc_news": {
-    "title": "The first film production in Kansas City to use Missouri movie tax credits is ready for its premiere",
+    "title": "A beloved western Kansas natural history museum will close because of university budget cuts",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-09-27/missouri-motion-media-tax-credit-kansas-city"
+    "url": "https://www.kcur.org/2026-09-29/fort-hays-state-confirms-it-will-close-sternberg-museum-citing-cuts-in-state-funding"
   },
   "ai": [
     {
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.76,
-    "change_pct": -0.59,
-    "as_of": "2026-09-28"
+    "value": 54.98,
+    "change_pct": -1.39,
+    "as_of": "2026-09-29"
   }
 }
