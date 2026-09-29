@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-29T10:44:14.242289-05:00",
+  "generated_at": "2026-09-29T15:42:57.924927-05:00",
   "local": {
-    "title": "Family Storytime",
-    "detail": "Tue, Sep 29 at 10:30 AM \u2022 Central Library",
+    "title": "LEGO Club",
+    "detail": "Tue, Sep 29 at 2:30 PM \u2022 Plaza Branch",
     "date": "2026-09-29",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/family-storytime-10"
+    "url": "https://kclibrary.org/calendar/lego-club-8"
   },
   "kc_news": {
     "title": "A beloved western Kansas natural history museum will close because of university budget cuts",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 54.98,
-    "change_pct": -1.39,
+    "value": 55.41,
+    "change_pct": -0.63,
     "as_of": "2026-09-29"
   }
 }
