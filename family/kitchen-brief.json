@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T20:52:49.105842-05:00",
+  "generated_at": "2026-09-29T03:23:16.064035-05:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Tue, Sep 29 at 9:30 AM \u2022 Plaza Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
-      "title": "New formulation helps RNA vaccines withstand high temperatures",
+      "title": "The effects of an \u201calgorithmic monoculture\u201d depend on the details",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-09-28",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/new-formulation-helps-rna-vaccines-withstand-high-temperatures-0928"
+      "url": "https://news.mit.edu/2026/algorithmic-monoculture-effects-depend-on-details-0929"
     },
     {
-      "title": "MIT students gain a humanist lens on technical innovation in Tulsa, Oklahoma",
+      "title": "Who we become when we talk to machines",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-25",
+      "date": "2026-09-28",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/mit-students-gain-humanist-lens-technical-innovation-tulsa-oklahoma-0925"
+      "url": "https://news.mit.edu/2026/when-we-talk-to-machines-sherry-turkle-book-0929"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 27068.72,
-      "change_pct": 0.48,
-      "as_of": "2026-09-25"
+      "value": 26820.38,
+      "change_pct": -0.92,
+      "as_of": "2026-09-28"
     }
   ],
   "ticker": {
