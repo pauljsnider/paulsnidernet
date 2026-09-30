@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T06:35:14.531175-05:00",
+  "generated_at": "2026-09-30T07:54:14.683908-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -9,6 +9,30 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Madison: Library",
+      "start": "2026-09-30",
+      "end": "2026-10-01",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-09-30",
+      "end": "2026-10-01",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-09-30",
+      "end": "2026-10-01",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Will Soccer: Vipers FC U8B Practice",
@@ -41,6 +65,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Max: Library",
+      "start": "2026-10-01",
+      "end": "2026-10-02",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "PTO Restaurant Night at Minsky's",
@@ -81,6 +113,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Will: Library",
+      "start": "2026-10-02",
+      "end": "2026-10-03",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "OTE Staff Flu Shots",
@@ -147,6 +187,14 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Max: PE",
+      "start": "2026-10-05",
+      "end": "2026-10-06",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "OTE Building Leadership Team Meeting",
       "start": "2026-10-05T16:00:00-05:00",
       "end": "2026-10-05T17:00:00-05:00",
@@ -179,11 +227,27 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Madison: PE",
+      "start": "2026-10-06",
+      "end": "2026-10-07",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Paul: Away - Strat / Minneapolis",
       "start": "2026-10-06",
       "end": "2026-10-08",
       "all_day": true,
       "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-10-06",
+      "end": "2026-10-07",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
       "source": "Family Email Events"
     },
     {
@@ -227,6 +291,30 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Madison: Library",
+      "start": "2026-10-07",
+      "end": "2026-10-08",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-10-07",
+      "end": "2026-10-08",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-10-07",
+      "end": "2026-10-08",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "PTO Community Service Activity - Madison, Will, Max",
       "start": "2026-10-07T15:45:00-05:00",
       "end": "2026-10-07T16:30:00-05:00",
@@ -257,6 +345,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Max: Library",
+      "start": "2026-10-08",
+      "end": "2026-10-09",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "KDG Field Trip",
@@ -419,6 +515,14 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "Will: Library",
+      "start": "2026-10-12",
+      "end": "2026-10-13",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
       "start": "2026-10-12T17:00:00-05:00",
       "end": "2026-10-12T18:00:00-05:00",
@@ -449,6 +553,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-10-13",
+      "end": "2026-10-14",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Fall Book Fair Classrooms Visits",
@@ -507,6 +619,22 @@
       "source": "Family Email Events"
     },
     {
+      "summary": "Madison: PE",
+      "start": "2026-10-14",
+      "end": "2026-10-15",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-10-14",
+      "end": "2026-10-15",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "1st Grade ON-SITE Field Trip Session 1",
       "start": "2026-10-14T09:00:00-05:00",
       "end": "2026-10-14T11:00:00-05:00",
@@ -555,6 +683,30 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Madison: Library",
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Fall Book Fair Classrooms Visits",
       "start": "2026-10-15T09:00:00-05:00",
       "end": "2026-10-15T12:00:00-05:00",
@@ -585,6 +737,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Max: Library",
+      "start": "2026-10-16",
+      "end": "2026-10-17",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Will Baseball: Mustangs (Moss) @ TBD",
@@ -667,6 +827,14 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Will: Library",
+      "start": "2026-10-19",
+      "end": "2026-10-20",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
       "start": "2026-10-19T17:00:00-05:00",
       "end": "2026-10-19T18:00:00-05:00",
@@ -689,6 +857,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-10-20",
+      "end": "2026-10-21",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Fall Conferences (VIRTUAL)",
@@ -745,6 +921,22 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Madison: PE",
+      "start": "2026-10-21",
+      "end": "2026-10-22",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-10-21",
+      "end": "2026-10-22",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Fall Conferences",
@@ -875,11 +1067,35 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Madison: Library",
+      "start": "2026-10-26",
+      "end": "2026-10-27",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-10-26",
+      "end": "2026-10-27",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Paul: Away - GitHub Universe",
       "start": "2026-10-26",
       "end": "2026-10-31",
       "all_day": true,
       "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-10-26",
+      "end": "2026-10-27",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
       "source": "Family Email Events"
     },
     {
@@ -923,6 +1139,14 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Max: Library",
+      "start": "2026-10-27",
+      "end": "2026-10-28",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Religious Education - Max, Will, Madison",
       "start": "2026-10-27T16:30:00-05:00",
       "end": "2026-10-27T17:45:00-05:00",
@@ -947,6 +1171,14 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Will: Library",
+      "start": "2026-10-28",
+      "end": "2026-10-29",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Will Soccer: Vipers FC U8B Practice",
       "start": "2026-10-28T16:30:00-05:00",
       "end": "2026-10-28T18:00:00-05:00",
@@ -961,6 +1193,14 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-10-29",
+      "end": "2026-10-30",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
@@ -985,6 +1225,22 @@
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Madison: PE",
+      "start": "2026-10-30",
+      "end": "2026-10-31",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-10-30",
+      "end": "2026-10-31",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Cougar Assembly Quarter 1 I Be Safe",
@@ -1051,6 +1307,30 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Madison: Library",
+      "start": "2026-11-02",
+      "end": "2026-11-03",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-11-02",
+      "end": "2026-11-03",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-11-02",
+      "end": "2026-11-03",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "4th Grade Miller Field Trip",
       "start": "2026-11-02T09:00:00-06:00",
       "end": "2026-11-02T11:50:00-06:00",
@@ -1067,22 +1347,6 @@
       "source": "Overland Trail Elementary"
     },
     {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-11-02T16:00:00-06:00",
-      "end": "2026-11-02T17:00:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-11-02T16:00:00-06:00",
-      "end": "2026-11-02T16:55:00-06:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events"
-    },
-    {
       "summary": "OTE Building Leadership Team Meeting",
       "start": "2026-11-02T16:00:00-06:00",
       "end": "2026-11-02T17:00:00-06:00",
@@ -1091,12 +1355,36 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-11-02T17:00:00-06:00",
+      "end": "2026-11-02T18:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-11-02T17:00:00-06:00",
+      "end": "2026-11-02T17:55:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "DAY 2",
       "start": "2026-11-03",
       "end": "2026-11-04",
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Max: Library",
+      "start": "2026-11-03",
+      "end": "2026-11-04",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Paul: Away - All Company Meeting / MN",
@@ -1124,16 +1412,16 @@
     },
     {
       "summary": "Religious Education - Max, Will, Madison",
-      "start": "2026-11-03T15:30:00-06:00",
-      "end": "2026-11-03T16:45:00-06:00",
+      "start": "2026-11-03T16:30:00-06:00",
+      "end": "2026-11-03T17:45:00-06:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events"
     },
     {
       "summary": "Madison Tutor w/ Ava",
-      "start": "2026-11-03T18:15:00-06:00",
-      "end": "2026-11-03T19:15:00-06:00",
+      "start": "2026-11-03T19:15:00-06:00",
+      "end": "2026-11-03T20:15:00-06:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events"
@@ -1155,12 +1443,28 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Will: Library",
+      "start": "2026-11-04",
+      "end": "2026-11-05",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "DAY 4",
       "start": "2026-11-05",
       "end": "2026-11-06",
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-11-05",
+      "end": "2026-11-06",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
     },
     {
       "summary": "Will: Kauffman Stadium Field Trip",
@@ -1172,16 +1476,16 @@
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-11-05T16:00:00-06:00",
-      "end": "2026-11-05T17:00:00-06:00",
+      "start": "2026-11-05T17:00:00-06:00",
+      "end": "2026-11-05T18:00:00-06:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events"
     },
     {
       "summary": "Madison: Gymnastics",
-      "start": "2026-11-05T18:00:00-06:00",
-      "end": "2026-11-05T18:55:00-06:00",
+      "start": "2026-11-05T19:00:00-06:00",
+      "end": "2026-11-05T19:55:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
@@ -1204,24 +1508,24 @@
     },
     {
       "summary": "Madison: Tutor",
-      "start": "2026-11-06T16:15:00-06:00",
-      "end": "2026-11-06T17:15:00-06:00",
+      "start": "2026-11-06T17:15:00-06:00",
+      "end": "2026-11-06T18:15:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
     },
     {
       "summary": "Max: Learn to Play Hockey",
-      "start": "2026-11-07T07:00:00-06:00",
-      "end": "2026-11-07T07:40:00-06:00",
+      "start": "2026-11-07T08:00:00-06:00",
+      "end": "2026-11-07T08:40:00-06:00",
       "all_day": false,
       "location": "19900 Johnson Dr., Shawnee, KS 66218",
       "source": "Family Email Events"
     },
     {
       "summary": "Will: Learn to Play Hockey",
-      "start": "2026-11-07T07:00:00-06:00",
-      "end": "2026-11-07T07:40:00-06:00",
+      "start": "2026-11-07T08:00:00-06:00",
+      "end": "2026-11-07T08:40:00-06:00",
       "all_day": false,
       "location": "19900 Johnson Dr., Shawnee, KS 66218",
       "source": "Family Email Events"
@@ -1260,16 +1564,16 @@
     },
     {
       "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-11-09T16:00:00-06:00",
-      "end": "2026-11-09T17:00:00-06:00",
+      "start": "2026-11-09T17:00:00-06:00",
+      "end": "2026-11-09T18:00:00-06:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events"
     },
     {
       "summary": "Madison: Gymnastics",
-      "start": "2026-11-09T16:00:00-06:00",
-      "end": "2026-11-09T16:55:00-06:00",
+      "start": "2026-11-09T17:00:00-06:00",
+      "end": "2026-11-09T17:55:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events"
@@ -1283,6 +1587,14 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Madison: PE",
+      "start": "2026-11-10",
+      "end": "2026-11-11",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "PTO Support-A-Cougar Holiday Drive Kick-Off",
       "start": "2026-11-10",
       "end": "2026-11-11",
@@ -1291,17 +1603,25 @@
       "source": "Overland Trail Elementary"
     },
     {
+      "summary": "Will: PE",
+      "start": "2026-11-10",
+      "end": "2026-11-11",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
       "summary": "Religious Education - Max, Will, Madison",
-      "start": "2026-11-10T15:30:00-06:00",
-      "end": "2026-11-10T16:45:00-06:00",
+      "start": "2026-11-10T16:30:00-06:00",
+      "end": "2026-11-10T17:45:00-06:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events"
     },
     {
       "summary": "Madison Tutor w/ Ava",
-      "start": "2026-11-10T18:15:00-06:00",
-      "end": "2026-11-10T19:15:00-06:00",
+      "start": "2026-11-10T19:15:00-06:00",
+      "end": "2026-11-10T20:15:00-06:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events"

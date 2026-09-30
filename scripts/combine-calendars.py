@@ -9,7 +9,7 @@ import requests
 from icalendar import Calendar, Event, Timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from datetime import date, datetime, time as datetime_time, timedelta
-from dateutil.rrule import rrulestr
+from dateutil.rrule import rruleset, rrulestr
 import pytz
 import sys
 import time
@@ -696,6 +696,16 @@ def _recurrence_key(value):
     return _as_timezone_aware(value).isoformat()
 
 
+def _recurrence_dates(component, property_name):
+    """Read every date in both repeated and comma-separated properties."""
+    properties = component.get(property_name, [])
+    if not isinstance(properties, list):
+        properties = [properties]
+    for property_value in properties:
+        for value in property_value.dts:
+            yield value.dt
+
+
 def _kitchen_event(component, start_value, duration, source_name):
     """Convert one event occurrence into the compact public kitchen schema."""
     all_day = isinstance(start_value, date) and not isinstance(start_value, datetime)
@@ -772,17 +782,34 @@ def build_kitchen_feed(calendar, now=None, days=KITCHEN_FEED_DAYS):
         duration = _event_duration(component, start_value)
         recurrence_rule = component.get('RRULE')
 
-        if recurrence_rule is None:
+        if recurrence_rule is None and 'RDATE' not in component and 'EXDATE' not in component:
             event = _kitchen_event(component, start_value, duration, source_name)
             if _event_is_visible(event, window_start, window_end):
                 events.append(event)
             continue
 
-        rule_text = recurrence_rule.to_ical().decode('utf-8')
-        rule_start = _as_timezone_aware(start_value)
         try:
-            rule = rrulestr(rule_text, dtstart=rule_start)
-            occurrences = rule.between(window_start - duration, window_end, inc=True)
+            # ZoneInfo retains local wall time when a rule crosses DST; a
+            # localized pytz datetime otherwise keeps its initial UTC offset.
+            rule_start = start_value
+            if not isinstance(rule_start, datetime) or rule_start.tzinfo is None:
+                rule_start = _as_timezone_aware(rule_start)
+            zone_name = getattr(rule_start.tzinfo, 'zone', None)
+            if zone_name:
+                try:
+                    rule_start = rule_start.astimezone(ZoneInfo(zone_name))
+                except ZoneInfoNotFoundError:
+                    pass  # Keep provider-defined zones in their original form.
+            recurrence = rruleset()
+            recurrence.rdate(rule_start)
+            if recurrence_rule is not None:
+                rule_text = recurrence_rule.to_ical().decode('utf-8')
+                recurrence.rrule(rrulestr(rule_text, dtstart=rule_start))
+            for value in _recurrence_dates(component, 'RDATE'):
+                recurrence.rdate(_as_timezone_aware(value))
+            for value in _recurrence_dates(component, 'EXDATE'):
+                recurrence.exdate(_as_timezone_aware(value))
+            occurrences = recurrence.between(window_start - duration, window_end, inc=True)
         except (TypeError, ValueError) as error:
             logger.warning('Could not expand recurrence for %s: %s', uid, error)
             continue

@@ -210,6 +210,134 @@ END:VCALENDAR
         self.assertEqual('Scheels Field 9N', feed['events'][0]['location'])
         self.assertNotIn('description', feed['events'][0])
 
+    def test_kitchen_includes_actual_school_rotation_after_initial_dates(self):
+        calendar = Calendar.from_ical(EMAIL_EVENTS_PATH.read_bytes())
+        original = calendar.to_ical()
+        feed = build_kitchen_feed(calendar, now=datetime(2026, 9, 30, 8), days=8)
+        specials = [(e['start'], e['summary']) for e in feed['events']
+                    if e['summary'] in {f'{kid}: {activity}'
+                       for kid in ('Madison', 'Will', 'Max')
+                       for activity in ('PE', 'Library')}]
+        self.assertEqual([
+            ('2026-09-30', 'Madison: Library'),
+            ('2026-09-30', 'Max: PE'),
+            ('2026-09-30', 'Will: PE'),
+            ('2026-10-01', 'Max: Library'),
+            ('2026-10-02', 'Will: Library'),
+            ('2026-10-05', 'Max: PE'),
+            ('2026-10-06', 'Madison: PE'),
+            ('2026-10-06', 'Will: PE'),
+            ('2026-10-07', 'Madison: Library'),
+            ('2026-10-07', 'Max: PE'),
+            ('2026-10-07', 'Will: PE'),
+        ], specials)
+        self.assertEqual(original, calendar.to_ical())
+        for event in feed['events']:
+            if (event['start'], event['summary']) in specials:
+                self.assertTrue(event['all_day'])
+                self.assertEqual(timedelta(days=1),
+                                 datetime.fromisoformat(event['end']) -
+                                 datetime.fromisoformat(event['start']))
+                self.assertNotIn('description', event)
+
+    def test_kitchen_combines_rules_dates_exclusions_and_exceptions(self):
+        calendar = Calendar.from_ical('''BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:rotation
+SUMMARY:Library
+DTSTART;VALUE=DATE:20260928
+DTEND;VALUE=DATE:20260929
+RRULE:FREQ=DAILY;COUNT=3
+RDATE;VALUE=DATE:20260930,20261001,20261002
+RDATE;VALUE=DATE:20261003,20261004
+EXDATE;VALUE=DATE:20260928,20260929
+EXDATE;VALUE=DATE:20261004
+END:VEVENT
+BEGIN:VEVENT
+UID:rotation
+RECURRENCE-ID;VALUE=DATE:20261001
+DTSTART;VALUE=DATE:20261001
+STATUS:CANCELLED
+END:VEVENT
+BEGIN:VEVENT
+UID:rotation
+RECURRENCE-ID;VALUE=DATE:20261002
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261006
+SUMMARY:Library moved
+END:VEVENT
+END:VCALENDAR
+''')
+        feed = build_kitchen_feed(calendar, now=datetime(2026, 9, 28), days=8)
+        self.assertEqual([
+            ('2026-09-30', 'Library'),
+            ('2026-10-03', 'Library'),
+            ('2026-10-05', 'Library moved'),
+        ], [(e['start'], e['summary']) for e in feed['events']])
+
+    def test_kitchen_explicit_dates_preserve_timezone_and_exclusions(self):
+        calendar = Calendar.from_ical('''BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:explicit-times
+SUMMARY:Practice
+DTSTART:20260701T213000Z
+DTEND:20260701T223000Z
+RDATE;TZID=America/Chicago:20261030T163000,20261102T163000
+RDATE;TZID=America/Chicago:20270104T163000,20270315T163000
+EXDATE:20261102T223000Z
+END:VEVENT
+END:VCALENDAR
+''')
+        feed = build_kitchen_feed(calendar, now=datetime(2026, 7, 1), days=300)
+        self.assertEqual([
+            '2026-07-01T16:30:00-05:00',
+            '2026-10-30T16:30:00-05:00',
+            '2027-01-04T16:30:00-06:00',
+            '2027-03-15T16:30:00-05:00',
+        ], [e['start'] for e in feed['events']])
+        for event in feed['events']:
+            self.assertFalse(event['all_day'])
+            self.assertEqual(timedelta(hours=1),
+                             datetime.fromisoformat(event['end']) -
+                             datetime.fromisoformat(event['start']))
+
+    def test_kitchen_weekly_rule_keeps_wall_time_across_both_dst_changes(self):
+        calendar = Calendar.from_ical('''BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:weekly-dst
+SUMMARY:Practice
+DTSTART;TZID=America/Chicago:20261026T163000
+DTEND;TZID=America/Chicago:20261026T173000
+RRULE:FREQ=WEEKLY;COUNT=21
+END:VEVENT
+END:VCALENDAR
+''')
+        feed = build_kitchen_feed(calendar, now=datetime(2026, 10, 26), days=150)
+        starts = [e['start'] for e in feed['events']]
+        self.assertEqual(21, len(starts))
+        self.assertIn('2026-11-02T16:30:00-06:00', starts)
+        self.assertIn('2027-03-15T16:30:00-05:00', starts)
+        self.assertTrue(all('T16:30:00' in value for value in starts))
+
+    def test_kitchen_utc_rule_keeps_utc_time_across_dst(self):
+        calendar = Calendar.from_ical('''BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:utc-rule
+SUMMARY:Practice
+DTSTART:20261026T213000Z
+DTEND:20261026T223000Z
+RRULE:FREQ=WEEKLY;COUNT=2
+END:VEVENT
+END:VCALENDAR
+''')
+        feed = build_kitchen_feed(calendar, now=datetime(2026, 10, 26), days=14)
+        self.assertEqual(['2026-10-26T16:30:00-05:00', '2026-11-02T15:30:00-06:00'],
+                         [e['start'] for e in feed['events']])
+
     def test_loads_sanitized_email_events(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         events = list(calendar.walk('VEVENT'))
