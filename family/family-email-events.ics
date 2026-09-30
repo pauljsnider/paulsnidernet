@@ -1282,4 +1282,16 @@ SEQUENCE:0
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+UID:pill-harriers-kcrfc-20270605@paulsnider.net
+DTSTAMP:20260930T000100Z
+SUMMARY:Pill Harriers (Wales) vs Kansas City RFC
+DTSTART;VALUE=DATE:20270605
+DTEND;VALUE=DATE:20270606
+DESCRIPTION:Pill Harriers RFC from Newport\, Wales vs Kansas City RFC. Match confirmed September 29\, 2026. Kickoff time and venue TBD. Pill Harriers arrive in Kansas City June 3 and play Springfield June 7.
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:EMAIL-ANNOUNCEMENT
+END:VEVENT
 END:VCALENDAR
