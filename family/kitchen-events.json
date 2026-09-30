@@ -1,31 +1,7 @@
 {
-  "generated_at": "2026-09-29T22:02:02.535669-05:00",
+  "generated_at": "2026-09-30T06:35:14.531175-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 5",
-      "start": "2026-09-29",
-      "end": "2026-09-30",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Religious Education - Max, Will, Madison",
-      "start": "2026-09-29T16:30:00-05:00",
-      "end": "2026-09-29T17:45:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Madison Tutor w/ Ava",
-      "start": "2026-09-29T19:15:00-05:00",
-      "end": "2026-09-29T20:15:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
     {
       "summary": "DAY 1",
       "start": "2026-09-30",
@@ -1296,6 +1272,38 @@
       "end": "2026-11-09T16:55:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "DAY 5",
+      "start": "2026-11-10",
+      "end": "2026-11-11",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "PTO Support-A-Cougar Holiday Drive Kick-Off",
+      "start": "2026-11-10",
+      "end": "2026-11-11",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Religious Education - Max, Will, Madison",
+      "start": "2026-11-10T15:30:00-06:00",
+      "end": "2026-11-10T16:45:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-11-10T18:15:00-06:00",
+      "end": "2026-11-10T19:15:00-06:00",
+      "all_day": false,
+      "location": "",
       "source": "Family Email Events"
     }
   ]
