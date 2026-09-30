@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-30T08:37:54.080984-05:00",
+  "generated_at": "2026-09-30T14:13:14.785855-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Wed, Sep 30 at 9:30 AM \u2022 Waldo Branch",
+    "title": "Movie: 'M3GAN 2.0'",
+    "detail": "Wed, Sep 30 at 2:00 PM \u2022 Central Library",
     "date": "2026-09-30",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-90"
+    "url": "https://kclibrary.org/calendar/movie-m3gan-20"
   },
   "kc_news": {
     "title": "A beloved western Kansas natural history museum will close because of university budget cuts",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
-      "title": "The effects of an \u201calgorithmic monoculture\u201d depend on the details",
+      "title": "MIT Transit Lab to develop an AI platform for public transit agencies",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-28",
+      "date": "2026-09-30",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/algorithmic-monoculture-effects-depend-on-details-0929"
+      "url": "https://news.mit.edu/2026/mit-transit-lab-to-develop-ai-platform-public-transit-agencies-0930"
     },
     {
-      "title": "Who we become when we talk to machines",
+      "title": "This game-playing AI is the new champ at Stratego",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-28",
+      "date": "2026-09-30",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/when-we-talk-to-machines-sherry-turkle-book-0929"
+      "url": "https://news.mit.edu/2026/game-playing-ai-stratego-new-champ-0930"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.45,
-    "change_pct": 0.08,
+    "value": 55.15,
+    "change_pct": -0.47,
     "as_of": "2026-09-30"
   }
 }
