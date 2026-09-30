@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T01:38:50.921107-05:00",
+  "generated_at": "2026-09-30T08:37:54.080984-05:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Wed, Sep 30 at 9:30 AM \u2022 Waldo Branch",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.41,
-    "change_pct": -0.63,
-    "as_of": "2026-09-29"
+    "value": 55.45,
+    "change_pct": 0.08,
+    "as_of": "2026-09-30"
   }
 }
