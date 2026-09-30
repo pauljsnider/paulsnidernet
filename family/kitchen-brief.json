@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-30T14:13:14.785855-05:00",
+  "generated_at": "2026-09-30T18:43:53.972515-05:00",
   "local": {
-    "title": "Movie: 'M3GAN 2.0'",
-    "detail": "Wed, Sep 30 at 2:00 PM \u2022 Central Library",
-    "date": "2026-09-30",
+    "title": "Art Club | Grupo de Arte",
+    "detail": "Thu, Oct 1 at 5:30 PM \u2022 North-East Branch",
+    "date": "2026-10-01",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-m3gan-20"
+    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-2"
   },
   "kc_news": {
     "title": "A beloved western Kansas natural history museum will close because of university budget cuts",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.15,
-    "change_pct": -0.47,
+    "value": 54.81,
+    "change_pct": -1.08,
     "as_of": "2026-09-30"
   }
 }
