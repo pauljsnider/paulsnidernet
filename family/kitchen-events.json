@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T22:08:34.405685-05:00",
+  "generated_at": "2026-09-30T22:52:12.358572-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -449,6 +449,14 @@
       "all_day": false,
       "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
       "source": "Max Soccer - Major Derek"
+    },
+    {
+      "summary": "KU Hockey vs Missouri State",
+      "start": "2026-10-10T16:15:00-05:00",
+      "end": "2026-10-10T18:30:00-05:00",
+      "all_day": false,
+      "location": "AdventHealth Sports Park at Bluhawk",
+      "source": "Family Email Events"
     },
     {
       "summary": "Madison: Jr Current vs Sporting City U11G Indigo-North",
