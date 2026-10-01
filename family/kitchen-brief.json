@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T08:04:41.323146-05:00",
+  "generated_at": "2026-10-01T13:51:24.060607-05:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Oct 1 at 5:30 PM \u2022 North-East Branch",
@@ -8,10 +8,10 @@
     "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-2"
   },
   "kc_news": {
-    "title": "A beloved western Kansas natural history museum will close because of university budget cuts",
+    "title": "Kansas City just opened a public roller rink near 18th & Vine. Skaters call it a 'big big deal'",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/2026-09-29/fort-hays-state-confirms-it-will-close-sternberg-museum-citing-cuts-in-state-funding"
+    "url": "https://www.kcur.org/housing-development-section/2026-10-01/kansas-city-roller-skating-rink-18th-vine"
   },
   "ai": [
     {
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 54.81,
-    "change_pct": -1.08,
-    "as_of": "2026-09-30"
+    "value": 55.28,
+    "change_pct": 0.87,
+    "as_of": "2026-10-01"
   }
 }
