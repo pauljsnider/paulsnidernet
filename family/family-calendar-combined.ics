@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-10-01T03:52:12.267171+00:00
+X-COMBINE-TIMESTAMP:2026-10-01T03:57:01.678090+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VTIMEZONE
 TZID:America/Chicago
@@ -1448,6 +1448,63 @@ UID:ku-hockey-missouri-state-20261010@paulsnider.net
 SEQUENCE:0
 DESCRIPTION:Kansas Jayhawks vs. Missouri State Bears hockey.
 LOCATION:AdventHealth Sports Park at Bluhawk
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KU Hockey vs Missouri State - Time TBD
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+DTSTAMP:20261001T035500Z
+UID:ku-hockey-missouri-state-20261009@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:University of Kansas vs. Missouri State hockey. Puck drop time
+  not yet verified.
+LOCATION:AdventHealth Sports Park at Bluhawk
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC Mavericks vs Rapid City Rush
+DTSTART;TZID=America/Chicago:20261017T180500
+DTEND;TZID=America/Chicago:20261017T203500
+DTSTAMP:20261001T035500Z
+UID:kc-mavericks-rapid-city-20261017@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Kansas City Mavericks home game.
+LOCATION:Cable Dahmer Arena
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC Mavericks vs Tahoe Knight Monsters
+DTSTART;TZID=America/Chicago:20261107T180500
+DTEND;TZID=America/Chicago:20261107T203500
+DTSTAMP:20261001T035500Z
+UID:kc-mavericks-tahoe-20261107@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Kansas City Mavericks home game.
+LOCATION:Cable Dahmer Arena
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:KC Mavericks vs Idaho Steelheads - Star Wars Night
+DTSTART;TZID=America/Chicago:20261219T180500
+DTEND;TZID=America/Chicago:20261219T203500
+DTSTAMP:20261001T035500Z
+UID:kc-mavericks-idaho-star-wars-20261219@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Kansas City Mavericks home game - Star Wars Night.
+LOCATION:Cable Dahmer Arena
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL

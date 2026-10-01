@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T22:52:12.358572-05:00",
+  "generated_at": "2026-09-30T22:57:01.754446-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -400,6 +400,14 @@
       "end": "2026-10-08T19:55:00-05:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "KU Hockey vs Missouri State - Time TBD",
+      "start": "2026-10-09",
+      "end": "2026-10-10",
+      "all_day": true,
+      "location": "AdventHealth Sports Park at Bluhawk",
       "source": "Family Email Events"
     },
     {
@@ -809,6 +817,14 @@
       "all_day": false,
       "location": "10541 S Warwick St\nOlathe KS",
       "source": "Will Soccer - Vipers FC U8B"
+    },
+    {
+      "summary": "KC Mavericks vs Rapid City Rush",
+      "start": "2026-10-17T18:05:00-05:00",
+      "end": "2026-10-17T20:35:00-05:00",
+      "all_day": false,
+      "location": "Cable Dahmer Arena",
+      "source": "Family Email Events"
     },
     {
       "summary": "Madison Soccer: Jr Current at LS United Pumas",
@@ -1544,6 +1560,14 @@
       "end": "2026-11-07T10:25:00-06:00",
       "all_day": false,
       "location": "TBA",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "KC Mavericks vs Tahoe Knight Monsters",
+      "start": "2026-11-07T18:05:00-06:00",
+      "end": "2026-11-07T20:35:00-06:00",
+      "all_day": false,
+      "location": "Cable Dahmer Arena",
       "source": "Family Email Events"
     },
     {
