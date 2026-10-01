@@ -1,63 +1,7 @@
 {
-  "generated_at": "2026-09-30T22:57:55.030426-05:00",
+  "generated_at": "2026-10-01T07:03:51.585618-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 1",
-      "start": "2026-09-30",
-      "end": "2026-10-01",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary"
-    },
-    {
-      "summary": "Madison: Library",
-      "start": "2026-09-30",
-      "end": "2026-10-01",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Max: PE",
-      "start": "2026-09-30",
-      "end": "2026-10-01",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Will: PE",
-      "start": "2026-09-30",
-      "end": "2026-10-01",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Will Soccer: Vipers FC U8B Practice",
-      "start": "2026-09-30T16:30:00-05:00",
-      "end": "2026-09-30T18:00:00-05:00",
-      "all_day": false,
-      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
-      "source": "Will Soccer - Vipers FC U8B"
-    },
-    {
-      "summary": "Blue Valley North Homecoming Parade - Madison, Will, Max",
-      "start": "2026-09-30T18:15:00-05:00",
-      "end": "2026-09-30T19:15:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events"
-    },
-    {
-      "summary": "Madison: [CANCELED] Jr Current - Practice",
-      "start": "2026-09-30T19:30:00-05:00",
-      "end": "2026-09-30T21:00:00-05:00",
-      "all_day": false,
-      "location": "13700 Switzer Rd, Overland Park, KS 66221",
-      "source": "TeamSnap Events (Madison + Max + Will)"
-    },
     {
       "summary": "DAY 2",
       "start": "2026-10-01",
@@ -1657,6 +1601,62 @@
       "all_day": false,
       "location": "",
       "source": "Family Email Events"
+    },
+    {
+      "summary": "DAY 1",
+      "start": "2026-11-11",
+      "end": "2026-11-12",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary"
+    },
+    {
+      "summary": "Madison: Library",
+      "start": "2026-11-11",
+      "end": "2026-11-12",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-11-11",
+      "end": "2026-11-12",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "U.S. Federal Holiday: Veterans Day",
+      "start": "2026-11-11",
+      "end": "2026-11-12",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "US Federal Holiday: Veterans Day",
+      "start": "2026-11-11",
+      "end": "2026-11-12",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-11-11",
+      "end": "2026-11-12",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events"
+    },
+    {
+      "summary": "PTO Community Service Activity",
+      "start": "2026-11-11T15:45:00-06:00",
+      "end": "2026-11-11T16:30:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary"
     }
   ]
 }
