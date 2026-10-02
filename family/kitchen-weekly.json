@@ -1,13 +1,46 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "generated_at": "2026-10-02T02:12:46.696Z",
+  "generated_at": "2026-10-02T02:21:30.165Z",
   "expires_at": "2026-10-05T05:00:00.000Z",
   "week_start": "2026-09-28",
   "week_end": "2026-10-05",
   "children": {
     "Madison": [],
     "Will": [],
-    "Max": []
+    "Max": [
+      {
+        "kind": "learning",
+        "text": "Amplify : Domain 2: The Five Senses",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-25"
+      },
+      {
+        "kind": "learning",
+        "text": "95% : Lesson 5: Introduction of m, d & g",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-25"
+      },
+      {
+        "kind": "learning",
+        "text": "iReady : Lesson 5: Compare Numbers to 5",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-25"
+      },
+      {
+        "kind": "bring",
+        "text": "Thursday: Day 2 Library (Return Library Book)",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-25"
+      }
+    ]
   }
 }
