@@ -11,9 +11,17 @@ function kitchenCredentialPresence() {
     };
 }
 
+function kitchenWeekStart(now) {
+    var localDay = Utilities.formatDate(now, 'America/Chicago', 'yyyy-MM-dd');
+    var day = new Date(localDay + 'T12:00:00Z');
+    var weekday = day.getUTCDay();
+    day.setUTCDate(day.getUTCDate() + (weekday === 0 ? 1 : 1 - weekday));
+    return day.toISOString().slice(0, 10);
+}
 function kitchenSourceEligible(item, now) {
+    var floor = Date.parse(kitchenWeekStart(now) + 'T00:00:00Z') - 4 * 86400000;
     return ['Madison', 'Will', 'Max', 'Schoolwide'].indexOf(item.child) !== -1 &&
-        item.date instanceof Date && now - item.date >= 0 && now - item.date <= 7 * 86400000 &&
+        item.date instanceof Date && now - item.date >= 0 && item.date.getTime() >= floor &&
         /@(?:parentsquare\.com|bluevalleyk12\.org)>?$/i.test((item.sourceFrom || item.from || '').trim());
 }
 
@@ -33,11 +41,34 @@ function kitchenSchoolCandidates(items, now) {
             // Test original line before stripping markup; never salvage a
             // financial sentence by deleting only its amount/link.
             if (/https?:|@|[$£€¥]|\b(?:pay|paid|payment|fee|cost|price|account|donat|fundrais|checkbook|purchase|venmo|billing)/i.test(line)) { return; }
-            var text = line.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/[*_]/g, '').replace(/\s+/g, ' ').trim();
-            if (!KitchenWeekly.safeText(text)) { return; }
-            var kind = /^(?:Amplify|Math|Science|Phonics|iReady|95%)/i.test(text) ? 'learning' : (/\b(?:bring|return|send)\b.*\b(?:book|snack|water bottle|shoes)\b/i.test(text) ? 'bring' : null);
+            var text = line.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/[*_\\]/g, '').replace(/^\s*\|\s*|\s*\|\s*$/g, '').replace(/\s+/g, ' ').trim();
+            if (!KitchenWeekly.safeSourceText(text)) { return; }
+            var learning = text.match(/^(Amplify|Math|Science|Phonics|iReady|95%|Reading|Friendly Letter)\s*[:\-]?\s*(.+)$/i);
+            var kind = learning ? 'learning' : (/\b(?:bring|return|send)\b.*\b(?:books?|snack|water bottle|shoes)\b/i.test(text) ? 'bring' : null);
             if (!kind) { return; }
-            result.push({ children: item.child === 'Schoolwide' ? ['Madison', 'Will', 'Max'] : [item.child], kind: kind, text: text,
+            if (learning && !KitchenWeekly.safeText(text)) {
+                // A complete short heading or sentence, never a cut-off fragment.
+                var bold = line.match(/^\s*\*\*([^*]+)\*\*/);
+                var heading = bold ? bold[1].replace(/&nbsp;/g, ' ').replace(/[:\s]+$/, '').trim() : '';
+                if (heading.length > 18 && KitchenWeekly.safeText(heading)) { text = heading; }
+                else {
+                    var sentences = learning[2].match(/[^.!?]+[.!?](?:\s|$)/g) || [];
+                    var short = sentences.map(function (part) { return learning[1] + ': ' + part.trim(); }).filter(KitchenWeekly.safeText);
+                    if (!short.length) { return; }
+                    text = short[0];
+                }
+            }
+            if (!KitchenWeekly.safeText(text)) { return; }
+            var date = null;
+            var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+            weekdays.forEach(function (name, index) {
+                if (new RegExp('\\b' + name + '\\b', 'i').test(text)) {
+                    var target = new Date(kitchenWeekStart(now) + 'T12:00:00Z');
+                    target.setUTCDate(target.getUTCDate() + index);
+                    date = target.toISOString().slice(0, 10);
+                }
+            });
+            result.push({ children: item.child === 'Schoolwide' ? ['Madison', 'Will', 'Max'] : [item.child], kind: kind, text: text, date: date,
                 source_date: Utilities.formatDate(item.date, 'America/Chicago', 'yyyy-MM-dd') });
         });
     });
@@ -116,7 +147,14 @@ function prepareKitchenWeeklyExport(items, now) {
         candidate.children.forEach(function (child) {
             var list = payload.children[child];
             if (list.length >= 6 || list.some(function (note) { return note.text === candidate.text; })) { return; }
-            list.push({ kind: candidate.kind, text: candidate.text, date: null, expires_at: expiry,
+            var noteExpiry = expiry;
+            if (candidate.date) {
+                var next = new Date(candidate.date + 'T12:00:00Z'); next.setUTCDate(next.getUTCDate() + 1);
+                var zone = Utilities.formatDate(next, 'America/Chicago', 'Z');
+                noteExpiry = new Date(next.toISOString().slice(0, 10) + 'T00:00:00' + zone.slice(0, 3) + ':' + zone.slice(3)).toISOString();
+            }
+            if (Date.parse(noteExpiry) <= now.getTime()) { return; }
+            list.push({ kind: candidate.kind, text: candidate.text, date: candidate.date, expires_at: noteExpiry,
                 source: 'School newsletter', source_date: candidate.source_date });
         });
     });

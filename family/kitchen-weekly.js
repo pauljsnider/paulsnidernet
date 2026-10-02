@@ -14,6 +14,9 @@ var KitchenWeekly = (function () {
     function instant(value) {
         return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value) && !isNaN(Date.parse(value));
     }
+    function safeSourceText(value) {
+        return typeof value === 'string' && !blocked.test(value) && !/[\r\n\x00-\x1f]|\d{5,}/.test(value);
+    }
     function safeText(value) {
         return typeof value === 'string' && value.length > 0 && value.length <= 90 &&
             !blocked.test(value) && !/[\r\n\x00-\x1f]|\d{5,}/.test(value);
@@ -39,7 +42,7 @@ var KitchenWeekly = (function () {
                 if (!keys(note, ['kind', 'text', 'date', 'expires_at', 'source', 'source_date']) ||
                     ['learning', 'bring', 'reminder', 'assignment', 'specials'].indexOf(note.kind) === -1 || !safeText(note.text) ||
                     (note.date !== null && (!day(note.date) || note.date < feed.week_start || note.date >= feed.week_end)) || !day(note.source_date) ||
-                    Date.parse(feed.generated_at) - Date.parse(note.source_date + 'T00:00:00Z') > 8 * 86400000 ||
+                    Date.parse(note.source_date + 'T00:00:00Z') < Date.parse(feed.week_start + 'T00:00:00Z') - 4 * 86400000 ||
                     Date.parse(note.source_date + 'T00:00:00Z') > Date.parse(feed.generated_at) ||
                     !instant(note.expires_at) || Date.parse(note.expires_at) > Date.parse(feed.expires_at) ||
                     Date.parse(note.expires_at) <= Date.parse(feed.generated_at) ||
@@ -57,6 +60,6 @@ var KitchenWeekly = (function () {
         if (!Array.isArray(event.children)) { return []; }
         return names.filter(function (name) { return event.children.indexOf(name) !== -1; });
     }
-    return { validate: validate, visible: visible, safeText: safeText, safeEventTitle: safeEventTitle, eventChildren: eventChildren };
+    return { validate: validate, visible: visible, safeText: safeText, safeEventTitle: safeEventTitle, safeSourceText: safeSourceText, eventChildren: eventChildren };
 }());
 if (typeof module !== 'undefined') { module.exports = KitchenWeekly; }

@@ -86,7 +86,7 @@ function runKitchenWeeklyPublication(items, now) {
  * Never creates a Doc or sends email; uses the same versioned policy gate.
  */
 function runKitchenWeeklyPublicationOnly() {
-    var result = runKitchenWeeklyPublication(collectDigestItems(LOOKBACK_DAYS), new Date());
+    var result = runKitchenWeeklyPublication(collectDigestItems(14), new Date());
     Logger.log('Kitchen publication status: ' + result.status);
     return result;
 }
