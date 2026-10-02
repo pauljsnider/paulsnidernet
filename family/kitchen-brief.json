@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-02T07:25:27.250402-05:00",
+  "generated_at": "2026-10-02T13:22:20.596364-05:00",
   "local": {
-    "title": "Between the Lines Book Group",
-    "detail": "Fri, Oct 2 at 12:00 PM \u2022 Westport Branch",
+    "title": "Homeschool Hangout: Artifact Detectives",
+    "detail": "Fri, Oct 2 at 2:00 PM \u2022 Trails West Branch",
     "date": "2026-10-02",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/between-lines-book-group-17"
+    "url": "https://kclibrary.org/calendar/homeschool-hangout-artifact-detectives"
   },
   "kc_news": {
     "title": "Kansas City just opened a public roller rink near 18th and Vine. Skaters call it a 'big, big deal'",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Documenting the tech worker movement",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-02",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/documenting-tech-worker-movement-0918"
+    },
+    {
       "title": "3 Questions: A new resource to empower young entrepreneurs",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-01",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/3-questions-new-resource-empower-young-entrepreneurs-1002"
-    },
-    {
-      "title": "New tool lets users repair AI-generated 3D models, then fabricate them just the way they want",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-01",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/instructmesh-tool-lets-users-repair-ai-3d-models-then-fabricate-them-1001"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.84,
-    "change_pct": 1.88,
-    "as_of": "2026-10-01"
+    "value": 56.76,
+    "change_pct": 1.65,
+    "as_of": "2026-10-02"
   }
 }
