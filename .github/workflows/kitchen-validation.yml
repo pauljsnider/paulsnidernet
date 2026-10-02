@@ -16,6 +16,7 @@ jobs:
           node-version: '22'
       - run: node tests/test_kitchen_weekly.js
       - run: node tests/test_kitchen_publisher.js
+      - run: node tests/test_kitchen_completion.js
       - name: Validate any published notes
         run: |
           node - <<'JS'

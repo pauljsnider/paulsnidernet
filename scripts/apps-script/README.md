@@ -201,10 +201,16 @@ PAT scope or new trigger is used. A PAT-authenticated merge allows existing
 GitHub Pages behavior to run. Verify the actual Pages deployment separately.
 
 Checks are polled for at most two minutes. If still pending, publication returns
-checks-pending and leaves the PR unmerged. This is a failed/deferred run, not
-success; old notes expire. A later authorized invocation can retry without
-sending another digest by invoking only the publication path with safely
-collected items. No automated retry trigger has been added.
+checks-pending and leaves the PR unmerged. The trusted default-branch `Complete weekly kitchen data` workflow continues
+a successful Kitchen validation run for the exact data-only weekly PR. It never
+checks out or executes PR code. It independently validates the JSON, repository,
+actor, branch, PR association, file boundary, freshness and run-specific checks;
+rechecks the head immediately before normal exact-SHA merge; then requests the
+existing legacy Pages build. Its ephemeral workflow token has only Contents/PR
+write, Checks/Statuses read, and Pages write. No persistent token scope, security
+setting or Apps Script trigger is added. A failed continuation leaves the old
+public data in place until expiry and reports a failed workflow, not success.
+This continuation remains unproven until an actual deployed weekly PR completes.
 
 Before production: review and merge the UI/schema/CI PR, refresh generated calendar
 children arrays through its existing workflow, deploy the private one-hook Apps
