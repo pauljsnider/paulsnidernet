@@ -74,16 +74,18 @@ Metadata verified October 2, 2026 UTC (no secret values accessed):
 
 - Script Property name `KITCHEN_GITHUB_TOKEN` is present in `OTE_parse_email`.
 - GitHub token name: `Kitchen weekly publisher`; owner: `pauljsnider`.
-- Expiration shown by GitHub: **October 31, 2026**; no expiration time shown.
+- Expiration shown by GitHub: **December 31, 2026**; no expiration time shown.
 - Permissions: Metadata read; code/Contents and Pull requests read/write;
   no user permissions. GitHub reports the token has never been used.
-- **Activation blocker:** GitHub currently shows all repositories owned by
-  `pauljsnider`, rather than only `paulsnidernet`. Scope correction is awaiting
-  owner approval; no scope change has been made.
+- Repository access is verified as **only `pauljsnider/paulsnidernet`**. The
+  previous all-repositories mismatch is resolved. GitHub lists a replacement
+  token under the same name; the former token detail page is no longer available.
 - Authentication has not been tested. Property presence does not prove its value
   matches this GitHub token. Public child-data approval remains separately pending.
-- The coordinating task owns a single requested October 28, 2026 morning reminder
-  in `America/Chicago`. Confirm its creation in that task; do not create a duplicate.
+- The coordinating task owns the existing rotation reminder
+  and has been given the new expiration to reschedule its prior three-day lead
+  to December 28, 2026 morning in `America/Chicago`. Confirm the update in that
+  task; do not create a duplicate.
 
 Replace this dated record after the next verified scope correction or rotation.
 
