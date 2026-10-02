@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-02T13:22:20.596364-05:00",
+  "generated_at": "2026-10-02T17:56:49.991585-05:00",
   "local": {
-    "title": "Homeschool Hangout: Artifact Detectives",
-    "detail": "Fri, Oct 2 at 2:00 PM \u2022 Trails West Branch",
-    "date": "2026-10-02",
+    "title": "Heartland Book Festival",
+    "detail": "Sat, Oct 3 at 9:00 AM \u2022 Central Library",
+    "date": "2026-10-03",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/homeschool-hangout-artifact-detectives"
+    "url": "https://kclibrary.org/calendar/heartland-book-festival"
   },
   "kc_news": {
     "title": "Kansas City just opened a public roller rink near 18th and Vine. Skaters call it a 'big, big deal'",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Computational tools for society\u2019s most complex challenges",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-02",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/computational-tools-for-societys-most-complex-challenges-cathy-wu-1002"
+    },
+    {
       "title": "Documenting the tech worker movement",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-02",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/documenting-tech-worker-movement-0918"
-    },
-    {
-      "title": "3 Questions: A new resource to empower young entrepreneurs",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-01",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/3-questions-new-resource-empower-young-entrepreneurs-1002"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 56.76,
-    "change_pct": 1.65,
+    "value": 57.47,
+    "change_pct": 2.92,
     "as_of": "2026-10-02"
   }
 }
