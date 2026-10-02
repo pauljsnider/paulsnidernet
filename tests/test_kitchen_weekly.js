@@ -26,6 +26,9 @@ var candidates=context.kitchenSchoolCandidates([item('Will','Math: Number patter
 assert.equal(candidates.length,2);
 var spoof=item('Will','Math: patterns',1);spoof.from='Teacher via ParentSquare <attacker@example.test>';
 assert.equal(context.kitchenSchoolCandidates([spoof],now).length,0);
+var normalized=item('Will','Math: Number patterns',1); normalized.from='Teacher via ParentSquare'; normalized.sourceFrom='School <teacher@parentsquare.com>';
+assert.equal(context.kitchenSchoolCandidates([normalized],now).length,1);
+normalized.sourceFrom='attacker@example.test';assert.equal(context.kitchenSchoolCandidates([normalized],now).length,0);
 assert.equal(candidates[0].text,'Math: Number patterns');
 console.log('Kitchen schema, expiry, finance exclusion, attribution and disabled-publisher tests passed');
 var current = JSON.parse(JSON.stringify(feed));

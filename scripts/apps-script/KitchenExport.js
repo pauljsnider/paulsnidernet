@@ -14,7 +14,7 @@ function kitchenCredentialPresence() {
 function kitchenSourceEligible(item, now) {
     return ['Madison', 'Will', 'Max', 'Schoolwide'].indexOf(item.child) !== -1 &&
         item.date instanceof Date && now - item.date >= 0 && now - item.date <= 7 * 86400000 &&
-        /@(?:parentsquare\.com|bluevalleyk12\.org)>?$/i.test((item.from || '').trim());
+        /@(?:parentsquare\.com|bluevalleyk12\.org)>?$/i.test((item.sourceFrom || item.from || '').trim());
 }
 
 /* A private candidate builder, not a public serializer. It excludes household,
