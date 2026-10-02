@@ -9,6 +9,8 @@ class KitchenChildTest(unittest.TestCase):
         self.assertEqual(['Will'], COMBINE_CALENDARS.kitchen_event_children(event, 'TeamSnap Events (Madison + Max + Will)'))
         event['SUMMARY'] = 'Unmapped practice'
         self.assertEqual([], COMBINE_CALENDARS.kitchen_event_children(event, 'TeamSnap Events (Madison + Max + Will)'))
+        event['SUMMARY'] = 'Fall Book Fair Class Visit'
+        self.assertEqual([], COMBINE_CALENDARS.kitchen_event_children(event, 'Overland Trail Elementary'))
         event['SUMMARY'] = 'School will open soon'
         self.assertEqual([], COMBINE_CALENDARS.kitchen_event_children(event, 'Overland Trail Elementary'))
 

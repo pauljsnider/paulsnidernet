@@ -732,7 +732,7 @@ def kitchen_event_children(component, source_name):
     matches = [name for name in allowed if re.search(memberships[name], title)]
     if matches:
         return matches
-    if source_name == 'Overland Trail Elementary' and re.search(r'no school|carnival|book fair|skate party|conferences|community service|picture day', title) and not re.search(r'staff|faculty', title):
+    if source_name == 'Overland Trail Elementary' and re.search(r'no school|carnival|book fair family night|skate party|conferences|community service|picture day', title) and not re.search(r'staff|faculty', title):
         return list(allowed)
     return source_children.get(source_name, [])[:]
 
