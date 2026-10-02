@@ -1,13 +1,87 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "generated_at": "2026-10-02T02:21:30.165Z",
+  "generated_at": "2026-10-02T02:30:56.361Z",
   "expires_at": "2026-10-05T05:00:00.000Z",
   "week_start": "2026-09-28",
   "week_end": "2026-10-05",
   "children": {
-    "Madison": [],
-    "Will": [],
+    "Madison": [
+      {
+        "kind": "learning",
+        "text": "Amplify - Unit 2: Early Americas: Maya, Aztec, and Inca",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-24"
+      },
+      {
+        "kind": "learning",
+        "text": "Math - Adding & Subtracting Decimals",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-24"
+      },
+      {
+        "kind": "learning",
+        "text": "Phonics - Consonant -le Syllable",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-24"
+      },
+      {
+        "kind": "learning",
+        "text": "Science: Unit 2: Earth's Systems",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-24"
+      }
+    ],
+    "Will": [
+      {
+        "kind": "learning",
+        "text": "Phonics: We will finish lesson 6 which covers the igh and oa vowel teams.",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-24"
+      },
+      {
+        "kind": "learning",
+        "text": "Math: We will be working through lesson 6, two digit adding, all week.",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-24"
+      },
+      {
+        "kind": "learning",
+        "text": "Amplify: Domain 3: Legends and Heroes: Greek Myths",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-24"
+      },
+      {
+        "kind": "learning",
+        "text": "Friendly Letter: We will be learning more about how to write a letter.",
+        "date": null,
+        "expires_at": "2026-10-05T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-24"
+      },
+      {
+        "kind": "bring",
+        "text": "Bring Library books on Friday!",
+        "date": "2026-10-02",
+        "expires_at": "2026-10-03T05:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-09-24"
+      }
+    ],
     "Max": [
       {
         "kind": "learning",
@@ -28,14 +102,6 @@
       {
         "kind": "learning",
         "text": "iReady : Lesson 5: Compare Numbers to 5",
-        "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-09-25"
-      },
-      {
-        "kind": "bring",
-        "text": "Thursday: Day 2 Library (Return Library Book)",
         "date": null,
         "expires_at": "2026-10-05T05:00:00.000Z",
         "source": "School newsletter",
