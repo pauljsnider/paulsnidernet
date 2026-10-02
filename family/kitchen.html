@@ -560,7 +560,6 @@
                 }
                 state.visibleDay = calendarDayKey(now);
                 renderHero(now);
-                if (state.view >= 6) { renderChild(content, VIEW_NAMES[state.view], now); }
             }
             function renderHero(now) {
                 var next = currentOrNextEvent(now);
