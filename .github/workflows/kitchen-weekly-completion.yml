@@ -1,0 +1,30 @@
+name: Complete weekly kitchen data
+on:
+  workflow_run:
+    workflows: [Kitchen validation]
+    types: [completed]
+permissions: {}
+concurrency:
+  group: kitchen-weekly-completion
+  cancel-in-progress: false
+jobs:
+  complete:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request' && startsWith(github.event.workflow_run.head_branch, 'kitchen-weekly/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: read
+      statuses: read
+      pages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const complete = require('./scripts/complete-kitchen-weekly.js');
+            const schema = require('./family/kitchen-weekly.js');
+            await complete({github, context, core, schema, now: Date.now()});

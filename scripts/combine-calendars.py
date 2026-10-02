@@ -706,6 +706,37 @@ def _recurrence_dates(component, property_name):
             yield value.dt
 
 
+def kitchen_event_children(component, source_name):
+    """Explicit membership beats title hints; aggregate source labels prove nothing."""
+    allowed = ('Madison', 'Will', 'Max')
+    explicit = component.get('X-FAMILY-CHILDREN')
+    if explicit is not None:
+        requested = {name.strip() for name in str(explicit).split(',')}
+        return [name for name in allowed if name in requested]
+    source_children = {
+        'Will Soccer': ['Will'], 'Will Soccer - Vipers FC U8B': ['Will'],
+        'Will Baseball': ['Will'], 'Will Indoor Soccer': ['Will'],
+        'Max Soccer - Major Derek': ['Max'], "Madison's Futsal": ['Madison'],
+        'Madison Futsal': ['Madison'],
+    }
+    if source_name in source_children:
+        return source_children[source_name][:]
+    # Match only the event title, never the aggregate TeamSnap source name.
+    title = str(component.get('SUMMARY', '') or '').lower()
+    import re
+    memberships = {
+        'Madison': r'\bmadison\b|\b(?:jr|junior) current\b|\bwildcats softball\b',
+        'Will': r'(?:^| - |, )will(?:[:,]|$)|\bwill snider\b|\bmustangs\b|\bvipers fc\b',
+        'Max': r'\bmax\b|\bmajor derek\b',
+    }
+    matches = [name for name in allowed if re.search(memberships[name], title)]
+    if matches:
+        return matches
+    if source_name == 'Overland Trail Elementary' and re.search(r'no school|carnival|book fair family night|skate party|conferences|community service|picture day', title) and not re.search(r'staff|faculty', title):
+        return list(allowed)
+    return source_children.get(source_name, [])[:]
+
+
 def _kitchen_event(component, start_value, duration, source_name):
     """Convert one event occurrence into the compact public kitchen schema."""
     all_day = isinstance(start_value, date) and not isinstance(start_value, datetime)
@@ -728,6 +759,7 @@ def _kitchen_event(component, start_value, duration, source_name):
         'all_day': all_day,
         'location': str(component.get('LOCATION', '') or '').strip(),
         'source': source_name,
+        'children': kitchen_event_children(component, source_name),
         '_sort_value': sort_value,
     }
 

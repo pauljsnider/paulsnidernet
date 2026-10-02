@@ -327,6 +327,38 @@
             .brief-card-title { font-size: 18px; }
             .school-date { min-width: 100px; font-size: 13px; }
         }
+
+        .child-view .hero { display: none; }
+        .child-view #screen-content { margin-top: 12px; }
+        .child-panel { min-height: 566px; }
+        .child-heading { border-bottom: 1px solid #334352; padding: 2px 0 12px; margin-bottom: 16px; }
+        .child-eyebrow { font-size: 10px; letter-spacing: 2.2px; color: #edbd7d; }
+        .child-heading h1 { display: inline-block; font-family: Georgia, serif; font-size: 36px; margin: 3px 18px 0 0; font-weight: normal; }
+        .child-subtitle { display: inline-block; font-size: 15px; color: #aeb9c5; }
+        .child-school h2, .child-activities h2 { margin: 0 0 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 1.7px; color: #b5c3d0; }
+        .child-note-grid { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; }
+        .child-note { width: 32%; margin: 0 2% 12px 0; padding: 13px 15px; min-height: 120px; background: rgba(152,181,202,0.07); border-top: 2px solid #496573; border-radius: 3px; }
+        .child-note:nth-child(3n) { margin-right: 0; }
+        .child-note-kind { color: #b6d2d8; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 7px; }
+        .child-note-text { font-size: 18px; line-height: 1.3; }
+        .child-note.assignment, .child-note.reminder { border-top-color: #e7b579; }
+        .child-note.assignment .child-note-kind, .child-note.reminder .child-note-kind { color: #edbd7d; }
+        .child-meta { color: #93a5b5; font-size: 11px; line-height: 1.4; margin-top: 5px; }
+        .child-activities { margin-top: 17px; border-top: 1px solid #334352; padding-top: 13px; }
+        .child-event-strip { display: -webkit-flex; display: flex; }
+        .child-event { width: 32%; margin-right: 2%; }
+        .child-event:last-child { margin-right: 0; }
+        .child-event-date { font-size: 10px; color: #edbd7d; margin-bottom: 4px; }
+        .child-event-title { font-size: 13px; line-height: 1.3; max-height: 34px; overflow: hidden; }
+        .child-empty { color: #b5c3d0; font-size: 18px; line-height: 1.4; }
+        @media (max-width: 700px) {
+            .child-panel { min-height: 540px; }
+            .child-note { width: 100%; margin-right: 0; min-height: 0; padding: 14px; }
+            .child-heading h1 { font-size: 34px; }
+            .child-subtitle { font-size: 13px; }
+            .child-event-strip { display: block; }
+            .child-event { width: 100%; margin: 0 0 12px; }
+        }
     </style>
 </head>
 <body>
@@ -379,6 +411,7 @@
         </div>
     </main>
 
+    <script src="kitchen-weekly.js"></script>
     <script>
         (function () {
             'use strict';
@@ -391,10 +424,13 @@
             var WEATHER_STORAGE_KEY = 'snider-family-kitchen-weather-v1';
             var BRIEF_FEED_URL = 'kitchen-brief.json';
             var BRIEF_STORAGE_KEY = 'snider-family-kitchen-brief-v1';
-            var VIEW_NAMES = ['Today', 'This Week', 'Coming Up', 'Family Photos', 'Daily Brief', 'OTE School'];
-            var VIEW_DURATIONS = [30000, 22000, 22000, 18000, 26000, 24000];
+            var VIEW_NAMES = ['Today', 'This Week', 'Coming Up', 'Family Photos', 'Daily Brief', 'OTE School', 'Madison', 'Will', 'Max'];
+            var VIEW_DURATIONS = [30000, 22000, 22000, 18000, 26000, 24000, 28000, 28000, 28000];
             var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            var weeklyNotes = null;
+            var weeklyOffline = false;
+            var WEEKLY_CACHE = 'kitchen-weekly-v1';
             var state = { events: [], generatedAt: null, photos: [], photosGeneratedAt: null, weather: null, weatherGeneratedAt: null, brief: null, briefGeneratedAt: null, photoIndex: 0, view: 0, rotationTimer: null, paused: false, visibleDay: null };
 
             function getById(id) { return document.getElementById(id); }
@@ -477,11 +513,8 @@
                 return formatShortDay(event.startDate);
             }
             function personFor(event) {
-                var text = ((event.summary || '') + ' ' + (event.source || '')).toLowerCase();
-                if (text.indexOf('madison') !== -1 || text.indexOf('wildcats') !== -1 || text.indexOf('jr current') !== -1) { return 'Madison'; }
-                if (text.indexOf('will') !== -1 || text.indexOf('mustangs') !== -1) { return 'Will'; }
-                if (text.indexOf('max') !== -1 || text.indexOf('prek') !== -1 || text.indexOf('kindergarten') !== -1) { return 'Max'; }
-                return 'Family';
+                var children = KitchenWeekly.eventChildren(event);
+                return children.length === 1 ? children[0] : 'Family';
             }
             function personClass(person) { return person.toLowerCase(); }
             function relativeTime(event, now) {
@@ -527,6 +560,7 @@
                 }
                 state.visibleDay = calendarDayKey(now);
                 renderHero(now);
+                if (state.view >= 6) { renderChild(content, VIEW_NAMES[state.view], now); }
             }
             function renderHero(now) {
                 var next = currentOrNextEvent(now);
@@ -783,7 +817,7 @@
                 window.setTimeout(function () { content.className = ''; }, 500);
                 state.visibleDay = calendarDayKey(now);
                 getById('screen-label').textContent = VIEW_NAMES[state.view];
-                getById('family-board').className = state.view === 3 ? 'photo-view' : (state.view === 4 ? 'brief-view' : (state.view === 5 ? 'school-view' : ''));
+                getById('family-board').className = state.view >= 6 ? 'child-view' : state.view === 3 ? 'photo-view' : (state.view === 4 ? 'brief-view' : (state.view === 5 ? 'school-view' : ''));
                 renderControls();
                 if (state.view === 0) { renderToday(content, now); }
                 if (state.view === 1) { renderWeek(content, now); }
@@ -792,6 +826,7 @@
                 if (state.view === 4) { renderBrief(content); }
                 if (state.view === 5) { renderOteSchool(content, now); }
                 renderHero(now);
+                if (state.view >= 6) { renderChild(content, VIEW_NAMES[state.view], now); }
             }
             function scheduleRotation() {
                 if (state.rotationTimer) { window.clearTimeout(state.rotationTimer); }
@@ -1059,6 +1094,89 @@
                 request.timeout = 20000;
                 request.send(null);
             }
+            function renderChild(content, child, now) {
+                clearElement(content);
+                var panel = createElement('div', 'child-panel ' + child.toLowerCase());
+                var heading = createElement('div', 'child-heading');
+                heading.appendChild(createElement('div', 'child-eyebrow', 'YOUR WEEK'));
+                heading.appendChild(createElement('h1', '', child));
+                heading.appendChild(createElement('div', 'child-subtitle', 'School notes & reminders'));
+                panel.appendChild(heading);
+                var activities = createElement('section', 'child-activities');
+                activities.appendChild(createElement('h2', '', 'Next activities'));
+                var eventStrip = createElement('div', 'child-event-strip');
+                var end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 7);
+                var matching = state.events.filter(function (event) {
+                    return KitchenWeekly.eventChildren(event).indexOf(child) !== -1 &&
+                        !/^DAY [0-9]+$/i.test(event.summary || '') && KitchenWeekly.safeEventTitle(event.summary || '') &&
+                        event.endDate > now && event.startDate < end;
+                });
+                matching = matching.filter(function (candidate) {
+                    if (candidate.source !== 'Overland Trail Elementary') { return true; }
+                    var topic = /carnival/i.test(candidate.summary) ? 'carnival' : null;
+                    if (!topic) { return true; }
+                    return !matching.some(function (other) {
+                        return other.source !== candidate.source && calendarDayKey(other.startDate) === calendarDayKey(candidate.startDate) && other.summary.toLowerCase().indexOf(topic) !== -1;
+                    });
+                });
+                var index, row, event, detail;
+                for (index = 0; index < matching.length && index < 3; index += 1) {
+                    event = matching[index];
+                    row = createElement('div', 'child-event');
+                    row.appendChild(createElement('div', 'child-event-date', eventDay(event, now) + ' • ' + eventTime(event)));
+                    row.appendChild(createElement('div', 'child-event-title', event.summary));
+                    eventStrip.appendChild(row);
+                }
+                activities.appendChild(eventStrip);
+                if (!matching.length) { activities.appendChild(createElement('p', 'child-empty', 'No assigned activities in the saved calendar.')); }
+                var calendarAge = now.getTime() - Date.parse(state.generatedAt);
+                activities.appendChild(createElement('div', 'child-meta', !state.generatedAt ? 'Calendar unavailable' : (calendarAge > 12 * 3600000 ? 'Calendar may be out of date • ' : '') + relativeFeedTime(state.generatedAt)));
+                var school = createElement('section', 'child-school');
+                school.appendChild(createElement('h2', '', 'Latest classroom notes'));
+                var noteGrid = createElement('div', 'child-note-grid');
+                var notes = KitchenWeekly.visible(weeklyNotes, child, now.getTime());
+                for (index = 0; index < notes.length; index += 1) {
+                    row = createElement('div', 'child-note ' + notes[index].kind);
+                    row.appendChild(createElement('div', 'child-note-kind', {learning: 'Learning', bring: 'Bring / wear', reminder: 'Remember', assignment: 'Assignment', specials: 'Specials'}[notes[index].kind]));
+                    row.appendChild(createElement('div', 'child-note-text', notes[index].text));
+                    if (notes[index].date) { row.appendChild(createElement('div', 'child-meta', formatShortDay(parseDate(notes[index].date, true)))); }
+                    noteGrid.appendChild(row);
+                }
+                school.appendChild(noteGrid);
+                if (!notes.length) { school.appendChild(createElement('p', 'child-empty', weeklyNotes && Date.parse(weeklyNotes.expires_at) <= now ? 'Last week’s notes have expired. Fresh school notes will appear here.' : 'No current school notes.')); }
+                if (weeklyNotes) { school.appendChild(createElement('div', 'child-meta', 'School newsletters • Week of ' + formatShortDay(parseDate(weeklyNotes.week_start, true)) + (weeklyOffline ? ' • Offline copy' : ''))); }
+                panel.appendChild(school);
+                panel.appendChild(activities);
+                content.appendChild(panel);
+            }
+            function loadWeeklyNotes() {
+                var request = new XMLHttpRequest();
+                function saved() {
+                    weeklyOffline = true;
+                    try {
+                        var cached = JSON.parse(window.localStorage.getItem(WEEKLY_CACHE));
+                        if (KitchenWeekly.validate(cached)) { weeklyNotes = cached; }
+                    } catch (ignore) { /* Optional cache. */ }
+                    if (state.view >= 6) { renderScreen(); }
+                }
+                request.onreadystatechange = function () {
+                    if (request.readyState !== 4) { return; }
+                    if (request.status < 200 || request.status >= 300) { saved(); return; }
+                    try {
+                        var feed = JSON.parse(request.responseText);
+                        if (!KitchenWeekly.validate(feed)) { saved(); return; }
+                        weeklyNotes = feed;
+                        weeklyOffline = false;
+                        try { window.localStorage.setItem(WEEKLY_CACHE, JSON.stringify(feed)); } catch (ignore) { /* Optional cache. */ }
+                        if (state.view >= 6) { renderScreen(); }
+                    } catch (error) { saved(); }
+                };
+                request.onerror = saved;
+                request.ontimeout = saved;
+                request.open('GET', 'kitchen-weekly.json?v=' + new Date().getTime(), true);
+                request.timeout = 20000;
+                request.send(null);
+            }
             function initialiseControls() {
                 var controls = document.querySelectorAll('.view-control');
                 var index;
@@ -1075,6 +1193,14 @@
                 });
             }
 
+            var weeklyControls = document.querySelector('.view-control').parentNode;
+            for (var childIndex = 6; childIndex < VIEW_NAMES.length; childIndex += 1) {
+                var childButton = createElement('button', 'view-control');
+                childButton.setAttribute('aria-label', VIEW_NAMES[childIndex]);
+                childButton.setAttribute('title', VIEW_NAMES[childIndex]);
+                childButton.setAttribute('data-view', String(childIndex));
+                weeklyControls.appendChild(childButton);
+            }
             initialiseControls();
             updateClock();
             window.setInterval(updateClock, 15000);
@@ -1086,6 +1212,9 @@
             loadPhotoFeed();
             loadWeatherFeed();
             loadBriefFeed();
+            loadWeeklyNotes();
+            window.setInterval(loadWeeklyNotes, 15 * 60 * 1000);
+            window.setInterval(function () { if (state.view >= 6) { renderScreen(); } }, 60000);
             scheduleRotation();
         }());
     </script>
