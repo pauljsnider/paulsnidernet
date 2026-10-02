@@ -102,3 +102,13 @@ assert.equal(context.kitchenWeekStart(new Date('2026-10-04T04:30:00Z')),'2026-09
 assert.equal(context.kitchenWeekStart(new Date('2026-10-04T05:30:00Z')),'2026-10-05');
 context.Utilities.formatDate=oldFormatter;
 console.log('Chicago local-date cutoff and Saturday/Sunday midnight rollover passed');
+
+// Exercise the actual clock callback while a child view is selected, including
+// midnight rollover. Child rendering belongs to renderScreen, not a stale local.
+var page=fs.readFileSync('family/kitchen.html','utf8');
+var callback=page.slice(page.indexOf('            function updateClock()'),page.indexOf('            function renderHero'));
+var clockNodes={'clock':{},'date-label':{}},renders=0;
+var clockCtx={Date:Date,state:{view:6,visibleDay:'today'},getById:function(id){return clockNodes[id];},formatTime:function(){return '9:00';},formatLongDate:function(){return 'Thursday';},calendarDayKey:function(){return 'today';},renderHero:function(){},renderScreen:function(){renders++;}};
+vm.createContext(clockCtx);vm.runInContext(callback,clockCtx);assert.doesNotThrow(function(){clockCtx.updateClock();});assert.equal(clockNodes.clock.textContent,'9:00');
+clockCtx.state.visibleDay='yesterday';clockCtx.updateClock();assert.equal(renders,1);
+console.log('Live clock callback on child view and midnight rollover passed');
