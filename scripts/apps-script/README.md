@@ -81,7 +81,7 @@ Metadata verified October 2, 2026 UTC (no secret values accessed):
   previous all-repositories mismatch is resolved. GitHub lists a replacement
   token under the same name; the former token detail page is no longer available.
 - Authentication has not been tested. Property presence does not prove its value
-  matches this GitHub token. Public child-data approval remains separately pending.
+  matches this GitHub token. Public child-data approval was subsequently granted for names, activities, and finance-free school notes on the public kitchen display with weekly updates.
 - The coordinating task owns the existing rotation reminder
   and has been given the new expiration to reschedule its prior three-day lead
   to December 28, 2026 morning in `America/Chicago`. Confirm the update in that
@@ -128,7 +128,7 @@ Credential setup and rotation are separate from the public-data authorization
 gate. Neither authorizes deploying the adapter, enabling publication, changing
 triggers, running a live export, or disclosing new child fields.
 
-## Read-only credential preflight (prepared, not deployed)
+## Read-only credential preflight (saved; execution blocked)
 
 `KitchenCredentialPreflight.js` contains only `kitchenCredentialPreflight()`.
 It reads the stored credential internally, authenticates using GET `/user`, then
@@ -150,10 +150,22 @@ execution requires additional grants or configuration, stop instead of adding
 them.
 
 Local mocks passed for successful authentication, HTTP failure, and sanitized
-exceptions. **The live push was rejected by automatic approval review:** the
-original no-push restriction still applies and exact helper deployment approval
-was not established. Nothing was pushed or executed. Obtain explicit approval
-for saving this standalone helper to `OTE_parse_email` and running it once before
-retrying. Until then, the owner must ensure the replacement token was saved
-directly in `KITCHEN_GITHUB_TOKEN`; property presence alone is insufficient.
-Public child-data approval remains independent.
+exceptions. The owner explicitly approved adding and running this helper once,
+plus the full workflow validation. The subsequent approval review permitted the
+save to live HEAD. Read-back verification confirms Code.js and appsscript.json
+are byte-identical to the original source and the helper matches its reviewed
+local file. No existing deployment, trigger or recipient setting was changed.
+
+The single CLI invocation of `kitchenCredentialPreflight` returned: "Unable to run
+script function. Please make sure you have permission to run the script function."
+No result was returned; authentication remains unverified. Do not retry via an
+alternative execution path or create grants to evade the restriction. The full
+digest was not run; no test Doc, email, or public weekly JSON was produced. The
+owner must ensure the replacement token was saved directly in the Script
+Property until a permitted execution route can verify it. Public-data consent is
+now recorded, but the publishing adapter and recurring path remain undeployed.
+
+Regression validation after the helper save: all 45 Python tests and the JavaScript
+schema/expiry/finance/attribution/publishing-gate tests pass. These local checks
+and byte comparisons are not evidence that the live digest, email, or public
+publication path executed successfully.
