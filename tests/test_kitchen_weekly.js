@@ -72,7 +72,7 @@ assert.equal(contract.safeEventTitle('School payment due'),false);
 console.log('Six school-card density and separate calendar-title contract checks passed');
 // Midweek reruns retain the prior Thursday's newsletter for this school week.
 var friday=new Date('2026-10-02T12:00:00Z');
-var weeklyItem={child:'Will',from:'Teacher via ParentSquare',sourceFrom:'Teacher <school@parentsquare.com>',date:new Date('2026-09-24T20:00:00Z'),cleanBody:'**Math:** We will practice adding two digit numbers this week. We will also estimate totals.\n**Bring Library books on Friday!**'};
+var weeklyItem={child:'Will',from:'Teacher via ParentSquare',sourceFrom:'Teacher <school@parentsquare.com>',date:new Date('2026-09-24T20:00:00Z'),cleanBody:'**Next Week\'s Learning:**\n**Math:** We will practice adding two digit numbers this week. We will also estimate totals.\n**Bring Library books on Friday!**'};
 var schoolCandidates=context.kitchenSchoolCandidates([weeklyItem],friday);
 assert.equal(schoolCandidates.length,2);
 assert.equal(schoolCandidates[1].date,'2026-10-02');
@@ -83,3 +83,22 @@ var anchored=JSON.parse(JSON.stringify(feed));anchored.generated_at='2026-10-03T
 assert(contract.validate(anchored));
 anchored.children.Will[0].source_date='2026-09-20';assert.equal(contract.validate(anchored),false);
 console.log('School-week source window, complete sentences, dated reminders, and whole-source finance rejection passed');
+
+weeklyItem.cleanBody='**This Week:**\nBring Library books on Friday!';
+assert.equal(context.kitchenSchoolCandidates([weeklyItem],friday).length,0);
+weeklyItem.cleanBody='Bring Library books on Friday!';
+assert.equal(context.kitchenSchoolCandidates([weeklyItem],friday).length,0);
+weeklyItem.cleanBody='**Next Week Specials:**\nBring Library books on Friday!';
+assert.equal(context.kitchenSchoolCandidates([weeklyItem],friday)[0].date,'2026-10-02');
+assert.equal(context.kitchenSchoolCandidates([weeklyItem],new Date('2026-10-04T15:00:00Z')).length,0);
+console.log('Relative reminders anchored to source week; ambiguous/prior-week reminders omitted; Sunday rollover checked');
+
+var oldFormatter=context.Utilities.formatDate;
+context.Utilities.formatDate=function(d,tz,format){return new Intl.DateTimeFormat('en-CA',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit'}).format(d);};
+var boundary=item('Will','Math: Number patterns',1);boundary.date=new Date('2026-09-24T04:30:00Z');
+assert.equal(context.kitchenSourceEligible(boundary,friday),false);
+boundary.date=new Date('2026-09-24T05:30:00Z');assert(context.kitchenSourceEligible(boundary,friday));
+assert.equal(context.kitchenWeekStart(new Date('2026-10-04T04:30:00Z')),'2026-09-28');
+assert.equal(context.kitchenWeekStart(new Date('2026-10-04T05:30:00Z')),'2026-10-05');
+context.Utilities.formatDate=oldFormatter;
+console.log('Chicago local-date cutoff and Saturday/Sunday midnight rollover passed');
