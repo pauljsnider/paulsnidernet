@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T06:35:14.879083-05:00",
+  "generated_at": "2026-10-02T12:02:55.471903-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -560,6 +560,15 @@
       "children": []
     },
     {
+      "summary": "Peace Week Spirit Day / Orange You Glad We're Kind? Wear as much orange as possible!",
+      "start": "2026-10-12",
+      "end": "2026-10-13",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
       "summary": "U.S. Federal Holiday: Columbus Day",
       "start": "2026-10-12",
       "end": "2026-10-13",
@@ -640,6 +649,15 @@
       "children": [
         "Max"
       ]
+    },
+    {
+      "summary": "Peace Week Spirit Day / Plaid it Forward / Wear all your plaid!",
+      "start": "2026-10-13",
+      "end": "2026-10-14",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
     },
     {
       "summary": "Fall Book Fair Classrooms Visits",
@@ -728,6 +746,15 @@
       "children": [
         "Madison"
       ]
+    },
+    {
+      "summary": "Peace Week Spirit Day / Work Out Your Problems. Wear your favorite sports team or workout clothes.",
+      "start": "2026-10-14",
+      "end": "2026-10-15",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
     },
     {
       "summary": "Will: PE",
@@ -821,6 +848,15 @@
       ]
     },
     {
+      "summary": "Peace Week Spirit Day / Cougar Price, Kindness Inside. Wear our school colors to show what it means to be a Cougar at Overland Trail!",
+      "start": "2026-10-15",
+      "end": "2026-10-16",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
       "summary": "Will: PE",
       "start": "2026-10-15",
       "end": "2026-10-16",
@@ -883,6 +919,15 @@
       "children": [
         "Max"
       ]
+    },
+    {
+      "summary": "Peace Week Spirit Day / Chief's Kingdom has Heart! Wear chiefs gear, red, and hearts!",
+      "start": "2026-10-16",
+      "end": "2026-10-17",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
     },
     {
       "summary": "Will Baseball: Mustangs (Moss) @ TBD",
