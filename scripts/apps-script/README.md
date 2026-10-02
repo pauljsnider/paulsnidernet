@@ -1,4 +1,4 @@
-# Kitchen weekly export — review-ready, disabled
+# Kitchen weekly export — approved policy, rollout pending
 
 Use the verified live Apps Script project, not the older public digest snapshot.
 Add KitchenExport.js and a copy of ../../family/kitchen-weekly.js named
@@ -53,10 +53,10 @@ After one explicit, bounded approval of the fields, source policy and public
 destination, the intended operating mode is automatic weekly export with strict
 validation, required CI checks and normal repository merge/deployment controls.
 Unknown attribution, ambiguous or financial notes are omitted; old notes expire
-on failed runs. That standing publication policy is not approved or enabled by
-this implementation. Before enabling it, replace the per-payload gate with the
-approved policy gate and configure the reviewed automation/merge path. Do not
-silently bypass branch protections or infer authority to publish new fields.
+on failed runs. The owner has now approved this bounded recurring publication policy. The new
+KitchenWeeklyPublisher.js implements it separately from this legacy exact-payload
+draft helper. It is not operational until deployed and verified. Do not bypass
+branch protections or infer authority to publish additional fields.
 
 kitchenCredentialPresence() reports boolean metadata only. Existing Apps Script
 APIs/clasp do not expose Script Properties, so the absence of a token in exported
@@ -169,3 +169,51 @@ Regression validation after the helper save: all 45 Python tests and the JavaScr
 schema/expiry/finance/attribution/publishing-gate tests pass. These local checks
 and byte comparisons are not evidence that the live digest, email, or public
 publication path executed successfully.
+
+## Approved recurring integration — prepared, not live
+
+Install `KitchenWeeklyPublisher.js` alongside `KitchenExport.js` and the shared
+`KitchenWeekly.js`. Set `KITCHEN_POLICY_VERSION=school-notes-v1` and
+`KITCHEN_PUBLISH_ENABLED=true` only as part of the authorized rollout. The former
+exact-payload hash is not required by this recurring entrypoint; the legacy draft
+function retains its old gate. No weekly manual approval is introduced.
+
+The private prepared Code.js adds one isolated call to
+`runKitchenWeeklyPublication(items, now)` after the existing digest's Doc/email
+steps. It uses the already collected messages and catches export failures so the
+existing digest path is preserved. No source emails, recipient values, private
+Code.js, or private previews belong in this public repository. Existing Sunday
+trigger and recipient properties remain untouched.
+
+The publisher requires the exact versioned policy, validates the bounded schema,
+accepts only recent attributed school messages from actual ParentSquare or
+Blue Valley sender domains, and rejects financial/ambiguous lines. It uses one
+weekly branch and open PR; a lock prevents concurrent updates and a successful
+publication fingerprint avoids duplicates. Only family/kitchen-weekly.json may
+change in the data PR.
+
+`Kitchen validation` runs on every PR and main push. The publisher reads public
+check metadata without the token, requires the GitHub Actions kitchen-validation
+check to succeed, waits for all reported checks/statuses, then requests a normal
+squash merge with the exact tested head SHA. Branch protection/review failures
+remain failures. No admin bypass, main write, repository setting change, new
+PAT scope or new trigger is used. A PAT-authenticated merge allows existing
+GitHub Pages behavior to run. Verify the actual Pages deployment separately.
+
+Checks are polled for at most two minutes. If still pending, publication returns
+checks-pending and leaves the PR unmerged. This is a failed/deferred run, not
+success; old notes expire. A later authorized invocation can retry without
+sending another digest by invoking only the publication path with safely
+collected items. No automated retry trigger has been added.
+
+Before production: review and merge the UI/schema/CI PR, refresh generated calendar
+children arrays through its existing workflow, deploy the private one-hook Apps
+Script source plus adapter files, enable the policy properties, then run the
+existing full digest once from the supported owner editor. Verify its execution,
+new Doc and configured email outcome, safe data PR checks/merge, and public JSON
+and all three screens. No part is operational based solely on mock tests.
+
+Rollback: disable KITCHEN_PUBLISH_ENABLED, revert the application PR through a
+reviewed Git commit, restore the saved original Apps Script Code.js and manifest
+if needed, and verify the unchanged Sunday trigger. Do not delete the token or
+change recipients merely to stop public updates.

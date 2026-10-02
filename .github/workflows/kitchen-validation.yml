@@ -1,0 +1,28 @@
+name: Kitchen validation
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  kitchen-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/test_kitchen_weekly.js
+      - run: node tests/test_kitchen_publisher.js
+      - name: Validate any published notes
+        run: |
+          node - <<'JS'
+          const fs = require('fs');
+          const schema = require('./family/kitchen-weekly.js');
+          const path = 'family/kitchen-weekly.json';
+          if (fs.existsSync(path) && !schema.validate(JSON.parse(fs.readFileSync(path)))) {
+            throw new Error('Public weekly payload failed schema/finance validation');
+          }
+          JS

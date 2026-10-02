@@ -21,9 +21,11 @@ var context = {Utilities:{formatDate:function(d){return d.toISOString().slice(0,
 vm.createContext(context);vm.runInContext(fs.readFileSync('scripts/apps-script/KitchenExport.js','utf8'),context);
 assert.throws(function(){context.publishReviewedKitchenWeekly(feed);});assert.equal(networkCalls,0);
 var now = new Date('2026-10-02T12:00:00Z');
-function item(child,body,age){return {child:child,from:'Teacher via ParentSquare',date:new Date(now-age*86400000),cleanBody:body};}
+function item(child,body,age){return {child:child,from:'Teacher via ParentSquare <teacher@parentsquare.com>',date:new Date(now-age*86400000),cleanBody:body};}
 var candidates=context.kitchenSchoolCandidates([item('Will','Math: Number patterns',1),item('HOUSEHOLD_ACTIONS','Math: Number patterns',1),item('Will','Math: Pay $20 for supplies',1),item('Will','Math: Old patterns',10),item('Max','Bring a library book.',1)],now);
 assert.equal(candidates.length,2);
+var spoof=item('Will','Math: patterns',1);spoof.from='Teacher via ParentSquare <attacker@example.test>';
+assert.equal(context.kitchenSchoolCandidates([spoof],now).length,0);
 assert.equal(candidates[0].text,'Math: Number patterns');
 console.log('Kitchen schema, expiry, finance exclusion, attribution and disabled-publisher tests passed');
 var current = JSON.parse(JSON.stringify(feed));
