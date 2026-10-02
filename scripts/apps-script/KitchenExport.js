@@ -123,3 +123,11 @@ function prepareKitchenWeeklyExport(items, now) {
     if (!KitchenWeekly.validate(payload)) { throw new Error('Candidate payload failed validation'); }
     return { payload: payload, approvalHash: kitchenPayloadHash(payload), requiresPublicContentApproval: true };
 }
+
+/* Optional, separately invoked draft entrypoint. It reuses the live collector,
+ * but never invokes runWeeklySchoolDigestToDoc, sends email or publishes.
+ * Deploy and invoke only after access approval; no trigger is created here.
+ */
+function runKitchenWeeklyDraftCli() {
+    return JSON.stringify(prepareKitchenWeeklyExport(collectDigestItems(LOOKBACK_DAYS), new Date()));
+}
