@@ -115,7 +115,7 @@ function prepareKitchenWeeklyExport(items, now) {
     kitchenSchoolCandidates(items, now).forEach(function (candidate) {
         candidate.children.forEach(function (child) {
             var list = payload.children[child];
-            if (list.length >= 3 || list.some(function (note) { return note.text === candidate.text; })) { return; }
+            if (list.length >= 6 || list.some(function (note) { return note.text === candidate.text; })) { return; }
             list.push({ kind: candidate.kind, text: candidate.text, date: null, expires_at: expiry,
                 source: 'School newsletter', source_date: candidate.source_date });
         });

@@ -20,7 +20,7 @@ the exact-content approval gate is the final control before public upload.
 
 The only new document is family/kitchen-weekly.json, with version, timezone,
 generated_at, expires_at, week_start, week_end, and children keyed by first name.
-Each child has at most three notes: kind (learning/bring/reminder), short text (110 characters maximum),
+Each child has at most six notes: kind (learning/bring/reminder/assignment/specials), short text (90 characters maximum),
 optional date, expiry, generic source label, and source_date. No mail/document
 IDs, teacher names, accounts, payment details, URLs or raw text fields are allowed.
 Keep private provenance outside the site repository. A dated note should expire
