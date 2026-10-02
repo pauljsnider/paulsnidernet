@@ -67,3 +67,61 @@ once deployment access is approved. Never run the digest to test the bridge.
 Tests: node tests/test_kitchen_weekly.js and the Python unittest suite. Use only
 synthetic payloads when exercising API mocks. The real weekly preview stays in a
 separate private local directory and private Library images, never in a PR.
+
+## Credential rotation
+
+Metadata verified October 2, 2026 UTC (no secret values accessed):
+
+- Script Property name `KITCHEN_GITHUB_TOKEN` is present in `OTE_parse_email`.
+- GitHub token name: `Kitchen weekly publisher`; owner: `pauljsnider`.
+- Expiration shown by GitHub: **October 31, 2026**; no expiration time shown.
+- Permissions: Metadata read; code/Contents and Pull requests read/write;
+  no user permissions. GitHub reports the token has never been used.
+- **Activation blocker:** GitHub currently shows all repositories owned by
+  `pauljsnider`, rather than only `paulsnidernet`. Scope correction is awaiting
+  owner approval; no scope change has been made.
+- Authentication has not been tested. Property presence does not prove its value
+  matches this GitHub token. Public child-data approval remains separately pending.
+- The coordinating task owns a single requested October 28, 2026 morning reminder
+  in `America/Chicago`. Confirm its creation in that task; do not create a duplicate.
+
+Replace this dated record after the next verified scope correction or rotation.
+
+The credential lives only in the live `OTE_parse_email` project's Script Property
+`KITCHEN_GITHUB_TOKEN`. Inspect property names, never the value. On GitHub, inspect
+the fine-grained token list/details for its name, repository selection,
+permissions, and expiration; avoid the one-time token reveal page. A property
+name proves that the key exists, not that its value is valid or matches a token.
+
+Required scope: resource owner `pauljsnider`, **only selected repository
+`paulsnidernet`**, Contents read/write, Pull requests read/write, and required
+Metadata read. No account permissions are needed. Do not use all repositories,
+a classic PAT, or an existing `gh`/`clasp` credential as a shortcut.
+
+Rotation procedure:
+
+1. Read the current metadata and compare it to the scope above. If it differs,
+   correct the scope through the owner's secure GitHub handoff before activation.
+   Do not expand access or create a replacement merely to investigate.
+2. Before expiry, have the owner create an equivalent replacement with the same
+   bounded repository, permissions, and approved lifetime. The owner enters and
+   saves it directly in the Script Property, never in chat or a command line.
+3. Verify the property name and replacement metadata without reading the secret.
+   When an approved, deployed read-only credential check is available, use only
+   a harmless authenticated repository-metadata request that reports booleans or
+   status and never returns a token, headers, or raw response. Until then, state
+   that authentication remains untested. Never run the digest/email job or export
+   to test credentials; do not deploy a helper without deployment authorization.
+4. After successful verification, have the owner revoke the superseded token.
+   If verification fails, keep publication disabled. The owner may restore a
+   still-valid old credential from their own secure storage; otherwise replace
+   it safely. Let old public notes expire rather than publish unverified data.
+5. Record the replacement's verified expiration date and update the existing
+   rotation reminder. Prefer advance notice seven days before expiration; use
+   the owner's personal timezone and do not invent an expiration time when
+   GitHub shows only a date. Keep reminders free of credentials and child data.
+   One coordinating task owns scheduling; delegated workers must not duplicate it.
+
+Credential setup and rotation are separate from the public-data authorization
+gate. Neither authorizes deploying the adapter, enabling publication, changing
+triggers, running a live export, or disclosing new child fields.

@@ -1,6 +1,6 @@
 ---
 name: calendar-feed-compatibility
-description: Audit and repair this repository's family calendar pipeline when events are missing, shifted, duplicated, stale, or absent from a calendar client.
+description: Audit and repair this repository's family calendar pipeline when events are missing, shifted, duplicated, stale, or absent from a calendar client; operate kitchen weekly export credentials and token-rotation handoffs.
 ---
 
 # Calendar Feed Compatibility
@@ -88,3 +88,25 @@ skill supplements.
 
 Use `references/verification-matrix.md` for the repository topology, test
 cases, and post-deploy evidence checklist.
+
+## Kitchen weekly publisher credentials
+
+For the Apps Script bridge or token rotation, read
+[the credential runbook](../../../scripts/apps-script/README.md#credential-rotation)
+before acting. The publisher uses `KITCHEN_GITHUB_TOKEN` in the live
+`OTE_parse_email` Script Properties; credentials must never enter this repository,
+chat, logs, screenshots, or generated feeds. Inspect property names and GitHub
+token metadata only. Credential setup does not authorize public child data.
+
+Verify the actual repository selection, permissions, and expiry rather than
+assuming a setup URL was accepted. Require only `pauljsnider/paulsnidernet`,
+Contents and Pull requests read/write, and required Metadata read. All-repository
+access is a mismatch to correct before activation. Hand credential entry and
+submission to the user; never copy another CLI's credentials into Apps Script.
+
+For a requested rotation reminder, update an existing matching reminder instead
+of creating duplicates. Use the verified expiration date, keep secrets out of the
+prompt, and record who owns the reminder. If another task owns scheduling, send
+it the date and verification limits. After rotation, re-check metadata, update
+the reminder, and record the new expiry without exposing the token. Do not run
+the email digest or public export as a credential test.
