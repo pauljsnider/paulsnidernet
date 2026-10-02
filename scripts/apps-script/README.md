@@ -127,3 +127,33 @@ Rotation procedure:
 Credential setup and rotation are separate from the public-data authorization
 gate. Neither authorizes deploying the adapter, enabling publication, changing
 triggers, running a live export, or disclosing new child fields.
+
+## Read-only credential preflight (prepared, not deployed)
+
+`KitchenCredentialPreflight.js` contains only `kitchenCredentialPreflight()`.
+It reads the stored credential internally, authenticates using GET `/user`, then
+reads GET `/repos/pauljsnider/paulsnidernet`. Public repository reads alone cannot
+prove authentication. The result contains only success, the expected repository
+identity, and five allowlisted repository permission booleans. Errors return a
+fixed failure result; tokens, request headers, raw responses and exception text
+are never logged or returned. Repository permission booleans are GitHub's account
+metadata, not proof of each fine-grained token scope; retain the verified token
+settings as scope evidence.
+
+The live manifest already declares external-request scope and owner-only
+execution API access; `clasp deployments` confirmed an existing API executable
+at version 12. A fresh isolated pull preserved live Code.js and appsscript.json.
+The proposed change is adding only this helper to live HEAD, then invoking only
+its exact function through the existing API route in development mode. No new
+deployment, public endpoint, trigger, digest, email or export is needed. If
+execution requires additional grants or configuration, stop instead of adding
+them.
+
+Local mocks passed for successful authentication, HTTP failure, and sanitized
+exceptions. **The live push was rejected by automatic approval review:** the
+original no-push restriction still applies and exact helper deployment approval
+was not established. Nothing was pushed or executed. Obtain explicit approval
+for saving this standalone helper to `OTE_parse_email` and running it once before
+retrying. Until then, the owner must ensure the replacement token was saved
+directly in `KITCHEN_GITHUB_TOKEN`; property presence alone is insufficient.
+Public child-data approval remains independent.
