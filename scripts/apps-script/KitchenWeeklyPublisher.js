@@ -40,6 +40,15 @@ function runKitchenWeeklyPublication(items, now) {
             week_end: payload.week_end, children: payload.children };
         var hash = kitchenPayloadHash(identity);
         var branch = 'kitchen-weekly/' + payload.week_start;
+        var prior = props.getProperty('KITCHEN_LAST_SUBMISSION');
+        if (prior) {
+            var submitted = JSON.parse(prior);
+            if (submitted.identity === payload.week_start + ':' + hash) {
+                var previous = request(base + '/pulls/' + submitted.number, 'get', null, [200]);
+                if (previous.merged) { return { status: 'unchanged', pullRequest: submitted.number }; }
+                if (previous.state === 'open') { return { status: 'queued', pullRequest: submitted.number }; }
+            }
+        }
         if (props.getProperty('KITCHEN_LAST_PUBLICATION') === payload.week_start + ':' + hash) {
             return { status: 'unchanged' };
         }
@@ -65,36 +74,19 @@ function runKitchenWeeklyPublication(items, now) {
                 head: branch, base: 'main', draft: false,
                 body: 'Approved school-notes-v1 policy. Only validated bounded child notes; finance and private links excluded. Required checks and branch protections apply.' }, [201]);
         }
-        // Merge only this exact head after every reported check succeeds. Public
-        // check metadata is read without a credential; no additional PAT scope.
-        var reviewed = request(base + '/pulls/' + pr.number, 'get', null, [200]);
-        var sha = reviewed.head.sha;
-        var files = request(base + '/pulls/' + pr.number + '/files?per_page=100', 'get', null, [200]);
-        if (files.length !== 1 || files[0].filename !== 'family/kitchen-weekly.json' ||
-                ['added', 'modified'].indexOf(files[0].status) === -1) {
-            throw new Error('Weekly PR changes exceed approved policy');
-        }
-        var ready = false;
-        for (var attempt = 0; attempt < 8; attempt += 1) {
-            var checks = request(base + '/commits/' + sha + '/check-runs?per_page=100', 'get', null, [200], true);
-            var statuses = request(base + '/commits/' + sha + '/status?per_page=100', 'get', null, [200], true);
-            var runs = checks.check_runs || [];
-            var expected = runs.some(function (r) { return r.name === 'kitchen-validation' &&
-                r.app && r.app.slug === 'github-actions' && r.status === 'completed' && r.conclusion === 'success'; });
-            var all = runs.length === checks.total_count && runs.every(function (r) {
-                return r.status === 'completed' && ['success', 'skipped', 'neutral'].indexOf(r.conclusion) !== -1;
-            });
-            var legacy = statuses.total_count === 0 || statuses.state === 'success';
-            if (expected && all && legacy) { ready = true; break; }
-            Utilities.sleep(15000);
-        }
-        if (!ready) { return { status: 'checks-pending', pullRequest: pr.number }; }
-        // SHA mismatch, branch protection, required reviews, or new checks reject
-        // this normal merge. Never retry with admin/bypass or another SHA.
-        var merged = request(base + '/pulls/' + pr.number + '/merge', 'put',
-            { sha: sha, merge_method: 'squash' }, [200]);
-        if (!merged.merged) { throw new Error('Protected exact-SHA merge was not accepted'); }
-        props.setProperty('KITCHEN_LAST_PUBLICATION', payload.week_start + ':' + hash);
-        return { status: 'merged', pullRequest: pr.number, policy: KITCHEN_POLICY_VERSION };
+        // The trusted workflow_run continuation is the only merger. Avoid racing
+        // it or spending the Apps Script execution budget polling CI.
+        props.setProperty('KITCHEN_LAST_SUBMISSION', JSON.stringify({
+            identity: payload.week_start + ':' + hash, number: pr.number }));
+        return { status: 'queued', pullRequest: pr.number, policy: KITCHEN_POLICY_VERSION };
     } finally { lock.releaseLock(); }
+}
+
+/* Retry/verification entrypoint: collects school sources and publishes only.
+ * Never creates a Doc or sends email; uses the same versioned policy gate.
+ */
+function runKitchenWeeklyPublicationOnly() {
+    var result = runKitchenWeeklyPublication(collectDigestItems(LOOKBACK_DAYS), new Date());
+    Logger.log('Kitchen publication status: ' + result.status);
+    return result;
 }

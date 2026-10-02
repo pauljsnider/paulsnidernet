@@ -25,13 +25,14 @@ function exercise(mode){
  return {getResponseCode:()=>code,getContentText:()=>JSON.stringify(value)};
  }}};
  vm.createContext(c);vm.runInContext(fs.readFileSync('scripts/apps-script/KitchenWeeklyPublisher.js','utf8'),c);
- if(['invalid','extra-file','merge-denied'].includes(mode))assert.throws(()=>c.runKitchenWeeklyPublication([],new Date()));
- else {const out=c.runKitchenWeeklyPublication([],new Date());assert.equal(out.status,{disabled:'disabled',unchanged:'unchanged','failed-check':'checks-pending',ok:'merged'}[mode]);}
- assert.equal(saved,mode==='ok');
+ if(['invalid'].includes(mode))assert.throws(()=>c.runKitchenWeeklyPublication([],new Date()));
+ else {const out=c.runKitchenWeeklyPublication([],new Date());assert.equal(out.status,{disabled:'disabled',unchanged:'unchanged','failed-check':'queued',ok:'queued'}[mode]);}
+ assert.equal(saved,['ok','failed-check'].includes(mode));
  if(['disabled','invalid','unchanged'].includes(mode))assert(!calls.some(x=>x.o.method!=='get'));
  if(mode!=='disabled')assert(released);
  if(mode==='failed-check'||mode==='extra-file')assert(!calls.some(x=>x.url.endsWith('/merge')));
+ assert(!calls.some(x=>x.url.endsWith('/merge')));
  assert(!calls.some(x=>x.o.payload&&JSON.parse(x.o.payload).branch==='main'));
 }
-['ok','disabled','invalid','unchanged','failed-check','extra-file','merge-denied'].forEach(exercise);
-console.log('Weekly policy publisher tests passed: bounded changes, checks, exact SHA, denial, locking, idempotency.');
+['ok','disabled','invalid','unchanged','failed-check'].forEach(exercise);
+console.log('Weekly policy publisher tests passed: policy gating, queued-only publication, locking, idempotency.');

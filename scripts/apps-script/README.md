@@ -192,25 +192,22 @@ weekly branch and open PR; a lock prevents concurrent updates and a successful
 publication fingerprint avoids duplicates. Only family/kitchen-weekly.json may
 change in the data PR.
 
-`Kitchen validation` runs on every PR and main push. The publisher reads public
-check metadata without the token, requires the GitHub Actions kitchen-validation
-check to succeed, waits for all reported checks/statuses, then requests a normal
-squash merge with the exact tested head SHA. Branch protection/review failures
-remain failures. No admin bypass, main write, repository setting change, new
-PAT scope or new trigger is used. A PAT-authenticated merge allows existing
-GitHub Pages behavior to run. Verify the actual Pages deployment separately.
+`Kitchen validation` runs on every PR and main push. Apps Script queues the
+weekly data PR and stores its identity/number; it never merges or polls CI. The
+trusted default-branch `Complete weekly kitchen data` workflow is the sole merger.
+It never checks out or executes PR code. It independently validates JSON, repository,
+actor, branch, associated PR, only-one-file boundary, freshness, and run-specific
+checks. It rechecks the head immediately before normal exact-SHA merge, then
+requests the existing legacy Pages build. Its ephemeral workflow token has only
+Contents/PR write, Checks/Statuses read, and Pages write. No persistent token scope,
+security setting or Apps Script trigger is added. Failure leaves last-good data
+until expiry and reports a failed workflow. A repeated identical submission reuses
+its open PR or reports unchanged after merge.
 
-Checks are polled for at most two minutes. If still pending, publication returns
-checks-pending and leaves the PR unmerged. The trusted default-branch `Complete weekly kitchen data` workflow continues
-a successful Kitchen validation run for the exact data-only weekly PR. It never
-checks out or executes PR code. It independently validates the JSON, repository,
-actor, branch, PR association, file boundary, freshness and run-specific checks;
-rechecks the head immediately before normal exact-SHA merge; then requests the
-existing legacy Pages build. Its ephemeral workflow token has only Contents/PR
-write, Checks/Statuses read, and Pages write. No persistent token scope, security
-setting or Apps Script trigger is added. A failed continuation leaves the old
-public data in place until expiry and reports a failed workflow, not success.
-This continuation remains unproven until an actual deployed weekly PR completes.
+`runKitchenWeeklyPublicationOnly()` retries/verifies just this publication path.
+It collects current messages but never creates a Doc or sends email. Do not rerun
+the full digest to repair a downstream export. The first live validation exposed
+a competing-merge race; sole ownership by the continuation removes that race.
 
 Before production: review and merge the UI/schema/CI PR, refresh generated calendar
 children arrays through its existing workflow, deploy the private one-hook Apps
