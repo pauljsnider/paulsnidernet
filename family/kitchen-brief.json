@@ -1,53 +1,53 @@
 {
-  "generated_at": "2026-10-01T13:51:24.060607-05:00",
+  "generated_at": "2026-10-02T00:28:17.780799-05:00",
   "local": {
-    "title": "Art Club | Grupo de Arte",
-    "detail": "Thu, Oct 1 at 5:30 PM \u2022 North-East Branch",
-    "date": "2026-10-01",
+    "title": "Between the Lines Book Group",
+    "detail": "Fri, Oct 2 at 12:00 PM \u2022 Westport Branch",
+    "date": "2026-10-02",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-2"
+    "url": "https://kclibrary.org/calendar/between-lines-book-group-17"
   },
   "kc_news": {
-    "title": "Kansas City just opened a public roller rink near 18th & Vine. Skaters call it a 'big big deal'",
+    "title": "Kansas City just opened a public roller rink near 18th and Vine. Skaters call it a 'big, big deal'",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
     "url": "https://www.kcur.org/housing-development-section/2026-10-01/kansas-city-roller-skating-rink-18th-vine"
   },
   "ai": [
     {
-      "title": "MIT Transit Lab to develop an AI platform for public transit agencies",
+      "title": "3 Questions: A new resource to empower young entrepreneurs",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-30",
+      "date": "2026-10-01",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/mit-transit-lab-to-develop-ai-platform-public-transit-agencies-0930"
+      "url": "https://news.mit.edu/2026/3-questions-new-resource-empower-young-entrepreneurs-1002"
     },
     {
-      "title": "This game-playing AI is the new champ at Stratego",
+      "title": "New tool lets users repair AI-generated 3D models, then fabricate them just the way they want",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-09-30",
+      "date": "2026-10-01",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/game-playing-ai-stratego-new-champ-0930"
+      "url": "https://news.mit.edu/2026/instructmesh-tool-lets-users-repair-ai-3d-models-then-fabricate-them-1001"
     }
   ],
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7651.54,
-      "change_pct": -0.25,
-      "as_of": "2026-09-30"
+      "value": 7666.45,
+      "change_pct": 0.19,
+      "as_of": "2026-10-01"
     },
     {
       "name": "Nasdaq",
-      "value": 26861.06,
-      "change_pct": 0.24,
-      "as_of": "2026-09-30"
+      "value": 26871.6,
+      "change_pct": 0.04,
+      "as_of": "2026-10-01"
     }
   ],
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 55.28,
-    "change_pct": 0.87,
+    "value": 55.84,
+    "change_pct": 1.88,
     "as_of": "2026-10-01"
   }
 }
