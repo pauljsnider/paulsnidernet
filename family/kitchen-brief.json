@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T20:53:46.310822-05:00",
+  "generated_at": "2026-10-03T03:01:19.959370-05:00",
   "local": {
     "title": "Heartland Book Festival",
     "detail": "Sat, Oct 3 at 9:00 AM \u2022 Central Library",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26871.6,
-      "change_pct": 0.04,
-      "as_of": "2026-10-01"
+      "value": 27190.86,
+      "change_pct": 1.19,
+      "as_of": "2026-10-02"
     }
   ],
   "ticker": {
