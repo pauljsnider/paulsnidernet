@@ -1,111 +1,103 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "generated_at": "2026-10-02T02:30:56.361Z",
-  "expires_at": "2026-10-05T05:00:00.000Z",
-  "week_start": "2026-09-28",
-  "week_end": "2026-10-05",
+  "generated_at": "2026-10-04T15:03:55.437Z",
+  "expires_at": "2026-10-12T05:00:00.000Z",
+  "week_start": "2026-10-05",
+  "week_end": "2026-10-12",
   "children": {
     "Madison": [
       {
         "kind": "learning",
         "text": "Amplify - Unit 2: Early Americas: Maya, Aztec, and Inca",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-24"
+        "source_date": "2026-10-02"
       },
       {
         "kind": "learning",
-        "text": "Math - Adding & Subtracting Decimals",
+        "text": "Math - Volume",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-24"
+        "source_date": "2026-10-02"
       },
       {
         "kind": "learning",
-        "text": "Phonics - Consonant -le Syllable",
+        "text": "Phonics - Vowel -r, Single Syllable",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-24"
+        "source_date": "2026-10-02"
       },
       {
         "kind": "learning",
         "text": "Science: Unit 2: Earth's Systems",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-24"
+        "source_date": "2026-10-02"
       }
     ],
     "Will": [
       {
         "kind": "learning",
-        "text": "Phonics: We will finish lesson 6 which covers the igh and oa vowel teams.",
+        "text": "Phonics: We will finish lesson 7 over our next set of vowel teams, ee and oe.",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-24"
+        "source_date": "2026-10-02"
       },
       {
         "kind": "learning",
-        "text": "Math: We will be working through lesson 6, two digit adding, all week.",
+        "text": "Math: We will be working through lesson 7, two digit subtracting, all week.",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-24"
+        "source_date": "2026-10-02"
       },
       {
         "kind": "learning",
         "text": "Amplify: Domain 3: Legends and Heroes: Greek Myths",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-24"
+        "source_date": "2026-10-02"
       },
       {
         "kind": "learning",
-        "text": "Friendly Letter: We will be learning more about how to write a letter.",
+        "text": "Science: States of Matter - we will be learning about solids, liquids, and gasses.",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-24"
-      },
-      {
-        "kind": "bring",
-        "text": "Bring Library books on Friday!",
-        "date": "2026-10-02",
-        "expires_at": "2026-10-03T05:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-09-24"
+        "source_date": "2026-10-02"
       }
     ],
     "Max": [
       {
         "kind": "learning",
-        "text": "Amplify : Domain 2: The Five Senses",
+        "text": "Amplify : Domain 3: Stories",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-25"
+        "source_date": "2026-10-02"
       },
       {
         "kind": "learning",
-        "text": "95% : Lesson 5: Introduction of m, d & g",
+        "text": "95% : Lesson 6: i & s",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-25"
+        "source_date": "2026-10-02"
       },
       {
         "kind": "learning",
-        "text": "iReady : Lesson 5: Compare Numbers to 5",
+        "text": "iReady : Lesson 8: Two Dimensional Shapes",
         "date": null,
-        "expires_at": "2026-10-05T05:00:00.000Z",
+        "expires_at": "2026-10-12T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-09-25"
+        "source_date": "2026-10-02"
       }
     ]
   }
