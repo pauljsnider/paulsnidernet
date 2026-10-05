@@ -929,7 +929,7 @@
                         calendarId,
                         null
                     );
-                    if (event && (event.dtend || event.dtstart) >= now) events.push(event);
+                    if (event && isUpcomingEvent(event, now)) events.push(event);
                     return;
                 }
 
@@ -955,7 +955,7 @@
                         calendarId,
                         occurrence.recurrenceId || occurrenceTime
                     );
-                    if (event && (event.dtend || event.dtstart) >= now) events.push(event);
+                    if (event && isUpcomingEvent(event, now)) events.push(event);
                 }
             });
 
@@ -1018,7 +1018,7 @@
             }
 
             const now = new Date();
-            return events.filter(e => e.dtstart && (e.dtend || e.dtstart) >= now);
+            return events.filter(e => e.dtstart && isUpcomingEvent(e, now));
         }
 
         function unfoldICalLines(text) {
@@ -1051,6 +1051,18 @@
         }
 
         // ── Display & filtering ──────────────────────────────────────────────
+
+        function getAllDayEnd(event) {
+            // DATE DTEND is exclusive; an omitted end means one calendar day.
+            const end = new Date(event.dtend || event.dtstart);
+            end.setHours(0, 0, 0, 0);
+            if (!event.dtend) end.setDate(end.getDate() + 1);
+            return end;
+        }
+
+        function isUpcomingEvent(event, now) {
+            return event.allDay ? getAllDayEnd(event) > now : (event.dtend || event.dtstart) >= now;
+        }
 
         function isCalendarEnabled(calendarName) {
             const ghId = GH_CALENDAR_CHECKBOX_IDS[calendarName];
@@ -1098,14 +1110,14 @@
 
         function applyTimeFilter(events, filter) {
             const now = new Date(); now.setHours(0, 0, 0, 0);
-            if (filter === 'all') return events;
+            if (filter === 'all') return events.filter(e => isUpcomingEvent(e, new Date()));
             const end = new Date(now);
             if (filter === 'week')    end.setDate(now.getDate() + 7);
             if (filter === 'month')   end.setMonth(now.getMonth() + 1);
             if (filter === 'quarter') end.setMonth(now.getMonth() + 3);
             return events.filter(e => {
                 const d = new Date(e.dtstart); d.setHours(0, 0, 0, 0);
-                return d >= now && d < end;
+                return d < end && (e.allDay ? getAllDayEnd(e) > now : d >= now);
             });
         }
 
@@ -1199,6 +1211,15 @@
             return event.dtstart.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
         }
 
+        function formatEventDate(event) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const start = event.dtstart.toLocaleDateString('en-US', options);
+            if (!event.allDay) return start;
+            const lastDay = getAllDayEnd(event);
+            lastDay.setDate(lastDay.getDate() - 1);
+            return lastDay > event.dtstart ? `${start} – ${lastDay.toLocaleDateString('en-US', options)}` : start;
+        }
+
         function displayEventsWithStats(events) {
             const container = document.getElementById('events-container');
 
@@ -1225,7 +1246,7 @@
                 </div>`;
 
             const eventsHtml = events.map(event => {
-                const dateStr = event.dtstart.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                const dateStr = formatEventDate(event);
                 const timeStr = formatEventTime(event);
                 const cls = getCalendarClass(event.calendarName);
                 const badge = getCalendarBadgeText(event.calendarName);
@@ -1278,8 +1299,9 @@
             } else {
                 ec.style.display = 'block';
                 cv.classList.remove('active');
-                const grid = document.querySelector('.event-grid');
-                if (grid) grid.classList.toggle('compact', view === 'compact');
+                // Calendar view can change filters while the list is hidden.
+                // Re-render instead of revealing cards from the previous range.
+                updateEventDisplay();
             }
         }
 
@@ -1325,10 +1347,8 @@
                 // RFC 5545 DATE DTEND is exclusive. A multi-day all-day event
                 // belongs to every calendar day from DTSTART through the day
                 // before DTEND.
-                if (e.allDay && e.dtend) {
-                    const end = new Date(e.dtend);
-                    end.setHours(0, 0, 0, 0);
-                    return target >= start && target < end;
+                if (e.allDay) {
+                    return target >= start && target < getAllDayEnd(e);
                 }
 
                 return start.getTime() === target.getTime();
