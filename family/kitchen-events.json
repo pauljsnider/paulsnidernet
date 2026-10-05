@@ -1,16 +1,7 @@
 {
-  "generated_at": "2026-10-04T22:04:06.595672-05:00",
+  "generated_at": "2026-10-05T08:02:18.404434-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "Chiefs @ Raiders",
-      "start": "2026-10-04T15:25:00-05:00",
-      "end": "2026-10-04T18:55:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
     {
       "summary": "DAY 4",
       "start": "2026-10-05",
@@ -2256,6 +2247,15 @@
       "children": [
         "Max"
       ]
+    },
+    {
+      "summary": "Chiefs @ Falcons",
+      "start": "2026-11-15T12:00:00-06:00",
+      "end": "2026-11-15T15:30:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
     }
   ]
 }
