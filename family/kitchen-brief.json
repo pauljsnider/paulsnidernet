@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-05T03:54:25.440142-05:00",
+  "generated_at": "2026-10-05T13:21:43.665079-05:00",
   "local": {
     "title": "Music to Art",
     "detail": "Mon, Oct 5 at 2:00 PM \u2022 Trails West Branch",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.47,
-    "change_pct": 2.92,
-    "as_of": "2026-10-02"
+    "value": 57.15,
+    "change_pct": -0.56,
+    "as_of": "2026-10-05"
   }
 }
