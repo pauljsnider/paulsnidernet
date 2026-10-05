@@ -1370,4 +1370,24 @@ LOCATION:Prairiefire\, 5661 W. 135th St.\, Overland Park\, KS 66223
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Thriller on C-Street: Macabre Promenade 2026
+DTSTART;TZID=America/Chicago:20261017T190000
+DTEND;TZID=America/Chicago:20261017T220000
+DTSTAMP:20261005T212443Z
+UID:thriller-c-street-20261017@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Free Halloween zombie parade with five Thriller performances f
+ acing the north side of Commercial Street. Arrive early\; park off Commerc
+ ial Street. Free shuttle from Cox North east lot. Calendar window is 7-10
+  PM per Historic C-Street\; Dance With Me's organizer-syndicated Yodel list
+ ing ends at 8:30 PM\, so the finish is unconfirmed. Sources: Historic C-St
+ reet official event listing and Dance With Me on Yodel\, checked October 5
+ \, 2026.
+LOCATION:Historic Commercial Street / Dance With Me\, 224 E Commercial St
+ \, Springfield\, MO 65803
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR
