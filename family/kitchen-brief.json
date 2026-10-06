@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T02:30:25.586696-05:00",
+  "generated_at": "2026-10-06T10:05:02.915804-05:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Tue, Oct 6 at 9:30 AM \u2022 Plaza Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "MIT announces the MIT for America initiative, to strengthen STEM education across the country",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-06",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/mit-america-initiative-strengthens-stem-education-across-country-1006"
+    },
+    {
       "title": "Computational tools for society\u2019s most complex challenges",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-02",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/computational-tools-for-societys-most-complex-challenges-cathy-wu-1002"
-    },
-    {
-      "title": "Documenting the tech worker movement",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-02",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/documenting-tech-worker-movement-0918"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.38,
-    "change_pct": -0.16,
-    "as_of": "2026-10-05"
+    "value": 57.88,
+    "change_pct": 0.87,
+    "as_of": "2026-10-06"
   }
 }
