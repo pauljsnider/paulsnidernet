@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-05T13:21:43.665079-05:00",
+  "generated_at": "2026-10-05T19:45:58.774536-05:00",
   "local": {
-    "title": "Music to Art",
-    "detail": "Mon, Oct 5 at 2:00 PM \u2022 Trails West Branch",
-    "date": "2026-10-05",
+    "title": "Baby Storytime",
+    "detail": "Tue, Oct 6 at 9:30 AM \u2022 Plaza Branch",
+    "date": "2026-10-06",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/music-art"
+    "url": "https://kclibrary.org/calendar/baby-storytime-88"
   },
   "kc_news": {
     "title": "Missouri's Sheryl Crow says she found 'great liberation' in not chasing the next hit",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-10-04/sheryl-crow-album-pick-you-up"
+    "url": "https://www.kcur.org/arts-life/2026-10-01/sheryl-crow-says-shes-found-great-liberation-in-not-chasing-the-next-hit"
   },
   "ai": [
     {
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7722.72,
-      "change_pct": 0.73,
-      "as_of": "2026-10-02"
+      "value": 7773.95,
+      "change_pct": 0.66,
+      "as_of": "2026-10-05"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.15,
-    "change_pct": -0.56,
+    "value": 57.38,
+    "change_pct": -0.16,
     "as_of": "2026-10-05"
   }
 }
