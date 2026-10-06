@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-06T10:05:02.915804-05:00",
+  "generated_at": "2026-10-06T15:16:02.611623-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Tue, Oct 6 at 9:30 AM \u2022 Plaza Branch",
+    "title": "LEGO Club",
+    "detail": "Tue, Oct 6 at 2:30 PM \u2022 Plaza Branch",
     "date": "2026-10-06",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-88"
+    "url": "https://kclibrary.org/calendar/lego-club-10"
   },
   "kc_news": {
     "title": "Missouri's Sheryl Crow says she found 'great liberation' in not chasing the next hit",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Chris Bourg named vice provost and Barbara K. Ostrom (1978) Director of the MIT Libraries",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-06",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/chris-bourg-named-vice-provost-and-barbara-ostrom-director-mit-libraries-1006"
+    },
+    {
       "title": "MIT announces the MIT for America initiative, to strengthen STEM education across the country",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-06",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/mit-america-initiative-strengthens-stem-education-across-country-1006"
-    },
-    {
-      "title": "Computational tools for society\u2019s most complex challenges",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-02",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/computational-tools-for-societys-most-complex-challenges-cathy-wu-1002"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.88,
-    "change_pct": 0.87,
+    "value": 57.89,
+    "change_pct": 0.89,
     "as_of": "2026-10-06"
   }
 }
