@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-06T15:16:02.611623-05:00",
+  "generated_at": "2026-10-06T19:38:31.118219-05:00",
   "local": {
-    "title": "LEGO Club",
-    "detail": "Tue, Oct 6 at 2:30 PM \u2022 Plaza Branch",
-    "date": "2026-10-06",
+    "title": "Baby Storytime",
+    "detail": "Wed, Oct 7 at 9:30 AM \u2022 Waldo Branch",
+    "date": "2026-10-07",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/lego-club-10"
+    "url": "https://kclibrary.org/calendar/baby-storytime-91"
   },
   "kc_news": {
     "title": "Missouri's Sheryl Crow says she found 'great liberation' in not chasing the next hit",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7773.95,
-      "change_pct": 0.66,
-      "as_of": "2026-10-05"
+      "value": 7818.93,
+      "change_pct": 0.58,
+      "as_of": "2026-10-06"
     },
     {
       "name": "Nasdaq",
