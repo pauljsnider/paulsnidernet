@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-07T10:31:00.328147-05:00",
+  "generated_at": "2026-10-07T16:15:14.370685-05:00",
   "local": {
-    "title": "Family Storytime",
-    "detail": "Wed, Oct 7 at 10:30 AM \u2022 Waldo Branch",
+    "title": "LEGO Club",
+    "detail": "Wed, Oct 7 at 4:30 PM \u2022 Southeast Branch",
     "date": "2026-10-07",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/family-storytime-199"
+    "url": "https://kclibrary.org/calendar/lego-club-47"
   },
   "kc_news": {
     "title": "Kansas' Sternberg Museum of Natural History may be saved, for now, after community steps up",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Discovering the value of humanistic inquiry",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-07",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/discovering-value-humanistic-inquiry-1007"
+    },
+    {
       "title": "Chris Bourg named vice provost and Barbara K. Ostrom (1978) Director of the MIT Libraries",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-06",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/chris-bourg-named-vice-provost-and-barbara-ostrom-director-mit-libraries-1006"
-    },
-    {
-      "title": "MIT announces the MIT for America initiative, to strengthen STEM education across the country",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-06",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/mit-america-initiative-strengthens-stem-education-across-country-1006"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 56.3,
-    "change_pct": -2.75,
+    "value": 56.52,
+    "change_pct": -2.37,
     "as_of": "2026-10-07"
   }
 }
