@@ -1,93 +1,7 @@
 {
-  "generated_at": "2026-10-06T22:21:05.901816-05:00",
+  "generated_at": "2026-10-07T07:18:57.831158-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 5",
-      "start": "2026-10-06",
-      "end": "2026-10-07",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Madison: PE",
-      "start": "2026-10-06",
-      "end": "2026-10-07",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Paul: Away - Strat / Minneapolis",
-      "start": "2026-10-06",
-      "end": "2026-10-08",
-      "all_day": true,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Will: PE",
-      "start": "2026-10-06",
-      "end": "2026-10-07",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Religious Education - Max, Will, Madison",
-      "start": "2026-10-06T16:30:00-05:00",
-      "end": "2026-10-06T17:45:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Will Baseball: Mustangs (Moss) @ Fireballs",
-      "start": "2026-10-06T17:30:00-05:00",
-      "end": "2026-10-06T18:45:00-05:00",
-      "all_day": false,
-      "location": "9701 W 137th St\nOverland Park KS",
-      "source": "Will Baseball",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Max Soccer: F26KB Major Derek - Practice",
-      "start": "2026-10-06T18:00:00-05:00",
-      "end": "2026-10-06T19:00:00-05:00",
-      "all_day": false,
-      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
-      "source": "Max Soccer - Major Derek",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Madison Tutor w/ Ava",
-      "start": "2026-10-06T19:15:00-05:00",
-      "end": "2026-10-06T20:15:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 1",
       "start": "2026-10-07",
@@ -2274,6 +2188,61 @@
       "location": "",
       "source": "Overland Trail Elementary",
       "children": []
+    },
+    {
+      "summary": "DAY 5",
+      "start": "2026-11-17",
+      "end": "2026-11-18",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Madison: PE",
+      "start": "2026-11-17",
+      "end": "2026-11-18",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-11-17",
+      "end": "2026-11-18",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
+    },
+    {
+      "summary": "Religious Education - Max, Will, Madison",
+      "start": "2026-11-17T16:30:00-06:00",
+      "end": "2026-11-17T17:45:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-11-17T19:15:00-06:00",
+      "end": "2026-11-17T20:15:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
     }
   ]
 }
