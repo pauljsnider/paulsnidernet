@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-07T02:11:29.664432-05:00",
+  "generated_at": "2026-10-07T10:31:00.328147-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Wed, Oct 7 at 9:30 AM \u2022 Waldo Branch",
+    "title": "Family Storytime",
+    "detail": "Wed, Oct 7 at 10:30 AM \u2022 Waldo Branch",
     "date": "2026-10-07",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-91"
+    "url": "https://kclibrary.org/calendar/family-storytime-199"
   },
   "kc_news": {
-    "title": "Missouri's Sheryl Crow says she found 'great liberation' in not chasing the next hit",
+    "title": "Kansas' Sternberg Museum of Natural History may be saved, for now, after community steps up",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-10-01/sheryl-crow-says-shes-found-great-liberation-in-not-chasing-the-next-hit"
+    "url": "https://www.kcur.org/arts-life/2026-10-07/sternberg-museum-hays-closing-fort-hays-state"
   },
   "ai": [
     {
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.89,
-    "change_pct": 0.89,
-    "as_of": "2026-10-06"
+    "value": 56.3,
+    "change_pct": -2.75,
+    "as_of": "2026-10-07"
   }
 }
