@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T11:05:15.392799-05:00",
+  "generated_at": "2026-10-08T17:39:24.240433-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -66,8 +66,8 @@
     },
     {
       "summary": "Will Baseball: Mustangs (Moss) Practice",
-      "start": "2026-10-08T18:15:00-05:00",
-      "end": "2026-10-08T19:30:00-05:00",
+      "start": "2026-10-08T18:00:00-05:00",
+      "end": "2026-10-08T19:00:00-05:00",
       "all_day": false,
       "location": "6201 W 133rd St\nOverland Park KS",
       "source": "Will Baseball",
