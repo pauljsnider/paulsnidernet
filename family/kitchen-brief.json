@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T20:52:50.002174-05:00",
+  "generated_at": "2026-10-08T03:52:32.763508-05:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Oct 8 at 5:30 PM \u2022 North-East Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Using AI to mitigate the growing environmental threat of data centers",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-07",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/mitigating-environmental-threat-of-data-centers-christina-delimitrou-1008"
+    },
+    {
       "title": "Discovering the value of humanistic inquiry",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-07",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/discovering-value-humanistic-inquiry-1007"
-    },
-    {
-      "title": "Chris Bourg named vice provost and Barbara K. Ostrom (1978) Director of the MIT Libraries",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-06",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/chris-bourg-named-vice-provost-and-barbara-ostrom-director-mit-libraries-1006"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 27599.89,
-      "change_pct": 0.45,
-      "as_of": "2026-10-06"
+      "value": 27538.69,
+      "change_pct": -0.22,
+      "as_of": "2026-10-07"
     }
   ],
   "ticker": {
