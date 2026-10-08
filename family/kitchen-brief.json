@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-07T16:15:14.370685-05:00",
+  "generated_at": "2026-10-07T20:52:50.002174-05:00",
   "local": {
-    "title": "LEGO Club",
-    "detail": "Wed, Oct 7 at 4:30 PM \u2022 Southeast Branch",
-    "date": "2026-10-07",
+    "title": "Art Club | Grupo de Arte",
+    "detail": "Thu, Oct 8 at 5:30 PM \u2022 North-East Branch",
+    "date": "2026-10-08",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/lego-club-47"
+    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-3"
   },
   "kc_news": {
     "title": "Kansas' Sternberg Museum of Natural History may be saved, for now, after community steps up",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7818.93,
-      "change_pct": 0.58,
-      "as_of": "2026-10-06"
+      "value": 7801.77,
+      "change_pct": -0.22,
+      "as_of": "2026-10-07"
     },
     {
       "name": "Nasdaq",
