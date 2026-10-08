@@ -1,84 +1,7 @@
 {
-  "generated_at": "2026-10-07T22:36:14.748181-05:00",
+  "generated_at": "2026-10-08T07:28:38.638988-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 1",
-      "start": "2026-10-07",
-      "end": "2026-10-08",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Madison: Library",
-      "start": "2026-10-07",
-      "end": "2026-10-08",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Max: PE",
-      "start": "2026-10-07",
-      "end": "2026-10-08",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Will: PE",
-      "start": "2026-10-07",
-      "end": "2026-10-08",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "PTO Community Service Activity - Madison, Will, Max",
-      "start": "2026-10-07T15:45:00-05:00",
-      "end": "2026-10-07T16:30:00-05:00",
-      "all_day": false,
-      "location": "OTE Library, 6225 W 133rd St, Overland Park, KS 66209",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Will Soccer: Vipers FC U8B Practice",
-      "start": "2026-10-07T16:30:00-05:00",
-      "end": "2026-10-07T18:00:00-05:00",
-      "all_day": false,
-      "location": "13700 Switzer Rd\nOverland Park, KS, United States",
-      "source": "Will Soccer - Vipers FC U8B",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Madison: Jr Current - Practice",
-      "start": "2026-10-07T19:30:00-05:00",
-      "end": "2026-10-07T21:00:00-05:00",
-      "all_day": false,
-      "location": "13700 Switzer Rd, Overland Park, KS 66221",
-      "source": "TeamSnap Events (Madison + Max + Will)",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 2",
       "start": "2026-10-08",
@@ -2242,6 +2165,57 @@
       "source": "Family Email Events",
       "children": [
         "Madison"
+      ]
+    },
+    {
+      "summary": "DAY 1",
+      "start": "2026-11-18",
+      "end": "2026-11-19",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Hearing & Vision Screenings",
+      "start": "2026-11-18",
+      "end": "2026-11-19",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Madison: Library",
+      "start": "2026-11-18",
+      "end": "2026-11-19",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-11-18",
+      "end": "2026-11-19",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-11-18",
+      "end": "2026-11-19",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Will"
       ]
     }
   ]
