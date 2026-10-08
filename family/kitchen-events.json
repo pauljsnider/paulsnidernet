@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T07:28:38.638988-05:00",
+  "generated_at": "2026-10-08T11:03:16.556047-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -123,8 +123,8 @@
     },
     {
       "summary": "Madison: Tutor",
-      "start": "2026-10-09T17:15:00-05:00",
-      "end": "2026-10-09T18:15:00-05:00",
+      "start": "2026-10-09T15:15:00-05:00",
+      "end": "2026-10-09T16:15:00-05:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events",
