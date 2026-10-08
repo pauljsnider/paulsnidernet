@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-10-07T08:19:10.525687-05:00",
-  "date": "2026-10-07",
+  "generated_at": "2026-10-08T08:25:27.409126-05:00",
+  "date": "2026-10-08",
   "photos": [
     {
       "src": "kitchen-photos/current-1.jpg",
-      "id": "65f6163db2f5a9b2a86c"
+      "id": "4ffbf6ab2d575972d0a6"
     },
     {
       "src": "kitchen-photos/current-2.jpg",
-      "id": "cc9c62ad5337f9170644"
+      "id": "59d6bf19ade0ed9a383b"
     },
     {
       "src": "kitchen-photos/current-3.jpg",
-      "id": "3811907aae391f015efb"
+      "id": "40bd421705744994d6b0"
     },
     {
       "src": "kitchen-photos/current-4.jpg",
-      "id": "a75962c13630587b1f52"
+      "id": "dde3498548ac87bb88ce"
     },
     {
       "src": "kitchen-photos/current-5.jpg",
-      "id": "e64f9a237826a5b87dd6"
+      "id": "62c962328f40510ee615"
     }
   ]
 }
