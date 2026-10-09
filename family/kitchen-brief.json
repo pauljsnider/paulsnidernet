@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-09T11:08:29.630408-05:00",
+  "generated_at": "2026-10-09T16:38:40.797421-05:00",
   "local": {
-    "title": "Kindergarten Readiness with PBS",
-    "detail": "Fri, Oct 9 at 10:30 AM \u2022 Central Library",
-    "date": "2026-10-09",
+    "title": "Artist Trading Card Workshop",
+    "detail": "Sat, Oct 10 at 1:00 PM \u2022 Southeast Branch",
+    "date": "2026-10-10",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/kindergarten-readiness-pbs"
+    "url": "https://kclibrary.org/calendar/artist-trading-card-workshop"
   },
   "kc_news": {
     "title": "Kansas' Sternberg Museum of Natural History may be saved, for now, after community steps up",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 56.92,
-    "change_pct": 0.9,
+    "value": 57.26,
+    "change_pct": 1.49,
     "as_of": "2026-10-09"
   }
 }
