@@ -1420,13 +1420,13 @@ DTSTART;TZID=America/Chicago:20261014T163000
 DTEND;TZID=America/Chicago:20261014T174500
 DTSTAMP:20261009T001823Z
 UID:st-michael-reconciliation-parent-option-1-20261014@paulsnider.net
-SEQUENCE:0
+SEQUENCE:1
 DESCRIPTION:Attend ONE of two options. One or both parents must attend one
   meeting. Other option: Sunday October 18\, 1:00-2:15 PM (America/Chicago)
  . Enter through the Cafeteria Entrance\; the Courtyard entrance may be loc
  ked. Complete the Sacramental Records Form at your earliest convenience if
   not already done. Refer to church email for the form.
-LOCATION:St. Michael the Archangel School Cafeteria\, 14251 Nall Ave.\, Le
+LOCATION:St. Michael the Archangel School Cafeteria\, 14201 Nall Ave.\, Le
  awood\, KS 66223
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
@@ -1439,16 +1439,84 @@ DTSTART;TZID=America/Chicago:20261018T130000
 DTEND;TZID=America/Chicago:20261018T141500
 DTSTAMP:20261009T001823Z
 UID:st-michael-reconciliation-parent-option-2-20261018@paulsnider.net
-SEQUENCE:0
+SEQUENCE:1
 DESCRIPTION:Attend ONE of two options. One or both parents may attend\; on
  e meeting is required. Other option: Wednesday October 14\, 4:30-5:45 PM (
  America/Chicago). Enter through the Cafeteria Entrance\; the Courtyard ent
  rance may be locked. Complete the Sacramental Records Form at your earlies
  t convenience if not already done. Refer to church email for the form.
-LOCATION:St. Michael the Archangel School Cafeteria\, 14251 Nall Ave.\, Le
+LOCATION:St. Michael the Archangel School Cafeteria\, 14201 Nall Ave.\, Le
  awood\, KS 66223
 STATUS:CONFIRMED
 TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Family appointment — option 1/2
+DTSTART;TZID=America/Chicago:20270225T183000
+DTSTAMP:20261009T032020Z
+UID:family-preparation-2027-1@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Attend one of these two options. End time not published. Any d
+ isplayed one-hour duration is a planning placeholder.
+LOCATION:Church\, St. Michael the Archangel\, 143rd and Nall\, Leawood\, K
+ S
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Family appointment — option 2/2
+DTSTART;TZID=America/Chicago:20270227T100000
+DTSTAMP:20261009T032020Z
+UID:family-preparation-2027-2@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Attend one of these two options. End time not published. Any d
+ isplayed one-hour duration is a planning placeholder.
+LOCATION:Church\, St. Michael the Archangel\, 143rd and Nall\, Leawood\, K
+ S
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Family preparation retreat
+DTSTART;TZID=America/Chicago:20270306T090000
+DTEND;TZID=America/Chicago:20270306T120000
+DTSTAMP:20261009T032020Z
+UID:family-preparation-2027-3@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Children: Gym. Adults: Parish Hall.
+LOCATION:St. Michael the Archangel - Gym and Parish Hall\, Leawood\, KS
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Family photos
+DTSTART;TZID=America/Chicago:20270502T120000
+DTSTAMP:20261009T032020Z
+UID:family-preparation-2027-4@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:End time not published. Any displayed one-hour duration is a p
+ lanning placeholder.
+LOCATION:St. Michael the Archangel - Parish Hall\, Leawood\, KS
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Family ceremony
+DTSTART;TZID=America/Chicago:20270502T130000
+DTSTAMP:20261009T032020Z
+UID:family-preparation-2027-5@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:End time not published. Any displayed one-hour duration is a p
+ lanning placeholder.
+LOCATION:Church\, St. Michael the Archangel\, 143rd and Nall\, Leawood\, K
+ S
+STATUS:CONFIRMED
+TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
 END:VCALENDAR
