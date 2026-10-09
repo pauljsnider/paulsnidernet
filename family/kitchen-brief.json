@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-08T11:25:23.817219-05:00",
+  "generated_at": "2026-10-08T21:05:50.698417-05:00",
   "local": {
-    "title": "Art Club | Grupo de Arte",
-    "detail": "Thu, Oct 8 at 5:30 PM \u2022 North-East Branch",
-    "date": "2026-10-08",
+    "title": "Kindergarten Readiness Storytime",
+    "detail": "Fri, Oct 9 at 10:30 AM \u2022 Plaza Branch",
+    "date": "2026-10-09",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-3"
+    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-25"
   },
   "kc_news": {
     "title": "Kansas' Sternberg Museum of Natural History may be saved, for now, after community steps up",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7801.77,
-      "change_pct": -0.22,
-      "as_of": "2026-10-07"
+      "value": 7765.36,
+      "change_pct": -0.47,
+      "as_of": "2026-10-08"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 56.0,
-    "change_pct": -0.92,
+    "value": 56.42,
+    "change_pct": -0.18,
     "as_of": "2026-10-08"
   }
 }
