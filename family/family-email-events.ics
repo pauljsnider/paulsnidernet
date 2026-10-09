@@ -1413,4 +1413,42 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+SUMMARY:St. Michael First Reconciliation Parent Meeting - Attend ONE (Opti
+ on 1 of 2)
+DTSTART;TZID=America/Chicago:20261014T163000
+DTEND;TZID=America/Chicago:20261014T174500
+DTSTAMP:20261009T001823Z
+UID:st-michael-reconciliation-parent-option-1-20261014@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Attend ONE of two options. One or both parents must attend one
+  meeting. Other option: Sunday October 18\, 1:00-2:15 PM (America/Chicago)
+ . Enter through the Cafeteria Entrance\; the Courtyard entrance may be loc
+ ked. Complete the Sacramental Records Form at your earliest convenience if
+  not already done. Refer to church email for the form.
+LOCATION:St. Michael the Archangel School Cafeteria\, 14251 Nall Ave.\, Le
+ awood\, KS 66223
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:St. Michael First Reconciliation Parent Meeting - Attend ONE (Opti
+ on 2 of 2)
+DTSTART;TZID=America/Chicago:20261018T130000
+DTEND;TZID=America/Chicago:20261018T141500
+DTSTAMP:20261009T001823Z
+UID:st-michael-reconciliation-parent-option-2-20261018@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Attend ONE of two options. One or both parents may attend\; on
+ e meeting is required. Other option: Wednesday October 14\, 4:30-5:45 PM (
+ America/Chicago). Enter through the Cafeteria Entrance\; the Courtyard ent
+ rance may be locked. Complete the Sacramental Records Form at your earlies
+ t convenience if not already done. Refer to church email for the form.
+LOCATION:St. Michael the Archangel School Cafeteria\, 14251 Nall Ave.\, Le
+ awood\, KS 66223
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T18:32:30.778433-05:00",
+  "generated_at": "2026-10-08T19:20:47.027080-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -481,6 +481,15 @@
       "children": []
     },
     {
+      "summary": "St. Michael First Reconciliation Parent Meeting - Attend ONE (Option 1 of 2)",
+      "start": "2026-10-14T16:30:00-05:00",
+      "end": "2026-10-14T17:45:00-05:00",
+      "all_day": false,
+      "location": "St. Michael the Archangel School Cafeteria, 14251 Nall Ave., Leawood, KS 66223",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
       "summary": "Will Soccer: Vipers FC U8B Practice",
       "start": "2026-10-14T16:30:00-05:00",
       "end": "2026-10-14T18:00:00-05:00",
@@ -718,6 +727,15 @@
       "children": [
         "Madison"
       ]
+    },
+    {
+      "summary": "St. Michael First Reconciliation Parent Meeting - Attend ONE (Option 2 of 2)",
+      "start": "2026-10-18T13:00:00-05:00",
+      "end": "2026-10-18T14:15:00-05:00",
+      "all_day": false,
+      "location": "St. Michael the Archangel School Cafeteria, 14251 Nall Ave., Leawood, KS 66223",
+      "source": "Family Email Events",
+      "children": []
     },
     {
       "summary": "Chiefs vs Chargers - Paul + Robin Going",
