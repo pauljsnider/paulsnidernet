@@ -1519,4 +1519,20 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Boo at the Zoo
+DTSTART;TZID=America/Chicago:20261025T093000
+DTEND;TZID=America/Chicago:20261025T170000
+DTSTAMP:20261010T120118Z
+UID:boo-at-the-zoo-20261025@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Included with Zoo admission or membership. Family-friendly cos
+ tumes and trick-or-treating. Bags provided at the entrance for children 12
+  and under. Optional FOTZ member early hour: 8:30-9:30 AM.
+LOCATION:Kansas City Zoo & Aquarium\, 6800 Zoo Drive\, Kansas City\, MO 64
+ 132
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR
