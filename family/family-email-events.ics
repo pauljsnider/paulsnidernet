@@ -1535,4 +1535,46 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Tentative: Indoor Soccer Camp
+DTSTART;TZID=America/Chicago:20261221T090000
+DTEND;TZID=America/Chicago:20261221T120000
+DTSTAMP:20261010T155604Z
+UID:indoor-soccer-camp-20261221@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Snowdonia Sports winter break camp. Tentative\; registration i
+ s not completed. See Snowdonia Sports for signup details.
+LOCATION:All American Indoor Sports\, 8875 Rosehill Road\, Lenexa\, KS
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Tentative: Indoor Soccer Camp
+DTSTART;TZID=America/Chicago:20261222T090000
+DTEND;TZID=America/Chicago:20261222T120000
+DTSTAMP:20261010T155604Z
+UID:indoor-soccer-camp-20261222@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Snowdonia Sports winter break camp. Tentative\; registration i
+ s not completed. See Snowdonia Sports for signup details.
+LOCATION:All American Indoor Sports\, 8875 Rosehill Road\, Lenexa\, KS
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Tentative: Indoor Soccer Camp
+DTSTART;TZID=America/Chicago:20261223T090000
+DTEND;TZID=America/Chicago:20261223T120000
+DTSTAMP:20261010T155604Z
+UID:indoor-soccer-camp-20261223@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Snowdonia Sports winter break camp. Tentative\; registration i
+ s not completed. See Snowdonia Sports for signup details.
+LOCATION:All American Indoor Sports\, 8875 Rosehill Road\, Lenexa\, KS
+STATUS:TENTATIVE
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR
