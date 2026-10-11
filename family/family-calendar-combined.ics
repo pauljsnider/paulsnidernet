@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-10-11T02:56:53.200293+00:00
+X-COMBINE-TIMESTAMP:2026-10-11T03:04:28.310782+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VTIMEZONE
 TZID:America/Chicago
@@ -1740,6 +1740,49 @@ DESCRIPTION:Snowdonia Sports winter break camp. Tentative\; registration i
 LOCATION:All American Indoor Sports\, 8875 Rosehill Road\, Lenexa\, KS
 STATUS:TENTATIVE
 TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Rock the Parkway Half Marathon
+DTSTART;TZID=America/Chicago:20270410T073000
+DTEND;TZID=America/Chicago:20270410T113000
+DTSTAMP:20261011T030336Z
+UID:rock-parkway-20270410@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Official event window\; individual finish time varies.
+LOCATION:Burns & McDonnell\, 9400 Ward Parkway\, Kansas City\, MO
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Garmin Olathe Half Marathon
+DTSTART;TZID=America/Chicago:20270424T064500
+DTEND;TZID=America/Chicago:20270424T133000
+DTSTAMP:20261011T030336Z
+UID:garmin-olathe-20270424@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Half marathon starts at 6:45 AM. The 1:30 PM end is the overal
+ l event window\; individual finish time varies.
+LOCATION:Garmin headquarters\, 1200 E. 151st St.\, Olathe\, KS
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+X-SOURCE-CALENDAR:Family Email Events
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Hospital Hill Run
+DTSTART;TZID=America/Chicago:20270522T070000
+DTEND;TZID=America/Chicago:20270522T110000
+DTSTAMP:20261011T030336Z
+UID:hospital-hill-20270522@paulsnider.net
+SEQUENCE:0
+DESCRIPTION:Official event window\; individual finish time varies.
+LOCATION:Crown Center\, Kansas City\, MO
+STATUS:CONFIRMED
+TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
