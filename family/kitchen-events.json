@@ -1,80 +1,7 @@
 {
-  "generated_at": "2026-10-10T22:11:23.215053-05:00",
+  "generated_at": "2026-10-11T06:48:55.468680-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "Max: Learn to Play Hockey",
-      "start": "2026-10-10T08:00:00-05:00",
-      "end": "2026-10-10T08:40:00-05:00",
-      "all_day": false,
-      "location": "19900 Johnson Dr., Shawnee, KS 66218",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Will: Learn to Play Hockey",
-      "start": "2026-10-10T08:00:00-05:00",
-      "end": "2026-10-10T08:40:00-05:00",
-      "all_day": false,
-      "location": "19900 Johnson Dr., Shawnee, KS 66218",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Max Soccer: F26KB Major Derek vs Hamilton",
-      "start": "2026-10-10T09:00:00-05:00",
-      "end": "2026-10-10T09:30:00-05:00",
-      "all_day": false,
-      "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
-      "source": "Max Soccer - Major Derek",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Prairiefire Oktoberfest",
-      "start": "2026-10-10T10:00:00-05:00",
-      "end": "2026-10-10T14:00:00-05:00",
-      "all_day": false,
-      "location": "Prairiefire, 5661 W. 135th St., Overland Park, KS 66223",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "KU Hockey vs Missouri State",
-      "start": "2026-10-10T16:15:00-05:00",
-      "end": "2026-10-10T18:30:00-05:00",
-      "all_day": false,
-      "location": "AdventHealth Sports Park at Bluhawk",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Madison: Jr Current vs Sporting City U11G Indigo-North",
-      "start": "2026-10-10T18:00:00-05:00",
-      "end": "2026-10-10T18:00:00-05:00",
-      "all_day": false,
-      "location": "1500 N 90th St\nKansas City KS 66112\nUnited States",
-      "source": "TeamSnap Events (Madison + Max + Will)",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Will Soccer: Vipers FC U8B @ Captains SC 18/19 White",
-      "start": "2026-10-10T18:15:00-05:00",
-      "end": "2026-10-10T19:15:00-05:00",
-      "all_day": false,
-      "location": "1500 N 90th St\nKansas City KS",
-      "source": "Will Soccer - Vipers FC U8B",
-      "children": [
-        "Will"
-      ]
-    },
     {
       "summary": "Madison: Classmate Birthday Party",
       "start": "2026-10-11T10:00:00-05:00",
@@ -2206,6 +2133,39 @@
       "source": "Family Email Events",
       "children": [
         "Madison"
+      ]
+    },
+    {
+      "summary": "Max: Learn to Play Hockey",
+      "start": "2026-11-21T08:00:00-06:00",
+      "end": "2026-11-21T08:40:00-06:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
+    },
+    {
+      "summary": "Will: Learn to Play Hockey",
+      "start": "2026-11-21T08:00:00-06:00",
+      "end": "2026-11-21T08:40:00-06:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
+    },
+    {
+      "summary": "Max: Junior Basketball (Ages 4-5)",
+      "start": "2026-11-21T09:30:00-06:00",
+      "end": "2026-11-21T10:25:00-06:00",
+      "all_day": false,
+      "location": "TBA",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
       ]
     }
   ]
