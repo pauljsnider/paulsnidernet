@@ -463,6 +463,22 @@
                     </div>
                     <div class="calendar-item">
                         <label class="calendar-checkbox">
+                            <input type="checkbox" id="cal-will-basketball-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-basketball-ball sport-icon"></i>
+                        <span class="calendar-name">Will Basketball</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
+                            <input type="checkbox" id="cal-madison-basketball-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-basketball-ball sport-icon"></i>
+                        <span class="calendar-name">Madison Basketball</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
                             <input type="checkbox" id="cal-teamsnap-enabled" checked onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
@@ -620,6 +636,8 @@
             'Will Soccer - Vipers FC U8B',
             'Will Baseball',
             'Will Indoor Soccer',
+            'Will Basketball',
+            'Madison Basketball',
             'TeamSnap Events (Madison + Max + Will)',
             'Max Soccer - Major Derek',
             'Family Email Events'
@@ -650,6 +668,8 @@
             'Will Soccer - Vipers FC U8B':          'cal-will-vipers-enabled',
             'Will Baseball':                        'cal-will-baseball-enabled',
             'Will Indoor Soccer':                   'cal-will-indoor-soccer-enabled',
+            'Will Basketball': 'cal-will-basketball-enabled',
+            'Madison Basketball': 'cal-madison-basketball-enabled',
             'TeamSnap Events (Madison + Max + Will)': 'cal-teamsnap-enabled',
             'Max Soccer - Major Derek':             'cal-max-soccer-enabled',
             'Family Email Events':                  'cal-family-email-events-enabled'

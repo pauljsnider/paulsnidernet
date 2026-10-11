@@ -53,6 +53,9 @@ jobs:
           PY
 
       - name: Run calendar combining script
+        env:
+          WILL_BASKETBALL_ICS_URL: ${{ secrets.WILL_BASKETBALL_ICS_URL }}
+          MADISON_BASKETBALL_ICS_URL: ${{ secrets.MADISON_BASKETBALL_ICS_URL }}
         run: |
           python scripts/combine-calendars.py
 
