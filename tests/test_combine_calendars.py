@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from datetime import datetime, timedelta
 from io import StringIO
 import importlib.util
@@ -34,6 +35,44 @@ def make_calendar(uid, summary='Practice'):
 
 
 class CombineCalendarsTest(unittest.TestCase):
+    def test_private_basketball_env_sources_and_missing_secret(self):
+        sources = [{'name': 'Will Basketball', 'url_env': 'TEST_BASKETBALL_URL'}]
+        with patch.dict(COMBINE_CALENDARS.os.environ, {'TEST_BASKETBALL_URL': 'https://example.invalid/private'}, clear=True):
+            self.assertEqual(COMBINE_CALENDARS.expand_calendar_sources(sources)[0]['url'], 'https://example.invalid/private')
+        with patch.dict(COMBINE_CALENDARS.os.environ, {}, clear=True):
+            expanded = COMBINE_CALENDARS.expand_calendar_sources(sources)
+            self.assertEqual(expanded[0]['base_name'], 'Will Basketball')
+            self.assertIsNone(expanded[0]['url'])
+            self.assertIsNone(COMBINE_CALENDARS.fetch_calendar(None, 'Will Basketball'))
+
+    def test_basketball_schedule_only_labels_dedup_and_cached_recovery(self):
+        source = make_calendar('basketball-game', 'Game vs Visitors')
+        event = source.walk('VEVENT')[0]
+        for field in ['description', 'url', 'organizer', 'attendee', 'x-private']:
+            event.add(field, 'private-value')
+        event.add('rrule', {'freq': 'weekly', 'count': 2})
+        combined = combine_calendars([source, Calendar.from_ical(source.to_ical())],
+                                     ['Will Basketball', 'Will Basketball'])
+        self.assertEqual(1, len(combined.walk('VEVENT')))
+        event = combined.walk('VEVENT')[0]
+        self.assertEqual(str(event['SUMMARY']), 'Will Basketball: Game vs Visitors')
+        self.assertIn('RRULE', event)
+        self.assertNotIn(b'private-value', combined.to_ical())
+        feed = build_kitchen_feed(combined, now=pytz.UTC.localize(datetime(2026, 8, 18)))
+        self.assertEqual(['Will'], feed['events'][0]['children'])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'cached.ics'
+            path.write_bytes(combined.to_ical())
+            recovered = load_cached_source_calendar('Will Basketball', output_file=path)
+            self.assertEqual(1, len(recovered.walk('VEVENT')))
+
+    def test_fetch_logs_never_expose_private_url_on_error(self):
+        secret_url = 'https://example.invalid/feed?token=do-not-log'
+        with patch.object(COMBINE_CALENDARS.requests, 'get', side_effect=COMBINE_CALENDARS.requests.exceptions.ConnectionError(secret_url)), patch.object(COMBINE_CALENDARS.time, 'sleep'), self.assertLogs(COMBINE_CALENDARS.logger, level='INFO') as logs:
+            self.assertIsNone(COMBINE_CALENDARS.fetch_calendar(secret_url, 'Will Basketball'))
+        self.assertNotIn(secret_url, '\n'.join(logs.output))
+        self.assertNotIn('do-not-log', '\n'.join(logs.output))
+
     def test_embedded_chicago_zone_keeps_weekly_class_at_local_time_across_dst(self):
         source = make_calendar('weekly-class', 'Religious Education')
         event = source.walk('VEVENT')[0]

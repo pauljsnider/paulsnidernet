@@ -42,6 +42,8 @@ CALENDAR_LABEL_MAP = {
     'Will Indoor Soccer':              ('Will',    'Indoor Soccer'),
     'Max Soccer - Major Derek':         ('Max',     'Soccer'),
     'Madison Futsal':                  ('Madison', 'Futsal'),
+    'Will Basketball': ('Will', 'Basketball'),
+    'Madison Basketball': ('Madison', 'Basketball'),
 }
 
 # Manual corrections for upstream feeds that omit venue data. Keep this narrow:
@@ -139,6 +141,15 @@ PRODUCTION_CALENDARS = [
         'url': 'https://ssprodst.blob.core.windows.net/calendars/445/106163.ics'
     },
 ]
+
+PRIVATE_BASKETBALL_SOURCES = {
+    'Will Basketball': 'WILL_BASKETBALL_ICS_URL',
+    'Madison Basketball': 'MADISON_BASKETBALL_ICS_URL',
+}
+PRODUCTION_CALENDARS.extend(
+    {'name': name, 'url_env': env_name}
+    for name, env_name in PRIVATE_BASKETBALL_SOURCES.items()
+)
 
 # These sources are deliberately excluded from family-calendar-combined.ics.
 # They are fetched server-side and merged only into kitchen-events.json, which
@@ -308,7 +319,10 @@ def normalize_date_only_event_properties(component):
 
 def fetch_calendar(url, name):
     """Fetch a calendar from a URL with robust error handling and retries."""
-    logger.info(f"Fetching {name} from {url}")
+    logger.info(f"Fetching {name}")
+    if not url:
+        logger.warning('Source secret not configured for %s; using cached events', name)
+        return None
     
     last_error = None
     
@@ -346,7 +360,7 @@ def fetch_calendar(url, name):
                 return cal
                 
             except Exception as parse_error:
-                logger.error(f"Failed to parse {name}: {parse_error}")
+                logger.error(f"Failed to parse {name}: {type(parse_error).__name__}")
                 
                 # If parsing fails, try to find the actual ICS content
                 content_text = response.text
@@ -361,7 +375,7 @@ def fetch_calendar(url, name):
                         logger.info(f"✓ {name}: {event_count} events (after content normalization)")
                         return cal
                     except Exception as retry_parse_error:
-                        logger.error(f"Still failed to parse normalized {name}: {retry_parse_error}")
+                        logger.error(f"Still failed to parse normalized {name}: {type(retry_parse_error).__name__}")
                 
                 raise parse_error
 
@@ -370,7 +384,7 @@ def fetch_calendar(url, name):
             logger.warning(last_error)
             
         except requests.exceptions.ConnectionError as e:
-            last_error = f"Connection error for {name}: {str(e)}"
+            last_error = f"Connection error for {name}: {type(e).__name__}"
             logger.warning(last_error)
             
         except requests.exceptions.HTTPError as e:
@@ -388,7 +402,7 @@ def fetch_calendar(url, name):
                 logger.warning(last_error)
                 
         except Exception as e:
-            last_error = f"Unexpected error for {name}: {str(e)}"
+            last_error = f"Unexpected error for {name}: {type(e).__name__}"
             logger.error(last_error)
         
         # Wait before retry (except on last attempt)
@@ -458,6 +472,12 @@ def expand_calendar_sources(calendars):
                 'base_name': calendar['name'],
                 'path': calendar['path'],
             })
+            continue
+
+        if calendar.get('url_env'):
+            # Keep the source present when unconfigured so cached events survive.
+            expanded.append({'name': calendar['name'], 'base_name': calendar['name'],
+                             'url': os.environ.get(calendar['url_env'])})
             continue
 
         urls = calendar.get('urls') or [calendar.get('url')]
@@ -559,6 +579,16 @@ def combine_calendars(calendars, source_names=None):
         # Extract events from this calendar
         for component in cal_data.walk():
             if component.name == "VEVENT":
+                if source_name in PRIVATE_BASKETBALL_SOURCES:
+                    # Publish schedule fields only, never provider notes or links.
+                    allowed = {'UID', 'SUMMARY', 'DTSTART', 'DTEND', 'DURATION',
+                               'DTSTAMP', 'LAST-MODIFIED', 'SEQUENCE', 'STATUS',
+                               'LOCATION', 'TRANSP', 'RRULE', 'RDATE', 'EXDATE',
+                               'RECURRENCE-ID', 'X-ORIGINAL-SUMMARY'}
+                    for key in list(component.keys()):
+                        if key.upper() not in allowed:
+                            del component[key]
+                    component.subcomponents = []
                 normalize_date_only_event_properties(component)
                 if source_name:
                     label_event_summary(component, source_name)
@@ -718,6 +748,7 @@ def kitchen_event_children(component, source_name):
         'Will Baseball': ['Will'], 'Will Indoor Soccer': ['Will'],
         'Max Soccer - Major Derek': ['Max'], "Madison's Futsal": ['Madison'],
         'Madison Futsal': ['Madison'],
+        'Will Basketball': ['Will'], 'Madison Basketball': ['Madison'],
     }
     if source_name in source_children:
         return source_children[source_name][:]
