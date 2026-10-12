@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T16:14:07.728993-05:00",
+  "generated_at": "2026-10-11T19:27:10.286179-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -209,17 +209,6 @@
       "children": []
     },
     {
-      "summary": "Madison: Fall Book Fair Class Visit",
-      "start": "2026-10-14",
-      "end": "2026-10-15",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
       "summary": "Madison: PE",
       "start": "2026-10-14",
       "end": "2026-10-15",
@@ -267,6 +256,17 @@
       "location": "",
       "source": "Overland Trail Elementary",
       "children": []
+    },
+    {
+      "summary": "Madison: Fall Book Fair Class Visit",
+      "start": "2026-10-14T11:00:00-05:00",
+      "end": "2026-10-14T12:00:00-05:00",
+      "all_day": false,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
     },
     {
       "summary": "1st Grade ON-SITE Field Trip Session 2",
@@ -1161,8 +1161,8 @@
     },
     {
       "summary": "Fall Class Parties - Madison, Will, Max",
-      "start": "2026-10-30T14:50:00-05:00",
-      "end": "2026-10-30T15:30:00-05:00",
+      "start": "2026-10-30T14:55:00-05:00",
+      "end": "2026-10-30T15:25:00-05:00",
       "all_day": false,
       "location": "Overland Trail Elementary",
       "source": "Family Email Events",
@@ -1440,8 +1440,8 @@
     },
     {
       "summary": "Will: Kauffman Stadium Field Trip",
-      "start": "2026-11-05T09:15:00-06:00",
-      "end": "2026-11-05T13:45:00-06:00",
+      "start": "2026-11-05T09:00:00-06:00",
+      "end": "2026-11-05T14:00:00-06:00",
       "all_day": false,
       "location": "Kauffman Stadium, Kansas City, MO",
       "source": "Family Email Events",

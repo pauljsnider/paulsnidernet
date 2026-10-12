@@ -518,14 +518,16 @@ TRANSP:OPAQUE
 X-IMPORT-TYPE:EMAIL-FORM
 END:VEVENT
 BEGIN:VEVENT
-UID:will-kauffman-stadium-field-trip-20261105@paulsnider.net
-DTSTAMP:20260923T075500Z
 SUMMARY:Will: Kauffman Stadium Field Trip
-DTSTART;TZID=America/Chicago:20261105T091500
-DTEND;TZID=America/Chicago:20261105T134500
+DTSTART;TZID=America/Chicago:20261105T090000
+DTEND;TZID=America/Chicago:20261105T140000
+DTSTAMP:20261012T002610Z
+UID:will-kauffman-stadium-field-trip-20261105@paulsnider.net
+SEQUENCE:1
+DESCRIPTION:School departure at 9 AM\; return to OTE approximately 2 PM. E
+ nd time represents the approximate school return.
 LOCATION:Kauffman Stadium\, Kansas City\, MO
 STATUS:CONFIRMED
-SEQUENCE:0
 TRANSP:OPAQUE
 X-IMPORT-TYPE:EMAIL-FORM
 END:VEVENT
@@ -1233,15 +1235,15 @@ TRANSP:TRANSPARENT
 X-IMPORT-TYPE:EMAIL-DIGEST
 END:VEVENT
 BEGIN:VEVENT
-UID:madison-fall-book-fair-class-visit-20261014@paulsnider.net
-DTSTAMP:20260927T184500Z
 SUMMARY:Madison: Fall Book Fair Class Visit
-DTSTART;VALUE=DATE:20261014
-DTEND;VALUE=DATE:20261015
-DESCRIPTION:Madison's teacher weekly update lists a Fall Book Fair class visit. Exact class shopping time has not been published.
+DTSTART;TZID=America/Chicago:20261014T110000
+DTSTAMP:20261012T002610Z
+UID:madison-fall-book-fair-class-visit-20261014@paulsnider.net
+SEQUENCE:1
+DESCRIPTION:Class shopping starts at 11 AM. End time unpublished\; any dis
+ played one-hour duration is a planning placeholder.
 LOCATION:Overland Trail Elementary
 STATUS:CONFIRMED
-SEQUENCE:0
 TRANSP:TRANSPARENT
 X-IMPORT-TYPE:EMAIL-DIGEST
 END:VEVENT
@@ -1259,15 +1261,15 @@ TRANSP:TRANSPARENT
 X-IMPORT-TYPE:EMAIL-DIGEST
 END:VEVENT
 BEGIN:VEVENT
-UID:ote-fall-class-parties-20261030@paulsnider.net
-DTSTAMP:20260927T184500Z
 SUMMARY:Fall Class Parties - Madison\, Will\, Max
-DTSTART;TZID=America/Chicago:20261030T145000
-DTEND;TZID=America/Chicago:20261030T153000
-DESCRIPTION:OTE fall class parties. Time confirmed in the latest second-grade weekly newsletter.
+DTSTART;TZID=America/Chicago:20261030T145500
+DTEND;TZID=America/Chicago:20261030T152500
+DTSTAMP:20261012T002610Z
+UID:ote-fall-class-parties-20261030@paulsnider.net
+SEQUENCE:1
+DESCRIPTION:OTE fall class parties\, 2:55-3:25 PM.
 LOCATION:Overland Trail Elementary
 STATUS:CONFIRMED
-SEQUENCE:0
 TRANSP:TRANSPARENT
 X-IMPORT-TYPE:EMAIL-DIGEST
 END:VEVENT
