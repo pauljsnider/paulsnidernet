@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T20:18:02.810333-05:00",
+  "generated_at": "2026-10-13T04:20:19.536287-05:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Tue, Oct 13 at 9:30 AM \u2022 Plaza Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Q&A: Building accountability behind our words \u2014 and AI\u2019s \u2014 in civic conversations",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-12",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/qa-building-accountability-behind-our-words-and-ai-civic-conversations-1013"
+    },
+    {
       "title": "Using AI to mitigate the growing environmental threat of data centers",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-07",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/mitigating-environmental-threat-of-data-centers-christina-delimitrou-1008"
-    },
-    {
-      "title": "Discovering the value of humanistic inquiry",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-07",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/discovering-value-humanistic-inquiry-1007"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 27366.17,
-      "change_pct": 0.64,
-      "as_of": "2026-10-09"
+      "value": 27245.9,
+      "change_pct": -0.44,
+      "as_of": "2026-10-12"
     }
   ],
   "ticker": {
