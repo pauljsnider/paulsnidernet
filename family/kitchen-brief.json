@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T12:33:49.980914-05:00",
+  "generated_at": "2026-10-13T17:39:30.363129-05:00",
   "local": {
     "title": "Craft Circle",
     "detail": "Tue, Oct 13 at 6:00 PM \u2022 North-East Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
-      "title": "Q&A: Building accountability behind our words \u2014 and AI\u2019s \u2014 in civic conversations",
+      "title": "How artificial neural networks build their own learning machinery",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-12",
+      "date": "2026-10-13",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/qa-building-accountability-behind-our-words-and-ai-civic-conversations-1013"
+      "url": "https://news.mit.edu/2026/how-artificial-neural-networks-build-their-own-learning-machinery-1013"
     },
     {
-      "title": "Using AI to mitigate the growing environmental threat of data centers",
+      "title": "MIT Lincoln Laboratory hosts National Security Commission on Emerging Biotechnology",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-07",
+      "date": "2026-10-13",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/mitigating-environmental-threat-of-data-centers-christina-delimitrou-1008"
+      "url": "https://news.mit.edu/2026/mit-lincoln-laboratory-hosts-national-security-commission-emerging-biotechnology-1013"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.49,
-    "change_pct": 0.21,
+    "value": 58.07,
+    "change_pct": 1.22,
     "as_of": "2026-10-13"
   }
 }
