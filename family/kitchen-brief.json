@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-13T17:39:30.363129-05:00",
+  "generated_at": "2026-10-13T20:51:00.518089-05:00",
   "local": {
-    "title": "Craft Circle",
-    "detail": "Tue, Oct 13 at 6:00 PM \u2022 North-East Branch",
-    "date": "2026-10-13",
+    "title": "Baby Storytime",
+    "detail": "Wed, Oct 14 at 9:30 AM \u2022 Waldo Branch",
+    "date": "2026-10-14",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/craft-circle"
+    "url": "https://kclibrary.org/calendar/baby-storytime-138"
   },
   "kc_news": {
     "title": "A Missouri theater company commissioned its own Dracula to put a stake in high licensing fees",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7807.24,
-      "change_pct": -0.06,
-      "as_of": "2026-10-12"
+      "value": 7805.45,
+      "change_pct": -0.02,
+      "as_of": "2026-10-13"
     },
     {
       "name": "Nasdaq",
