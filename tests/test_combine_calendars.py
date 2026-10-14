@@ -651,7 +651,7 @@ END:VCALENDAR
             description,
         )
 
-    def test_ote_october_family_events_have_current_dates_and_times(self):
+    def test_ote_fall_family_events_have_current_dates_and_times(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         events_by_uid = {
             str(event['UID']): event
@@ -676,10 +676,15 @@ END:VCALENDAR
             ),
             'ote-fall-class-parties-20261030@paulsnider.net': (
                 'Fall Class Parties - Madison, Will, Max',
-                '2026-10-30T14:50:00-05:00',
-                '2026-10-30T15:30:00-05:00',
+                '2026-10-30T14:55:00-05:00',
+                '2026-10-30T15:25:00-05:00',
             ),
         }
+        expected['will-kauffman-stadium-field-trip-20261105@paulsnider.net'] = (
+            'Will: Kauffman Stadium Field Trip',
+            '2026-11-05T09:00:00-06:00',
+            '2026-11-05T14:00:00-06:00',
+        )
         for uid, (summary, start, end) in expected.items():
             event = events_by_uid[uid]
             self.assertEqual(summary, str(event['SUMMARY']))
@@ -693,10 +698,78 @@ END:VCALENDAR
             'Madison: Fall Book Fair Class Visit',
             str(class_visit['SUMMARY']),
         )
-        self.assertEqual('2026-10-14', class_visit['DTSTART'].dt.isoformat())
-        self.assertEqual('2026-10-15', class_visit['DTEND'].dt.isoformat())
-        self.assertEqual('DATE', class_visit['DTSTART'].params['VALUE'])
-        self.assertEqual('DATE', class_visit['DTEND'].params['VALUE'])
+        self.assertEqual('2026-10-14T11:00:00-05:00', class_visit['DTSTART'].dt.isoformat())
+        self.assertEqual('America/Chicago', class_visit['DTSTART'].params['TZID'])
+        self.assertNotIn('DTEND', class_visit)
+        self.assertNotIn('DURATION', class_visit)
+        self.assertIn('End time unpublished', str(class_visit['DESCRIPTION']))
+        trip = events_by_uid['will-kauffman-stadium-field-trip-20261105@paulsnider.net']
+        self.assertIn('approximately 2 PM', str(trip['DESCRIPTION']))
+
+        # Exercise the real source through combining and kitchen expansion on
+        # both sides of the November DST change; the book-fair hour is fallback.
+        combined = combine_calendars([calendar], ['Family Email Events'])
+        feed = build_kitchen_feed(
+            combined, now=pytz.UTC.localize(datetime(2026, 10, 12)), days=30,
+        )
+        kitchen_expected = {
+            'Madison: Fall Book Fair Class Visit': (
+                '2026-10-14T11:00:00-05:00', '2026-10-14T12:00:00-05:00',
+            ),
+            'Fall Class Parties - Madison, Will, Max': (
+                '2026-10-30T14:55:00-05:00', '2026-10-30T15:25:00-05:00',
+            ),
+            'Will: Kauffman Stadium Field Trip': (
+                '2026-11-05T09:00:00-06:00', '2026-11-05T14:00:00-06:00',
+            ),
+        }
+        for summary, (start, end) in kitchen_expected.items():
+            matches = [e for e in feed['events'] if e['summary'] == summary]
+            self.assertEqual(1, len(matches), summary)
+            self.assertEqual(start, matches[0]['start'])
+            self.assertEqual(end, matches[0]['end'])
+            self.assertFalse(matches[0]['all_day'])
+
+    def test_october_tutor_exclusions_and_party_correction(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        friday_uid = 'madison-tutor-fri-20260814@paulsnider.net'
+        friday = [e for e in calendar.walk('VEVENT') if str(e['UID']) == friday_uid]
+        self.assertEqual(2, len(friday))
+        master = next(e for e in friday if 'RECURRENCE-ID' not in e)
+        self.assertEqual('Tutoring', str(master['SUMMARY']))
+        self.assertEqual('America/Chicago', master['EXDATE'].params['TZID'])
+        self.assertEqual(
+            ['2026-10-23T17:15:00-05:00', '2026-10-30T17:15:00-05:00'],
+            [d.dt.isoformat() for d in master['EXDATE'].dts],
+        )
+        exception = next(e for e in friday if 'RECURRENCE-ID' in e)
+        self.assertEqual('2026-10-09T15:15:00-05:00', exception['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-10-09T16:15:00-05:00', exception['DTEND'].dt.isoformat())
+        self.assertEqual('2026-10-09T17:15:00-05:00', exception['RECURRENCE-ID'].dt.isoformat())
+        combined = combine_calendars([calendar], ['Family Email Events'])
+        feed = build_kitchen_feed(
+            combined, now=pytz.UTC.localize(datetime(2026, 10, 8)), days=32,
+        )
+        friday_starts = [e['start'] for e in feed['events'] if e['summary'] in ('Tutoring', 'Madison: Tutor')]
+        self.assertEqual([
+            '2026-10-09T15:15:00-05:00', '2026-10-16T17:15:00-05:00',
+            '2026-11-06T17:15:00-06:00',
+        ], friday_starts)
+        tuesday_starts = [e['start'] for e in feed['events'] if e['summary'] == 'Madison Tutor w/ Ava']
+        self.assertEqual([
+            '2026-10-13T19:15:00-05:00', '2026-10-20T19:15:00-05:00',
+            '2026-10-27T19:15:00-05:00', '2026-11-03T19:15:00-06:00',
+        ], tuesday_starts)
+        party = next(e for e in calendar.walk('VEVENT')
+                     if str(e['UID']) == 'max-birthday-party-lucy-20261017@paulsnider.net')
+        self.assertEqual('Birthday Party', str(party['SUMMARY']))
+        self.assertEqual('2026-10-17T12:30:00-05:00', party['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-10-17T14:00:00-05:00', party['DTEND'].dt.isoformat())
+        self.assertEqual('Eagles Gymnastics', str(party['LOCATION']))
+        rows = [e for e in feed['events'] if e['summary'] == str(party['SUMMARY'])]
+        self.assertEqual(1, len(rows))
+        self.assertEqual('2026-10-17T14:00:00-05:00', rows[0]['end'])
+        self.assertEqual('Eagles Gymnastics', rows[0]['location'])
 
     def test_kitchen_prefers_family_override_over_ote_placeholder(self):
         calendar = Calendar()
