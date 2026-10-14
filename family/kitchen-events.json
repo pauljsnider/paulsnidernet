@@ -1,93 +1,7 @@
 {
-  "generated_at": "2026-10-13T21:44:13.197524-05:00",
+  "generated_at": "2026-10-14T05:51:33.376678-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 4",
-      "start": "2026-10-13",
-      "end": "2026-10-14",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Max: PE",
-      "start": "2026-10-13",
-      "end": "2026-10-14",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Peace Week Spirit Day / Plaid it Forward / Wear all your plaid!",
-      "start": "2026-10-13",
-      "end": "2026-10-14",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Fall Book Fair Classrooms Visits",
-      "start": "2026-10-13T09:00:00-05:00",
-      "end": "2026-10-13T15:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Religious Education - Max, Will, Madison",
-      "start": "2026-10-13T16:30:00-05:00",
-      "end": "2026-10-13T17:45:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Fall Book Fair Family Night - Madison, Will, Max",
-      "start": "2026-10-13T17:30:00-05:00",
-      "end": "2026-10-13T19:00:00-05:00",
-      "all_day": false,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Max Soccer: F26KB Major Derek - Practice",
-      "start": "2026-10-13T18:00:00-05:00",
-      "end": "2026-10-13T19:00:00-05:00",
-      "all_day": false,
-      "location": "Mission Trail Elementary School \n13200 Mission Road, Leawood, KS 66209",
-      "source": "Max Soccer - Major Derek",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Madison Tutor w/ Ava",
-      "start": "2026-10-13T19:15:00-05:00",
-      "end": "2026-10-13T20:15:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 5",
       "start": "2026-10-14",
@@ -2160,6 +2074,30 @@
       "end": "2026-11-23T17:55:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Religious Education - Max, Will, Madison",
+      "start": "2026-11-24T16:30:00-06:00",
+      "end": "2026-11-24T17:45:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-11-24T19:15:00-06:00",
+      "end": "2026-11-24T20:15:00-06:00",
+      "all_day": false,
+      "location": "",
       "source": "Family Email Events",
       "children": [
         "Madison"
