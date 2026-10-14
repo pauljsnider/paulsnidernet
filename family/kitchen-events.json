@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T05:51:33.376678-05:00",
+  "generated_at": "2026-10-14T09:19:06.366464-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -234,15 +234,13 @@
       "children": []
     },
     {
-      "summary": "Madison: Tutor",
+      "summary": "Tutoring",
       "start": "2026-10-16T17:15:00-05:00",
       "end": "2026-10-16T18:15:00-05:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
+      "children": []
     },
     {
       "summary": "Max: Learn to Play Hockey",
@@ -300,15 +298,13 @@
       ]
     },
     {
-      "summary": "Max Birthday Party - Lucy",
+      "summary": "Birthday Party",
       "start": "2026-10-17T12:30:00-05:00",
-      "end": "2026-10-17T14:30:00-05:00",
+      "end": "2026-10-17T14:00:00-05:00",
       "all_day": false,
-      "location": "Microsoft Teams Meeting",
+      "location": "Eagles Gymnastics",
       "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
+      "children": []
     },
     {
       "summary": "Will Baseball: Mustangs (Moss) @ Monarchs 8U",
@@ -669,17 +665,6 @@
       ]
     },
     {
-      "summary": "Madison: Tutor",
-      "start": "2026-10-23T17:15:00-05:00",
-      "end": "2026-10-23T18:15:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
       "summary": "Max: Learn to Play Hockey",
       "start": "2026-10-24T08:00:00-05:00",
       "end": "2026-10-24T08:40:00-05:00",
@@ -1018,17 +1003,6 @@
       ]
     },
     {
-      "summary": "Madison: Tutor",
-      "start": "2026-10-30T17:15:00-05:00",
-      "end": "2026-10-30T18:15:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
       "summary": "Max: Learn to Play Hockey",
       "start": "2026-10-31T08:00:00-05:00",
       "end": "2026-10-31T08:40:00-05:00",
@@ -1343,15 +1317,13 @@
       ]
     },
     {
-      "summary": "Madison: Tutor",
+      "summary": "Tutoring",
       "start": "2026-11-06T17:15:00-06:00",
       "end": "2026-11-06T18:15:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
+      "children": []
     },
     {
       "summary": "Max: Learn to Play Hockey",
@@ -1674,15 +1646,13 @@
       ]
     },
     {
-      "summary": "Madison: Tutor",
+      "summary": "Tutoring",
       "start": "2026-11-13T17:15:00-06:00",
       "end": "2026-11-13T18:15:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
+      "children": []
     },
     {
       "summary": "Max: Learn to Play Hockey",
@@ -1977,15 +1947,13 @@
       ]
     },
     {
-      "summary": "Madison: Tutor",
+      "summary": "Tutoring",
       "start": "2026-11-20T17:15:00-06:00",
       "end": "2026-11-20T18:15:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
+      "children": []
     },
     {
       "summary": "Max: Learn to Play Hockey",
