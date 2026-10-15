@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T13:14:09.595865-05:00",
+  "generated_at": "2026-10-15T17:11:55.396436-05:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Oct 15 at 5:30 PM \u2022 North-East Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
-      "title": "Q&A: The \u201ccollision\u201d between AI, your brain, and society",
+      "title": "State of Supply Chain Sustainability Report finds corporate commitment at record high, but governance lags behind",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-14",
+      "date": "2026-10-15",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/collision-between-ai-your-brain-and-society-eric-so-book-1015"
+      "url": "https://news.mit.edu/2026/state-of-supply-chain-sustainability-report-1015"
     },
     {
-      "title": "Researchers improve weather forecasts looking two to six weeks out",
+      "title": "AI model decodes the language cells use to communicate",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-14",
+      "date": "2026-10-15",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/researchers-improve-weather-forecasts-looking-two-six-weeks-out-1014"
+      "url": "https://news.mit.edu/2026/ai-model-decodes-language-cells-use-communicate-1015"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.8,
-    "change_pct": 0.99,
+    "value": 57.78,
+    "change_pct": 0.94,
     "as_of": "2026-10-15"
   }
 }
