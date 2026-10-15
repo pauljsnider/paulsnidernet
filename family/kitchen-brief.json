@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T20:25:30.818854-05:00",
+  "generated_at": "2026-10-15T02:21:35.221052-05:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Oct 15 at 5:30 PM \u2022 North-East Branch",
@@ -8,25 +8,25 @@
     "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-10"
   },
   "kc_news": {
-    "title": "A Missouri theater company commissioned its own Dracula to put a stake in high licensing fees",
+    "title": "Kansas City coffee shops are turning matcha into the hottest fall beverage. Try these unique drinks",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-10-10/a-missouri-theater-company-commissioned-its-own-dracula-to-put-a-stake-in-high-licensing-fees"
+    "url": "https://www.kcur.org/arts-life/2026-10-10/kansas-city-coffee-shops-matcha-fall-menu-pumpkin"
   },
   "ai": [
+    {
+      "title": "Q&A: The \u201ccollision\u201d between AI, your brain, and society",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-14",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/collision-between-ai-your-brain-and-society-eric-so-book-1015"
+    },
     {
       "title": "Researchers improve weather forecasts looking two to six weeks out",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-14",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/researchers-improve-weather-forecasts-looking-two-six-weeks-out-1014"
-    },
-    {
-      "title": "How artificial neural networks build their own learning machinery",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-13",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/how-artificial-neural-networks-build-their-own-learning-machinery-1013"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 27204.38,
-      "change_pct": -0.15,
-      "as_of": "2026-10-13"
+      "value": 26692.87,
+      "change_pct": -1.88,
+      "as_of": "2026-10-14"
     }
   ],
   "ticker": {
