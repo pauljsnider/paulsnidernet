@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-16T12:22:05.868342-05:00",
+  "generated_at": "2026-10-16T16:01:03.075728-05:00",
   "local": {
-    "title": "Movie: 'The Addams Family'",
-    "detail": "Fri, Oct 16 at 1:00 PM \u2022 Plaza Branch",
+    "title": "Teen Fall Lock-In",
+    "detail": "Fri, Oct 16 at 5:30 PM \u2022 Irene H. Ruiz Branch",
     "date": "2026-10-16",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-addams-family"
+    "url": "https://kclibrary.org/calendar/teen-fall-lock"
   },
   "kc_news": {
     "title": "Tourists are flocking to Kansas towns on Route 66 this year for the 100th anniversary",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.4,
-    "change_pct": -0.66,
+    "value": 57.79,
+    "change_pct": 0.02,
     "as_of": "2026-10-16"
   }
 }
