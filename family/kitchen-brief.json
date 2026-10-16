@@ -1,32 +1,32 @@
 {
-  "generated_at": "2026-10-16T07:22:35.788659-05:00",
+  "generated_at": "2026-10-16T12:22:05.868342-05:00",
   "local": {
-    "title": "Kindergarten Readiness Storytime",
-    "detail": "Fri, Oct 16 at 10:30 AM \u2022 Plaza Branch",
+    "title": "Movie: 'The Addams Family'",
+    "detail": "Fri, Oct 16 at 1:00 PM \u2022 Plaza Branch",
     "date": "2026-10-16",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-26"
+    "url": "https://kclibrary.org/calendar/movie-addams-family"
   },
   "kc_news": {
-    "title": "How Kansas City Ballet gives Dorothy's ruby slippers their sparkle, 288 rhinestones at a time",
+    "title": "Tourists are flocking to Kansas towns on Route 66 this year for the 100th anniversary",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-10-16/how-kansas-city-ballet-gives-dorothys-ruby-slippers-their-sparkle-288-rhinestones-at-a-time"
+    "url": "https://www.kcur.org/arts-life/2026-10-16/kansas-route-66-highway-tourism-baxter-springs"
   },
   "ai": [
+    {
+      "title": "Fostering community amid Kendall Square\u2019s innovation",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-16",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/fostering-community-amid-kendall-square-innovation-1016"
+    },
     {
       "title": "State of Supply Chain Sustainability Report finds corporate commitment at record high, but governance lags behind",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-15",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/state-of-supply-chain-sustainability-report-1015"
-    },
-    {
-      "title": "AI model decodes the language cells use to communicate",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-15",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/ai-model-decodes-language-cells-use-communicate-1015"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.78,
-    "change_pct": 0.94,
-    "as_of": "2026-10-15"
+    "value": 57.4,
+    "change_pct": -0.66,
+    "as_of": "2026-10-16"
   }
 }
