@@ -1,91 +1,7 @@
 {
-  "generated_at": "2026-10-15T21:17:04.818778-05:00",
+  "generated_at": "2026-10-16T05:20:44.349930-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 1",
-      "start": "2026-10-15",
-      "end": "2026-10-16",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Madison: Library",
-      "start": "2026-10-15",
-      "end": "2026-10-16",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Max: PE",
-      "start": "2026-10-15",
-      "end": "2026-10-16",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Peace Week Spirit Day / Cougar Price, Kindness Inside. Wear our school colors to show what it means to be a Cougar at Overland Trail!",
-      "start": "2026-10-15",
-      "end": "2026-10-16",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Will: PE",
-      "start": "2026-10-15",
-      "end": "2026-10-16",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Fall Book Fair Classrooms Visits",
-      "start": "2026-10-15T09:00:00-05:00",
-      "end": "2026-10-15T12:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-10-15T17:00:00-05:00",
-      "end": "2026-10-15T18:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-10-15T19:00:00-05:00",
-      "end": "2026-10-15T19:55:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 2",
       "start": "2026-10-16",
@@ -1979,6 +1895,57 @@
       "children": [
         "Madison"
       ]
+    },
+    {
+      "summary": "U.S. Federal Holiday: Thanksgiving Day",
+      "start": "2026-11-26",
+      "end": "2026-11-27",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "US Federal Holiday: Thanksgiving Day",
+      "start": "2026-11-26",
+      "end": "2026-11-27",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-11-26T17:00:00-06:00",
+      "end": "2026-11-26T18:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-11-26T19:00:00-06:00",
+      "end": "2026-11-26T19:55:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Chiefs @ Bills",
+      "start": "2026-11-26T19:20:00-06:00",
+      "end": "2026-11-26T22:50:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
     }
   ]
 }
