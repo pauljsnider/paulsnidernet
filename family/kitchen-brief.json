@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-15T17:11:55.396436-05:00",
+  "generated_at": "2026-10-15T20:15:43.855197-05:00",
   "local": {
-    "title": "Art Club | Grupo de Arte",
-    "detail": "Thu, Oct 15 at 5:30 PM \u2022 North-East Branch",
-    "date": "2026-10-15",
+    "title": "Kindergarten Readiness Storytime",
+    "detail": "Fri, Oct 16 at 10:30 AM \u2022 Plaza Branch",
+    "date": "2026-10-16",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-10"
+    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-26"
   },
   "kc_news": {
     "title": "A Missouri theater company commissioned its own Dracula to put a stake in high licensing fees",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7718.94,
-      "change_pct": -1.11,
-      "as_of": "2026-10-14"
+      "value": 7744.06,
+      "change_pct": 0.33,
+      "as_of": "2026-10-15"
     },
     {
       "name": "Nasdaq",
