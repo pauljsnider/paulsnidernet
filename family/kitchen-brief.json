@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-16T18:31:51.068122-05:00",
+  "generated_at": "2026-10-16T23:17:17.528242-05:00",
   "local": {
-    "title": "Teen Fall Lock-In",
-    "detail": "Fri, Oct 16 at 5:30 PM \u2022 Irene H. Ruiz Branch",
-    "date": "2026-10-16",
+    "title": "Canceled: Saturday Storytime",
+    "detail": "Sat, Oct 17 at 10:30 AM \u2022 Plaza Branch",
+    "date": "2026-10-17",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/teen-fall-lock"
+    "url": "https://kclibrary.org/calendar/canceled-saturday-storytime-0"
   },
   "kc_news": {
     "title": "Tourists are flocking to Kansas towns on Route 66 this year for the 100th anniversary",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7744.06,
-      "change_pct": 0.33,
-      "as_of": "2026-10-15"
+      "value": 7659.44,
+      "change_pct": -1.09,
+      "as_of": "2026-10-16"
     },
     {
       "name": "Nasdaq",
