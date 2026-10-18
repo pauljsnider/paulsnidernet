@@ -1,100 +1,7 @@
 {
-  "generated_at": "2026-10-17T21:09:36.032728-05:00",
+  "generated_at": "2026-10-18T05:06:07.123589-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "Max: Learn to Play Hockey",
-      "start": "2026-10-17T08:00:00-05:00",
-      "end": "2026-10-17T08:40:00-05:00",
-      "all_day": false,
-      "location": "19900 Johnson Dr., Shawnee, KS 66218",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Will: Learn to Play Hockey",
-      "start": "2026-10-17T08:00:00-05:00",
-      "end": "2026-10-17T08:40:00-05:00",
-      "all_day": false,
-      "location": "19900 Johnson Dr., Shawnee, KS 66218",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Max Soccer: F26KB Major Derek vs Assefa",
-      "start": "2026-10-17T09:00:00-05:00",
-      "end": "2026-10-17T09:30:00-05:00",
-      "all_day": false,
-      "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
-      "source": "Max Soccer - Major Derek",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Will Soccer: Vipers FC U8B vs Wizards U8/U9",
-      "start": "2026-10-17T09:00:00-05:00",
-      "end": "2026-10-17T10:00:00-05:00",
-      "all_day": false,
-      "location": "10541 S Warwick St\nOlathe KS",
-      "source": "Will Soccer - Vipers FC U8B",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Will Baseball: Mustangs (Moss) @ Raptors 8U",
-      "start": "2026-10-17T12:00:00-05:00",
-      "end": "2026-10-17T13:15:00-05:00",
-      "all_day": false,
-      "location": "8000 Monticello Rd\nShawnee KS",
-      "source": "Will Baseball",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Birthday Party",
-      "start": "2026-10-17T12:30:00-05:00",
-      "end": "2026-10-17T14:00:00-05:00",
-      "all_day": false,
-      "location": "Eagles Gymnastics",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Will Baseball: Mustangs (Moss) @ Monarchs 8U",
-      "start": "2026-10-17T13:30:00-05:00",
-      "end": "2026-10-17T14:45:00-05:00",
-      "all_day": false,
-      "location": "8000 Monticello Rd\nShawnee KS",
-      "source": "Will Baseball",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "KC Mavericks vs Rapid City Rush",
-      "start": "2026-10-17T18:05:00-05:00",
-      "end": "2026-10-17T20:35:00-05:00",
-      "all_day": false,
-      "location": "Cable Dahmer Arena",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Thriller on C-Street: Macabre Promenade 2026",
-      "start": "2026-10-17T19:00:00-05:00",
-      "end": "2026-10-17T22:00:00-05:00",
-      "all_day": false,
-      "location": "Historic Commercial Street / Dance With Me, 224 E Commercial St, Springfield, MO 65803",
-      "source": "Family Email Events",
-      "children": []
-    },
     {
       "summary": "Will Baseball: Mustangs (Moss) @ Blue Bananas 8u 8U",
       "start": "2026-10-18T08:00:00-05:00",
@@ -1996,6 +1903,17 @@
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events",
       "children": []
+    },
+    {
+      "summary": "Max: Junior Basketball (Ages 4-5)",
+      "start": "2026-11-28T09:30:00-06:00",
+      "end": "2026-11-28T10:25:00-06:00",
+      "all_day": false,
+      "location": "TBA",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
     }
   ]
 }
