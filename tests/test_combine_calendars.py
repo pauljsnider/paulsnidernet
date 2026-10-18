@@ -651,6 +651,37 @@ END:VCALENDAR
             description,
         )
 
+    def test_religious_education_holiday_exclusions_are_generic_and_local(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        matches = [e for e in calendar.walk('VEVENT')
+                   if str(e['UID']) == 'family-religious-education-20260915@paulsnider.net']
+        self.assertEqual(1, len(matches))
+        event = matches[0]
+        self.assertEqual('Religious Education', str(event['SUMMARY']))
+        self.assertEqual('2026-09-15T16:30:00-05:00', event['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-09-15T17:45:00-05:00', event['DTEND'].dt.isoformat())
+        excluded = ['2026-11-24', '2026-12-08', '2026-12-15', '2026-12-22',
+                    '2026-12-29', '2027-02-09', '2027-03-16']
+        self.assertEqual(excluded, [v.dts[0].dt.date().isoformat() for v in event['EXDATE']])
+        for value in event['EXDATE']:
+            self.assertEqual('America/Chicago', value.params['TZID'])
+            self.assertEqual('16:30', value.dts[0].dt.strftime('%H:%M'))
+        for field in ['X-FAMILY-CHILDREN', 'ATTENDEE', 'ORGANIZER', 'URL', 'DESCRIPTION']:
+            self.assertNotIn(field, event)
+        combined = combine_calendars([calendar], ['Family Email Events'])
+        feed = build_kitchen_feed(combined, now=pytz.UTC.localize(datetime(2026, 10, 18)), days=200)
+        rows = [e for e in feed['events'] if e['summary'] == 'Religious Education']
+        dates = {e['start'][:10] for e in rows}
+        self.assertFalse(set(excluded) & dates)
+        for expected in ['2026-11-17', '2026-12-01', '2027-01-05', '2027-02-02',
+                         '2027-02-16', '2027-03-09', '2027-03-23']:
+            self.assertIn(expected, dates)
+        by_date = {e['start'][:10]: e for e in rows}
+        self.assertEqual('2026-10-27T16:30:00-05:00', by_date['2026-10-27']['start'])
+        self.assertEqual('2026-11-03T16:30:00-06:00', by_date['2026-11-03']['start'])
+        self.assertEqual('2027-03-23T16:30:00-05:00', by_date['2027-03-23']['start'])
+        self.assertTrue(all(e['end'][11:16] == '17:45' and e['children'] == [] for e in rows))
+
     def test_ote_fall_family_events_have_current_dates_and_times(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         events_by_uid = {
