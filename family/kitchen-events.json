@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T14:51:13.628692-05:00",
+  "generated_at": "2026-10-17T20:58:24.841785-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -94,6 +94,17 @@
       "location": "Historic Commercial Street / Dance With Me, 224 E Commercial St, Springfield, MO 65803",
       "source": "Family Email Events",
       "children": []
+    },
+    {
+      "summary": "Will Baseball: Mustangs (Moss) @ Blue Bananas 8u 8U",
+      "start": "2026-10-18T08:00:00-05:00",
+      "end": "2026-10-18T09:15:00-05:00",
+      "all_day": false,
+      "location": "8000 Monticello Rd\nShawnee KS",
+      "source": "Will Baseball",
+      "children": [
+        "Will"
+      ]
     },
     {
       "summary": "Madison Soccer: Jr Current at LS United Pumas",
@@ -211,17 +222,13 @@
       ]
     },
     {
-      "summary": "Religious Education - Max, Will, Madison",
+      "summary": "Religious Education",
       "start": "2026-10-20T16:30:00-05:00",
       "end": "2026-10-20T17:45:00-05:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
+      "children": []
     },
     {
       "summary": "Madison: OTE Virtual Parent-Teacher Conference",
@@ -600,17 +607,13 @@
       ]
     },
     {
-      "summary": "Religious Education - Max, Will, Madison",
+      "summary": "Religious Education",
       "start": "2026-10-27T16:30:00-05:00",
       "end": "2026-10-27T17:45:00-05:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
+      "children": []
     },
     {
       "summary": "Madison Tutor w/ Ava",
@@ -972,17 +975,13 @@
       "children": []
     },
     {
-      "summary": "Religious Education - Max, Will, Madison",
+      "summary": "Religious Education",
       "start": "2026-11-03T16:30:00-06:00",
       "end": "2026-11-03T17:45:00-06:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
+      "children": []
     },
     {
       "summary": "Madison Tutor w/ Ava",
@@ -1300,17 +1299,13 @@
       ]
     },
     {
-      "summary": "Religious Education - Max, Will, Madison",
+      "summary": "Religious Education",
       "start": "2026-11-10T16:30:00-06:00",
       "end": "2026-11-10T17:45:00-06:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
+      "children": []
     },
     {
       "summary": "Madison Tutor w/ Ava",
@@ -1665,17 +1660,13 @@
       ]
     },
     {
-      "summary": "Religious Education - Max, Will, Madison",
+      "summary": "Religious Education",
       "start": "2026-11-17T16:30:00-06:00",
       "end": "2026-11-17T17:45:00-06:00",
       "all_day": false,
       "location": "",
       "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
+      "children": []
     },
     {
       "summary": "Madison Tutor w/ Ava",
@@ -1922,19 +1913,6 @@
       "source": "Family Email Events",
       "children": [
         "Madison"
-      ]
-    },
-    {
-      "summary": "Religious Education - Max, Will, Madison",
-      "start": "2026-11-24T16:30:00-06:00",
-      "end": "2026-11-24T17:45:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
       ]
     },
     {
