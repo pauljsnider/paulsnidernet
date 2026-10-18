@@ -1,85 +1,69 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "generated_at": "2026-10-11T15:03:55.378Z",
-  "expires_at": "2026-10-19T05:00:00.000Z",
-  "week_start": "2026-10-12",
-  "week_end": "2026-10-19",
+  "generated_at": "2026-10-18T15:03:55.324Z",
+  "expires_at": "2026-10-26T05:00:00.000Z",
+  "week_start": "2026-10-19",
+  "week_end": "2026-10-26",
   "children": {
     "Madison": [
       {
         "kind": "learning",
         "text": "Amplify - Unit 3: Poetry",
         "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
+        "expires_at": "2026-10-26T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-08"
+        "source_date": "2026-10-16"
       },
       {
         "kind": "learning",
-        "text": "Math - Volume",
+        "text": "Math - Volume & Multiply Multi-Digit Numbers",
         "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
+        "expires_at": "2026-10-26T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-08"
+        "source_date": "2026-10-16"
       },
       {
         "kind": "learning",
-        "text": "Phonics - Review 6 Syllable Types, Single Syllable",
+        "text": "Phonics - Closed, Simple Multisyllable",
         "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
+        "expires_at": "2026-10-26T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-08"
+        "source_date": "2026-10-16"
       },
       {
         "kind": "learning",
         "text": "Science: Unit 2: Earth's Systems",
         "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
+        "expires_at": "2026-10-26T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-08"
+        "source_date": "2026-10-16"
       }
     ],
     "Will": [
       {
         "kind": "learning",
-        "text": "Phonics: We will complete lesson 8 over our next set of vowel teams, ai, ay, oi, oy.",
+        "text": "Phonics: We will begin lesson 9 over our next set of vowel teams, au and aw.",
         "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
+        "expires_at": "2026-10-26T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-09"
+        "source_date": "2026-10-16"
       },
       {
         "kind": "learning",
-        "text": "Math: We will finish lesson 7, two digit subtracting with and without regrouping!",
+        "text": "Amplify: Domain 4: Our Planet Cycles in Nature -",
         "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
+        "expires_at": "2026-10-26T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-09"
-      },
-      {
-        "kind": "learning",
-        "text": "Amplify: Domain 3: Legends and Heroes: Greek Myths",
-        "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-10-09"
-      },
-      {
-        "kind": "learning",
-        "text": "Science: States of Matter - we will continue learning about solids, liquids, and gasses.",
-        "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-10-09"
+        "source_date": "2026-10-16"
       },
       {
         "kind": "bring",
         "text": "Bring library books on Monday!",
-        "date": "2026-10-12",
-        "expires_at": "2026-10-13T05:00:00.000Z",
+        "date": "2026-10-19",
+        "expires_at": "2026-10-20T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-09"
+        "source_date": "2026-10-16"
       }
     ],
     "Max": [
@@ -87,25 +71,25 @@
         "kind": "learning",
         "text": "Amplify : Domain 3: Stories",
         "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
+        "expires_at": "2026-10-26T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-09"
+        "source_date": "2026-10-16"
       },
       {
         "kind": "learning",
-        "text": "95% : Lesson 6: i & s & Lesson 7: h & b",
+        "text": "95% : Lesson 7: h & b",
         "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
+        "expires_at": "2026-10-26T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-09"
+        "source_date": "2026-10-16"
       },
       {
         "kind": "learning",
-        "text": "iReady : Lesson 8: Two Dimensional Shapes & Lesson 6: Three Dimensional Shapes",
+        "text": "iReady : Lesson 6: Three Dimensional Shapes",
         "date": null,
-        "expires_at": "2026-10-19T05:00:00.000Z",
+        "expires_at": "2026-10-26T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-09"
+        "source_date": "2026-10-16"
       }
     ]
   }
