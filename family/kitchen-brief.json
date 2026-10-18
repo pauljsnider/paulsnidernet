@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-17T19:57:46.815230-05:00",
+  "generated_at": "2026-10-18T00:49:57.638402-05:00",
   "local": {
-    "title": "Teen Fall Fest",
-    "detail": "Sat, Oct 17 at 5:00 PM \u2022 Plaza Branch",
-    "date": "2026-10-17",
+    "title": "Alien Movie Marathon",
+    "detail": "Sun, Oct 18 at 11:30 AM \u2022 Plaza Branch",
+    "date": "2026-10-18",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/teen-fall-fest"
+    "url": "https://kclibrary.org/calendar/alien-movie-marathon"
   },
   "kc_news": {
     "title": "Why millions have watched a hot dog touch a radio tower in Missouri",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Giving AI a \u201ccrystal clear\u201d view of the materials world",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-17",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/giving-ai-crystal-clear-view-of-materials-world-1018"
+    },
+    {
       "title": "Fostering community amid Kendall Square\u2019s innovation",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-16",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/fostering-community-amid-kendall-square-innovation-1016"
-    },
-    {
-      "title": "State of Supply Chain Sustainability Report finds corporate commitment at record high, but governance lags behind",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-15",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/state-of-supply-chain-sustainability-report-1015"
     }
   ],
   "markets": [
