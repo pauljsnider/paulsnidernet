@@ -1,47 +1,7 @@
 {
-  "generated_at": "2026-10-18T21:25:46.820971-05:00",
+  "generated_at": "2026-10-19T06:34:41.524097-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "Will Baseball: Mustangs (Moss) @ Blue Bananas 8u 8U",
-      "start": "2026-10-18T08:00:00-05:00",
-      "end": "2026-10-18T09:15:00-05:00",
-      "all_day": false,
-      "location": "8000 Monticello Rd\nShawnee KS",
-      "source": "Will Baseball",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Madison Soccer: Jr Current at LS United Pumas",
-      "start": "2026-10-18T09:15:00-05:00",
-      "end": "2026-10-18T09:15:00-05:00",
-      "all_day": false,
-      "location": "6310 Lewis Road, Kansas City, MO 64132",
-      "source": "TeamSnap Events (Madison + Max + Will)",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "St. Michael First Reconciliation Parent Meeting - Attend ONE (Option 2 of 2)",
-      "start": "2026-10-18T13:00:00-05:00",
-      "end": "2026-10-18T14:15:00-05:00",
-      "all_day": false,
-      "location": "St. Michael the Archangel School Cafeteria, 14201 Nall Ave., Leawood, KS 66223",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Chiefs vs Chargers - Paul + Robin Going",
-      "start": "2026-10-18T15:25:00-05:00",
-      "end": "2026-10-18T18:55:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
     {
       "summary": "DAY 3",
       "start": "2026-10-19",
