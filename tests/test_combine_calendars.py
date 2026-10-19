@@ -651,6 +651,45 @@ END:VCALENDAR
             description,
         )
 
+    def test_five_approved_school_events_dates_and_unknown_ends(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        expected = {
+            'ote-kindergarten-pajama-day-20261021@paulsnider.net': ('Kindergarten Pajama Day', '2026-10-21', '2026-10-22'),
+            'ote-fall-parade-20261030@paulsnider.net': ('OTE Fall Parade', '2026-10-30T14:15:00-05:00', None),
+            'ote-veterans-day-assembly-20261113@paulsnider.net': ('OTE Veterans Day Assembly', '2026-11-13T09:15:00-06:00', None),
+            'fifth-grade-elective-showcase-20261217@paulsnider.net': ('Fifth Grade Elective Showcase', '2026-12-17T09:20:00-06:00', '2026-12-17T11:25:00-06:00'),
+            'ote-winter-celebration-20261218@paulsnider.net': ('Winter Celebration', '2026-12-18T11:00:00-06:00', '2026-12-18T11:45:00-06:00'),
+        }
+        selected = Calendar()
+        for uid, (title, start, end) in expected.items():
+            matches = [e for e in calendar.walk('VEVENT') if str(e['UID']) == uid]
+            self.assertEqual(1, len(matches))
+            e = matches[0]
+            self.assertEqual(title, str(e['SUMMARY']))
+            self.assertEqual(start, e['DTSTART'].dt.isoformat())
+            if end is None:
+                self.assertNotIn('DTEND', e)
+                self.assertNotIn('DURATION', e)
+                self.assertIn('End time not published', str(e['DESCRIPTION']))
+            else:
+                self.assertEqual(end, e['DTEND'].dt.isoformat())
+            self.assertEqual('TRANSPARENT', str(e['TRANSP']))
+            for field in ['URL', 'ATTENDEE', 'ORGANIZER', 'X-FAMILY-CHILDREN']:
+                self.assertNotIn(field, e)
+            selected.add_component(e)
+        combined = combine_calendars([selected], ['Family Email Events'])
+        feed = build_kitchen_feed(combined, now=pytz.UTC.localize(datetime(2026, 10, 19)), days=75)
+        self.assertEqual(5, len(feed['events']))
+        rows = {e['summary']: e for e in feed['events']}
+        self.assertTrue(rows['Kindergarten Pajama Day']['all_day'])
+        self.assertEqual('2026-10-22', rows['Kindergarten Pajama Day']['end'])
+        self.assertEqual('2026-10-30T15:15:00-05:00', rows['OTE Fall Parade']['end'])
+        self.assertEqual('2026-11-13T10:15:00-06:00', rows['OTE Veterans Day Assembly']['end'])
+        self.assertEqual('Overland Trail Middle School', rows['Fifth Grade Elective Showcase']['location'])
+        self.assertEqual('2026-12-17T11:25:00-06:00', rows['Fifth Grade Elective Showcase']['end'])
+        self.assertEqual('2026-12-18T11:45:00-06:00', rows['Winter Celebration']['end'])
+        self.assertTrue(all(e['children'] == [] for e in feed['events']))
+
     def test_religious_education_holiday_exclusions_are_generic_and_local(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         matches = [e for e in calendar.walk('VEVENT')
