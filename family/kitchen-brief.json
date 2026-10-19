@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T02:42:13.087255-05:00",
+  "generated_at": "2026-10-19T10:32:42.100055-05:00",
   "local": {
     "title": "Movie: 'The Ghost & Mr. Chicken'",
     "detail": "Mon, Oct 19 at 2:00 PM \u2022 Central Library",
@@ -11,7 +11,7 @@
     "title": "Noah Adams, longtime host of NPR's All Things Considered, has died",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/2026-10-18/noah-adams-longtime-host-of-nprs-all-things-considered-has-died"
+    "url": "https://www.kcur.org/arts-life/2026-10-18/noah-adams-longtime-host-of-nprs-all-things-considered-has-died"
   },
   "ai": [
     {
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.79,
-    "change_pct": 0.02,
-    "as_of": "2026-10-16"
+    "value": 57.59,
+    "change_pct": -0.35,
+    "as_of": "2026-10-19"
   }
 }
