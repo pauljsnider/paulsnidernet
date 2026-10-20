@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-19T19:17:27.379384-05:00",
+  "generated_at": "2026-10-20T00:58:00.919307-05:00",
   "local": {
-    "title": "Teen Hangout",
-    "detail": "Mon, Oct 19 at 5:30 PM \u2022 Trails West Branch",
-    "date": "2026-10-19",
+    "title": "Baby Storytime",
+    "detail": "Tue, Oct 20 at 9:30 AM \u2022 Plaza Branch",
+    "date": "2026-10-20",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/teen-hangout-39"
+    "url": "https://kclibrary.org/calendar/baby-storytime-116"
   },
   "kc_news": {
     "title": "Noah Adams, longtime host of NPR's All Things Considered, has died",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26713.03,
-      "change_pct": 0.08,
-      "as_of": "2026-10-15"
+      "value": 26430.89,
+      "change_pct": 1.11,
+      "as_of": "2026-10-19"
     }
   ],
   "ticker": {
