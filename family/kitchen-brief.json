@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-20T06:27:48.102254-05:00",
+  "generated_at": "2026-10-20T11:55:21.810629-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Tue, Oct 20 at 9:30 AM \u2022 Plaza Branch",
+    "title": "LEGO Club",
+    "detail": "Tue, Oct 20 at 2:30 PM \u2022 Plaza Branch",
     "date": "2026-10-20",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-116"
+    "url": "https://kclibrary.org/calendar/lego-club-12"
   },
   "kc_news": {
-    "title": "Noah Adams, longtime host of NPR's All Things Considered, has died",
+    "title": "A Kansas horse track is reopening for the state\u2019s first races in 16 years",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-10-18/noah-adams-longtime-host-of-nprs-all-things-considered-has-died"
+    "url": "https://www.kcur.org/2026-10-20/a-kansas-horse-track-is-reopening-for-the-states-first-races-in-16-years"
   },
   "ai": [
     {
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 57.48,
-    "change_pct": -0.54,
-    "as_of": "2026-10-19"
+    "value": 57.9,
+    "change_pct": 0.73,
+    "as_of": "2026-10-20"
   }
 }
