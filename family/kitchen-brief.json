@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T16:00:57.992880-05:00",
+  "generated_at": "2026-10-19T19:17:27.379384-05:00",
   "local": {
     "title": "Teen Hangout",
     "detail": "Mon, Oct 19 at 5:30 PM \u2022 Trails West Branch",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7659.44,
-      "change_pct": -1.09,
-      "as_of": "2026-10-16"
+      "value": 7690.73,
+      "change_pct": 0.41,
+      "as_of": "2026-10-19"
     },
     {
       "name": "Nasdaq",
