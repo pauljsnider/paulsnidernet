@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-21T15:06:00.536439-05:00",
+  "generated_at": "2026-10-21T18:17:14.638820-05:00",
   "local": {
-    "title": "Movie: 'The Lost Boys'",
-    "detail": "Wed, Oct 21 at 2:00 PM \u2022 Central Library",
-    "date": "2026-10-21",
+    "title": "Art Club | Grupo de Arte",
+    "detail": "Thu, Oct 22 at 5:30 PM \u2022 North-East Branch",
+    "date": "2026-10-22",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-lost-boys"
+    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-11"
   },
   "kc_news": {
     "title": "Inside a former Missouri asylum, a psychiatric museum has a haunted reputation \u2014 and a noble mission",
@@ -33,8 +33,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 58.65,
-    "change_pct": 0.5,
+    "value": 58.64,
+    "change_pct": 0.48,
     "as_of": "2026-10-21"
   }
 }
