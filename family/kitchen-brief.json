@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T23:35:01.306742-05:00",
+  "generated_at": "2026-10-22T05:05:32.497984-05:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Oct 22 at 5:30 PM \u2022 North-East Branch",
@@ -34,6 +34,12 @@
       "name": "S&P 500",
       "value": 7757.17,
       "change_pct": 0.58,
+      "as_of": "2026-10-21"
+    },
+    {
+      "name": "Nasdaq",
+      "value": 26702.86,
+      "change_pct": 1.05,
       "as_of": "2026-10-21"
     }
   ],
