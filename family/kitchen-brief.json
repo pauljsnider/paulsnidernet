@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-22T05:05:32.497984-05:00",
+  "generated_at": "2026-10-22T10:15:16.029683-05:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Oct 22 at 5:30 PM \u2022 North-East Branch",
     "date": "2026-10-22",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-11"
+    "url": "https://kclibrary.org/index%2ephp/calendar/art-club-grupo-de-arte-11"
   },
   "kc_news": {
     "title": "Inside a former Missouri asylum, a psychiatric museum has a haunted reputation \u2014 and a noble mission",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 58.64,
-    "change_pct": 0.48,
-    "as_of": "2026-10-21"
+    "value": 58.6,
+    "change_pct": -0.07,
+    "as_of": "2026-10-22"
   }
 }
