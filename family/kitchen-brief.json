@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-23T14:08:42.427935-05:00",
+  "generated_at": "2026-10-23T18:05:45.709524-05:00",
   "local": {
-    "title": "Movie: 'Candyman'",
-    "detail": "Fri, Oct 23 at 2:00 PM \u2022 Central Library",
-    "date": "2026-10-23",
+    "title": "Movie: 'Hocus Pocus'",
+    "detail": "Sat, Oct 24 at 11:00 AM \u2022 Central Library",
+    "date": "2026-10-24",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-candyman"
+    "url": "https://kclibrary.org/calendar/movie-hocus-pocus"
   },
   "kc_news": {
     "title": "Inside a former Missouri asylum, a psychiatric museum has a haunted reputation \u2014 and a noble mission",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
-      "title": "Q&A: How AI came to model the \u201cmessy\u201d human mind",
+      "title": "At MIT, Martha Minow speaks on sustaining democracy, both by using and overcoming AI",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/qa-how-ai-came-to-model-messy-human-mind-1023"
+      "url": "https://news.mit.edu/2026/martha-minow-speaks-on-sustaining-democracy-using-overcoming-ai-1023"
     },
     {
-      "title": "Why teaching AI about symmetry could make prenatal diagnosis more reliable",
+      "title": "Reinforcing the value of human understanding at MIT",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-19",
+      "date": "2026-10-23",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/teaching-ai-about-symmetry-could-make-prenatal-diagnosis-more-reliable-1019"
+      "url": "https://news.mit.edu/2026/reinforcing-value-of-human-understanding-at-mit-1023"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 60.37,
-    "change_pct": 0.53,
+    "value": 60.25,
+    "change_pct": 0.33,
     "as_of": "2026-10-23"
   }
 }
