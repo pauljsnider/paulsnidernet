@@ -40,12 +40,12 @@ def api(path, *args):
         raise Denied('github-invalid-response')
 
 def trusted(user):
-    return (user.get('login'), user.get('id'), user.get('type')) in OWNERS
+    return isinstance(user, dict) and (user.get('login'), user.get('id'), user.get('type')) in OWNERS
 
 def refs(text, repo):
     # All references, not just closing keywords: parent/split/follow-up links must
     # not become a provenance escape. Historical revisions are included below.
-    text = html.unescape(re.sub(r'<[^>]+>', '', text or ''))
+    text = html.unescape(text or '')
     result = set()
     for r, n in re.findall(r'https://github\.com/([\w.-]+/[\w.-]+)/(?:issues|pull)/([1-9]\d*)', text):
         result.add((r.lower(), int(n)))
@@ -61,6 +61,7 @@ class Gate:
         self.state, self.fetch = Path(state), fetch
         self.state.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.visiting = set()
+        self.checked = {}
 
 
     def path(self, repo, number):
@@ -204,7 +205,9 @@ class Gate:
             self.save(repo, number, dict(version=1, repo=repo, number=number,
                 github_id=item['id'], creator=item['user'], sources=sorted(sources),
                 controller_bound=bool(binding or previous and previous.get('controller_bound')),
+                inputs=previous.get('inputs', {}) if previous else {},
                 first_seen=previous['first_seen'] if previous else int(time.time())))
+            self.checked[key] = item
             return True
         finally:
             self.visiting.remove(key)
@@ -233,6 +236,67 @@ class Gate:
         if event['updated_at'] != event['created_at']:
             raise Denied('edited-trigger-requires-history')
         self.check(repo, number)
+        sources = refs(event.get('body'), repo)
+        for r, n in sources:
+            if (r, n) != (repo, number):
+                self.check(r, n)
+        # Persist input lineage on the root receipt. Later removal of this
+        # comment or its link cannot remove the original source at merge time.
+        receipt = self.load(repo, number)
+        sources |= {(r, int(n)) for r, n in receipt['sources']}
+        sources.discard((repo, number))
+        receipt['sources'] = sorted(sources)
+        inputs = receipt.setdefault('inputs', {})
+        inputs[endpoint] = dict(id=event['id'], creator=event['user'],
+            body_sha256=hashlib.sha256((event.get('body') or '').encode()).hexdigest())
+        self.save(repo, number, receipt)
+        return event
+
+    def filter_inputs(self, repo, number, data, kind):
+        def rows(items, row_kind):
+            if not isinstance(items, list):
+                raise Denied('incomplete-prompt-input')
+            result = []
+            for item in items:
+                target = number
+                try:
+                    if row_kind == 'issues':
+                        target = item['number']
+                        self.check(repo, target, 'issue')
+                        fresh = self.checked[(repo, target)]
+                    else:
+                        identifier = item.get('databaseId') or item.get('id')
+                        if not isinstance(identifier, int) or isinstance(identifier, bool):
+                            raise Denied('missing-prompt-input-id')
+                        prefix = {'comments':'issues/comments', 'threads':'pulls/comments',
+                                  'reviews':f'pulls/{number}/reviews'}[row_kind]
+                        fresh = self.event(repo, number, f'{prefix}/{identifier}')
+                    # Pass freshly checked text, never the earlier cached body.
+                    result.append(dict(item, body=fresh.get('body') or '',
+                        **({'title':fresh['title']} if row_kind == 'issues' else {})))
+                except (Denied, AttributeError, KeyError, TypeError, ValueError, OSError, subprocess.TimeoutExpired) as exc:
+                    reason = str(exc) if isinstance(exc, Denied) else 'incomplete-prompt-input'
+                    alert(self.state, repo, target, 'coding-input', reason)
+            return result
+        if kind == 'snapshot':
+            # Preserve the original merge evidence/fingerprint. Never let a
+            # reviewer turn an unverified external instruction into bot advice.
+            for thread in data['threads']:
+                for item in thread['comments']:
+                    match = re.fullmatch(r'https://github\.com/' + re.escape(repo) +
+                        r'/pull/' + str(number) + r'#discussion_r([1-9]\d*)', item.get('url', ''))
+                    if not match:
+                        raise Denied('incomplete-review-input-id')
+                    fresh = self.event(repo, number, 'pulls/comments/' + match[1])
+                    if fresh.get('body') != item.get('body'):
+                        raise Denied('review-input-changed')
+            return data
+        if kind == 'threads':
+            threads = data['data']['repository']['pullRequest']['reviewThreads']['nodes']
+            for thread in threads:
+                thread['comments']['nodes'] = rows(thread['comments']['nodes'], 'threads')
+            return data
+        return rows(data, kind)
 
     def discussion(self, repo, number, comment):
         owner, name = repo.split('/')
@@ -263,11 +327,76 @@ class Gate:
                 self.check(r, n)
 
 
+SLACK_TEAM = 'T0AF9HX7CH4'
+SLACK_CHANNEL = 'C0AEW6K8W07'
+SLACK_BOT = 'B0AFQHAHYP3'
+
+def slack_call(method, token, payload):
+    req = urllib.request.Request('https://slack.com/api/' + method,
+        data=json.dumps(payload).encode(),
+        headers={'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'})
+    with urllib.request.urlopen(req, timeout=15) as response:
+        return json.load(response)
+
+def deliver_pending(state):
+    # Caller holds the state lock. Retry queued failures even if their original
+    # event cursor has advanced. Bound work and back off failed deliveries.
+    if os.environ.get('DRY_RUN') == 'true':
+        return
+    now = int(time.time())
+    pending = []
+    for path in sorted(state.glob('alert-*.json')):
+        try:
+            record = json.loads(path.read_text())
+            if not record.get('delivered') and now - record.get('attempt', 0) >= 900:
+                pending.append((path, record))
+        except (ValueError, OSError):
+            continue
+    pending = pending[:2]
+    if not pending:
+        return
+    token = os.environ.get('SLACK_BOT_TOKEN')
+    route_ok = False
+    try:
+        if token and os.environ.get('SLACK_NOTIFY_CHANNEL') == SLACK_CHANNEL:
+            identity = slack_call('auth.test', token, {})
+            route_ok = (identity.get('ok') is True and identity.get('team_id') == SLACK_TEAM
+                        and identity.get('bot_id') == SLACK_BOT)
+    except Exception:
+        pass
+    for path, record in pending:
+        delivered = False
+        if route_ok:
+            try:
+                response = slack_call('chat.postMessage', token, dict(channel=SLACK_CHANNEL,
+                    text=record['text'], unfurl_links=False, unfurl_media=False))
+                delivered = response.get('ok') is True and response.get('channel') == SLACK_CHANNEL
+            except Exception:
+                pass
+        record.update(attempt=now, delivered=delivered)
+        path.write_text(json.dumps(record))
+        os.chmod(path, 0o600)
+        if not delivered:
+            print('origin alert pending: verified Slack route unavailable', file=sys.stderr)
+
+def drain_pending():
+    # gh reads can occur inside a gate already holding this lock. Never wait on
+    # that parent process; the next scheduled transport invocation will retry.
+    if not STATE.exists():
+        return
+    with (STATE / 'lock').open('a') as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            return
+        deliver_pending(STATE)
+
 def alert(state, repo, number, phase, reason):
-    # Use the existing lane route only. No discovery of alternate recipients,
-    # no fallback family channel, no raw titles/bodies or API error text.
     text = f'PaulBot origin BLOCKED {phase}: {repo}#{number}; reason={reason}; source=https://github.com/{repo}/issues/{number}'
     print(text, file=sys.stderr)
+    # Dry runs neither send nor alter the real outbox/deduplication receipts.
+    if os.environ.get('DRY_RUN') == 'true':
+        return
     key = hashlib.sha256(f'{repo}#{number}:{phase}:{reason}'.encode()).hexdigest()
     path = state / f'alert-{key}.json'
     now = int(time.time())
@@ -275,30 +404,18 @@ def alert(state, repo, number, phase, reason):
         old = json.loads(path.read_text()) if path.exists() else {}
     except ValueError:
         old = {}
-    if now - old.get('attempt', 0) < (86400 if old.get('delivered') else 900):
-        return
-    delivered = False
-    token, channel = os.environ.get('SLACK_BOT_TOKEN'), os.environ.get('SLACK_NOTIFY_CHANNEL')
-    if token and channel and os.environ.get('DRY_RUN') != 'true':
-        try:
-            req = urllib.request.Request('https://slack.com/api/chat.postMessage',
-                data=json.dumps(dict(channel=channel, text=text, unfurl_links=False, unfurl_media=False)).encode(),
-                headers={'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'})
-            with urllib.request.urlopen(req, timeout=15) as response:
-                delivered = json.load(response).get('ok') is True
-        except Exception:
-            pass
-    path.write_text(json.dumps(dict(attempt=now, delivered=delivered, text=text)))
-    os.chmod(path, 0o600)
-    if not delivered:
-        print('origin alert pending: existing Slack route unavailable or dry run', file=sys.stderr)
+    if not old or old.get('delivered') and now - old.get('attempt', 0) >= 86400:
+        path.write_text(json.dumps(dict(attempt=0, delivered=False, text=text)))
+        os.chmod(path, 0o600)
+    deliver_pending(state)
 
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('command', choices=['check', 'bind', 'event', 'discussion'])
+    p.add_argument('command', choices=['check', 'bind', 'event', 'discussion', 'filter'])
     p.add_argument('repo'); p.add_argument('number', type=int)
     p.add_argument('--kind', default='auto', choices=['auto','issue','pr'])
+    p.add_argument('--input-kind', choices=['comments','reviews','threads','issues','snapshot'], default='comments')
     p.add_argument('--run', type=int); p.add_argument('--head', default=''); p.add_argument('--phase', default='coding')
     p.add_argument('--comment', default=''); p.add_argument('--source', type=int); p.add_argument('--endpoint', default='')
     a = p.parse_args()
@@ -306,6 +423,7 @@ def main():
     # Serializes source union and alert delivery across every lane and process.
     with (gate.state / 'lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
+        deliver_pending(gate.state)
         try:
             if a.phase == 'merge' and not re.fullmatch(r'[0-9a-f]{40}', a.head):
                 raise Denied('missing-exact-merge-head')
@@ -313,14 +431,16 @@ def main():
                 gate.workflow(a.repo, a.run, a.head)
             if a.command == 'bind' and not a.source:
                 raise Denied('missing-controller-source')
-            if a.command == 'discussion':
+            if a.command == 'filter':
+                print(json.dumps(gate.filter_inputs(a.repo, a.number, json.load(sys.stdin), a.input_kind)))
+            elif a.command == 'discussion':
                 gate.discussion(a.repo, a.number, a.comment)
             elif a.command == 'event':
                 gate.event(a.repo, a.number, a.endpoint)
             else:
                 gate.check(a.repo, a.number, a.kind, a.head,
                            (a.repo, a.source) if a.command == 'bind' else None)
-        except (Denied, KeyError, TypeError, ValueError, OSError, subprocess.TimeoutExpired) as exc:
+        except (Denied, AttributeError, KeyError, TypeError, ValueError, OSError, subprocess.TimeoutExpired) as exc:
             reason = str(exc) if isinstance(exc, Denied) else 'incomplete-provenance'
             alert(gate.state, a.repo, a.number, a.phase, reason)
             return 1

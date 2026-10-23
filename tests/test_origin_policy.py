@@ -7,7 +7,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
-spec = importlib.util.spec_from_file_location('origin', Path(__file__).resolve().parents[1] / 'scripts/paulbot-origin.py')
+spec = importlib.util.spec_from_file_location('origin', Path(__file__).resolve().parents[1] / 'scripts' / 'paulbot-origin.py')
 o = importlib.util.module_from_spec(spec); spec.loader.exec_module(o)
 PAUL = dict(login='pauljsnider', id=211066188, type='User')
 BOT = dict(login='allplays-paulbot[bot]', id=309595148, type='Bot')
@@ -74,11 +74,37 @@ class Tests(unittest.TestCase):
   with patch.dict(os.environ,{'PAULBOT_INTEGRITY_MODE':'off','ISSUE_FIXER_CONTROLLER_MODE':'security','PAULBOT_INTEGRITY_ASSOCIATIONS':'OWNER,MEMBER,COLLABORATOR'}):self.denied('outside')
  def test_legacy_binding_not_invented(self):
   self.item(2,BOT);self.items[2]['created_at']='2020-01-01T00:00:00Z';self.denied('legacy-bot',2,binding=(REPO,1))
- def test_alert_dedup_and_failed_delivery_retry(self):
-  with patch.dict(os.environ,{'DRY_RUN':'true'},clear=True),patch.object(o.time,'time',return_value=10000):
-   o.alert(self.g.state,REPO,1,'coding','outside');p=next(self.g.state.glob('alert-*'));first=p.read_text()
-   with patch.object(o.time,'time',return_value=10001):o.alert(self.g.state,REPO,1,'coding','outside')
-   self.assertEqual(p.read_text(),first);self.assertFalse(json.loads(first)['delivered'])
+ def test_alert_dry_run_has_no_receipt(self):
+  with patch.dict(os.environ,{'DRY_RUN':'true'},clear=True):
+   o.alert(self.g.state,REPO,1,'coding','outside')
+   self.assertEqual(list(self.g.state.glob('alert-*')),[])
+ def test_alert_retry_drain_and_success_dedup(self):
+  env={'SLACK_BOT_TOKEN':'synthetic','SLACK_NOTIFY_CHANNEL':o.SLACK_CHANNEL}
+  with patch.dict(os.environ,env,clear=True),patch.object(o.time,'time',return_value=10000),patch.object(o,'slack_call',return_value={'ok':False}) as send:
+   o.alert(self.g.state,REPO,1,'coding','outside')
+   p=next(self.g.state.glob('alert-*'));self.assertFalse(json.loads(p.read_text())['delivered'])
+   send.reset_mock();o.deliver_pending(self.g.state);send.assert_not_called()
+   with patch.object(o.time,'time',return_value=10901):
+    send.side_effect=[dict(ok=True,team_id=o.SLACK_TEAM,bot_id=o.SLACK_BOT),dict(ok=True,channel=o.SLACK_CHANNEL)]
+    o.deliver_pending(self.g.state)
+   self.assertTrue(json.loads(p.read_text())['delivered'])
+   send.reset_mock();o.alert(self.g.state,REPO,1,'coding','outside');send.assert_not_called()
+ def test_wrong_slack_route_never_sends(self):
+  with patch.dict(os.environ,{'SLACK_BOT_TOKEN':'synthetic','SLACK_NOTIFY_CHANNEL':'wrong'},clear=True),patch.object(o,'slack_call') as send:
+   o.alert(self.g.state,REPO,1,'coding','outside');send.assert_not_called()
+ def test_wrong_workspace_or_bot_never_sends(self):
+  for identity in [dict(ok=True,team_id='wrong',bot_id=o.SLACK_BOT),dict(ok=True,team_id=o.SLACK_TEAM,bot_id='wrong')]:
+   with patch.dict(os.environ,{'SLACK_BOT_TOKEN':'synthetic','SLACK_NOTIFY_CHANNEL':o.SLACK_CHANNEL},clear=True),patch.object(o,'slack_call',return_value=identity) as send:
+    for p in self.g.state.glob('alert-*'):p.unlink()
+    o.alert(self.g.state,REPO,1,'coding','outside');self.assertEqual(send.call_count,1)
+ def test_null_creator_denied(self):
+  self.items[1]['user']=None;self.denied('outside-or-unknown')
+ def test_autolink_and_html_sources_retained(self):
+  self.item(2,OUT)
+  for text in [f'<https://github.com/{REPO}/issues/2>',f'<a href="https://github.com/{REPO}/issues/2">source</a>']:
+   self.items[1]['body']=text;self.denied('outside')
+ def test_historical_autolink_retained(self):
+  self.item(2,OUT);self.edits[1]=[dict(deletedAt=None,diff=f'- <https://github.com/{REPO}/issues/2>',editor={'login':'pauljsnider'})];self.denied('outside')
  def test_invalid_trigger_endpoint_denied(self):
   with self.assertRaisesRegex(o.Denied,'invalid-trigger'):self.g.event(REPO,1,'../secrets')
  def test_workflow_paul_actor_and_rerun(self):
@@ -94,3 +120,58 @@ class Tests(unittest.TestCase):
   self.g.fetch=lambda *a:dict(actor=PAUL,triggering_actor=PAUL,head_sha='b'*40)
   with self.assertRaisesRegex(o.Denied,'workflow-head'):self.g.workflow(REPO,1,SHA)
 if __name__=='__main__':unittest.main()
+
+class InputTests(unittest.TestCase):
+ setUp=Tests.setUp
+ item=Tests.item
+ fetch=Tests.fetch
+ denied=Tests.denied
+ def setup_event(self, user=PAUL, body='Requirements', edited=False):
+  original=self.g.fetch
+  event=dict(id=17,user=user,body=body,issue_url=f'https://api.github.com/repos/{REPO}/issues/1',created_at='date',updated_at='later' if edited else 'date')
+  self.g.fetch=lambda path,*args:event if path.endswith('issues/comments/17') else original(path,*args)
+  return event
+ def test_outside_comment_omitted_and_alerted_despite_off_mode(self):
+  self.setup_event(OUT)
+  with patch.dict(os.environ,{'PAULBOT_INTEGRITY_MODE':'off','DRY_RUN':'false'},clear=True),patch.object(o,'slack_call') as send:
+   self.assertEqual(self.g.filter_inputs(REPO,1,[dict(id=17,body='cached')],'comments'),[])
+   self.assertEqual(len(list(self.g.state.glob('alert-*'))),1);send.assert_not_called()
+  self.assertTrue(self.g.check(REPO,1))
+ def test_paul_comment_uses_fresh_body_and_retains_digest(self):
+  self.setup_event()
+  result=self.g.filter_inputs(REPO,1,[dict(id=17,body='cached')],'comments')
+  self.assertEqual(result[0]['body'],'Requirements')
+  self.assertIn('issues/comments/17',self.g.load(REPO,1)['inputs'])
+ def test_edited_paul_comment_omitted(self):
+  self.setup_event(edited=True)
+  with patch.dict(os.environ,{'DRY_RUN':'true'}):
+   self.assertEqual(self.g.filter_inputs(REPO,1,[dict(id=17)],'comments'),[])
+ def test_comment_cannot_launder_outside_link(self):
+  self.item(2,OUT);self.setup_event(body=f'<https://github.com/{REPO}/issues/2>')
+  with patch.dict(os.environ,{'DRY_RUN':'true'}):
+   self.assertEqual(self.g.filter_inputs(REPO,1,[dict(id=17)],'comments'),[])
+ def test_comment_source_retained_after_removal(self):
+  self.item(2);event=self.setup_event(body='#2')
+  self.g.event(REPO,1,'issues/comments/17');event['body']='removed'
+  self.items[2]['user']=OUT;self.denied('outside')
+ def test_unknown_input_id_omitted(self):
+  with patch.dict(os.environ,{'DRY_RUN':'true'}):
+   self.assertEqual(self.g.filter_inputs(REPO,1,[dict(body='Requirements')],'comments'),[])
+
+ def test_inputs_survive_later_root_check(self):
+  event=self.setup_event();original=self.g.fetch
+  self.g.event(REPO,1,'issues/comments/17')
+  self.g.fetch=lambda path,*args:dict(event,id=18) if path.endswith('issues/comments/18') else original(path,*args)
+  self.g.event(REPO,1,'issues/comments/18');self.g.check(REPO,1)
+  self.assertEqual(set(self.g.load(REPO,1)['inputs']),{'issues/comments/17','issues/comments/18'})
+ def test_related_issue_uses_checked_snapshot(self):
+  original=self.g.fetch;reads=[]
+  def fetch(path,*args):
+   result=original(path,*args)
+   if path==f'repos/{REPO}/issues/1':
+    reads.append(path)
+    if len(reads)>1:return dict(result,body='unchecked replacement')
+   return result
+  self.g.fetch=fetch
+  result=self.g.filter_inputs(REPO,0,[dict(number=1)],'issues')
+  self.assertEqual(result[0]['body'],'');self.assertEqual(len(reads),1)
