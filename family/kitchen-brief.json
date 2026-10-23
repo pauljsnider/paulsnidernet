@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-22T18:17:59.841854-05:00",
+  "generated_at": "2026-10-22T23:40:23.524237-05:00",
   "local": {
-    "title": "Art Club | Grupo de Arte",
-    "detail": "Thu, Oct 22 at 5:30 PM \u2022 North-East Branch",
-    "date": "2026-10-22",
+    "title": "Kindergarten Readiness Storytime",
+    "detail": "Fri, Oct 23 at 10:30 AM \u2022 Plaza Branch",
+    "date": "2026-10-23",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-11"
+    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-27"
   },
   "kc_news": {
     "title": "Inside a former Missouri asylum, a psychiatric museum has a haunted reputation \u2014 and a noble mission",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Q&A: How AI came to model the \u201cmessy\u201d human mind",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-22",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/qa-how-ai-came-to-model-messy-human-mind-1023"
+    },
+    {
       "title": "Why teaching AI about symmetry could make prenatal diagnosis more reliable",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-19",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/teaching-ai-about-symmetry-could-make-prenatal-diagnosis-more-reliable-1019"
-    },
-    {
-      "title": "Giving AI a \u201ccrystal clear\u201d view of the materials world",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-17",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/giving-ai-crystal-clear-view-of-materials-world-1018"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26702.86,
-      "change_pct": 1.05,
-      "as_of": "2026-10-21"
+      "value": 26008.86,
+      "change_pct": -2.6,
+      "as_of": "2026-10-22"
     }
   ],
   "ticker": {
