@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-23T09:59:50.234219-05:00",
+  "generated_at": "2026-10-23T14:08:42.427935-05:00",
   "local": {
-    "title": "Kindergarten Readiness Storytime",
-    "detail": "Fri, Oct 23 at 10:30 AM \u2022 Plaza Branch",
+    "title": "Movie: 'Candyman'",
+    "detail": "Fri, Oct 23 at 2:00 PM \u2022 Central Library",
     "date": "2026-10-23",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-27"
+    "url": "https://kclibrary.org/calendar/movie-candyman"
   },
   "kc_news": {
     "title": "Inside a former Missouri asylum, a psychiatric museum has a haunted reputation \u2014 and a noble mission",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 60.59,
-    "change_pct": 0.89,
+    "value": 60.37,
+    "change_pct": 0.53,
     "as_of": "2026-10-23"
   }
 }
