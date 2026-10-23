@@ -1,70 +1,7 @@
 {
-  "generated_at": "2026-10-22T21:34:33.526053-05:00",
+  "generated_at": "2026-10-23T05:42:35.976100-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "NO SCHOOL Parent Teacher Conferences",
-      "start": "2026-10-22",
-      "end": "2026-10-23",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "No School - Madison, Will, Max",
-      "start": "2026-10-22",
-      "end": "2026-10-23",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Fall Conferences",
-      "start": "2026-10-22T08:15:00-05:00",
-      "end": "2026-10-22T15:40:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-10-22T17:00:00-05:00",
-      "end": "2026-10-22T18:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-10-22T19:00:00-05:00",
-      "end": "2026-10-22T19:55:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "No School - Madison, Will, Max",
       "start": "2026-10-23",
@@ -1844,6 +1781,59 @@
       "children": [
         "Will"
       ]
+    },
+    {
+      "summary": "DAY 2",
+      "start": "2026-12-03",
+      "end": "2026-12-04",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Max: Library",
+      "start": "2026-12-03",
+      "end": "2026-12-04",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-12-03T17:00:00-06:00",
+      "end": "2026-12-03T18:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-12-03T19:00:00-06:00",
+      "end": "2026-12-03T19:55:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Chiefs @ Rams",
+      "start": "2026-12-03T19:15:00-06:00",
+      "end": "2026-12-03T22:45:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
     }
   ]
 }
