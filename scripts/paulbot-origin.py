@@ -209,6 +209,13 @@ class Gate:
         finally:
             self.visiting.remove(key)
 
+    def workflow(self, repo, run_id, head):
+        run = self.fetch(f'repos/{repo}/actions/runs/{run_id}')
+        if not trusted(run.get('actor', {})) or not trusted(run.get('triggering_actor', {})):
+            raise Denied('outside-workflow-actor')
+        if run.get('head_sha') != head:
+            raise Denied('workflow-head-mismatch')
+
     def event(self, repo, number, endpoint):
         # Exact REST endpoint obtained from the event ID, never a supplied URL.
         if not re.fullmatch(r'(issues/comments|pulls/comments|pulls/[1-9]\d*/reviews)/[1-9]\d*', endpoint):
@@ -303,11 +310,7 @@ def main():
             if a.phase == 'merge' and not re.fullmatch(r'[0-9a-f]{40}', a.head):
                 raise Denied('missing-exact-merge-head')
             if a.run:
-                run = gate.fetch(f'repos/{a.repo}/actions/runs/{a.run}')
-                if not trusted(run.get('actor', {})) or not trusted(run.get('triggering_actor', {})):
-                    raise Denied('outside-workflow-actor')
-                if run.get('head_sha') != a.head:
-                    raise Denied('workflow-head-mismatch')
+                gate.workflow(a.repo, a.run, a.head)
             if a.command == 'bind' and not a.source:
                 raise Denied('missing-controller-source')
             if a.command == 'discussion':

@@ -81,4 +81,16 @@ class Tests(unittest.TestCase):
    self.assertEqual(p.read_text(),first);self.assertFalse(json.loads(first)['delivered'])
  def test_invalid_trigger_endpoint_denied(self):
   with self.assertRaisesRegex(o.Denied,'invalid-trigger'):self.g.event(REPO,1,'../secrets')
+ def test_workflow_paul_actor_and_rerun(self):
+  self.g.fetch=lambda *a:dict(actor=PAUL,triggering_actor=PAUL,head_sha=SHA)
+  self.g.workflow(REPO,1,SHA)
+ def test_workflow_outside_rerun(self):
+  self.g.fetch=lambda *a:dict(actor=PAUL,triggering_actor=OUT,head_sha=SHA)
+  with self.assertRaisesRegex(o.Denied,'outside-workflow'):self.g.workflow(REPO,1,SHA)
+ def test_workflow_missing_actor(self):
+  self.g.fetch=lambda *a:dict(actor=PAUL,head_sha=SHA)
+  with self.assertRaisesRegex(o.Denied,'outside-workflow'):self.g.workflow(REPO,1,SHA)
+ def test_workflow_changed_head(self):
+  self.g.fetch=lambda *a:dict(actor=PAUL,triggering_actor=PAUL,head_sha='b'*40)
+  with self.assertRaisesRegex(o.Denied,'workflow-head'):self.g.workflow(REPO,1,SHA)
 if __name__=='__main__':unittest.main()
