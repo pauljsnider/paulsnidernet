@@ -175,3 +175,22 @@ class InputTests(unittest.TestCase):
   self.g.fetch=fetch
   result=self.g.filter_inputs(REPO,0,[dict(number=1)],'issues')
   self.assertEqual(result[0]['body'],'');self.assertEqual(len(reads),1)
+
+ def test_resolved_nonrequired_external_thread_does_not_block(self):
+  snapshot=dict(fingerprint='original',threads=[dict(id='t',required=False,explicitlyHumanResolved=True,comments=[dict(body='outside historical instruction',url='invalid')],replies=[dict(rationale='outside')])])
+  original=copy.deepcopy(snapshot)
+  result=self.g.filter_inputs(REPO,1,snapshot,'snapshot')
+  self.assertEqual(result['fingerprint'],original['fingerprint'])
+  self.assertEqual(result['threads'][0]['comments'],[])
+  self.assertEqual(result['threads'][0]['replies'],[])
+ def test_required_unknown_review_comment_still_denied(self):
+  with self.assertRaisesRegex(o.Denied,'incomplete-review-input'):
+   self.g.filter_inputs(REPO,1,dict(threads=[dict(required=True,comments=[dict(url='invalid')])]),'snapshot')
+ def test_unconfigured_transport_does_not_delay_valid_lane_retry(self):
+  with patch.dict(os.environ,{},clear=True):
+   o.alert(self.g.state,REPO,1,'coding','outside')
+  path=next(self.g.state.glob('alert-*'))
+  self.assertEqual(json.loads(path.read_text())['attempt'],0)
+  with patch.dict(os.environ,{'SLACK_BOT_TOKEN':'synthetic','SLACK_NOTIFY_CHANNEL':o.SLACK_CHANNEL},clear=True),patch.object(o,'slack_call',side_effect=[dict(ok=True,team_id=o.SLACK_TEAM,bot_id=o.SLACK_BOT),dict(ok=True,channel=o.SLACK_CHANNEL)]):
+   o.deliver_pending(self.g.state)
+  self.assertTrue(json.loads(path.read_text())['delivered'])

@@ -282,6 +282,12 @@ class Gate:
             # Preserve the original merge evidence/fingerprint. Never let a
             # reviewer turn an unverified external instruction into bot advice.
             for thread in data['threads']:
+                thread['replies'] = []
+                if thread.get('required') is False:
+                    thread['comments'] = []
+                    continue
+                if thread.get('required') is not True:
+                    raise Denied('incomplete-review-requirement')
                 for item in thread['comments']:
                     match = re.fullmatch(r'https://github\.com/' + re.escape(repo) +
                         r'/pull/' + str(number) + r'#discussion_r([1-9]\d*)', item.get('url', ''))
@@ -356,6 +362,11 @@ def deliver_pending(state):
     if not pending:
         return
     token = os.environ.get('SLACK_BOT_TOKEN')
+    if not token or os.environ.get('SLACK_NOTIFY_CHANNEL') != SLACK_CHANNEL:
+        # A read-only transport without lane credentials must not postpone the
+        # next correctly configured lane's delivery attempt.
+        print('origin alert pending: verified Slack route unavailable', file=sys.stderr)
+        return
     route_ok = False
     try:
         if token and os.environ.get('SLACK_NOTIFY_CHANNEL') == SLACK_CHANNEL:
