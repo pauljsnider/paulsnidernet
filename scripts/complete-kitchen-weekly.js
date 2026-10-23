@@ -1,14 +1,22 @@
 /* Trusted main-branch code: never execute the data PR's files. */
-module.exports = async function completeKitchenWeekly({github, context, core, schema, now}) {
+const {execFileSync}=require('node:child_process');
+const path=require('node:path');
+function verifyOrigin({repo,number,head,run}) {
+  execFileSync('python3',[path.join(__dirname,'paulbot-origin.py'),'check',repo,String(number),
+    '--kind','pr','--phase','merge','--head',head,'--run',String(run)],{stdio:['ignore','ignore','inherit']});
+}
+module.exports = async function completeKitchenWeekly({github, context, core, schema, now, originCheck=verifyOrigin}) {
   const owner='pauljsnider', repo='paulsnidernet';
   const run=context.payload.workflow_run;
   if (!run || run.name!=='Kitchen validation' || run.conclusion!=='success' || run.event!=='pull_request' ||
-      run.actor.login!==owner || run.head_repository.full_name!==owner+'/'+repo ||
+      run.head_repository.full_name!==owner+'/'+repo ||
       !/^kitchen-weekly\/\d{4}-\d{2}-\d{2}$/.test(run.head_branch)) return;
   const prs=await github.rest.pulls.list({owner,repo,state:'open',head:owner+':'+run.head_branch,base:'main'});
   if(prs.data.length!==1)return;
   const pr=(await github.rest.pulls.get({owner,repo,pull_number:prs.data[0].number})).data;
-  if(pr.user.login!==owner || pr.head.repo.full_name!==owner+'/'+repo || pr.head.sha!==run.head_sha || pr.draft ||
+  await originCheck({repo:owner+'/'+repo,number:pr.number,head:pr.head.sha,run:run.id});
+  if(run.actor.login!==owner || run.actor.id!==211066188 || run.actor.type!=='User')return;
+  if(pr.user.login!==owner || pr.user.id!==211066188 || pr.user.type!=='User' || pr.head.repo.full_name!==owner+'/'+repo || pr.head.sha!==run.head_sha || pr.draft ||
       pr.base.ref!=='main' || pr.base.repo.full_name!==owner+'/'+repo || !run.pull_requests.some(p=>p.number===pr.number))return;
   const files=(await github.rest.pulls.listFiles({owner,repo,pull_number:pr.number,per_page:100})).data;
   if(pr.changed_files!==1 || files.length!==1 || files[0].filename!=='family/kitchen-weekly.json' ||
@@ -27,6 +35,7 @@ module.exports = async function completeKitchenWeekly({github, context, core, sc
       statuses.total_count!==statuses.statuses.length || (statuses.total_count>0&&statuses.state!=='success'))throw Error('Checks incomplete or failed');
   const current=(await github.rest.pulls.get({owner,repo,pull_number:pr.number})).data;
   if(current.head.sha!==pr.head.sha || current.state!=='open' || current.base.ref!=='main')throw Error('PR changed before merge');
+  await originCheck({repo:owner+'/'+repo,number:current.number,head:current.head.sha,run:run.id});
   const merged=await github.rest.pulls.merge({owner,repo,pull_number:pr.number,sha:pr.head.sha,merge_method:'squash'});
   if(!merged.data.merged)throw Error('Exact-SHA merge refused');
   // GITHUB_TOKEN merges do not trigger another workflow/Pages build automatically.
