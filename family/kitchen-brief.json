@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T20:34:04.418474-05:00",
+  "generated_at": "2026-10-24T02:14:18.991387-05:00",
   "local": {
     "title": "Movie: 'Hocus Pocus'",
     "detail": "Sat, Oct 24 at 11:00 AM \u2022 Central Library",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26008.86,
-      "change_pct": -2.6,
-      "as_of": "2026-10-22"
+      "value": 25955.34,
+      "change_pct": -0.21,
+      "as_of": "2026-10-23"
     }
   ],
   "ticker": {
