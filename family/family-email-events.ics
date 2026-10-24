@@ -515,11 +515,12 @@ X-IMPORT-TYPE:EMAIL-DIGEST
 END:VEVENT
 BEGIN:VEVENT
 UID:madison-ernie-miller-field-trip-20261026@paulsnider.net
-DTSTAMP:20260923T075500Z
+DTSTAMP:20261024T121500Z
 SUMMARY:Madison: Ernie Miller Nature Center Field Trip
 DTSTART;TZID=America/Chicago:20261026T090000
 DTEND;TZID=America/Chicago:20261026T140000
 LOCATION:Ernie Miller Nature Center\, Olathe\, KS
+DESCRIPTION:Packing list: sack lunch (from home)\, fifth-grade field-trip shirt\, water bottle\, tennis shoes\, jacket. Monday running cooler\, high around 66F with patchy rain possible.
 STATUS:CONFIRMED
 SEQUENCE:0
 TRANSP:OPAQUE
