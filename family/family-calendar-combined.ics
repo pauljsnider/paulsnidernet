@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-10-24T12:15:15.590960+00:00
+X-COMBINE-TIMESTAMP:2026-10-24T12:16:57.926192+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VTIMEZONE
 TZID:America/Chicago
@@ -578,9 +578,12 @@ BEGIN:VEVENT
 SUMMARY:Madison: Ernie Miller Nature Center Field Trip
 DTSTART;TZID=America/Chicago:20261026T090000
 DTEND;TZID=America/Chicago:20261026T140000
-DTSTAMP:20260923T075500Z
+DTSTAMP:20261024T121500Z
 UID:madison-ernie-miller-field-trip-20261026@paulsnider.net
 SEQUENCE:0
+DESCRIPTION:Packing list: sack lunch (from home)\, fifth-grade field-trip 
+ shirt\, water bottle\, tennis shoes\, jacket. Monday running cooler\, high
+  around 66F with patchy rain possible.
 LOCATION:Ernie Miller Nature Center\, Olathe\, KS
 STATUS:CONFIRMED
 TRANSP:OPAQUE
