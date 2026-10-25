@@ -53,7 +53,7 @@ function kitchenSchoolCandidates(items, now) {
             if (learning && !KitchenWeekly.safeText(text)) {
                 // A complete short heading or sentence, never a cut-off fragment.
                 var bold = line.match(/^\s*\*\*([^*]+)\*\*/);
-                var heading = bold ? bold[1].replace(/&nbsp;/g, ' ').replace(/[:\s]+$/, '').trim() : '';
+                var heading = bold ? bold[1].replace(/&nbsp;/g, ' ').replace(/[:\s\-–—]+$/, '').trim() : '';
                 if (heading.length > 18 && KitchenWeekly.safeText(heading)) { text = heading; }
                 else {
                     var sentences = learning[2].match(/[^.!?]+[.!?](?:\s|$)/g) || [];
@@ -63,6 +63,8 @@ function kitchenSchoolCandidates(items, now) {
                 }
             }
             if (!KitchenWeekly.safeText(text)) { return; }
+            // A staff role is not a curriculum topic.
+            if (/^Reading Specialist\s*[:\-–—]?$/i.test(text)) { return; }
             var date = null;
             var weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
             var ambiguousDay = false;
