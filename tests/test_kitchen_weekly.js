@@ -112,3 +112,34 @@ var clockCtx={Date:Date,state:{view:6,visibleDay:'today'},getById:function(id){r
 vm.createContext(clockCtx);vm.runInContext(callback,clockCtx);assert.doesNotThrow(function(){clockCtx.updateClock();});assert.equal(clockNodes.clock.textContent,'9:00');
 clockCtx.state.visibleDay='yesterday';clockCtx.updateClock();assert.equal(renders,1);
 console.log('Live clock callback on child view and midnight rollover passed');
+
+// Complete curriculum headings retain their words, without separator debris.
+['-', '–', '—'].forEach(function(separator) {
+    weeklyItem.cleanBody='**Amplify: Domain 4: Our Planet Cycles in Nature '+separator+'** '+('A longer lesson description. '.repeat(6));
+    assert.equal(context.kitchenSchoolCandidates([weeklyItem],friday)[0].text,'Amplify: Domain 4: Our Planet Cycles in Nature');
+});
+weeklyItem.cleanBody='**Reading Specialist**';
+assert.equal(context.kitchenSchoolCandidates([weeklyItem],friday).length,0);
+weeklyItem.cleanBody='Reading: Compare story characters';
+assert.equal(context.kitchenSchoolCandidates([weeklyItem],friday)[0].text,weeklyItem.cleanBody);
+weeklyItem.cleanBody='**Amplify: Cycles in Nature -** Pay a fee. '+('More information. '.repeat(8));
+assert.equal(context.kitchenSchoolCandidates([weeklyItem],friday).length,0);
+weeklyItem.cleanBody='**Amplify: '+('A'.repeat(91))+' -** '+('No complete short heading '.repeat(8));
+assert.equal(context.kitchenSchoolCandidates([weeklyItem],friday).length,0);
+console.log('Curriculum separators, staff roles, complete headings and privacy limits passed');
+
+context.Utilities.formatDate=function(d,tz,format){
+    if(format==='Z') {
+        var offset=new Intl.DateTimeFormat('en-US',{timeZone:tz,timeZoneName:'shortOffset'}).formatToParts(d).filter(function(p){return p.type==='timeZoneName';})[0].value;
+        return offset==='GMT-5'?'-0500':'-0600';
+    }
+    return new Intl.DateTimeFormat('en-CA',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit'}).format(d);
+};
+[['2026-10-25T15:00:00Z','2026-10-26','2026-11-02T06:00:00.000Z'],['2026-11-01T16:00:00Z','2026-11-02','2026-11-09T06:00:00.000Z']].forEach(function(row){
+    var simulated=context.prepareKitchenWeeklyExport([],new Date(row[0])).payload;
+    assert.equal(simulated.week_start,row[1]);assert.equal(simulated.expires_at,row[2]);
+    assert(contract.validate(simulated));
+});
+assert.equal(context.kitchenSourceEligible(weeklyItem,new Date('2026-11-01T16:00:00Z')),false);
+context.Utilities.formatDate=oldFormatter;
+console.log('Oct 26 and Nov 2 school weeks, CST expiry, and stale-source exclusion passed');
