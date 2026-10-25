@@ -1,95 +1,119 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "generated_at": "2026-10-18T15:03:55.324Z",
-  "expires_at": "2026-10-26T05:00:00.000Z",
-  "week_start": "2026-10-19",
-  "week_end": "2026-10-26",
+  "generated_at": "2026-10-25T15:03:55.707Z",
+  "expires_at": "2026-11-02T06:00:00.000Z",
+  "week_start": "2026-10-26",
+  "week_end": "2026-11-02",
   "children": {
     "Madison": [
       {
         "kind": "learning",
+        "text": "Reading Specialist",
+        "date": null,
+        "expires_at": "2026-11-02T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-10-23"
+      },
+      {
+        "kind": "learning",
         "text": "Amplify - Unit 3: Poetry",
         "date": null,
-        "expires_at": "2026-10-26T05:00:00.000Z",
+        "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-22"
       },
       {
         "kind": "learning",
         "text": "Math - Volume & Multiply Multi-Digit Numbers",
         "date": null,
-        "expires_at": "2026-10-26T05:00:00.000Z",
+        "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-22"
       },
       {
         "kind": "learning",
         "text": "Phonics - Closed, Simple Multisyllable",
         "date": null,
-        "expires_at": "2026-10-26T05:00:00.000Z",
+        "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-22"
       },
       {
         "kind": "learning",
-        "text": "Science: Unit 2: Earth's Systems",
+        "text": "Science: Unit 2: Earth's Systems & Unit 3: Changes in Matter",
         "date": null,
-        "expires_at": "2026-10-26T05:00:00.000Z",
+        "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-22"
       }
     ],
     "Will": [
       {
         "kind": "learning",
-        "text": "Phonics: We will begin lesson 9 over our next set of vowel teams, au and aw.",
+        "text": "Reading Specialist",
         "date": null,
-        "expires_at": "2026-10-26T05:00:00.000Z",
+        "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-23"
+      },
+      {
+        "kind": "learning",
+        "text": "Math: We will finish lesson 9, solving word problems with two digit numbers.",
+        "date": null,
+        "expires_at": "2026-11-02T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-10-22"
       },
       {
         "kind": "learning",
         "text": "Amplify: Domain 4: Our Planet Cycles in Nature -",
         "date": null,
-        "expires_at": "2026-10-26T05:00:00.000Z",
+        "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-22"
       },
       {
         "kind": "bring",
-        "text": "Bring library books on Monday!",
-        "date": "2026-10-19",
-        "expires_at": "2026-10-20T05:00:00.000Z",
+        "text": "Bring library books on Wednesday!",
+        "date": "2026-10-28",
+        "expires_at": "2026-10-29T05:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-22"
       }
     ],
     "Max": [
       {
         "kind": "learning",
-        "text": "Amplify : Domain 3: Stories",
+        "text": "Reading Specialist",
         "date": null,
-        "expires_at": "2026-10-26T05:00:00.000Z",
+        "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-23"
       },
       {
         "kind": "learning",
-        "text": "95% : Lesson 7: h & b",
+        "text": "Amplify : Domain 4: Plants",
         "date": null,
-        "expires_at": "2026-10-26T05:00:00.000Z",
+        "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-22"
       },
       {
         "kind": "learning",
-        "text": "iReady : Lesson 6: Three Dimensional Shapes",
+        "text": "95% : Lesson 8: Review and Introduction of M, D, G, I, S, H & B",
         "date": null,
-        "expires_at": "2026-10-26T05:00:00.000Z",
+        "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-16"
+        "source_date": "2026-10-22"
+      },
+      {
+        "kind": "learning",
+        "text": "iReady : Lesson 7: Add Within 5",
+        "date": null,
+        "expires_at": "2026-11-02T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-10-22"
       }
     ]
   }
