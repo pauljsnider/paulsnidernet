@@ -66,6 +66,22 @@ class CombineCalendarsTest(unittest.TestCase):
             recovered = load_cached_source_calendar('Will Basketball', output_file=path)
             self.assertEqual(1, len(recovered.walk('VEVENT')))
 
+    def test_http_error_status_preserved_and_404_not_retried(self):
+        response = COMBINE_CALENDARS.requests.Response()
+        response.status_code = 404
+        response.reason = 'Not Found'
+        secret_url = 'https://example.invalid/feed?token=do-not-log'
+        response.url = secret_url
+        error = COMBINE_CALENDARS.requests.exceptions.HTTPError(secret_url, response=response)
+        with patch.object(COMBINE_CALENDARS.requests, 'get', side_effect=error) as get, patch.object(COMBINE_CALENDARS.time, 'sleep') as sleep, self.assertLogs(COMBINE_CALENDARS.logger, level='WARNING') as logs:
+            self.assertIsNone(COMBINE_CALENDARS.fetch_calendar(secret_url, 'Synthetic soccer'))
+        get.assert_called_once()
+        sleep.assert_not_called()
+        output = '\n'.join(logs.output)
+        self.assertIn('404 Not Found', output)
+        self.assertNotIn('No response object', output)
+        self.assertNotIn(secret_url, output)
+
     def test_fetch_logs_never_expose_private_url_on_error(self):
         secret_url = 'https://example.invalid/feed?token=do-not-log'
         with patch.object(COMBINE_CALENDARS.requests, 'get', side_effect=COMBINE_CALENDARS.requests.exceptions.ConnectionError(secret_url)), patch.object(COMBINE_CALENDARS.time, 'sleep'), self.assertLogs(COMBINE_CALENDARS.logger, level='INFO') as logs:
