@@ -33,8 +33,8 @@ class WeatherPushTest(unittest.TestCase):
         self.git(cwd, 'add', name)
         self.git(cwd, 'commit', '-m', 'Update fixture')
 
-    def publish(self):
-        env = dict(os.environ, GIT_COMMITTER_NAME='Test', GIT_COMMITTER_EMAIL='test@example.invalid')
+    def publish(self, github_ref='refs/heads/main'):
+        env = dict(os.environ, GIT_COMMITTER_NAME='Test', GIT_COMMITTER_EMAIL='test@example.invalid', GITHUB_REF=github_ref)
         return subprocess.run(['bash', str(SCRIPT)], cwd=self.writer, env=env,
                               text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
@@ -64,3 +64,24 @@ class WeatherPushTest(unittest.TestCase):
         self.assertNotEqual(0, result.returncode)
         self.assertEqual(3, len((self.root / 'attempts').read_text().splitlines()))
         self.assertEqual('old\n', self.git(self.remote, 'show', 'main:weather.json'))
+
+    def test_preview_branch_cannot_publish_unrelated_html(self):
+        self.git(self.writer, 'checkout', '-b', 'preview')
+        self.commit(self.writer, 'index.html', 'unfinished page\n')
+        before = self.git(self.remote, 'rev-parse', 'main')
+        result = self.publish('refs/heads/preview')
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn('requires the main branch', result.stdout)
+        self.assertEqual(before, self.git(self.remote, 'rev-parse', 'main'))
+        self.assertNotIn('index.html', self.git(self.remote, 'ls-tree', '--name-only', 'main'))
+
+    def test_preview_checkout_rejected_even_with_main_environment(self):
+        self.git(self.writer, 'checkout', '-b', 'preview')
+        before = self.git(self.remote, 'rev-parse', 'main')
+        self.assertNotEqual(0, self.publish().returncode)
+        self.assertEqual(before, self.git(self.remote, 'rev-parse', 'main'))
+
+    def test_non_main_dispatch_rejected_even_with_main_checkout(self):
+        before = self.git(self.remote, 'rev-parse', 'main')
+        self.assertNotEqual(0, self.publish('refs/heads/preview').returncode)
+        self.assertEqual(before, self.git(self.remote, 'rev-parse', 'main'))
