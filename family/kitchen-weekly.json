@@ -1,20 +1,12 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "generated_at": "2026-10-25T15:03:55.707Z",
+  "generated_at": "2026-10-26T22:22:12.858Z",
   "expires_at": "2026-11-02T06:00:00.000Z",
   "week_start": "2026-10-26",
   "week_end": "2026-11-02",
   "children": {
     "Madison": [
-      {
-        "kind": "learning",
-        "text": "Reading Specialist",
-        "date": null,
-        "expires_at": "2026-11-02T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-10-23"
-      },
       {
         "kind": "learning",
         "text": "Amplify - Unit 3: Poetry",
@@ -51,14 +43,6 @@
     "Will": [
       {
         "kind": "learning",
-        "text": "Reading Specialist",
-        "date": null,
-        "expires_at": "2026-11-02T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-10-23"
-      },
-      {
-        "kind": "learning",
         "text": "Math: We will finish lesson 9, solving word problems with two digit numbers.",
         "date": null,
         "expires_at": "2026-11-02T06:00:00.000Z",
@@ -67,7 +51,7 @@
       },
       {
         "kind": "learning",
-        "text": "Amplify: Domain 4: Our Planet Cycles in Nature -",
+        "text": "Amplify: Domain 4: Our Planet Cycles in Nature",
         "date": null,
         "expires_at": "2026-11-02T06:00:00.000Z",
         "source": "School newsletter",
@@ -83,14 +67,6 @@
       }
     ],
     "Max": [
-      {
-        "kind": "learning",
-        "text": "Reading Specialist",
-        "date": null,
-        "expires_at": "2026-11-02T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-10-23"
-      },
       {
         "kind": "learning",
         "text": "Amplify : Domain 4: Plants",
