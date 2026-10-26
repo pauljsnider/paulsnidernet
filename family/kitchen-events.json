@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T10:56:40.730785-05:00",
+  "generated_at": "2026-10-26T12:55:11.494009-05:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -292,6 +292,17 @@
       "all_day": false,
       "location": "19900 Johnson Dr., Shawnee, KS 66218",
       "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B vs Gaurdians FC 17/18 Espanyol",
+      "start": "2026-10-31T14:30:00-05:00",
+      "end": "2026-10-31T15:30:00-05:00",
+      "all_day": false,
+      "location": "8875 Rosehill Rd\nLenexa KS",
+      "source": "Will Soccer - Vipers FC U8B",
       "children": [
         "Will"
       ]
