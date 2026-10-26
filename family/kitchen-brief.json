@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T10:56:39.100556-05:00",
+  "generated_at": "2026-10-26T11:20:34.656366-05:00",
   "local": {
     "title": "Halloween Storytime",
     "detail": "Mon, Oct 26 at 6:30 PM \u2022 Waldo Branch",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 60.06,
-    "change_pct": -0.32,
+    "value": 60.4,
+    "change_pct": 0.24,
     "as_of": "2026-10-26"
   }
 }
