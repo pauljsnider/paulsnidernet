@@ -436,6 +436,18 @@ END:VCALENDAR
         for private_field in ('ATTENDEE', 'ORGANIZER', 'Passcode:', 'https://'):
             self.assertNotIn(private_field, source)
 
+    def test_footloose_events_preserve_times_without_registration_link(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        events = {str(e['UID']): e for e in calendar.walk('VEVENT')}
+        clinic = events['madison-footloose-clinic-20261114@paulsnider.net']
+        matinee = events['madison-footloose-matinee-20261121@paulsnider.net']
+        self.assertEqual('2026-11-14T09:30:00-06:00', clinic['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-11-14T11:30:00-06:00', clinic['DTEND'].dt.isoformat())
+        self.assertEqual('2026-11-21', matinee['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-11-22', matinee['DTEND'].dt.isoformat())
+        for event in (clinic, matinee):
+            self.assertNotIn('https://', str(event.get('DESCRIPTION', '')))
+
     def test_madison_gymnastics_only_recurs_monday_and_thursday(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         gymnastics_events = [
