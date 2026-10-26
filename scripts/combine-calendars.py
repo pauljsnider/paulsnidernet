@@ -388,7 +388,7 @@ def fetch_calendar(url, name):
             logger.warning(last_error)
             
         except requests.exceptions.HTTPError as e:
-            if e.response:
+            if e.response is not None:
                 status_code = e.response.status_code
                 reason = e.response.reason
                 last_error = f"HTTP error for {name}: {status_code} {reason}"

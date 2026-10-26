@@ -1,104 +1,7 @@
 {
-  "generated_at": "2026-10-23T05:42:35.976100-05:00",
+  "generated_at": "2026-10-26T17:19:31.799007-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "No School - Madison, Will, Max",
-      "start": "2026-10-23",
-      "end": "2026-10-24",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "PTO Skate Party - Madison, Will, Max",
-      "start": "2026-10-23T17:00:00-05:00",
-      "end": "2026-10-23T19:00:00-05:00",
-      "all_day": false,
-      "location": "Skate City Overland Park, 10440 Mastin St, Overland Park, KS 66212",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Max: Learn to Play Hockey",
-      "start": "2026-10-24T08:00:00-05:00",
-      "end": "2026-10-24T08:40:00-05:00",
-      "all_day": false,
-      "location": "19900 Johnson Dr., Shawnee, KS 66218",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Will: Learn to Play Hockey",
-      "start": "2026-10-24T08:00:00-05:00",
-      "end": "2026-10-24T08:40:00-05:00",
-      "all_day": false,
-      "location": "19900 Johnson Dr., Shawnee, KS 66218",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Max Soccer: F26KB Major Derek vs Stimpert",
-      "start": "2026-10-24T10:00:00-05:00",
-      "end": "2026-10-24T10:30:00-05:00",
-      "all_day": false,
-      "location": "(OP) SCHEELS Overland Park Soccer Complex \n13700 Switzer Road, Overland Park, KS 66221",
-      "source": "Max Soccer - Major Derek",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Resurrection Leawood Trunk or Treat",
-      "start": "2026-10-24T15:00:00-05:00",
-      "end": "2026-10-24T17:00:00-05:00",
-      "all_day": false,
-      "location": "Resurrection Leawood, 13720 Roe Ave, Leawood, KS 66224",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Will Soccer: Vipers FC U8B vs Wolfpack KC",
-      "start": "2026-10-24T15:40:00-05:00",
-      "end": "2026-10-24T16:40:00-05:00",
-      "all_day": false,
-      "location": "8875 Rosehill Rd\nLenexa KS",
-      "source": "Will Soccer - Vipers FC U8B",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Boo at the Zoo",
-      "start": "2026-10-25T09:30:00-05:00",
-      "end": "2026-10-25T17:00:00-05:00",
-      "all_day": false,
-      "location": "Kansas City Zoo & Aquarium, 6800 Zoo Drive, Kansas City, MO 64132",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Chiefs @ Seahawks",
-      "start": "2026-10-25T19:20:00-05:00",
-      "end": "2026-10-25T22:50:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
     {
       "summary": "DAY 1",
       "start": "2026-10-26",
@@ -389,6 +292,17 @@
       "all_day": false,
       "location": "19900 Johnson Dr., Shawnee, KS 66218",
       "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B vs Gaurdians FC 17/18 Espanyol",
+      "start": "2026-10-31T14:30:00-05:00",
+      "end": "2026-10-31T15:30:00-05:00",
+      "all_day": false,
+      "location": "8875 Rosehill Rd\nLenexa KS",
+      "source": "Will Soccer - Vipers FC U8B",
       "children": [
         "Will"
       ]
@@ -1142,6 +1056,17 @@
       ]
     },
     {
+      "summary": "Madison: Footloose Musical Theater Clinic",
+      "start": "2026-11-14T09:30:00-06:00",
+      "end": "2026-11-14T11:30:00-06:00",
+      "all_day": false,
+      "location": "Blue Valley Northwest High School Mainstage",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
       "summary": "Max: Junior Basketball (Ages 4-5)",
       "start": "2026-11-14T09:30:00-06:00",
       "end": "2026-11-14T10:25:00-06:00",
@@ -1437,6 +1362,17 @@
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events",
       "children": []
+    },
+    {
+      "summary": "Madison: Footloose Matinee Performance",
+      "start": "2026-11-21",
+      "end": "2026-11-22",
+      "all_day": true,
+      "location": "Blue Valley Northwest High School Mainstage",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
     },
     {
       "summary": "Max: Learn to Play Hockey",
@@ -1834,6 +1770,83 @@
       "location": "",
       "source": "Family Email Events",
       "children": []
+    },
+    {
+      "summary": "NO SCHOOL Teacher Professional Collaboration",
+      "start": "2026-12-04",
+      "end": "2026-12-05",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "No School - Madison, Will, Max",
+      "start": "2026-12-04",
+      "end": "2026-12-05",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "PTO Support-A-Cougar Holiday Drive Ends",
+      "start": "2026-12-04",
+      "end": "2026-12-05",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Tutoring",
+      "start": "2026-12-04T17:15:00-06:00",
+      "end": "2026-12-04T18:15:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Max: Learn to Play Hockey",
+      "start": "2026-12-05T08:00:00-06:00",
+      "end": "2026-12-05T08:40:00-06:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
+    },
+    {
+      "summary": "Will: Learn to Play Hockey",
+      "start": "2026-12-05T08:00:00-06:00",
+      "end": "2026-12-05T08:40:00-06:00",
+      "all_day": false,
+      "location": "19900 Johnson Dr., Shawnee, KS 66218",
+      "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
+    },
+    {
+      "summary": "Max: Junior Basketball (Ages 4-5)",
+      "start": "2026-12-05T09:30:00-06:00",
+      "end": "2026-12-05T10:25:00-06:00",
+      "all_day": false,
+      "location": "TBA",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
     }
   ]
 }

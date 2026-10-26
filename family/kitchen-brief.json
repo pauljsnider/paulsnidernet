@@ -1,53 +1,53 @@
 {
-  "generated_at": "2026-10-23T04:59:33.379587-05:00",
+  "generated_at": "2026-10-26T14:13:44.606533-05:00",
   "local": {
-    "title": "Kindergarten Readiness Storytime",
-    "detail": "Fri, Oct 23 at 10:30 AM \u2022 Plaza Branch",
-    "date": "2026-10-23",
+    "title": "Halloween Storytime",
+    "detail": "Mon, Oct 26 at 6:30 PM \u2022 Waldo Branch",
+    "date": "2026-10-26",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-27"
+    "url": "https://kclibrary.org/calendar/halloween-storytime"
   },
   "kc_news": {
-    "title": "Inside a former Missouri asylum, a psychiatric museum has a haunted reputation \u2014 and a noble mission",
+    "title": "This Kansas City nonprofit wants as many children as possible to have a costume this Halloween",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/history/2026-10-21/glore-psychiatric-museum-st-joseph-missouri-insane-asylum"
+    "url": "https://www.kcur.org/arts-life/2026-10-26/this-kansas-city-nonprofit-wants-as-many-children-as-possible-to-have-a-costume-this-halloween"
   },
   "ai": [
     {
-      "title": "Q&A: How AI came to model the \u201cmessy\u201d human mind",
+      "title": "At MIT, Martha Minow speaks on sustaining democracy, both by using and overcoming AI",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-22",
+      "date": "2026-10-23",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/qa-how-ai-came-to-model-messy-human-mind-1023"
+      "url": "https://news.mit.edu/2026/martha-minow-speaks-on-sustaining-democracy-using-overcoming-ai-1023"
     },
     {
-      "title": "Why teaching AI about symmetry could make prenatal diagnosis more reliable",
+      "title": "Reinforcing the value of human understanding at MIT",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-19",
+      "date": "2026-10-23",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/teaching-ai-about-symmetry-could-make-prenatal-diagnosis-more-reliable-1019"
+      "url": "https://news.mit.edu/2026/reinforcing-value-of-human-understanding-at-mit-1023"
     }
   ],
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7757.17,
-      "change_pct": 0.58,
-      "as_of": "2026-10-21"
+      "value": 7623.68,
+      "change_pct": -0.52,
+      "as_of": "2026-10-23"
     },
     {
       "name": "Nasdaq",
-      "value": 26008.86,
-      "change_pct": -2.6,
-      "as_of": "2026-10-22"
+      "value": 25955.34,
+      "change_pct": -0.21,
+      "as_of": "2026-10-23"
     }
   ],
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 60.05,
-    "change_pct": 2.4,
-    "as_of": "2026-10-22"
+    "value": 60.71,
+    "change_pct": 0.76,
+    "as_of": "2026-10-26"
   }
 }

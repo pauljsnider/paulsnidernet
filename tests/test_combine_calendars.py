@@ -66,6 +66,22 @@ class CombineCalendarsTest(unittest.TestCase):
             recovered = load_cached_source_calendar('Will Basketball', output_file=path)
             self.assertEqual(1, len(recovered.walk('VEVENT')))
 
+    def test_http_error_status_preserved_and_404_not_retried(self):
+        response = COMBINE_CALENDARS.requests.Response()
+        response.status_code = 404
+        response.reason = 'Not Found'
+        secret_url = 'https://example.invalid/feed?token=do-not-log'
+        response.url = secret_url
+        error = COMBINE_CALENDARS.requests.exceptions.HTTPError(secret_url, response=response)
+        with patch.object(COMBINE_CALENDARS.requests, 'get', side_effect=error) as get, patch.object(COMBINE_CALENDARS.time, 'sleep') as sleep, self.assertLogs(COMBINE_CALENDARS.logger, level='WARNING') as logs:
+            self.assertIsNone(COMBINE_CALENDARS.fetch_calendar(secret_url, 'Synthetic soccer'))
+        get.assert_called_once()
+        sleep.assert_not_called()
+        output = '\n'.join(logs.output)
+        self.assertIn('404 Not Found', output)
+        self.assertNotIn('No response object', output)
+        self.assertNotIn(secret_url, output)
+
     def test_fetch_logs_never_expose_private_url_on_error(self):
         secret_url = 'https://example.invalid/feed?token=do-not-log'
         with patch.object(COMBINE_CALENDARS.requests, 'get', side_effect=COMBINE_CALENDARS.requests.exceptions.ConnectionError(secret_url)), patch.object(COMBINE_CALENDARS.time, 'sleep'), self.assertLogs(COMBINE_CALENDARS.logger, level='INFO') as logs:
@@ -435,6 +451,18 @@ END:VCALENDAR
         source = EMAIL_EVENTS_PATH.read_text()
         for private_field in ('ATTENDEE', 'ORGANIZER', 'Passcode:', 'https://'):
             self.assertNotIn(private_field, source)
+
+    def test_footloose_events_preserve_times_without_registration_link(self):
+        calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
+        events = {str(e['UID']): e for e in calendar.walk('VEVENT')}
+        clinic = events['madison-footloose-clinic-20261114@paulsnider.net']
+        matinee = events['madison-footloose-matinee-20261121@paulsnider.net']
+        self.assertEqual('2026-11-14T09:30:00-06:00', clinic['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-11-14T11:30:00-06:00', clinic['DTEND'].dt.isoformat())
+        self.assertEqual('2026-11-21', matinee['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-11-22', matinee['DTEND'].dt.isoformat())
+        for event in (clinic, matinee):
+            self.assertNotIn('https://', str(event.get('DESCRIPTION', '')))
 
     def test_madison_gymnastics_only_recurs_monday_and_thursday(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')

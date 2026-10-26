@@ -515,11 +515,12 @@ X-IMPORT-TYPE:EMAIL-DIGEST
 END:VEVENT
 BEGIN:VEVENT
 UID:madison-ernie-miller-field-trip-20261026@paulsnider.net
-DTSTAMP:20260923T075500Z
+DTSTAMP:20261024T121500Z
 SUMMARY:Madison: Ernie Miller Nature Center Field Trip
 DTSTART;TZID=America/Chicago:20261026T090000
 DTEND;TZID=America/Chicago:20261026T140000
 LOCATION:Ernie Miller Nature Center\, Olathe\, KS
+DESCRIPTION:Packing list: sack lunch (from home)\, fifth-grade field-trip shirt\, water bottle\, tennis shoes\, jacket. Monday running cooler\, high around 66F with patchy rain possible.
 STATUS:CONFIRMED
 SEQUENCE:0
 TRANSP:OPAQUE
@@ -1734,6 +1735,56 @@ UID:ote-winter-celebration-20261218@paulsnider.net
 SEQUENCE:0
 LOCATION:Overland Trail Elementary
 STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Savannah Bananas vs Indianapolis Clowns
+DTSTART;VALUE=DATE:20270618
+DTEND;VALUE=DATE:20270620
+DTSTAMP:20261024T121200Z
+UID:savannah-bananas-kc-20270618@paulsnider.net
+SEQUENCE:0
+LOCATION:Kauffman Stadium\, Kansas City\, MO
+DESCRIPTION:Savannah Bananas vs Indianapolis Clowns at Kauffman Stadium (Banana Ball World Tour). Tickets via Ticket Lottery List only\; list closes Oct 31\, 2026 at 11:59pm ET. Joining does not guarantee tickets. Game times TBD.
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+UID:ote-spring-break-20270312@paulsnider.net
+DTSTAMP:20261024T123831Z
+SUMMARY:OTE Spring Break
+DTSTART;VALUE=DATE:20270312
+DTEND;VALUE=DATE:20270323
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:OPAQUE
+X-IMPORT-TYPE:EMAIL-INVITE
+END:VEVENT
+BEGIN:VEVENT
+UID:madison-footloose-clinic-20261114@paulsnider.net
+DTSTAMP:20261026T133000Z
+SUMMARY:Madison: Footloose Musical Theater Clinic
+DTSTART;TZID=America/Chicago:20261114T093000
+DTEND;TZID=America/Chicago:20261114T113000
+LOCATION:Blue Valley Northwest High School Mainstage
+DESCRIPTION:Blue Valley Northwest High School Theater presents Footloose Musical Theater Clinic for grades 3-8. Choreography\, headshots\, games and more. $40 per student (show ticket and show t-shirt included). Clinic participants perform their choreography number during intermission at the Footloose matinee on Saturday\, November 21. Note: overlaps Madison basketball practice 9:00-10:00am.
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+UID:madison-footloose-matinee-20261121@paulsnider.net
+DTSTAMP:20261026T133000Z
+SUMMARY:Madison: Footloose Matinee Performance
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+LOCATION:Blue Valley Northwest High School Mainstage
+DESCRIPTION:Footloose matinee at Blue Valley Northwest High School. Clinic participants perform their choreography number during intermission. Show time TBD (not stated on clinic flyer).
+STATUS:CONFIRMED
+SEQUENCE:0
 TRANSP:TRANSPARENT
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
