@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T11:20:34.656366-05:00",
+  "generated_at": "2026-10-26T14:13:44.606533-05:00",
   "local": {
     "title": "Halloween Storytime",
     "detail": "Mon, Oct 26 at 6:30 PM \u2022 Waldo Branch",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7757.17,
-      "change_pct": 0.58,
-      "as_of": "2026-10-21"
+      "value": 7623.68,
+      "change_pct": -0.52,
+      "as_of": "2026-10-23"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 60.4,
-    "change_pct": 0.24,
+    "value": 60.71,
+    "change_pct": 0.76,
     "as_of": "2026-10-26"
   }
 }
