@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-27T05:28:50.702937-05:00",
+  "generated_at": "2026-10-27T11:32:01.377556-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Tue, Oct 27 at 9:30 AM \u2022 Plaza Branch",
+    "title": "Family Fun Night",
+    "detail": "Tue, Oct 27 at 5:30 PM \u2022 Waldo Branch",
     "date": "2026-10-27",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-122"
+    "url": "https://kclibrary.org/calendar/family-fun-night"
   },
   "kc_news": {
     "title": "This Kansas City nonprofit wants as many children as possible to have a costume this Halloween",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7623.68,
-      "change_pct": -0.52,
-      "as_of": "2026-10-23"
+      "value": 7676.77,
+      "change_pct": 0.7,
+      "as_of": "2026-10-26"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 60.78,
-    "change_pct": 0.88,
-    "as_of": "2026-10-26"
+    "value": 60.95,
+    "change_pct": 0.27,
+    "as_of": "2026-10-27"
   }
 }
