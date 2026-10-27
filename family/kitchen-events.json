@@ -1,102 +1,7 @@
 {
-  "generated_at": "2026-10-26T21:55:55.794079-05:00",
+  "generated_at": "2026-10-27T06:16:10.584372-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 1",
-      "start": "2026-10-26",
-      "end": "2026-10-27",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Madison: Library",
-      "start": "2026-10-26",
-      "end": "2026-10-27",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Max: PE",
-      "start": "2026-10-26",
-      "end": "2026-10-27",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Paul: Away - GitHub Universe",
-      "start": "2026-10-26",
-      "end": "2026-10-31",
-      "all_day": true,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Will: PE",
-      "start": "2026-10-26",
-      "end": "2026-10-27",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "5th Grade Field Trip",
-      "start": "2026-10-26T09:00:00-05:00",
-      "end": "2026-10-26T14:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Madison: Ernie Miller Nature Center Field Trip",
-      "start": "2026-10-26T09:00:00-05:00",
-      "end": "2026-10-26T14:00:00-05:00",
-      "all_day": false,
-      "location": "Ernie Miller Nature Center, Olathe, KS",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-10-26T17:00:00-05:00",
-      "end": "2026-10-26T18:00:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-10-26T17:00:00-05:00",
-      "end": "2026-10-26T17:55:00-05:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 2",
       "start": "2026-10-27",
@@ -1846,6 +1751,70 @@
       "source": "Family Email Events",
       "children": [
         "Max"
+      ]
+    },
+    {
+      "summary": "DAY 3",
+      "start": "2026-12-07",
+      "end": "2026-12-08",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Will: Library",
+      "start": "2026-12-07",
+      "end": "2026-12-08",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
+    },
+    {
+      "summary": "OTE Building Leadership Team Meeting",
+      "start": "2026-12-07T16:00:00-06:00",
+      "end": "2026-12-07T17:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-12-07T17:00:00-06:00",
+      "end": "2026-12-07T18:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-12-07T17:00:00-06:00",
+      "end": "2026-12-07T17:55:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Madison Basketball: Wildcats Practice",
+      "start": "2026-12-07T18:00:00-06:00",
+      "end": "2026-12-07T19:00:00-06:00",
+      "all_day": false,
+      "location": "7500 W 149th Terrace\nOverland Park KS",
+      "source": "Madison Basketball",
+      "children": [
+        "Madison"
       ]
     }
   ]
