@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T11:32:01.377556-05:00",
+  "generated_at": "2026-10-27T16:16:27.792169-05:00",
   "local": {
     "title": "Family Fun Night",
     "detail": "Tue, Oct 27 at 5:30 PM \u2022 Waldo Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Learner collaborates with MIT peers to develop book of AI insights",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-27",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/learner-prabha-jha-collaborates-with-mit-peers-to-develop-book-of-ai-insights-1027"
+    },
+    {
       "title": "At New York Climate Week 2026, MIT connects with a global network",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-26",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/at-new-york-climate-week-mit-connects-global-network-1026"
-    },
-    {
-      "title": "At MIT, Martha Minow speaks on sustaining democracy, both by using and overcoming AI",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-23",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/martha-minow-speaks-on-sustaining-democracy-using-overcoming-ai-1023"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 60.95,
-    "change_pct": 0.27,
+    "value": 61.62,
+    "change_pct": 1.38,
     "as_of": "2026-10-27"
   }
 }
