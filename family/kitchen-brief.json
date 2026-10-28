@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-28T10:58:31.369012-05:00",
+  "generated_at": "2026-10-28T15:59:49.799984-05:00",
   "local": {
-    "title": "Family Storytime",
-    "detail": "Wed, Oct 28 at 10:30 AM \u2022 Trails West Branch",
+    "title": "Movie: 'The Exorcist'",
+    "detail": "Wed, Oct 28 at 2:00 PM \u2022 Central Library",
     "date": "2026-10-28",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/family-storytime-55"
+    "url": "https://kclibrary.org/calendar/movie-exorcist"
   },
   "kc_news": {
     "title": "This Kansas City nonprofit wants as many children as possible to have a costume this Halloween",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "3 Questions: Why infrastructure is entering a defining era",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-28",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/3-questions-why-infrastructure-is-entering-defining-era-1028"
+    },
+    {
       "title": "Making machines that can listen",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-27",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/making-machines-that-can-listen-paris-smaragdis-1028"
-    },
-    {
-      "title": "Learner collaborates with MIT peers to develop book of AI insights",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-27",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/learner-prabha-jha-collaborates-with-mit-peers-to-develop-book-of-ai-insights-1027"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 64.92,
-    "change_pct": 5.36,
+    "value": 64.11,
+    "change_pct": 4.04,
     "as_of": "2026-10-28"
   }
 }
