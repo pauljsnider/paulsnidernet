@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T20:16:10.716115-05:00",
+  "generated_at": "2026-10-28T03:21:56.231647-05:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Wed, Oct 28 at 9:30 AM \u2022 Waldo Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Making machines that can listen",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-27",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/making-machines-that-can-listen-paris-smaragdis-1028"
+    },
+    {
       "title": "Learner collaborates with MIT peers to develop book of AI insights",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-27",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/learner-prabha-jha-collaborates-with-mit-peers-to-develop-book-of-ai-insights-1027"
-    },
-    {
-      "title": "At New York Climate Week 2026, MIT connects with a global network",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-26",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/at-new-york-climate-week-mit-connects-global-network-1026"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26169.38,
-      "change_pct": 0.82,
-      "as_of": "2026-10-26"
+      "value": 26477.81,
+      "change_pct": 1.18,
+      "as_of": "2026-10-27"
     }
   ],
   "ticker": {
