@@ -1,47 +1,7 @@
 {
-  "generated_at": "2026-10-27T22:04:45.778288-05:00",
+  "generated_at": "2026-10-28T06:50:23.982001-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 2",
-      "start": "2026-10-27",
-      "end": "2026-10-28",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Max: Library",
-      "start": "2026-10-27",
-      "end": "2026-10-28",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Religious Education",
-      "start": "2026-10-27T16:30:00-05:00",
-      "end": "2026-10-27T17:45:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Madison Tutor w/ Ava",
-      "start": "2026-10-27T19:15:00-05:00",
-      "end": "2026-10-27T20:15:00-05:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 3",
       "start": "2026-10-28",
@@ -1813,6 +1773,37 @@
       "all_day": false,
       "location": "7500 W 149th Terrace\nOverland Park KS",
       "source": "Madison Basketball",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "DAY 4",
+      "start": "2026-12-08",
+      "end": "2026-12-09",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-12-08",
+      "end": "2026-12-09",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-12-08T19:15:00-06:00",
+      "end": "2026-12-08T20:15:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
       "children": [
         "Madison"
       ]
