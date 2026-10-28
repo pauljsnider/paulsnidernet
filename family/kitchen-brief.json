@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-28T03:21:56.231647-05:00",
+  "generated_at": "2026-10-28T10:58:31.369012-05:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Wed, Oct 28 at 9:30 AM \u2022 Waldo Branch",
+    "title": "Family Storytime",
+    "detail": "Wed, Oct 28 at 10:30 AM \u2022 Trails West Branch",
     "date": "2026-10-28",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-154"
+    "url": "https://kclibrary.org/calendar/family-storytime-55"
   },
   "kc_news": {
     "title": "This Kansas City nonprofit wants as many children as possible to have a costume this Halloween",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 61.62,
-    "change_pct": 1.38,
-    "as_of": "2026-10-27"
+    "value": 64.92,
+    "change_pct": 5.36,
+    "as_of": "2026-10-28"
   }
 }
