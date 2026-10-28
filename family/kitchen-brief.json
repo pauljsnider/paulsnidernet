@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-27T16:16:27.792169-05:00",
+  "generated_at": "2026-10-27T20:16:10.716115-05:00",
   "local": {
-    "title": "Family Fun Night",
-    "detail": "Tue, Oct 27 at 5:30 PM \u2022 Waldo Branch",
-    "date": "2026-10-27",
+    "title": "Baby Storytime",
+    "detail": "Wed, Oct 28 at 9:30 AM \u2022 Waldo Branch",
+    "date": "2026-10-28",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/family-fun-night"
+    "url": "https://kclibrary.org/calendar/baby-storytime-154"
   },
   "kc_news": {
     "title": "This Kansas City nonprofit wants as many children as possible to have a costume this Halloween",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7676.77,
-      "change_pct": 0.7,
-      "as_of": "2026-10-26"
+      "value": 7722.6,
+      "change_pct": 0.6,
+      "as_of": "2026-10-27"
     },
     {
       "name": "Nasdaq",
