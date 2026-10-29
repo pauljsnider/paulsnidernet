@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-28T15:59:49.799984-05:00",
+  "generated_at": "2026-10-28T19:51:22.091215-05:00",
   "local": {
-    "title": "Movie: 'The Exorcist'",
-    "detail": "Wed, Oct 28 at 2:00 PM \u2022 Central Library",
-    "date": "2026-10-28",
+    "title": "Art in the Loop Closing Reception",
+    "detail": "Thu, Oct 29 at 6:00 PM \u2022 Central Library",
+    "date": "2026-10-29",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-exorcist"
+    "url": "https://kclibrary.org/events/art-loop-closing-reception"
   },
   "kc_news": {
     "title": "This Kansas City nonprofit wants as many children as possible to have a costume this Halloween",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7722.6,
-      "change_pct": 0.6,
-      "as_of": "2026-10-27"
+      "value": 7743.98,
+      "change_pct": 0.28,
+      "as_of": "2026-10-28"
     },
     {
       "name": "Nasdaq",
