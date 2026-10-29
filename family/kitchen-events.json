@@ -1,27 +1,7 @@
 {
-  "generated_at": "2026-10-28T22:31:06.951491-05:00",
+  "generated_at": "2026-10-29T06:58:03.068448-05:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 3",
-      "start": "2026-10-28",
-      "end": "2026-10-29",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Will: Library",
-      "start": "2026-10-28",
-      "end": "2026-10-29",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
     {
       "summary": "DAY 4",
       "start": "2026-10-29",
@@ -1828,6 +1808,48 @@
       "source": "Family Email Events",
       "children": [
         "Madison"
+      ]
+    },
+    {
+      "summary": "DAY 5",
+      "start": "2026-12-09",
+      "end": "2026-12-10",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Madison: PE",
+      "start": "2026-12-09",
+      "end": "2026-12-10",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-12-09",
+      "end": "2026-12-10",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
+    },
+    {
+      "summary": "Will Basketball: Sun Devils Practice",
+      "start": "2026-12-09T18:00:00-06:00",
+      "end": "2026-12-09T19:00:00-06:00",
+      "all_day": false,
+      "location": "Mission Trail Elementary School\nLeawood, KS, United States",
+      "source": "Will Basketball",
+      "children": [
+        "Will"
       ]
     }
   ]
