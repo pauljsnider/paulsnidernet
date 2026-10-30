@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-30T09:03:53.297480-05:00",
+  "generated_at": "2026-10-30T14:17:47.143145-05:00",
   "local": {
-    "title": "Kindergarten Readiness Storytime",
-    "detail": "Fri, Oct 30 at 10:30 AM \u2022 Plaza Branch",
+    "title": "Movie: 'Addams Family Values'",
+    "detail": "Fri, Oct 30 at 2:00 PM \u2022 Central Library",
     "date": "2026-10-30",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/index%2Ephp/calendar/kindergarten-readiness-storytime-28"
+    "url": "https://kclibrary.org/calendar/movie-addams-family-values"
   },
   "kc_news": {
     "title": "This Kansas City nonprofit wants as many children as possible to have a costume this Halloween",
@@ -15,26 +15,26 @@
   },
   "ai": [
     {
+      "title": "Q&A: Hey AI, who should I vote for this year?",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-10-30",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/qa-hey-ai-who-should-i-vote-for-this-year-1030"
+    },
+    {
       "title": "3 Questions: Why infrastructure is entering a defining era",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-10-28",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/3-questions-why-infrastructure-is-entering-defining-era-1028"
-    },
-    {
-      "title": "Making machines that can listen",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-27",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/making-machines-that-can-listen-paris-smaragdis-1028"
     }
   ],
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7743.98,
-      "change_pct": 0.28,
-      "as_of": "2026-10-28"
+      "value": 7720.39,
+      "change_pct": -0.3,
+      "as_of": "2026-10-29"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 66.22,
-    "change_pct": 0.58,
+    "value": 65.08,
+    "change_pct": -1.15,
     "as_of": "2026-10-30"
   }
 }
