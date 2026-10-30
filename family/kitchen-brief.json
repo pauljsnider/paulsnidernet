@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-10-29T19:53:33.990565-05:00",
+  "generated_at": "2026-10-30T02:02:56.212375-05:00",
   "local": {
-    "title": "Art in the Loop Closing Reception",
-    "detail": "Thu, Oct 29 at 6:00 PM \u2022 Central Library",
-    "date": "2026-10-29",
+    "title": "Kindergarten Readiness Storytime",
+    "detail": "Fri, Oct 30 at 10:30 AM \u2022 Plaza Branch",
+    "date": "2026-10-30",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/events/art-loop-closing-reception"
+    "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-28"
   },
   "kc_news": {
     "title": "This Kansas City nonprofit wants as many children as possible to have a costume this Halloween",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26549.85,
-      "change_pct": 0.27,
-      "as_of": "2026-10-28"
+      "value": 26184.72,
+      "change_pct": -1.38,
+      "as_of": "2026-10-29"
     }
   ],
   "ticker": {
