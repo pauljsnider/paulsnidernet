@@ -7,6 +7,7 @@ os.chdir(APP_DIR)
 sys.path.insert(0, APP_DIR)
 from badgeware import State
 from roku_net import Discovery, inspect, press
+from remote_layout import BUTTONS, enabled, move
 
 badge.mode(HIRES | VSYNC)
 screen.font = font.nope
@@ -26,7 +27,7 @@ target = None
 pending = None
 octets = [192, 168, 1, 1]
 part = 0
-ACTIONS = [('Roku Home', 'Home'), ('Play / Pause', 'Play'), ('Rewind', 'Rev'), ('Fast forward', 'Fwd'), ('Replay', 'InstantReplay'), ('Options (*)', 'Info'), ('Choose Roku', None)]
+focus = 4
 
 def connect():
     global mode, message, started, target
@@ -68,12 +69,13 @@ def add_device(ip):
         devices.sort(key=lambda d: (d['id'] != state.get('last_id'), d['name'], d['ip']))
 
 def choose():
-    global target, mode, message
+    global target, mode, message, focus
     candidate = devices[selected]
     current = inspect(candidate['ip'])
     if current['id'] != candidate['id']:
         raise ValueError('Device changed; rescan')
     target = current
+    focus = 4
     state['last_id'] = target['id']
     message = 'Connected to selected Roku'
     try:
@@ -83,7 +85,7 @@ def choose():
     mode = 'remote'
 
 def update():
-    global mode, message, scan, selected, pending, part, target
+    global mode, message, scan, selected, pending, part, target, focus
     try:
         if mode == 'start':
             connect()
@@ -145,27 +147,18 @@ def update():
                     selected = 0
                     message = 'Choose verified Roku'
         elif mode == 'remote':
-            if badge.pressed(BUTTON_MENU):
-                mode = 'actions'
-                selected = 0
-            else:
-                for button, key in ((BUTTON_UP, 'Up'), (BUTTON_DOWN, 'Down'), (BUTTON_LEFT, 'Left'), (BUTTON_RIGHT, 'Right'), (BUTTON_SELECT, 'Select'), (BUTTON_BACK, 'Back')):
-                    if badge.pressed(button):
-                        pending = key
-                        message = 'Sending ' + key
-                        break
-        elif mode == 'actions':
-            selected = (selected + int(badge.pressed(BUTTON_DOWN)) - int(badge.pressed(BUTTON_UP))) % len(ACTIONS)
-            if badge.pressed(BUTTON_BACK):
-                mode = 'remote'
-            elif badge.pressed(BUTTON_SELECT):
-                key = ACTIONS[selected][1]
-                if key is None:
-                    discover()
-                else:
-                    mode = 'remote'
-                    pending = key
-                    message = 'Sending ' + key
+            for button, direction in ((BUTTON_UP, 'Up'), (BUTTON_DOWN, 'Down'), (BUTTON_LEFT, 'Left'), (BUTTON_RIGHT, 'Right')):
+                if badge.pressed(button):
+                    focus = move(focus, direction, target)
+                    break
+            if badge.pressed(BUTTON_SELECT):
+                item = BUTTONS[focus]
+                if enabled(item, target):
+                    if item[1] is None:
+                        discover()
+                    else:
+                        pending = item[1]
+                        message = 'Sending ' + item[0]
     except (OSError, ValueError) as exc:
         pending = None
         message = str(exc)[:44] if isinstance(exc, ValueError) else 'Network error; retry or rescan'
@@ -182,18 +175,24 @@ def draw():
     screen.pen = color.rgb(185, 140, 255)
     screen.text('ROKU WI-FI REMOTE', 10, 8)
     screen.pen = color.rgb(245, 240, 255)
-    if mode in ('devices', 'actions'):
-        rows = ([d['name'][:19] + ' ' + d['ip'] for d in devices] + ['Scan again', 'Enter IP manually']) if mode == 'devices' else [a[0] for a in ACTIONS]
+    if mode == 'devices':
+        rows = [d['name'][:19] + ' ' + d['ip'] for d in devices] + ['Scan again', 'Enter IP manually']
         for i in range((selected // 5) * 5, min(len(rows), (selected // 5) * 5 + 5)):
             screen.text(('> ' if i == selected else '  ') + rows[i][:38], 8, 48 + (i % 5) * 27)
         hint = 'Up/Down choose; Select confirm'
     elif mode == 'remote':
-        screen.text(target['name'][:35], 10, 45)
-        screen.text(target['ip'], 10, 70)
-        screen.text('Arrows: move   Select: OK', 10, 110)
-        screen.text('Back: Roku back', 10, 138)
-        screen.text('Menu: playback / choose Roku', 10, 166)
-        hint = 'Home exits this badge app'
+        screen.text(target['name'][:22] + ' ' + target['ip'], 8, 27)
+        screen.pen = color.rgb(43, 29, 65)
+        screen.shape(shape.rounded_rectangle(5, 46, 310, 151, 10))
+        for i, item in enumerate(BUTTONS):
+            x, y = 11 + item[2] * 101, 51 + item[3] * 24
+            active = enabled(item, target)
+            screen.pen = color.rgb(99, 240, 207) if i == focus else color.rgb(83, 48, 130) if active else color.rgb(40, 35, 48)
+            screen.shape(shape.rounded_rectangle(x, y, 96, 21, 5))
+            screen.pen = color.rgb(16, 20, 30) if i == focus else color.rgb(255, 255, 255) if active else color.rgb(105, 100, 115)
+            width, _ = screen.measure_text(item[0])
+            screen.text(item[0], x + (96 - width) // 2, y + 4)
+        hint = 'Arrows move; Select sends; Home exit'
     elif mode == 'manual':
         screen.text('.'.join(('[' + str(n) + ']') if i == part else str(n) for i, n in enumerate(octets)), 10, 80)
         screen.text('Left/Right: select number', 10, 120)

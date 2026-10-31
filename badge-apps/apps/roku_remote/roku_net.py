@@ -2,7 +2,7 @@
 import socket
 import time
 
-KEYS = ('Up', 'Down', 'Left', 'Right', 'Select', 'Back', 'Home', 'Info', 'Play', 'Rev', 'Fwd', 'InstantReplay')
+KEYS = ('Up', 'Down', 'Left', 'Right', 'Select', 'Back', 'Home', 'Info', 'Play', 'Rev', 'Fwd', 'InstantReplay', 'VolumeDown', 'VolumeMute', 'VolumeUp', 'PowerOff')
 
 def ipv4(value):
     parts = value.split('.')
@@ -24,7 +24,7 @@ def device(xml, ip):
     identity = tag(xml, 'serial-number') or tag(xml, 'udn')
     if '<device-info>' not in xml or not identity or tag(xml, 'vendor-name') != 'Roku':
         raise ValueError('Not a verified Roku')
-    return {'ip': ipv4(ip), 'id': identity, 'name': tag(xml, 'user-device-name') or tag(xml, 'friendly-device-name') or tag(xml, 'model-name') or 'Roku'}
+    return {'volume': tag(xml, 'is-tv') == 'true' or tag(xml, 'supports-audio-volume-control') == 'true', 'power': tag(xml, 'is-tv') == 'true' or tag(xml, 'supports-tv-power-control') == 'true', 'ip': ipv4(ip), 'id': identity, 'name': tag(xml, 'user-device-name') or tag(xml, 'friendly-device-name') or tag(xml, 'model-name') or 'Roku'}
 
 def clock_ms():
     return time.ticks_ms() if hasattr(time, 'ticks_ms') else int(time.monotonic() * 1000)
