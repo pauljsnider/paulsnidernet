@@ -4,6 +4,8 @@ Paul Snider's apps and experiments for the GitHub Universe 2026 badge.
 
 ## Apps
 
+- [NES / Super Mario Bros.](apps/nes/README.md): emulator and installation instructions; supply your own NES ROM. Physical validation pending.
+
 - [Universal Remote](apps/universal_remote/README.md): infrared TV remote with LG, Samsung and Sony starter profiles and Flipper .ir imports. Prototype; physical validation pending.
 
 Copy an app folder into the badge drive's apps directory. See the app README for setup and limitations.
