@@ -4,6 +4,8 @@ Paul Snider's apps and experiments for the GitHub Universe 2026 badge.
 
 ## Apps
 
+- [AllPlays Scoreboard](apps/allplays_scoreboard/README.md): branded Wi-Fi game picker, score, Start/Pause, period and Undo controls. Requires the linked AllPlays backend deployment; physical validation pending.
+
 - [Roku Wi-Fi Remote](apps/roku_remote/README.md): startup Wi-Fi connection, multiple-Roku picker, manual IP and navigation/playback controls. Includes a dedicated icon; hardware validation pending.
 
 - [NES / Super Mario Bros.](apps/nes/README.md): emulator and installation instructions; supply your own NES ROM. Physical validation pending.
