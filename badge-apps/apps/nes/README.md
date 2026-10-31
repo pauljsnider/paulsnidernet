@@ -12,6 +12,10 @@ Play NES games on the GitHub Universe 2026 badge using the spf13 MicroPython emu
 
 This targets the custom Universe 2026 RP2350 badge with MonaOS 4.0. The drive path `apps/nes` appears internally as `/system/apps/nes`. No firmware replacement is required.
 
+## ROM reference
+
+[MiNERVA Archive | Directory Listing](https://share.google/C1nrdNEie3RyYKLd3) is the archive reference shared for this project. This is a directory listing, not a direct ROM download. ROM files are not bundled with this repository.
+
 ## Controls
 
 Hold the badge upside down so the capacitive controls are below the display. Use the directional pad to move, A to jump, B to run, touch HOME for Start, and touch MENU for Select. Hold A+B or Start+Select for about 0.6 seconds to open the emulator menu. Physical HOME saves state and exits.
