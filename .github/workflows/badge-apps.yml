@@ -1,0 +1,17 @@
+name: Badge app tests
+on:
+  push:
+    paths: ['badge-apps/**', '.github/workflows/badge-apps.yml']
+  pull_request:
+    paths: ['badge-apps/**', '.github/workflows/badge-apps.yml']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s badge-apps/tests -v
