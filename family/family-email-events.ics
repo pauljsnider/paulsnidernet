@@ -1788,4 +1788,18 @@ SEQUENCE:0
 TRANSP:TRANSPARENT
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+UID:missouri-state-iowa-state-20261218@paulsnider.net
+DTSTAMP:20261101T000000Z
+SUMMARY:Missouri State vs. Iowa State Basketball
+DTSTART;TZID=America/Chicago:20261218T203000
+DTEND;TZID=America/Chicago:20261218T223000
+LOCATION:T-Mobile Center\, Kansas City\, MO
+DESCRIPTION:NABC Hall of Fame Classic. Tip-off 8:30 PM Central.
+  End time estimated. Earlier doubleheader game starts at 6:00 PM.
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR
