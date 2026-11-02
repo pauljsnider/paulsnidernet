@@ -1,40 +1,40 @@
 {
-  "generated_at": "2026-11-01T23:54:10.476533-06:00",
+  "generated_at": "2026-11-02T17:27:40.350927-06:00",
   "local": {
-    "title": "Movie: 'The Last of Sheila'",
-    "detail": "Mon, Nov 2 at 2:00 PM \u2022 Central Library",
-    "date": "2026-11-02",
+    "title": "Baby Storytime",
+    "detail": "Tue, Nov 3 at 9:30 AM \u2022 Plaza Branch",
+    "date": "2026-11-03",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-last-sheila"
+    "url": "https://kclibrary.org/calendar/baby-storytime-123"
   },
   "kc_news": {
-    "title": "Savor Kansas City's fall weather with these relaxing getaways and fun staycation ideas",
+    "title": "Some World Cup investments became lasting benefits for Kansas City. Others fell short",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-10-31/kansas-city-getaway-staycation-relaxing-fall-weather"
+    "url": "https://www.kcur.org/arts-life/2026-11-02/world-cup-kansas-city-investments-what-stayed-infrastructure-murals-partnerships-open-doors"
   },
   "ai": [
     {
-      "title": "MIT affiliates named 2026 Schmidt Sciences AI2050 Fellows",
+      "title": "Powering up for a pivotal moment",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-30",
+      "date": "2026-11-02",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/mit-affiliates-named-schmidt-sciences-ai2050-fellows-1030"
+      "url": "https://news.mit.edu/2026/powering-up-for-pivotal-moment-1102"
     },
     {
-      "title": "Q&A: Hey AI, who should I vote for this year?",
+      "title": "Regina Barzilay and Jim Collins win Pritzker Prize for AI and Science Research Excellence for work in AI-enabled antibiotic discovery",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-10-30",
+      "date": "2026-11-01",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/qa-hey-ai-who-should-i-vote-for-this-year-1030"
+      "url": "https://news.mit.edu/2026/regina-barzilay-jim-collins-win-pritzker-prize-ai-and-science-research-excellence-1102"
     }
   ],
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7743.98,
-      "change_pct": 0.28,
-      "as_of": "2026-10-28"
+      "value": 7580.07,
+      "change_pct": -1.82,
+      "as_of": "2026-10-30"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.23,
-    "change_pct": -0.93,
-    "as_of": "2026-10-30"
+    "value": 66.84,
+    "change_pct": 2.47,
+    "as_of": "2026-11-02"
   }
 }
