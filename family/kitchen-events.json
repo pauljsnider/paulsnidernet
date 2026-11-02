@@ -1,16 +1,7 @@
 {
-  "generated_at": "2026-11-01T21:27:11.272242-06:00",
+  "generated_at": "2026-11-02T08:13:09.817938-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "Chiefs @ Broncos",
-      "start": "2026-11-01T15:25:00-06:00",
-      "end": "2026-11-01T18:55:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
     {
       "summary": "DAY 1",
       "start": "2026-11-02",
@@ -1794,6 +1785,15 @@
       "end": "2026-12-11T18:15:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Chiefs @ Bengals",
+      "start": "2026-12-13T15:25:00-06:00",
+      "end": "2026-12-13T18:55:00-06:00",
+      "all_day": false,
+      "location": "",
       "source": "Family Email Events",
       "children": []
     }
