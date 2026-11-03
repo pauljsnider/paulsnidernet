@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-02T17:27:40.350927-06:00",
+  "generated_at": "2026-11-03T00:39:29.640995-06:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Tue, Nov 3 at 9:30 AM \u2022 Plaza Branch",
     "date": "2026-11-03",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-123"
+    "url": "https://kclibrary.org/index%2Ephp/calendar/baby-storytime-123"
   },
   "kc_news": {
     "title": "Some World Cup investments became lasting benefits for Kansas City. Others fell short",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 26184.72,
-      "change_pct": -1.38,
-      "as_of": "2026-10-29"
+      "value": 25164.36,
+      "change_pct": -1.07,
+      "as_of": "2026-11-02"
     }
   ],
   "ticker": {
