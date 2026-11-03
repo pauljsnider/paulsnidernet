@@ -1,118 +1,7 @@
 {
-  "generated_at": "2026-11-02T18:52:38.111922-06:00",
+  "generated_at": "2026-11-03T07:15:58.323649-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 1",
-      "start": "2026-11-02",
-      "end": "2026-11-03",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Madison: Library",
-      "start": "2026-11-02",
-      "end": "2026-11-03",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Max: PE",
-      "start": "2026-11-02",
-      "end": "2026-11-03",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Will: PE",
-      "start": "2026-11-02",
-      "end": "2026-11-03",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "4th Grade Miller Field Trip",
-      "start": "2026-11-02T09:00:00-06:00",
-      "end": "2026-11-02T11:50:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "NEW DATE 1st Grade ON-SITE Field Trip Session 1",
-      "start": "2026-11-02T09:00:00-06:00",
-      "end": "2026-11-02T11:00:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "4th Grade Franey Field Trip",
-      "start": "2026-11-02T11:15:00-06:00",
-      "end": "2026-11-02T14:10:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "NEW DATE 1st Grade ON-SITE Field Trip Session 2",
-      "start": "2026-11-02T12:00:00-06:00",
-      "end": "2026-11-02T14:00:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "OTE Building Leadership Team Meeting",
-      "start": "2026-11-02T16:00:00-06:00",
-      "end": "2026-11-02T17:00:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-11-02T17:00:00-06:00",
-      "end": "2026-11-02T18:00:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Madison Basketball: Wildcats Practice",
-      "start": "2026-11-02T18:00:00-06:00",
-      "end": "2026-11-02T19:00:00-06:00",
-      "all_day": false,
-      "location": "14201 Mission Rd\nOverland Park KS",
-      "source": "Madison Basketball",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 2",
       "start": "2026-11-03",
@@ -1785,6 +1674,50 @@
       "location": "",
       "source": "Family Email Events",
       "children": []
+    },
+    {
+      "summary": "DAY 3",
+      "start": "2026-12-14",
+      "end": "2026-12-15",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Will: Library",
+      "start": "2026-12-14",
+      "end": "2026-12-15",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-12-14T17:00:00-06:00",
+      "end": "2026-12-14T18:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "Madison Basketball: Wildcats Practice",
+      "start": "2026-12-14T18:00:00-06:00",
+      "end": "2026-12-14T19:00:00-06:00",
+      "all_day": false,
+      "location": "14201 Mission Rd\nOverland Park KS",
+      "source": "Madison Basketball",
+      "children": [
+        "Madison"
+      ]
     }
   ]
 }
