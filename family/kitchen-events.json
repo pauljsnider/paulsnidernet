@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T08:13:09.817938-06:00",
+  "generated_at": "2026-11-02T18:11:20.812083-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -1174,17 +1174,6 @@
       "source": "Family Email Events",
       "children": [
         "Madison"
-      ]
-    },
-    {
-      "summary": "Will Basketball: Sun Devils Practice",
-      "start": "2026-11-25T18:00:00-06:00",
-      "end": "2026-11-25T19:00:00-06:00",
-      "all_day": false,
-      "location": "Mission Trail Elementary School\nLeawood, KS, United States",
-      "source": "Will Basketball",
-      "children": [
-        "Will"
       ]
     },
     {
