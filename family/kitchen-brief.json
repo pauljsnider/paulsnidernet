@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-03T00:39:29.640995-06:00",
+  "generated_at": "2026-11-03T09:02:11.155552-06:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Tue, Nov 3 at 9:30 AM \u2022 Plaza Branch",
     "date": "2026-11-03",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/index%2Ephp/calendar/baby-storytime-123"
+    "url": "https://kclibrary.org/calendar/baby-storytime-123"
   },
   "kc_news": {
     "title": "Some World Cup investments became lasting benefits for Kansas City. Others fell short",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 66.84,
-    "change_pct": 2.47,
-    "as_of": "2026-11-02"
+    "value": 66.71,
+    "change_pct": -0.19,
+    "as_of": "2026-11-03"
   }
 }
