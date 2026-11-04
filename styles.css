@@ -2490,3 +2490,102 @@ body.blog-page {
   font-style: italic;
   color: var(--text-light);
 }
+
+/* GitHub Universe images, factory, podcast (Nov 2026) */
+.about-figure,
+.speaking-banner {
+    margin: 10px 0 25px;
+}
+
+.about-figure img,
+.speaking-banner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.speaking-banner img {
+    aspect-ratio: 2.4 / 1;
+    object-fit: cover;
+    object-position: 30% 50%;
+}
+
+.about-figure figcaption,
+.speaking-banner figcaption {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.talk-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+}
+
+.featured-talk-item--media .talk-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.talk-thumb {
+    position: relative;
+    flex: 0 0 280px;
+    margin-left: 25px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.talk-thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.talk-thumb:hover img {
+    transform: scale(1.03);
+}
+
+.talk-thumb-play {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 51, 102, 0.85);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding-left: 3px;
+}
+
+@media (max-width: 768px) {
+    .featured-talk-item--media {
+        flex-wrap: wrap;
+    }
+
+    .talk-thumb {
+        flex: 1 1 100%;
+        margin: 15px 0 0 60px;
+    }
+
+    .speaking-banner img {
+        aspect-ratio: 16 / 9;
+        object-position: 15% 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .talk-thumb {
+        margin-left: 0;
+    }
+}
