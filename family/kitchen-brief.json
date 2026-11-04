@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-03T19:17:17.113223-06:00",
+  "generated_at": "2026-11-04T03:03:48.418067-06:00",
   "local": {
-    "title": "String Art with Fluid Paint",
-    "detail": "Tue, Nov 3 at 6:00 PM \u2022 Trails West Branch",
-    "date": "2026-11-03",
+    "title": "Baby Storytime",
+    "detail": "Wed, Nov 4 at 9:30 AM \u2022 Waldo Branch",
+    "date": "2026-11-04",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/string-art-fluid-paint"
+    "url": "https://kclibrary.org/calendar/baby-storytime-155"
   },
   "kc_news": {
     "title": "Some World Cup investments became lasting benefits for Kansas City. Others fell short",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 25164.36,
-      "change_pct": -1.07,
-      "as_of": "2026-11-02"
+      "value": 25372.01,
+      "change_pct": 0.83,
+      "as_of": "2026-11-03"
     }
   ],
   "ticker": {
