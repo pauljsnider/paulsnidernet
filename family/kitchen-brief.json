@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-04T11:10:31.200628-06:00",
+  "generated_at": "2026-11-04T17:36:13.020862-06:00",
   "local": {
-    "title": "Family Storytime",
-    "detail": "Wed, Nov 4 at 10:30 AM \u2022 Trails West Branch",
+    "title": "Movie: 'Hunger Games'",
+    "detail": "Wed, Nov 4 at 5:30 PM \u2022 Waldo Branch",
     "date": "2026-11-04",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/family-storytime-86"
+    "url": "https://kclibrary.org/calendar/movie-hunger-games"
   },
   "kc_news": {
     "title": "Some World Cup investments became lasting benefits for Kansas City. Others fell short",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 68.0,
-    "change_pct": 1.77,
+    "value": 68.34,
+    "change_pct": 2.29,
     "as_of": "2026-11-04"
   }
 }
