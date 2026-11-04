@@ -1,85 +1,7 @@
 {
-  "generated_at": "2026-11-03T21:56:27.216681-06:00",
+  "generated_at": "2026-11-04T04:22:57.187887-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 2",
-      "start": "2026-11-03",
-      "end": "2026-11-04",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Max: Library",
-      "start": "2026-11-03",
-      "end": "2026-11-04",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Paul: Away - All Company Meeting / MN",
-      "start": "2026-11-03",
-      "end": "2026-11-06",
-      "all_day": true,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "4th Grade Franchett Field Trip",
-      "start": "2026-11-03T09:00:00-06:00",
-      "end": "2026-11-03T11:50:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "4th Grade Heston Field Trip",
-      "start": "2026-11-03T11:15:00-06:00",
-      "end": "2026-11-03T14:10:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Religious Education",
-      "start": "2026-11-03T16:30:00-06:00",
-      "end": "2026-11-03T17:45:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-11-03T17:00:00-06:00",
-      "end": "2026-11-03T17:55:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Madison Tutor w/ Ava",
-      "start": "2026-11-03T19:15:00-06:00",
-      "end": "2026-11-03T20:15:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 3",
       "start": "2026-11-04",
@@ -600,6 +522,15 @@
       ]
     },
     {
+      "summary": "Blue Valley High: Mamma Mia! (Musical)",
+      "start": "2026-11-13T19:00:00-06:00",
+      "end": "2026-11-13T22:00:00-06:00",
+      "all_day": false,
+      "location": "Blue Valley High School Performing Arts Center, 6001 W 159th St, Overland Park, KS",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
       "summary": "Max: Learn to Play Hockey",
       "start": "2026-11-14T08:00:00-06:00",
       "end": "2026-11-14T08:40:00-06:00",
@@ -664,6 +595,15 @@
       "children": [
         "Max"
       ]
+    },
+    {
+      "summary": "Blue Valley High: Mamma Mia! (Musical)",
+      "start": "2026-11-14T19:00:00-06:00",
+      "end": "2026-11-14T22:00:00-06:00",
+      "all_day": false,
+      "location": "Blue Valley High School Performing Arts Center, 6001 W 159th St, Overland Park, KS",
+      "source": "Family Email Events",
+      "children": []
     },
     {
       "summary": "Chiefs @ Falcons",
@@ -1715,6 +1655,48 @@
       "all_day": false,
       "location": "14201 Mission Rd\nOverland Park KS",
       "source": "Madison Basketball",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "DAY 4",
+      "start": "2026-12-15",
+      "end": "2026-12-16",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-12-15",
+      "end": "2026-12-16",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-12-15T17:00:00-06:00",
+      "end": "2026-12-15T17:55:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-12-15T19:15:00-06:00",
+      "end": "2026-12-15T20:15:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
       "children": [
         "Madison"
       ]
