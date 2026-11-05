@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T09:24:30.922999-06:00",
+  "generated_at": "2026-11-05T15:57:25.458175-06:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Nov 5 at 5:30 PM \u2022 North-East Branch",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7568.92,
-      "change_pct": 0.36,
-      "as_of": "2026-11-03"
+      "value": 7688.62,
+      "change_pct": 1.58,
+      "as_of": "2026-11-04"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 67.3,
-    "change_pct": -1.53,
+    "value": 65.42,
+    "change_pct": -4.27,
     "as_of": "2026-11-05"
   }
 }
