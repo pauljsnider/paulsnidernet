@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T20:21:50.622348-06:00",
+  "generated_at": "2026-11-06T04:45:38.783109-06:00",
   "local": {
     "title": "Between the Lines Book Group",
     "detail": "Fri, Nov 6 at 12:00 PM \u2022 Westport Branch",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 25736.51,
-      "change_pct": 1.44,
-      "as_of": "2026-11-04"
+      "value": 24315.0,
+      "change_pct": -5.52,
+      "as_of": "2026-11-05"
     }
   ],
   "ticker": {
