@@ -1,62 +1,7 @@
 {
-  "generated_at": "2026-11-05T22:14:19.740191-06:00",
+  "generated_at": "2026-11-06T07:27:10.972991-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 4",
-      "start": "2026-11-05",
-      "end": "2026-11-06",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Max: PE",
-      "start": "2026-11-05",
-      "end": "2026-11-06",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "Will: Kauffman Stadium Field Trip",
-      "start": "2026-11-05T09:00:00-06:00",
-      "end": "2026-11-05T14:00:00-06:00",
-      "all_day": false,
-      "location": "Kauffman Stadium, Kansas City, MO",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-11-05T17:00:00-06:00",
-      "end": "2026-11-05T18:00:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-11-05T17:00:00-06:00",
-      "end": "2026-11-05T17:55:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "NO SCHOOL Teacher Professional Collaboration",
       "start": "2026-11-06",
@@ -1380,6 +1325,17 @@
       ]
     },
     {
+      "summary": "Will Soccer: Vipers FC U8B @ OPSC Pre Acad U9",
+      "start": "2026-12-06T17:15:00-06:00",
+      "end": "2026-12-06T18:15:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Will Soccer - Vipers FC U8B",
+      "children": [
+        "Will"
+      ]
+    },
+    {
       "summary": "DAY 3",
       "start": "2026-12-07",
       "end": "2026-12-08",
@@ -1621,6 +1577,17 @@
       "children": []
     },
     {
+      "summary": "Will Soccer: Vipers FC U8B vs Blue Valley Strikers",
+      "start": "2026-12-11T18:30:00-06:00",
+      "end": "2026-12-11T19:30:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Will Soccer - Vipers FC U8B",
+      "children": [
+        "Will"
+      ]
+    },
+    {
       "summary": "Chiefs @ Bengals",
       "start": "2026-12-13T15:25:00-06:00",
       "end": "2026-12-13T18:55:00-06:00",
@@ -1628,6 +1595,17 @@
       "location": "",
       "source": "Family Email Events",
       "children": []
+    },
+    {
+      "summary": "Will Soccer: Vipers FC U8B @ Pele\u2019s St. Agnes Rams",
+      "start": "2026-12-13T17:15:00-06:00",
+      "end": "2026-12-13T18:15:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Will Soccer - Vipers FC U8B",
+      "children": [
+        "Will"
+      ]
     },
     {
       "summary": "DAY 3",
@@ -1755,6 +1733,81 @@
       "source": "Will Basketball",
       "children": [
         "Will"
+      ]
+    },
+    {
+      "summary": "DAY 1",
+      "start": "2026-12-17",
+      "end": "2026-12-18",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Madison: Library",
+      "start": "2026-12-17",
+      "end": "2026-12-18",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Max: PE",
+      "start": "2026-12-17",
+      "end": "2026-12-18",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
+    },
+    {
+      "summary": "Will: PE",
+      "start": "2026-12-17",
+      "end": "2026-12-18",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
+    },
+    {
+      "summary": "Fifth Grade Elective Showcase",
+      "start": "2026-12-17T09:20:00-06:00",
+      "end": "2026-12-17T11:25:00-06:00",
+      "all_day": false,
+      "location": "Overland Trail Middle School",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-12-17T17:00:00-06:00",
+      "end": "2026-12-17T18:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-12-17T17:00:00-06:00",
+      "end": "2026-12-17T17:55:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
       ]
     }
   ]
