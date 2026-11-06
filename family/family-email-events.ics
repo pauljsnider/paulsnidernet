@@ -1839,4 +1839,17 @@ SEQUENCE:0
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+UID:libertys-beacon-20261106@paulsnider.net
+DTSTAMP:20261106T021700Z
+DTSTART;TZID=America/Chicago:20261106T180000
+DTEND;TZID=America/Chicago:20261106T223000
+RRULE:FREQ=DAILY;COUNT=6
+SUMMARY:Liberty's Beacon — light installation at National WWI Museum
+LOCATION:National WWI Museum and Memorial\, Kansas City
+DESCRIPTION:Liberty's Beacon: An Artistic Light Installation — final stretch with extended hours through Veterans Day. Open Fri Nov 6 – Wed Nov 11\, 6:00–10:30pm (Thu Nov 5 hours were 7:30–10:30pm). Shared by Paul Nov 5\, 2026.
+SEQUENCE:0
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR
