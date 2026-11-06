@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T04:45:38.783109-06:00",
+  "generated_at": "2026-11-06T11:55:19.523465-06:00",
   "local": {
     "title": "Between the Lines Book Group",
     "detail": "Fri, Nov 6 at 12:00 PM \u2022 Westport Branch",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7688.62,
-      "change_pct": 1.58,
-      "as_of": "2026-11-04"
+      "value": 7353.73,
+      "change_pct": -4.36,
+      "as_of": "2026-11-05"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.42,
-    "change_pct": -4.27,
-    "as_of": "2026-11-05"
+    "value": 64.97,
+    "change_pct": -0.7,
+    "as_of": "2026-11-06"
   }
 }
