@@ -1,32 +1,32 @@
 {
-  "generated_at": "2026-11-06T11:55:19.523465-06:00",
+  "generated_at": "2026-11-06T17:03:19.037306-06:00",
   "local": {
-    "title": "Between the Lines Book Group",
-    "detail": "Fri, Nov 6 at 12:00 PM \u2022 Westport Branch",
-    "date": "2026-11-06",
+    "title": "Canceled: Storytime | Hora de Cuentos",
+    "detail": "Sat, Nov 7 at 10:00 AM \u2022 Central Library",
+    "date": "2026-11-07",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/between-lines-book-group-18"
+    "url": "https://kclibrary.org/calendar/canceled-storytime-hora-de-cuentos-1"
   },
   "kc_news": {
-    "title": "Some World Cup investments became lasting benefits for Kansas City. Others fell short",
+    "title": "An all-ages Kansas City book fair brings back the magic of a grade school tradition",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-11-02/world-cup-kansas-city-investments-what-stayed-infrastructure-murals-partnerships-open-doors"
+    "url": "https://www.kcur.org/arts-life/2026-11-06/kansas-city-all-ages-rainy-day-books-fair-lead-to-read-literacy"
   },
   "ai": [
+    {
+      "title": "How to predict the behavior of molecules from scant data",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-11-06",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/how-to-predict-molecule-behavior-with-scant-data-1106"
+    },
     {
       "title": "Clearing up a robot\u2019s fuzzy memory",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-04",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/clearing-up-robot-fuzzy-memory-1105"
-    },
-    {
-      "title": "Building connections across the research infrastructure",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-03",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/building-connections-across-research-infrastructure-1103"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 64.97,
-    "change_pct": -0.7,
+    "value": 65.37,
+    "change_pct": -0.08,
     "as_of": "2026-11-06"
   }
 }
