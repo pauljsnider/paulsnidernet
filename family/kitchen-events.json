@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T09:01:50.033859-06:00",
+  "generated_at": "2026-11-07T09:11:11.253758-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -40,7 +40,7 @@
       "start": "2026-11-07T09:30:00-06:00",
       "end": "2026-11-07T10:25:00-06:00",
       "all_day": false,
-      "location": "TBA",
+      "location": "Morse Elementary School",
       "source": "Family Email Events",
       "children": [
         "Max"
@@ -505,11 +505,20 @@
       "start": "2026-11-14T09:30:00-06:00",
       "end": "2026-11-14T10:25:00-06:00",
       "all_day": false,
-      "location": "TBA",
+      "location": "Morse Elementary School",
       "source": "Family Email Events",
       "children": [
         "Max"
       ]
+    },
+    {
+      "summary": "Lowe's Project",
+      "start": "2026-11-14T12:00:00-06:00",
+      "end": "2026-11-14T13:00:00-06:00",
+      "all_day": false,
+      "location": "Lowe's",
+      "source": "Family Email Events",
+      "children": []
     },
     {
       "summary": "Blue Valley High: Mamma Mia! (Musical)",
@@ -853,7 +862,7 @@
       "start": "2026-11-21T09:30:00-06:00",
       "end": "2026-11-21T10:25:00-06:00",
       "all_day": false,
-      "location": "TBA",
+      "location": "Morse Elementary School",
       "source": "Family Email Events",
       "children": [
         "Max"
@@ -868,6 +877,17 @@
       "source": "Madison Basketball",
       "children": [
         "Madison"
+      ]
+    },
+    {
+      "summary": "Sagan's Birthday Party-Max",
+      "start": "2026-11-21T13:30:00-06:00",
+      "end": "2026-11-21T15:00:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": [
+        "Max"
       ]
     },
     {
@@ -1005,7 +1025,7 @@
       "start": "2026-11-28T09:30:00-06:00",
       "end": "2026-11-28T10:25:00-06:00",
       "all_day": false,
-      "location": "TBA",
+      "location": "Morse Elementary School",
       "source": "Family Email Events",
       "children": [
         "Max"
@@ -1294,7 +1314,7 @@
       "start": "2026-12-05T09:30:00-06:00",
       "end": "2026-12-05T10:25:00-06:00",
       "all_day": false,
-      "location": "TBA",
+      "location": "Morse Elementary School",
       "source": "Family Email Events",
       "children": [
         "Max"
