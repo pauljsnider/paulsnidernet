@@ -1888,6 +1888,90 @@ SEQUENCE:0
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+UID:cfp-communitydays-kc-open-20270211@paulsnider.net
+DTSTAMP:20261107T140917Z
+SUMMARY:CommunityDays KC / DevOpsDays KC CFP expected to open (guess)
+DTSTART;VALUE=DATE:20270211
+DTEND;VALUE=DATE:20270212
+DESCRIPTION:Estimated from the 2026 cycle (CFP opened Feb 11, 2026 on Sessionize). Not yet announced for 2027. Verify before relying.
+STATUS:TENTATIVE
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+UID:cfp-techfuse-open-20270301@paulsnider.net
+DTSTAMP:20261107T140917Z
+SUMMARY:Tech Fuse Des Moines CFP expected to open (guess)
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+DESCRIPTION:Estimated from the 2026 cycle (CFP ran Mar 1 to Apr 30, 2026 on Sessionize). Not yet announced for 2027. Verify before relying.
+STATUS:TENTATIVE
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+UID:cfp-kcdc-deadline-20270309@paulsnider.net
+DTSTAMP:20261107T140917Z
+SUMMARY:KCDC 2027 CFP expected deadline (guess)
+DTSTART;VALUE=DATE:20270309
+DTEND;VALUE=DATE:20270310
+DESCRIPTION:Estimated from the 2026 cycle (CFP closed Mar 9, 2026 on Sessionize). 2027 CFP not yet published. KCDC is Aug 4-6, 2027; talk needs a refreshed version (prior-delivery rule in their FAQ). Verify before relying.
+STATUS:TENTATIVE
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+UID:cfp-communitydays-kc-deadline-20270406@paulsnider.net
+DTSTAMP:20261107T140917Z
+SUMMARY:CommunityDays KC / DevOpsDays KC CFP expected deadline (guess)
+DTSTART;VALUE=DATE:20270406
+DTEND;VALUE=DATE:20270407
+DESCRIPTION:Estimated from the 2026 cycle (CFP closed Apr 6, 2026). Not yet announced for 2027. Verify before relying.
+STATUS:TENTATIVE
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+UID:cfp-techfuse-deadline-20270430@paulsnider.net
+DTSTAMP:20261107T140917Z
+SUMMARY:Tech Fuse Des Moines CFP expected deadline (guess)
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270501
+DESCRIPTION:Estimated from the 2026 cycle (CFP closed Apr 30, 2026). Not yet announced for 2027. Verify before relying.
+STATUS:TENTATIVE
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+UID:cfp-devfest-kc-open-20270607@paulsnider.net
+DTSTAMP:20261107T140917Z
+SUMMARY:DevFest KC CFP expected to open (guess)
+DTSTART;VALUE=DATE:20270607
+DTEND;VALUE=DATE:20270608
+DESCRIPTION:Estimated from the 2026 cycle (CFP opened Jun 7, 2026). Not yet announced for 2027. Verify before relying.
+STATUS:TENTATIVE
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+UID:cfp-devfest-kc-deadline-20270807@paulsnider.net
+DTSTAMP:20261107T140917Z
+SUMMARY:DevFest KC CFP expected deadline (guess)
+DTSTART;VALUE=DATE:20270807
+DTEND;VALUE=DATE:20270808
+DESCRIPTION:Estimated from the 2026 cycle (CFP closed Aug 7, 2026). Not yet announced for 2027. Verify before relying.
+STATUS:TENTATIVE
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR
 BEGIN:VEVENT
 UID:sagan-birthday-party-max-20261121@paulsnider.net
