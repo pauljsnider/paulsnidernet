@@ -1,3 +1,4 @@
+import json
 import unittest
 from unittest.mock import patch
 from datetime import datetime, timedelta
@@ -35,6 +36,37 @@ def make_calendar(uid, summary='Practice'):
 
 
 class CombineCalendarsTest(unittest.TestCase):
+    def test_source_health_marks_cached_and_unavailable_without_secrets(self):
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / 'feed.json'
+            for health, complete in [
+                ([{'name': 'Family', 'status': 'live'}], True),
+                ([{'name': 'Family', 'status': 'cached'}], False),
+                ([{'name': 'School', 'status': 'unavailable'}], False),
+            ]:
+                COMBINE_CALENDARS.write_kitchen_feed(Calendar(), output, health)
+                feed = json.loads(output.read_text())
+                self.assertEqual(feed['complete'], complete)
+                self.assertEqual(feed['source_health'], health)
+
+    def test_main_tracks_shared_and_kitchen_source_failures(self):
+        shared = [{'name': 'Live', 'url': 'https://example.invalid'},
+                  {'name': 'Cached', 'url': 'https://example.invalid'},
+                  {'name': 'Missing', 'url': 'https://example.invalid'}]
+        kitchen = [{'name': 'School', 'url': 'https://example.invalid'}]
+        with tempfile.TemporaryDirectory() as folder, \
+                patch.object(COMBINE_CALENDARS, 'CALENDARS', shared), \
+                patch.object(COMBINE_CALENDARS, 'KITCHEN_ONLY_CALENDARS', kitchen), \
+                patch.object(COMBINE_CALENDARS, 'TEST_MODE', False), \
+                patch.object(COMBINE_CALENDARS, 'OUTPUT_FILE', Path(folder) / 'combined.ics'), \
+                patch.object(COMBINE_CALENDARS, 'fetch_calendar', side_effect=[Calendar(), None, None, None]), \
+                patch.object(COMBINE_CALENDARS, 'load_cached_source_calendar', side_effect=[Calendar(), None]), \
+                patch.object(COMBINE_CALENDARS, 'write_kitchen_feed') as writer:
+            self.assertEqual(COMBINE_CALENDARS.main(), 0)
+            health = writer.call_args.kwargs['source_health']
+            self.assertEqual([s['status'] for s in health], ['live', 'cached', 'unavailable', 'unavailable'])
+            self.assertEqual([s['name'] for s in health], ['Live', 'Cached', 'Missing', 'School'])
+
     def test_school_closures_merge_only_identical_date_ranges(self):
         calendar = Calendar()
         for uid, title, source, end_day in [

@@ -170,3 +170,16 @@ Git commit, and restore saved original Apps Script Code.js/manifest if needed.
 Verify the unchanged Sunday trigger and recipient settings. Do not delete the
 credential or change recipients merely to stop public updates. Preserve private
 source backups outside the public repository.
+
+
+## Coverage and email size
+
+The expanded feed reports source health (`live`, `cached`, or `unavailable`).
+Both the private digest and public kitchen footer identify degraded coverage;
+missing source metadata is unverified, never proof of a complete calendar.
+The email contains the next 14 days and links to the private full 42-day document.
+`digestEmailHtml` retains a compact source index and enforces a 90,000-byte UTF-8
+limit, with explicit document fallbacks instead of silently clipped content.
+The private runner must call this helper after creating the document.
+Calendar generation excludes `kitchen-weekly/**` pushes so resetting the bounded
+weekly data branch cannot race a calendar commit or violate its JSON-only gate.

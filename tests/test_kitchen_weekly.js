@@ -158,3 +158,14 @@ var unsafe=Object.assign({},priorityItem,{sourceFrom:'attacker@example.test'});
 assert.equal(context.kitchenPriorityCandidates([unsafe],tuningNow).length,0);
 assert.equal(context.kitchenPriorityCandidates([priorityItem],new Date('2026-11-15T19:00:00Z')).length,0);
 console.log('Dated school priorities, source provenance, expiry and whole-section finance exclusions passed');
+
+var apply=page.slice(page.indexOf('            function applyFeed('),page.indexOf('            function applyPhotoFeed('));
+var statusNode={};
+var feedCtx={state:{},normaliseEvents:function(e){return e;},relativeFeedTime:function(){return 'Updated now';},getById:function(){return statusNode;},renderScreen:function(){}};
+vm.createContext(feedCtx);vm.runInContext(apply,feedCtx);
+feedCtx.applyFeed({events:[],complete:false,source_health:[{name:'Indoor soccer',status:'unavailable'}]},false);
+assert.match(statusNode.textContent,/Incomplete: Indoor soccer/);
+feedCtx.applyFeed({events:[],complete:true,source_health:[{name:'Family',status:'live'}]},true);
+assert(!statusNode.textContent.includes('Incomplete'));assert.match(statusNode.textContent,/Offline copy/);
+feedCtx.applyFeed({events:[]},false);assert.match(statusNode.textContent,/coverage unverified/);
+console.log('Kitchen source degradation and legacy coverage warnings passed');

@@ -971,9 +971,12 @@ def build_kitchen_feed(calendar, now=None, days=KITCHEN_FEED_DAYS):
     }
 
 
-def write_kitchen_feed(calendar, output_file=KITCHEN_OUTPUT_FILE):
+def write_kitchen_feed(calendar, output_file=KITCHEN_OUTPUT_FILE, source_health=None):
     """Write the display feed as static JSON for the kitchen page."""
     feed = build_kitchen_feed(calendar)
+    if source_health is not None:
+        feed['source_health'] = source_health
+        feed['complete'] = all(source['status'] == 'live' for source in source_health)
     output_file.parent.mkdir(parents=True, exist_ok=True)
     output_file.write_text(json.dumps(feed, indent=2) + '\n', encoding='utf-8')
     logger.info(
@@ -998,6 +1001,7 @@ def main():
     # Fetch the sources that belong in the shared family ICS calendar.
     calendars = []
     source_names = []
+    source_health = []
     for i, cal_info in enumerate(expanded_calendars):
         print(f"\n[{i+1}/{len(expanded_calendars)}] Processing: {cal_info['name']}")
         if cal_info.get('path'):
@@ -1008,6 +1012,9 @@ def main():
 
         if cal is None and not TEST_MODE:
             cal = load_cached_source_calendar(cal_info['base_name'])
+
+        source_health.append({'name': cal_info['base_name'],
+                              'status': 'live' if live_fetch_succeeded else ('cached' if cal is not None else 'unavailable')})
 
         calendars.append(cal)
         source_names.append(cal_info['base_name'])
@@ -1034,6 +1041,7 @@ def main():
 
         kitchen_calendars.append(cal)
         kitchen_source_names.append(cal_info['base_name'])
+        source_health.append({'name': cal_info['base_name'], 'status': 'live' if cal is not None else 'unavailable'})
 
     print("\n" + "=" * 50)
     print(f"SUMMARY: {success_count} successful, {failure_count} failed")
@@ -1052,7 +1060,7 @@ def main():
 
         file_size = OUTPUT_FILE.stat().st_size
         logger.info(f"✓ Combined calendar written to {OUTPUT_FILE} ({file_size:,} bytes)")
-        write_kitchen_feed(kitchen_combined)
+        write_kitchen_feed(kitchen_combined, source_health=source_health)
         
         if TEST_MODE:
             print(f"\n📁 Test file created: {OUTPUT_FILE}")
