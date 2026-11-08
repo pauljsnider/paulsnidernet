@@ -940,7 +940,13 @@ def build_kitchen_feed(calendar, now=None, days=KITCHEN_FEED_DAYS):
             if normalized_summary.lower().endswith(suffix.lower()):
                 normalized_summary = normalized_summary[:-len(suffix)].rstrip()
                 break
-        semantic_key = (normalized_summary.lower(), event['start'][:10])
+        # A family copy and the school's closure label describe the same
+        # all-day closure only when the complete date range matches. Keep
+        # different durations (or timed events) separate.
+        if event['all_day'] and re.match(r'^no school\b', normalized_summary, re.I):
+            semantic_key = ('no school', event['start'], event['end'])
+        else:
+            semantic_key = (normalized_summary.lower(), event['start'][:10])
         existing_index = family_school_positions.get(semantic_key)
         if existing_index is None:
             family_school_positions[semantic_key] = len(family_school_events)

@@ -38,7 +38,10 @@ function kitchenSchoolCandidates(items, now) {
             if (detail.status === 'OK') { parts.push(detail.fullText || ''); }
         });
         var relativeWeek = null;
+        var financialSection = false;
         parts.join('\n').split(/\r?\n/).forEach(function (line) {
+            if (/^\s*(?:#{1,6}\s|\*\*[^*]+\*\*\s*$)/.test(line)) { financialSection = /fundrais|donat|support.a.cougar|checkbook|wishlist|wish list/i.test(line); }
+            if (financialSection) { return; }
             // Test original line before stripping markup; never salvage a
             // financial sentence by deleting only its amount/link.
             if (/https?:|@|[$£€¥]|\b(?:pay|paid|payment|fee|cost|price|account|donat|fundrais|checkbook|purchase|venmo|billing)/i.test(line)) { return; }
@@ -82,6 +85,68 @@ function kitchenSchoolCandidates(items, now) {
             result.push({ children: item.child === 'Schoolwide' ? ['Madison', 'Will', 'Max'] : [item.child], kind: kind, text: text, date: date,
                 source_date: Utilities.formatDate(item.date, 'America/Chicago', 'yyyy-MM-dd') });
         });
+    });
+    // Put dated logistics/assignments ahead of evergreen learning so a six-note
+    // card cannot silently crowd out this week's deadline.
+    var priority = kitchenPriorityCandidates(items, now);
+    return priority.concat(result);
+}
+
+function kitchenPriorityCandidates(items, now) {
+    var result = [];
+    var week = kitchenWeekStart(now);
+    var weekdays = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
+    function dateFor(day) {
+        var d = new Date(week + 'T12:00:00Z');
+        d.setUTCDate(d.getUTCDate() + weekdays.indexOf(day));
+        return d.toISOString().slice(0,10);
+    }
+    items.forEach(function (item) {
+        if (!kitchenSourceEligible(item, now) || item.child === 'Schoolwide') return;
+        var body = [item.cleanBody || ''].concat((item.smoreDetails || []).filter(function(d){return d.status === 'OK';}).map(function(d){return d.fullText || '';})).join('\n');
+        body = body.replace(/<[^>]*>/g,'').replace(/&nbsp;/g,' ').replace(/[*_\\|]/g,'').replace(/[ \t]+/g,' ');
+        function add(kind,text,date,original) {
+            if (!KitchenWeekly.safeSourceText((original || text).replace(/\s+/g,' ')) || !KitchenWeekly.safeText(text)) return;
+            if (date && (date < week || date >= new Date(Date.parse(week)+7*86400000).toISOString().slice(0,10) || date < Utilities.formatDate(now,'America/Chicago','yyyy-MM-dd'))) return;
+            result.push({children:[item.child],kind:kind,text:text,date:date || null,source_date:Utilities.formatDate(item.date,'America/Chicago','yyyy-MM-dd')});
+        }
+        // Require explicit month/day evidence in the source, not just a weekday.
+        var monday = new Date(week+'T12:00:00Z');
+        var month = ['January','February','March','April','May','June','July','August','September','October','November','December'][monday.getUTCMonth()];
+        var datePattern = '(?:'+month+'\\s+'+monday.getUTCDate()+'|'+(monday.getUTCMonth()+1)+'/'+monday.getUTCDate()+')(?!\\d)';
+        body.split(/\n/).forEach(function(line){
+            if (/no school/i.test(line) && new RegExp(datePattern,'i').test(line)) add('reminder','No school Monday, '+month+' '+monday.getUTCDate()+'.',week,line);
+        });
+        var color = body.match(/(?:Veterans? Day Assembly|Veterans assembly)[\s\S]{0,220}?wear\s+(BLUE|WHITE|RED)/i);
+        var friday = new Date(dateFor('Friday')+'T12:00:00Z');
+        var fridayPattern = new RegExp('friday\\s*,?\\s*(?:'+month+'\\s+'+friday.getUTCDate()+'|'+(friday.getUTCMonth()+1)+'/'+friday.getUTCDate()+')(?!\\d)', 'i');
+        if (color && (fridayPattern.test(body) || /next friday[^\n]{0,100}veterans assembly/i.test(body))) {
+            // Resolve a relative next-Friday only from the preceding school week.
+            var source = Utilities.formatDate(item.date,'America/Chicago','yyyy-MM-dd');
+            if (source < week) add('reminder','Wear '+color[1].toUpperCase()+' for the Veterans Day assembly Friday.',dateFor('Friday'),color[0]);
+        }
+        // Specials need a dated target-week heading or an explicit next-week
+        // section from the preceding week. Never reuse the generic rotation.
+        var blocks = body.split(/\n(?=\s*#{1,6}\s)/);
+        blocks.forEach(function(block){
+            var marker = block.match(/(?:Next Week.s Specials|Specials Schedule\s*\(\d{1,2}\/\d{1,2}\s*[-–]\s*\d{1,2}\/\d{1,2}\)|Specials[\s\S]{0,40}For This Week)/i);
+            if (!marker || Utilities.formatDate(item.date,'America/Chicago','yyyy-MM-dd') >= week) return;
+            var rows = [];
+            weekdays.forEach(function(day){
+                var match = block.match(new RegExp('(?:^|\\n)\\s*'+day+'\\s*[:–-]\\s*(?:Day \\d+\\s*)?([^\\n]+)','i'));
+                if (!match || /no school|none/i.test(match[1])) return;
+                var value = match[1].trim().replace(/\(.*?\)/g,'').trim();
+                if (!/^(?:PE|Spanish|Music|Art|Library)(?:\/(?:PE|Spanish))?$/i.test(value)) return;
+                rows.push(day.slice(0,3)+': '+value+(/Library/i.test(value)?' (books)':/tennis shoes/i.test(match[1])?' (shoes)':''));
+            });
+            if (rows.length) add('specials',rows.join('; ')+'.',null,rows.join('; '));
+        });
+        var snack = body.match(/(?:send|bring)[^\n]{0,180}(?:water bottle|snack)[^\n]{0,180}/i);
+        if (snack && /nut.safer/i.test(body)) add('bring','Bring a Nut Safer snack and water bottle daily.',null,snack[0]);
+        var assignment = body.match(/Next week, students will complete Greek Roots Unit\s+(\d+)\.[\s\S]{0,200}?Sections A\s*[-–]\s*D will be due on Thursday[\s\S]{0,80}?test on Friday/i);
+        if (assignment && Utilities.formatDate(item.date,'America/Chicago','yyyy-MM-dd') < week) {
+            add('assignment','Greek Roots Unit '+assignment[1]+': A–D due Thursday; test Friday.',dateFor('Friday'),assignment[0]);
+        }
     });
     return result;
 }

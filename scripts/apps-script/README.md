@@ -20,6 +20,23 @@ Live adapter files:
 - `KitchenWeekly.js`: copy of `family/kitchen-weekly.js`, the shared ES5 contract.
 - `KitchenWeeklyPublisher.js`: versioned policy, idempotent weekly branch/PR queue.
 - `KitchenCredentialPreflight.js`: explicit read-only credential test; not scheduled.
+- `DigestCompleteness.js`: private-email calendar adapter, additional source routing,
+  and deterministic occurrence/conflict and source-coverage rendering. Copy it
+  beside the private live Code.js; never publish that Code.js or email fixtures.
+
+The digest now consumes the same recurrence-expanded `kitchen-events.json` used
+by the display. It validates schema, explicit timezone offsets and freshness
+(18 hours maximum), includes later-today and ongoing events, and renders the
+schedule from records rather than relying on the model to reproduce every row.
+Linked Seesaw multimedia and invitations remain explicitly unverified when the
+email does not include their details. Private household notices stay in email.
+Gmail searches paginate and fail visibly at their bounded completeness limit.
+
+School-note extraction prioritizes source-dated logistics, specials and
+assignments ahead of general learning; the six-note/90-character public limit
+is unchanged. Deploy code and test changes in a normal code PR, then let the
+publisher create its separate JSON-only PR. Never add test fixes to that data
+PR: the trusted completion workflow correctly rejects mixed-file changes.
 
 The two nonsecret activation properties are `KITCHEN_POLICY_VERSION=school-notes-v1`
 and `KITCHEN_PUBLISH_ENABLED=true`. The credential is `KITCHEN_GITHUB_TOKEN`.
