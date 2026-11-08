@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T06:27:04.651475-06:00",
+  "generated_at": "2026-11-08T13:11:46.579405-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -30,19 +30,6 @@
       "location": "National WWI Museum and Memorial, Kansas City",
       "source": "Family Email Events",
       "children": []
-    },
-    {
-      "summary": "NO SCHOOL Professional Learning",
-      "start": "2026-11-09",
-      "end": "2026-11-10",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
     },
     {
       "summary": "No School - Madison, Will, Max",
@@ -827,19 +814,6 @@
       "children": []
     },
     {
-      "summary": "NO SCHOOL Thanksgiving Break",
-      "start": "2026-11-23",
-      "end": "2026-11-28",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
       "summary": "No School - Madison, Will, Max",
       "start": "2026-11-23",
       "end": "2026-11-28",
@@ -1169,19 +1143,6 @@
       "location": "",
       "source": "Family Email Events",
       "children": []
-    },
-    {
-      "summary": "NO SCHOOL Teacher Professional Collaboration",
-      "start": "2026-12-04",
-      "end": "2026-12-05",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
     },
     {
       "summary": "No School - Madison, Will, Max",
