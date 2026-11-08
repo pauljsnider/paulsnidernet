@@ -183,3 +183,17 @@ limit, with explicit document fallbacks instead of silently clipped content.
 The private runner must call this helper after creating the document.
 Calendar generation excludes `kitchen-weekly/**` pushes so resetting the bounded
 weekly data branch cannot race a calendar commit or violate its JSON-only gate.
+
+
+## Prioritized weekly brief
+
+The email is the report's front page: needs attention, important reminders this
+week, and a few noteworthy updates. Shared reminders appear once; ordinary
+schedules, repeated source excerpts, and the full source index stay in the linked
+private document. Source citations remain inline. Seven-day schedule overlaps
+and degraded-source warnings remain deterministic. Exact duplicate bullets are
+removed without merging different children, dates, times, or amounts. The private
+runner prompt groups semantic duplicates and targets 450–650 words. Collection,
+raw source retention, the full 42-day calendar, and kitchen publication are unchanged.
+The previous 14-day table/90 KB email policy is superseded by this brief renderer,
+which rejects email above 40 KB while retaining the full document.
