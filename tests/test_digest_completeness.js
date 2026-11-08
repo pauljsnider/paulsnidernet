@@ -63,3 +63,9 @@ assert.match(email,/next 14 days/);assert.match(email,/42-day horizon/);assert.m
 const bounded=context.digestEmailHtml('é'.repeat(100000)+'<!--digest-narrative-end-->',[{subject:'Source still retained'}],withLater,now,'https://example.test/document');
 assert(Buffer.byteLength(bounded)<90000);assert.match(bounded,/Source still retained/);assert.match(bounded,/narrative is in the full document/);
 console.log('Source failure warnings, explicit horizons and UTF-8 email size guard passed.');
+const guarded=context.digestNarrativeChecks('<ul><li>Assignment grade: 0.0 out of 0.0.</li><li>Went on a field trip.</li><li>Birthday invitation: RSVP Yes for 1 guest. The party is in 11 days (around Nov 15).</li><li>Test due Thursday.</li></ul>');
+assert(!guarded.includes('0.0 out of'));assert.match(guarded,/does not establish an earned grade/);
+assert(!guarded.includes('Went on'));assert.match(guarded,/attendance is not verified/);
+assert(!guarded.includes('in 11 days'));assert.match(guarded,/Yes RSVP is recorded/);assert.match(guarded,/relative to the source email/);assert.match(guarded,/Test due Thursday/);
+assert.match(context.digestNarrativeChecks('<li>Score 8 out of 10</li>'),/8 out of 10/);
+console.log('Unscored grades, unsupported attendance, and stale invitation countdown guards passed');
