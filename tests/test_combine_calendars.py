@@ -449,6 +449,11 @@ END:VCALENDAR
             )
 
         source = EMAIL_EVENTS_PATH.read_text()
+        # The two musical events cite the school's public performing-arts page.
+        source = source.replace(
+            'DESCRIPTION:Blue Valley High drama musical. Source: '
+            'https://www.bluevalleyk12.org/programs/performingarts\n', ''
+        )
         for private_field in ('ATTENDEE', 'ORGANIZER', 'Passcode:', 'https://'):
             self.assertNotIn(private_field, source)
 
@@ -464,7 +469,7 @@ END:VCALENDAR
         for event in (clinic, matinee):
             self.assertNotIn('https://', str(event.get('DESCRIPTION', '')))
 
-    def test_madison_gymnastics_only_recurs_monday_and_thursday(self):
+    def test_madison_gymnastics_recurs_tuesday_and_thursday_from_november(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         gymnastics_events = [
             event
@@ -472,9 +477,9 @@ END:VCALENDAR
             if str(event['SUMMARY']) == 'Madison: Gymnastics'
         ]
 
-        self.assertEqual(2, len(gymnastics_events))
+        self.assertEqual(1, len(gymnastics_events))
         self.assertEqual(
-            {'MO', 'TH'},
+            {'TU', 'TH'},
             {
                 str(day)
                 for event in gymnastics_events
@@ -586,7 +591,7 @@ END:VCALENDAR
         )
         self.assertEqual([5], event['RRULE']['COUNT'])
         self.assertEqual(['SA'], [str(day) for day in event['RRULE']['BYDAY']])
-        self.assertEqual('TBA', str(event['LOCATION']))
+        self.assertEqual('Morse Elementary School', str(event['LOCATION']))
         self.assertEqual(
             'Ages 4-5. Registration cost: $69.33.',
             str(event['DESCRIPTION']),
