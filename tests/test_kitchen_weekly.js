@@ -169,3 +169,14 @@ feedCtx.applyFeed({events:[],complete:true,source_health:[{name:'Family',status:
 assert(!statusNode.textContent.includes('Incomplete'));assert.match(statusNode.textContent,/Offline copy/);
 feedCtx.applyFeed({events:[]},false);assert.match(statusNode.textContent,/coverage unverified/);
 console.log('Kitchen source degradation and legacy coverage warnings passed');
+
+var weekCode=page.slice(page.indexOf('            function renderWeek('),page.indexOf('            function renderUpcoming('));
+function node(tag,cls,text){return {tag:tag,className:cls,textContent:text||'',children:[],appendChild:function(child){this.children.push(child);}};}
+var busyEvents=[];var weekNow=new Date(2026,10,8,12);
+for(var d=0;d<7;d++)for(var n=0;n<12;n++)busyEvents.push({startDate:new Date(2026,10,8+d,14),summary:'Event '+n});
+var weekCtx={Date:Date,createElement:node,visibleEvents:function(){return busyEvents;},isSameDay:function(a,b){return a.toDateString()===b.toDateString();},formatShortDay:function(d){return d.toDateString();},eventTime:function(){return '2 PM';},document:{createTextNode:function(t){return node('text','',t);}}};
+vm.createContext(weekCtx);vm.runInContext(weekCode,weekCtx);var content=node('div');weekCtx.renderWeek(content,weekNow);
+assert.equal(content.children[1].children.length,7);
+content.children[1].children.forEach(function(row){var entries=row.children[1].children;assert.equal(entries.length,4);assert.equal(entries[3].textContent,'+9 more • Full calendar');assert.equal(entries[3].href,'events.html');});
+busyEvents=busyEvents.slice(0,4);content=node('div');weekCtx.renderWeek(content,weekNow);assert.equal(content.children[1].children[0].children[1].children.length,4);assert(!content.children[1].children[0].children[1].children.some(function(e){return e.tag==='a';}));
+console.log('Busy week bounded layout preserves seven days and explicit hidden-event counts');

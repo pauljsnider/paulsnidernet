@@ -165,6 +165,9 @@
         .week-events { display: -webkit-flex; display: flex; flex: 1; -webkit-flex: 1; flex-wrap: wrap; -webkit-flex-wrap: wrap; min-width: 0; padding: 4px 0; }
         .week-event { color: #ffffff; display: block; flex: 0 1 350px; -webkit-flex: 0 1 350px; font-size: 17px; margin: 4px 20px 4px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .week-event-time { color: #f3b96d; font-weight: 700; }
+        .week-view .hero { display: none; }
+        .week-view .week-event { flex-basis: calc(50% - 20px); -webkit-flex-basis: calc(50% - 20px); }
+        .week-view .week-more { color: #f3b96d; }
         .week-empty { color: #5f7181; font-size: 16px; }
         .upcoming-list { margin: 0 -8px; flex-wrap: wrap; -webkit-flex-wrap: wrap; }
         .upcoming-card {
@@ -316,6 +319,7 @@
             .event-location { font-size: 13px; }
             .week-day { min-width: 88px; font-size: 13px; }
             .week-event { font-size: 14px; max-width: 190px; }
+            .week-view .week-event { flex-basis: 100%; -webkit-flex-basis: 100%; max-width: 100%; }
             .upcoming-card { width: calc(50% - 16px); min-height: 175px; }
             .person-label { display: none; }
             .photo-view #screen-content, .brief-view #screen-content, .school-view #screen-content { height: calc(100vh - 116px); }
@@ -634,11 +638,17 @@
                     if (!dayEvents.length) {
                         dayItems.appendChild(createElement('span', 'week-empty', 'Open'));
                     } else {
-                        for (index = 0; index < dayEvents.length; index += 1) {
+                        var shown = dayEvents.length > 4 ? 3 : dayEvents.length;
+                        for (index = 0; index < shown; index += 1) {
                             var item = createElement('span', 'week-event');
                             item.appendChild(createElement('span', 'week-event-time', eventTime(dayEvents[index]) + ' '));
                             item.appendChild(document.createTextNode(dayEvents[index].summary || 'Family event'));
                             dayItems.appendChild(item);
+                        }
+                        if (shown < dayEvents.length) {
+                            var more = createElement('a', 'week-event week-more', '+' + (dayEvents.length - shown) + ' more • Full calendar');
+                            more.href = 'events.html';
+                            dayItems.appendChild(more);
                         }
                     }
                     row.appendChild(dayName);
@@ -821,6 +831,7 @@
                 state.visibleDay = calendarDayKey(now);
                 getById('screen-label').textContent = VIEW_NAMES[state.view];
                 getById('family-board').className = state.view >= 6 ? 'child-view' : state.view === 3 ? 'photo-view' : (state.view === 4 ? 'brief-view' : (state.view === 5 ? 'school-view' : ''));
+                if (state.view === 1) { getById('family-board').className = 'week-view'; }
                 renderControls();
                 if (state.view === 0) { renderToday(content, now); }
                 if (state.view === 1) { renderWeek(content, now); }
