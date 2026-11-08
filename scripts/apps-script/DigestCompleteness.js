@@ -166,11 +166,18 @@ function digestNarrativeChecks(html) {
 
 function digestDeduplicateNarrative(html) {
     var seen = {};
-    return String(html).replace(/<li\b[^>]*>[\s\S]*?<\/li>/gi, function(block) {
+    var childContext = '';
+    return String(html).replace(/<h[23]\b[^>]*>[\s\S]*?<\/h[23]>|<li\b[^>]*>[\s\S]*?<\/li>/gi, function(block) {
+        if (/^<h[23]\b/i.test(block)) {
+            var heading = block.replace(/<[^>]*>/g, '').trim();
+            childContext = /^(Madison|Will|Max)$/i.test(heading) ? heading.toLowerCase() : '';
+            return block;
+        }
         // Only exact facts are removed. Different children, dates, times and amounts
         // must remain distinct. Semantic grouping is done by the narrative prompt.
         var key = block.replace(/<[^>]*>/g, ' ').replace(/\(?S\d+(?:\s*,\s*S\d+)*\)?/g, '')
             .replace(/&nbsp;|&#160;/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+        key = childContext + '|' + key;
         if (seen[key]) return '';
         seen[key] = true;
         return block;

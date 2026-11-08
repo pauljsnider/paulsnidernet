@@ -76,3 +76,4 @@ assert(!guarded.includes('Went on'));assert.match(guarded,/attendance is not ver
 assert(!guarded.includes('in 11 days'));assert.match(guarded,/Yes RSVP is recorded/);assert.match(guarded,/relative to the source email/);assert.match(guarded,/Test due Thursday/);
 assert.match(context.digestNarrativeChecks('<li>Score 8 out of 10</li>'),/8 out of 10/);
 console.log('Unscored grades, unsupported attendance, and stale invitation countdown guards passed');
+assert.equal((context.digestDeduplicateNarrative('<h3>Will</h3><li>Library Friday</li><h3>Max</h3><li>Library Friday</li>').match(/Library Friday/g)||[]).length,2);
