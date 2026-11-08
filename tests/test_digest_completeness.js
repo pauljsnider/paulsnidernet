@@ -77,3 +77,9 @@ assert(!guarded.includes('in 11 days'));assert.match(guarded,/Yes RSVP is record
 assert.match(context.digestNarrativeChecks('<li>Score 8 out of 10</li>'),/8 out of 10/);
 console.log('Unscored grades, unsupported attendance, and stale invitation countdown guards passed');
 assert.equal((context.digestDeduplicateNarrative('<h3>Will</h3><li>Library Friday</li><h3>Max</h3><li>Library Friday</li>').match(/Library Friday/g)||[]).length,2);
+const structured=context.digestRenderBrief({needsAttention:['Account alert (S1)'],thisWeek:['All kids: no school Monday (S2)'],worthKnowing:[]});
+assert.match(structured,/Needs attention/);assert(!structured.includes('Worth knowing'));assert.equal((structured.match(/<li>/g)||[]).length,2);
+assert.throws(()=>context.digestRenderBrief({needsAttention:Array(9).fill('item'),thisWeek:[],worthKnowing:[]}),/item limit/);
+assert.throws(()=>context.digestRenderBrief({needsAttention:['word '.repeat(651)],thisWeek:[],worthKnowing:[]}),/650 words/);
+assert.throws(()=>context.digestRenderBrief({needsAttention:['<ul>nested</ul>'],thisWeek:[],worthKnowing:[]}),/plain-text/);
+console.log('Structured brief rejects oversized or nested output without truncating source data');
