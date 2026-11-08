@@ -164,23 +164,34 @@ function digestNarrativeChecks(html) {
     });
 }
 
+function digestDeduplicateNarrative(html) {
+    var seen = {};
+    return String(html).replace(/<li\b[^>]*>[\s\S]*?<\/li>/gi, function(block) {
+        // Only exact facts are removed. Different children, dates, times and amounts
+        // must remain distinct. Semantic grouping is done by the narrative prompt.
+        var key = block.replace(/<[^>]*>/g, ' ').replace(/\(?S\d+(?:\s*,\s*S\d+)*\)?/g, '')
+            .replace(/&nbsp;|&#160;/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+        if (seen[key]) return '';
+        seen[key] = true;
+        return block;
+    });
+}
+
 function digestEmailHtml(fullHtml, items, events, now, docUrl) {
-    var narrative = fullHtml.split('<!--digest-narrative-end-->')[0];
-    var cutoff = new Date(now.getTime() + 14 * 86400000);
-    var nearby = events.filter(function(e) { return e.when < cutoff; });
-    nearby.generatedAt = events.generatedAt;
-    nearby.sourceWarnings = events.sourceWarnings;
-    var link = '<p><strong><a href="' + htmlEscape(docUrl) + '">Full digest and all ' + events.length + ' calendar occurrences (42-day horizon)</a></strong>. This email shows the next 14 days (' + nearby.length + ' occurrences). Full source text is in the document.</p>';
-    var warning = events.sourceWarnings && events.sourceWarnings.length ? '<p><strong>Calendar coverage warning:</strong> ' + htmlEscape(events.sourceWarnings.join('; ')) + '. Available events are listed; missing events cannot be ruled out.</p>' : '';
-    var sources = '<h3>Source email index</h3><ul>' + items.map(function(it,i) { return '<li>S' + (i+1) + ': ' + htmlEscape(it.subject || '(no subject)') + ' ' + detailLinkHtml(it) + '</li>'; }).join('') + '</ul>';
-    var tail = digestCoverageHtml(items,200) + digestCalendarHtml(nearby,now) + sources;
-    var email = link + warning + narrative + tail;
-    if (Utilities.newBlob(email).getBytes().length > 90000) {
-        email = link + warning + '<p>The narrative is in the full document to keep this email within its size limit. Source notices and the next 14 days remain below.</p>' + tail;
-    }
-    if (Utilities.newBlob(email).getBytes().length > 90000) {
-        email = link + warning + '<p>The detailed coverage and schedule are in the full document because of email size limits. Every source is indexed below.</p>' + sources;
-    }
-    if (Utilities.newBlob(email).getBytes().length > 90000) throw new Error('Digest source index exceeds safe email size.');
+    var narrative = digestDeduplicateNarrative(fullHtml.split('<!--digest-narrative-end-->')[0]);
+    // Cite sources where used; do not repeat every source as an email appendix.
+    narrative = narrative.replace(/\bS(\d+)\b/g, function(label,number) {
+        var item = items[Number(number)-1];
+        return item ? detailLinkHtml(item).replace(/>[^<]*<\/a>/, '>'+label+'</a>') : label;
+    });
+    var link = '<p><a href="' + htmlEscape(docUrl) + '"><strong>Full details, all sources, and 42-day calendar (' + events.length + ' occurrences)</strong></a></p>';
+    var warning = events.sourceWarnings && events.sourceWarnings.length ? '<p><strong>Calendar note:</strong> ' + htmlEscape(events.sourceWarnings.join('; ')) + '. Missing events cannot be ruled out.</p>' : '';
+    var nearby = events.filter(function(e) { return e.when < new Date(now.getTime() + 7 * 86400000); });
+    var calendar = digestCalendarHtml(nearby,now);
+    var overlaps = calendar.match(/<h4>Schedule conflicts to check<\/h4><ul>([\s\S]*?)<\/ul>/);
+    var conflicts = overlaps ? '<h3>Schedule overlaps to check</h3><ul>'+overlaps[1]+'</ul>' : '';
+    var email = narrative + conflicts + '<hr>' + link + warning +
+        '<p>Routine schedules, classroom learning, optional opportunities, completed confirmations, and source notices remain in the full report. Linked school-app details are unverified unless explicitly read.</p>';
+    if (Utilities.newBlob(email).getBytes().length > 40000) throw new Error('Weekly brief exceeds its presentation limit; full report retained.');
     return email;
 }
