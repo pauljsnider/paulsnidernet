@@ -1,51 +1,51 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "generated_at": "2026-11-01T16:03:55.495Z",
-  "expires_at": "2026-11-09T06:00:00.000Z",
-  "week_start": "2026-11-02",
-  "week_end": "2026-11-09",
+  "generated_at": "2026-11-08T16:03:55.204Z",
+  "expires_at": "2026-11-16T06:00:00.000Z",
+  "week_start": "2026-11-09",
+  "week_end": "2026-11-16",
   "children": {
     "Madison": [
       {
         "kind": "bring",
         "text": "- Bring new games and books to school and place them in the collection bins.",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-06"
       },
       {
         "kind": "learning",
         "text": "Amplify - Unit 4: Don Quixote",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-05"
       },
       {
         "kind": "learning",
-        "text": "Math - Multiply Multi-Digit Numbers",
+        "text": "Math - Multiply Multi-Digit Numbers & Divide Multi-Digit Numbers",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-05"
       },
       {
         "kind": "learning",
-        "text": "Phonics - Closed, Complex Multisyllable",
+        "text": "Phonics - Long Vowel Silent-e, Simple Multisyllable",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-05"
       },
       {
         "kind": "learning",
         "text": "Science - Unit 3: Changes in Matter",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-05"
       }
     ],
     "Will": [
@@ -53,25 +53,41 @@
         "kind": "bring",
         "text": "- Bring new games and books to school and place them in the collection bins.",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-06"
+      },
+      {
+        "kind": "learning",
+        "text": "Phonics: We will begin lesson 11 which covers the vowel team ie.",
+        "date": null,
+        "expires_at": "2026-11-16T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-11-06"
       },
       {
         "kind": "learning",
         "text": "Amplify: Domain 4: Our Planet Cycles in Nature",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-06"
+      },
+      {
+        "kind": "learning",
+        "text": "Science: We will be talking all about the desert habitat!",
+        "date": null,
+        "expires_at": "2026-11-16T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-11-06"
       },
       {
         "kind": "bring",
-        "text": "Bring library books on Wednesday!",
-        "date": "2026-11-04",
-        "expires_at": "2026-11-05T06:00:00.000Z",
+        "text": "Bring library books on Friday!",
+        "date": "2026-11-13",
+        "expires_at": "2026-11-14T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-06"
       }
     ],
     "Max": [
@@ -79,33 +95,33 @@
         "kind": "learning",
         "text": "Amplify : Domain 4: Plants",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-06"
       },
       {
         "kind": "learning",
-        "text": "95% : Lesson 9: Introduction of o, l & r",
+        "text": "95% : Lesson 9: Introduction of o, l & r and Lesson 10: Introduction of c & f",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-06"
       },
       {
         "kind": "learning",
-        "text": "iReady : Lesson 7: Add Within 5 & Lesson 9: Subtract Within 5",
+        "text": "iReady : Addition",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-06"
       },
       {
         "kind": "bring",
         "text": "- Bring new games and books to school and place them in the collection bins.",
         "date": null,
-        "expires_at": "2026-11-09T06:00:00.000Z",
+        "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-10-30"
+        "source_date": "2026-11-06"
       }
     ]
   }
