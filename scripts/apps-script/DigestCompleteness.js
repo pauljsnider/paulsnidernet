@@ -143,7 +143,25 @@ function completeDigestHtml(html, items, events, now) {
     // The model supplies narrative only; the complete schedule is rendered from data.
     var narrative=String(html).replace(/<table\b[^>]*>[\s\S]*?<\/table>/gi,'');
     narrative=narrative.replace(/<h[234][^>]*>\s*(?:Upcoming Events Calendar|Upcoming Events|Calendar)\s*<\/h[234]>/gi,'');
+    narrative = digestNarrativeChecks(narrative);
     return narrative+'<!--digest-narrative-end-->'+digestCoverageHtml(items)+digestCalendarHtml(events,now);
+}
+
+function digestNarrativeChecks(html) {
+    return String(html).replace(/<(li|p)\b[^>]*>[\s\S]*?<\/\1>/gi, function(block) {
+        var text = block.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ');
+        if (/\b0(?:\.0+)?\s*(?:out of|\/)\s*0(?:\.0+)?\b/.test(text)) {
+            return '<li>Canvas sent an unscored assignment notification. This does not establish an earned grade, failure, or missing work; review Canvas for the actual status.</li>';
+        }
+        if (/\bwent on (?:a |the )?field trip\b/i.test(text)) {
+            return '<li>The class newsletter described a field trip; individual attendance is not verified.</li>';
+        }
+        if (/birthday|invitation|party/i.test(text) && /\b(?:in \d+ days|\d+ days (?:until|away))\b/i.test(text)) {
+            var status = /\b(?:RSVP.{0,20}Yes|Yes for \d+ guest)/i.test(text) ? 'A Yes RSVP is recorded; do not RSVP again without checking the source.' : 'An invitation is not proof of attendance or an RSVP.';
+            return '<li>Birthday invitation: ' + status + ' Verify the exact date, time, and location in the original invitation. Its countdown was relative to the source email, not today.</li>';
+        }
+        return block;
+    });
 }
 
 function digestEmailHtml(fullHtml, items, events, now, docUrl) {
