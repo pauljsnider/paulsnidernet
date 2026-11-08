@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const context={Date,console,htmlEscape:s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'),detailLinkHtml:()=>'<a>source</a>',stripHtml:s=>s.replace(/<[^>]*>/g,' '),Utilities:{formatDate(d,z,p){
+const context={Date,console,htmlEscape:s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'),detailLinkHtml:()=>'<a>source</a>',stripHtml:s=>s.replace(/<[^>]*>/g,' '),Utilities:{newBlob:s=>({getBytes:()=>Buffer.from(s)}),formatDate(d,z,p){
  if(p==='yyyy-MM-dd') return new Intl.DateTimeFormat('en-CA',{timeZone:z,year:'numeric',month:'2-digit',day:'2-digit'}).format(d);
  return new Intl.DateTimeFormat('en-US',{timeZone:z,dateStyle:'medium',timeStyle:'short'}).format(d);
 }}};
@@ -47,3 +47,19 @@ assert(!context.digestReadableBody('visit https://example.test/secret','').inclu
 const out=context.completeDigestHtml('<h3>Calendar</h3><table><tr><td>invented</td></tr></table>',[{subject:'School app',cleanBody:'multimedia message',coverageRequired:true}],events,now);
 assert(!out.includes('invented'));assert.match(out,/not been opened/);assert.match(out,/Today soccer/);
 console.log('Digest calendar validation, offsets, conflicts, routing, unread-content and deterministic coverage passed.');
+
+const degraded=context.digestExpandedEvents({...feed,complete:false,source_health:[{name:'Indoor soccer',status:'unavailable'},{name:'Basketball',status:'cached'}]},now);
+assert.match(context.digestCalendarHtml(degraded,now),/Calendar is incomplete/);
+assert.match(context.digestCalendarHtml(degraded,now),/cached; live updates unavailable/);
+assert.match(context.digestCalendarHtml(events,now),/coverage has not been verified/);
+const healthy=context.digestExpandedEvents({...feed,complete:true,source_health:[{name:'Family',status:'live'}]},now);
+assert.equal(healthy.sourceWarnings.length,0);
+const later=row('Later event','2026-12-01T17:00:00-06:00','2026-12-01T18:00:00-06:00');
+const withLater=context.digestExpandedEvents({...feed,events:feed.events.concat([later])},now);
+const full=context.completeDigestHtml('<p>Narrative</p>',[],withLater,now);
+const email=context.digestEmailHtml(full,[],withLater,now,'https://example.test/document');
+assert.match(full,/Later event/);assert(!email.includes('Later event'));
+assert.match(email,/next 14 days/);assert.match(email,/42-day horizon/);assert.match(email,/coverage warning/);
+const bounded=context.digestEmailHtml('é'.repeat(100000)+'<!--digest-narrative-end-->',[{subject:'Source still retained'}],withLater,now,'https://example.test/document');
+assert(Buffer.byteLength(bounded)<90000);assert.match(bounded,/Source still retained/);assert.match(bounded,/narrative is in the full document/);
+console.log('Source failure warnings, explicit horizons and UTF-8 email size guard passed.');

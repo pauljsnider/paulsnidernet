@@ -82,6 +82,10 @@ function digestExpandedEvents(feed, now) {
     });
     events.sort(function(a,b){return a.when-b.when || a.title.localeCompare(b.title);});
     events.generatedAt = feed.generated_at;
+    events.sourceWarnings = !Array.isArray(feed.source_health) || !feed.source_health.length ? ['Source coverage has not been verified'] : feed.source_health.filter(function(s) {
+        return s.status !== 'live';
+    }).map(function(s) { return String(s.name) + ' (' + (s.status === 'cached' ? 'cached; live updates unavailable' : 'unavailable') + ')'; });
+    if (feed.complete !== true && !events.sourceWarnings.length) events.sourceWarnings.push('Source completeness is unverified');
     return events;
 }
 
@@ -99,7 +103,8 @@ function getDigestExpandedCalendar(now) {
 }
 
 function digestCalendarHtml(events, now) {
-    var html = '<h3>Verified calendar occurrences</h3><p>America/Chicago. Recurrences and exceptions are expanded by the calendar feed. Calendar entries show scheduled events, not proof of attendance. Feed refreshed ' + htmlEscape(events.generatedAt || '') + '.</p>';
+    var html = '<h3>Calendar occurrences from available sources</h3><p>America/Chicago. Recurrences and exceptions are expanded by the calendar feed. Calendar entries show scheduled events, not proof of attendance. Feed refreshed ' + htmlEscape(events.generatedAt || '') + '.</p>';
+    if (events.sourceWarnings && events.sourceWarnings.length) html += '<p><strong>Calendar is incomplete:</strong> ' + htmlEscape(events.sourceWarnings.join('; ')) + '. Missing events cannot be ruled out.</p>';
     var conflicts = [];
     for (var i=0;i<events.length;i++) {
         var a=events[i]; if(a.allDay) continue;
@@ -121,14 +126,14 @@ function digestCalendarHtml(events, now) {
     return html+'</table>';
 }
 
-function digestCoverageHtml(items) {
+function digestCoverageHtml(items, excerptLimit) {
     var followups=[];
     items.forEach(function(item,i){
         if(!item.coverageRequired) return;
         var text=item.cleanBody || '';
         var unseen=/multimedia message|view.*message|seesaw updates|recent canvas notifications/i.test(item.subject+' '+text);
         var excerpt=unseen ? 'School-app notice: linked multimedia/assignment details have not been opened. Review the source; no completion or deadline inferred.' :
-            'Source excerpt (reported at receipt; check later replies/confirmations before acting): '+text.replace(/\s+/g,' ').slice(0,600);
+            'Source excerpt (check later replies/confirmations before acting): '+text.replace(/\s+/g,' ').slice(0,excerptLimit || 600);
         followups.push('<li><strong>'+htmlEscape(item.subject)+'</strong> (S'+(i+1)+') — '+htmlEscape(excerpt)+' '+detailLinkHtml(item)+'</li>');
     });
     return followups.length ? '<h3>Additional inbox coverage / items to verify</h3><p>These source notices are retained even when the narrative omits them. Invitations are not confirmed plans; receipts and replies may resolve earlier requests.</p><ul>'+followups.join('')+'</ul>' : '';
@@ -138,5 +143,26 @@ function completeDigestHtml(html, items, events, now) {
     // The model supplies narrative only; the complete schedule is rendered from data.
     var narrative=String(html).replace(/<table\b[^>]*>[\s\S]*?<\/table>/gi,'');
     narrative=narrative.replace(/<h[234][^>]*>\s*(?:Upcoming Events Calendar|Upcoming Events|Calendar)\s*<\/h[234]>/gi,'');
-    return narrative+digestCoverageHtml(items)+digestCalendarHtml(events,now);
+    return narrative+'<!--digest-narrative-end-->'+digestCoverageHtml(items)+digestCalendarHtml(events,now);
+}
+
+function digestEmailHtml(fullHtml, items, events, now, docUrl) {
+    var narrative = fullHtml.split('<!--digest-narrative-end-->')[0];
+    var cutoff = new Date(now.getTime() + 14 * 86400000);
+    var nearby = events.filter(function(e) { return e.when < cutoff; });
+    nearby.generatedAt = events.generatedAt;
+    nearby.sourceWarnings = events.sourceWarnings;
+    var link = '<p><strong><a href="' + htmlEscape(docUrl) + '">Full digest and all ' + events.length + ' calendar occurrences (42-day horizon)</a></strong>. This email shows the next 14 days (' + nearby.length + ' occurrences). Full source text is in the document.</p>';
+    var warning = events.sourceWarnings && events.sourceWarnings.length ? '<p><strong>Calendar coverage warning:</strong> ' + htmlEscape(events.sourceWarnings.join('; ')) + '. Available events are listed; missing events cannot be ruled out.</p>' : '';
+    var sources = '<h3>Source email index</h3><ul>' + items.map(function(it,i) { return '<li>S' + (i+1) + ': ' + htmlEscape(it.subject || '(no subject)') + ' ' + detailLinkHtml(it) + '</li>'; }).join('') + '</ul>';
+    var tail = digestCoverageHtml(items,200) + digestCalendarHtml(nearby,now) + sources;
+    var email = link + warning + narrative + tail;
+    if (Utilities.newBlob(email).getBytes().length > 90000) {
+        email = link + warning + '<p>The narrative is in the full document to keep this email within its size limit. Source notices and the next 14 days remain below.</p>' + tail;
+    }
+    if (Utilities.newBlob(email).getBytes().length > 90000) {
+        email = link + warning + '<p>The detailed coverage and schedule are in the full document because of email size limits. Every source is indexed below.</p>' + sources;
+    }
+    if (Utilities.newBlob(email).getBytes().length > 90000) throw new Error('Digest source index exceeds safe email size.');
+    return email;
 }

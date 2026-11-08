@@ -867,6 +867,13 @@
                 state.events = normaliseEvents(feed.events);
                 state.generatedAt = feed.generated_at || null;
                 var status = relativeFeedTime(state.generatedAt) || 'Schedules refresh automatically';
+                var degraded = [];
+                var sources = feed.source_health || [];
+                for (var i = 0; i < sources.length; i += 1) {
+                    if (sources[i].status !== 'live') { degraded.push(sources[i].name); }
+                }
+                if (degraded.length) { status += ' • Incomplete: ' + degraded.join(', '); }
+                else if (feed.complete !== true) { status += ' • Source coverage unverified'; }
                 getById('feed-status').textContent = status + (fromCache ? ' • Offline copy' : ' • Refreshes automatically');
                 renderScreen();
                 return true;

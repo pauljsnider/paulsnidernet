@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T13:13:03.685902-06:00",
+  "generated_at": "2026-11-08T13:20:50.462010-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -1821,5 +1821,56 @@
       "source": "Family Email Events",
       "children": []
     }
-  ]
+  ],
+  "source_health": [
+    {
+      "name": "Family Email Events",
+      "status": "live"
+    },
+    {
+      "name": "Will Soccer",
+      "status": "live"
+    },
+    {
+      "name": "Will Soccer - Vipers FC U8B",
+      "status": "live"
+    },
+    {
+      "name": "Will Baseball",
+      "status": "live"
+    },
+    {
+      "name": "Will Baseball",
+      "status": "live"
+    },
+    {
+      "name": "Will Baseball",
+      "status": "live"
+    },
+    {
+      "name": "TeamSnap Events (Madison + Max + Will)",
+      "status": "live"
+    },
+    {
+      "name": "Will Indoor Soccer",
+      "status": "unavailable"
+    },
+    {
+      "name": "Max Soccer - Major Derek",
+      "status": "live"
+    },
+    {
+      "name": "Will Basketball",
+      "status": "live"
+    },
+    {
+      "name": "Madison Basketball",
+      "status": "live"
+    },
+    {
+      "name": "Overland Trail Elementary",
+      "status": "live"
+    }
+  ],
+  "complete": false
 }
