@@ -35,6 +35,25 @@ def make_calendar(uid, summary='Practice'):
 
 
 class CombineCalendarsTest(unittest.TestCase):
+    def test_school_closures_merge_only_identical_date_ranges(self):
+        calendar = Calendar()
+        for uid, title, source, end_day in [
+            ('school', 'NO SCHOOL Professional Learning', 'Overland Trail Elementary', 10),
+            ('family', 'No School - Madison, Will, Max', 'Family Email Events', 10),
+            ('different', 'NO SCHOOL Extended Closure', 'Overland Trail Elementary', 11),
+        ]:
+            event = Event()
+            event.add('uid', uid)
+            event.add('summary', title)
+            event.add('dtstart', datetime(2026, 11, 9).date())
+            event.add('dtend', datetime(2026, 11, end_day).date())
+            event.add('x-source-calendar', source)
+            calendar.add_component(event)
+        rows = build_kitchen_feed(calendar, now=pytz.UTC.localize(datetime(2026, 11, 8)))['events']
+        self.assertEqual(2, len(rows))
+        self.assertEqual(1, sum(e['source'] == 'Family Email Events' for e in rows))
+        self.assertEqual({'2026-11-10', '2026-11-11'}, {e['end'] for e in rows})
+
     def test_private_basketball_env_sources_and_missing_secret(self):
         sources = [{'name': 'Will Basketball', 'url_env': 'TEST_BASKETBALL_URL'}]
         with patch.dict(COMBINE_CALENDARS.os.environ, {'TEST_BASKETBALL_URL': 'https://example.invalid/private'}, clear=True):

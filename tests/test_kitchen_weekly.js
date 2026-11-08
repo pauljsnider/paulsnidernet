@@ -143,3 +143,18 @@ context.Utilities.formatDate=function(d,tz,format){
 assert.equal(context.kitchenSourceEligible(weeklyItem,new Date('2026-11-01T16:00:00Z')),false);
 context.Utilities.formatDate=oldFormatter;
 console.log('Oct 26 and Nov 2 school weeks, CST expiry, and stale-source exclusion passed');
+// Weekly priorities are drawn from attributed source text, not manual data patches.
+context.Utilities.formatDate=function(d,z,p){if(p==='Z')return '-0600';return d.toISOString().slice(0,10);};
+var tuningNow=new Date('2026-11-08T19:00:00Z');
+var priorityItem={child:'Madison',sourceFrom:'teacher@parentsquare.com',date:new Date('2026-11-05T18:00:00Z'),cleanBody:
+'## Dates\nMonday, November 9: No School\n## Veterans Day Assembly - Friday, November 13\nPlease wear BLUE clothing.\n## Greek Roots\nNext week, students will complete Greek Roots Unit 8. Sections A - D will be due on Thursday, and we will take our test on Friday.\n## Specials Schedule (11/10 - 11/13)\nTuesday - PE\nWednesday - Library\nThursday - Music\nFriday - Spanish\n## Next Week in Focus\nMath: Multiplication\nScience: Matter\nPhonics: Silent e\nAmplify: Reading\n## Donations\nBring new books to school.'};
+var tuned=context.prepareKitchenWeeklyExport([priorityItem],tuningNow).payload;
+assert(tuned.children.Madison.some(function(n){return /wear blue/i.test(n.text);}));
+assert(tuned.children.Madison.some(function(n){return n.kind==='assignment'&&/test Friday/.test(n.text);}));
+assert(tuned.children.Madison.some(function(n){return n.kind==='specials'&&/Library/.test(n.text);}));
+assert(!tuned.children.Madison.some(function(n){return /new books/.test(n.text);}));
+assert(tuned.children.Madison.length<=6);
+var unsafe=Object.assign({},priorityItem,{sourceFrom:'attacker@example.test'});
+assert.equal(context.kitchenPriorityCandidates([unsafe],tuningNow).length,0);
+assert.equal(context.kitchenPriorityCandidates([priorityItem],new Date('2026-11-15T19:00:00Z')).length,0);
+console.log('Dated school priorities, source provenance, expiry and whole-section finance exclusions passed');
