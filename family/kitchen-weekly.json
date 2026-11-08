@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "generated_at": "2026-11-08T18:42:43.939Z",
+  "generated_at": "2026-11-08T19:14:17.794Z",
   "expires_at": "2026-11-16T06:00:00.000Z",
   "week_start": "2026-11-09",
   "week_end": "2026-11-16",
@@ -16,7 +16,7 @@
         "source_date": "2026-11-05"
       },
       {
-        "kind": "bring",
+        "kind": "reminder",
         "text": "Wear BLUE for the Veterans Day assembly Friday.",
         "date": "2026-11-13",
         "expires_at": "2026-11-14T06:00:00.000Z",
@@ -32,24 +32,24 @@
         "source_date": "2026-11-05"
       },
       {
-        "kind": "reminder",
-        "text": "Optional community service: Wed 3:45-4:30, OTE Library; update pickup if attending.",
-        "date": "2026-11-11",
-        "expires_at": "2026-11-12T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-11-05"
-      },
-      {
-        "kind": "learning",
-        "text": "Don Quixote; multi-digit multiplication/division; silent-e; changes in matter.",
+        "kind": "bring",
+        "text": "Bring a Nut Safer snack and water bottle daily.",
         "date": null,
         "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
         "source_date": "2026-11-05"
       },
       {
-        "kind": "bring",
-        "text": "Bring a Nut Safer snack and water bottle daily.",
+        "kind": "assignment",
+        "text": "Greek Roots Unit 8: A–D due Thursday; test Friday.",
+        "date": "2026-11-13",
+        "expires_at": "2026-11-14T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-11-05"
+      },
+      {
+        "kind": "learning",
+        "text": "Amplify - Unit 4: Don Quixote",
         "date": null,
         "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
@@ -66,7 +66,7 @@
         "source_date": "2026-11-06"
       },
       {
-        "kind": "bring",
+        "kind": "reminder",
         "text": "Wear WHITE for the Veterans Day assembly Friday.",
         "date": "2026-11-13",
         "expires_at": "2026-11-14T06:00:00.000Z",
@@ -75,23 +75,7 @@
       },
       {
         "kind": "specials",
-        "text": "Tue: PE/Spanish; Wed: Spanish/PE; Thu: Art; Fri: Library (bring books).",
-        "date": null,
-        "expires_at": "2026-11-16T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-11-06"
-      },
-      {
-        "kind": "learning",
-        "text": "Phonics: vowel team ie. Science: desert habitats.",
-        "date": null,
-        "expires_at": "2026-11-16T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-11-06"
-      },
-      {
-        "kind": "learning",
-        "text": "Amplify: cycles in nature, then insects.",
+        "text": "Tue: PE/Spanish; Wed: Spanish/PE; Thu: Art; Fri: Library (books).",
         "date": null,
         "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
@@ -99,7 +83,23 @@
       },
       {
         "kind": "bring",
-        "text": "Bring a Nut Safer snack and water bottle; empty and return the folder daily.",
+        "text": "Bring a Nut Safer snack and water bottle daily.",
+        "date": null,
+        "expires_at": "2026-11-16T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-11-06"
+      },
+      {
+        "kind": "learning",
+        "text": "Phonics: We will begin lesson 11 which covers the vowel team ie.",
+        "date": null,
+        "expires_at": "2026-11-16T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-11-06"
+      },
+      {
+        "kind": "learning",
+        "text": "Amplify: Domain 4: Our Planet Cycles in Nature",
         "date": null,
         "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
@@ -116,7 +116,7 @@
         "source_date": "2026-11-06"
       },
       {
-        "kind": "bring",
+        "kind": "reminder",
         "text": "Wear RED for the Veterans Day assembly Friday.",
         "date": "2026-11-13",
         "expires_at": "2026-11-14T06:00:00.000Z",
@@ -125,23 +125,7 @@
       },
       {
         "kind": "specials",
-        "text": "Tue: Art; Wed: Spanish/PE (tennis shoes); Thu: Library (books); Fri: Music.",
-        "date": null,
-        "expires_at": "2026-11-16T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-11-06"
-      },
-      {
-        "kind": "learning",
-        "text": "Amplify: Plants. Math: Addition. Character Strong: Gratitude.",
-        "date": null,
-        "expires_at": "2026-11-16T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-11-06"
-      },
-      {
-        "kind": "learning",
-        "text": "Letters: o, l, r, c and f.",
+        "text": "Tue: Art; Wed: Spanish/PE (shoes); Thu: Library (books); Fri: Music.",
         "date": null,
         "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
@@ -149,7 +133,23 @@
       },
       {
         "kind": "bring",
-        "text": "Bring water and a Nut Safer snack in a backpack pocket; return the folder daily.",
+        "text": "Bring a Nut Safer snack and water bottle daily.",
+        "date": null,
+        "expires_at": "2026-11-16T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-11-06"
+      },
+      {
+        "kind": "learning",
+        "text": "Amplify : Domain 4: Plants",
+        "date": null,
+        "expires_at": "2026-11-16T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-11-06"
+      },
+      {
+        "kind": "learning",
+        "text": "95% : Lesson 9: Introduction of o, l & r and Lesson 10: Introduction of c & f",
         "date": null,
         "expires_at": "2026-11-16T06:00:00.000Z",
         "source": "School newsletter",
