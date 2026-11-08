@@ -164,6 +164,27 @@ function digestNarrativeChecks(html) {
     });
 }
 
+function digestRenderBrief(data) {
+    var sections = [['needsAttention','Needs attention',8],['thisWeek','This week',8],['worthKnowing','Worth knowing',3]];
+    var words = 0;
+    var html = '<h2>Weekly family brief</h2>';
+    sections.forEach(function(section) {
+        var bullets = data && data[section[0]];
+        if (!Array.isArray(bullets) || bullets.length > section[2]) throw new Error('Brief section exceeds its item limit.');
+        if (!bullets.length) return;
+        html += '<h3>'+section[1]+'</h3><ul>';
+        bullets.forEach(function(text) {
+            if (typeof text !== 'string' || !text.trim() || /<[^>]+>/.test(text)) throw new Error('Brief requires plain-text facts.');
+            words += text.trim().split(/\s+/).length;
+            html += '<li>'+htmlEscape(text)+'</li>';
+        });
+        html += '</ul>';
+    });
+    if (words > 650) throw new Error('Brief exceeds 650 words.');
+    if (!words) throw new Error('Brief contains no facts.');
+    return html;
+}
+
 function digestDeduplicateNarrative(html) {
     var seen = {};
     var childContext = '';
