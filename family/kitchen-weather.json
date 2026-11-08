@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-07T14:50:48.442748-06:00",
+  "generated_at": "2026-11-07T18:30:24.430047-06:00",
   "location": "Leawood, KS",
   "current": {
-    "temperature_f": 50,
-    "feels_like_f": 46,
+    "temperature_f": 46,
+    "feels_like_f": 42,
     "condition": "Clear"
   },
   "today": {
     "date": "2026-11-07",
-    "high_f": 51,
-    "low_f": 40,
+    "high_f": 52,
+    "low_f": 41,
     "condition": "Foggy",
     "precipitation_chance": 0
   },
@@ -17,13 +17,13 @@
     {
       "date": "2026-11-08",
       "high_f": 62,
-      "low_f": 40,
-      "condition": "Overcast",
+      "low_f": 41,
+      "condition": "Clear",
       "precipitation_chance": 0
     },
     {
       "date": "2026-11-09",
-      "high_f": 68,
+      "high_f": 69,
       "low_f": 36,
       "condition": "Partly cloudy",
       "precipitation_chance": 0
@@ -32,7 +32,7 @@
       "date": "2026-11-10",
       "high_f": 71,
       "low_f": 52,
-      "condition": "Mostly clear",
+      "condition": "Clear",
       "precipitation_chance": 0
     }
   ]
