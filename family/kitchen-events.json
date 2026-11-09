@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T18:36:01.197874-06:00",
+  "generated_at": "2026-11-08T20:30:02.742567-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -229,6 +229,15 @@
         "Will",
         "Max"
       ]
+    },
+    {
+      "summary": "Dinner at Grandma and Grandpa's",
+      "start": "2026-11-11T18:00:00-06:00",
+      "end": "2026-11-11T19:30:00-06:00",
+      "all_day": false,
+      "location": "Grandma and Grandpa's house",
+      "source": "Family Email Events",
+      "children": []
     },
     {
       "summary": "Liberty's Beacon \u2014 light installation at National WWI Museum",
