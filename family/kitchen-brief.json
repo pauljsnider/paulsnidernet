@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T00:12:38.732179-06:00",
+  "generated_at": "2026-11-09T11:25:19.837981-06:00",
   "local": {
     "title": "Family Storytime",
     "detail": "Mon, Nov 9 at 6:30 PM \u2022 Waldo Branch",
@@ -8,10 +8,10 @@
     "url": "https://kclibrary.org/calendar/family-storytime-109"
   },
   "kc_news": {
-    "title": "A vacant Brookside police and fire station is becoming an antique and homegoods store",
+    "title": "GJ Fish & Chicken opens in midtown Kansas City. Its young owner has more plans to expand",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-11-08/hydrangea-house-brookside-antiques-store-kansas-city"
+    "url": "https://www.kcur.org/arts-life/2026-11-08/gj-fish-chicken-kansas-city-midtown-locations"
   },
   "ai": [
     {
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.37,
-    "change_pct": -0.08,
-    "as_of": "2026-11-06"
+    "value": 67.3,
+    "change_pct": 2.94,
+    "as_of": "2026-11-09"
   }
 }
