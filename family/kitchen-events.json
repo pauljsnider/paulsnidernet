@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T08:42:00.130947-06:00",
+  "generated_at": "2026-11-09T18:18:47.746212-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -396,10 +396,10 @@
     },
     {
       "summary": "Madison: Footloose Musical Theater Clinic",
-      "start": "2026-11-14T09:30:00-06:00",
+      "start": "2026-11-14T09:15:00-06:00",
       "end": "2026-11-14T11:30:00-06:00",
       "all_day": false,
-      "location": "Blue Valley Northwest High School Mainstage",
+      "location": "Blue Valley Northwest High School (check-in: commons)",
       "source": "Family Email Events",
       "children": [
         "Madison"
@@ -752,17 +752,6 @@
       ]
     },
     {
-      "summary": "Madison: Footloose Matinee Performance",
-      "start": "2026-11-21",
-      "end": "2026-11-22",
-      "all_day": true,
-      "location": "Blue Valley Northwest High School Mainstage",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
       "summary": "Max: Learn to Play Hockey",
       "start": "2026-11-21T08:00:00-06:00",
       "end": "2026-11-21T08:40:00-06:00",
@@ -807,6 +796,17 @@
       ]
     },
     {
+      "summary": "Madison: Footloose Matinee Performance",
+      "start": "2026-11-21T13:15:00-06:00",
+      "end": "2026-11-21T16:30:00-06:00",
+      "all_day": false,
+      "location": "Blue Valley Northwest High School Mainstage",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
       "summary": "Sagan's Birthday Party-Max",
       "start": "2026-11-21T13:30:00-06:00",
       "end": "2026-11-21T15:00:00-06:00",
@@ -825,6 +825,17 @@
       "location": "",
       "source": "Family Email Events",
       "children": []
+    },
+    {
+      "summary": "Will Basketball: Sun Devils vs Karim",
+      "start": "2026-11-22T15:15:00-06:00",
+      "end": "2026-11-22T16:15:00-06:00",
+      "all_day": false,
+      "location": "Hilltop Learning Center-Blue Valley Schools\nOverland Park, KS, United States",
+      "source": "Will Basketball",
+      "children": [
+        "Will"
+      ]
     },
     {
       "summary": "No School - Madison, Will, Max",
@@ -1233,6 +1244,17 @@
       ]
     },
     {
+      "summary": "Will Basketball: Sun Devils vs Hall",
+      "start": "2026-12-05T11:00:00-06:00",
+      "end": "2026-12-05T12:00:00-06:00",
+      "all_day": false,
+      "location": "Hilltop Learning Center-Blue Valley Schools\nOverland Park, KS, United States",
+      "source": "Will Basketball",
+      "children": [
+        "Will"
+      ]
+    },
+    {
       "summary": "Madison Basketball: Wildcats @ Wilcox",
       "start": "2026-12-05T13:10:00-06:00",
       "end": "2026-12-05T14:10:00-06:00",
@@ -1526,6 +1548,17 @@
       "source": "Madison Basketball",
       "children": [
         "Madison"
+      ]
+    },
+    {
+      "summary": "Will Basketball: Sun Devils @ Carpenter",
+      "start": "2026-12-13T13:45:00-06:00",
+      "end": "2026-12-13T14:45:00-06:00",
+      "all_day": false,
+      "location": "Hilltop Learning Center-Blue Valley Schools\nOverland Park, KS, United States",
+      "source": "Will Basketball",
+      "children": [
+        "Will"
       ]
     },
     {
