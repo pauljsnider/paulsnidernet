@@ -1740,15 +1740,15 @@ X-IMPORT-TYPE:MANUAL
 END:VEVENT
 BEGIN:VEVENT
 UID:madison-footloose-matinee-20261121@paulsnider.net
-DTSTAMP:20261026T133000Z
+DTSTAMP:20261110T002355Z
 SUMMARY:Madison: Footloose Matinee Performance
-DTSTART;VALUE=DATE:20261121
-DTEND;VALUE=DATE:20261122
+DTSTART;TZID=America/Chicago:20261121T131500
+DTEND;TZID=America/Chicago:20261121T163000
 LOCATION:Blue Valley Northwest High School Mainstage
-DESCRIPTION:Footloose matinee at Blue Valley Northwest High School. Clinic participants perform their choreography number during intermission. Show time TBD (not stated on clinic flyer).
+DESCRIPTION:Madison arrives 1:15pm in her clinic T-shirt to review; matinee starts 2:00pm and she performs during intermission. Cast meet-and-greet for photos and autographs after the show. Madison's ticket is complimentary; parent ticket $10 via Bound (general admission). End time approximate. Note: overlaps Sagan's birthday party (Max) 1:30-3:00pm.
 STATUS:CONFIRMED
-SEQUENCE:0
-TRANSP:TRANSPARENT
+SEQUENCE:1
+TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
 BEGIN:VEVENT
