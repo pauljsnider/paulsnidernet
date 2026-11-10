@@ -1,53 +1,7 @@
 {
-  "generated_at": "2026-11-09T18:58:39.787031-06:00",
+  "generated_at": "2026-11-10T07:57:31.024588-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "No School - Madison, Will, Max",
-      "start": "2026-11-09",
-      "end": "2026-11-10",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
-      "start": "2026-11-09T17:00:00-06:00",
-      "end": "2026-11-09T18:00:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Liberty's Beacon \u2014 light installation at National WWI Museum",
-      "start": "2026-11-09T18:00:00-06:00",
-      "end": "2026-11-09T22:30:00-06:00",
-      "all_day": false,
-      "location": "National WWI Museum and Memorial, Kansas City",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Madison Basketball: Wildcats Practice",
-      "start": "2026-11-09T18:00:00-06:00",
-      "end": "2026-11-09T19:00:00-06:00",
-      "all_day": false,
-      "location": "14201 Mission Rd\nOverland Park KS",
-      "source": "Madison Basketball",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 5",
       "start": "2026-11-10",
@@ -515,7 +469,7 @@
       "children": []
     },
     {
-      "summary": "Madison Basketball: Wildcats @ TBD",
+      "summary": "Madison Basketball: Wildcats @ Olsen-Meehan",
       "start": "2026-11-16T19:45:00-06:00",
       "end": "2026-11-16T20:45:00-06:00",
       "all_day": false,
@@ -1897,6 +1851,59 @@
       "end": "2026-12-19T20:35:00-06:00",
       "all_day": false,
       "location": "Cable Dahmer Arena",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "No School - Madison, Will, Max",
+      "start": "2026-12-21",
+      "end": "2027-01-02",
+      "all_day": true,
+      "location": "Overland Trail Elementary",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "Tentative: Indoor Soccer Camp",
+      "start": "2026-12-21T09:00:00-06:00",
+      "end": "2026-12-21T12:00:00-06:00",
+      "all_day": false,
+      "location": "All American Indoor Sports, 8875 Rosehill Road, Lenexa, KS",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Grandma + Grandpa Pickup - Madison, Will, Max",
+      "start": "2026-12-21T17:00:00-06:00",
+      "end": "2026-12-21T18:00:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison",
+        "Will",
+        "Max"
+      ]
+    },
+    {
+      "summary": "Chiefs vs Patriots",
+      "start": "2026-12-21T19:15:00-06:00",
+      "end": "2026-12-21T22:45:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Chiefs vs. Patriots \u2014 Monday Night Football",
+      "start": "2026-12-21T19:15:00-06:00",
+      "end": "2026-12-21T22:30:00-06:00",
+      "all_day": false,
+      "location": "GEHA Field at Arrowhead Stadium, Kansas City",
       "source": "Family Email Events",
       "children": []
     }
