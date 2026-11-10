@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-09T11:25:19.837981-06:00",
+  "generated_at": "2026-11-09T19:28:11.072705-06:00",
   "local": {
-    "title": "Family Storytime",
-    "detail": "Mon, Nov 9 at 6:30 PM \u2022 Waldo Branch",
+    "title": "Teen Dungeons and Dragons",
+    "detail": "Mon, Nov 9 at 5:30 PM \u2022 Trails West Branch",
     "date": "2026-11-09",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/family-storytime-109"
+    "url": "https://kclibrary.org/calendar/teen-dungeons-and-dragons"
   },
   "kc_news": {
     "title": "GJ Fish & Chicken opens in midtown Kansas City. Its young owner has more plans to expand",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 67.3,
-    "change_pct": 2.94,
+    "value": 67.1,
+    "change_pct": 2.65,
     "as_of": "2026-11-09"
   }
 }
