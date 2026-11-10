@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-09T19:28:11.072705-06:00",
+  "generated_at": "2026-11-10T03:41:39.538354-06:00",
   "local": {
-    "title": "Teen Dungeons and Dragons",
-    "detail": "Mon, Nov 9 at 5:30 PM \u2022 Trails West Branch",
-    "date": "2026-11-09",
+    "title": "Baby Storytime",
+    "detail": "Tue, Nov 10 at 9:30 AM \u2022 Plaza Branch",
+    "date": "2026-11-10",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/teen-dungeons-and-dragons"
+    "url": "https://kclibrary.org/calendar/baby-storytime-124"
   },
   "kc_news": {
     "title": "GJ Fish & Chicken opens in midtown Kansas City. Its young owner has more plans to expand",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "MIT-led team receives funding to develop next-generation alternatives to modern weed killers",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-11-09",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/mit-led-team-receives-funding-next-generation-alternatives-modern-weed-killers-1110"
+    },
+    {
       "title": "A single AI model simulates the behavior of many substances, from sliding sand to folding proteins",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-08",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109"
-    },
-    {
-      "title": "AI-assisted learning platform helps robots reason beyond literal commands",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-08",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/ai-assisted-learning-platform-helps-robots-reason-beyond-literal-commands-1109"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 24579.42,
-      "change_pct": 1.09,
-      "as_of": "2026-11-06"
+      "value": 25253.14,
+      "change_pct": 2.74,
+      "as_of": "2026-11-09"
     }
   ],
   "ticker": {
