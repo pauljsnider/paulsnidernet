@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-11-10T00:18:47.664528+00:00
+X-COMBINE-TIMESTAMP:2026-11-10T00:21:51.584544+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VTIMEZONE
 TZID:America/Chicago
@@ -1926,19 +1926,17 @@ X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Madison: Footloose Matinee Performance
-DTSTART;TZID=America/Chicago:20261121T131500
-DTEND;TZID=America/Chicago:20261121T163000
-DTSTAMP:20261110T001757Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+DTSTAMP:20261026T133000Z
 UID:madison-footloose-matinee-20261121@paulsnider.net
-SEQUENCE:1
-DESCRIPTION:Madison arrives 1:15pm in her clinic T-shirt to review\; matin
- ee starts 2:00pm and she performs during intermission. Cast meet-and-greet
-  for photos and autographs after the show. Madison's ticket is complimenta
- ry\; parent ticket $10 via Bound (general admission). End time approximate
- . Note: overlaps Sagan's birthday party (Max) 1:30-3:00pm.
+SEQUENCE:0
+DESCRIPTION:Footloose matinee at Blue Valley Northwest High School. Clinic
+  participants perform their choreography number during intermission. Show 
+ time TBD (not stated on clinic flyer).
 LOCATION:Blue Valley Northwest High School Mainstage
 STATUS:CONFIRMED
-TRANSP:OPAQUE
+TRANSP:TRANSPARENT
 X-IMPORT-TYPE:MANUAL
 X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
