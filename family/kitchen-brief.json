@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-11T08:09:05.674285-06:00",
+  "generated_at": "2026-11-11T15:53:35.117655-06:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Wed, Nov 11 at 9:30 AM \u2022 Waldo Branch",
+    "title": "Movie: 'The Hunger Games: Mockingjay, Part 1'",
+    "detail": "Wed, Nov 11 at 5:30 PM \u2022 Waldo Branch",
     "date": "2026-11-11",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-156"
+    "url": "https://kclibrary.org/calendar/movie-hunger-games-mockingjay-part-1"
   },
   "kc_news": {
     "title": "Kansas City can see a meteor shower this week. How to spot the Northern Taurids",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 67.73,
-    "change_pct": 0.94,
-    "as_of": "2026-11-10"
+    "value": 67.89,
+    "change_pct": 0.24,
+    "as_of": "2026-11-11"
   }
 }
