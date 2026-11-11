@@ -1,87 +1,7 @@
 {
-  "generated_at": "2026-11-10T21:47:22.770493-06:00",
+  "generated_at": "2026-11-11T07:12:21.580421-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 5",
-      "start": "2026-11-10",
-      "end": "2026-11-11",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Madison: PE",
-      "start": "2026-11-10",
-      "end": "2026-11-11",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "PTO Support-A-Cougar Holiday Drive Kick-Off",
-      "start": "2026-11-10",
-      "end": "2026-11-11",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Will: PE",
-      "start": "2026-11-10",
-      "end": "2026-11-11",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Religious Education",
-      "start": "2026-11-10T16:30:00-06:00",
-      "end": "2026-11-10T17:45:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Madison: Gymnastics",
-      "start": "2026-11-10T17:00:00-06:00",
-      "end": "2026-11-10T17:55:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Liberty's Beacon \u2014 light installation at National WWI Museum",
-      "start": "2026-11-10T18:00:00-06:00",
-      "end": "2026-11-10T22:30:00-06:00",
-      "all_day": false,
-      "location": "National WWI Museum and Memorial, Kansas City",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Madison Tutor w/ Ava",
-      "start": "2026-11-10T19:15:00-06:00",
-      "end": "2026-11-10T20:15:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "DAY 1",
       "start": "2026-11-11",
@@ -1924,6 +1844,37 @@
       "location": "GEHA Field at Arrowhead Stadium, Kansas City",
       "source": "Family Email Events",
       "children": []
+    },
+    {
+      "summary": "Tentative: Indoor Soccer Camp",
+      "start": "2026-12-22T09:00:00-06:00",
+      "end": "2026-12-22T12:00:00-06:00",
+      "all_day": false,
+      "location": "All American Indoor Sports, 8875 Rosehill Road, Lenexa, KS",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Madison: Gymnastics",
+      "start": "2026-12-22T17:00:00-06:00",
+      "end": "2026-12-22T17:55:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
+    },
+    {
+      "summary": "Madison Tutor w/ Ava",
+      "start": "2026-12-22T19:15:00-06:00",
+      "end": "2026-12-22T20:15:00-06:00",
+      "all_day": false,
+      "location": "",
+      "source": "Family Email Events",
+      "children": [
+        "Madison"
+      ]
     }
   ],
   "source_health": [
