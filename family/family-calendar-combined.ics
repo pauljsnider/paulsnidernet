@@ -4,7 +4,7 @@ PRODID:-//Snider Family//Combined Calendar//EN
 X-WR-CALDESC:Combined calendar with all Snider family events
 X-WR-CALNAME:Snider Family Calendar - Combined
 X-COMBINE-MODE:production
-X-COMBINE-TIMESTAMP:2026-11-11T02:20:04.199528+00:00
+X-COMBINE-TIMESTAMP:2026-11-11T02:20:42.739891+00:00
 X-WR-TIMEZONE:America/Chicago
 BEGIN:VTIMEZONE
 TZID:America/Chicago
@@ -2246,11 +2246,11 @@ X-SOURCE-CALENDAR:Family Email Events
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Dinner at Grandma and Grandpa's
-DTSTART;TZID=America/Chicago:20261111T180000
-DTEND;TZID=America/Chicago:20261111T193000
-DTSTAMP:20261109T022927Z
+DTSTART;TZID=America/Chicago:20261112T180000
+DTEND;TZID=America/Chicago:20261112T193000
+DTSTAMP:20261111T022009Z
 UID:dinner-grandma-grandpa-20261111@paulsnider.net
-SEQUENCE:0
+SEQUENCE:1
 DESCRIPTION:Family dinner at Grandma and Grandpa's.
 LOCATION:Grandma and Grandpa's house
 STATUS:CONFIRMED
