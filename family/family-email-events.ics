@@ -2025,4 +2025,30 @@ SEQUENCE:0
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+UID:ote-hearing-vision-screenings-20261118@paulsnider.net
+DTSTAMP:20261111T015718Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:OTE Hearing & Vision Screenings
+DESCRIPTION:Hearing and vision screenings at Overland Trail Elementary during the school day. Screener volunteers still needed for November 18. (Source: ParentSquare, Cougar Connect 11-6-26.)
+LOCATION:Overland Trail Elementary
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
+BEGIN:VEVENT
+UID:ote-early-release-20261218@paulsnider.net
+DTSTAMP:20261111T015718Z
+DTSTART;TZID=America/Chicago:20261218T114500
+DTEND;TZID=America/Chicago:20261218T120000
+SUMMARY:OTE Early Release - Dismissal 11:45am
+DESCRIPTION:Early release after the Winter Celebration - school dismisses at 11:45am, no afternoon classes. (Source: ParentSquare school calendar; Moore Weekly Update 11-5.)
+LOCATION:Overland Trail Elementary
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:TRANSPARENT
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR
