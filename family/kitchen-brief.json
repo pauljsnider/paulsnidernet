@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T20:55:02.740157-06:00",
+  "generated_at": "2026-11-12T04:56:59.854303-06:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Thu, Nov 12 at 9:30 AM \u2022 Central Library",
@@ -8,25 +8,25 @@
     "url": "https://kclibrary.org/calendar/baby-storytime-117"
   },
   "kc_news": {
-    "title": "Kansas City can see a meteor shower this week. How to spot the Northern Taurids",
+    "title": "Lyda Conley saved a Kansas City, Kansas, cemetery. A new book traces the fight across generations",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-11-11/kansas-city-meteor-shower-northern-taurids-dark-sky-space-astronomy"
+    "url": "https://www.kcur.org/arts-life/2026-11-12/lyda-conley-saved-a-kansas-city-kansas-cemetery-a-new-book-traces-the-fight-across-generations"
   },
   "ai": [
+    {
+      "title": "New research could lead to faster, trustworthy AI models for climate prediction",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-11-11",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/new-research-could-lead-faster-trustworthy-ai-models-climate-prediction-1112"
+    },
     {
       "title": "MIT-led team receives funding to develop next-generation alternatives to modern weed killers",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-09",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/mit-led-team-receives-funding-next-generation-alternatives-modern-weed-killers-1110"
-    },
-    {
-      "title": "A single AI model simulates the behavior of many substances, from sliding sand to folding proteins",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-08",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/single-ai-model-simulates-many-substances-behavior-1109"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 25065.87,
-      "change_pct": -0.74,
-      "as_of": "2026-11-10"
+      "value": 25466.19,
+      "change_pct": 1.6,
+      "as_of": "2026-11-11"
     }
   ],
   "ticker": {
