@@ -1,89 +1,7 @@
 {
-  "generated_at": "2026-11-11T22:56:02.768076-06:00",
+  "generated_at": "2026-11-12T08:15:55.849781-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 1",
-      "start": "2026-11-11",
-      "end": "2026-11-12",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Madison: Library",
-      "start": "2026-11-11",
-      "end": "2026-11-12",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
-    {
-      "summary": "Max: PE",
-      "start": "2026-11-11",
-      "end": "2026-11-12",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Max"
-      ]
-    },
-    {
-      "summary": "U.S. Federal Holiday: Veterans Day",
-      "start": "2026-11-11",
-      "end": "2026-11-12",
-      "all_day": true,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "US Federal Holiday: Veterans Day",
-      "start": "2026-11-11",
-      "end": "2026-11-12",
-      "all_day": true,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Will: PE",
-      "start": "2026-11-11",
-      "end": "2026-11-12",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "PTO Community Service Activity",
-      "start": "2026-11-11T15:45:00-06:00",
-      "end": "2026-11-11T16:30:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": [
-        "Madison",
-        "Will",
-        "Max"
-      ]
-    },
-    {
-      "summary": "Liberty's Beacon \u2014 light installation at National WWI Museum",
-      "start": "2026-11-11T18:00:00-06:00",
-      "end": "2026-11-11T22:30:00-06:00",
-      "all_day": false,
-      "location": "National WWI Museum and Memorial, Kansas City",
-      "source": "Family Email Events",
-      "children": []
-    },
     {
       "summary": "DAY 2",
       "start": "2026-11-12",
@@ -1884,6 +1802,15 @@
       "children": [
         "Madison"
       ]
+    },
+    {
+      "summary": "Tentative: Indoor Soccer Camp",
+      "start": "2026-12-23T09:00:00-06:00",
+      "end": "2026-12-23T12:00:00-06:00",
+      "all_day": false,
+      "location": "All American Indoor Sports, 8875 Rosehill Road, Lenexa, KS",
+      "source": "Family Email Events",
+      "children": []
     }
   ],
   "source_health": [
