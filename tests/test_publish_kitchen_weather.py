@@ -60,11 +60,12 @@ class KitchenWeatherFetchTests(unittest.TestCase):
 
     def test_timeout_then_success_retries_and_updates(self):
         from unittest.mock import patch
-        with patch.object(WEATHER.requests, 'get', side_effect=[WEATHER.requests.Timeout('private text'), self.response()]) as get, patch.object(WEATHER.time, 'sleep') as sleep:
+        with patch.object(WEATHER.requests, 'get', side_effect=[WEATHER.requests.ReadTimeout('private text'), self.response()]) as get, patch.object(WEATHER.time, 'sleep') as sleep:
             feed = WEATHER.publish_weather(self.output)
         self.assertEqual(65, feed['current']['temperature_f'])
         self.assertEqual(2, get.call_count)
         sleep.assert_called_once_with(2)
+        self.assertTrue(all(call.kwargs['timeout'] == (10, 60) for call in get.call_args_list))
 
     def test_transient_http_errors_retry(self):
         from unittest.mock import patch
@@ -101,3 +102,22 @@ class KitchenWeatherFetchTests(unittest.TestCase):
                     WEATHER.publish_weather(self.output)
                 sleep.assert_not_called()
                 self.assertEqual('last-good-feed\n', self.output.read_text())
+
+
+class KitchenWeatherWorkflowTests(unittest.TestCase):
+    def test_refresh_triggers_keep_main_only_publication_and_brief_independent(self):
+        workflow = (MODULE_PATH.parents[1] / '.github/workflows/publish-kitchen-weather.yml').read_text()
+        self.assertIn("cron: '17 * * * *'", workflow)
+        self.assertIn('workflows: [Combine Family Calendars, Publish Kitchen Photos, Kitchen validation]', workflow)
+        self.assertIn("github.ref == 'refs/heads/main'", workflow)
+        self.assertIn("github.event.workflow_run.conclusion == 'success'", workflow)
+        self.assertIn("github.event.workflow_run.head_branch == 'main'", workflow)
+        self.assertIn('github.event.workflow_run.head_repository.full_name == github.repository', workflow)
+        self.assertIn("github.event.workflow_run.event != 'pull_request'", workflow)
+        self.assertIn('ref: main', workflow)
+        self.assertIn('cancel-in-progress: false', workflow)
+        weather_step = workflow.split('- name: Build the local weather feed')[1].split('- name: Build the Daily Brief feed')[0]
+        brief_step = workflow.split('- name: Build the Daily Brief feed')[1].split('- name: Commit and push')[0]
+        self.assertIn('continue-on-error: true', weather_step)
+        self.assertNotIn('if:', brief_step)
+        self.assertLess(workflow.index('bash scripts/push-kitchen-weather.sh'), workflow.index('- name: Report weather refresh failure'))

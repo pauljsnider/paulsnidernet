@@ -113,7 +113,7 @@ def publish_weather(output_file: Path = OUTPUT_FILE, now: datetime | None = None
     }
     for attempt in range(1, 4):
         try:
-            response = requests.get(OPEN_METEO_URL, params=parameters, timeout=30)
+            response = requests.get(OPEN_METEO_URL, params=parameters, timeout=(10, 60))
             response.raise_for_status()
             payload = response.json()
             if not isinstance(payload, dict) or not isinstance(payload.get("current"), dict):
