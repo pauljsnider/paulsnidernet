@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T19:07:58.642150-06:00",
+  "generated_at": "2026-11-13T01:52:30.439159-06:00",
   "local": {
     "title": "Kindergarten Readiness Storytime",
     "detail": "Fri, Nov 13 at 10:30 AM \u2022 Plaza Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
-      "title": "New research could lead to faster, trustworthy AI models for climate prediction",
+      "title": "New AI \u201ccopilot\u201d helps engineers design better structures",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-11",
+      "date": "2026-11-12",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/new-research-could-lead-faster-trustworthy-ai-models-climate-prediction-1112"
+      "url": "https://news.mit.edu/2026/new-ai-copilot-helps-engineers-design-better-structures-1113"
     },
     {
-      "title": "MIT-led team receives funding to develop next-generation alternatives to modern weed killers",
+      "title": "Helping robots fit into the human workplace",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-09",
+      "date": "2026-11-12",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/mit-led-team-receives-funding-next-generation-alternatives-modern-weed-killers-1110"
+      "url": "https://news.mit.edu/2026/helping-robots-fit-into-human-workplace-1113"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 25466.19,
-      "change_pct": 1.6,
-      "as_of": "2026-11-11"
+      "value": 25366.09,
+      "change_pct": -0.39,
+      "as_of": "2026-11-12"
     }
   ],
   "ticker": {
