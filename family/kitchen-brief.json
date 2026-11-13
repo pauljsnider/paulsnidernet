@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T01:52:30.439159-06:00",
+  "generated_at": "2026-11-13T10:16:01.573914-06:00",
   "local": {
     "title": "Kindergarten Readiness Storytime",
     "detail": "Fri, Nov 13 at 10:30 AM \u2022 Plaza Branch",
@@ -8,10 +8,10 @@
     "url": "https://kclibrary.org/calendar/kindergarten-readiness-storytime-30"
   },
   "kc_news": {
-    "title": "Lyda Conley saved a Kansas City, Kansas, cemetery. A new book traces the fight across generations",
+    "title": "A new Kansas City play explores what immigrants carry with them \u2014 and what they leave behind",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-11-12/lyda-conley-saved-a-kansas-city-kansas-cemetery-a-new-book-traces-the-fight-across-generations"
+    "url": "https://www.kcur.org/arts-life/2026-11-13/kansas-city-play-maletas-immigrant-experience"
   },
   "ai": [
     {
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7619.38,
-      "change_pct": 1.31,
-      "as_of": "2026-11-11"
+      "value": 7592.4,
+      "change_pct": -0.35,
+      "as_of": "2026-11-12"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 67.85,
-    "change_pct": -0.06,
-    "as_of": "2026-11-12"
+    "value": 67.98,
+    "change_pct": 0.2,
+    "as_of": "2026-11-13"
   }
 }
