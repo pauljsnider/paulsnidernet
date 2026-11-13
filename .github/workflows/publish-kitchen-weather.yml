@@ -2,14 +2,30 @@ name: Publish Kitchen Weather
 
 on:
   schedule:
-    # Avoid the daily photo job at 6:15 UTC while keeping weather hourly.
-    - cron: '7 * * * *'
+    # Keep the hourly refresh away from the start-of-hour queue.
+    - cron: '17 * * * *'
   workflow_dispatch:
+  # Independent opportunities when scheduled weather runs are delayed/dropped.
+  workflow_run:
+    workflows: [Combine Family Calendars, Publish Kitchen Photos, Kitchen validation]
+    types: [completed]
+    branches: [main]
+
+concurrency:
+  group: kitchen-weather-publication
+  cancel-in-progress: false
 
 jobs:
   publish-kitchen-weather:
-    if: github.ref == 'refs/heads/main'
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name != 'workflow_run' ||
+       (github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.head_branch == 'main' &&
+        github.event.workflow_run.head_repository.full_name == github.repository &&
+        github.event.workflow_run.event != 'pull_request'))
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: write
 
@@ -17,6 +33,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
