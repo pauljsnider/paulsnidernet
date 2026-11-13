@@ -2063,4 +2063,17 @@ SEQUENCE:0
 TRANSP:OPAQUE
 X-IMPORT-TYPE:MANUAL
 END:VEVENT
+BEGIN:VEVENT
+UID:hayes-birthday-20261115@paulsnider.net
+DTSTAMP:20261113T002556Z
+DTSTART;TZID=America/Chicago:20261115T160000
+DTEND;TZID=America/Chicago:20261115T180000
+SUMMARY:Hayes' Birthday Party - Will
+DESCRIPTION:Hayes Coppaken is turning 8. Birthday party at AMC Prairiefire. Will invited; RSVP'd yes (1 guest). Hosts: Jeff and Blaine Coppaken. Note: overlaps family pictures 3:50-4:50pm.
+LOCATION:AMC Prairiefire 17\, 5724 W 136th St\, Overland Park\, KS 66223
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
+END:VEVENT
 END:VCALENDAR
