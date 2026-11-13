@@ -24,11 +24,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Build the local weather and Daily Brief feeds
-        run: |
-          pip install requests
-          python scripts/publish-kitchen-weather.py
-          python scripts/publish-kitchen-brief.py
+      - name: Install feed dependencies
+        run: pip install requests
+
+      - name: Build the local weather feed
+        id: weather
+        continue-on-error: true
+        run: python scripts/publish-kitchen-weather.py
+
+      - name: Build the Daily Brief feed
+        run: python scripts/publish-kitchen-brief.py
 
       - name: Commit and push updated kitchen feeds
         run: |
@@ -40,3 +45,9 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git commit -m "Update kitchen weather [automated]"
           bash scripts/push-kitchen-weather.sh
+
+      - name: Report weather refresh failure after publishing available feeds
+        if: always() && steps.weather.outcome == 'failure'
+        run: |
+          echo 'Weather refresh failed; previous weather retained. See the weather step for failure class/status.' >&2
+          exit 1

@@ -508,15 +508,18 @@ END:VCALENDAR
         for private_field in ('ATTENDEE', 'ORGANIZER', 'Passcode:', 'https://'):
             self.assertNotIn(private_field, source)
 
-    def test_footloose_events_preserve_times_without_registration_link(self):
+    def test_footloose_checkin_and_arrival_preserve_activity_details(self):
         calendar = load_local_calendar(EMAIL_EVENTS_PATH, 'Family Email Events')
         events = {str(e['UID']): e for e in calendar.walk('VEVENT')}
         clinic = events['madison-footloose-clinic-20261114@paulsnider.net']
         matinee = events['madison-footloose-matinee-20261121@paulsnider.net']
-        self.assertEqual('2026-11-14T09:30:00-06:00', clinic['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-11-14T09:15:00-06:00', clinic['DTSTART'].dt.isoformat())
         self.assertEqual('2026-11-14T11:30:00-06:00', clinic['DTEND'].dt.isoformat())
-        self.assertEqual('2026-11-21', matinee['DTSTART'].dt.isoformat())
-        self.assertEqual('2026-11-22', matinee['DTEND'].dt.isoformat())
+        self.assertEqual('2026-11-21T13:15:00-06:00', matinee['DTSTART'].dt.isoformat())
+        self.assertEqual('2026-11-21T16:30:00-06:00', matinee['DTEND'].dt.isoformat())
+        self.assertIn('Clinic runs 9:30-11:30am', str(clinic['DESCRIPTION']))
+        self.assertIn('matinee starts 2:00pm', str(matinee['DESCRIPTION']))
+        self.assertIn('End time approximate', str(matinee['DESCRIPTION']))
         for event in (clinic, matinee):
             self.assertNotIn('https://', str(event.get('DESCRIPTION', '')))
 

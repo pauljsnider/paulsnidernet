@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -110,12 +111,29 @@ def publish_weather(output_file: Path = OUTPUT_FILE, now: datetime | None = None
         "temperature_unit": "fahrenheit",
         "timezone": "America/Chicago",
     }
-    try:
-        response = requests.get(OPEN_METEO_URL, params=parameters, timeout=30)
-        response.raise_for_status()
-        feed = build_weather_feed(response.json(), now=now)
-    except (requests.RequestException, ValueError, KeyError) as error:
-        raise RuntimeError("Could not fetch the kitchen weather feed.") from error
+    for attempt in range(1, 4):
+        try:
+            response = requests.get(OPEN_METEO_URL, params=parameters, timeout=30)
+            response.raise_for_status()
+            payload = response.json()
+            if not isinstance(payload, dict) or not isinstance(payload.get("current"), dict):
+                raise ValueError("Missing current conditions")
+            feed = build_weather_feed(payload, now=now)
+            if feed["current"]["temperature_f"] is None:
+                raise ValueError("Missing temperature")
+            break
+        except (requests.RequestException, ValueError, KeyError, TypeError) as error:
+            error_response = getattr(error, "response", None)
+            status = error_response.status_code if error_response is not None else None
+            transient = isinstance(error, (requests.Timeout, requests.ConnectionError)) or (
+                status is not None and (status == 429 or 500 <= status < 600)
+            )
+            # Report class/status, never a URL, response body or exception text.
+            detail = f"HTTP {status}" if status is not None else type(error).__name__
+            if not transient or attempt == 3:
+                raise RuntimeError(f"Could not fetch the kitchen weather feed: {detail} after {attempt} attempt(s).") from error
+            print(f"Kitchen weather attempt {attempt} failed: {detail}; retrying.", file=sys.stderr)
+            time.sleep(2 ** attempt)
 
     output_file.parent.mkdir(parents=True, exist_ok=True)
     output_file.write_text(json.dumps(feed, indent=2) + "\n", encoding="utf-8")
