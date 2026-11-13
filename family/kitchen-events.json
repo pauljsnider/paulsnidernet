@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T16:58:24.217293-06:00",
+  "generated_at": "2026-11-12T18:26:46.294275-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -254,6 +254,17 @@
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events",
       "children": []
+    },
+    {
+      "summary": "Hayes' Birthday Party - Will",
+      "start": "2026-11-15T16:00:00-06:00",
+      "end": "2026-11-15T18:00:00-06:00",
+      "all_day": false,
+      "location": "AMC Prairiefire 17, 5724 W 136th St, Overland Park, KS 66223",
+      "source": "Family Email Events",
+      "children": [
+        "Will"
+      ]
     },
     {
       "summary": "America Education Week",
