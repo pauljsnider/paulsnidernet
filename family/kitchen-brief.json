@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-13T11:30:48.581044-06:00",
+  "generated_at": "2026-11-13T17:01:16.386449-06:00",
   "local": {
-    "title": "Movie: 'When Harry Met Sally'",
-    "detail": "Fri, Nov 13 at 2:00 PM \u2022 Central Library",
-    "date": "2026-11-13",
+    "title": "Anime/Manga Art Class",
+    "detail": "Sat, Nov 14 at 1:00 PM \u2022 Central Library",
+    "date": "2026-11-14",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-when-harry-met-sally"
+    "url": "https://kclibrary.org/calendar/animemanga-art-class-1"
   },
   "kc_news": {
     "title": "A new Kansas City play explores what immigrants carry with them \u2014 and what they leave behind",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 67.81,
-    "change_pct": -0.06,
+    "value": 67.92,
+    "change_pct": 0.1,
     "as_of": "2026-11-13"
   }
 }
