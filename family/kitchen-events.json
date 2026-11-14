@@ -1,94 +1,7 @@
 {
-  "generated_at": "2026-11-13T22:04:59.060948-06:00",
+  "generated_at": "2026-11-14T06:42:58.673366-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "DAY 3",
-      "start": "2026-11-13",
-      "end": "2026-11-14",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "PTO Bingo For Books Family Event",
-      "start": "2026-11-13",
-      "end": "2026-11-14",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Veteran's Day Reception & Assembly",
-      "start": "2026-11-13",
-      "end": "2026-11-14",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Will: Library",
-      "start": "2026-11-13",
-      "end": "2026-11-14",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "OTE Veterans Day Assembly",
-      "start": "2026-11-13T09:15:00-06:00",
-      "end": "2026-11-13T10:15:00-06:00",
-      "all_day": false,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Tutoring",
-      "start": "2026-11-13T17:15:00-06:00",
-      "end": "2026-11-13T18:15:00-06:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Will Basketball: Sun Devils Practice",
-      "start": "2026-11-13T18:00:00-06:00",
-      "end": "2026-11-13T19:00:00-06:00",
-      "all_day": false,
-      "location": "Lakewood Elementary School\nOverland Park, KS, United States",
-      "source": "Will Basketball",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Blue Valley High: Mamma Mia! (Musical)",
-      "start": "2026-11-13T19:00:00-06:00",
-      "end": "2026-11-13T22:00:00-06:00",
-      "all_day": false,
-      "location": "Blue Valley High School Performing Arts Center, 6001 W 159th St, Overland Park, KS",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Futsal Skills Club - Will and Madison",
-      "start": "2026-11-13T20:00:00-06:00",
-      "end": "2026-11-13T21:00:00-06:00",
-      "all_day": false,
-      "location": "Prairie Star Elementary School, 3800 W 143rd St, Leawood, KS 66224",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "Max: Learn to Play Hockey",
       "start": "2026-11-14T08:00:00-06:00",
@@ -1793,6 +1706,33 @@
       "children": [
         "Madison"
       ]
+    },
+    {
+      "summary": "U.S. Federal Holiday: Christmas Day",
+      "start": "2026-12-25",
+      "end": "2026-12-26",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "US Federal Holiday: Christmas Day",
+      "start": "2026-12-25",
+      "end": "2026-12-26",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Tutoring",
+      "start": "2026-12-25T17:15:00-06:00",
+      "end": "2026-12-25T18:15:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": []
     }
   ],
   "source_health": [
