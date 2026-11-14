@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T17:30:28.776370-06:00",
+  "generated_at": "2026-11-13T22:05:26.090321-06:00",
   "local": {
     "title": "Anime/Manga Art Class",
     "detail": "Sat, Nov 14 at 1:00 PM \u2022 Central Library",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7592.4,
-      "change_pct": -0.35,
-      "as_of": "2026-11-12"
+      "value": 7561.67,
+      "change_pct": -0.4,
+      "as_of": "2026-11-13"
     },
     {
       "name": "Nasdaq",
