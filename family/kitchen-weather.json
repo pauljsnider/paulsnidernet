@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-15T07:10:04.048395-06:00",
+  "generated_at": "2026-11-15T07:54:10.413109-06:00",
   "location": "Leawood, KS",
   "current": {
-    "temperature_f": 28,
-    "feels_like_f": 21,
+    "temperature_f": 27,
+    "feels_like_f": 20,
     "condition": "Overcast"
   },
   "today": {
