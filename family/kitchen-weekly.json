@@ -1,7 +1,7 @@
 {
   "version": 1,
   "timezone": "America/Chicago",
-  "generated_at": "2026-11-15T18:27:20.531Z",
+  "generated_at": "2026-11-15T18:52:22.796Z",
   "expires_at": "2026-11-23T06:00:00.000Z",
   "week_start": "2026-11-16",
   "week_end": "2026-11-23",
@@ -33,14 +33,6 @@
       },
       {
         "kind": "learning",
-        "text": "iReady Diagnostic",
-        "date": null,
-        "expires_at": "2026-11-23T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-11-13"
-      },
-      {
-        "kind": "learning",
         "text": "Amplify - Unit 4: Don Quixote",
         "date": null,
         "expires_at": "2026-11-23T06:00:00.000Z",
@@ -57,18 +49,10 @@
       },
       {
         "kind": "reminder",
-        "text": "Checkbook came home: review bonuses and fines.",
+        "text": "Get the take-home folder and GR #8 test signed; review bonuses and fines.",
         "date": null,
         "expires_at": "2026-11-23T06:00:00.000Z",
         "source": "School newsletter",
-        "source_date": "2026-11-13"
-      },
-      {
-        "kind": "reminder",
-        "text": "Get the checkbook and the GR #8 test signed.",
-        "date": null,
-        "expires_at": "2026-11-23T06:00:00.000Z",
-        "source": "Seesaw",
         "source_date": "2026-11-13"
       }
     ],
@@ -149,7 +133,7 @@
       },
       {
         "kind": "specials",
-        "text": "Mon: Spanish/PE (tennis shoes); Tue: Art; Wed: Spanish/PE (tennis shoes); Thu: Library (return books); Fri: Music.",
+        "text": "Spanish/PE Mon/Wed (tennis shoes); Art Tue; Library Thu; Music Fri.",
         "date": null,
         "expires_at": "2026-11-23T06:00:00.000Z",
         "source": "School newsletter",
