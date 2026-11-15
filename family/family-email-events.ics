@@ -2027,11 +2027,11 @@ X-IMPORT-TYPE:MANUAL
 END:VEVENT
 BEGIN:VEVENT
 UID:ote-hearing-vision-screenings-20261118@paulsnider.net
-DTSTAMP:20261111T015718Z
+DTSTAMP:20261115T182701Z
 DTSTART;VALUE=DATE:20261118
 DTEND;VALUE=DATE:20261119
 SUMMARY:OTE Hearing & Vision Screenings
-DESCRIPTION:Hearing and vision screenings at Overland Trail Elementary during the school day. Screener volunteers still needed for November 18. (Source: ParentSquare, Cougar Connect 11-6-26.)
+DESCRIPTION:Hearing and vision screenings at Overland Trail Elementary during the school day. Madison's class begins screening at 11:45am; kids who wear glasses should wear them. Screener volunteers still needed for November 18. (Source: ParentSquare, Cougar Connect 11-6-26; Moore newsletter 11-13-26.)
 LOCATION:Overland Trail Elementary
 STATUS:CONFIRMED
 SEQUENCE:0
