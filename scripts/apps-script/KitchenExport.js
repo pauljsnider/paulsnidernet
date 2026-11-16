@@ -145,7 +145,8 @@ function kitchenPriorityCandidates(items, now) {
         if (snack && /nut.safer/i.test(body)) add('bring','Bring a Nut Safer snack and water bottle daily.',null,snack[0]);
         var assignment = body.match(/Next week, students will complete Greek Roots Unit\s+(\d+)\.[\s\S]{0,200}?Sections A\s*[-–]\s*D will be due on Thursday[\s\S]{0,80}?test on Friday/i);
         if (assignment && Utilities.formatDate(item.date,'America/Chicago','yyyy-MM-dd') < week) {
-            add('assignment','Greek Roots Unit '+assignment[1]+': A–D due Thursday; test Friday.',dateFor('Friday'),assignment[0]);
+            add('assignment','Greek Roots Unit '+assignment[1]+': A–D due Thursday.',dateFor('Thursday'),assignment[0]);
+            add('assignment','Greek Roots Unit '+assignment[1]+': test Friday.',dateFor('Friday'),assignment[0]);
         }
     });
     return result;

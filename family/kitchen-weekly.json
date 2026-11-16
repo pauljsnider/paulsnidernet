@@ -25,7 +25,15 @@
       },
       {
         "kind": "assignment",
-        "text": "Greek Roots Unit 9: A–D due Thursday; test Friday.",
+        "text": "Greek Roots Unit 9: A–D due Thursday.",
+        "date": "2026-11-19",
+        "expires_at": "2026-11-20T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-11-13"
+      },
+      {
+        "kind": "assignment",
+        "text": "Greek Roots Unit 9: test Friday.",
         "date": "2026-11-20",
         "expires_at": "2026-11-21T06:00:00.000Z",
         "source": "School newsletter",
@@ -42,14 +50,6 @@
       {
         "kind": "learning",
         "text": "Math - Multiply Multi-Digit Numbers, Divide Multi-Digit Numbers, Adding Fractions",
-        "date": null,
-        "expires_at": "2026-11-23T06:00:00.000Z",
-        "source": "School newsletter",
-        "source_date": "2026-11-13"
-      },
-      {
-        "kind": "reminder",
-        "text": "Get the take-home folder and GR #8 test signed; review bonuses and fines.",
         "date": null,
         "expires_at": "2026-11-23T06:00:00.000Z",
         "source": "School newsletter",

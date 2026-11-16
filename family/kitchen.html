@@ -343,6 +343,7 @@
         .child-eyebrow { font-size: 10px; letter-spacing: 2.2px; color: #edbd7d; }
         .child-heading h1 { display: inline-block; font-family: Georgia, serif; font-size: 36px; margin: 3px 18px 0 0; font-weight: normal; }
         .child-subtitle { display: inline-block; font-size: 15px; color: #aeb9c5; }
+        .child-library { color: #edbd7d; font-size: 18px; font-weight: bold; }
         .child-school h2, .child-activities h2 { margin: 0 0 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 1.7px; color: #b5c3d0; }
         .child-note-grid { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; }
         .child-note { width: 32%; margin: 0 2% 12px 0; padding: 13px 15px; min-height: 120px; background: rgba(152,181,202,0.07); border-top: 2px solid #496573; border-radius: 3px; }
@@ -1115,8 +1116,26 @@
                 request.timeout = 20000;
                 request.send(null);
             }
+            function libraryReminder(notes) {
+                var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+                var found = [], i, j, text, day, shortDay;
+                for (i = 0; i < notes.length; i += 1) {
+                    if (notes[i].kind !== 'specials' && notes[i].kind !== 'bring') { continue; }
+                    text = notes[i].text;
+                    for (j = 0; j < days.length; j += 1) {
+                        day = days[j]; shortDay = day.slice(0, 3);
+                        if (new RegExp('(?:^|;|\\b)(' + day + '|' + shortDay + ')\\s*:\\s*Library\\b', 'i').test(text) ||
+                            new RegExp('\\bLibrary(?: books)?(?: on)?\\s+(' + day + '|' + shortDay + ')\\b', 'i').test(text)) {
+                            if (found.indexOf(day) === -1) { found.push(day); }
+                        }
+                    }
+                }
+                return found.length === 1 ? 'Library ' + found[0] + ' • Bring books' :
+                    (found.length ? 'Library day needs confirmation' : 'Library day not confirmed');
+            }
             function renderChild(content, child, now) {
                 clearElement(content);
+                var notes = KitchenWeekly.visible(weeklyNotes, child, now.getTime());
                 var panel = createElement('div', 'child-panel ' + child.toLowerCase());
                 var heading = createElement('div', 'child-heading');
                 var portraits = { Madison: 'madison', Will: 'will', Max: 'max' };
@@ -1134,7 +1153,7 @@
                 heading.appendChild(portrait);
                 heading.appendChild(createElement('div', 'child-eyebrow', 'YOUR WEEK'));
                 heading.appendChild(createElement('h1', '', child));
-                heading.appendChild(createElement('div', 'child-subtitle', 'School notes & reminders'));
+                heading.appendChild(createElement('div', 'child-subtitle child-library', libraryReminder(notes)));
                 panel.appendChild(heading);
                 var activities = createElement('section', 'child-activities');
                 activities.appendChild(createElement('h2', '', 'Next activities'));
@@ -1168,7 +1187,6 @@
                 var school = createElement('section', 'child-school');
                 school.appendChild(createElement('h2', '', 'Latest classroom notes'));
                 var noteGrid = createElement('div', 'child-note-grid');
-                var notes = KitchenWeekly.visible(weeklyNotes, child, now.getTime());
                 for (index = 0; index < notes.length; index += 1) {
                     row = createElement('div', 'child-note ' + notes[index].kind);
                     row.appendChild(createElement('div', 'child-note-kind', {learning: 'Learning', bring: 'Bring / wear', reminder: 'Remember', assignment: 'Assignment', specials: 'Specials'}[notes[index].kind]));
