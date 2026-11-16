@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T08:19:17.385968-06:00",
+  "generated_at": "2026-11-16T09:40:44.673174-06:00",
   "local": {
     "title": "Movie: 'Windtalkers'",
     "detail": "Mon, Nov 16 at 2:00 PM \u2022 Central Library",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 67.92,
-    "change_pct": 0.1,
-    "as_of": "2026-11-13"
+    "value": 67.9,
+    "change_pct": -0.03,
+    "as_of": "2026-11-16"
   }
 }
