@@ -158,6 +158,27 @@ var unsafe=Object.assign({},priorityItem,{sourceFrom:'attacker@example.test'});
 assert.equal(context.kitchenPriorityCandidates([unsafe],tuningNow).length,0);
 assert.equal(context.kitchenPriorityCandidates([priorityItem],new Date('2026-11-15T19:00:00Z')).length,0);
 console.log('Dated school priorities, source provenance, expiry and whole-section finance exclusions passed');
+// Each assignment owns its due date and local-midnight expiry, including at the card cap.
+var splitItem=Object.assign({},priorityItem,{date:new Date('2026-11-13T18:00:00Z'),cleanBody:
+'## Greek Roots\nNext week, students will complete Greek Roots Unit 9. Sections A - D will be due on Thursday, and we will take our test on Friday.\n## Next Week in Focus\nMath: Fractions\nScience: Matter\nPhonics: Sounds\nAmplify: Reading\nReading: More practice\n## Checkbook\nPlease review bonuses and fines.'});
+var split=context.prepareKitchenWeeklyExport([splitItem],new Date('2026-11-15T19:00:00Z')).payload;
+assert(contract.validate(split));
+assert.equal(split.children.Madison.length,6);
+var homework=split.children.Madison.filter(function(n){return /A–D due/.test(n.text);})[0];
+var exam=split.children.Madison.filter(function(n){return /test Friday/.test(n.text);})[0];
+assert.equal(homework.date,'2026-11-19');
+assert.equal(homework.expires_at,'2026-11-20T06:00:00.000Z');
+assert.equal(exam.date,'2026-11-20');
+assert.equal(exam.expires_at,'2026-11-21T06:00:00.000Z');
+assert(contract.visible(split,'Madison',Date.parse('2026-11-20T05:59:59Z')).some(function(n){return n.text===homework.text;}));
+assert(!contract.visible(split,'Madison',Date.parse('2026-11-20T06:00:00Z')).some(function(n){return n.text===homework.text;}));
+assert(contract.visible(split,'Madison',Date.parse('2026-11-20T06:00:00Z')).some(function(n){return n.text===exam.text;}));
+assert(!contract.visible(split,'Madison',Date.parse('2026-11-21T06:00:00Z')).some(function(n){return n.text===exam.text;}));
+assert(!split.children.Madison.some(function(n){return /signed|folder|bonuses|fines/i.test(n.text);}));
+var notification=Object.assign({},splitItem,{sourceFrom:'notice@seesaw.me',cleanBody:'Teacher sent you a multimedia message.'});
+assert.equal(context.kitchenSchoolCandidates([notification],new Date('2026-11-15T19:00:00Z')).length,0);
+console.log('Separate homework/test dates, CST expiries, six-card priority and notification-only exclusion passed');
+
 
 var apply=page.slice(page.indexOf('            function applyFeed('),page.indexOf('            function applyPhotoFeed('));
 var statusNode={};
@@ -180,3 +201,35 @@ assert.equal(content.children[1].children.length,7);
 content.children[1].children.forEach(function(row){var entries=row.children[1].children;assert.equal(entries.length,4);assert.equal(entries[3].textContent,'+9 more • Full calendar');assert.equal(entries[3].href,'events.html');});
 busyEvents=busyEvents.slice(0,4);content=node('div');weekCtx.renderWeek(content,weekNow);assert.equal(content.children[1].children[0].children[1].children.length,4);assert(!content.children[1].children[0].children[1].children.some(function(e){return e.tag==='a';}));
 console.log('Busy week bounded layout preserves seven days and explicit hidden-event counts');
+
+// Library reminder belongs on each child's page and uses only that child's current notes.
+var libraryContext={};vm.createContext(libraryContext);
+vm.runInContext(page.slice(page.indexOf('            function libraryReminder('),page.indexOf('            function renderChild(')),libraryContext);
+var libraryFeed=JSON.parse(fs.readFileSync('family/kitchen-weekly.json','utf8'));
+var libraryNow=Date.parse('2026-11-16T18:00:00Z');
+[['Madison','Wednesday'],['Max','Thursday'],['Will','Friday']].forEach(function(pair){
+    assert.equal(libraryContext.libraryReminder(contract.visible(libraryFeed,pair[0],libraryNow)),'Library '+pair[1]+' • Bring books');
+});
+assert.equal(libraryContext.libraryReminder([]),'Library day not confirmed');
+assert.equal(libraryContext.libraryReminder([{kind:'specials',text:'Wed: Library; Thu: Library.'}]),'Library day needs confirmation');
+assert.equal(libraryContext.libraryReminder([{kind:'learning',text:'Library Wednesday'}]),'Library day not confirmed');
+assert.equal(libraryContext.libraryReminder(contract.visible(libraryFeed,'Madison',Date.parse(libraryFeed.expires_at))),'Library day not confirmed');
+assert(page.includes("'child-subtitle child-library', libraryReminder(notes)"));
+assert(!libraryFeed.children.Madison.some(function(n){return /folder|GR #8|signed|bonuses|fines/i.test(n.text);}));
+assert.equal(libraryFeed.children.Madison.filter(function(n){return n.kind==='assignment';}).length,2);
+console.log('Individual library banners, unknown/conflicting/expired sources and approved note corrections passed');
+var childRenderContext={Date:Date,KitchenWeekly:contract,weeklyNotes:libraryFeed,weeklyOffline:false,
+    state:{events:[],generatedAt:'2026-11-16T18:00:00Z'},
+    createElement:node,clearElement:function(n){n.children=[];},
+    document:{createElement:node},relativeFeedTime:function(){return 'Updated';},
+    parseDate:function(d){return new Date(d+'T12:00:00Z');},formatShortDay:function(d){return d.toISOString().slice(0,10);}};
+function renderNode(tag,cls,text){var n=node(tag,cls,text);n.setAttribute=function(){};n.style={};return n;}
+childRenderContext.createElement=renderNode;childRenderContext.document.createElement=renderNode;
+vm.createContext(childRenderContext);
+vm.runInContext(page.slice(page.indexOf('            function libraryReminder('),page.indexOf('            function loadWeeklyNotes(')),childRenderContext);
+function allText(n){return [n.textContent].concat(n.children.map(allText)).join(' ');}
+[['Madison','Wednesday'],['Max','Thursday'],['Will','Friday']].forEach(function(pair){
+    var root=renderNode('div');childRenderContext.renderChild(root,pair[0],new Date(libraryNow));
+    assert(allText(root).includes('Library '+pair[1]+' • Bring books'));
+});
+console.log('Actual child renderer displays each independently sourced library banner');
