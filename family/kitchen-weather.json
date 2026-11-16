@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-15T16:17:04.949839-06:00",
+  "generated_at": "2026-11-15T18:02:08.747217-06:00",
   "location": "Leawood, KS",
   "current": {
-    "temperature_f": 53,
-    "feels_like_f": 46,
+    "temperature_f": 45,
+    "feels_like_f": 38,
     "condition": "Clear"
   },
   "today": {
@@ -30,8 +30,8 @@
     },
     {
       "date": "2026-11-18",
-      "high_f": 63,
-      "low_f": 44,
+      "high_f": 62,
+      "low_f": 43,
       "condition": "Overcast",
       "precipitation_chance": 9
     }
