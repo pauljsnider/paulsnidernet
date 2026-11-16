@@ -41,7 +41,7 @@
       },
       {
         "kind": "learning",
-        "text": "iReady Diagnostic",
+        "text": "Amplify - Unit 4: Don Quixote",
         "date": null,
         "expires_at": "2026-11-23T06:00:00.000Z",
         "source": "School newsletter",
@@ -49,7 +49,7 @@
       },
       {
         "kind": "learning",
-        "text": "Amplify - Unit 4: Don Quixote",
+        "text": "Math - Multiply Multi-Digit Numbers, Divide Multi-Digit Numbers, Adding Fractions",
         "date": null,
         "expires_at": "2026-11-23T06:00:00.000Z",
         "source": "School newsletter",
@@ -99,6 +99,14 @@
       }
     ],
     "Max": [
+      {
+        "kind": "specials",
+        "text": "Mon/Wed: Spanish/PE (shoes); Tue: Art; Thu: Library (books); Fri: Music.",
+        "date": null,
+        "expires_at": "2026-11-23T06:00:00.000Z",
+        "source": "School newsletter",
+        "source_date": "2026-11-12"
+      },
       {
         "kind": "bring",
         "text": "Bring a Nut Safer snack and water bottle daily.",

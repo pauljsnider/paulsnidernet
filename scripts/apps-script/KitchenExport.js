@@ -39,7 +39,13 @@ function kitchenSchoolCandidates(items, now) {
         });
         var relativeWeek = null;
         var financialSection = false;
-        parts.join('\n').split(/\r?\n/).forEach(function (line) {
+        var sourceText = parts.join('\n');
+        var learningHeading = /next week(?:.s)? (?:learning|in focus)|what are we learning this week/i;
+        var scopedLearning = learningHeading.test(sourceText);
+        var inLearningSection = false;
+        sourceText.split(/\r?\n/).forEach(function (line) {
+            if (learningHeading.test(line)) { inLearningSection = true; }
+            else if (/^\s*#{1,6}\s/.test(line)) { inLearningSection = false; }
             if (/^\s*(?:#{1,6}\s|\*\*[^*]+\*\*\s*$)/.test(line)) { financialSection = /fundrais|donat|support.a.cougar|checkbook|wishlist|wish list/i.test(line); }
             if (financialSection) { return; }
             // Test original line before stripping markup; never salvage a
@@ -52,7 +58,7 @@ function kitchenSchoolCandidates(items, now) {
             if (!KitchenWeekly.safeSourceText(text)) { return; }
             var learning = text.match(/^(Amplify|Math|Science|Phonics|iReady|95%|Reading|Friendly Letter)\s*[:\-]?\s*(.+)$/i);
             var kind = learning ? 'learning' : (/\b(?:bring|return|send)\b.*\b(?:books?|snack|water bottle|shoes)\b/i.test(text) ? 'bring' : null);
-            if (!kind) { return; }
+            if (!kind || (learning && scopedLearning && !inLearningSection)) { return; }
             if (learning && !KitchenWeekly.safeText(text)) {
                 // A complete short heading or sentence, never a cut-off fragment.
                 var bold = line.match(/^\s*\*\*([^*]+)\*\*/);
@@ -139,7 +145,21 @@ function kitchenPriorityCandidates(items, now) {
                 if (!/^(?:PE|Spanish|Music|Art|Library)(?:\/(?:PE|Spanish))?$/i.test(value)) return;
                 rows.push(day.slice(0,3)+': '+value+(/Library/i.test(value)?' (books)':/tennis shoes/i.test(match[1])?' (shoes)':''));
             });
-            if (rows.length) add('specials',rows.join('; ')+'.',null,rows.join('; '));
+            if (rows.length) {
+                var summary = rows.join('; ') + '.';
+                if (summary.length > 90) {
+                    // Group identical activities, retaining every weekday and required item.
+                    var groups = [];
+                    rows.forEach(function (row) {
+                        var pair = row.split(': '), group = null;
+                        groups.forEach(function (entry) { if (entry.value === pair[1]) group = entry; });
+                        if (group) group.days.push(pair[0]);
+                        else groups.push({days:[pair[0]],value:pair[1]});
+                    });
+                    summary = groups.map(function (group) { return group.days.join('/') + ': ' + group.value; }).join('; ') + '.';
+                }
+                add('specials',summary,null,rows.join('; '));
+            }
         });
         var snack = body.match(/(?:send|bring)[^\n]{0,180}(?:water bottle|snack)[^\n]{0,180}/i);
         if (snack && /nut.safer/i.test(body)) add('bring','Bring a Nut Safer snack and water bottle daily.',null,snack[0]);

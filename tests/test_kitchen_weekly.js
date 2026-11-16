@@ -233,3 +233,18 @@ function allText(n){return [n.textContent].concat(n.children.map(allText)).join(
     assert(allText(root).includes('Library '+pair[1]+' • Bring books'));
 });
 console.log('Actual child renderer displays each independently sourced library banner');
+// Repeated PE days must compact within 90 chars without losing books or shoes.
+var longSpecials={child:'Max',sourceFrom:'teacher@parentsquare.com',date:new Date('2026-11-12T18:00:00Z'),cleanBody:
+'## What Are We Learning This Week?\niReady: Addition\n## Specials\nFor This Week:\nMonday: Day 4 Spanish/PE (Wear Tennis Shoes)\nTuesday: Day 5 Art\nWednesday: Day 1 Spanish/PE (Wear Tennis Shoes)\nThursday: Day 2 Library (Return Library Books)\nFriday: Day 3 Music'};
+var compact=context.prepareKitchenWeeklyExport([longSpecials],new Date('2026-11-15T19:00:00Z')).payload;
+var special=compact.children.Max.filter(function(n){return n.kind==='specials';})[0];
+assert(special);assert(special.text.length<=90);
+assert.equal(special.text,'Mon/Wed: Spanish/PE (shoes); Tue: Art; Thu: Library (books); Fri: Music.');
+assert.equal(libraryContext.libraryReminder(compact.children.Max),'Library Thursday • Bring books');
+assert.equal(context.kitchenPriorityCandidates([longSpecials],new Date('2026-11-22T19:00:00Z')).length,0);
+var datedLearning={child:'Madison',sourceFrom:'teacher@parentsquare.com',date:new Date('2026-11-13T18:00:00Z'),cleanBody:
+'## December Assessments\nMonday, December 7 - Friday, December 11\niReady Diagnostic\n## Next Week in Focus\nAmplify: Reading\nMath: Multiplication\n## Repeat Information\niReady Diagnostic'};
+var focused=context.prepareKitchenWeeklyExport([datedLearning],new Date('2026-11-15T19:00:00Z')).payload;
+assert(focused.children.Madison.some(function(n){return /Math: Multiplication/.test(n.text);}));
+assert(!focused.children.Madison.some(function(n){return /Diagnostic/.test(n.text);}));
+console.log('Long specials preserve every weekday/books/shoes; dated announcements cannot crowd out weekly learning');
