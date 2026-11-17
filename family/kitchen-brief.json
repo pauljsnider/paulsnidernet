@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T09:11:18.505065-06:00",
+  "generated_at": "2026-11-17T09:57:22.991112-06:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Tue, Nov 17 at 9:30 AM \u2022 Plaza Branch",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 67.02,
-    "change_pct": -0.76,
+    "value": 66.67,
+    "change_pct": -1.27,
     "as_of": "2026-11-17"
   }
 }
