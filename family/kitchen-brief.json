@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-16T15:00:02.657203-06:00",
+  "generated_at": "2026-11-16T19:17:51.778764-06:00",
   "local": {
-    "title": "Movie: 'Windtalkers'",
-    "detail": "Mon, Nov 16 at 2:00 PM \u2022 Central Library",
+    "title": "Teen Dungeons and Dragons",
+    "detail": "Mon, Nov 16 at 5:30 PM \u2022 Trails West Branch",
     "date": "2026-11-16",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-windtalkers"
+    "url": "https://kclibrary.org/calendar/teen-dungeons-and-dragons-0"
   },
   "kc_news": {
     "title": "Take a Route 66 road trip through Missouri and Kansas with this guide to historic attractions",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7561.67,
-      "change_pct": -0.4,
-      "as_of": "2026-11-13"
+      "value": 7416.59,
+      "change_pct": -1.92,
+      "as_of": "2026-11-16"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 67.57,
-    "change_pct": -0.52,
+    "value": 67.53,
+    "change_pct": -0.57,
     "as_of": "2026-11-16"
   }
 }
