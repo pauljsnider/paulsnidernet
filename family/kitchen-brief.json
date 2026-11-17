@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T21:48:45.382555-06:00",
+  "generated_at": "2026-11-17T06:29:55.102168-06:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Tue, Nov 17 at 9:30 AM \u2022 Plaza Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
-      "title": "New AI \u201ccopilot\u201d helps engineers design better structures",
+      "title": "Q&A: Why building math muscles remains important in the AI era",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-12",
+      "date": "2026-11-16",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/new-ai-copilot-helps-engineers-design-better-structures-1113"
+      "url": "https://news.mit.edu/2026/qa-why-building-math-muscles-remains-important-ai-era-1117"
     },
     {
-      "title": "Helping robots fit into the human workplace",
+      "title": "Learning the language of machine learning",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-12",
+      "date": "2026-11-16",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/helping-robots-fit-into-human-workplace-1113"
+      "url": "https://news.mit.edu/2026/learning-language-of-machine-learning-jacob-andreas-1117"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 25136.27,
-      "change_pct": -0.91,
-      "as_of": "2026-11-13"
+      "value": 24509.76,
+      "change_pct": -2.49,
+      "as_of": "2026-11-16"
     }
   ],
   "ticker": {
