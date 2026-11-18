@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T21:44:00.499302-06:00",
+  "generated_at": "2026-11-18T06:59:40.535079-06:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Wed, Nov 18 at 9:30 AM \u2022 Waldo Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Helping AI text detectors keep up with changing conditions",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-11-17",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/helping-ai-text-detectors-keep-up-with-changing-conditions-1118"
+    },
+    {
       "title": "Putting a spotlight on AI, society, and humanity",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-17",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/putting-spotlight-ai-society-humanity-1117"
-    },
-    {
-      "title": "Q&A: Why building math muscles remains important in the AI era",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-16",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/qa-why-building-math-muscles-remains-important-ai-era-1117"
     }
   ],
   "markets": [
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 24509.76,
-      "change_pct": -2.49,
-      "as_of": "2026-11-16"
+      "value": 24328.38,
+      "change_pct": -0.74,
+      "as_of": "2026-11-17"
     }
   ],
   "ticker": {
