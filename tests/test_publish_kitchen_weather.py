@@ -121,3 +121,67 @@ class KitchenWeatherWorkflowTests(unittest.TestCase):
         self.assertIn('continue-on-error: true', weather_step)
         self.assertNotIn('if:', brief_step)
         self.assertLess(workflow.index('bash scripts/push-kitchen-weather.sh'), workflow.index('- name: Report weather refresh failure'))
+
+
+class RetryAfterTests(unittest.TestCase):
+    setUp = KitchenWeatherFetchTests.setUp
+    response = KitchenWeatherFetchTests.response
+
+    def test_retry_after_numeric_and_http_date(self):
+        from datetime import timezone
+        fixed = datetime(2026, 11, 18, 0, 0, tzinfo=timezone.utc)
+        response = self.response(429)
+        for value, expected in [('25', 25), ('Wed, 18 Nov 2026 00:00:40 GMT', 40),
+                                ('Tue, 17 Nov 2026 23:59:59 GMT', 0), ('0', 0),
+                                ('-5', None), ('1.5', None), ('bad header', None), ('', None)]:
+            with self.subTest(value=value):
+                response.headers['Retry-After'] = value
+                self.assertEqual(WEATHER.retry_after_seconds(response, fixed), expected)
+
+    def test_server_delay_then_success(self):
+        from unittest.mock import patch
+        for status in [429, 503]:
+            response = self.response(status)
+            response.headers['Retry-After'] = '60'
+            with self.subTest(status=status), patch.object(WEATHER.requests, 'get', side_effect=[response, self.response()]), patch.object(WEATHER.time, 'sleep') as sleep:
+                WEATHER.publish_weather(self.output)
+                sleep.assert_called_once_with(60)
+
+    def test_long_wait_defers_without_early_retry_or_overwrite(self):
+        from unittest.mock import patch
+        for value in ['61', '99999999999999999999', 'Wed, 18 Nov 2099 00:00:00 GMT']:
+            response = self.response(429)
+            response.headers['Retry-After'] = value
+            with self.subTest(value=value), patch.object(WEATHER.requests, 'get', return_value=response) as get, patch.object(WEATHER.time, 'sleep') as sleep:
+                with self.assertRaisesRegex(RuntimeError, 'deferring to a later run'):
+                    WEATHER.publish_weather(self.output)
+                get.assert_called_once()
+                sleep.assert_not_called()
+                self.assertEqual('last-good-feed\n', self.output.read_text())
+
+    def test_malformed_header_uses_backoff_without_logging_value(self):
+        import contextlib
+        import io
+        from unittest.mock import patch
+        response = self.response(429)
+        response.headers['Retry-After'] = 'https://example.invalid/private-marker'
+        log = io.StringIO()
+        with patch.object(WEATHER.requests, 'get', side_effect=[response, self.response()]), patch.object(WEATHER.time, 'sleep') as sleep, contextlib.redirect_stderr(log):
+            WEATHER.publish_weather(self.output)
+        sleep.assert_called_once_with(2)
+        self.assertNotIn('private-marker', log.getvalue())
+        self.assertNotIn('https://', log.getvalue())
+
+    def test_elapsed_diagnostic_is_sanitized_and_bounded(self):
+        import contextlib
+        import io
+        from unittest.mock import patch
+        log = io.StringIO()
+        with patch.object(WEATHER.requests, 'get', side_effect=WEATHER.requests.ReadTimeout('private-message')), patch.object(WEATHER.time, 'sleep') as sleep, patch.object(WEATHER.time, 'monotonic', side_effect=[0,10,12,22,26,36]), contextlib.redirect_stderr(log):
+            with self.assertRaises(RuntimeError) as caught:
+                WEATHER.publish_weather(self.output)
+        diagnostic = log.getvalue() + str(caught.exception)
+        self.assertIn('phase=request, elapsed=10.00s', diagnostic)
+        self.assertNotIn('private-message', diagnostic)
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [2,4])
+        self.assertEqual('last-good-feed\n', self.output.read_text())
