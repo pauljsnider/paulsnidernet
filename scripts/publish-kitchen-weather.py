@@ -6,7 +6,8 @@ from __future__ import annotations
 import json
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -100,6 +101,28 @@ def build_weather_feed(payload: dict, now: datetime | None = None) -> dict:
     }
 
 
+MAX_RETRY_DELAY_SECONDS = 60
+
+
+def retry_after_seconds(response, now=None):
+    """Parse delay-seconds or HTTP-date without logging untrusted header text."""
+    if response is None:
+        return None
+    value = response.headers.get("Retry-After", "").strip()
+    try:
+        if value.isascii() and value.isdigit():
+            # Avoid converting arbitrarily long upstream integers.
+            digits = value.lstrip("0") or "0"
+            return MAX_RETRY_DELAY_SECONDS + 1 if len(digits) > 6 else int(digits)
+        target = parsedate_to_datetime(value)
+        if target.tzinfo is None:
+            return None
+        current = now or datetime.now(timezone.utc)
+        return max(0, (target - current).total_seconds())
+    except (ValueError, TypeError, OverflowError):
+        return None
+
+
 def publish_weather(output_file: Path = OUTPUT_FILE, now: datetime | None = None) -> dict:
     """Fetch Leawood's current conditions and write the local display feed."""
     parameters = {
@@ -112,9 +135,13 @@ def publish_weather(output_file: Path = OUTPUT_FILE, now: datetime | None = None
         "timezone": "America/Chicago",
     }
     for attempt in range(1, 4):
+        started = time.monotonic()
+        phase = "request"
         try:
             response = requests.get(OPEN_METEO_URL, params=parameters, timeout=(10, 60))
+            phase = "status"
             response.raise_for_status()
+            phase = "payload"
             payload = response.json()
             if not isinstance(payload, dict) or not isinstance(payload.get("current"), dict):
                 raise ValueError("Missing current conditions")
@@ -128,12 +155,18 @@ def publish_weather(output_file: Path = OUTPUT_FILE, now: datetime | None = None
             transient = isinstance(error, (requests.Timeout, requests.ConnectionError)) or (
                 status is not None and (status == 429 or 500 <= status < 600)
             )
-            # Report class/status, never a URL, response body or exception text.
+            elapsed = max(0, time.monotonic() - started)
+            # Report only our phase, elapsed time and class/status, never upstream text.
             detail = f"HTTP {status}" if status is not None else type(error).__name__
-            if not transient or attempt == 3:
-                raise RuntimeError(f"Could not fetch the kitchen weather feed: {detail} after {attempt} attempt(s).") from error
-            print(f"Kitchen weather attempt {attempt} failed: {detail}; retrying.", file=sys.stderr)
-            time.sleep(2 ** attempt)
+            diagnostic = f"phase={phase}, elapsed={elapsed:.2f}s, connect_limit=10s, read_limit=60s"
+            delay = retry_after_seconds(error_response) if transient else None
+            deferred = delay is not None and delay > MAX_RETRY_DELAY_SECONDS
+            if not transient or attempt == 3 or deferred:
+                reason = " Retry-After exceeds the 60s wait budget; deferring to a later run." if deferred else ""
+                raise RuntimeError(f"Could not fetch the kitchen weather feed: {detail} after {attempt} attempt(s). {diagnostic}.{reason}") from error
+            delay = max(2 ** attempt, delay or 0)
+            print(f"Kitchen weather attempt {attempt} failed: {detail}; {diagnostic}; retrying in {delay:g}s.", file=sys.stderr)
+            time.sleep(delay)
 
     output_file.parent.mkdir(parents=True, exist_ok=True)
     output_file.write_text(json.dumps(feed, indent=2) + "\n", encoding="utf-8")
