@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-18T09:36:24.672664-06:00",
+  "generated_at": "2026-11-18T13:04:06.867060-06:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Wed, Nov 18 at 9:30 AM \u2022 Waldo Branch",
-    "date": "2026-11-18",
+    "title": "Art Club | Grupo de Arte",
+    "detail": "Thu, Nov 19 at 5:30 PM \u2022 North-East Branch",
+    "date": "2026-11-19",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-157"
+    "url": "https://kclibrary.org/calendar/art-club-grupo-de-arte-14"
   },
   "kc_news": {
     "title": "Kauffman Center dares Kansas City to try pushing it '7 inches to the left,' as trend goes viral",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7416.59,
-      "change_pct": -1.92,
-      "as_of": "2026-11-16"
+      "value": 7340.53,
+      "change_pct": -1.03,
+      "as_of": "2026-11-17"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 66.34,
-    "change_pct": 0.41,
+    "value": 66.53,
+    "change_pct": 0.7,
     "as_of": "2026-11-18"
   }
 }
