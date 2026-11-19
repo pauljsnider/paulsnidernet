@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T15:28:21.732484-06:00",
+  "generated_at": "2026-11-19T17:10:51.602013-06:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Nov 19 at 5:30 PM \u2022 North-East Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "AI helps researchers investigate how thousands of medical studies share code",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-11-19",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/ai-helps-researchers-investigate-how-medical-studies-share-code-1119"
+    },
+    {
       "title": "Study reveals data centers\u2019 long-distance damage to air quality",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-19",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/study-reveals-data-centers-long-distance-damage-air-quality-1119"
-    },
-    {
-      "title": "This featherweight, flying robot carries its own sensors and computers",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-18",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118"
     }
   ],
   "markets": [
