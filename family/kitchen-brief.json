@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T09:42:16.126034-06:00",
+  "generated_at": "2026-11-19T15:28:21.732484-06:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Nov 19 at 5:30 PM \u2022 North-East Branch",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.99,
-    "change_pct": -1.11,
+    "value": 65.41,
+    "change_pct": -1.98,
     "as_of": "2026-11-19"
   }
 }
