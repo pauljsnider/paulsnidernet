@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T06:57:50.740433-06:00",
+  "generated_at": "2026-11-19T08:55:12.325520-06:00",
   "local": {
     "title": "Art Club | Grupo de Arte",
     "detail": "Thu, Nov 19 at 5:30 PM \u2022 North-East Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Study reveals data centers\u2019 long-distance damage to air quality",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-11-19",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/study-reveals-data-centers-long-distance-damage-air-quality-1119"
+    },
+    {
       "title": "This featherweight, flying robot carries its own sensors and computers",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-18",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/featherweight-flying-robot-carries-its-own-sensors-and-computers-1118"
-    },
-    {
-      "title": "Helping AI text detectors keep up with changing conditions",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-17",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/helping-ai-text-detectors-keep-up-with-changing-conditions-1118"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 66.73,
-    "change_pct": 1.0,
-    "as_of": "2026-11-18"
+    "value": 66.15,
+    "change_pct": -0.87,
+    "as_of": "2026-11-19"
   }
 }
