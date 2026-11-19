@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T08:54:51.189730-06:00",
+  "generated_at": "2026-11-19T17:10:32.405164-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -642,6 +642,15 @@
       "summary": "DAY 3",
       "start": "2026-12-07",
       "end": "2026-12-08",
+      "all_day": true,
+      "location": "",
+      "source": "Overland Trail Elementary",
+      "children": []
+    },
+    {
+      "summary": "Harvester's Food Drive I STUCO sponsored",
+      "start": "2026-12-07",
+      "end": "2026-12-12",
       "all_day": true,
       "location": "",
       "source": "Overland Trail Elementary",
