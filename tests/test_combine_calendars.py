@@ -535,7 +535,7 @@ END:VCALENDAR
         self.assertEqual('2026-11-21T13:15:00-06:00', matinee['DTSTART'].dt.isoformat())
         self.assertEqual('2026-11-21T16:30:00-06:00', matinee['DTEND'].dt.isoformat())
         self.assertIn('Clinic runs 9:30-11:30am', str(clinic['DESCRIPTION']))
-        self.assertIn('matinee starts 2:00pm', str(matinee['DESCRIPTION']))
+        self.assertIn('Matinee starts 2:00pm', str(matinee['DESCRIPTION']))
         self.assertIn('End time approximate', str(matinee['DESCRIPTION']))
         for event in (clinic, matinee):
             self.assertNotIn('https://', str(event.get('DESCRIPTION', '')))
