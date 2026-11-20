@@ -64,7 +64,6 @@ jobs:
 
       - name: Check for changes
         id: check_changes
-        
         run: |
           git add family/family-calendar-combined.ics family/kitchen-events.json
           if git diff --staged --quiet; then
