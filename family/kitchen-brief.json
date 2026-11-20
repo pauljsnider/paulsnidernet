@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-20T14:08:12.404327-06:00",
+  "generated_at": "2026-11-20T15:23:28.312909-06:00",
   "local": {
-    "title": "Movie: 'Beans'",
-    "detail": "Fri, Nov 20 at 1:00 PM \u2022 Plaza Branch",
+    "title": "Movie: 'Smoke Signals'",
+    "detail": "Fri, Nov 20 at 2:00 PM \u2022 Central Library",
     "date": "2026-11-20",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-beans"
+    "url": "https://kclibrary.org/calendar/movie-smoke-signals"
   },
   "kc_news": {
     "title": "Kansas City Rep\u2019s 'A Christmas Carol' tradition gets a new Scrooge after 25 years",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
-      "title": "Following the \u201cmathocalypse,\u201d mathematicians consider the future",
+      "title": "Q&A: Enabling more human-like interactions and understanding in multimodal foundation models",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-20",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/following-mathocalypse-mathematicians-consider-future-1120"
+      "url": "https://news.mit.edu/2026/qa-enabling-more-human-interactions-understanding-multimodal-foundation-models-1120"
     },
     {
-      "title": "AI helps researchers investigate how thousands of medical studies share code",
+      "title": "New approach enables physically consistent AI models of chaotic systems",
       "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-19",
+      "date": "2026-11-20",
       "source": "MIT News",
-      "url": "https://news.mit.edu/2026/ai-helps-researchers-investigate-how-medical-studies-share-code-1119"
+      "url": "https://news.mit.edu/new-approach-enables-physically-consistent-ai-models-chaotic-systems-1120"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 64.34,
-    "change_pct": -1.64,
+    "value": 64.16,
+    "change_pct": -1.91,
     "as_of": "2026-11-20"
   }
 }
