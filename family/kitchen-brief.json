@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T13:46:09.112599-06:00",
+  "generated_at": "2026-11-20T14:08:12.404327-06:00",
   "local": {
     "title": "Movie: 'Beans'",
     "detail": "Fri, Nov 20 at 1:00 PM \u2022 Plaza Branch",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 64.4,
-    "change_pct": -1.54,
+    "value": 64.34,
+    "change_pct": -1.64,
     "as_of": "2026-11-20"
   }
 }
