@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T07:40:26.211512-06:00",
+  "generated_at": "2026-11-20T08:01:45.831746-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -1540,7 +1540,7 @@
     },
     {
       "name": "Max Basketball",
-      "status": "cached"
+      "status": "live"
     },
     {
       "name": "Overland Trail Elementary",
