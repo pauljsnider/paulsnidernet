@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T08:02:05.023859-06:00",
+  "generated_at": "2026-11-20T09:24:34.177629-06:00",
   "local": {
     "title": "Canceled: Kindergarten Readiness Storytime",
     "detail": "Fri, Nov 20 at 10:30 AM \u2022 Plaza Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Following the \u201cmathocalypse,\u201d mathematicians consider the future",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-11-20",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/following-mathocalypse-mathematicians-consider-future-1120"
+    },
+    {
       "title": "AI helps researchers investigate how thousands of medical studies share code",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-19",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/ai-helps-researchers-investigate-how-medical-studies-share-code-1119"
-    },
-    {
-      "title": "Study reveals data centers\u2019 long-distance damage to air quality",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-19",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/study-reveals-data-centers-long-distance-damage-air-quality-1119"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.41,
-    "change_pct": -1.98,
-    "as_of": "2026-11-19"
+    "value": 65.51,
+    "change_pct": 0.15,
+    "as_of": "2026-11-20"
   }
 }
