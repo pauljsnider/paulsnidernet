@@ -58,11 +58,13 @@ jobs:
         env:
           WILL_BASKETBALL_ICS_URL: ${{ secrets.WILL_BASKETBALL_ICS_URL }}
           MADISON_BASKETBALL_ICS_URL: ${{ secrets.MADISON_BASKETBALL_ICS_URL }}
+            MAX_BASKETBALL_ICS_URL: ${{ secrets.MAX_BASKETBALL_ICS_URL }}          
         run: |
           python scripts/combine-calendars.py
 
       - name: Check for changes
         id: check_changes
+        
         run: |
           git add family/family-calendar-combined.ics family/kitchen-events.json
           if git diff --staged --quiet; then
