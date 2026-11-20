@@ -480,6 +480,14 @@
                     </div>
                     <div class="calendar-item">
                         <label class="calendar-checkbox">
+                            <input type="checkbox" id="cal-max-basketball-enabled" checked onchange="updateEventDisplay()">
+                            <span class="checkmark"></span>
+                        </label>
+                        <i class="fas fa-basketball-ball sport-icon"></i>
+                        <span class="calendar-name">Max Basketball</span>
+                    </div>
+                    <div class="calendar-item">
+                        <label class="calendar-checkbox">
                             <input type="checkbox" id="cal-teamsnap-enabled" checked onchange="updateEventDisplay()">
                             <span class="checkmark"></span>
                         </label>
@@ -639,6 +647,7 @@
             'Will Indoor Soccer',
             'Will Basketball',
             'Madison Basketball',
+            'Max Basketball',
             'TeamSnap Events (Madison + Max + Will)',
             'Max Soccer - Major Derek',
             'Family Email Events'
@@ -671,6 +680,7 @@
             'Will Indoor Soccer':                   'cal-will-indoor-soccer-enabled',
             'Will Basketball': 'cal-will-basketball-enabled',
             'Madison Basketball': 'cal-madison-basketball-enabled',
+            'Max Basketball': 'cal-max-basketball-enabled',
             'TeamSnap Events (Madison + Max + Will)': 'cal-teamsnap-enabled',
             'Max Soccer - Major Derek':             'cal-max-soccer-enabled',
             'Family Email Events':                  'cal-family-email-events-enabled'
