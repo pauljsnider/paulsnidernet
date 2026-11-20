@@ -96,6 +96,23 @@ class CombineCalendarsTest(unittest.TestCase):
             self.assertIsNone(expanded[0]['url'])
             self.assertIsNone(COMBINE_CALENDARS.fetch_calendar(None, 'Will Basketball'))
 
+    def test_max_basketball_source_is_registered(self):
+        self.assertEqual(
+            COMBINE_CALENDARS.PRIVATE_BASKETBALL_SOURCES['Max Basketball'],
+            'MAX_BASKETBALL_ICS_URL',
+        )
+        self.assertEqual(
+            COMBINE_CALENDARS.CALENDAR_LABEL_MAP['Max Basketball'],
+            ('Max', 'Basketball'),
+        )
+        source = make_calendar('max-basketball-practice', 'Lil Cougars Practice')
+        combined = combine_calendars([source], ['Max Basketball'])
+        event = combined.walk('VEVENT')[0]
+        self.assertEqual(str(event['SUMMARY']), 'Max Basketball: Lil Cougars Practice')
+        feed = build_kitchen_feed(combined, now=pytz.UTC.localize(datetime(2026, 8, 18)))
+        self.assertEqual(['Max'], feed['events'][0]['children'])
+        self.assertEqual('Max Basketball', feed['events'][0]['source'])
+
     def test_basketball_schedule_only_labels_dedup_and_cached_recovery(self):
         source = make_calendar('basketball-game', 'Game vs Visitors')
         event = source.walk('VEVENT')[0]

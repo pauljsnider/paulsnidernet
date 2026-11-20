@@ -44,6 +44,7 @@ CALENDAR_LABEL_MAP = {
     'Madison Futsal':                  ('Madison', 'Futsal'),
     'Will Basketball': ('Will', 'Basketball'),
     'Madison Basketball': ('Madison', 'Basketball'),
+    'Max Basketball': ('Max', 'Basketball'),
 }
 
 # Manual corrections for upstream feeds that omit venue data. Keep this narrow:
@@ -145,6 +146,7 @@ PRODUCTION_CALENDARS = [
 PRIVATE_BASKETBALL_SOURCES = {
     'Will Basketball': 'WILL_BASKETBALL_ICS_URL',
     'Madison Basketball': 'MADISON_BASKETBALL_ICS_URL',
+    'Max Basketball': 'MAX_BASKETBALL_ICS_URL',
 }
 PRODUCTION_CALENDARS.extend(
     {'name': name, 'url_env': env_name}
@@ -749,6 +751,7 @@ def kitchen_event_children(component, source_name):
         'Max Soccer - Major Derek': ['Max'], "Madison's Futsal": ['Madison'],
         'Madison Futsal': ['Madison'],
         'Will Basketball': ['Will'], 'Madison Basketball': ['Madison'],
+        'Max Basketball': ['Max'],
     }
     if source_name in source_children:
         return source_children[source_name][:]

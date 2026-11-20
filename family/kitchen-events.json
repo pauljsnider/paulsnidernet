@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T07:27:07.873457-06:00",
+  "generated_at": "2026-11-20T07:37:01.814764-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -122,6 +122,17 @@
       "all_day": false,
       "location": "Microsoft Teams Meeting",
       "source": "Family Email Events",
+      "children": [
+        "Max"
+      ]
+    },
+    {
+      "summary": "Max Basketball: Lil Cougars Practice",
+      "start": "2026-11-21T15:30:00-06:00",
+      "end": "2026-11-21T16:30:00-06:00",
+      "all_day": false,
+      "location": "Overland Trail Elementary School\nOverland Park, KS, United States",
+      "source": "Max Basketball",
       "children": [
         "Max"
       ]
@@ -595,6 +606,17 @@
       ]
     },
     {
+      "summary": "Max Basketball: Lil Cougars Practice",
+      "start": "2026-12-05T15:30:00-06:00",
+      "end": "2026-12-05T16:30:00-06:00",
+      "all_day": false,
+      "location": "Overland Trail Elementary School\nOverland Park, KS, United States",
+      "source": "Max Basketball",
+      "children": [
+        "Max"
+      ]
+    },
+    {
       "summary": "Will Soccer: Vipers FC U8B @ OPSC Pre Acad U9",
       "start": "2026-12-06T17:15:00-06:00",
       "end": "2026-12-06T18:15:00-06:00",
@@ -886,6 +908,17 @@
       "source": "Madison Basketball",
       "children": [
         "Madison"
+      ]
+    },
+    {
+      "summary": "Max Basketball: Lil Cougars Practice",
+      "start": "2026-12-12T15:30:00-06:00",
+      "end": "2026-12-12T16:30:00-06:00",
+      "all_day": false,
+      "location": "Overland Trail Elementary School\nOverland Park, KS, United States",
+      "source": "Max Basketball",
+      "children": [
+        "Max"
       ]
     },
     {
@@ -1499,10 +1532,14 @@
     },
     {
       "name": "Will Basketball",
-      "status": "live"
+      "status": "cached"
     },
     {
       "name": "Madison Basketball",
+      "status": "cached"
+    },
+    {
+      "name": "Max Basketball",
       "status": "live"
     },
     {
