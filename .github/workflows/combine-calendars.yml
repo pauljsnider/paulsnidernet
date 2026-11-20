@@ -58,7 +58,7 @@ jobs:
         env:
           WILL_BASKETBALL_ICS_URL: ${{ secrets.WILL_BASKETBALL_ICS_URL }}
           MADISON_BASKETBALL_ICS_URL: ${{ secrets.MADISON_BASKETBALL_ICS_URL }}
-            MAX_BASKETBALL_ICS_URL: ${{ secrets.MAX_BASKETBALL_ICS_URL }}          
+          MAX_BASKETBALL_ICS_URL: ${{ secrets.MAX_BASKETBALL_ICS_URL }}
         run: |
           python scripts/combine-calendars.py
 
