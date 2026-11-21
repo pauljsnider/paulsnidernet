@@ -1,65 +1,7 @@
 {
-  "generated_at": "2026-11-20T22:54:49.311061-06:00",
+  "generated_at": "2026-11-21T07:56:22.310257-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "Battle of the Books Volunteer Opportunity",
-      "start": "2026-11-20",
-      "end": "2026-11-21",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Battle of the Books: Third, Fourth, & Fifth Grades",
-      "start": "2026-11-20",
-      "end": "2026-11-21",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "DAY 3",
-      "start": "2026-11-20",
-      "end": "2026-11-21",
-      "all_day": true,
-      "location": "",
-      "source": "Overland Trail Elementary",
-      "children": []
-    },
-    {
-      "summary": "Will: Library",
-      "start": "2026-11-20",
-      "end": "2026-11-21",
-      "all_day": true,
-      "location": "Overland Trail Elementary",
-      "source": "Family Email Events",
-      "children": [
-        "Will"
-      ]
-    },
-    {
-      "summary": "Tutoring",
-      "start": "2026-11-20T17:15:00-06:00",
-      "end": "2026-11-20T18:15:00-06:00",
-      "all_day": false,
-      "location": "Microsoft Teams Meeting",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Futsal Skills Club - Will and Madison",
-      "start": "2026-11-20T20:00:00-06:00",
-      "end": "2026-11-20T21:00:00-06:00",
-      "all_day": false,
-      "location": "Prairie Star Elementary School, 3800 W 143rd St, Leawood, KS 66224",
-      "source": "Family Email Events",
-      "children": [
-        "Madison"
-      ]
-    },
     {
       "summary": "Max: Learn to Play Hockey",
       "start": "2026-11-21T08:00:00-06:00",
@@ -1500,6 +1442,42 @@
       "children": [
         "Madison"
       ]
+    },
+    {
+      "summary": "G&G Traveling",
+      "start": "2027-01-01",
+      "end": "2027-01-18",
+      "all_day": true,
+      "location": "TBA",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "U.S. Federal Holiday: New Year's Day",
+      "start": "2027-01-01",
+      "end": "2027-01-02",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "US Federal Holiday: New Year's Day",
+      "start": "2027-01-01",
+      "end": "2027-01-02",
+      "all_day": true,
+      "location": "",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Tutoring",
+      "start": "2027-01-01T17:15:00-06:00",
+      "end": "2027-01-01T18:15:00-06:00",
+      "all_day": false,
+      "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": []
     }
   ],
   "source_health": [
