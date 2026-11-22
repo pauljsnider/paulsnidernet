@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T07:50:11.262005-06:00",
+  "generated_at": "2026-11-22T13:12:46.582200-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -54,6 +54,15 @@
       "end": "2026-11-23T21:00:00-06:00",
       "all_day": false,
       "location": "",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "KC Current Championship Rally",
+      "start": "2026-11-24T11:00:00-06:00",
+      "end": "2026-11-24T14:00:00-06:00",
+      "all_day": false,
+      "location": "CPKC Stadium, Kansas City, MO",
       "source": "Family Email Events",
       "children": []
     },
