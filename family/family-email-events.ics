@@ -167,11 +167,12 @@ X-IMPORT-TYPE:MANUAL
 END:VEVENT
 BEGIN:VEVENT
 UID:max-junior-basketball-fall-2026@paulsnider.net
-DTSTAMP:20260902T025517Z
+DTSTAMP:20261122T194700Z
 SUMMARY:Max: Junior Basketball (Ages 4-5)
 DTSTART;TZID=America/Chicago:20261107T093000
 DTEND;TZID=America/Chicago:20261107T102500
 RRULE:FREQ=WEEKLY;COUNT=5;INTERVAL=1;BYDAY=SA;WKST=SU
+EXDATE;TZID=America/Chicago:20261128T093000
 DESCRIPTION:Ages 4-5. Registration cost: $69.33.
 LOCATION:Morse Elementary School
 STATUS:CONFIRMED
@@ -2152,5 +2153,18 @@ DTSTAMP:20261121T192916Z
 SUMMARY:Tutoring
 DTSTART;TZID=America/Chicago:20261123T200000
 DTEND;TZID=America/Chicago:20261123T210000
+END:VEVENT
+BEGIN:VEVENT
+UID:kc-current-championship-rally-20261124@paulsnider.net
+DTSTAMP:20261122T191500Z
+SUMMARY:KC Current Championship Rally
+DTSTART;TZID=America/Chicago:20261124T110000
+DTEND;TZID=America/Chicago:20261124T140000
+LOCATION:CPKC Stadium\, Kansas City\, MO
+DESCRIPTION:Follow the Current: KC Current Championship Rally. 4 GA tickets (SeatGeek order N4Q-RY75JDE). Schedule: 9:00-10:30am activities at Current Landing and Berkley Riverfront Park; 11:00am Championship March from Berkley Riverfront Park down Current Way to CPKC Stadium; ~12:15pm rally inside stadium (player speeches and trophy celebration); ~12:45-2:00pm The Chainsmokers concert on the pitch. Stadium entry first come, first served; gates open 10:00am.
+STATUS:CONFIRMED
+SEQUENCE:0
+TRANSP:OPAQUE
+X-IMPORT-TYPE:MANUAL
 END:VEVENT
 END:VCALENDAR
