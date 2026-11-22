@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T16:37:23.789301-06:00",
+  "generated_at": "2026-11-21T20:56:32.830759-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -575,6 +575,15 @@
       "children": [
         "Max"
       ]
+    },
+    {
+      "summary": "Boys at Grandma and Grandpa's",
+      "start": "2026-12-05T16:30:00-06:00",
+      "end": "2026-12-05T22:00:00-06:00",
+      "all_day": false,
+      "location": "Grandma and Grandpa's",
+      "source": "Family Email Events",
+      "children": []
     },
     {
       "summary": "Will Soccer: Vipers FC U8B @ OPSC Pre Acad U9",
