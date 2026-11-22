@@ -2101,6 +2101,15 @@ TRANSP:OPAQUE
 X-IMPORT-TYPE:EMAIL-INVITE
 END:VEVENT
 BEGIN:VEVENT
+UID:boys-grandma-grandpa-20261205@paulsnider.net
+DTSTAMP:20261122T025537Z
+DTSTART;TZID=America/Chicago:20261205T163000
+DTEND;TZID=America/Chicago:20261205T220000
+SUMMARY:Boys at Grandma and Grandpa's
+DESCRIPTION:Will and Max with Don and Wanda after Max's Lil Cougars basketball practice (3:30-4:30pm at Overland Trail Elementary). Madison is at her sleepover with Ava until 10:00pm.
+LOCATION:Grandma and Grandpa's
+END:VEVENT
+BEGIN:VEVENT
 UID:will-ent-appointment-20261130@paulsnider.net
 DTSTAMP:20261120T180916Z
 SUMMARY:Will ENT Appointment
