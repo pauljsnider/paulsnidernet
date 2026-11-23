@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T01:42:15.782743-06:00",
+  "generated_at": "2026-11-23T10:55:49.340813-06:00",
   "local": {
     "title": "Movie: 'Down and Out in Beverly Hills'",
     "detail": "Mon, Nov 23 at 2:00 PM \u2022 Central Library",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7175.83,
-      "change_pct": -2.02,
-      "as_of": "2026-11-19"
+      "value": 6910.39,
+      "change_pct": -3.7,
+      "as_of": "2026-11-20"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 64.16,
-    "change_pct": -1.91,
-    "as_of": "2026-11-20"
+    "value": 65.58,
+    "change_pct": 2.21,
+    "as_of": "2026-11-23"
   }
 }
