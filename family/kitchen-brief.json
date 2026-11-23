@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T22:54:37.640179-06:00",
+  "generated_at": "2026-11-23T01:42:15.782743-06:00",
   "local": {
     "title": "Movie: 'Down and Out in Beverly Hills'",
     "detail": "Mon, Nov 23 at 2:00 PM \u2022 Central Library",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "AI-driven technique could help engineers design analog chips faster and with less expense",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-11-22",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/ai-driven-technique-could-help-engineers-design-analog-chips-faster-and-less-expensive-1123"
+    },
+    {
       "title": "Q&A: Enabling more human-like interactions and understanding in multimodal foundation models",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-20",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/qa-enabling-more-human-interactions-understanding-multimodal-foundation-models-1120"
-    },
-    {
-      "title": "New approach enables physically consistent AI models of chaotic systems",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-20",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/new-approach-enables-physically-consistent-ai-models-chaotic-systems-1120"
     }
   ],
   "markets": [
