@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T12:01:35.962258-06:00",
+  "generated_at": "2026-11-23T14:09:01.012538-06:00",
   "local": {
     "title": "Movie: 'Down and Out in Beverly Hills'",
     "detail": "Mon, Nov 23 at 2:00 PM \u2022 Central Library",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.75,
-    "change_pct": 2.48,
+    "value": 65.53,
+    "change_pct": 2.13,
     "as_of": "2026-11-23"
   }
 }
