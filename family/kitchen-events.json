@@ -1,27 +1,7 @@
 {
-  "generated_at": "2026-11-22T22:54:17.748755-06:00",
+  "generated_at": "2026-11-23T10:55:18.177702-06:00",
   "timezone": "America/Chicago",
   "events": [
-    {
-      "summary": "Chiefs vs Cardinals",
-      "start": "2026-11-22T12:00:00-06:00",
-      "end": "2026-11-22T15:30:00-06:00",
-      "all_day": false,
-      "location": "",
-      "source": "Family Email Events",
-      "children": []
-    },
-    {
-      "summary": "Will Basketball: Sun Devils vs Karim",
-      "start": "2026-11-22T15:15:00-06:00",
-      "end": "2026-11-22T16:15:00-06:00",
-      "all_day": false,
-      "location": "Hilltop Learning Center-Blue Valley Schools\nOverland Park, KS, United States",
-      "source": "Will Basketball",
-      "children": [
-        "Will"
-      ]
-    },
     {
       "summary": "No School - Madison, Will, Max",
       "start": "2026-11-23",
@@ -1406,6 +1386,15 @@
       "end": "2027-01-01T18:15:00-06:00",
       "all_day": false,
       "location": "Microsoft Teams Meeting",
+      "source": "Family Email Events",
+      "children": []
+    },
+    {
+      "summary": "Chiefs @ Chargers - Week 17 (Date/Time TBD)",
+      "start": "2027-01-03",
+      "end": "2027-01-04",
+      "all_day": true,
+      "location": "",
       "source": "Family Email Events",
       "children": []
     }
