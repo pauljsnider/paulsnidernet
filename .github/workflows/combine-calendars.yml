@@ -31,27 +31,28 @@ jobs:
         run: |
           pip install requests icalendar pytz python-dateutil
 
-      - name: Merge important school events
+      - name: Merge school events and yearly birthdays
         run: |
           python - <<'PY'
           from pathlib import Path
 
           target = Path('family/family-email-events.ics')
-          source = Path('family/ote-important-events.ics')
-          if source.exists():
-              target_text = target.read_text()
-              source_text = source.read_text()
-              marker = 'BEGIN:VEVENT'
-              if marker in source_text:
-                  event_body = marker + source_text.split(marker, 1)[1]
-                  event_body = event_body.rsplit('END:VCALENDAR', 1)[0].rstrip()
-                  target.write_text(
-                      target_text.replace(
-                          'END:VCALENDAR',
-                          event_body + '\nEND:VCALENDAR',
-                          1,
+          for source_path in ('family/ote-important-events.ics', 'family/family-birthdays.ics'):
+              source = Path(source_path)
+              if source.exists():
+                  target_text = target.read_text()
+                  source_text = source.read_text()
+                  marker = 'BEGIN:VEVENT'
+                  if marker in source_text:
+                      event_body = marker + source_text.split(marker, 1)[1]
+                      event_body = event_body.rsplit('END:VCALENDAR', 1)[0].rstrip()
+                      target.write_text(
+                          target_text.replace(
+                              'END:VCALENDAR',
+                              event_body + '\nEND:VCALENDAR',
+                              1,
+                          )
                       )
-                  )
           PY
 
       - name: Run calendar combining script
@@ -79,3 +80,4 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git commit -m "Update combined family calendar [automated]"
           git push
+
