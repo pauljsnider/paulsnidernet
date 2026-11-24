@@ -106,10 +106,17 @@ console.log('Chicago local-date cutoff and Saturday/Sunday midnight rollover pas
 // Exercise the actual clock callback while a child view is selected, including
 // midnight rollover. Child rendering belongs to renderScreen, not a stale local.
 var page=fs.readFileSync('family/kitchen.html','utf8');
-var callback=page.slice(page.indexOf('            function updateClock()'),page.indexOf('            function renderHero'));
-var clockNodes={'clock':{},'date-label':{}},renders=0;
+var callback=page.slice(page.indexOf('            function renderBirthdayCountdown(now)'),page.indexOf('            function renderHero'));
+var clockNodes={'clock':{},'date-label':{},'birthday-countdown':{}},renders=0;
 var clockCtx={Date:Date,state:{view:6,visibleDay:'today'},getById:function(id){return clockNodes[id];},formatTime:function(){return '9:00';},formatLongDate:function(){return 'Thursday';},calendarDayKey:function(){return 'today';},renderHero:function(){},renderScreen:function(){renders++;}};
+clockCtx.window={};
+clockCtx.birthdayFeed={};
+clockCtx.VIEW_NAMES=['Today','This Week','Coming Up','Family Photos','Daily Brief','OTE School','Madison','Will','Max'];
 vm.createContext(clockCtx);vm.runInContext(callback,clockCtx);assert.doesNotThrow(function(){clockCtx.updateClock();});assert.equal(clockNodes.clock.textContent,'9:00');
+assert.equal(clockNodes['birthday-countdown'].textContent,'');
+clockCtx.window.KitchenBirthdays={text:function(){return 'Family countdown';},textForChild:function(feed,now,child){return child+' countdown';}};
+[6,7,8,0].forEach(function(view){clockCtx.state.view=view;clockCtx.updateClock();assert.equal(clockNodes['birthday-countdown'].textContent,(view ? clockCtx.VIEW_NAMES[view] : 'Family')+' countdown');});
+clockCtx.state.view=6;
 clockCtx.state.visibleDay='yesterday';clockCtx.updateClock();assert.equal(renders,1);
 console.log('Live clock callback on child view and midnight rollover passed');
 
