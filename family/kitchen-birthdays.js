@@ -9,7 +9,7 @@
         if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) { return null; }
         return date.getTime() / DAY;
     }
-    function text(feed, now) {
+    function text(feed, now, onlyLabel) {
         if (!feed || !Array.isArray(feed.birthdays) || !feed.birthdays.length) { return ''; }
         var generated = new Date(feed.generated_at).getTime();
         if (!isFinite(generated) || now.getTime() - generated > 7 * DAY || generated - now.getTime() > DAY) {
@@ -22,6 +22,7 @@
         for (index = 0; index < feed.birthdays.length; index += 1) {
             event = feed.birthdays[index];
             if (!event || typeof event.label !== 'string' || !event.label.trim() || event.label.length > 60) { continue; }
+            if (onlyLabel && event.label !== onlyLabel) { continue; }
             day = dayNumber(event.date);
             if (day === null) { continue; }
             remaining = day - today;
@@ -33,7 +34,12 @@
         var label = names[0] + (names.length > 1 ? ' + ' + (names.length - 1) + ' more' : '');
         return label + (closest === 0 ? ' · Today!' : closest === 1 ? ' · Tomorrow' : ' · ' + closest + ' days');
     }
-    var api = { text: text };
+    function textForChild(feed, now, child) {
+        // The existing public projection contains only display labels and dates.
+        var labels = { Madison: 'Madison’s birthday', Will: 'Will’s birthday', Max: 'Max’s birthday' };
+        return Object.prototype.hasOwnProperty.call(labels, child) ? text(feed, now, labels[child]) : '';
+    }
+    var api = { text: text, textForChild: textForChild };
     if (typeof module !== 'undefined' && module.exports) { module.exports = api; }
     else { root.KitchenBirthdays = api; }
 }(this));
