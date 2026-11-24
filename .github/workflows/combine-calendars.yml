@@ -10,6 +10,7 @@ on:
     paths:
       - 'family/*.ics'
       - 'scripts/combine-calendars.py'
+      - 'scripts/project-kitchen-birthdays.py'
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -62,6 +63,7 @@ jobs:
           MAX_BASKETBALL_ICS_URL: ${{ secrets.MAX_BASKETBALL_ICS_URL }}
         run: |
           python scripts/combine-calendars.py
+          python scripts/project-kitchen-birthdays.py
 
       - name: Check for changes
         id: check_changes
@@ -80,4 +82,5 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git commit -m "Update combined family calendar [automated]"
           git push
+
 
