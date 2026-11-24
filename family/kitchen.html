@@ -427,7 +427,7 @@
         </div>
     </main>
 
-    <script src="kitchen-birthdays.js"></script>
+    <script src="kitchen-birthdays.js?v=2"></script>
     <script src="kitchen-weekly.js?v=school-week-v2"></script>
     <script>
         (function () {
@@ -567,10 +567,18 @@
                 }
                 return null;
             }
+            function renderBirthdayCountdown(now) {
+                var element = getById('birthday-countdown');
+                var birthdays = window.KitchenBirthdays;
+                if (!element) { return; }
+                var label = !birthdays ? '' : (state.view >= 6 ?
+                    (birthdays.textForChild ? birthdays.textForChild(birthdayFeed, now, VIEW_NAMES[state.view]) : '') :
+                    birthdays.text(birthdayFeed, now));
+                if (element.textContent !== label) { element.textContent = label; }
+            }
             function updateClock() {
-                var birthdayElement = getById('birthday-countdown');
-                if (birthdayElement) { birthdayElement.textContent = typeof window !== 'undefined' && window.KitchenBirthdays ? window.KitchenBirthdays.text(birthdayFeed, new Date()) : ''; }
                 var now = new Date();
+                renderBirthdayCountdown(now);
                 getById('clock').textContent = formatTime(now);
                 getById('date-label').textContent = formatLongDate(now);
                 if (state.visibleDay && state.visibleDay !== calendarDayKey(now)) {
@@ -845,6 +853,7 @@
                 getById('family-board').className = state.view >= 6 ? 'child-view' : state.view === 3 ? 'photo-view' : (state.view === 4 ? 'brief-view' : (state.view === 5 ? 'school-view' : ''));
                 if (state.view === 1) { getById('family-board').className = 'week-view'; }
                 renderControls();
+                renderBirthdayCountdown(now);
                 if (state.view === 0) { renderToday(content, now); }
                 if (state.view === 1) { renderWeek(content, now); }
                 if (state.view === 2) { renderUpcoming(content, now); }
@@ -890,8 +899,6 @@
                 state.events = normaliseEvents(feed.events);
                 state.generatedAt = feed.generated_at || null;
                 birthdayFeed = feed;
-                var birthdayElement = getById('birthday-countdown');
-                if (birthdayElement) { birthdayElement.textContent = typeof window !== 'undefined' && window.KitchenBirthdays ? window.KitchenBirthdays.text(feed, new Date()) : ''; }
                 var status = relativeFeedTime(state.generatedAt) || 'Schedules refresh automatically';
                 var degraded = [];
                 var sources = feed.source_health || [];
