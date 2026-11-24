@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T10:45:33.536921-06:00",
+  "generated_at": "2026-11-24T11:38:51.889250-06:00",
   "local": {
     "title": "Family Game Night",
     "detail": "Tue, Nov 24 at 5:30 PM \u2022 Plaza Branch",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 6910.39,
-      "change_pct": -3.7,
-      "as_of": "2026-11-20"
+      "value": 7237.17,
+      "change_pct": 4.73,
+      "as_of": "2026-11-23"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.5,
-    "change_pct": -0.35,
+    "value": 66.09,
+    "change_pct": 0.56,
     "as_of": "2026-11-24"
   }
 }
