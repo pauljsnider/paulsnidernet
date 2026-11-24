@@ -255,3 +255,22 @@ var focused=context.prepareKitchenWeeklyExport([datedLearning],new Date('2026-11
 assert(focused.children.Madison.some(function(n){return /Math: Multiplication/.test(n.text);}));
 assert(!focused.children.Madison.some(function(n){return /Diagnostic/.test(n.text);}));
 console.log('Long specials preserve every weekday/books/shoes; dated announcements cannot crowd out weekly learning');
+
+// Run the exact board joke selector, including calendar-day offsets across DST.
+var jokeStart = page.indexOf('            function dailyDadJoke(now)');
+var jokeEnd = page.indexOf('            function renderBrief(content, now)');
+var jokeContext = vm.createContext({Date:Date});
+vm.runInContext(page.slice(jokeStart,jokeEnd),jokeContext);
+var firstCycle = [];
+for (var j=0;j<37;j+=1) {
+    var early = jokeContext.dailyDadJoke(new Date(2027,2,1+j,0,1));
+    var late = jokeContext.dailyDadJoke(new Date(2027,2,1+j,23,59));
+    assert.equal(early,late);
+    if (j) assert.notEqual(early,firstCycle[j-1]);
+    firstCycle.push(early);
+}
+assert.equal(new Set(firstCycle).size,36);
+assert.equal(firstCycle[0],firstCycle[36]);
+assert(page.includes('href="events.html?view=month">Family Calendar</a>'));
+assert(page.includes("getById('family-calendar-link').addEventListener('click', function (event) { event.stopPropagation(); });"));
+console.log('Vintage-safe daily joke pool and Family Calendar deep link passed');

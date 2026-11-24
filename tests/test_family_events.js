@@ -28,23 +28,24 @@ class ClockDate extends Date {
 const elements = new Map();
 function element(key) {
     if (!elements.has(key)) elements.set(key, {
-        innerHTML: '', style: {}, checked: true,
+        innerHTML: '', style: {}, checked: true, addEventListener() {},
         classList: { add() {}, remove() {}, toggle() {} }
     });
     return elements.get(key);
 }
+let ready;
 const document = {
     getElementById: element,
     querySelector: element,
     querySelectorAll: () => [],
-    addEventListener() {},
+    addEventListener(name, callback) { if (name === 'DOMContentLoaded') ready = callback; },
     createElement() {
         return {
             set textContent(value) { this.innerHTML = String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
         };
     }
 };
-const ctx = vm.createContext({ Date: ClockDate, document, window: { addEventListener() {} }, console });
+const ctx = vm.createContext({ Date: ClockDate, document, window: { location: { search: '' }, addEventListener() {} }, console });
 vm.runInContext(script, ctx);
 const run = code => vm.runInContext(code, ctx);
 const ics = body => 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\n' + body.replace(/\n/g, '\r\n') + '\r\nEND:VCALENDAR\r\n';
@@ -67,7 +68,13 @@ ctx.feed = tournament;
 // Reproduce Calendar -> Compact/Detailed showing an obsolete Next Week list.
 run('allLoadedEvents = parseICalData(feed, "Will Baseball", "combined"); renderCalendar = function () {}; updateEventDisplay();');
 assert(!element('events-container').innerHTML.includes('Mustangs'));
-run('setView("calendar"); setView("compact");');
+ready();
+assert.equal(run('currentView'), 'compact');
+ctx.window.location.search = '?view=month';
+ready();
+assert.equal(run('currentView'), 'calendar');
+assert.equal(element('events-container').style.display, 'none');
+run('setView("compact");');
 assert(element('events-container').innerHTML.includes('Mustangs'), 'Compact must render the current filter after returning from Calendar');
 const compactHtml = element('events-container').innerHTML;
 assert(compactHtml.includes('October 16, 2026') && compactHtml.includes('October 18, 2026'), 'Show the inclusive all-day range');
