@@ -58,8 +58,17 @@ class BirthdaySourceTest(unittest.TestCase):
         self.assertEqual(1, raw.count(b'BEGIN:VCALENDAR'))
         self.assertEqual(1, raw.count(b'END:VCALENDAR'))
         events = Calendar.from_ical(raw).walk('VEVENT')
-        self.assertEqual(11, len(events))
-        self.assertEqual(11, len({str(e['UID']) for e in events}))
+        self.assertEqual(14, len(events))
+        by_uid = {str(event['UID']): event for event in events}
+        self.assertEqual(14, len(by_uid))
+        for uid, label, expected_date in (
+            ('don', 'Don birthday', date(2027, 7, 17)),
+            ('wanda', 'Wanda birthday', date(2027, 4, 22)),
+            ('kevin-v', 'Kevin V. birthday', date(2027, 5, 14)),
+        ):
+            event = by_uid[f'family-birthday-{uid}@paulsnider.net']
+            self.assertEqual(label, str(event['SUMMARY']))
+            self.assertEqual(expected_date, event['DTSTART'].dt)
         allowed = {'UID', 'DTSTAMP', 'SUMMARY', 'DTSTART', 'DTEND', 'RRULE', 'CATEGORIES', 'TRANSP'}
         for event in events:
             self.assertTrue(set(event).issubset(allowed))
