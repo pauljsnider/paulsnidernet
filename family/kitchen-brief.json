@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T11:38:51.889250-06:00",
+  "generated_at": "2026-11-24T16:13:08.376037-06:00",
   "local": {
     "title": "Family Game Night",
     "detail": "Tue, Nov 24 at 5:30 PM \u2022 Plaza Branch",
@@ -15,18 +15,18 @@
   },
   "ai": [
     {
+      "title": "Agentic system personalizes physical controls to help users \u201cDJ their art\u201d",
+      "detail": "MIT News \u2022 AI & science",
+      "date": "2026-11-24",
+      "source": "MIT News",
+      "url": "https://news.mit.edu/2026/tangimap-agentic-system-personalizes-physical-controls-help-users-dj-their-art-1124"
+    },
+    {
       "title": "Many languages, one common neural code",
       "detail": "MIT News \u2022 AI & science",
       "date": "2026-11-23",
       "source": "MIT News",
       "url": "https://news.mit.edu/2026/many-languages-one-common-neural-code-1123"
-    },
-    {
-      "title": "AI-driven technique could help engineers design analog chips faster and with less expense",
-      "detail": "MIT News \u2022 AI & science",
-      "date": "2026-11-22",
-      "source": "MIT News",
-      "url": "https://news.mit.edu/2026/ai-driven-technique-could-help-engineers-design-analog-chips-faster-and-less-expensive-1123"
     }
   ],
   "markets": [
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 66.09,
-    "change_pct": 0.56,
+    "value": 65.77,
+    "change_pct": 0.06,
     "as_of": "2026-11-24"
   }
 }
