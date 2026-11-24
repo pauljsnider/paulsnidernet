@@ -21,6 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: TZ=America/Chicago node tests/test_kitchen_birthdays.js
       - run: node tests/test_kitchen_weekly.js
       - run: node tests/test_kitchen_publisher.js
       - run: node tests/test_kitchen_completion.js
@@ -39,3 +40,4 @@ jobs:
             throw new Error('Public weekly payload failed schema/finance validation');
           }
           JS
+

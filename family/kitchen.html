@@ -281,7 +281,13 @@
             justify-content: space-between;
             -webkit-justify-content: space-between;
         }
-        #feed-status { color: #6f8190; font-size: 13px; }
+        @media (max-width: 700px) {
+            .bottomline { -webkit-flex-wrap: wrap; flex-wrap: wrap; }
+            #family-board #feed-status { max-width: 100%; width: 100%; }
+            #family-board #birthday-countdown { max-width: 100%; margin: 8px 0; }
+        }
+        #birthday-countdown { color: #f3b96d; font-size: 15px; margin: 0 14px; max-width: 38%; text-align: center; }
+        #feed-status { max-width: 35%; color: #6f8190; font-size: 13px; }
         .view-controls { white-space: nowrap; }
         .view-control {
             width: 10px;
@@ -408,6 +414,7 @@
 
         <div class="bottomline">
             <div id="feed-status">Schedules refresh automatically</div>
+            <div id="birthday-countdown" aria-live="polite"></div>
             <div class="view-controls" aria-label="Calendar display views">
                 <span id="paused-note" class="paused-note" aria-live="polite"></span>
                 <button class="view-control active" data-view="0" aria-label="Show today"></button>
@@ -420,6 +427,7 @@
         </div>
     </main>
 
+    <script src="kitchen-birthdays.js"></script>
     <script src="kitchen-weekly.js?v=school-week-v2"></script>
     <script>
         (function () {
@@ -437,6 +445,7 @@
             var VIEW_DURATIONS = [30000, 22000, 22000, 18000, 26000, 24000, 28000, 28000, 28000];
             var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            var birthdayFeed = null;
             var weeklyNotes = null;
             var weeklyOffline = false;
             var WEEKLY_CACHE = 'kitchen-weekly-v2';
@@ -559,6 +568,8 @@
                 return null;
             }
             function updateClock() {
+                var birthdayElement = getById('birthday-countdown');
+                if (birthdayElement) { birthdayElement.textContent = typeof window !== 'undefined' && window.KitchenBirthdays ? window.KitchenBirthdays.text(birthdayFeed, new Date()) : ''; }
                 var now = new Date();
                 getById('clock').textContent = formatTime(now);
                 getById('date-label').textContent = formatLongDate(now);
@@ -878,6 +889,9 @@
                 if (!feed || !feed.events) { return false; }
                 state.events = normaliseEvents(feed.events);
                 state.generatedAt = feed.generated_at || null;
+                birthdayFeed = feed;
+                var birthdayElement = getById('birthday-countdown');
+                if (birthdayElement) { birthdayElement.textContent = typeof window !== 'undefined' && window.KitchenBirthdays ? window.KitchenBirthdays.text(feed, new Date()) : ''; }
                 var status = relativeFeedTime(state.generatedAt) || 'Schedules refresh automatically';
                 var degraded = [];
                 var sources = feed.source_health || [];
@@ -1272,3 +1286,4 @@
     </script>
 </body>
 </html>
+

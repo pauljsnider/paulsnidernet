@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T22:41:07.728809-06:00",
+  "generated_at": "2026-11-23T22:53:29.480058-06:00",
   "timezone": "America/Chicago",
   "events": [
     {
@@ -1462,5 +1462,27 @@
       "status": "live"
     }
   ],
-  "complete": false
+  "complete": false,
+  "birthdays": [
+    {
+      "label": "Max\u2019s birthday",
+      "date": "2027-02-09"
+    },
+    {
+      "label": "Will\u2019s birthday",
+      "date": "2027-03-05"
+    },
+    {
+      "label": "Robin\u2019s birthday",
+      "date": "2027-03-17"
+    },
+    {
+      "label": "Madison\u2019s birthday",
+      "date": "2027-06-02"
+    },
+    {
+      "label": "Paul\u2019s birthday",
+      "date": "2027-11-13"
+    }
+  ]
 }
