@@ -230,12 +230,18 @@
             box-shadow: 0 18px 36px rgba(0, 0, 0, 0.20);
         }
         .brief-top {
+            display: -webkit-flex; display: flex;
+            -webkit-justify-content: space-between; justify-content: space-between;
+            -webkit-align-items: center; align-items: center;
             min-height: 74px;
             padding-bottom: 14px;
             border-bottom: 1px solid rgba(246, 235, 219, 0.13);
         }
         .brief-kicker, .school-kicker { color: #f3b96d; font-size: 13px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; }
         .brief-heading, .school-heading { color: #ffffff; font-family: Georgia, serif; font-size: 34px; font-weight: normal; letter-spacing: -0.5px; line-height: 1; margin-top: 8px; }
+        .brief-joke { max-width: 58%; margin-left: 14px; color: #f4e6d4; font-size: 16px; line-height: 1.3; text-align: right; }
+        .brief-joke .brief-kicker { display: block; margin-bottom: 4px; font-size: 11px; }
+        @media (max-width: 430px) { .brief-joke { font-size: 13px; } }
         .brief-columns { display: -webkit-flex; display: flex; flex-wrap: wrap; -webkit-flex-wrap: wrap; margin: 16px -7px 0; }
         .brief-card {
             width: calc(33.333% - 14px);
@@ -289,6 +295,7 @@
         #birthday-countdown { color: #f3b96d; font-size: 15px; margin: 0 14px; max-width: 38%; text-align: center; }
         #feed-status { max-width: 35%; color: #6f8190; font-size: 13px; }
         .view-controls { white-space: nowrap; }
+        .family-calendar-link { display: inline-block; margin-right: 5px; padding: 5px 2px; color: #f3b96d; font-size: 13px; text-decoration: underline; }
         .view-control {
             width: 10px;
             height: 10px;
@@ -417,6 +424,7 @@
             <div id="birthday-countdown" aria-live="polite"></div>
             <div class="view-controls" aria-label="Calendar display views">
                 <span id="paused-note" class="paused-note" aria-live="polite"></span>
+                <a id="family-calendar-link" class="family-calendar-link" href="events.html?view=month">Family Calendar</a>
                 <button class="view-control active" data-view="0" aria-label="Show today"></button>
                 <button class="view-control" data-view="1" aria-label="Show this week"></button>
                 <button class="view-control" data-view="2" aria-label="Show upcoming events"></button>
@@ -778,7 +786,50 @@
                 card.appendChild(createElement('div', 'brief-card-source', 'Last price • ' + (ticker.as_of || 'latest close')));
                 return card;
             }
-            function renderBrief(content) {
+            function dailyDadJoke(now) {
+                var jokes = [
+                    'What do you call a bear with no teeth? A gummy bear.',
+                    'Why did the bicycle fall over? It was two-tired.',
+                    'What do you call cheese that isn’t yours? Nacho cheese.',
+                    'Why did the math book look sad? It had too many problems.',
+                    'What do you call a cow that plays music? A moo-sician.',
+                    'Why can’t your nose be 12 inches long? Then it would be a foot.',
+                    'What do you call a sleeping dinosaur? A dino-snore.',
+                    'Why did the cookie go to the doctor? It felt crummy.',
+                    'What do you call an alligator in a vest? An investigator.',
+                    'Why did the scarecrow win an award? He was outstanding in his field.',
+                    'What is a tree’s least favorite month? Sep-timber.',
+                    'Why did the banana go to the doctor? It wasn’t peeling well.',
+                    'Why did the picture go to jail? It was framed.',
+                    'What do you call a fish with no eyes? Fsh.',
+                    'Why are frogs so happy? They eat whatever bugs them.',
+                    'How does the moon get a haircut? Eclipse it.',
+                    'Why do bees have sticky hair? They use honeycombs.',
+                    'What did the ocean say to the beach? Nothing. It just waved.',
+                    'Why did the golfer bring two pairs of pants? In case he got a hole in one.',
+                    'Why did the orange stop rolling? It ran out of juice.',
+                    'Why are mountains always tired? They don’t get any rest at the peak.',
+                    'Why did the music teacher need a ladder? To reach the high notes.',
+                    'What kind of shoes do ninjas wear? Sneakers.',
+                    'What do you call a pile of cats? A meow-ntain.',
+                    'Why was the broom late? It over-swept.',
+                    'What did one plate say to the other? Lunch is on me.',
+                    'What kind of key opens a banana? A monkey.',
+                    'What do you call a funny mountain? Hill-arious.',
+                    'Why are elevators so good at small talk? They always lift your spirits.',
+                    'What did zero say to eight? Nice belt!',
+                    'What did one wall say to the other? I’ll meet you at the corner.',
+                    'How does a penguin build its house? Igloos it together.',
+                    'Why did the pencil go to school? It wanted to be sharp.',
+                    'Why did the computer wear a sweater? It left its Windows open.',
+                    'Why don’t eggs tell jokes? They’d crack each other up.',
+                    'Why did the spider get a job online? It was a natural web designer.'
+                ];
+                // Match the board’s local day; DST does not skip or repeat an index.
+                var day = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000;
+                return jokes[((day % jokes.length) + jokes.length) % jokes.length];
+            }
+            function renderBrief(content, now) {
                 var panel = createElement('section', 'brief-panel');
                 var top = createElement('div', 'brief-top');
                 var heading = createElement('div', '');
@@ -787,6 +838,10 @@
                 heading.appendChild(createElement('div', 'brief-kicker', 'Six small things'));
                 heading.appendChild(createElement('div', 'brief-heading', 'Daily Brief'));
                 top.appendChild(heading);
+                var joke = createElement('div', 'brief-joke');
+                joke.appendChild(createElement('span', 'brief-kicker', 'Dad joke of the day'));
+                joke.appendChild(createElement('span', '', dailyDadJoke(now)));
+                top.appendChild(joke);
                 panel.appendChild(top);
                 columns.appendChild(createBriefStoryCard('local', 'KC family pick', brief.local, 'A family pick is refreshing.'));
                 columns.appendChild(createBriefStoryCard('kc', 'KC good news', brief.kc_news, 'A KC story is refreshing.'));
@@ -858,7 +913,7 @@
                 if (state.view === 1) { renderWeek(content, now); }
                 if (state.view === 2) { renderUpcoming(content, now); }
                 if (state.view === 3) { renderPhotos(content); }
-                if (state.view === 4) { renderBrief(content); }
+                if (state.view === 4) { renderBrief(content, now); }
                 if (state.view === 5) { renderOteSchool(content, now); }
                 renderHero(now);
                 if (state.view >= 6) { renderChild(content, VIEW_NAMES[state.view], now); }
@@ -1260,6 +1315,7 @@
                         if (viewAvailable(view)) { chooseView(view, true); }
                     });
                 }
+                getById('family-calendar-link').addEventListener('click', function (event) { event.stopPropagation(); });
                 getById('family-board').addEventListener('click', function () {
                     if (state.view === 3 && state.photos.length) { state.photoIndex = (state.photoIndex + 1) % state.photos.length; }
                     chooseView(nextView(state.view), true);
