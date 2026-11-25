@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T10:32:39.600129-06:00",
+  "generated_at": "2026-11-25T11:10:05.147975-06:00",
   "local": {
     "title": "Family Storytime",
     "detail": "Wed, Nov 25 at 10:30 AM \u2022 Trails West Branch",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 64.61,
-    "change_pct": -1.76,
+    "value": 65.42,
+    "change_pct": -0.53,
     "as_of": "2026-11-25"
   }
 }
