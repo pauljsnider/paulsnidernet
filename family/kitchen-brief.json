@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-25T03:49:08.496325-06:00",
+  "generated_at": "2026-11-25T10:32:39.600129-06:00",
   "local": {
-    "title": "Baby Storytime",
-    "detail": "Wed, Nov 25 at 9:30 AM \u2022 Waldo Branch",
+    "title": "Family Storytime",
+    "detail": "Wed, Nov 25 at 10:30 AM \u2022 Trails West Branch",
     "date": "2026-11-25",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/baby-storytime-158"
+    "url": "https://kclibrary.org/calendar/family-storytime-185"
   },
   "kc_news": {
     "title": "30 years in, Lutfi\u2019s Fried Fish is making a crispy comeback around Kansas City",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7237.17,
-      "change_pct": 4.73,
-      "as_of": "2026-11-23"
+      "value": 7201.09,
+      "change_pct": -0.5,
+      "as_of": "2026-11-24"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.77,
-    "change_pct": 0.06,
-    "as_of": "2026-11-24"
+    "value": 64.61,
+    "change_pct": -1.76,
+    "as_of": "2026-11-25"
   }
 }
