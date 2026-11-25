@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T19:46:36.618508-06:00",
+  "generated_at": "2026-11-25T03:49:08.496325-06:00",
   "local": {
     "title": "Baby Storytime",
     "detail": "Wed, Nov 25 at 9:30 AM \u2022 Waldo Branch",
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 23879.2,
-      "change_pct": -2.25,
-      "as_of": "2026-11-19"
+      "value": 23733.54,
+      "change_pct": -1.48,
+      "as_of": "2026-11-24"
     }
   ],
   "ticker": {
