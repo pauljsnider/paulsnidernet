@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T20:49:12.425339-06:00",
+  "generated_at": "2026-11-26T06:22:24.413838-06:00",
   "local": {
     "title": "Movie: 'The Nightmare Before Christmas'",
     "detail": "Sat, Nov 28 at 2:00 PM \u2022 Central Library",
@@ -8,10 +8,10 @@
     "url": "https://kclibrary.org/calendar/movie-nightmare-christmas"
   },
   "kc_news": {
-    "title": "What time do the Plaza lights turn on? How to celebrate the holidays in Kansas City this week",
+    "title": "For Kansas City Ballet\u2019s \u2018The Nutcracker,\u2019 wrangling 178 child dancers is a holiday tradition",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-11-25/kansas-city-holiday-lights-events-plaza"
+    "url": "https://www.kcur.org/arts-life/2026-11-26/for-kansas-city-ballets-the-nutcracker-wrangling-178-child-dancers-is-a-holiday-tradition"
   },
   "ai": [
     {
@@ -38,9 +38,9 @@
     },
     {
       "name": "Nasdaq",
-      "value": 23733.54,
-      "change_pct": -1.48,
-      "as_of": "2026-11-24"
+      "value": 23585.8,
+      "change_pct": -0.62,
+      "as_of": "2026-11-25"
     }
   ],
   "ticker": {
