@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-11-25T13:54:51.759650-06:00",
+  "generated_at": "2026-11-25T19:22:13.643738-06:00",
   "local": {
-    "title": "Movie: 'Pieces Of April'",
-    "detail": "Wed, Nov 25 at 2:00 PM \u2022 Central Library",
-    "date": "2026-11-25",
+    "title": "Movie: 'The Nightmare Before Christmas'",
+    "detail": "Sat, Nov 28 at 2:00 PM \u2022 Central Library",
+    "date": "2026-11-28",
     "source": "Kansas City Public Library",
-    "url": "https://kclibrary.org/calendar/movie-pieces-april"
+    "url": "https://kclibrary.org/calendar/movie-nightmare-christmas"
   },
   "kc_news": {
-    "title": "30 years in, Lutfi\u2019s Fried Fish is making a crispy comeback around Kansas City",
+    "title": "What time do the Plaza lights turn on? How to celebrate the holidays in Kansas City this week",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-11-22/luftis-fried-fish-kansas-city-restaurants"
+    "url": "https://www.kcur.org/arts-life/2026-11-25/kansas-city-holiday-lights-events-plaza"
   },
   "ai": [
     {
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 66.13,
-    "change_pct": 0.55,
+    "value": 66.11,
+    "change_pct": 0.52,
     "as_of": "2026-11-25"
   }
 }
