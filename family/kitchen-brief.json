@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T08:59:50.660513-06:00",
+  "generated_at": "2026-11-27T09:53:54.046556-06:00",
   "local": {
     "title": "Movie: 'The Nightmare Before Christmas'",
     "detail": "Sat, Nov 28 at 2:00 PM \u2022 Central Library",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.94,
-    "change_pct": -0.23,
+    "value": 65.97,
+    "change_pct": -0.11,
     "as_of": "2026-11-27"
   }
 }
