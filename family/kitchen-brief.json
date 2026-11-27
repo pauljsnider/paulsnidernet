@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T22:59:48.727562-06:00",
+  "generated_at": "2026-11-27T08:59:50.660513-06:00",
   "local": {
     "title": "Movie: 'The Nightmare Before Christmas'",
     "detail": "Sat, Nov 28 at 2:00 PM \u2022 Central Library",
@@ -8,10 +8,10 @@
     "url": "https://kclibrary.org/calendar/movie-nightmare-christmas"
   },
   "kc_news": {
-    "title": "For Kansas City Ballet\u2019s \u2018The Nutcracker,\u2019 wrangling 178 child dancers is a holiday tradition",
+    "title": "The quest for a perfect Christmas tree starts at this Louisburg farm",
     "detail": "KCUR \u2022 KC arts & life",
     "source": "KCUR",
-    "url": "https://www.kcur.org/arts-life/2026-11-26/for-kansas-city-ballets-the-nutcracker-wrangling-178-child-dancers-is-a-holiday-tradition"
+    "url": "https://www.kcur.org/arts-life/2026-11-27/christmas-tree-farm-louisburg-kansas"
   },
   "ai": [
     {
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 66.11,
-    "change_pct": 0.52,
-    "as_of": "2026-11-25"
+    "value": 65.94,
+    "change_pct": -0.23,
+    "as_of": "2026-11-27"
   }
 }
