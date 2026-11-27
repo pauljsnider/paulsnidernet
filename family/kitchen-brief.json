@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T09:53:54.046556-06:00",
+  "generated_at": "2026-11-27T10:36:58.555159-06:00",
   "local": {
     "title": "Movie: 'The Nightmare Before Christmas'",
     "detail": "Sat, Nov 28 at 2:00 PM \u2022 Central Library",
@@ -32,9 +32,9 @@
   "markets": [
     {
       "name": "S&P 500",
-      "value": 7201.09,
-      "change_pct": -0.5,
-      "as_of": "2026-11-24"
+      "value": 7182.78,
+      "change_pct": -0.25,
+      "as_of": "2026-11-25"
     },
     {
       "name": "Nasdaq",
@@ -46,8 +46,8 @@
   "ticker": {
     "ticker": "FTV",
     "name": "Fortive",
-    "value": 65.97,
-    "change_pct": -0.11,
+    "value": 66.08,
+    "change_pct": 0.06,
     "as_of": "2026-11-27"
   }
 }
